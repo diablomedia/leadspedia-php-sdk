@@ -1,18 +1,11 @@
 <?php
 
-return Symfony\CS\Config::create()
-    ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
-    ->setUsingCache(true)
-    ->fixers(
-        [
-            'ordered_use',
-            'phpdoc_order',
-            'short_array_syntax',
-            'strict',
-            'strict_param'
-        ]
-    )
-    ->finder(
-        Symfony\CS\Finder\DefaultFinder::create()
-            ->in(__DIR__)
-    );
+use Localheinz\PhpCsFixer\Config;
+use DiabloMedia\PhpCsFixer\Config\RuleSet\Php71;
+$config = Config\Factory::fromRuleSet(new Php71());
+$config->setUsingCache(true)
+    ->getFinder()
+    ->exclude('vendor')
+    ->in(__DIR__)
+;
+return $config;
