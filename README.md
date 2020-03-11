@@ -20,11 +20,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/diablodrew/dd-test-sdk-lp.git"
+      "url": "https://github.com/diablomedia/leadspedia-php-sdk.git"
     }
   ],
   "require": {
-    "diablodrew/dd-test-sdk-lp": "*@dev"
+    "diablomedia/leadspedia-php-sdk": "*@dev"
   }
 }
 ```
