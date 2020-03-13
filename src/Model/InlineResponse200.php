@@ -59,7 +59,8 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'success'  => 'bool',
         'message'  => 'string',
-        'response' => 'object'
+        'response' => 'object',
+        'data'     => 'object'
     ];
 
     /**
@@ -70,7 +71,8 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'success'  => null,
         'message'  => null,
-        'response' => null
+        'response' => null,
+        'data'     => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'success'  => 'success',
         'message'  => 'message',
-        'response' => 'response'
+        'response' => 'response',
+        'data'     => 'data'
     ];
 
     /**
@@ -113,7 +116,8 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'success'  => 'setSuccess',
         'message'  => 'setMessage',
-        'response' => 'setResponse'
+        'response' => 'setResponse',
+        'data'     => 'setData'
     ];
 
     /**
@@ -124,7 +128,8 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'success'  => 'getSuccess',
         'message'  => 'getMessage',
-        'response' => 'getResponse'
+        'response' => 'getResponse',
+        'data'     => 'getData'
     ];
 
     /**
@@ -190,6 +195,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         $this->container['success']  = $data['success']  ?? null;
         $this->container['message']  = $data['message']  ?? null;
         $this->container['response'] = $data['response'] ?? null;
+        $this->container['data']     = $data['data']     ?? null;
     }
 
     /**
@@ -284,6 +290,30 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     public function setResponse($response)
     {
         $this->container['response'] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object|null $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

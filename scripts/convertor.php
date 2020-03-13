@@ -110,8 +110,11 @@ foreach ($source->resources->endpoints as $endpoint) {
                             'type' => 'string',
                         ],
                         'response' => [
-                            'type' => 'object'
-                        ]
+                            'type' => 'object',
+                        ],
+                        'data' => [
+                            'type' => 'object',
+                        ],
                     ]
                 ],
             ];
