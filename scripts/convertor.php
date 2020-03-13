@@ -89,7 +89,7 @@ foreach ($source->resources->endpoints as $endpoint) {
         "operationId" => str_replace(['/', '.'], '', $path),
         "deprecated"  => false,
         "consumes"    => $endpoint->consumes,
-        "produces"    => $endpoint->produces,
+        "produces"    => ['application/json'],
         "parameters"  => [],
         "responses"   => $endpoint->responses,
     ];

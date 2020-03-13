@@ -40,7 +40,9 @@
                 "operationId": "affiliatescreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateName",
@@ -92,7 +94,9 @@
                 "operationId": "campaignsupdateClicksRevenuedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -148,7 +152,9 @@
                 "operationId": "verticalsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "groupID",
@@ -211,7 +217,9 @@
                 "operationId": "offersgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -301,7 +309,9 @@
                 "operationId": "inboundCallsgetReturneddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "callerID",
@@ -423,7 +433,9 @@
                 "operationId": "campaignsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -523,7 +535,9 @@
                 "operationId": "offerssearchdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "name",
@@ -573,7 +587,9 @@
                 "operationId": "inboundCallsgetInProgressdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "callerID",
@@ -695,7 +711,9 @@
                 "operationId": "inboundCallsgetScrubbeddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "callerID",
@@ -817,7 +835,9 @@
                 "operationId": "inboundCallsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "callerID",
@@ -939,7 +959,9 @@
                 "operationId": "inboundCallsgetNumbersdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "search",
@@ -989,7 +1011,9 @@
                 "operationId": "inboundCallsgetTransferreddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "callerID",
@@ -1111,7 +1135,9 @@
                 "operationId": "impressionsgetAllphp",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "start_date",
@@ -1170,7 +1196,9 @@
                 "operationId": "advertisersContactsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -1242,7 +1270,9 @@
                 "operationId": "affiliatesContactsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -1314,7 +1344,9 @@
                 "operationId": "advertisersgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -1438,7 +1470,9 @@
                 "operationId": "affiliatesgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -1520,7 +1554,9 @@
                 "operationId": "callRoutingContractsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -1602,7 +1638,9 @@
                 "operationId": "leadDistributionContractsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -1684,7 +1722,9 @@
                 "operationId": "leadsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -1796,7 +1836,9 @@
                 "operationId": "leadsgetQueuedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -1882,7 +1924,9 @@
                 "operationId": "leadsgetScrubbeddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -1968,7 +2012,9 @@
                 "operationId": "leadsgetSolddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -2094,7 +2140,9 @@
                 "operationId": "leadsgetTrashdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -2189,7 +2237,9 @@
                 "operationId": "leadsgetReviewdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -2266,7 +2316,9 @@
                 "operationId": "leadsgetReturnsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -2395,7 +2447,9 @@
                 "operationId": "conversionsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -2591,7 +2645,9 @@
                 "operationId": "verticalsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -2620,7 +2676,9 @@
                 "operationId": "verticalGroupsupdatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "groupID",
@@ -2658,7 +2716,9 @@
                 "operationId": "changeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -2700,7 +2760,9 @@
                 "operationId": "verticalGroupsgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "groupID",
@@ -2732,7 +2794,9 @@
                 "operationId": "affiliatesgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -2764,7 +2828,9 @@
                 "operationId": "verticalscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalName",
@@ -2802,7 +2868,9 @@
                 "operationId": "verticalsupdatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -2858,7 +2926,9 @@
                 "operationId": "verticalGroupsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "start",
@@ -2899,7 +2969,9 @@
                 "operationId": "verticalGroupscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "groupName",
@@ -2928,7 +3000,9 @@
                 "operationId": "verticalGroupsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "groupID",
@@ -2957,7 +3031,9 @@
                 "operationId": "verticalsgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -2989,7 +3065,9 @@
                 "operationId": "advertisersdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -3018,7 +3096,9 @@
                 "operationId": "advertiserscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserName",
@@ -3069,7 +3149,9 @@
                 "operationId": "affiliatesdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -3098,7 +3180,9 @@
                 "operationId": "affiliatesupdateInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -3235,7 +3319,9 @@
                 "operationId": "advertisersgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -3267,7 +3353,9 @@
                 "operationId": "affiliatesupdateBillingdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -3345,7 +3433,9 @@
                 "operationId": "advertisersContactsgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3377,7 +3467,9 @@
                 "operationId": "affiliatesContactsgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3409,7 +3501,9 @@
                 "operationId": "affiliateschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -3452,7 +3546,9 @@
                 "operationId": "advertisersupdateBillingdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -3517,7 +3613,9 @@
                 "operationId": "advertisersContactschangePassworddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3564,7 +3662,9 @@
                 "operationId": "advertisersContactscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -3673,7 +3773,9 @@
                 "operationId": "affiliatesContactsupdatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3865,7 +3967,9 @@
                 "operationId": "advertiserschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -3907,7 +4011,9 @@
                 "operationId": "advertisersContactschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3949,7 +4055,9 @@
                 "operationId": "affiliatesContactschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -3991,7 +4099,9 @@
                 "operationId": "affiliatesContactscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -4100,7 +4210,9 @@
                 "operationId": "advertisersContactsverifyCredentialsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "emailAddress",
@@ -4138,7 +4250,9 @@
                 "operationId": "affiliatesContactsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -4167,7 +4281,9 @@
                 "operationId": "advertisersupdateInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -4331,7 +4447,9 @@
                 "operationId": "affiliatesContactsverifyCredentialsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "emailAddress",
@@ -4369,7 +4487,9 @@
                 "operationId": "advertisersContactsupdatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -4561,7 +4681,9 @@
                 "operationId": "affiliatesContactschangePassworddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -4608,7 +4730,9 @@
                 "operationId": "advertisersContactsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contactID",
@@ -4637,7 +4761,9 @@
                 "operationId": "leadDistributionContractschangeModedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -4680,7 +4806,9 @@
                 "operationId": "leadDistributionContractsupdateLeadsCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -4745,7 +4873,9 @@
                 "operationId": "leadDistributionContractschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -4788,7 +4918,9 @@
                 "operationId": "affiliatessearchdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "search",
@@ -4838,7 +4970,9 @@
                 "operationId": "leadDistributionContractscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -4907,7 +5041,9 @@
                 "operationId": "advertiserssearchdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "search",
@@ -4957,7 +5093,9 @@
                 "operationId": "advertisersupdatePortalSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "portal_access",
@@ -5042,7 +5180,9 @@
                 "operationId": "leadDistributionContractsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5071,7 +5211,9 @@
                 "operationId": "leadDistributionContractsupdateBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5127,7 +5269,9 @@
                 "operationId": "leadDistributionContractsgetScheduledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5177,7 +5321,9 @@
                 "operationId": "leadDistributionContractsupdatePortalSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5310,7 +5456,9 @@
                 "operationId": "leadDistributionContractsupdateLeadsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5388,7 +5536,9 @@
                 "operationId": "leadDistributionContractsupdateDuplicatesSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5439,7 +5589,9 @@
                 "operationId": "leadDistributionContractsupdateReturnsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5520,7 +5672,9 @@
                 "operationId": "leadDistributionContractscreateScheduledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5698,7 +5852,9 @@
                 "operationId": "leadDistributionContractsupdateScheduledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "deliveryScheduleID",
@@ -5785,7 +5941,9 @@
                 "operationId": "leadDistributionContractsrenamedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5823,7 +5981,9 @@
                 "operationId": "leadDistributionContractsupdateRevenueCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5888,7 +6048,9 @@
                 "operationId": "leadDistributionContractssetExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5926,7 +6088,9 @@
                 "operationId": "callRoutingContractssetExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -5964,7 +6128,9 @@
                 "operationId": "callRoutingContractscreatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -6020,7 +6186,9 @@
                 "operationId": "leadDistributionContractsdeleteAllSchedulesdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6049,7 +6217,9 @@
                 "operationId": "callRoutingContractsrenamedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6087,7 +6257,9 @@
                 "operationId": "leadDistributionContractsdeleteScheduledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "deliveryScheduleID",
@@ -6116,7 +6288,9 @@
                 "operationId": "leadDistributionContractsgetBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6148,7 +6322,9 @@
                 "operationId": "callRoutingContractschangeModedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6191,7 +6367,9 @@
                 "operationId": "callRoutingContractschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6234,7 +6412,9 @@
                 "operationId": "callRoutingContractsgetBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6266,7 +6446,9 @@
                 "operationId": "callRoutingContractsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6295,7 +6477,9 @@
                 "operationId": "offersupdateVisibilitydo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -6338,7 +6522,9 @@
                 "operationId": "callRoutingContractsupdateBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6403,7 +6589,9 @@
                 "operationId": "callRoutingContractsremoveExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6432,7 +6620,9 @@
                 "operationId": "callRoutingContractsschedulePausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6479,7 +6669,9 @@
                 "operationId": "callRoutingContractsupdateTransferNumberdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6517,7 +6709,9 @@
                 "operationId": "callRoutingContractsdeleteScheduledPausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "scheduledPauseID",
@@ -6546,7 +6740,9 @@
                 "operationId": "leadDistributionContractsgetScheduledPausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6596,7 +6792,9 @@
                 "operationId": "leadDistributionContractsschedulePausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6643,7 +6841,9 @@
                 "operationId": "leadDistributionContractsdeleteScheduledPausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "scheduledPauseID",
@@ -6672,7 +6872,9 @@
                 "operationId": "leadDistributionContractsremoveExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6701,7 +6903,9 @@
                 "operationId": "offerssetExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -6739,7 +6943,9 @@
                 "operationId": "offersremoveExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -6768,7 +6974,9 @@
                 "operationId": "callRoutingContractsgetScheduledPausedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6818,7 +7026,9 @@
                 "operationId": "callRoutingContractsupdateRevenueModeldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6878,7 +7088,9 @@
                 "operationId": "callRoutingContractssetAudioWhisperMessagedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -6916,7 +7128,9 @@
                 "operationId": "callRoutingContractsupdatePortalSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7062,7 +7276,9 @@
                 "operationId": "callRoutingContractsupdateReturnsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7117,7 +7333,9 @@
                 "operationId": "callRoutingContractsupdateRepeatCallsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7181,7 +7399,9 @@
                 "operationId": "offersrenamedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7219,7 +7439,9 @@
                 "operationId": "offersupdateBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7311,7 +7533,9 @@
                 "operationId": "callRoutingContractsremoveWhisperMessagedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7340,7 +7564,9 @@
                 "operationId": "callRoutingContractssetTextToSpeechWhisperMessagedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7378,7 +7604,9 @@
                 "operationId": "offersdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7407,7 +7635,9 @@
                 "operationId": "offerschangeModedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7450,7 +7680,9 @@
                 "operationId": "offersupdateTermsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7501,7 +7733,9 @@
                 "operationId": "offerschangeFeatureListingdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7543,7 +7777,9 @@
                 "operationId": "leadDistributionContractsgetReturnsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7575,7 +7811,9 @@
                 "operationId": "callRoutingContractsgetRepeatCallsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7607,7 +7845,9 @@
                 "operationId": "leadDistributionContractsgetDuplicatesSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7639,7 +7879,9 @@
                 "operationId": "leadDistributionContractsgetPortalSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7671,7 +7913,9 @@
                 "operationId": "callRoutingContractsgetPortalSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7703,7 +7947,9 @@
                 "operationId": "offerschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -7745,7 +7991,9 @@
                 "operationId": "callRoutingContractsgetReturnsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7777,7 +8025,9 @@
                 "operationId": "callRoutingContractsgetRevenueCapInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7809,7 +8059,9 @@
                 "operationId": "leadDistributionContractsgetRevenueCapInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7841,7 +8093,9 @@
                 "operationId": "callRoutingContractsgetTransfersCapInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7873,7 +8127,9 @@
                 "operationId": "callRoutingContractsgetBillableTransfersCapInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7905,7 +8161,9 @@
                 "operationId": "leadDistributionContractsgetLeadsCapInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7937,7 +8195,9 @@
                 "operationId": "leadDistributionContractsgetLeadsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -7969,7 +8229,9 @@
                 "operationId": "offersupdateEmailSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -8034,7 +8296,9 @@
                 "operationId": "callRoutingContractsupdateRevenueCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -8099,7 +8363,9 @@
                 "operationId": "callRoutingContractsupdateBillableTransfersCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -8164,7 +8430,9 @@
                 "operationId": "callRoutingContractsupdateTransfersCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -8229,7 +8497,9 @@
                 "operationId": "campaignschangeStatusdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8271,7 +8541,9 @@
                 "operationId": "campaignsremoveExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8300,7 +8572,9 @@
                 "operationId": "audiodeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "audioID",
@@ -8329,7 +8603,9 @@
                 "operationId": "audiogetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "audioID",
@@ -8392,7 +8668,9 @@
                 "operationId": "campaignschangeOfferStaticThrottledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8430,7 +8708,9 @@
                 "operationId": "campaignsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8459,7 +8739,9 @@
                 "operationId": "campaignschangeGoalsStaticThrottledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8497,7 +8779,9 @@
                 "operationId": "campaignssetExpirationDatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8535,7 +8819,9 @@
                 "operationId": "campaignsrenamedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8573,7 +8859,9 @@
                 "operationId": "campaignschangeModedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8616,7 +8904,9 @@
                 "operationId": "campaignsupdateBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8672,7 +8962,9 @@
                 "operationId": "campaignsgetBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8704,7 +8996,9 @@
                 "operationId": "offerschangeAutoApprovaldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -8746,7 +9040,9 @@
                 "operationId": "campaignsgetOfferStaticThrottledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8778,7 +9074,9 @@
                 "operationId": "offersgetBasicInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -8810,7 +9108,9 @@
                 "operationId": "offersgetTermsSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -8842,7 +9142,9 @@
                 "operationId": "campaignsunassignTrackingNumberdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8880,7 +9182,9 @@
                 "operationId": "campaignsassignTrackingNumberdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8918,7 +9222,9 @@
                 "operationId": "campaignsgetPostKeysdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -8950,7 +9256,9 @@
                 "operationId": "offersgetEmailSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -8982,7 +9290,9 @@
                 "operationId": "campaignsgetGoalsStaticThrottledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -9014,7 +9324,9 @@
                 "operationId": "numbersgetAvailabledo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "start",
@@ -9055,7 +9367,9 @@
                 "operationId": "advertisersCreditCardsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9105,7 +9419,9 @@
                 "operationId": "leadsgetLeadInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -9137,7 +9453,9 @@
                 "operationId": "advertisersCreditCardsgetInfodo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9178,7 +9496,9 @@
                 "operationId": "advertisersCreditCardsgetDefaultdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9210,7 +9530,9 @@
                 "operationId": "leadsgetLeadDatado",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -9242,7 +9564,9 @@
                 "operationId": "advertisersCreditCardssetDefaultdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9280,7 +9604,9 @@
                 "operationId": "advertisersCreditCardsdeletedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9318,7 +9644,9 @@
                 "operationId": "advertisersCreditCardsadddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9459,7 +9787,9 @@
                 "operationId": "advertisersCreditCardsupdatedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "creditCardID",
@@ -9578,7 +9908,9 @@
                 "operationId": "advertisersupdateAuthorizeNetCustomerProfileIDdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -9616,7 +9948,9 @@
                 "operationId": "validationvalidateZipCodedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "api_key",
@@ -9663,7 +9997,9 @@
                 "operationId": "callTrackingReportsgetCallRoutingReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -9758,7 +10094,9 @@
                 "operationId": "leadsscrubLeaddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -9796,7 +10134,9 @@
                 "operationId": "leadsreturnLeaddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -9869,7 +10209,9 @@
                 "operationId": "leadsreturnLeadFromAllContractsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -9933,7 +10275,9 @@
                 "operationId": "callTrackingReportsgetCallsByVerticalsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalGroupID",
@@ -9983,7 +10327,9 @@
                 "operationId": "leadsReportsgetOffersLeadsCapReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10024,7 +10370,9 @@
                 "operationId": "callTrackingReportsgetCallsByOffersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10092,7 +10440,9 @@
                 "operationId": "callTrackingReportsgetCallsByAdvertisersDailyReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10178,7 +10528,9 @@
                 "operationId": "callTrackingReportsgetCallsBySubAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10264,7 +10616,9 @@
                 "operationId": "leadsReportsgetLeadsByAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateAccountManagerID",
@@ -10314,7 +10668,9 @@
                 "operationId": "callTrackingReportsgetCallsByAdvertisersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10391,7 +10747,9 @@
                 "operationId": "leadsReportsgetLeadsByOffersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10459,7 +10817,9 @@
                 "operationId": "leadsReportsgetLeadsByContractsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10536,7 +10896,9 @@
                 "operationId": "callTrackingReportsgetCallsByAffiliatesDailyReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10631,7 +10993,9 @@
                 "operationId": "leadsReportsgetLeadsByCampaignsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10726,7 +11090,9 @@
                 "operationId": "leadsReportsgetCampaignsLeadsCapReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10785,7 +11151,9 @@
                 "operationId": "leadsReportsgetLeadsByAdvertisersDailyReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10871,7 +11239,9 @@
                 "operationId": "callTrackingReportsgetCallsByAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -10939,7 +11309,9 @@
                 "operationId": "callTrackingReportsgetCallsByCampaignsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11034,7 +11406,9 @@
                 "operationId": "leadsReportsgetLeadsBySubAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -11102,7 +11476,9 @@
                 "operationId": "leadsReportsgetContractsLeadsCapReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11161,7 +11537,9 @@
                 "operationId": "leadsReportsgetLeadsByAdvertisersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11247,7 +11625,9 @@
                 "operationId": "leadsReportsgetLeadsByAffiliatesDailyReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11342,7 +11722,9 @@
                 "operationId": "leadsReportsgetPingPostReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -11401,7 +11783,9 @@
                 "operationId": "leadsReportsgetLeadsByVerticalsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalGroupID",
@@ -11451,7 +11835,9 @@
                 "operationId": "leadsReportsgetCampaignsLeadsFieldsCapReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11510,7 +11896,9 @@
                 "operationId": "leadsReportsgetContractsLeadsFieldsCapReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11569,7 +11957,9 @@
                 "operationId": "callTrackingReportsgetCallsByContractsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11646,7 +12036,9 @@
                 "operationId": "leadsReportsgetLeadDistributionReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11768,7 +12160,9 @@
                 "operationId": "conversionsReportsgetConversionsByCampaignsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11863,7 +12257,9 @@
                 "operationId": "conversionsReportsgetConversionsDailyReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -11958,7 +12354,9 @@
                 "operationId": "conversionsReportsgetConversionsBySubAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "campaignID",
@@ -12026,7 +12424,9 @@
                 "operationId": "conversionsReportsgetConversionsByOffersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -12094,7 +12494,9 @@
                 "operationId": "goalsReportsgetGoalsByCampaignsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -12207,7 +12609,9 @@
                 "operationId": "goalsReportsgetGoalsBySubAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -12275,7 +12679,9 @@
                 "operationId": "conversionsReportsgetConversionsBySourceReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -12352,7 +12758,9 @@
                 "operationId": "conversionsReportsgetConversionsByVerticalsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalGroupID",
@@ -12402,7 +12810,9 @@
                 "operationId": "conversionsReportsgetConversionsByAdvertisersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -12479,7 +12889,9 @@
                 "operationId": "goalsReportsgetGoalsBySourceReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "offerID",
@@ -12547,7 +12959,9 @@
                 "operationId": "conversionsReportsgetConversionsByAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -12615,7 +13029,9 @@
                 "operationId": "leadsrequestReturndo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12671,7 +13087,9 @@
                 "operationId": "advertisersCreditCardsupdatePaymentProfileIDdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "creditCardID",
@@ -12790,7 +13208,9 @@
                 "operationId": "leadsrejectReturndo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12837,7 +13257,9 @@
                 "operationId": "leadsapproveReturndo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12875,7 +13297,9 @@
                 "operationId": "leadsupdateLeaddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12904,7 +13328,9 @@
                 "operationId": "leadsreviewApprovedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12951,7 +13377,9 @@
                 "operationId": "leadsreviewRejectdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
@@ -12998,7 +13426,9 @@
                 "operationId": "usersgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "role",
@@ -13070,7 +13500,9 @@
                 "operationId": "listgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "type",
@@ -13140,7 +13572,9 @@
                 "operationId": "requestsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -13199,7 +13633,9 @@
                 "operationId": "pixelsgetAlldo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -13267,7 +13703,9 @@
                 "operationId": "advertisersenableCreditdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -13296,7 +13734,9 @@
                 "operationId": "advertisersadjustCreditdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -13413,7 +13853,9 @@
                 "operationId": "advertisersupdateAutoRechargeSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -13517,7 +13959,9 @@
                 "operationId": "leadDistributionContractsenableCreditdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13559,7 +14003,9 @@
                 "operationId": "leadDistributionContractsaddToOfferdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13606,7 +14052,9 @@
                 "operationId": "leadDistributionContractsaddFilterdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13680,7 +14128,9 @@
                 "operationId": "leadDistributionContractsassignEmailDeliveryMethoddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13727,7 +14177,9 @@
                 "operationId": "leadDistributionContractsassignSMSDeliveryMethoddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13774,7 +14226,9 @@
                 "operationId": "leadDistributionContractsdeleteDeliveryMethoddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "deliveryMethodsContractID",
@@ -13803,7 +14257,9 @@
                 "operationId": "leadDistributionContractsdeleteAllDeliveryMethodsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13832,7 +14288,9 @@
                 "operationId": "leadDistributionContractsdeleteFilterdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "filterID",
@@ -13861,7 +14319,9 @@
                 "operationId": "leadDistributionContractssetPricedo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13899,7 +14359,9 @@
                 "operationId": "leadDistributionContractsgetFiltersdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -13949,7 +14411,9 @@
                 "operationId": "reportsgetVerticalsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "fromDate",
@@ -13990,7 +14454,9 @@
                 "operationId": "reportsgetOffersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "verticalID",
@@ -14040,7 +14506,9 @@
                 "operationId": "reportsgetCampaignsReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateID",
@@ -14099,7 +14567,9 @@
                 "operationId": "reportsgetAffiliatesReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "affiliateAccountManagerID",
@@ -14149,7 +14619,9 @@
                 "operationId": "reportsgetAdvertisersReportdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserAccountManagerID",
@@ -14199,7 +14671,9 @@
                 "operationId": "leadDistributionContractsupdateDistributionPrioritydo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -14246,7 +14720,9 @@
                 "operationId": "leadDistributionContractsenableMultipleDeliveryMethodsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -14275,7 +14751,9 @@
                 "operationId": "leadDistributionContractsupdateAutoRechargeSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -14379,7 +14857,9 @@
                 "operationId": "callRoutingContractsupdateAutoRechargeSettingsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "contractID",
@@ -14483,7 +14963,9 @@
                 "operationId": "advertisersupdateLeadsCapsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14539,7 +15021,9 @@
                 "operationId": "advertisersupdateLeadsRevenueCapsdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14595,7 +15079,9 @@
                 "operationId": "advertisersupdateLeadsDailyCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14633,7 +15119,9 @@
                 "operationId": "advertisersupdateLeadsWeeklyCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14671,7 +15159,9 @@
                 "operationId": "advertisersupdateLeadsMonthlyCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14709,7 +15199,9 @@
                 "operationId": "advertisersupdateLeadsDailyRevenueCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14747,7 +15239,9 @@
                 "operationId": "advertisersupdateLeadsWeeklyRevenueCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14785,7 +15279,9 @@
                 "operationId": "advertisersupdateLeadsMonthlyRevenueCapdo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "advertiserID",
@@ -14823,7 +15319,9 @@
                 "operationId": "leadsunreturnLeaddo",
                 "deprecated": false,
                 "consumes": [],
-                "produces": [],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "leadID",
