@@ -1,8 +1,0 @@
-parameters:
-    tasks:
-        composer: ~
-        composer_require_checker: 
-            config_file: require-checker-config.json
-        phpcsfixer2:
-            allow_risky: true
-            config: .php_cs

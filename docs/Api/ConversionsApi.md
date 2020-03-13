@@ -1,53 +1,63 @@
-# LeadspediaApi\ConversionsApi
+# Leadspedia\ConversionsApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**conversionsgetAlldo**](ConversionsApi.md#conversionsgetalldo) | **GET** /conversions/getAll.do | Get All
+[**conversionsgetAlldo**](ConversionsApi.md#conversionsgetAlldo) | **GET** /conversions/getAll.do | Get All
 
-# **conversionsgetAlldo**
-> conversionsgetAlldo($from_date, $vertical_id, $offer_id, $affiliate_id, $campaign_id, $advertiser_id, $status, $show_goal, $show_non_goal, $show_throttled, $show_non_throttled, $show_test, $show_non_test, $to_date, $start, $limit)
+
+
+## conversionsgetAlldo
+
+> object conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\ConversionsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\ConversionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$from_date = new \DateTime("2013-10-20"); // \DateTime | 
-$vertical_id = 56; // int | 
-$offer_id = 56; // int | 
-$affiliate_id = 56; // int | 
-$campaign_id = 56; // int | 
-$advertiser_id = 56; // int | 
-$status = "status_example"; // string | 
-$show_goal = "show_goal_example"; // string | 
-$show_non_goal = "show_non_goal_example"; // string | 
-$show_throttled = "show_throttled_example"; // string | 
-$show_non_throttled = "show_non_throttled_example"; // string | 
-$show_test = "show_test_example"; // string | 
-$show_non_test = "show_non_test_example"; // string | 
-$to_date = new \DateTime("2013-10-20"); // \DateTime | 
-$start = 56; // int | 
-$limit = 56; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$verticalID = 56; // int | 
+$offerID = 56; // int | 
+$affiliateID = 56; // int | 
+$campaignID = 56; // int | 
+$advertiserID = 56; // int | 
+$status = 'status_example'; // string | 
+$showGoal = 'showGoal_example'; // string | 
+$showNonGoal = 'showNonGoal_example'; // string | 
+$showThrottled = 'showThrottled_example'; // string | 
+$showNonThrottled = 'showNonThrottled_example'; // string | 
+$showTest = 'showTest_example'; // string | 
+$showNonTest = 'showNonTest_example'; // string | 
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$start = 0; // int | 
+$limit = 100; // int | 
 
 try {
-    $apiInstance->conversionsgetAlldo($from_date, $vertical_id, $offer_id, $affiliate_id, $campaign_id, $advertiser_id, $status, $show_goal, $show_non_goal, $show_throttled, $show_non_throttled, $show_test, $show_non_test, $to_date, $start, $limit);
+    $result = $apiInstance->conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->conversionsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -56,37 +66,40 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from_date** | **\DateTime**|  |
- **vertical_id** | **int**|  | [optional]
- **offer_id** | **int**|  | [optional]
- **affiliate_id** | **int**|  | [optional]
- **campaign_id** | **int**|  | [optional]
- **advertiser_id** | **int**|  | [optional]
+ **fromDate** | **\DateTime**|  |
+ **verticalID** | **int**|  | [optional]
+ **offerID** | **int**|  | [optional]
+ **affiliateID** | **int**|  | [optional]
+ **campaignID** | **int**|  | [optional]
+ **advertiserID** | **int**|  | [optional]
  **status** | **string**|  | [optional]
- **show_goal** | **string**|  | [optional]
- **show_non_goal** | **string**|  | [optional]
- **show_throttled** | **string**|  | [optional]
- **show_non_throttled** | **string**|  | [optional]
- **show_test** | **string**|  | [optional]
- **show_non_test** | **string**|  | [optional]
- **to_date** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **showGoal** | **string**|  | [optional]
+ **showNonGoal** | **string**|  | [optional]
+ **showThrottled** | **string**|  | [optional]
+ **showNonThrottled** | **string**|  | [optional]
+ **showTest** | **string**|  | [optional]
+ **showNonTest** | **string**|  | [optional]
+ **toDate** | **\DateTime**|  | [optional]
+ **start** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 

@@ -1,39 +1,48 @@
-# LeadspediaApi\AudioApi
+# Leadspedia\AudioApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiodeletedo**](AudioApi.md#audiodeletedo) | **POST** /audio/delete.do | Delete
-[**audiogetAlldo**](AudioApi.md#audiogetalldo) | **GET** /audio/getAll.do | Get All
+[**audiogetAlldo**](AudioApi.md#audiogetAlldo) | **GET** /audio/getAll.do | Get All
 
-# **audiodeletedo**
-> audiodeletedo($audio_id)
+
+
+## audiodeletedo
+
+> audiodeletedo($audioID)
 
 Delete
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AudioApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AudioApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$audio_id = 56; // int | 
+$audioID = 56; // int | 
 
 try {
-    $apiInstance->audiodeletedo($audio_id);
+    $apiInstance->audiodeletedo($audioID);
 } catch (Exception $e) {
     echo 'Exception when calling AudioApi->audiodeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -42,9 +51,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audio_id** | **int**|  |
+ **audioID** | **int**|  |
 
 ### Return type
 
@@ -52,45 +62,56 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **audiogetAlldo**
-> audiogetAlldo($audio_id, $audio_type, $start, $limit)
+
+## audiogetAlldo
+
+> object audiogetAlldo($audioID, $audioType, $start, $limit)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AudioApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AudioApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$audio_id = 56; // int | 
-$audio_type = "audio_type_example"; // string | 
-$start = 56; // int | 
-$limit = 56; // int | 
+$audioID = 56; // int | 
+$audioType = 'audioType_example'; // string | 
+$start = 0; // int | 
+$limit = 100; // int | 
 
 try {
-    $apiInstance->audiogetAlldo($audio_id, $audio_type, $start, $limit);
+    $result = $apiInstance->audiogetAlldo($audioID, $audioType, $start, $limit);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudioApi->audiogetAlldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -99,25 +120,28 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audio_id** | **int**|  | [optional]
- **audio_type** | **string**|  | [optional]
- **start** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **audioID** | **int**|  | [optional]
+ **audioType** | **string**|  | [optional]
+ **start** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 

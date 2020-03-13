@@ -1,0 +1,8 @@
+{
+    "variableNamingConvention": "camelCase",
+    "srcBasePath": "src",
+    "packageName": "Leadspedia",
+    "invokerPackage": "Leadspedia",
+    "apiPackage": "Api",
+    "modelPackage": "Model"
+}

@@ -1,40 +1,50 @@
-# LeadspediaApi\ListApi
+# Leadspedia\ListApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listgetAlldo**](ListApi.md#listgetalldo) | **GET** /list/getAll.do | Get All
+[**listgetAlldo**](ListApi.md#listgetAlldo) | **GET** /list/getAll.do | Get All
 
-# **listgetAlldo**
-> listgetAlldo($type, $advertiser_id, $vertical_id)
+
+
+## listgetAlldo
+
+> object listgetAlldo($type, $advertiserID, $verticalID)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\ListApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\ListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$type = "type_example"; // string | 
-$advertiser_id = 56; // int | 
-$vertical_id = 56; // int | 
+$type = 'type_example'; // string | 
+$advertiserID = 56; // int | 
+$verticalID = 56; // int | 
 
 try {
-    $apiInstance->listgetAlldo($type, $advertiser_id, $vertical_id);
+    $result = $apiInstance->listgetAlldo($type, $advertiserID, $verticalID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ListApi->listgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -43,24 +53,27 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **string**|  | [optional]
- **advertiser_id** | **int**|  | [optional]
- **vertical_id** | **int**|  | [optional]
+ **advertiserID** | **int**|  | [optional]
+ **verticalID** | **int**|  | [optional]
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
