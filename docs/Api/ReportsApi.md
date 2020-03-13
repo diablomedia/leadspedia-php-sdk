@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## reportsgetAdvertisersReportdo
 
-> object reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse200 reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate)
 
 Get Advertisers Report
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## reportsgetAffiliatesReportdo
 
-> object reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse200 reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
 
 Get Affiliates Report
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## reportsgetCampaignsReportdo
 
-> object reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate)
+> \Leadspedia\Model\InlineResponse200 reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate)
 
 Get Campaigns Report
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## reportsgetOffersReportdo
 
-> object reportsgetOffersReportdo($fromDate, $verticalID, $toDate)
+> \Leadspedia\Model\InlineResponse200 reportsgetOffersReportdo($fromDate, $verticalID, $toDate)
 
 Get Offers Report
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## reportsgetVerticalsReportdo
 
-> object reportsgetVerticalsReportdo($fromDate, $toDate)
+> \Leadspedia\Model\InlineResponse200 reportsgetVerticalsReportdo($fromDate, $toDate)
 
 Get Verticals Report
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

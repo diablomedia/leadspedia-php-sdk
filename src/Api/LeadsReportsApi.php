@@ -127,7 +127,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetCampaignsLeadsCapReportdo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -147,7 +147,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetCampaignsLeadsCapReportdoWithHttpInfo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -184,20 +184,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -215,7 +215,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,7 +263,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetCampaignsLeadsCapReportdoAsyncWithHttpInfo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetCampaignsLeadsCapReportdoRequest($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
 
         return $this->client
@@ -422,7 +422,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -442,7 +442,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetCampaignsLeadsFieldsCapReportdoWithHttpInfo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -479,20 +479,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -510,7 +510,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -558,7 +558,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetCampaignsLeadsFieldsCapReportdoAsyncWithHttpInfo($verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetCampaignsLeadsFieldsCapReportdoRequest($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
 
         return $this->client
@@ -717,7 +717,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetContractsLeadsCapReportdo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -737,7 +737,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetContractsLeadsCapReportdoWithHttpInfo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -774,20 +774,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -805,7 +805,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -853,7 +853,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetContractsLeadsCapReportdoAsyncWithHttpInfo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetContractsLeadsCapReportdoRequest($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID);
 
         return $this->client
@@ -1012,7 +1012,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -1032,7 +1032,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetContractsLeadsFieldsCapReportdoWithHttpInfo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -1069,20 +1069,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1100,7 +1100,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1148,7 +1148,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetContractsLeadsFieldsCapReportdoAsyncWithHttpInfo($verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetContractsLeadsFieldsCapReportdoRequest($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID);
 
         return $this->client
@@ -1314,7 +1314,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -1341,7 +1341,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadDistributionReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -1378,20 +1378,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1409,7 +1409,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1471,7 +1471,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadDistributionReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadDistributionReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
@@ -1675,7 +1675,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -1698,7 +1698,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
@@ -1735,20 +1735,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1766,7 +1766,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1820,7 +1820,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
 
         return $this->client
@@ -2010,7 +2010,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -2033,7 +2033,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -2070,20 +2070,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2101,7 +2101,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2155,7 +2155,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
@@ -2340,7 +2340,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -2364,7 +2364,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
@@ -2401,20 +2401,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2432,7 +2432,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2488,7 +2488,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
 
         return $this->client
@@ -2679,7 +2679,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -2698,7 +2698,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByAffiliatesReportdoWithHttpInfo($fromDate, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -2735,20 +2735,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2766,7 +2766,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2812,7 +2812,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $affiliateAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByAffiliatesReportdoRequest($fromDate, $affiliateAccountManagerID, $toDate);
 
         return $this->client
@@ -2977,7 +2977,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -3001,7 +3001,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -3038,20 +3038,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3069,7 +3069,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3125,7 +3125,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
@@ -3313,7 +3313,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -3335,7 +3335,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByContractsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -3372,20 +3372,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3403,7 +3403,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3455,7 +3455,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
@@ -3632,7 +3632,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
@@ -3653,7 +3653,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByOffersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
@@ -3690,20 +3690,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3721,7 +3721,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3771,7 +3771,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
 
         return $this->client
@@ -3943,7 +3943,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -3964,7 +3964,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsBySubAffiliatesReportdoWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
@@ -4001,20 +4001,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4032,7 +4032,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4082,7 +4082,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsBySubAffiliatesReportdoRequest($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
@@ -4252,7 +4252,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
     {
@@ -4271,7 +4271,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetLeadsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
     {
@@ -4308,20 +4308,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4339,7 +4339,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4385,7 +4385,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetLeadsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetLeadsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
 
         return $this->client
@@ -4544,7 +4544,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetOffersLeadsCapReportdo($verticalID = null, $verticalGroupID = null)
     {
@@ -4562,7 +4562,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetOffersLeadsCapReportdoWithHttpInfo($verticalID = null, $verticalGroupID = null)
     {
@@ -4599,20 +4599,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4630,7 +4630,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4674,7 +4674,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetOffersLeadsCapReportdoAsyncWithHttpInfo($verticalID = null, $verticalGroupID = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetOffersLeadsCapReportdoRequest($verticalID, $verticalGroupID);
 
         return $this->client
@@ -4823,7 +4823,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Leadspedia\Model\InlineResponse200
      */
     public function leadsReportsgetPingPostReportdo($fromDate, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -4843,7 +4843,7 @@ class LeadsReportsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function leadsReportsgetPingPostReportdoWithHttpInfo($fromDate, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
@@ -4880,20 +4880,20 @@ class LeadsReportsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = 'object';
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4911,7 +4911,7 @@ class LeadsReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Leadspedia\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4959,7 +4959,7 @@ class LeadsReportsApi
      */
     public function leadsReportsgetPingPostReportdoAsyncWithHttpInfo($fromDate, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        $returnType = 'object';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->leadsReportsgetPingPostReportdoRequest($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client

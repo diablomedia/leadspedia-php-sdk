@@ -201,7 +201,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -293,7 +304,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -417,7 +439,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -519,7 +552,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -571,7 +615,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -695,7 +750,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -819,7 +885,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -943,7 +1020,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -995,7 +1083,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1119,7 +1218,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1180,7 +1290,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1254,7 +1375,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1328,7 +1460,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1454,7 +1597,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1538,7 +1692,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1622,7 +1787,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1706,7 +1882,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1820,7 +2007,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1908,7 +2106,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -1996,7 +2205,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2124,7 +2344,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2221,7 +2452,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2300,7 +2542,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2431,7 +2684,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2629,7 +2893,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2778,7 +3053,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2812,7 +3098,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -2953,7 +3250,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -3049,7 +3357,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -3337,7 +3656,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -3451,7 +3781,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -3485,7 +3826,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -4954,7 +5306,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -5077,7 +5440,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -5305,7 +5679,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -6306,7 +6691,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -6430,7 +6826,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -6776,7 +7183,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7010,7 +7428,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7795,7 +8224,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7829,7 +8269,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7863,7 +8314,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7897,7 +8359,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -7931,7 +8404,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8009,7 +8493,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8043,7 +8538,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8077,7 +8583,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8111,7 +8628,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8145,7 +8673,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8179,7 +8718,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8213,7 +8763,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8652,7 +9213,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -8980,7 +9552,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9058,7 +9641,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9092,7 +9686,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9126,7 +9731,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9240,7 +9856,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9274,7 +9901,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9308,7 +9946,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9351,7 +10000,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9403,7 +10063,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9437,7 +10108,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9480,7 +10162,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9514,7 +10207,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -9548,7 +10252,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10078,7 +10793,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10311,7 +11037,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10354,7 +11091,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10424,7 +11172,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10512,7 +11271,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10600,7 +11370,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10652,7 +11433,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10731,7 +11523,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10801,7 +11604,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10880,7 +11694,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -10977,7 +11802,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11074,7 +11910,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11135,7 +11982,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11223,7 +12081,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11293,7 +12162,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11390,7 +12270,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11460,7 +12351,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11521,7 +12423,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11609,7 +12522,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11706,7 +12630,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11767,7 +12702,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11819,7 +12765,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11880,7 +12837,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -11941,7 +12909,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12020,7 +12999,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12144,7 +13134,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12241,7 +13242,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12338,7 +13350,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12408,7 +13431,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12478,7 +13512,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12593,7 +13638,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12663,7 +13719,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12742,7 +13809,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12794,7 +13872,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12873,7 +13962,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -12943,7 +14043,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -13013,7 +14124,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -13484,7 +14606,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -13556,7 +14689,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -13617,7 +14761,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -13687,7 +14842,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14395,7 +15561,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14438,7 +15615,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14490,7 +15678,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14551,7 +15750,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14603,7 +15813,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -14655,7 +15876,18 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }

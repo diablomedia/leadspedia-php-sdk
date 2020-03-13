@@ -426,7 +426,7 @@ void (empty response body)
 
 ## campaignsgetAlldo
 
-> object campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
 
 Get All
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetBasicInfodo
 
-> object campaignsgetBasicInfodo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsgetBasicInfodo($campaignID)
 
 Get Basic Info
 
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -572,7 +572,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetGoalsStaticThrottledo
 
-> object campaignsgetGoalsStaticThrottledo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsgetGoalsStaticThrottledo($campaignID)
 
 Get Goals Static Throtte
 
@@ -620,7 +620,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetOfferStaticThrottledo
 
-> object campaignsgetOfferStaticThrottledo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsgetOfferStaticThrottledo($campaignID)
 
 Get Offer Static Throtte
 
@@ -686,7 +686,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetPostKeysdo
 
-> object campaignsgetPostKeysdo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsgetPostKeysdo($campaignID)
 
 Get Post Keys
 
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

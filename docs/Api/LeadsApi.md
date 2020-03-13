@@ -95,7 +95,7 @@ void (empty response body)
 
 ## leadsgetAlldo
 
-> object leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
 
 Get All
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetLeadDatado
 
-> object leadsgetLeadDatado($leadID)
+> \Leadspedia\Model\InlineResponse200 leadsgetLeadDatado($leadID)
 
 Get Lead Data
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetLeadInfodo
 
-> object leadsgetLeadInfodo($leadID)
+> \Leadspedia\Model\InlineResponse200 leadsgetLeadInfodo($leadID)
 
 Get Lead Info
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetQueuedo
 
-> object leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Queue
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetReturnsdo
 
-> object leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
 
 Get Returns
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetReviewdo
 
-> object leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
 
 Get Review
 
@@ -531,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetScrubbeddo
 
-> object leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Scrubbed
 
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -627,7 +627,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetSolddo
 
-> object leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
 
 Get Sold
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -713,7 +713,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetTrashdo
 
-> object leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Trash
 
@@ -775,7 +775,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

@@ -218,7 +218,7 @@ void (empty response body)
 
 ## affiliatesgetAlldo
 
-> object affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
 
 Get All
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## affiliatesgetInfodo
 
-> object affiliatesgetInfodo($affiliateID)
+> \Leadspedia\Model\InlineResponse200 affiliatesgetInfodo($affiliateID)
 
 Get Info
 
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ## affiliatessearchdo
 
-> object affiliatessearchdo($search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 affiliatessearchdo($search, $start, $limit)
 
 Search
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

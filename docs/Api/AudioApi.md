@@ -76,7 +76,7 @@ void (empty response body)
 
 ## audiogetAlldo
 
-> object audiogetAlldo($audioID, $audioType, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 audiogetAlldo($audioID, $audioType, $start, $limit)
 
 Get All
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

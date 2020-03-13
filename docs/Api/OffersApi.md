@@ -359,7 +359,7 @@ void (empty response body)
 
 ## offersgetAlldo
 
-> object offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit)
 
 Get All
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ## offersgetBasicInfodo
 
-> object offersgetBasicInfodo($offerID)
+> \Leadspedia\Model\InlineResponse200 offersgetBasicInfodo($offerID)
 
 Get Basic Info
 
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ## offersgetEmailSettingsdo
 
-> object offersgetEmailSettingsdo($offerID)
+> \Leadspedia\Model\InlineResponse200 offersgetEmailSettingsdo($offerID)
 
 Get Email Settings
 
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 ## offersgetTermsSettingsdo
 
-> object offersgetTermsSettingsdo($offerID)
+> \Leadspedia\Model\InlineResponse200 offersgetTermsSettingsdo($offerID)
 
 Get Terms Settings
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -767,7 +767,7 @@ void (empty response body)
 
 ## offerssearchdo
 
-> object offerssearchdo($name, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 offerssearchdo($name, $start, $limit)
 
 Search
 
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

@@ -101,7 +101,18 @@ foreach ($source->resources->endpoints as $endpoint) {
             $request['responses']['200'] = [
                 "description" => '',
                 'schema'      => [
-                    'type' => 'object'
+                    'type'       => 'object',
+                    'properties' => [
+                        'success' => [
+                            'type' => 'boolean',
+                        ],
+                        'message' => [
+                            'type' => 'string',
+                        ],
+                        'response' => [
+                            'type' => 'object'
+                        ]
+                    ]
                 ],
             ];
         } else {

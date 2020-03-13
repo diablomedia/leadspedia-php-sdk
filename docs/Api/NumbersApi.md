@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## numbersgetAvailabledo
 
-> object numbersgetAvailabledo($start, $limit)
+> \Leadspedia\Model\InlineResponse200 numbersgetAvailabledo($start, $limit)
 
 Get Available
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

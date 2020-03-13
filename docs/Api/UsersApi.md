@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## usersgetAlldo
 
-> object usersgetAlldo($role, $status, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 usersgetAlldo($role, $status, $search, $start, $limit)
 
 Get All
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

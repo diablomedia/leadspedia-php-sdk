@@ -299,7 +299,7 @@ void (empty response body)
 
 ## advertisersContactsgetAlldo
 
-> object advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit)
 
 Get All
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## advertisersContactsgetInfodo
 
-> object advertisersContactsgetInfodo($contactID)
+> \Leadspedia\Model\InlineResponse200 advertisersContactsgetInfodo($contactID)
 
 Get Info
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

@@ -1219,7 +1219,7 @@ void (empty response body)
 
 ## leadDistributionContractsgetAlldo
 
-> object leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
 
 Get All
 
@@ -1277,7 +1277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1295,7 +1295,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetBasicInfodo
 
-> object leadDistributionContractsgetBasicInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetBasicInfodo($contractID)
 
 Get Basic Info
 
@@ -1343,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1361,7 +1361,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetDuplicatesSettingsdo
 
-> object leadDistributionContractsgetDuplicatesSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetDuplicatesSettingsdo($contractID)
 
 Get Duplicates Settings
 
@@ -1409,7 +1409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1427,7 +1427,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetFiltersdo
 
-> object leadDistributionContractsgetFiltersdo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetFiltersdo($contractID, $start, $limit)
 
 Get Filters
 
@@ -1479,7 +1479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1497,7 +1497,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetLeadsCapInfodo
 
-> object leadDistributionContractsgetLeadsCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetLeadsCapInfodo($contractID)
 
 Get Leads Cap Info
 
@@ -1545,7 +1545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1563,7 +1563,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetLeadsSettingsdo
 
-> object leadDistributionContractsgetLeadsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetLeadsSettingsdo($contractID)
 
 Get Leads Settings
 
@@ -1611,7 +1611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1629,7 +1629,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetPortalSettingsdo
 
-> object leadDistributionContractsgetPortalSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetPortalSettingsdo($contractID)
 
 Get Portal Settings
 
@@ -1677,7 +1677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1695,7 +1695,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetReturnsSettingsdo
 
-> object leadDistributionContractsgetReturnsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetReturnsSettingsdo($contractID)
 
 Get Returns Settings
 
@@ -1743,7 +1743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1761,7 +1761,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetRevenueCapInfodo
 
-> object leadDistributionContractsgetRevenueCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetRevenueCapInfodo($contractID)
 
 Get Revenue Cap Info
 
@@ -1809,7 +1809,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1827,7 +1827,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetScheduledPausedo
 
-> object leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit)
 
 Get Scheduled Pause
 
@@ -1879,7 +1879,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1897,7 +1897,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetScheduledo
 
-> object leadDistributionContractsgetScheduledo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetScheduledo($contractID, $start, $limit)
 
 Get Schedule
 
@@ -1949,7 +1949,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

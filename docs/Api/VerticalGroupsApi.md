@@ -144,7 +144,7 @@ void (empty response body)
 
 ## verticalGroupsgetAlldo
 
-> object verticalGroupsgetAlldo($start, $limit)
+> \Leadspedia\Model\InlineResponse200 verticalGroupsgetAlldo($start, $limit)
 
 Get All
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ## verticalGroupsgetInfodo
 
-> object verticalGroupsgetInfodo($groupID)
+> \Leadspedia\Model\InlineResponse200 verticalGroupsgetInfodo($groupID)
 
 Get Info
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

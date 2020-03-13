@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## pixelsgetAlldo
 
-> object pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
+> \Leadspedia\Model\InlineResponse200 pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
 
 Get All
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

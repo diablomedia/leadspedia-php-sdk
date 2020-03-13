@@ -377,7 +377,7 @@ void (empty response body)
 
 ## advertisersgetAlldo
 
-> object advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
 
 Get All
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ## advertisersgetInfodo
 
-> object advertisersgetInfodo($advertiserID)
+> \Leadspedia\Model\InlineResponse200 advertisersgetInfodo($advertiserID)
 
 Get Info
 
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 
 ## advertiserssearchdo
 
-> object advertiserssearchdo($search, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 advertiserssearchdo($search, $start, $limit)
 
 Search
 
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

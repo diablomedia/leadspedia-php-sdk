@@ -375,7 +375,7 @@ void (empty response body)
 
 ## callRoutingContractsgetAlldo
 
-> object callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
 
 Get All
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetBasicInfodo
 
-> object callRoutingContractsgetBasicInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetBasicInfodo($contractID)
 
 Get Basic Info
 
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetBillableTransfersCapInfodo
 
-> object callRoutingContractsgetBillableTransfersCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetBillableTransfersCapInfodo($contractID)
 
 Get Billable Transfers Cap Info
 
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetPortalSettingsdo
 
-> object callRoutingContractsgetPortalSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetPortalSettingsdo($contractID)
 
 Get Portal Settings
 
@@ -631,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -649,7 +649,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetRepeatCallsSettingsdo
 
-> object callRoutingContractsgetRepeatCallsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetRepeatCallsSettingsdo($contractID)
 
 Get Repeat Calls Settings
 
@@ -697,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -715,7 +715,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetReturnsSettingsdo
 
-> object callRoutingContractsgetReturnsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetReturnsSettingsdo($contractID)
 
 Get Returns Settings
 
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -781,7 +781,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetRevenueCapInfodo
 
-> object callRoutingContractsgetRevenueCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetRevenueCapInfodo($contractID)
 
 Get Revenue Cap Info
 
@@ -829,7 +829,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -847,7 +847,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetScheduledPausedo
 
-> object callRoutingContractsgetScheduledPausedo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetScheduledPausedo($contractID, $start, $limit)
 
 Get Scheduled Pause
 
@@ -899,7 +899,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetTransfersCapInfodo
 
-> object callRoutingContractsgetTransfersCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetTransfersCapInfodo($contractID)
 
 Get Transfers Cap Info
 
@@ -965,7 +965,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

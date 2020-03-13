@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## listgetAlldo
 
-> object listgetAlldo($type, $advertiserID, $verticalID)
+> \Leadspedia\Model\InlineResponse200 listgetAlldo($type, $advertiserID, $verticalID)
 
 Get All
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

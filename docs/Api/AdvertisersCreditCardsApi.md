@@ -173,7 +173,7 @@ void (empty response body)
 
 ## advertisersCreditCardsgetAlldo
 
-> object advertisersCreditCardsgetAlldo($advertiserID, $start, $limit)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetAlldo($advertiserID, $start, $limit)
 
 Get All
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ## advertisersCreditCardsgetDefaultdo
 
-> object advertisersCreditCardsgetDefaultdo($advertiserID)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetDefaultdo($advertiserID)
 
 Get Default
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## advertisersCreditCardsgetInfodo
 
-> object advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
 
 Get Info
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
