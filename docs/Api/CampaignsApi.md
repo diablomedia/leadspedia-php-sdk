@@ -1,55 +1,64 @@
-# LeadspediaApi\CampaignsApi
+# Leadspedia\CampaignsApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**campaignsassignTrackingNumberdo**](CampaignsApi.md#campaignsassigntrackingnumberdo) | **POST** /campaigns/assignTrackingNumber.do | Assign Tracking Number
-[**campaignschangeGoalsStaticThrottledo**](CampaignsApi.md#campaignschangegoalsstaticthrottledo) | **POST** /campaigns/changeGoalsStaticThrottle.do | Change Goals Static Throttle
-[**campaignschangeModedo**](CampaignsApi.md#campaignschangemodedo) | **POST** /campaigns/changeMode.do | Change Mode
-[**campaignschangeOfferStaticThrottledo**](CampaignsApi.md#campaignschangeofferstaticthrottledo) | **POST** /campaigns/changeOfferStaticThrottle.do | Change Offer Static Throttle
-[**campaignschangeStatusdo**](CampaignsApi.md#campaignschangestatusdo) | **POST** /campaigns/changeStatus.do | Change Status
+[**campaignsassignTrackingNumberdo**](CampaignsApi.md#campaignsassignTrackingNumberdo) | **POST** /campaigns/assignTrackingNumber.do | Assign Tracking Number
+[**campaignschangeGoalsStaticThrottledo**](CampaignsApi.md#campaignschangeGoalsStaticThrottledo) | **POST** /campaigns/changeGoalsStaticThrottle.do | Change Goals Static Throttle
+[**campaignschangeModedo**](CampaignsApi.md#campaignschangeModedo) | **POST** /campaigns/changeMode.do | Change Mode
+[**campaignschangeOfferStaticThrottledo**](CampaignsApi.md#campaignschangeOfferStaticThrottledo) | **POST** /campaigns/changeOfferStaticThrottle.do | Change Offer Static Throttle
+[**campaignschangeStatusdo**](CampaignsApi.md#campaignschangeStatusdo) | **POST** /campaigns/changeStatus.do | Change Status
 [**campaignsdeletedo**](CampaignsApi.md#campaignsdeletedo) | **POST** /campaigns/delete.do | Delete
-[**campaignsgetAlldo**](CampaignsApi.md#campaignsgetalldo) | **GET** /campaigns/getAll.do | Get All
-[**campaignsgetBasicInfodo**](CampaignsApi.md#campaignsgetbasicinfodo) | **GET** /campaigns/getBasicInfo.do | Get Basic Info
-[**campaignsgetGoalsStaticThrottledo**](CampaignsApi.md#campaignsgetgoalsstaticthrottledo) | **GET** /campaigns/getGoalsStaticThrottle.do | Get Goals Static Throtte
-[**campaignsgetOfferStaticThrottledo**](CampaignsApi.md#campaignsgetofferstaticthrottledo) | **GET** /campaigns/getOfferStaticThrottle.do | Get Offer Static Throtte
-[**campaignsgetPostKeysdo**](CampaignsApi.md#campaignsgetpostkeysdo) | **GET** /campaigns/getPostKeys.do | Get Post Keys
-[**campaignsremoveExpirationDatedo**](CampaignsApi.md#campaignsremoveexpirationdatedo) | **POST** /campaigns/removeExpirationDate.do | Remove Expiration Date
+[**campaignsgetAlldo**](CampaignsApi.md#campaignsgetAlldo) | **GET** /campaigns/getAll.do | Get All
+[**campaignsgetBasicInfodo**](CampaignsApi.md#campaignsgetBasicInfodo) | **GET** /campaigns/getBasicInfo.do | Get Basic Info
+[**campaignsgetGoalsStaticThrottledo**](CampaignsApi.md#campaignsgetGoalsStaticThrottledo) | **GET** /campaigns/getGoalsStaticThrottle.do | Get Goals Static Throtte
+[**campaignsgetOfferStaticThrottledo**](CampaignsApi.md#campaignsgetOfferStaticThrottledo) | **GET** /campaigns/getOfferStaticThrottle.do | Get Offer Static Throtte
+[**campaignsgetPostKeysdo**](CampaignsApi.md#campaignsgetPostKeysdo) | **GET** /campaigns/getPostKeys.do | Get Post Keys
+[**campaignsremoveExpirationDatedo**](CampaignsApi.md#campaignsremoveExpirationDatedo) | **POST** /campaigns/removeExpirationDate.do | Remove Expiration Date
 [**campaignsrenamedo**](CampaignsApi.md#campaignsrenamedo) | **POST** /campaigns/rename.do | Rename
-[**campaignssetExpirationDatedo**](CampaignsApi.md#campaignssetexpirationdatedo) | **POST** /campaigns/setExpirationDate.do | Set Expiration Date
-[**campaignsunassignTrackingNumberdo**](CampaignsApi.md#campaignsunassigntrackingnumberdo) | **POST** /campaigns/unassignTrackingNumber.do | Unassign Tracking Number
-[**campaignsupdateBasicInfodo**](CampaignsApi.md#campaignsupdatebasicinfodo) | **POST** /campaigns/updateBasicInfo.do | Update Basic Info
-[**campaignsupdateClicksRevenuedo**](CampaignsApi.md#campaignsupdateclicksrevenuedo) | **POST** /campaigns/updateClicksRevenue.do | Update Clicks Revenue
+[**campaignssetExpirationDatedo**](CampaignsApi.md#campaignssetExpirationDatedo) | **POST** /campaigns/setExpirationDate.do | Set Expiration Date
+[**campaignsunassignTrackingNumberdo**](CampaignsApi.md#campaignsunassignTrackingNumberdo) | **POST** /campaigns/unassignTrackingNumber.do | Unassign Tracking Number
+[**campaignsupdateBasicInfodo**](CampaignsApi.md#campaignsupdateBasicInfodo) | **POST** /campaigns/updateBasicInfo.do | Update Basic Info
+[**campaignsupdateClicksRevenuedo**](CampaignsApi.md#campaignsupdateClicksRevenuedo) | **POST** /campaigns/updateClicksRevenue.do | Update Clicks Revenue
 
-# **campaignsassignTrackingNumberdo**
-> campaignsassignTrackingNumberdo($campaign_id, $number)
+
+
+## campaignsassignTrackingNumberdo
+
+> campaignsassignTrackingNumberdo($campaignID, $number)
 
 Assign Tracking Number
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$number = "number_example"; // string | 
+$campaignID = 56; // int | 
+$number = 'number_example'; // string | 
 
 try {
-    $apiInstance->campaignsassignTrackingNumberdo($campaign_id, $number);
+    $apiInstance->campaignsassignTrackingNumberdo($campaignID, $number);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsassignTrackingNumberdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,9 +67,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
  **number** | **string**|  |
 
 ### Return type
@@ -69,43 +79,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignschangeGoalsStaticThrottledo**
-> campaignschangeGoalsStaticThrottledo($campaign_id, $goals_static_throttle)
+
+## campaignschangeGoalsStaticThrottledo
+
+> campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
 
 Change Goals Static Throttle
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$goals_static_throttle = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
+$campaignID = 56; // int | 
+$goalsStaticThrottle = 3.4; // float | 
 
 try {
-    $apiInstance->campaignschangeGoalsStaticThrottledo($campaign_id, $goals_static_throttle);
+    $apiInstance->campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeGoalsStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -114,10 +134,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **goals_static_throttle** | **BigDecimal**|  |
+ **campaignID** | **int**|  |
+ **goalsStaticThrottle** | **float**|  |
 
 ### Return type
 
@@ -125,43 +146,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignschangeModedo**
-> campaignschangeModedo($campaign_id, $mode)
+
+## campaignschangeModedo
+
+> campaignschangeModedo($campaignID, $mode)
 
 Change Mode
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$mode = "mode_example"; // string | 
+$campaignID = 56; // int | 
+$mode = 'mode_example'; // string | 
 
 try {
-    $apiInstance->campaignschangeModedo($campaign_id, $mode);
+    $apiInstance->campaignschangeModedo($campaignID, $mode);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -170,9 +201,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
  **mode** | **string**|  |
 
 ### Return type
@@ -181,43 +213,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignschangeOfferStaticThrottledo**
-> campaignschangeOfferStaticThrottledo($campaign_id, $offer_static_throttle)
+
+## campaignschangeOfferStaticThrottledo
+
+> campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
 
 Change Offer Static Throttle
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$offer_static_throttle = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
+$campaignID = 56; // int | 
+$offerStaticThrottle = 3.4; // float | 
 
 try {
-    $apiInstance->campaignschangeOfferStaticThrottledo($campaign_id, $offer_static_throttle);
+    $apiInstance->campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeOfferStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -226,10 +268,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **offer_static_throttle** | **BigDecimal**|  |
+ **campaignID** | **int**|  |
+ **offerStaticThrottle** | **float**|  |
 
 ### Return type
 
@@ -237,43 +280,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignschangeStatusdo**
-> campaignschangeStatusdo($campaign_id, $status)
+
+## campaignschangeStatusdo
+
+> campaignschangeStatusdo($campaignID, $status)
 
 Change Status
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$status = "status_example"; // string | 
+$campaignID = 56; // int | 
+$status = 'status_example'; // string | 
 
 try {
-    $apiInstance->campaignschangeStatusdo($campaign_id, $status);
+    $apiInstance->campaignschangeStatusdo($campaignID, $status);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -282,9 +335,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
  **status** | **string**|  |
 
 ### Return type
@@ -293,42 +347,52 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsdeletedo**
-> campaignsdeletedo($campaign_id)
+
+## campaignsdeletedo
+
+> campaignsdeletedo($campaignID)
 
 Delete
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsdeletedo($campaign_id);
+    $apiInstance->campaignsdeletedo($campaignID);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -337,9 +401,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
@@ -347,49 +412,60 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsgetAlldo**
-> campaignsgetAlldo($campaign_id, $affiliate_id, $offer_id, $vertical_id, $status, $search, $start, $limit)
+
+## campaignsgetAlldo
+
+> \Leadspedia\Model\InlineResponse200 campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$affiliate_id = 56; // int | 
-$offer_id = 56; // int | 
-$vertical_id = 56; // int | 
-$status = "status_example"; // string | 
-$search = "search_example"; // string | 
-$start = 56; // int | 
-$limit = 56; // int | 
+$campaignID = 56; // int | 
+$affiliateID = 56; // int | 
+$offerID = 56; // int | 
+$verticalID = 56; // int | 
+$status = 'status_example'; // string | 
+$search = 'search_example'; // string | 
+$start = 0; // int | 
+$limit = 100; // int | 
 
 try {
-    $apiInstance->campaignsgetAlldo($campaign_id, $affiliate_id, $offer_id, $vertical_id, $status, $search, $start, $limit);
+    $result = $apiInstance->campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -398,59 +474,71 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  | [optional]
- **affiliate_id** | **int**|  | [optional]
- **offer_id** | **int**|  | [optional]
- **vertical_id** | **int**|  | [optional]
+ **campaignID** | **int**|  | [optional]
+ **affiliateID** | **int**|  | [optional]
+ **offerID** | **int**|  | [optional]
+ **verticalID** | **int**|  | [optional]
  **status** | **string**|  | [optional]
  **search** | **string**|  | [optional]
- **start** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **start** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsgetBasicInfodo**
-> campaignsgetBasicInfodo($campaign_id)
+
+## campaignsgetBasicInfodo
+
+> \Leadspedia\Model\InlineResponse200 campaignsgetBasicInfodo($campaignID)
 
 Get Basic Info
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsgetBasicInfodo($campaign_id);
+    $result = $apiInstance->campaignsgetBasicInfodo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -459,52 +547,64 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsgetGoalsStaticThrottledo**
-> campaignsgetGoalsStaticThrottledo($campaign_id)
+
+## campaignsgetGoalsStaticThrottledo
+
+> \Leadspedia\Model\InlineResponse200 campaignsgetGoalsStaticThrottledo($campaignID)
 
 Get Goals Static Throtte
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsgetGoalsStaticThrottledo($campaign_id);
+    $result = $apiInstance->campaignsgetGoalsStaticThrottledo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetGoalsStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -513,52 +613,64 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsgetOfferStaticThrottledo**
-> campaignsgetOfferStaticThrottledo($campaign_id)
+
+## campaignsgetOfferStaticThrottledo
+
+> \Leadspedia\Model\InlineResponse200 campaignsgetOfferStaticThrottledo($campaignID)
 
 Get Offer Static Throtte
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsgetOfferStaticThrottledo($campaign_id);
+    $result = $apiInstance->campaignsgetOfferStaticThrottledo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetOfferStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -567,52 +679,64 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsgetPostKeysdo**
-> campaignsgetPostKeysdo($campaign_id)
+
+## campaignsgetPostKeysdo
+
+> \Leadspedia\Model\InlineResponse200 campaignsgetPostKeysdo($campaignID)
 
 Get Post Keys
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsgetPostKeysdo($campaign_id);
+    $result = $apiInstance->campaignsgetPostKeysdo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetPostKeysdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -621,52 +745,63 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsremoveExpirationDatedo**
-> campaignsremoveExpirationDatedo($campaign_id)
+
+## campaignsremoveExpirationDatedo
+
+> campaignsremoveExpirationDatedo($campaignID)
 
 Remove Expiration Date
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
+$campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsremoveExpirationDatedo($campaign_id);
+    $apiInstance->campaignsremoveExpirationDatedo($campaignID);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -675,9 +810,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
 
 ### Return type
 
@@ -685,43 +821,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsrenamedo**
-> campaignsrenamedo($campaign_id, $campaign_name)
+
+## campaignsrenamedo
+
+> campaignsrenamedo($campaignID, $campaignName)
 
 Rename
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$campaign_name = "campaign_name_example"; // string | 
+$campaignID = 56; // int | 
+$campaignName = 'campaignName_example'; // string | 
 
 try {
-    $apiInstance->campaignsrenamedo($campaign_id, $campaign_name);
+    $apiInstance->campaignsrenamedo($campaignID, $campaignName);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -730,10 +876,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **campaign_name** | **string**|  |
+ **campaignID** | **int**|  |
+ **campaignName** | **string**|  |
 
 ### Return type
 
@@ -741,43 +888,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignssetExpirationDatedo**
-> campaignssetExpirationDatedo($campaign_id, $expiration_date)
+
+## campaignssetExpirationDatedo
+
+> campaignssetExpirationDatedo($campaignID, $expirationDate)
 
 Set Expiration Date
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$expiration_date = new \DateTime("2013-10-20"); // \DateTime | 
+$campaignID = 56; // int | 
+$expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->campaignssetExpirationDatedo($campaign_id, $expiration_date);
+    $apiInstance->campaignssetExpirationDatedo($campaignID, $expirationDate);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -786,10 +943,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **expiration_date** | **\DateTime**|  |
+ **campaignID** | **int**|  |
+ **expirationDate** | **\DateTime**|  |
 
 ### Return type
 
@@ -797,43 +955,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsunassignTrackingNumberdo**
-> campaignsunassignTrackingNumberdo($campaign_id, $number)
+
+## campaignsunassignTrackingNumberdo
+
+> campaignsunassignTrackingNumberdo($campaignID, $number)
 
 Unassign Tracking Number
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$number = "number_example"; // string | 
+$campaignID = 56; // int | 
+$number = 'number_example'; // string | 
 
 try {
-    $apiInstance->campaignsunassignTrackingNumberdo($campaign_id, $number);
+    $apiInstance->campaignsunassignTrackingNumberdo($campaignID, $number);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsunassignTrackingNumberdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -842,9 +1010,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
+ **campaignID** | **int**|  |
  **number** | **string**|  |
 
 ### Return type
@@ -853,45 +1022,55 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsupdateBasicInfodo**
-> campaignsupdateBasicInfodo($campaign_id, $campaign_name, $notes, $alternative_id)
+
+## campaignsupdateBasicInfodo
+
+> campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID)
 
 Update Basic Info
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$campaign_name = "campaign_name_example"; // string | 
-$notes = "notes_example"; // string | 
-$alternative_id = "alternative_id_example"; // string | 
+$campaignID = 56; // int | 
+$campaignName = 'campaignName_example'; // string | 
+$notes = 'notes_example'; // string | 
+$alternativeID = 'alternativeID_example'; // string | 
 
 try {
-    $apiInstance->campaignsupdateBasicInfodo($campaign_id, $campaign_name, $notes, $alternative_id);
+    $apiInstance->campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -900,12 +1079,13 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **campaign_name** | **string**|  | [optional]
+ **campaignID** | **int**|  |
+ **campaignName** | **string**|  | [optional]
  **notes** | **string**|  | [optional]
- **alternative_id** | **string**|  | [optional]
+ **alternativeID** | **string**|  | [optional]
 
 ### Return type
 
@@ -913,45 +1093,55 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **campaignsupdateClicksRevenuedo**
-> campaignsupdateClicksRevenuedo($campaign_id, $start_date, $end_date, $revenue)
+
+## campaignsupdateClicksRevenuedo
+
+> campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
 
 Update Clicks Revenue
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\CampaignsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CampaignsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | 
-$start_date = "start_date_example"; // string | 
-$end_date = "end_date_example"; // string | 
-$revenue = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
+$campaignID = 56; // int | 
+$startDate = 'startDate_example'; // string | 
+$endDate = 'endDate_example'; // string | 
+$revenue = 3.4; // float | 
 
 try {
-    $apiInstance->campaignsupdateClicksRevenuedo($campaign_id, $start_date, $end_date, $revenue);
+    $apiInstance->campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsupdateClicksRevenuedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -960,12 +1150,13 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **int**|  |
- **start_date** | **string**|  |
- **end_date** | **string**|  |
- **revenue** | **BigDecimal**|  |
+ **campaignID** | **int**|  |
+ **startDate** | **string**|  |
+ **endDate** | **string**|  |
+ **revenue** | **float**|  |
 
 ### Return type
 
@@ -973,12 +1164,14 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 

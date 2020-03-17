@@ -1,55 +1,75 @@
-# LeadspediaApi\AdvertisersApi
+# Leadspedia\AdvertisersApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**advertisersadjustCreditdo**](AdvertisersApi.md#advertisersadjustcreditdo) | **POST** /advertisers/adjustCredit.do | Adjust Credit
-[**advertiserschangeStatusdo**](AdvertisersApi.md#advertiserschangestatusdo) | **POST** /advertisers/changeStatus.do | Change Status
+[**advertisersadjustCreditdo**](AdvertisersApi.md#advertisersadjustCreditdo) | **POST** /advertisers/adjustCredit.do | Adjust Credit
+[**advertiserschangeStatusdo**](AdvertisersApi.md#advertiserschangeStatusdo) | **POST** /advertisers/changeStatus.do | Change Status
 [**advertiserscreatedo**](AdvertisersApi.md#advertiserscreatedo) | **POST** /advertisers/create.do | Create
 [**advertisersdeletedo**](AdvertisersApi.md#advertisersdeletedo) | **POST** /advertisers/delete.do | Delete
-[**advertisersenableCreditdo**](AdvertisersApi.md#advertisersenablecreditdo) | **POST** /advertisers/enableCredit.do | Enable Credit
-[**advertisersgetAlldo**](AdvertisersApi.md#advertisersgetalldo) | **GET** /advertisers/getAll.do | Get All
-[**advertisersgetInfodo**](AdvertisersApi.md#advertisersgetinfodo) | **GET** /advertisers/getInfo.do | Get Info
+[**advertisersenableCreditdo**](AdvertisersApi.md#advertisersenableCreditdo) | **POST** /advertisers/enableCredit.do | Enable Credit
+[**advertisersgetAlldo**](AdvertisersApi.md#advertisersgetAlldo) | **GET** /advertisers/getAll.do | Get All
+[**advertisersgetInfodo**](AdvertisersApi.md#advertisersgetInfodo) | **GET** /advertisers/getInfo.do | Get Info
 [**advertiserssearchdo**](AdvertisersApi.md#advertiserssearchdo) | **GET** /advertisers/search.do | Search
-[**advertisersupdateAuthorizeNetCustomerProfileIDdo**](AdvertisersApi.md#advertisersupdateauthorizenetcustomerprofileiddo) | **POST** /advertisers/updateAuthorizeNetCustomerProfileID.do | Update Authorize Net Customer Profile ID
-[**advertisersupdateAutoRechargeSettingsdo**](AdvertisersApi.md#advertisersupdateautorechargesettingsdo) | **POST** /advertisers/updateAutoRechargeSettings.do | Update Auto Recharge Settings
-[**advertisersupdateBillingdo**](AdvertisersApi.md#advertisersupdatebillingdo) | **POST** /advertisers/updateBilling.do | Update Billing
-[**advertisersupdateInfodo**](AdvertisersApi.md#advertisersupdateinfodo) | **POST** /advertisers/updateInfo.do | Update Info
-[**advertisersupdatePortalSettingsdo**](AdvertisersApi.md#advertisersupdateportalsettingsdo) | **POST** /advertisers/updatePortalSettings.do | Update Portal Settings
+[**advertisersupdateAuthorizeNetCustomerProfileIDdo**](AdvertisersApi.md#advertisersupdateAuthorizeNetCustomerProfileIDdo) | **POST** /advertisers/updateAuthorizeNetCustomerProfileID.do | Update Authorize Net Customer Profile ID
+[**advertisersupdateAutoRechargeSettingsdo**](AdvertisersApi.md#advertisersupdateAutoRechargeSettingsdo) | **POST** /advertisers/updateAutoRechargeSettings.do | Update Auto Recharge Settings
+[**advertisersupdateBillingdo**](AdvertisersApi.md#advertisersupdateBillingdo) | **POST** /advertisers/updateBilling.do | Update Billing
+[**advertisersupdateInfodo**](AdvertisersApi.md#advertisersupdateInfodo) | **POST** /advertisers/updateInfo.do | Update Info
+[**advertisersupdateLeadsCapsdo**](AdvertisersApi.md#advertisersupdateLeadsCapsdo) | **POST** /advertisers/updateLeadsCaps.do | Update Leads Caps
+[**advertisersupdateLeadsDailyCapdo**](AdvertisersApi.md#advertisersupdateLeadsDailyCapdo) | **POST** /advertisers/updateLeadsDailyCap.do | Update Leads Daily Cap
+[**advertisersupdateLeadsDailyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsDailyRevenueCapdo) | **POST** /advertisers/updateLeadsDailyRevenueCap.do | Update Leads Daily Revenue Cap
+[**advertisersupdateLeadsMonthlyCapdo**](AdvertisersApi.md#advertisersupdateLeadsMonthlyCapdo) | **POST** /advertisers/updateLeadsMonthlyCap.do | Update Leads Monthly Cap
+[**advertisersupdateLeadsMonthlyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsMonthlyRevenueCapdo) | **POST** /advertisers/updateLeadsMonthlyRevenueCap.do | Update Leads Monthly Revenue Cap
+[**advertisersupdateLeadsRevenueCapsdo**](AdvertisersApi.md#advertisersupdateLeadsRevenueCapsdo) | **POST** /advertisers/updateLeadsRevenueCaps.do | Update Leads Revenue Caps
+[**advertisersupdateLeadsWeeklyCapdo**](AdvertisersApi.md#advertisersupdateLeadsWeeklyCapdo) | **POST** /advertisers/updateLeadsWeeklyCap.do | Update Leads Weekly Cap
+[**advertisersupdateLeadsWeeklyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsWeeklyRevenueCapdo) | **POST** /advertisers/updateLeadsWeeklyRevenueCap.do | Update Leads Weekly Revenue Cap
+[**advertisersupdatePortalSettingsdo**](AdvertisersApi.md#advertisersupdatePortalSettingsdo) | **POST** /advertisers/updatePortalSettings.do | Update Portal Settings
 
-# **advertisersadjustCreditdo**
-> advertisersadjustCreditdo($advertiser_id, $type, $amount, $charge, $generate_invoice, $note)
+
+
+## advertisersadjustCreditdo
+
+> advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
 
 Adjust Credit
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$type = "type_example"; // string | 
-$amount = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
-$charge = "charge_example"; // string | 
-$generate_invoice = "generate_invoice_example"; // string | 
-$note = "note_example"; // string | 
+$advertiserID = 56; // int | 
+$type = 'type_example'; // string | 
+$amount = 3.4; // float | 
+$charge = 'No'; // string | 
+$generateInvoice = 'No'; // string | 
+$note = 'note_example'; // string | 
+$transactionFee = 'transactionFee_example'; // string | 
+$transactionFeePercentage = 3.4; // float | 
+$transactionFeeAmount = 3.4; // float | 
 
 try {
-    $apiInstance->advertisersadjustCreditdo($advertiser_id, $type, $amount, $charge, $generate_invoice, $note);
+    $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,14 +78,18 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
+ **advertiserID** | **int**|  |
  **type** | **string**|  |
- **amount** | **BigDecimal**|  |
- **charge** | **string**|  | [optional]
- **generate_invoice** | **string**|  | [optional]
+ **amount** | **float**|  |
+ **charge** | **string**|  | [optional] [default to &#39;No&#39;]
+ **generateInvoice** | **string**|  | [optional] [default to &#39;No&#39;]
  **note** | **string**|  | [optional]
+ **transactionFee** | **string**|  | [optional]
+ **transactionFeePercentage** | **float**|  | [optional]
+ **transactionFeeAmount** | **float**|  | [optional]
 
 ### Return type
 
@@ -73,43 +97,53 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertiserschangeStatusdo**
-> advertiserschangeStatusdo($advertiser_id, $status)
+
+## advertiserschangeStatusdo
+
+> advertiserschangeStatusdo($advertiserID, $status)
 
 Change Status
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$status = "status_example"; // string | 
+$advertiserID = 56; // int | 
+$status = 'status_example'; // string | 
 
 try {
-    $apiInstance->advertiserschangeStatusdo($advertiser_id, $status);
+    $apiInstance->advertiserschangeStatusdo($advertiserID, $status);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -118,9 +152,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
+ **advertiserID** | **int**|  |
  **status** | **string**|  |
 
 ### Return type
@@ -129,44 +164,54 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertiserscreatedo**
-> advertiserscreatedo($advertiser_name, $account_manager_id, $status)
+
+## advertiserscreatedo
+
+> advertiserscreatedo($advertiserName, $accountManagerID, $status)
 
 Create
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_name = "advertiser_name_example"; // string | 
-$account_manager_id = 56; // int | 
-$status = "status_example"; // string | 
+$advertiserName = 'advertiserName_example'; // string | 
+$accountManagerID = 56; // int | 
+$status = 'status_example'; // string | 
 
 try {
-    $apiInstance->advertiserscreatedo($advertiser_name, $account_manager_id, $status);
+    $apiInstance->advertiserscreatedo($advertiserName, $accountManagerID, $status);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -175,10 +220,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_name** | **string**|  |
- **account_manager_id** | **int**|  |
+ **advertiserName** | **string**|  |
+ **accountManagerID** | **int**|  |
  **status** | **string**|  |
 
 ### Return type
@@ -187,42 +233,52 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersdeletedo**
-> advertisersdeletedo($advertiser_id)
+
+## advertisersdeletedo
+
+> advertisersdeletedo($advertiserID)
 
 Delete
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
+$advertiserID = 56; // int | 
 
 try {
-    $apiInstance->advertisersdeletedo($advertiser_id);
+    $apiInstance->advertisersdeletedo($advertiserID);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -231,9 +287,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
+ **advertiserID** | **int**|  |
 
 ### Return type
 
@@ -241,42 +298,52 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersenableCreditdo**
-> advertisersenableCreditdo($advertiser_id)
+
+## advertisersenableCreditdo
+
+> advertisersenableCreditdo($advertiserID)
 
 Enable Credit
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
+$advertiserID = 56; // int | 
 
 try {
-    $apiInstance->advertisersenableCreditdo($advertiser_id);
+    $apiInstance->advertisersenableCreditdo($advertiserID);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -285,9 +352,10 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
+ **advertiserID** | **int**|  |
 
 ### Return type
 
@@ -295,50 +363,60 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersgetAlldo**
-> object advertisersgetAlldo($advertiser_id, $advertiser_type, $account_manager_id, $status, $is_credit_enabled, $has_credit_card_on_file, $search, $start, $limit)
+
+## advertisersgetAlldo
+
+> \Leadspedia\Model\InlineResponse200 advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$advertiser_type = "advertiser_type_example"; // string | 
-$account_manager_id = 56; // int | 
-$status = "status_example"; // string | 
-$is_credit_enabled = "is_credit_enabled_example"; // string | 
-$has_credit_card_on_file = "has_credit_card_on_file_example"; // string | 
-$search = "search_example"; // string | 
-$start = 56; // int | 
-$limit = 56; // int | 
+$advertiserID = 56; // int | 
+$advertiserType = 'advertiserType_example'; // string | 
+$accountManagerID = 56; // int | 
+$status = 'status_example'; // string | 
+$isCreditEnabled = 'isCreditEnabled_example'; // string | 
+$hasCreditCardOnFile = 'hasCreditCardOnFile_example'; // string | 
+$search = 'search_example'; // string | 
+$start = 0; // int | 
+$limit = 100; // int | 
 
 try {
-    $result = $apiInstance->advertisersgetAlldo($advertiser_id, $advertiser_type, $account_manager_id, $status, $is_credit_enabled, $has_credit_card_on_file, $search, $start, $limit);
+    $result = $apiInstance->advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -348,60 +426,72 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  | [optional]
- **advertiser_type** | **string**|  | [optional]
- **account_manager_id** | **int**|  | [optional]
+ **advertiserID** | **int**|  | [optional]
+ **advertiserType** | **string**|  | [optional]
+ **accountManagerID** | **int**|  | [optional]
  **status** | **string**|  | [optional]
- **is_credit_enabled** | **string**|  | [optional]
- **has_credit_card_on_file** | **string**|  | [optional]
+ **isCreditEnabled** | **string**|  | [optional]
+ **hasCreditCardOnFile** | **string**|  | [optional]
  **search** | **string**|  | [optional]
- **start** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **start** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-**object**
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersgetInfodo**
-> advertisersgetInfodo($advertiser_id)
+
+## advertisersgetInfodo
+
+> \Leadspedia\Model\InlineResponse200 advertisersgetInfodo($advertiserID)
 
 Get Info
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
+$advertiserID = 56; // int | 
 
 try {
-    $apiInstance->advertisersgetInfodo($advertiser_id);
+    $result = $apiInstance->advertisersgetInfodo($advertiserID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -410,54 +500,66 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
+ **advertiserID** | **int**|  |
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertiserssearchdo**
-> advertiserssearchdo($search, $start, $limit)
+
+## advertiserssearchdo
+
+> \Leadspedia\Model\InlineResponse200 advertiserssearchdo($search, $start, $limit)
 
 Search
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$search = "search_example"; // string | 
-$start = 56; // int | 
-$limit = 56; // int | 
+$search = 'search_example'; // string | 
+$start = 0; // int | 
+$limit = 100; // int | 
 
 try {
-    $apiInstance->advertiserssearchdo($search, $start, $limit);
+    $result = $apiInstance->advertiserssearchdo($search, $start, $limit);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserssearchdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -466,55 +568,66 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **string**|  |
- **start** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **start** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersupdateAuthorizeNetCustomerProfileIDdo**
-> advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiser_id, $auth_net_customer_profile_id)
+
+## advertisersupdateAuthorizeNetCustomerProfileIDdo
+
+> advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID)
 
 Update Authorize Net Customer Profile ID
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$auth_net_customer_profile_id = "auth_net_customer_profile_id_example"; // string | 
+$advertiserID = 56; // int | 
+$authNetCustomerProfileID = 'authNetCustomerProfileID_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiser_id, $auth_net_customer_profile_id);
+    $apiInstance->advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAuthorizeNetCustomerProfileIDdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -523,10 +636,11 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
- **auth_net_customer_profile_id** | **string**|  | [optional]
+ **advertiserID** | **int**|  |
+ **authNetCustomerProfileID** | **string**|  | [optional]
 
 ### Return type
 
@@ -534,45 +648,59 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersupdateAutoRechargeSettingsdo**
-> advertisersupdateAutoRechargeSettingsdo($advertiser_id, $enable_auto_recharge, $auto_charge_balance, $auto_charge_amount)
+
+## advertisersupdateAutoRechargeSettingsdo
+
+> advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
 
 Update Auto Recharge Settings
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$enable_auto_recharge = "enable_auto_recharge_example"; // string | 
-$auto_charge_balance = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
-$auto_charge_amount = new \LeadspediaApi\Model\BigDecimal(); // BigDecimal | 
+$advertiserID = 56; // int | 
+$enableAutoRecharge = 'enableAutoRecharge_example'; // string | 
+$autoChargeBalance = 3.4; // float | 
+$autoChargeAmount = 3.4; // float | 
+$chargeTransactionFee = 'chargeTransactionFee_example'; // string | 
+$transactionFeePercentage = 3.4; // float | 
+$transactionFeeAmount = 3.4; // float | 
+$generateInvoice = 'generateInvoice_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiser_id, $enable_auto_recharge, $auto_charge_balance, $auto_charge_amount);
+    $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -581,12 +709,17 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
- **enable_auto_recharge** | **string**|  | [optional]
- **auto_charge_balance** | **BigDecimal**|  | [optional]
- **auto_charge_amount** | **BigDecimal**|  | [optional]
+ **advertiserID** | **int**|  |
+ **enableAutoRecharge** | **string**|  | [optional]
+ **autoChargeBalance** | **float**|  | [optional]
+ **autoChargeAmount** | **float**|  | [optional]
+ **chargeTransactionFee** | **string**|  | [optional]
+ **transactionFeePercentage** | **float**|  | [optional]
+ **transactionFeeAmount** | **float**|  | [optional]
+ **generateInvoice** | **string**|  | [optional]
 
 ### Return type
 
@@ -594,45 +727,55 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersupdateBillingdo**
-> advertisersupdateBillingdo($advertiser_id, $billing_cycle, $tax_id, $tax_class)
+
+## advertisersupdateBillingdo
+
+> advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass)
 
 Update Billing
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$billing_cycle = "billing_cycle_example"; // string | 
-$tax_id = "tax_id_example"; // string | 
-$tax_class = "tax_class_example"; // string | 
+$advertiserID = 56; // int | 
+$billingCycle = 'billingCycle_example'; // string | 
+$taxID = 'taxID_example'; // string | 
+$taxClass = 'taxClass_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateBillingdo($advertiser_id, $billing_cycle, $tax_id, $tax_class);
+    $apiInstance->advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -641,12 +784,13 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
- **billing_cycle** | **string**|  | [optional]
- **tax_id** | **string**|  | [optional]
- **tax_class** | **string**|  | [optional]
+ **advertiserID** | **int**|  |
+ **billingCycle** | **string**|  | [optional]
+ **taxID** | **string**|  | [optional]
+ **taxClass** | **string**|  | [optional]
 
 ### Return type
 
@@ -654,57 +798,67 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersupdateInfodo**
-> advertisersupdateInfodo($advertiser_id, $advertiser_name, $website, $alternate_id, $source, $external_crmid, $number_of_staff, $address, $address2, $city, $state, $zip_code, $country, $reporting_url, $reporting_username, $reporting_password)
+
+## advertisersupdateInfodo
+
+> advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
 
 Update Info
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$advertiser_id = 56; // int | 
-$advertiser_name = "advertiser_name_example"; // string | 
-$website = "website_example"; // string | 
-$alternate_id = "alternate_id_example"; // string | 
-$source = "source_example"; // string | 
-$external_crmid = "external_crmid_example"; // string | 
-$number_of_staff = 56; // int | 
-$address = "address_example"; // string | 
-$address2 = "address2_example"; // string | 
-$city = "city_example"; // string | 
-$state = "state_example"; // string | 
-$zip_code = "zip_code_example"; // string | 
-$country = "country_example"; // string | 
-$reporting_url = "reporting_url_example"; // string | 
-$reporting_username = "reporting_username_example"; // string | 
-$reporting_password = "reporting_password_example"; // string | 
+$advertiserID = 56; // int | 
+$advertiserName = 'advertiserName_example'; // string | 
+$website = 'website_example'; // string | 
+$alternateID = 'alternateID_example'; // string | 
+$source = 'source_example'; // string | 
+$externalCRMID = 'externalCRMID_example'; // string | 
+$numberOfStaff = 56; // int | 
+$address = 'address_example'; // string | 
+$address2 = 'address2_example'; // string | 
+$city = 'city_example'; // string | 
+$state = 'state_example'; // string | 
+$zipCode = 'zipCode_example'; // string | 
+$country = 'country_example'; // string | 
+$reportingUrl = 'reportingUrl_example'; // string | 
+$reportingUsername = 'reportingUsername_example'; // string | 
+$reportingPassword = 'reportingPassword_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateInfodo($advertiser_id, $advertiser_name, $website, $alternate_id, $source, $external_crmid, $number_of_staff, $address, $address2, $city, $state, $zip_code, $country, $reporting_url, $reporting_username, $reporting_password);
+    $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -713,24 +867,25 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiser_id** | **int**|  |
- **advertiser_name** | **string**|  | [optional]
+ **advertiserID** | **int**|  |
+ **advertiserName** | **string**|  | [optional]
  **website** | **string**|  | [optional]
- **alternate_id** | **string**|  | [optional]
+ **alternateID** | **string**|  | [optional]
  **source** | **string**|  | [optional]
- **external_crmid** | **string**|  | [optional]
- **number_of_staff** | **int**|  | [optional]
+ **externalCRMID** | **string**|  | [optional]
+ **numberOfStaff** | **int**|  | [optional]
  **address** | **string**|  | [optional]
  **address2** | **string**|  | [optional]
  **city** | **string**|  | [optional]
  **state** | **string**|  | [optional]
- **zip_code** | **string**|  | [optional]
+ **zipCode** | **string**|  | [optional]
  **country** | **string**|  | [optional]
- **reporting_url** | **string**|  | [optional]
- **reporting_username** | **string**|  | [optional]
- **reporting_password** | **string**|  | [optional]
+ **reportingUrl** | **string**|  | [optional]
+ **reportingUsername** | **string**|  | [optional]
+ **reportingPassword** | **string**|  | [optional]
 
 ### Return type
 
@@ -738,46 +893,600 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
-# **advertisersupdatePortalSettingsdo**
-> advertisersupdatePortalSettingsdo($portal_access, $two_way_auth, $manage_users, $manage_offers, $update_billing_info)
 
-Update Portal Settings
+## advertisersupdateLeadsCapsdo
+
+> advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
+
+Update Leads Caps
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\AdvertisersApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$portal_access = "portal_access_example"; // string | 
-$two_way_auth = "two_way_auth_example"; // string | 
-$manage_users = "manage_users_example"; // string | 
-$manage_offers = "manage_offers_example"; // string | 
-$update_billing_info = "update_billing_info_example"; // string | 
+$advertiserID = 56; // int | 
+$leadsDailyCap = 56; // int | 
+$leadsWeeklyCap = 56; // int | 
+$leadsMonthlyCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdatePortalSettingsdo($portal_access, $two_way_auth, $manage_users, $manage_offers, $update_billing_info);
+    $apiInstance->advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsCapsdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsDailyCap** | **int**|  | [optional]
+ **leadsWeeklyCap** | **int**|  | [optional]
+ **leadsMonthlyCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsDailyCapdo
+
+> advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap)
+
+Update Leads Daily Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsDailyCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsDailyCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsDailyRevenueCapdo
+
+> advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap)
+
+Update Leads Daily Revenue Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsDailyRevenueCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsDailyRevenueCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsMonthlyCapdo
+
+> advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap)
+
+Update Leads Monthly Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsMonthlyCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsMonthlyCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsMonthlyRevenueCapdo
+
+> advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap)
+
+Update Leads Monthly Revenue Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsMonthlyRevenueCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsMonthlyRevenueCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsRevenueCapsdo
+
+> advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
+
+Update Leads Revenue Caps
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsDailyRevenueCap = 56; // int | 
+$leadsWeeklyRevenueCap = 56; // int | 
+$leadsMonthlyRevenueCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsRevenueCapsdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsDailyRevenueCap** | **int**|  | [optional]
+ **leadsWeeklyRevenueCap** | **int**|  | [optional]
+ **leadsMonthlyRevenueCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsWeeklyCapdo
+
+> advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap)
+
+Update Leads Weekly Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsWeeklyCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsWeeklyCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdateLeadsWeeklyRevenueCapdo
+
+> advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap)
+
+Update Leads Weekly Revenue Cap
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$advertiserID = 56; // int | 
+$leadsWeeklyRevenueCap = 56; // int | 
+
+try {
+    $apiInstance->advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserID** | **int**|  |
+ **leadsWeeklyRevenueCap** | **int**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## advertisersupdatePortalSettingsdo
+
+> advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
+
+Update Portal Settings
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\AdvertisersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$portalAccess = 'portalAccess_example'; // string | 
+$twoWayAuth = 'twoWayAuth_example'; // string | 
+$manageUsers = 'manageUsers_example'; // string | 
+$manageOffers = 'manageOffers_example'; // string | 
+$updateBillingInfo = 'updateBillingInfo_example'; // string | 
+
+try {
+    $apiInstance->advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -786,13 +1495,14 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **portal_access** | **string**|  | [optional]
- **two_way_auth** | **string**|  | [optional]
- **manage_users** | **string**|  | [optional]
- **manage_offers** | **string**|  | [optional]
- **update_billing_info** | **string**|  | [optional]
+ **portalAccess** | **string**|  | [optional]
+ **twoWayAuth** | **string**|  | [optional]
+ **manageUsers** | **string**|  | [optional]
+ **manageOffers** | **string**|  | [optional]
+ **updateBillingInfo** | **string**|  | [optional]
 
 ### Return type
 
@@ -800,12 +1510,14 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 

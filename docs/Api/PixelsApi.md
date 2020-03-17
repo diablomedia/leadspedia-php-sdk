@@ -1,42 +1,52 @@
-# LeadspediaApi\PixelsApi
+# Leadspedia\PixelsApi
 
 All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**pixelsgetAlldo**](PixelsApi.md#pixelsgetalldo) | **GET** /pixels/getAll.do | Get All
+[**pixelsgetAlldo**](PixelsApi.md#pixelsgetAlldo) | **GET** /pixels/getAll.do | Get All
 
-# **pixelsgetAlldo**
-> pixelsgetAlldo($affiliate_id, $campaign_id, $disposition_id, $from_date, $to_date)
+
+
+## pixelsgetAlldo
+
+> \Leadspedia\Model\InlineResponse200 pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
 
 Get All
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: api_key
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');// Configure API key authorization: api_secret
-$config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LeadspediaApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
 
-$apiInstance = new LeadspediaApi\Api\PixelsApi(
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\PixelsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$affiliate_id = 56; // int | 
-$campaign_id = 56; // int | 
-$disposition_id = 56; // int | 
-$from_date = new \DateTime("2013-10-20"); // \DateTime | 
-$to_date = new \DateTime("2013-10-20"); // \DateTime | 
+$affiliateID = 56; // int | 
+$campaignID = 56; // int | 
+$dispositionID = 56; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->pixelsgetAlldo($affiliate_id, $campaign_id, $disposition_id, $from_date, $to_date);
+    $result = $apiInstance->pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PixelsApi->pixelsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -45,26 +55,29 @@ try {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **affiliate_id** | **int**|  | [optional]
- **campaign_id** | **int**|  | [optional]
- **disposition_id** | **int**|  | [optional]
- **from_date** | **\DateTime**|  | [optional]
- **to_date** | **\DateTime**|  | [optional]
+ **affiliateID** | **int**|  | [optional]
+ **campaignID** | **int**|  | [optional]
+ **dispositionID** | **int**|  | [optional]
+ **fromDate** | **\DateTime**|  | [optional]
+ **toDate** | **\DateTime**|  | [optional]
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
-[api_key](../../README.md#api_key), [api_secret](../../README.md#api_secret)
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
