@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/diablomedia/leadspedia-php-sdk#readme",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^1.0.10-4.2.3"
+    "@openapitools/openapi-generator-cli": "^1.0.10-4.3.1"
   }
 }
