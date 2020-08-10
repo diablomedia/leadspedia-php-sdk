@@ -16925,6 +16925,430 @@
                     }
                 }
             }
+        },
+        "/leadDistributionContracts/adjustCredit.do": {
+            "post": {
+                "description": "",
+                "summary": "Adjust Credit",
+                "tags": [
+                    "leadDistributionContracts"
+                ],
+                "operationId": "leadDistributionContractsadjustCreditdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Credit",
+                            "Debit"
+                        ]
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "charge",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "No",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "generateInvoice",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "No",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "note",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "transactionFee",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "transactionFeePercentage",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "transactionFeeAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/callRoutingContracts/adjustCredit.do": {
+            "post": {
+                "description": "",
+                "summary": "Adjust Credit",
+                "tags": [
+                    "callRoutingContracts"
+                ],
+                "operationId": "callRoutingContractsadjustCreditdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Credit",
+                            "Debit"
+                        ]
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "charge",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "No",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "generateInvoice",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "No",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "note",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "transactionFee",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "transactionFeePercentage",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "transactionFeeAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/callRoutingContracts/enableCredit.do": {
+            "post": {
+                "description": "",
+                "summary": "Enable Credit",
+                "tags": [
+                    "callRoutingContracts"
+                ],
+                "operationId": "callRoutingContractsenableCreditdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "buyerLevel",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/leads/getDelivered.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Delivered",
+                "tags": [
+                    "leads"
+                ],
+                "operationId": "leadsgetDelivereddo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "leadID",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "returned",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": "",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ]
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 0
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 100
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {},

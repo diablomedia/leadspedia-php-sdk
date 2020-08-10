@@ -54,24 +54,18 @@ $output = [
 foreach ($source->resources->endpoints as $endpoint) {
     $path = $endpoint->request->path;
 
-    $pathParams = json_decode($endpoint->request->pathParams, true);
-
-    if (!empty($pathParams['properties'])) {
-        //var_dump($pathParams);
+    // As of this writing it seems the LeadsPedia docs added a "Get Delivered" endpoint, but left the path
+    // as "getSold.do", so forcing this to "getDelivered.do" to prevent duplicate issues
+    if ($path === '/leads/getSold.do' && $endpoint->name === 'Get Delivered') {
+        $path = '/leads/getDelivered.do';
     }
+
+    $pathParams = json_decode($endpoint->request->pathParams, true);
 
     $queryParams = json_decode($endpoint->request->queryString, true);
 
-    if (!empty($queryParams['properties'])) {
-        //var_dump($queryParams);
-    }
-
     if (isset($endpoint->request->headers)) {
         $headerParams = json_decode($endpoint->request->headers, true);
-        //var_dump($headerParams);
-        if (!empty($headerParams['properties'])) {
-            //var_dump($headerParams);
-        }
     }
 
     if (isset($output['paths'][$path])) {

@@ -4,11 +4,13 @@ All URIs are relative to *https://api.leadspedia.com/core/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**callRoutingContractsadjustCreditdo**](CallRoutingContractsApi.md#callRoutingContractsadjustCreditdo) | **POST** /callRoutingContracts/adjustCredit.do | Adjust Credit
 [**callRoutingContractschangeModedo**](CallRoutingContractsApi.md#callRoutingContractschangeModedo) | **POST** /callRoutingContracts/changeMode.do | Change Mode
 [**callRoutingContractschangeStatusdo**](CallRoutingContractsApi.md#callRoutingContractschangeStatusdo) | **POST** /callRoutingContracts/changeStatus.do | Change Status
 [**callRoutingContractscreatedo**](CallRoutingContractsApi.md#callRoutingContractscreatedo) | **POST** /callRoutingContracts/create.do | Create
 [**callRoutingContractsdeleteScheduledPausedo**](CallRoutingContractsApi.md#callRoutingContractsdeleteScheduledPausedo) | **POST** /callRoutingContracts/deleteScheduledPause.do | Delete Scheduled Pause
 [**callRoutingContractsdeletedo**](CallRoutingContractsApi.md#callRoutingContractsdeletedo) | **POST** /callRoutingContracts/delete.do | Delete
+[**callRoutingContractsenableCreditdo**](CallRoutingContractsApi.md#callRoutingContractsenableCreditdo) | **POST** /callRoutingContracts/enableCredit.do | Enable Credit
 [**callRoutingContractsgetAlldo**](CallRoutingContractsApi.md#callRoutingContractsgetAlldo) | **GET** /callRoutingContracts/getAll.do | Get All
 [**callRoutingContractsgetBasicInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetBasicInfodo) | **GET** /callRoutingContracts/getBasicInfo.do | Get Basic Info
 [**callRoutingContractsgetBillableTransfersCapInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetBillableTransfersCapInfodo) | **GET** /callRoutingContracts/getBillableTransfersCapInfo.do | Get Billable Transfers Cap Info
@@ -36,6 +38,87 @@ Method | HTTP request | Description
 [**callRoutingContractsupdateTransferNumberdo**](CallRoutingContractsApi.md#callRoutingContractsupdateTransferNumberdo) | **POST** /callRoutingContracts/updateTransferNumber.do | Update Transfer Number
 [**callRoutingContractsupdateTransfersCapdo**](CallRoutingContractsApi.md#callRoutingContractsupdateTransfersCapdo) | **POST** /callRoutingContracts/updateTransfersCap.do | Update Transfers Cap
 
+
+
+## callRoutingContractsadjustCreditdo
+
+> callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+
+Adjust Credit
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$contractID = 56; // int | 
+$type = 'type_example'; // string | 
+$amount = 3.4; // float | 
+$charge = 'No'; // string | 
+$generateInvoice = 'No'; // string | 
+$note = 'note_example'; // string | 
+$transactionFee = 'transactionFee_example'; // string | 
+$transactionFeePercentage = 3.4; // float | 
+$transactionFeeAmount = 3.4; // float | 
+
+try {
+    $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+} catch (Exception $e) {
+    echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contractID** | **int**|  |
+ **type** | **string**|  |
+ **amount** | **float**|  |
+ **charge** | **string**|  | [optional] [default to &#39;No&#39;]
+ **generateInvoice** | **string**|  | [optional] [default to &#39;No&#39;]
+ **note** | **string**|  | [optional]
+ **transactionFee** | **string**|  | [optional]
+ **transactionFeePercentage** | **float**|  | [optional]
+ **transactionFeeAmount** | **float**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
 
 ## callRoutingContractschangeModedo
@@ -354,6 +437,73 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contractID** | **int**|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## callRoutingContractsenableCreditdo
+
+> callRoutingContractsenableCreditdo($contractID, $buyerLevel)
+
+Enable Credit
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$contractID = 56; // int | 
+$buyerLevel = 'buyerLevel_example'; // string | 
+
+try {
+    $apiInstance->callRoutingContractsenableCreditdo($contractID, $buyerLevel);
+} catch (Exception $e) {
+    echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsenableCreditdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contractID** | **int**|  |
+ **buyerLevel** | **string**|  |
 
 ### Return type
 
