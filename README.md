@@ -157,11 +157,13 @@ Class | Method | HTTP request | Description
 *AffiliatesContactsApi* | [**affiliatesContactsverifyCredentialsdo**](docs/Api/AffiliatesContactsApi.md#affiliatescontactsverifycredentialsdo) | **POST** /affiliatesContacts/verifyCredentials.do | Verify Credentials
 *AudioApi* | [**audiodeletedo**](docs/Api/AudioApi.md#audiodeletedo) | **POST** /audio/delete.do | Delete
 *AudioApi* | [**audiogetAlldo**](docs/Api/AudioApi.md#audiogetalldo) | **GET** /audio/getAll.do | Get All
+*CallRoutingContractsApi* | [**callRoutingContractsadjustCreditdo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsadjustcreditdo) | **POST** /callRoutingContracts/adjustCredit.do | Adjust Credit
 *CallRoutingContractsApi* | [**callRoutingContractschangeModedo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractschangemodedo) | **POST** /callRoutingContracts/changeMode.do | Change Mode
 *CallRoutingContractsApi* | [**callRoutingContractschangeStatusdo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractschangestatusdo) | **POST** /callRoutingContracts/changeStatus.do | Change Status
 *CallRoutingContractsApi* | [**callRoutingContractscreatedo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractscreatedo) | **POST** /callRoutingContracts/create.do | Create
 *CallRoutingContractsApi* | [**callRoutingContractsdeleteScheduledPausedo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsdeletescheduledpausedo) | **POST** /callRoutingContracts/deleteScheduledPause.do | Delete Scheduled Pause
 *CallRoutingContractsApi* | [**callRoutingContractsdeletedo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsdeletedo) | **POST** /callRoutingContracts/delete.do | Delete
+*CallRoutingContractsApi* | [**callRoutingContractsenableCreditdo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsenablecreditdo) | **POST** /callRoutingContracts/enableCredit.do | Enable Credit
 *CallRoutingContractsApi* | [**callRoutingContractsgetAlldo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsgetalldo) | **GET** /callRoutingContracts/getAll.do | Get All
 *CallRoutingContractsApi* | [**callRoutingContractsgetBasicInfodo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsgetbasicinfodo) | **GET** /callRoutingContracts/getBasicInfo.do | Get Basic Info
 *CallRoutingContractsApi* | [**callRoutingContractsgetBillableTransfersCapInfodo**](docs/Api/CallRoutingContractsApi.md#callroutingcontractsgetbillabletransferscapinfodo) | **GET** /callRoutingContracts/getBillableTransfersCapInfo.do | Get Billable Transfers Cap Info
@@ -237,6 +239,7 @@ Class | Method | HTTP request | Description
 *InboundCallsApi* | [**inboundCallsgetTransferreddo**](docs/Api/InboundCallsApi.md#inboundcallsgettransferreddo) | **GET** /inboundCalls/getTransferred.do | Get Transferred Calls
 *LeadDistributionContractsApi* | [**leadDistributionContractsaddFilterdo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractsaddfilterdo) | **POST** /leadDistributionContracts/addFilter.do | Add Filter
 *LeadDistributionContractsApi* | [**leadDistributionContractsaddToOfferdo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractsaddtoofferdo) | **POST** /leadDistributionContracts/addToOffer.do | Add To Offer
+*LeadDistributionContractsApi* | [**leadDistributionContractsadjustCreditdo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractsadjustcreditdo) | **POST** /leadDistributionContracts/adjustCredit.do | Adjust Credit
 *LeadDistributionContractsApi* | [**leadDistributionContractsassignEmailDeliveryMethoddo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractsassignemaildeliverymethoddo) | **POST** /leadDistributionContracts/assignEmailDeliveryMethod.do | Assign Email Delivery Method
 *LeadDistributionContractsApi* | [**leadDistributionContractsassignSMSDeliveryMethoddo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractsassignsmsdeliverymethoddo) | **POST** /leadDistributionContracts/assignSMSDeliveryMethod.do | Assign SMS Delivery Method
 *LeadDistributionContractsApi* | [**leadDistributionContractschangeModedo**](docs/Api/LeadDistributionContractsApi.md#leaddistributioncontractschangemodedo) | **POST** /leadDistributionContracts/changeMode.do | Change Mode
