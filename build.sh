@@ -1,11 +1,12 @@
 #!/bin/sh
+set -e
 
 rm -rf ./src/*
 rm -rf ./docs/*
 
 npm install
 
-wget https://s3.amazonaws.com/api-docs.io/developer.leadspedia.com/v2.0.json -O ./schema/api-docs.json
+curl https://s3.amazonaws.com/api-docs.io/developer.leadspedia.com/v2.0.json -o ./schema/api-docs.json
 
 php scripts/convertor.php
 
