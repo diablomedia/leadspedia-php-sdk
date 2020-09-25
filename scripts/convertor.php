@@ -75,7 +75,8 @@ foreach ($source->resources->endpoints as $endpoint) {
     }
 
     if (isset($output['paths'][$path])) {
-        throw new Exception('Duplicate path: ' . $path);
+        echo 'Skipping duplicate path: ' . $path . "\n";
+        continue;
     } else {
         $output['paths'][$path] = [];
     }
