@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**leadDistributionContractsaddFilterdo**](LeadDistributionContractsApi.md#leadDistributionContractsaddFilterdo) | **POST** /leadDistributionContracts/addFilter.do | Add Filter
 [**leadDistributionContractsaddToOfferdo**](LeadDistributionContractsApi.md#leadDistributionContractsaddToOfferdo) | **POST** /leadDistributionContracts/addToOffer.do | Add To Offer
+[**leadDistributionContractsadjustCreditdo**](LeadDistributionContractsApi.md#leadDistributionContractsadjustCreditdo) | **POST** /leadDistributionContracts/adjustCredit.do | Adjust Credit
 [**leadDistributionContractsassignEmailDeliveryMethoddo**](LeadDistributionContractsApi.md#leadDistributionContractsassignEmailDeliveryMethoddo) | **POST** /leadDistributionContracts/assignEmailDeliveryMethod.do | Assign Email Delivery Method
 [**leadDistributionContractsassignSMSDeliveryMethoddo**](LeadDistributionContractsApi.md#leadDistributionContractsassignSMSDeliveryMethoddo) | **POST** /leadDistributionContracts/assignSMSDeliveryMethod.do | Assign SMS Delivery Method
 [**leadDistributionContractschangeModedo**](LeadDistributionContractsApi.md#leadDistributionContractschangeModedo) | **POST** /leadDistributionContracts/changeMode.do | Change Mode
@@ -175,6 +176,87 @@ Name | Type | Description  | Notes
  **contractID** | **int**|  |
  **offerID** | **int**|  |
  **priority** | **int**|  | [optional] [default to 1]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## leadDistributionContractsadjustCreditdo
+
+> leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+
+Adjust Credit
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$contractID = 56; // int | 
+$type = 'type_example'; // string | 
+$amount = 3.4; // float | 
+$charge = 'No'; // string | 
+$generateInvoice = 'No'; // string | 
+$note = 'note_example'; // string | 
+$transactionFee = 'transactionFee_example'; // string | 
+$transactionFeePercentage = 3.4; // float | 
+$transactionFeeAmount = 3.4; // float | 
+
+try {
+    $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contractID** | **int**|  |
+ **type** | **string**|  |
+ **amount** | **float**|  |
+ **charge** | **string**|  | [optional] [default to &#39;No&#39;]
+ **generateInvoice** | **string**|  | [optional] [default to &#39;No&#39;]
+ **note** | **string**|  | [optional]
+ **transactionFee** | **string**|  | [optional]
+ **transactionFeePercentage** | **float**|  | [optional]
+ **transactionFeeAmount** | **float**|  | [optional]
 
 ### Return type
 
