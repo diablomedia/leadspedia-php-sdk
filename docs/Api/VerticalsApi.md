@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## verticalscreatedo
 
-> verticalscreatedo($verticalName, $groupID)
+> \Leadspedia\Model\InlineResponse200 verticalscreatedo($verticalName, $groupID)
 
 Create
 
@@ -46,7 +46,8 @@ $verticalName = 'verticalName_example'; // string |
 $groupID = 56; // int | 
 
 try {
-    $apiInstance->verticalscreatedo($verticalName, $groupID);
+    $result = $apiInstance->verticalscreatedo($verticalName, $groupID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -63,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -72,7 +73,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -81,7 +82,7 @@ void (empty response body)
 
 ## verticalsdeletedo
 
-> verticalsdeletedo($verticalID)
+> \Leadspedia\Model\InlineResponse200 verticalsdeletedo($verticalID)
 
 Delete
 
@@ -112,7 +113,8 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
 $verticalID = 56; // int | 
 
 try {
-    $apiInstance->verticalsdeletedo($verticalID);
+    $result = $apiInstance->verticalsdeletedo($verticalID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -137,7 +139,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -146,7 +148,7 @@ void (empty response body)
 
 ## verticalsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 verticalsgetAlldo($groupID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 verticalsgetAlldo($groupID, $status, $start, $limit)
 
 Get All
 
@@ -200,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -218,7 +220,7 @@ Name | Type | Description  | Notes
 
 ## verticalsgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 verticalsgetInfodo($verticalID)
+> \Leadspedia\Model\InlineResponse2001 verticalsgetInfodo($verticalID)
 
 Get Info
 
@@ -266,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -284,7 +286,7 @@ Name | Type | Description  | Notes
 
 ## verticalsupdatedo
 
-> verticalsupdatedo($verticalID, $groupID, $verticalName, $notes)
+> \Leadspedia\Model\InlineResponse200 verticalsupdatedo($verticalID, $groupID, $verticalName, $notes)
 
 Update
 
@@ -318,7 +320,8 @@ $verticalName = 'verticalName_example'; // string |
 $notes = 'notes_example'; // string | 
 
 try {
-    $apiInstance->verticalsupdatedo($verticalID, $groupID, $verticalName, $notes);
+    $result = $apiInstance->verticalsupdatedo($verticalID, $groupID, $verticalName, $notes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -337,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -346,7 +349,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

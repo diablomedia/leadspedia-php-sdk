@@ -112,6 +112,21 @@ foreach ($source->resources->endpoints as $endpoint) {
                     ]
                 ],
             ];
+        } elseif ($endpoint->request->method === 'post') {
+            $request['responses']['200'] = [
+                "description" => 'post-response',
+                'schema'      => [
+                    'type'       => 'object',
+                    'properties' => [
+                        'success' => [
+                            'type' => 'boolean',
+                        ],
+                        'message' => [
+                            'type' => 'string',
+                        ]
+                    ]
+                ],
+            ];
         } else {
             $request['responses']['200'] = [
                 "description" => '',

@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 ## advertisersadjustCreditdo
 
-> advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+> \Leadspedia\Model\InlineResponse200 advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
 
 Adjust Credit
 
@@ -69,7 +69,8 @@ $transactionFeePercentage = 3.4; // float |
 $transactionFeeAmount = 3.4; // float | 
 
 try {
-    $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -93,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -102,7 +103,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -111,7 +112,7 @@ void (empty response body)
 
 ## advertiserschangeStatusdo
 
-> advertiserschangeStatusdo($advertiserID, $status)
+> \Leadspedia\Model\InlineResponse200 advertiserschangeStatusdo($advertiserID, $status)
 
 Change Status
 
@@ -143,7 +144,8 @@ $advertiserID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->advertiserschangeStatusdo($advertiserID, $status);
+    $result = $apiInstance->advertiserschangeStatusdo($advertiserID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -160,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -169,7 +171,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -178,7 +180,7 @@ void (empty response body)
 
 ## advertiserscreatedo
 
-> advertiserscreatedo($advertiserName, $accountManagerID, $status)
+> \Leadspedia\Model\InlineResponse200 advertiserscreatedo($advertiserName, $accountManagerID, $status)
 
 Create
 
@@ -211,7 +213,8 @@ $accountManagerID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->advertiserscreatedo($advertiserName, $accountManagerID, $status);
+    $result = $apiInstance->advertiserscreatedo($advertiserName, $accountManagerID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -229,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -238,7 +241,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -247,7 +250,7 @@ void (empty response body)
 
 ## advertisersdeletedo
 
-> advertisersdeletedo($advertiserID)
+> \Leadspedia\Model\InlineResponse200 advertisersdeletedo($advertiserID)
 
 Delete
 
@@ -278,7 +281,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 $advertiserID = 56; // int | 
 
 try {
-    $apiInstance->advertisersdeletedo($advertiserID);
+    $result = $apiInstance->advertisersdeletedo($advertiserID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -294,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -303,7 +307,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -312,7 +316,7 @@ void (empty response body)
 
 ## advertisersenableCreditdo
 
-> advertisersenableCreditdo($advertiserID)
+> \Leadspedia\Model\InlineResponse200 advertisersenableCreditdo($advertiserID)
 
 Enable Credit
 
@@ -343,7 +347,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 $advertiserID = 56; // int | 
 
 try {
-    $apiInstance->advertisersenableCreditdo($advertiserID);
+    $result = $apiInstance->advertisersenableCreditdo($advertiserID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -359,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -368,7 +373,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -377,7 +382,7 @@ void (empty response body)
 
 ## advertisersgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
 
 Get All
 
@@ -441,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -459,7 +464,7 @@ Name | Type | Description  | Notes
 
 ## advertisersgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 advertisersgetInfodo($advertiserID)
+> \Leadspedia\Model\InlineResponse2001 advertisersgetInfodo($advertiserID)
 
 Get Info
 
@@ -507,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -525,7 +530,7 @@ Name | Type | Description  | Notes
 
 ## advertiserssearchdo
 
-> \Leadspedia\Model\InlineResponse200 advertiserssearchdo($search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 advertiserssearchdo($search, $start, $limit)
 
 Search
 
@@ -577,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -595,7 +600,7 @@ Name | Type | Description  | Notes
 
 ## advertisersupdateAuthorizeNetCustomerProfileIDdo
 
-> advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID)
 
 Update Authorize Net Customer Profile ID
 
@@ -627,7 +632,8 @@ $advertiserID = 56; // int |
 $authNetCustomerProfileID = 'authNetCustomerProfileID_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID);
+    $result = $apiInstance->advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAuthorizeNetCustomerProfileIDdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -644,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -653,7 +659,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -662,7 +668,7 @@ void (empty response body)
 
 ## advertisersupdateAutoRechargeSettingsdo
 
-> advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
 
 Update Auto Recharge Settings
 
@@ -700,7 +706,8 @@ $transactionFeeAmount = 3.4; // float |
 $generateInvoice = 'generateInvoice_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    $result = $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -723,7 +730,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -732,7 +739,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -741,7 +748,7 @@ void (empty response body)
 
 ## advertisersupdateBillingdo
 
-> advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass)
 
 Update Billing
 
@@ -775,7 +782,8 @@ $taxID = 'taxID_example'; // string |
 $taxClass = 'taxClass_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass);
+    $result = $apiInstance->advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -794,7 +802,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -803,7 +811,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -812,7 +820,7 @@ void (empty response body)
 
 ## advertisersupdateInfodo
 
-> advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
 
 Update Info
 
@@ -858,7 +866,8 @@ $reportingUsername = 'reportingUsername_example'; // string |
 $reportingPassword = 'reportingPassword_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+    $result = $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -889,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -898,7 +907,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -907,7 +916,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsCapsdo
 
-> advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
 
 Update Leads Caps
 
@@ -941,7 +950,8 @@ $leadsWeeklyCap = 56; // int |
 $leadsMonthlyCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
+    $result = $apiInstance->advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsCapsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -960,7 +970,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -969,7 +979,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -978,7 +988,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsDailyCapdo
 
-> advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap)
 
 Update Leads Daily Cap
 
@@ -1010,7 +1020,8 @@ $advertiserID = 56; // int |
 $leadsDailyCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap);
+    $result = $apiInstance->advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1027,7 +1038,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1036,7 +1047,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1045,7 +1056,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsDailyRevenueCapdo
 
-> advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap)
 
 Update Leads Daily Revenue Cap
 
@@ -1077,7 +1088,8 @@ $advertiserID = 56; // int |
 $leadsDailyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap);
+    $result = $apiInstance->advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1094,7 +1106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1103,7 +1115,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1112,7 +1124,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsMonthlyCapdo
 
-> advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap)
 
 Update Leads Monthly Cap
 
@@ -1144,7 +1156,8 @@ $advertiserID = 56; // int |
 $leadsMonthlyCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap);
+    $result = $apiInstance->advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1161,7 +1174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1170,7 +1183,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1179,7 +1192,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsMonthlyRevenueCapdo
 
-> advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap)
 
 Update Leads Monthly Revenue Cap
 
@@ -1211,7 +1224,8 @@ $advertiserID = 56; // int |
 $leadsMonthlyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap);
+    $result = $apiInstance->advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1228,7 +1242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1237,7 +1251,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1246,7 +1260,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsRevenueCapsdo
 
-> advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
 
 Update Leads Revenue Caps
 
@@ -1280,7 +1294,8 @@ $leadsWeeklyRevenueCap = 56; // int |
 $leadsMonthlyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+    $result = $apiInstance->advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsRevenueCapsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1299,7 +1314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1308,7 +1323,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1317,7 +1332,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsWeeklyCapdo
 
-> advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap)
 
 Update Leads Weekly Cap
 
@@ -1349,7 +1364,8 @@ $advertiserID = 56; // int |
 $leadsWeeklyCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap);
+    $result = $apiInstance->advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1366,7 +1382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1375,7 +1391,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1384,7 +1400,7 @@ void (empty response body)
 
 ## advertisersupdateLeadsWeeklyRevenueCapdo
 
-> advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap)
 
 Update Leads Weekly Revenue Cap
 
@@ -1416,7 +1432,8 @@ $advertiserID = 56; // int |
 $leadsWeeklyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap);
+    $result = $apiInstance->advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1433,7 +1450,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1442,7 +1459,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1451,7 +1468,7 @@ void (empty response body)
 
 ## advertisersupdatePortalSettingsdo
 
-> advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
+> \Leadspedia\Model\InlineResponse200 advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
 
 Update Portal Settings
 
@@ -1486,7 +1503,8 @@ $manageOffers = 'manageOffers_example'; // string |
 $updateBillingInfo = 'updateBillingInfo_example'; // string | 
 
 try {
-    $apiInstance->advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
+    $result = $apiInstance->advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1506,7 +1524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1515,7 +1533,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

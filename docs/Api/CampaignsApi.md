@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## campaignsassignTrackingNumberdo
 
-> campaignsassignTrackingNumberdo($campaignID, $number)
+> \Leadspedia\Model\InlineResponse200 campaignsassignTrackingNumberdo($campaignID, $number)
 
 Assign Tracking Number
 
@@ -58,7 +58,8 @@ $campaignID = 56; // int |
 $number = 'number_example'; // string | 
 
 try {
-    $apiInstance->campaignsassignTrackingNumberdo($campaignID, $number);
+    $result = $apiInstance->campaignsassignTrackingNumberdo($campaignID, $number);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsassignTrackingNumberdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -75,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -84,7 +85,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -93,7 +94,7 @@ void (empty response body)
 
 ## campaignschangeGoalsStaticThrottledo
 
-> campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
+> \Leadspedia\Model\InlineResponse200 campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
 
 Change Goals Static Throttle
 
@@ -125,7 +126,8 @@ $campaignID = 56; // int |
 $goalsStaticThrottle = 3.4; // float | 
 
 try {
-    $apiInstance->campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle);
+    $result = $apiInstance->campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeGoalsStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -142,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -151,7 +153,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -160,7 +162,7 @@ void (empty response body)
 
 ## campaignschangeModedo
 
-> campaignschangeModedo($campaignID, $mode)
+> \Leadspedia\Model\InlineResponse200 campaignschangeModedo($campaignID, $mode)
 
 Change Mode
 
@@ -192,7 +194,8 @@ $campaignID = 56; // int |
 $mode = 'mode_example'; // string | 
 
 try {
-    $apiInstance->campaignschangeModedo($campaignID, $mode);
+    $result = $apiInstance->campaignschangeModedo($campaignID, $mode);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -209,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -218,7 +221,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -227,7 +230,7 @@ void (empty response body)
 
 ## campaignschangeOfferStaticThrottledo
 
-> campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
+> \Leadspedia\Model\InlineResponse200 campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
 
 Change Offer Static Throttle
 
@@ -259,7 +262,8 @@ $campaignID = 56; // int |
 $offerStaticThrottle = 3.4; // float | 
 
 try {
-    $apiInstance->campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle);
+    $result = $apiInstance->campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeOfferStaticThrottledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -276,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -285,7 +289,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -294,7 +298,7 @@ void (empty response body)
 
 ## campaignschangeStatusdo
 
-> campaignschangeStatusdo($campaignID, $status)
+> \Leadspedia\Model\InlineResponse200 campaignschangeStatusdo($campaignID, $status)
 
 Change Status
 
@@ -326,7 +330,8 @@ $campaignID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->campaignschangeStatusdo($campaignID, $status);
+    $result = $apiInstance->campaignschangeStatusdo($campaignID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -343,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -352,7 +357,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -361,7 +366,7 @@ void (empty response body)
 
 ## campaignsdeletedo
 
-> campaignsdeletedo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsdeletedo($campaignID)
 
 Delete
 
@@ -392,7 +397,8 @@ $apiInstance = new Leadspedia\Api\CampaignsApi(
 $campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsdeletedo($campaignID);
+    $result = $apiInstance->campaignsdeletedo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -408,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -417,7 +423,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -426,7 +432,7 @@ void (empty response body)
 
 ## campaignsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
 
 Get All
 
@@ -488,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -506,7 +512,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetBasicInfodo
 
-> \Leadspedia\Model\InlineResponse200 campaignsgetBasicInfodo($campaignID)
+> \Leadspedia\Model\InlineResponse2001 campaignsgetBasicInfodo($campaignID)
 
 Get Basic Info
 
@@ -554,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -572,7 +578,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetGoalsStaticThrottledo
 
-> \Leadspedia\Model\InlineResponse200 campaignsgetGoalsStaticThrottledo($campaignID)
+> \Leadspedia\Model\InlineResponse2001 campaignsgetGoalsStaticThrottledo($campaignID)
 
 Get Goals Static Throtte
 
@@ -620,7 +626,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -638,7 +644,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetOfferStaticThrottledo
 
-> \Leadspedia\Model\InlineResponse200 campaignsgetOfferStaticThrottledo($campaignID)
+> \Leadspedia\Model\InlineResponse2001 campaignsgetOfferStaticThrottledo($campaignID)
 
 Get Offer Static Throtte
 
@@ -686,7 +692,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -704,7 +710,7 @@ Name | Type | Description  | Notes
 
 ## campaignsgetPostKeysdo
 
-> \Leadspedia\Model\InlineResponse200 campaignsgetPostKeysdo($campaignID)
+> \Leadspedia\Model\InlineResponse2001 campaignsgetPostKeysdo($campaignID)
 
 Get Post Keys
 
@@ -752,7 +758,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -770,7 +776,7 @@ Name | Type | Description  | Notes
 
 ## campaignsremoveExpirationDatedo
 
-> campaignsremoveExpirationDatedo($campaignID)
+> \Leadspedia\Model\InlineResponse200 campaignsremoveExpirationDatedo($campaignID)
 
 Remove Expiration Date
 
@@ -801,7 +807,8 @@ $apiInstance = new Leadspedia\Api\CampaignsApi(
 $campaignID = 56; // int | 
 
 try {
-    $apiInstance->campaignsremoveExpirationDatedo($campaignID);
+    $result = $apiInstance->campaignsremoveExpirationDatedo($campaignID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -817,7 +824,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -826,7 +833,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -835,7 +842,7 @@ void (empty response body)
 
 ## campaignsrenamedo
 
-> campaignsrenamedo($campaignID, $campaignName)
+> \Leadspedia\Model\InlineResponse200 campaignsrenamedo($campaignID, $campaignName)
 
 Rename
 
@@ -867,7 +874,8 @@ $campaignID = 56; // int |
 $campaignName = 'campaignName_example'; // string | 
 
 try {
-    $apiInstance->campaignsrenamedo($campaignID, $campaignName);
+    $result = $apiInstance->campaignsrenamedo($campaignID, $campaignName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -884,7 +892,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -893,7 +901,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -902,7 +910,7 @@ void (empty response body)
 
 ## campaignssetExpirationDatedo
 
-> campaignssetExpirationDatedo($campaignID, $expirationDate)
+> \Leadspedia\Model\InlineResponse200 campaignssetExpirationDatedo($campaignID, $expirationDate)
 
 Set Expiration Date
 
@@ -934,7 +942,8 @@ $campaignID = 56; // int |
 $expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->campaignssetExpirationDatedo($campaignID, $expirationDate);
+    $result = $apiInstance->campaignssetExpirationDatedo($campaignID, $expirationDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -951,7 +960,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -960,7 +969,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -969,7 +978,7 @@ void (empty response body)
 
 ## campaignsunassignTrackingNumberdo
 
-> campaignsunassignTrackingNumberdo($campaignID, $number)
+> \Leadspedia\Model\InlineResponse200 campaignsunassignTrackingNumberdo($campaignID, $number)
 
 Unassign Tracking Number
 
@@ -1001,7 +1010,8 @@ $campaignID = 56; // int |
 $number = 'number_example'; // string | 
 
 try {
-    $apiInstance->campaignsunassignTrackingNumberdo($campaignID, $number);
+    $result = $apiInstance->campaignsunassignTrackingNumberdo($campaignID, $number);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsunassignTrackingNumberdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1018,7 +1028,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1027,7 +1037,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1036,7 +1046,7 @@ void (empty response body)
 
 ## campaignsupdateBasicInfodo
 
-> campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID)
+> \Leadspedia\Model\InlineResponse200 campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID)
 
 Update Basic Info
 
@@ -1070,7 +1080,8 @@ $notes = 'notes_example'; // string |
 $alternativeID = 'alternativeID_example'; // string | 
 
 try {
-    $apiInstance->campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID);
+    $result = $apiInstance->campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1089,7 +1100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1098,7 +1109,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1107,7 +1118,7 @@ void (empty response body)
 
 ## campaignsupdateClicksRevenuedo
 
-> campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
+> \Leadspedia\Model\InlineResponse200 campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
 
 Update Clicks Revenue
 
@@ -1141,7 +1152,8 @@ $endDate = 'endDate_example'; // string |
 $revenue = 3.4; // float | 
 
 try {
-    $apiInstance->campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue);
+    $result = $apiInstance->campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsupdateClicksRevenuedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1160,7 +1172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1169,7 +1181,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## inboundCallsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
 
 Get All
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ## inboundCallsgetInProgressdo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
 
 Get Calls In Progress
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ## inboundCallsgetNumbersdo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetNumbersdo($search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetNumbersdo($search, $start, $limit)
 
 Get Numbers
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ## inboundCallsgetReturneddo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
 
 Get Returned Calls
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ## inboundCallsgetScrubbeddo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
 
 Get Scrubbed Calls
 
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ## inboundCallsgetTransferreddo
 
-> \Leadspedia\Model\InlineResponse200 inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
 
 Get Transferred Calls
 
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

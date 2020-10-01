@@ -53,7 +53,7 @@ Method | HTTP request | Description
 
 ## leadDistributionContractsaddFilterdo
 
-> leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles)
 
 Add Filter
 
@@ -89,7 +89,8 @@ $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime |
 $miles = 3.4; // float | 
 
 try {
-    $apiInstance->leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles);
+    $result = $apiInstance->leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsaddFilterdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -110,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -119,7 +120,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -128,7 +129,7 @@ void (empty response body)
 
 ## leadDistributionContractsaddToOfferdo
 
-> leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority)
 
 Add To Offer
 
@@ -161,7 +162,8 @@ $offerID = 56; // int |
 $priority = 1; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority);
+    $result = $apiInstance->leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsaddToOfferdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -179,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -188,7 +190,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -197,7 +199,7 @@ void (empty response body)
 
 ## leadDistributionContractsadjustCreditdo
 
-> leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
 
 Adjust Credit
 
@@ -236,7 +238,8 @@ $transactionFeePercentage = 3.4; // float |
 $transactionFeeAmount = 3.4; // float | 
 
 try {
-    $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    $result = $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -260,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -269,7 +272,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -278,7 +281,7 @@ void (empty response body)
 
 ## leadDistributionContractsassignEmailDeliveryMethoddo
 
-> leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo)
 
 Assign Email Delivery Method
 
@@ -311,7 +314,8 @@ $deliveryMethodID = 56; // int |
 $emailTo = 'emailTo_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo);
+    $result = $apiInstance->leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsassignEmailDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -329,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -338,7 +342,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -347,7 +351,7 @@ void (empty response body)
 
 ## leadDistributionContractsassignSMSDeliveryMethoddo
 
-> leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo)
 
 Assign SMS Delivery Method
 
@@ -380,7 +384,8 @@ $deliveryMethodID = 56; // int |
 $smsTo = 3.4; // float | 
 
 try {
-    $apiInstance->leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo);
+    $result = $apiInstance->leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsassignSMSDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -398,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -407,7 +412,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -416,7 +421,7 @@ void (empty response body)
 
 ## leadDistributionContractschangeModedo
 
-> leadDistributionContractschangeModedo($contractID, $mode)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractschangeModedo($contractID, $mode)
 
 Change Mode
 
@@ -448,7 +453,8 @@ $contractID = 56; // int |
 $mode = 'mode_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractschangeModedo($contractID, $mode);
+    $result = $apiInstance->leadDistributionContractschangeModedo($contractID, $mode);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -465,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -474,7 +480,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -483,7 +489,7 @@ void (empty response body)
 
 ## leadDistributionContractschangeStatusdo
 
-> leadDistributionContractschangeStatusdo($contractID, $status)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractschangeStatusdo($contractID, $status)
 
 Change Status
 
@@ -515,7 +521,8 @@ $contractID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractschangeStatusdo($contractID, $status);
+    $result = $apiInstance->leadDistributionContractschangeStatusdo($contractID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -532,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -541,7 +548,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -550,7 +557,7 @@ void (empty response body)
 
 ## leadDistributionContractscreateScheduledo
 
-> leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday)
 
 Create Schedule
 
@@ -594,7 +601,8 @@ $saturday = 'saturday_example'; // string |
 $sunday = 'sunday_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
+    $result = $apiInstance->leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreateScheduledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -623,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -632,7 +640,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -641,7 +649,7 @@ void (empty response body)
 
 ## leadDistributionContractscreatedo
 
-> leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice)
 
 Create
 
@@ -676,7 +684,8 @@ $contractName = 'contractName_example'; // string |
 $defaultPrice = 3.4; // float | 
 
 try {
-    $apiInstance->leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice);
+    $result = $apiInstance->leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -696,7 +705,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -705,7 +714,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -714,7 +723,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteAllDeliveryMethodsdo
 
-> leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID)
 
 Delete All Delivery Methods
 
@@ -745,7 +754,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID);
+    $result = $apiInstance->leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteAllDeliveryMethodsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -761,7 +771,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -770,7 +780,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -779,7 +789,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteAllSchedulesdo
 
-> leadDistributionContractsdeleteAllSchedulesdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteAllSchedulesdo($contractID)
 
 Delete All Schedules
 
@@ -810,7 +820,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteAllSchedulesdo($contractID);
+    $result = $apiInstance->leadDistributionContractsdeleteAllSchedulesdo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteAllSchedulesdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -826,7 +837,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -835,7 +846,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -844,7 +855,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteDeliveryMethoddo
 
-> leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID)
 
 Delete Delivery Method
 
@@ -875,7 +886,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $deliveryMethodsContractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID);
+    $result = $apiInstance->leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -891,7 +903,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -900,7 +912,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -909,7 +921,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteFilterdo
 
-> leadDistributionContractsdeleteFilterdo($filterID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteFilterdo($filterID)
 
 Delete Filter
 
@@ -940,7 +952,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $filterID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteFilterdo($filterID);
+    $result = $apiInstance->leadDistributionContractsdeleteFilterdo($filterID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteFilterdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -956,7 +969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -965,7 +978,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -974,7 +987,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteScheduledPausedo
 
-> leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID)
 
 Delete Scheduled Pause
 
@@ -1005,7 +1018,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $scheduledPauseID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID);
+    $result = $apiInstance->leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1021,7 +1035,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1030,7 +1044,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1039,7 +1053,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeleteScheduledo
 
-> leadDistributionContractsdeleteScheduledo($deliveryScheduleID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteScheduledo($deliveryScheduleID)
 
 Delete Schedule
 
@@ -1070,7 +1084,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $deliveryScheduleID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeleteScheduledo($deliveryScheduleID);
+    $result = $apiInstance->leadDistributionContractsdeleteScheduledo($deliveryScheduleID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteScheduledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1086,7 +1101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1095,7 +1110,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1104,7 +1119,7 @@ void (empty response body)
 
 ## leadDistributionContractsdeletedo
 
-> leadDistributionContractsdeletedo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeletedo($contractID)
 
 Delete
 
@@ -1135,7 +1150,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsdeletedo($contractID);
+    $result = $apiInstance->leadDistributionContractsdeletedo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1151,7 +1167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1160,7 +1176,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1169,7 +1185,7 @@ void (empty response body)
 
 ## leadDistributionContractsenableCreditdo
 
-> leadDistributionContractsenableCreditdo($contractID, $buyerLevel)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsenableCreditdo($contractID, $buyerLevel)
 
 Enable Credit
 
@@ -1201,7 +1217,8 @@ $contractID = 56; // int |
 $buyerLevel = 'buyerLevel_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsenableCreditdo($contractID, $buyerLevel);
+    $result = $apiInstance->leadDistributionContractsenableCreditdo($contractID, $buyerLevel);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1218,7 +1235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1227,7 +1244,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1236,7 +1253,7 @@ void (empty response body)
 
 ## leadDistributionContractsenableMultipleDeliveryMethodsdo
 
-> leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID)
 
 Enable Multiple Delivery Methods
 
@@ -1267,7 +1284,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID);
+    $result = $apiInstance->leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsenableMultipleDeliveryMethodsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1283,7 +1301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1292,7 +1310,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1301,7 +1319,7 @@ void (empty response body)
 
 ## leadDistributionContractsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
 
 Get All
 
@@ -1359,7 +1377,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1377,7 +1395,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetBasicInfodo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetBasicInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetBasicInfodo($contractID)
 
 Get Basic Info
 
@@ -1425,7 +1443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1443,7 +1461,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetDuplicatesSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetDuplicatesSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetDuplicatesSettingsdo($contractID)
 
 Get Duplicates Settings
 
@@ -1491,7 +1509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1509,7 +1527,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetFiltersdo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetFiltersdo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetFiltersdo($contractID, $start, $limit)
 
 Get Filters
 
@@ -1561,7 +1579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1579,7 +1597,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetLeadsCapInfodo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetLeadsCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetLeadsCapInfodo($contractID)
 
 Get Leads Cap Info
 
@@ -1627,7 +1645,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1645,7 +1663,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetLeadsSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetLeadsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetLeadsSettingsdo($contractID)
 
 Get Leads Settings
 
@@ -1693,7 +1711,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1711,7 +1729,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetPortalSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetPortalSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetPortalSettingsdo($contractID)
 
 Get Portal Settings
 
@@ -1759,7 +1777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1777,7 +1795,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetReturnsSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetReturnsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetReturnsSettingsdo($contractID)
 
 Get Returns Settings
 
@@ -1825,7 +1843,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1843,7 +1861,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetRevenueCapInfodo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetRevenueCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetRevenueCapInfodo($contractID)
 
 Get Revenue Cap Info
 
@@ -1891,7 +1909,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1909,7 +1927,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetScheduledPausedo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit)
 
 Get Scheduled Pause
 
@@ -1961,7 +1979,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1979,7 +1997,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsgetScheduledo
 
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsgetScheduledo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetScheduledo($contractID, $start, $limit)
 
 Get Schedule
 
@@ -2031,7 +2049,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -2049,7 +2067,7 @@ Name | Type | Description  | Notes
 
 ## leadDistributionContractsremoveExpirationDatedo
 
-> leadDistributionContractsremoveExpirationDatedo($contractID)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsremoveExpirationDatedo($contractID)
 
 Remove Expiration Date
 
@@ -2080,7 +2098,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsremoveExpirationDatedo($contractID);
+    $result = $apiInstance->leadDistributionContractsremoveExpirationDatedo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2096,7 +2115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2105,7 +2124,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2114,7 +2133,7 @@ void (empty response body)
 
 ## leadDistributionContractsrenamedo
 
-> leadDistributionContractsrenamedo($contractID, $contractName)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsrenamedo($contractID, $contractName)
 
 Rename
 
@@ -2146,7 +2165,8 @@ $contractID = 56; // int |
 $contractName = 'contractName_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsrenamedo($contractID, $contractName);
+    $result = $apiInstance->leadDistributionContractsrenamedo($contractID, $contractName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2163,7 +2183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2172,7 +2192,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2181,7 +2201,7 @@ void (empty response body)
 
 ## leadDistributionContractsschedulePausedo
 
-> leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
 
 Schedule Pause
 
@@ -2214,7 +2234,8 @@ $pauseDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime |
 $resumeDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
+    $result = $apiInstance->leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsschedulePausedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2232,7 +2253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2241,7 +2262,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2250,7 +2271,7 @@ void (empty response body)
 
 ## leadDistributionContractssetExpirationDatedo
 
-> leadDistributionContractssetExpirationDatedo($contractID, $expirationDate)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractssetExpirationDatedo($contractID, $expirationDate)
 
 Set Expiration Date
 
@@ -2282,7 +2303,8 @@ $contractID = 56; // int |
 $expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->leadDistributionContractssetExpirationDatedo($contractID, $expirationDate);
+    $result = $apiInstance->leadDistributionContractssetExpirationDatedo($contractID, $expirationDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2299,7 +2321,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2308,7 +2330,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2317,7 +2339,7 @@ void (empty response body)
 
 ## leadDistributionContractssetPricedo
 
-> leadDistributionContractssetPricedo($contractID, $price)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractssetPricedo($contractID, $price)
 
 Set Price
 
@@ -2349,7 +2371,8 @@ $contractID = 56; // int |
 $price = 3.4; // float | 
 
 try {
-    $apiInstance->leadDistributionContractssetPricedo($contractID, $price);
+    $result = $apiInstance->leadDistributionContractssetPricedo($contractID, $price);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractssetPricedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2366,7 +2389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2375,7 +2398,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2384,7 +2407,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateAutoRechargeSettingsdo
 
-> leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
 
 Update Auto Recharge Settings
 
@@ -2422,7 +2445,8 @@ $transactionFeeAmount = 3.4; // float |
 $generateInvoice = 'generateInvoice_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    $result = $apiInstance->leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2445,7 +2469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2454,7 +2478,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2463,7 +2487,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateBasicInfodo
 
-> leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes)
 
 Update Basic Info
 
@@ -2497,7 +2521,8 @@ $alternativeID = 'alternativeID_example'; // string |
 $notes = 'notes_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes);
+    $result = $apiInstance->leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2516,7 +2541,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2525,7 +2550,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2534,7 +2559,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateDistributionPrioritydo
 
-> leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority)
 
 Update Distribution Priority
 
@@ -2567,7 +2592,8 @@ $offerID = 56; // int |
 $priority = 1; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority);
+    $result = $apiInstance->leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateDistributionPrioritydo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2585,7 +2611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2594,7 +2620,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2603,7 +2629,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateDuplicatesSettingsdo
 
-> leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays)
 
 Update Duplicates Settings
 
@@ -2636,7 +2662,8 @@ $enableDuplicateCheck = 'enableDuplicateCheck_example'; // string |
 $numberOfDays = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays);
+    $result = $apiInstance->leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateDuplicatesSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2654,7 +2681,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2663,7 +2690,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2672,7 +2699,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateLeadsCapdo
 
-> leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap)
 
 Update Leads Cap
 
@@ -2707,7 +2734,8 @@ $weeklyLeadsCap = 56; // int |
 $monthlyLeadsCap = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap);
+    $result = $apiInstance->leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateLeadsCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2727,7 +2755,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2736,7 +2764,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2745,7 +2773,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateLeadsSettingsdo
 
-> leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads)
 
 Update Leads Settings
 
@@ -2781,7 +2809,8 @@ $timeLeadsPosts = 56; // int |
 $allowQueueLeads = 'allowQueueLeads_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads);
+    $result = $apiInstance->leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateLeadsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2802,7 +2831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2811,7 +2840,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2820,7 +2849,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdatePortalSettingsdo
 
-> leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps)
 
 Update Portal Settings
 
@@ -2859,7 +2888,8 @@ $allowUpdateSchedule = 'allowUpdateSchedule_example'; // string |
 $allowManageCaps = 'allowManageCaps_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps);
+    $result = $apiInstance->leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2883,7 +2913,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2892,7 +2922,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2901,7 +2931,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateReturnsSettingsdo
 
-> leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable)
 
 Update Returns Settings
 
@@ -2936,7 +2966,8 @@ $replaceReturns = 'replaceReturns_example'; // string |
 $replacementNonReturnable = 'replacementNonReturnable_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable);
+    $result = $apiInstance->leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2956,7 +2987,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2965,7 +2996,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2974,7 +3005,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateRevenueCapdo
 
-> leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
 
 Update Revenue Cap
 
@@ -3009,7 +3040,8 @@ $weeklyRevenueCap = 56; // int |
 $monthlyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+    $result = $apiInstance->leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -3029,7 +3061,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -3038,7 +3070,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -3047,7 +3079,7 @@ void (empty response body)
 
 ## leadDistributionContractsupdateScheduledo
 
-> leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type)
+> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type)
 
 Update Schedule
 
@@ -3084,7 +3116,8 @@ $endTime = 'endTime_example'; // string |
 $type = 'type_example'; // string | 
 
 try {
-    $apiInstance->leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type);
+    $result = $apiInstance->leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateScheduledo: ', $e->getMessage(), PHP_EOL;
 }
@@ -3106,7 +3139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -3115,7 +3148,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

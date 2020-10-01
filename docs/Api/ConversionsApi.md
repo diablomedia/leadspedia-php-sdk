@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## conversionsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit)
 
 Get All
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

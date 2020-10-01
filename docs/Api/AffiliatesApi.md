@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## affiliateschangeStatusdo
 
-> affiliateschangeStatusdo($affiliateID, $status)
+> \Leadspedia\Model\InlineResponse200 affiliateschangeStatusdo($affiliateID, $status)
 
 Change Status
 
@@ -49,7 +49,8 @@ $affiliateID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->affiliateschangeStatusdo($affiliateID, $status);
+    $result = $apiInstance->affiliateschangeStatusdo($affiliateID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliateschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -75,7 +76,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -84,7 +85,7 @@ void (empty response body)
 
 ## affiliatescreatedo
 
-> affiliatescreatedo($affiliateName, $accountManagerID, $status)
+> \Leadspedia\Model\InlineResponse200 affiliatescreatedo($affiliateName, $accountManagerID, $status)
 
 Create
 
@@ -117,7 +118,8 @@ $accountManagerID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->affiliatescreatedo($affiliateName, $accountManagerID, $status);
+    $result = $apiInstance->affiliatescreatedo($affiliateName, $accountManagerID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatescreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -135,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -144,7 +146,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -153,7 +155,7 @@ void (empty response body)
 
 ## affiliatesdeletedo
 
-> affiliatesdeletedo($affiliateID)
+> \Leadspedia\Model\InlineResponse200 affiliatesdeletedo($affiliateID)
 
 Delete
 
@@ -184,7 +186,8 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
 $affiliateID = 56; // int | 
 
 try {
-    $apiInstance->affiliatesdeletedo($affiliateID);
+    $result = $apiInstance->affiliatesdeletedo($affiliateID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -200,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -209,7 +212,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -218,7 +221,7 @@ void (empty response body)
 
 ## affiliatesgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
 
 Get All
 
@@ -276,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -294,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## affiliatesgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 affiliatesgetInfodo($affiliateID)
+> \Leadspedia\Model\InlineResponse2001 affiliatesgetInfodo($affiliateID)
 
 Get Info
 
@@ -342,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -360,7 +363,7 @@ Name | Type | Description  | Notes
 
 ## affiliatessearchdo
 
-> \Leadspedia\Model\InlineResponse200 affiliatessearchdo($search, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 affiliatessearchdo($search, $start, $limit)
 
 Search
 
@@ -412,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -430,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## affiliatesupdateBillingdo
 
-> affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
+> \Leadspedia\Model\InlineResponse200 affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
 
 Update Billing
 
@@ -465,7 +468,8 @@ $taxClass = 'taxClass_example'; // string |
 $taxDocReceived = 'taxDocReceived_example'; // string | 
 
 try {
-    $apiInstance->affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
+    $result = $apiInstance->affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -485,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -494,7 +498,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -503,7 +507,7 @@ void (empty response body)
 
 ## affiliatesupdateInfodo
 
-> affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
+> \Leadspedia\Model\InlineResponse200 affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
 
 Update Info
 
@@ -546,7 +550,8 @@ $reportingUsername = 'reportingUsername_example'; // string |
 $reportingPassword = 'reportingPassword_example'; // string | 
 
 try {
-    $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+    $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -574,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -583,7 +588,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## goalsReportsgetGoalsByCampaignsReportdo
 
-> \Leadspedia\Model\InlineResponse200 goalsReportsgetGoalsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 goalsReportsgetGoalsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Goals By Campaigns Report
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## goalsReportsgetGoalsBySourceReportdo
 
-> \Leadspedia\Model\InlineResponse200 goalsReportsgetGoalsBySourceReportdo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 goalsReportsgetGoalsBySourceReportdo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Goals By Source Report
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## goalsReportsgetGoalsBySubAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 goalsReportsgetGoalsBySubAffiliatesReportdo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 goalsReportsgetGoalsBySubAffiliatesReportdo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Goals By Sub Affiliates Report
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

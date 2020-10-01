@@ -42,7 +42,7 @@ Method | HTTP request | Description
 
 ## callRoutingContractsadjustCreditdo
 
-> callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
 
 Adjust Credit
 
@@ -81,7 +81,8 @@ $transactionFeePercentage = 3.4; // float |
 $transactionFeeAmount = 3.4; // float | 
 
 try {
-    $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    $result = $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -105,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -114,7 +115,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -123,7 +124,7 @@ void (empty response body)
 
 ## callRoutingContractschangeModedo
 
-> callRoutingContractschangeModedo($contractID, $mode)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractschangeModedo($contractID, $mode)
 
 Change Mode
 
@@ -155,7 +156,8 @@ $contractID = 56; // int |
 $mode = 'mode_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractschangeModedo($contractID, $mode);
+    $result = $apiInstance->callRoutingContractschangeModedo($contractID, $mode);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -172,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -181,7 +183,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -190,7 +192,7 @@ void (empty response body)
 
 ## callRoutingContractschangeStatusdo
 
-> callRoutingContractschangeStatusdo($contractID, $status)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractschangeStatusdo($contractID, $status)
 
 Change Status
 
@@ -222,7 +224,8 @@ $contractID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractschangeStatusdo($contractID, $status);
+    $result = $apiInstance->callRoutingContractschangeStatusdo($contractID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -239,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -248,7 +251,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -257,7 +260,7 @@ void (empty response body)
 
 ## callRoutingContractscreatedo
 
-> callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice)
 
 Create
 
@@ -291,7 +294,8 @@ $contractName = 'contractName_example'; // string |
 $defaultPrice = 3.4; // float | 
 
 try {
-    $apiInstance->callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice);
+    $result = $apiInstance->callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -310,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -319,7 +323,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -328,7 +332,7 @@ void (empty response body)
 
 ## callRoutingContractsdeleteScheduledPausedo
 
-> callRoutingContractsdeleteScheduledPausedo($scheduledPauseID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsdeleteScheduledPausedo($scheduledPauseID)
 
 Delete Scheduled Pause
 
@@ -359,7 +363,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 $scheduledPauseID = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsdeleteScheduledPausedo($scheduledPauseID);
+    $result = $apiInstance->callRoutingContractsdeleteScheduledPausedo($scheduledPauseID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsdeleteScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -375,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -384,7 +389,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -393,7 +398,7 @@ void (empty response body)
 
 ## callRoutingContractsdeletedo
 
-> callRoutingContractsdeletedo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsdeletedo($contractID)
 
 Delete
 
@@ -424,7 +429,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsdeletedo($contractID);
+    $result = $apiInstance->callRoutingContractsdeletedo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -440,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -449,7 +455,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -458,7 +464,7 @@ void (empty response body)
 
 ## callRoutingContractsenableCreditdo
 
-> callRoutingContractsenableCreditdo($contractID, $buyerLevel)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsenableCreditdo($contractID, $buyerLevel)
 
 Enable Credit
 
@@ -490,7 +496,8 @@ $contractID = 56; // int |
 $buyerLevel = 'buyerLevel_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsenableCreditdo($contractID, $buyerLevel);
+    $result = $apiInstance->callRoutingContractsenableCreditdo($contractID, $buyerLevel);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -507,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -516,7 +523,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -525,7 +532,7 @@ void (empty response body)
 
 ## callRoutingContractsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
 
 Get All
 
@@ -583,7 +590,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -601,7 +608,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetBasicInfodo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetBasicInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetBasicInfodo($contractID)
 
 Get Basic Info
 
@@ -649,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -667,7 +674,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetBillableTransfersCapInfodo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetBillableTransfersCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetBillableTransfersCapInfodo($contractID)
 
 Get Billable Transfers Cap Info
 
@@ -715,7 +722,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -733,7 +740,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetPortalSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetPortalSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetPortalSettingsdo($contractID)
 
 Get Portal Settings
 
@@ -781,7 +788,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -799,7 +806,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetRepeatCallsSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetRepeatCallsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetRepeatCallsSettingsdo($contractID)
 
 Get Repeat Calls Settings
 
@@ -847,7 +854,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -865,7 +872,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetReturnsSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetReturnsSettingsdo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetReturnsSettingsdo($contractID)
 
 Get Returns Settings
 
@@ -913,7 +920,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -931,7 +938,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetRevenueCapInfodo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetRevenueCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetRevenueCapInfodo($contractID)
 
 Get Revenue Cap Info
 
@@ -979,7 +986,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -997,7 +1004,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetScheduledPausedo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetScheduledPausedo($contractID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetScheduledPausedo($contractID, $start, $limit)
 
 Get Scheduled Pause
 
@@ -1049,7 +1056,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1067,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsgetTransfersCapInfodo
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsgetTransfersCapInfodo($contractID)
+> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetTransfersCapInfodo($contractID)
 
 Get Transfers Cap Info
 
@@ -1115,7 +1122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1133,7 +1140,7 @@ Name | Type | Description  | Notes
 
 ## callRoutingContractsremoveExpirationDatedo
 
-> callRoutingContractsremoveExpirationDatedo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsremoveExpirationDatedo($contractID)
 
 Remove Expiration Date
 
@@ -1164,7 +1171,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsremoveExpirationDatedo($contractID);
+    $result = $apiInstance->callRoutingContractsremoveExpirationDatedo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1180,7 +1188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1189,7 +1197,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1198,7 +1206,7 @@ void (empty response body)
 
 ## callRoutingContractsremoveWhisperMessagedo
 
-> callRoutingContractsremoveWhisperMessagedo($contractID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsremoveWhisperMessagedo($contractID)
 
 Remove Whisper Message
 
@@ -1229,7 +1237,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsremoveWhisperMessagedo($contractID);
+    $result = $apiInstance->callRoutingContractsremoveWhisperMessagedo($contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsremoveWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1245,7 +1254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1254,7 +1263,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1263,7 +1272,7 @@ void (empty response body)
 
 ## callRoutingContractsrenamedo
 
-> callRoutingContractsrenamedo($contractID, $contractName)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsrenamedo($contractID, $contractName)
 
 Rename
 
@@ -1295,7 +1304,8 @@ $contractID = 56; // int |
 $contractName = 'contractName_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsrenamedo($contractID, $contractName);
+    $result = $apiInstance->callRoutingContractsrenamedo($contractID, $contractName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1312,7 +1322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1321,7 +1331,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1330,7 +1340,7 @@ void (empty response body)
 
 ## callRoutingContractsschedulePausedo
 
-> callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
 
 Schedule Pause
 
@@ -1363,7 +1373,8 @@ $pauseDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime |
 $resumeDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
+    $result = $apiInstance->callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsschedulePausedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1381,7 +1392,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1390,7 +1401,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1399,7 +1410,7 @@ void (empty response body)
 
 ## callRoutingContractssetAudioWhisperMessagedo
 
-> callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID)
 
 Set Audio Whisper Message
 
@@ -1431,7 +1442,8 @@ $contractID = 'contractID_example'; // string |
 $audioID = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID);
+    $result = $apiInstance->callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetAudioWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1448,7 +1460,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1457,7 +1469,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1466,7 +1478,7 @@ void (empty response body)
 
 ## callRoutingContractssetExpirationDatedo
 
-> callRoutingContractssetExpirationDatedo($contractID, $expirationDate)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractssetExpirationDatedo($contractID, $expirationDate)
 
 Set Expiration Date
 
@@ -1498,7 +1510,8 @@ $contractID = 56; // int |
 $expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->callRoutingContractssetExpirationDatedo($contractID, $expirationDate);
+    $result = $apiInstance->callRoutingContractssetExpirationDatedo($contractID, $expirationDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1515,7 +1528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1524,7 +1537,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1533,7 +1546,7 @@ void (empty response body)
 
 ## callRoutingContractssetTextToSpeechWhisperMessagedo
 
-> callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message)
 
 Set Text-To-Speech Whisper Message
 
@@ -1565,7 +1578,8 @@ $contractID = 'contractID_example'; // string |
 $message = 'message_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message);
+    $result = $apiInstance->callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetTextToSpeechWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1582,7 +1596,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1591,7 +1605,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1600,7 +1614,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateAutoRechargeSettingsdo
 
-> callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
 
 Update Auto Recharge Settings
 
@@ -1638,7 +1652,8 @@ $transactionFeeAmount = 3.4; // float |
 $generateInvoice = 'generateInvoice_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    $result = $apiInstance->callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1661,7 +1676,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1670,7 +1685,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1679,7 +1694,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateBasicInfodo
 
-> callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes)
 
 Update Basic Info
 
@@ -1714,7 +1729,8 @@ $alternativeID = 'alternativeID_example'; // string |
 $notes = 'notes_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes);
+    $result = $apiInstance->callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1734,7 +1750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1743,7 +1759,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1752,7 +1768,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateBillableTransfersCapdo
 
-> callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap)
 
 Update Billable Transfers Cap
 
@@ -1787,7 +1803,8 @@ $weeklyBillableCap = 56; // int |
 $monthlyBillableCap = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
+    $result = $apiInstance->callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateBillableTransfersCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1807,7 +1824,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1816,7 +1833,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1825,7 +1842,7 @@ void (empty response body)
 
 ## callRoutingContractsupdatePortalSettingsdo
 
-> callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID)
 
 Update Portal Settings
 
@@ -1865,7 +1882,8 @@ $callRecordings = 'callRecordings_example'; // string |
 $hideCallerID = 'hideCallerID_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
+    $result = $apiInstance->callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1890,7 +1908,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1899,7 +1917,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1908,7 +1926,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateRepeatCallsSettingsdo
 
-> callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable)
 
 Update Repeat Calls Settings
 
@@ -1942,7 +1960,8 @@ $transferRepeat = 'transferRepeat_example'; // string |
 $repeatBillable = 'repeatBillable_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
+    $result = $apiInstance->callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRepeatCallsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1961,7 +1980,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1970,7 +1989,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1979,7 +1998,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateReturnsSettingsdo
 
-> callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns)
 
 Update Returns Settings
 
@@ -2012,7 +2031,8 @@ $allowReturns = 'allowReturns_example'; // string |
 $autoApproveReturns = 'autoApproveReturns_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns);
+    $result = $apiInstance->callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2030,7 +2050,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2039,7 +2059,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2048,7 +2068,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateRevenueCapdo
 
-> callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
 
 Update Revenue Cap
 
@@ -2083,7 +2103,8 @@ $weeklyRevenueCap = 56; // int |
 $monthlyRevenueCap = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+    $result = $apiInstance->callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2103,7 +2124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2112,7 +2133,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2121,7 +2142,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateRevenueModeldo
 
-> callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration)
 
 Update Revenue Model
 
@@ -2155,7 +2176,8 @@ $price = 3.4; // float |
 $duration = 'duration_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration);
+    $result = $apiInstance->callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRevenueModeldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2174,7 +2196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2183,7 +2205,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2192,7 +2214,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateTransferNumberdo
 
-> callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber)
 
 Update Transfer Number
 
@@ -2224,7 +2246,8 @@ $contractID = 56; // int |
 $transferNumber = 'transferNumber_example'; // string | 
 
 try {
-    $apiInstance->callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber);
+    $result = $apiInstance->callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateTransferNumberdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2241,7 +2264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2250,7 +2273,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -2259,7 +2282,7 @@ void (empty response body)
 
 ## callRoutingContractsupdateTransfersCapdo
 
-> callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap)
+> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap)
 
 Update Transfers Cap
 
@@ -2294,7 +2317,8 @@ $weeklyTransfersCap = 56; // int |
 $monthlyTransfersCap = 56; // int | 
 
 try {
-    $apiInstance->callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
+    $result = $apiInstance->callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateTransfersCapdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2314,7 +2338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -2323,7 +2347,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

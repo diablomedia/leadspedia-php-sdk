@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 ## leadsapproveReturndo
 
-> leadsapproveReturndo($leadID, $contractID)
+> \Leadspedia\Model\InlineResponse200 leadsapproveReturndo($leadID, $contractID)
 
 Approve Return
 
@@ -61,7 +61,8 @@ $leadID = 'leadID_example'; // string |
 $contractID = 56; // int | 
 
 try {
-    $apiInstance->leadsapproveReturndo($leadID, $contractID);
+    $result = $apiInstance->leadsapproveReturndo($leadID, $contractID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsapproveReturndo: ', $e->getMessage(), PHP_EOL;
 }
@@ -78,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -87,7 +88,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -96,7 +97,7 @@ void (empty response body)
 
 ## leadsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
 
 Get All
 
@@ -160,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -178,7 +179,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetDelivereddo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
 
 Get Delivered
 
@@ -246,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -264,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetLeadDatado
 
-> \Leadspedia\Model\InlineResponse200 leadsgetLeadDatado($leadID)
+> \Leadspedia\Model\InlineResponse2001 leadsgetLeadDatado($leadID)
 
 Get Lead Data
 
@@ -312,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -330,7 +331,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetLeadInfodo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetLeadInfodo($leadID)
+> \Leadspedia\Model\InlineResponse2001 leadsgetLeadInfodo($leadID)
 
 Get Lead Info
 
@@ -378,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -396,7 +397,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetQueuedo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Queue
 
@@ -456,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -474,7 +475,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetReturnsdo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
 
 Get Returns
 
@@ -542,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -560,7 +561,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetReviewdo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
 
 Get Review
 
@@ -618,7 +619,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -636,7 +637,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetScrubbeddo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Scrubbed
 
@@ -696,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -714,7 +715,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetSolddo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
 
 Get Sold
 
@@ -782,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -800,7 +801,7 @@ Name | Type | Description  | Notes
 
 ## leadsgetTrashdo
 
-> \Leadspedia\Model\InlineResponse200 leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
 
 Get Trash
 
@@ -862,7 +863,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -880,7 +881,7 @@ Name | Type | Description  | Notes
 
 ## leadsrejectReturndo
 
-> leadsrejectReturndo($leadID, $contractID, $rejectReasonID)
+> \Leadspedia\Model\InlineResponse200 leadsrejectReturndo($leadID, $contractID, $rejectReasonID)
 
 Reject Return
 
@@ -913,7 +914,8 @@ $contractID = 56; // int |
 $rejectReasonID = 56; // int | 
 
 try {
-    $apiInstance->leadsrejectReturndo($leadID, $contractID, $rejectReasonID);
+    $result = $apiInstance->leadsrejectReturndo($leadID, $contractID, $rejectReasonID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsrejectReturndo: ', $e->getMessage(), PHP_EOL;
 }
@@ -931,7 +933,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -940,7 +942,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -949,7 +951,7 @@ void (empty response body)
 
 ## leadsrequestReturndo
 
-> leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes)
+> \Leadspedia\Model\InlineResponse200 leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes)
 
 Request Return
 
@@ -983,7 +985,8 @@ $returnReasonID = 56; // int |
 $returnNotes = 'returnNotes_example'; // string | 
 
 try {
-    $apiInstance->leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes);
+    $result = $apiInstance->leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsrequestReturndo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1002,7 +1005,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1011,7 +1014,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1020,7 +1023,7 @@ void (empty response body)
 
 ## leadsreturnLeadFromAllContractsdo
 
-> leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns)
+> \Leadspedia\Model\InlineResponse200 leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns)
 
 Return Lead From All Contracts
 
@@ -1054,7 +1057,8 @@ $scrub = 'scrub_example'; // string |
 $replaceReturns = 'replaceReturns_example'; // string | 
 
 try {
-    $apiInstance->leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns);
+    $result = $apiInstance->leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeadFromAllContractsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1073,7 +1077,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1082,7 +1086,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1091,7 +1095,7 @@ void (empty response body)
 
 ## leadsreturnLeaddo
 
-> leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns)
+> \Leadspedia\Model\InlineResponse200 leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns)
 
 Return Lead
 
@@ -1126,7 +1130,8 @@ $scrub = 'scrub_example'; // string |
 $replaceReturns = 'replaceReturns_example'; // string | 
 
 try {
-    $apiInstance->leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
+    $result = $apiInstance->leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeaddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1146,7 +1151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1155,7 +1160,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1164,7 +1169,7 @@ void (empty response body)
 
 ## leadsreviewApprovedo
 
-> leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason)
+> \Leadspedia\Model\InlineResponse200 leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason)
 
 Review Approve
 
@@ -1197,7 +1202,8 @@ $leadAcceptReasonID = 56; // int |
 $leadAcceptReason = 'leadAcceptReason_example'; // string | 
 
 try {
-    $apiInstance->leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason);
+    $result = $apiInstance->leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreviewApprovedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1215,7 +1221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1224,7 +1230,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1233,7 +1239,7 @@ void (empty response body)
 
 ## leadsreviewRejectdo
 
-> leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason)
+> \Leadspedia\Model\InlineResponse200 leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason)
 
 Review Reject
 
@@ -1266,7 +1272,8 @@ $leadRejectReasonID = 56; // int |
 $leadRejectReason = 'leadRejectReason_example'; // string | 
 
 try {
-    $apiInstance->leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason);
+    $result = $apiInstance->leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreviewRejectdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1284,7 +1291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1293,7 +1300,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1302,7 +1309,7 @@ void (empty response body)
 
 ## leadsscrubLeaddo
 
-> leadsscrubLeaddo($leadID, $scrubReasonID)
+> \Leadspedia\Model\InlineResponse200 leadsscrubLeaddo($leadID, $scrubReasonID)
 
 Scrub Lead
 
@@ -1334,7 +1341,8 @@ $leadID = 'leadID_example'; // string |
 $scrubReasonID = 56; // int | 
 
 try {
-    $apiInstance->leadsscrubLeaddo($leadID, $scrubReasonID);
+    $result = $apiInstance->leadsscrubLeaddo($leadID, $scrubReasonID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsscrubLeaddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1351,7 +1359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1360,7 +1368,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1369,7 +1377,7 @@ void (empty response body)
 
 ## leadsunreturnLeaddo
 
-> leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID)
+> \Leadspedia\Model\InlineResponse200 leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID)
 
 Unreturn Lead
 
@@ -1402,7 +1410,8 @@ $contractID = 56; // int |
 $rejectReasonID = 56; // int | 
 
 try {
-    $apiInstance->leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID);
+    $result = $apiInstance->leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsunreturnLeaddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1420,7 +1429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1429,7 +1438,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1438,7 +1447,7 @@ void (empty response body)
 
 ## leadsupdateLeaddo
 
-> leadsupdateLeaddo($leadID)
+> \Leadspedia\Model\InlineResponse200 leadsupdateLeaddo($leadID)
 
 Update Lead
 
@@ -1469,7 +1478,8 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
 $leadID = 'leadID_example'; // string | 
 
 try {
-    $apiInstance->leadsupdateLeaddo($leadID);
+    $result = $apiInstance->leadsupdateLeaddo($leadID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsupdateLeaddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1485,7 +1495,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1494,7 +1504,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

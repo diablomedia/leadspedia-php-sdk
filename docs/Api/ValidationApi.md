@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## validationvalidateZipCodedo
 
-> validationvalidateZipCodedo($apiKey, $apiSecret, $zipCode)
+> \Leadspedia\Model\InlineResponse200 validationvalidateZipCodedo($apiKey, $apiSecret, $zipCode)
 
 Validate Zip Code
 
@@ -43,7 +43,8 @@ $apiSecret = 'apiSecret_example'; // string |
 $zipCode = 'zipCode_example'; // string | 
 
 try {
-    $apiInstance->validationvalidateZipCodedo($apiKey, $apiSecret, $zipCode);
+    $result = $apiInstance->validationvalidateZipCodedo($apiKey, $apiSecret, $zipCode);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ValidationApi->validationvalidateZipCodedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -70,7 +71,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

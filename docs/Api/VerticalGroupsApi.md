@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## verticalGroupscreatedo
 
-> verticalGroupscreatedo($groupName)
+> \Leadspedia\Model\InlineResponse200 verticalGroupscreatedo($groupName)
 
 Create
 
@@ -45,7 +45,8 @@ $apiInstance = new Leadspedia\Api\VerticalGroupsApi(
 $groupName = 'groupName_example'; // string | 
 
 try {
-    $apiInstance->verticalGroupscreatedo($groupName);
+    $result = $apiInstance->verticalGroupscreatedo($groupName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalGroupsApi->verticalGroupscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -70,7 +71,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -79,7 +80,7 @@ void (empty response body)
 
 ## verticalGroupsdeletedo
 
-> verticalGroupsdeletedo($groupID)
+> \Leadspedia\Model\InlineResponse200 verticalGroupsdeletedo($groupID)
 
 Delete
 
@@ -110,7 +111,8 @@ $apiInstance = new Leadspedia\Api\VerticalGroupsApi(
 $groupID = 56; // int | 
 
 try {
-    $apiInstance->verticalGroupsdeletedo($groupID);
+    $result = $apiInstance->verticalGroupsdeletedo($groupID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalGroupsApi->verticalGroupsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -126,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -135,7 +137,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -144,7 +146,7 @@ void (empty response body)
 
 ## verticalGroupsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 verticalGroupsgetAlldo($start, $limit)
+> \Leadspedia\Model\InlineResponse2001 verticalGroupsgetAlldo($start, $limit)
 
 Get All
 
@@ -194,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -212,7 +214,7 @@ Name | Type | Description  | Notes
 
 ## verticalGroupsgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 verticalGroupsgetInfodo($groupID)
+> \Leadspedia\Model\InlineResponse2001 verticalGroupsgetInfodo($groupID)
 
 Get Info
 
@@ -260,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -278,7 +280,7 @@ Name | Type | Description  | Notes
 
 ## verticalGroupsupdatedo
 
-> verticalGroupsupdatedo($groupID, $groupName)
+> \Leadspedia\Model\InlineResponse200 verticalGroupsupdatedo($groupID, $groupName)
 
 Update
 
@@ -310,7 +312,8 @@ $groupID = 56; // int |
 $groupName = 'groupName_example'; // string | 
 
 try {
-    $apiInstance->verticalGroupsupdatedo($groupID, $groupName);
+    $result = $apiInstance->verticalGroupsupdatedo($groupID, $groupName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalGroupsApi->verticalGroupsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -327,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -336,7 +339,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
