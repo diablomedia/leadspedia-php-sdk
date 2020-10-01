@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## callTrackingReportsgetCallRoutingReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Call Routing Report
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByAdvertisersDailyReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
 
 Get Calls By Advertisers Daily Report
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByAdvertisersReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
 
 Get Calls By Advertisers Report
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByAffiliatesDailyReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
 
 Get Calls By Affiliates Daily Report
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
 
 Get Calls By Affiliates Report
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByCampaignsReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Calls By Campaigns Report
 
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByContractsReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Calls By Contracts Report
 
@@ -545,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByOffersReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
 
 Get Calls By Offers Report
 
@@ -619,7 +619,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsBySubAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Calls By Sub Affiliates Report
 
@@ -697,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -715,7 +715,7 @@ Name | Type | Description  | Notes
 
 ## callTrackingReportsgetCallsByVerticalsReportdo
 
-> \Leadspedia\Model\InlineResponse200 callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
 
 Get Calls By Verticals Report
 
@@ -767,7 +767,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

@@ -132,10 +132,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null): void
+    public function callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
     {
-        $this->callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+        list($response) = $this->callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+        return $response;
     }
 
     /**
@@ -155,7 +157,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
     {
@@ -189,9 +191,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -245,14 +283,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -386,11 +435,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -463,10 +512,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractschangeModedo($contractID, $mode): void
+    public function callRoutingContractschangeModedo($contractID, $mode)
     {
-        $this->callRoutingContractschangeModedoWithHttpInfo($contractID, $mode);
+        list($response) = $this->callRoutingContractschangeModedoWithHttpInfo($contractID, $mode);
+        return $response;
     }
 
     /**
@@ -479,7 +530,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractschangeModedoWithHttpInfo($contractID, $mode)
     {
@@ -513,9 +564,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -555,14 +642,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractschangeModedoAsyncWithHttpInfo($contractID, $mode)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractschangeModedoRequest($contractID, $mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -634,11 +732,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -711,10 +809,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractschangeStatusdo($contractID, $status): void
+    public function callRoutingContractschangeStatusdo($contractID, $status)
     {
-        $this->callRoutingContractschangeStatusdoWithHttpInfo($contractID, $status);
+        list($response) = $this->callRoutingContractschangeStatusdoWithHttpInfo($contractID, $status);
+        return $response;
     }
 
     /**
@@ -727,7 +827,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractschangeStatusdoWithHttpInfo($contractID, $status)
     {
@@ -761,9 +861,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -803,14 +939,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractschangeStatusdoAsyncWithHttpInfo($contractID, $status)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractschangeStatusdoRequest($contractID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -882,11 +1029,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -961,10 +1108,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice): void
+    public function callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice)
     {
-        $this->callRoutingContractscreatedoWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice);
+        list($response) = $this->callRoutingContractscreatedoWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice);
+        return $response;
     }
 
     /**
@@ -979,7 +1128,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractscreatedoWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice)
     {
@@ -1013,9 +1162,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1059,14 +1244,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractscreatedoAsyncWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractscreatedoRequest($verticalID, $advertiserID, $contractName, $defaultPrice);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1166,11 +1362,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1242,10 +1438,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsdeleteScheduledPausedo($scheduledPauseID): void
+    public function callRoutingContractsdeleteScheduledPausedo($scheduledPauseID)
     {
-        $this->callRoutingContractsdeleteScheduledPausedoWithHttpInfo($scheduledPauseID);
+        list($response) = $this->callRoutingContractsdeleteScheduledPausedoWithHttpInfo($scheduledPauseID);
+        return $response;
     }
 
     /**
@@ -1257,7 +1455,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsdeleteScheduledPausedoWithHttpInfo($scheduledPauseID)
     {
@@ -1291,9 +1489,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1331,14 +1565,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsdeleteScheduledPausedoAsyncWithHttpInfo($scheduledPauseID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsdeleteScheduledPausedoRequest($scheduledPauseID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1396,11 +1641,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1472,10 +1717,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsdeletedo($contractID): void
+    public function callRoutingContractsdeletedo($contractID)
     {
-        $this->callRoutingContractsdeletedoWithHttpInfo($contractID);
+        list($response) = $this->callRoutingContractsdeletedoWithHttpInfo($contractID);
+        return $response;
     }
 
     /**
@@ -1487,7 +1734,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsdeletedoWithHttpInfo($contractID)
     {
@@ -1521,9 +1768,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1561,14 +1844,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsdeletedoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsdeletedoRequest($contractID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1626,11 +1920,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1703,10 +1997,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsenableCreditdo($contractID, $buyerLevel): void
+    public function callRoutingContractsenableCreditdo($contractID, $buyerLevel)
     {
-        $this->callRoutingContractsenableCreditdoWithHttpInfo($contractID, $buyerLevel);
+        list($response) = $this->callRoutingContractsenableCreditdoWithHttpInfo($contractID, $buyerLevel);
+        return $response;
     }
 
     /**
@@ -1719,7 +2015,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsenableCreditdoWithHttpInfo($contractID, $buyerLevel)
     {
@@ -1753,9 +2049,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1795,14 +2127,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsenableCreditdoAsyncWithHttpInfo($contractID, $buyerLevel)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsenableCreditdoRequest($contractID, $buyerLevel);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1874,11 +2217,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1955,7 +2298,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetAlldo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100)
     {
@@ -1977,7 +2320,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetAlldoWithHttpInfo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100)
     {
@@ -2014,20 +2357,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2045,7 +2388,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2097,7 +2440,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetAlldoAsyncWithHttpInfo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetAlldoRequest($advertiserID, $contractID, $verticalID, $status, $start, $limit);
 
         return $this->client
@@ -2282,7 +2625,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetBasicInfodo($contractID)
     {
@@ -2299,7 +2642,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetBasicInfodoWithHttpInfo($contractID)
     {
@@ -2336,20 +2679,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2367,7 +2710,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2409,7 +2752,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetBasicInfodoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetBasicInfodoRequest($contractID);
 
         return $this->client
@@ -2561,7 +2904,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetBillableTransfersCapInfodo($contractID)
     {
@@ -2578,7 +2921,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetBillableTransfersCapInfodoWithHttpInfo($contractID)
     {
@@ -2615,20 +2958,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2646,7 +2989,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2688,7 +3031,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetBillableTransfersCapInfodoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetBillableTransfersCapInfodoRequest($contractID);
 
         return $this->client
@@ -2840,7 +3183,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetPortalSettingsdo($contractID)
     {
@@ -2857,7 +3200,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetPortalSettingsdoWithHttpInfo($contractID)
     {
@@ -2894,20 +3237,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2925,7 +3268,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2967,7 +3310,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetPortalSettingsdoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetPortalSettingsdoRequest($contractID);
 
         return $this->client
@@ -3119,7 +3462,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetRepeatCallsSettingsdo($contractID)
     {
@@ -3136,7 +3479,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetRepeatCallsSettingsdoWithHttpInfo($contractID)
     {
@@ -3173,20 +3516,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3204,7 +3547,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3246,7 +3589,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetRepeatCallsSettingsdoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetRepeatCallsSettingsdoRequest($contractID);
 
         return $this->client
@@ -3398,7 +3741,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetReturnsSettingsdo($contractID)
     {
@@ -3415,7 +3758,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetReturnsSettingsdoWithHttpInfo($contractID)
     {
@@ -3452,20 +3795,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3483,7 +3826,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3525,7 +3868,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetReturnsSettingsdoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetReturnsSettingsdoRequest($contractID);
 
         return $this->client
@@ -3677,7 +4020,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetRevenueCapInfodo($contractID)
     {
@@ -3694,7 +4037,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetRevenueCapInfodoWithHttpInfo($contractID)
     {
@@ -3731,20 +4074,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3762,7 +4105,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3804,7 +4147,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetRevenueCapInfodoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetRevenueCapInfodoRequest($contractID);
 
         return $this->client
@@ -3958,7 +4301,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetScheduledPausedo($contractID = null, $start = 0, $limit = 100)
     {
@@ -3977,7 +4320,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetScheduledPausedoWithHttpInfo($contractID = null, $start = 0, $limit = 100)
     {
@@ -4014,20 +4357,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4045,7 +4388,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4091,7 +4434,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetScheduledPausedoAsyncWithHttpInfo($contractID = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetScheduledPausedoRequest($contractID, $start, $limit);
 
         return $this->client
@@ -4252,7 +4595,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function callRoutingContractsgetTransfersCapInfodo($contractID)
     {
@@ -4269,7 +4612,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsgetTransfersCapInfodoWithHttpInfo($contractID)
     {
@@ -4306,20 +4649,20 @@ class CallRoutingContractsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -4337,7 +4680,7 @@ class CallRoutingContractsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4379,7 +4722,7 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsgetTransfersCapInfodoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->callRoutingContractsgetTransfersCapInfodoRequest($contractID);
 
         return $this->client
@@ -4531,10 +4874,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsremoveExpirationDatedo($contractID): void
+    public function callRoutingContractsremoveExpirationDatedo($contractID)
     {
-        $this->callRoutingContractsremoveExpirationDatedoWithHttpInfo($contractID);
+        list($response) = $this->callRoutingContractsremoveExpirationDatedoWithHttpInfo($contractID);
+        return $response;
     }
 
     /**
@@ -4546,7 +4891,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsremoveExpirationDatedoWithHttpInfo($contractID)
     {
@@ -4580,9 +4925,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4620,14 +5001,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsremoveExpirationDatedoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsremoveExpirationDatedoRequest($contractID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -4685,11 +5077,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -4761,10 +5153,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsremoveWhisperMessagedo($contractID): void
+    public function callRoutingContractsremoveWhisperMessagedo($contractID)
     {
-        $this->callRoutingContractsremoveWhisperMessagedoWithHttpInfo($contractID);
+        list($response) = $this->callRoutingContractsremoveWhisperMessagedoWithHttpInfo($contractID);
+        return $response;
     }
 
     /**
@@ -4776,7 +5170,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsremoveWhisperMessagedoWithHttpInfo($contractID)
     {
@@ -4810,9 +5204,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4850,14 +5280,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsremoveWhisperMessagedoAsyncWithHttpInfo($contractID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsremoveWhisperMessagedoRequest($contractID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -4915,11 +5356,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -4992,10 +5433,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsrenamedo($contractID, $contractName): void
+    public function callRoutingContractsrenamedo($contractID, $contractName)
     {
-        $this->callRoutingContractsrenamedoWithHttpInfo($contractID, $contractName);
+        list($response) = $this->callRoutingContractsrenamedoWithHttpInfo($contractID, $contractName);
+        return $response;
     }
 
     /**
@@ -5008,7 +5451,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsrenamedoWithHttpInfo($contractID, $contractName)
     {
@@ -5042,9 +5485,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5084,14 +5563,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsrenamedoAsyncWithHttpInfo($contractID, $contractName)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsrenamedoRequest($contractID, $contractName);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -5163,11 +5653,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -5241,10 +5731,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate): void
+    public function callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
     {
-        $this->callRoutingContractsschedulePausedoWithHttpInfo($contractID, $pauseDate, $resumeDate);
+        list($response) = $this->callRoutingContractsschedulePausedoWithHttpInfo($contractID, $pauseDate, $resumeDate);
+        return $response;
     }
 
     /**
@@ -5258,7 +5750,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsschedulePausedoWithHttpInfo($contractID, $pauseDate, $resumeDate)
     {
@@ -5292,9 +5784,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5336,14 +5864,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsschedulePausedoAsyncWithHttpInfo($contractID, $pauseDate, $resumeDate)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsschedulePausedoRequest($contractID, $pauseDate, $resumeDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -5429,11 +5968,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -5506,10 +6045,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID): void
+    public function callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID)
     {
-        $this->callRoutingContractssetAudioWhisperMessagedoWithHttpInfo($contractID, $audioID);
+        list($response) = $this->callRoutingContractssetAudioWhisperMessagedoWithHttpInfo($contractID, $audioID);
+        return $response;
     }
 
     /**
@@ -5522,7 +6063,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractssetAudioWhisperMessagedoWithHttpInfo($contractID, $audioID)
     {
@@ -5556,9 +6097,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5598,14 +6175,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractssetAudioWhisperMessagedoAsyncWithHttpInfo($contractID, $audioID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractssetAudioWhisperMessagedoRequest($contractID, $audioID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -5677,11 +6265,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -5754,10 +6342,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractssetExpirationDatedo($contractID, $expirationDate): void
+    public function callRoutingContractssetExpirationDatedo($contractID, $expirationDate)
     {
-        $this->callRoutingContractssetExpirationDatedoWithHttpInfo($contractID, $expirationDate);
+        list($response) = $this->callRoutingContractssetExpirationDatedoWithHttpInfo($contractID, $expirationDate);
+        return $response;
     }
 
     /**
@@ -5770,7 +6360,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractssetExpirationDatedoWithHttpInfo($contractID, $expirationDate)
     {
@@ -5804,9 +6394,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5846,14 +6472,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractssetExpirationDatedoAsyncWithHttpInfo($contractID, $expirationDate)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractssetExpirationDatedoRequest($contractID, $expirationDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -5925,11 +6562,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -6002,10 +6639,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message): void
+    public function callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message)
     {
-        $this->callRoutingContractssetTextToSpeechWhisperMessagedoWithHttpInfo($contractID, $message);
+        list($response) = $this->callRoutingContractssetTextToSpeechWhisperMessagedoWithHttpInfo($contractID, $message);
+        return $response;
     }
 
     /**
@@ -6018,7 +6657,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractssetTextToSpeechWhisperMessagedoWithHttpInfo($contractID, $message)
     {
@@ -6052,9 +6691,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -6094,14 +6769,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractssetTextToSpeechWhisperMessagedoAsyncWithHttpInfo($contractID, $message)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractssetTextToSpeechWhisperMessagedoRequest($contractID, $message);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -6173,11 +6859,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -6256,10 +6942,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null): void
+    public function callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
     {
-        $this->callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+        list($response) = $this->callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+        return $response;
     }
 
     /**
@@ -6278,7 +6966,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
     {
@@ -6312,9 +7000,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -6366,14 +7090,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -6487,11 +7222,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -6567,10 +7302,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateBasicInfodo($contractID, $contractName = null, $transferNumber = null, $alternativeID = null, $notes = null): void
+    public function callRoutingContractsupdateBasicInfodo($contractID, $contractName = null, $transferNumber = null, $alternativeID = null, $notes = null)
     {
-        $this->callRoutingContractsupdateBasicInfodoWithHttpInfo($contractID, $contractName, $transferNumber, $alternativeID, $notes);
+        list($response) = $this->callRoutingContractsupdateBasicInfodoWithHttpInfo($contractID, $contractName, $transferNumber, $alternativeID, $notes);
+        return $response;
     }
 
     /**
@@ -6586,7 +7323,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateBasicInfodoWithHttpInfo($contractID, $contractName = null, $transferNumber = null, $alternativeID = null, $notes = null)
     {
@@ -6620,9 +7357,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -6668,14 +7441,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateBasicInfodoAsyncWithHttpInfo($contractID, $contractName = null, $transferNumber = null, $alternativeID = null, $notes = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateBasicInfodoRequest($contractID, $contractName, $transferNumber, $alternativeID, $notes);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -6765,11 +7549,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -6845,10 +7629,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap = null, $dailyBillableCap = null, $weeklyBillableCap = null, $monthlyBillableCap = null): void
+    public function callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap = null, $dailyBillableCap = null, $weeklyBillableCap = null, $monthlyBillableCap = null)
     {
-        $this->callRoutingContractsupdateBillableTransfersCapdoWithHttpInfo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
+        list($response) = $this->callRoutingContractsupdateBillableTransfersCapdoWithHttpInfo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
+        return $response;
     }
 
     /**
@@ -6864,7 +7650,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateBillableTransfersCapdoWithHttpInfo($contractID, $hourlyBillableCap = null, $dailyBillableCap = null, $weeklyBillableCap = null, $monthlyBillableCap = null)
     {
@@ -6898,9 +7684,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -6946,14 +7768,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateBillableTransfersCapdoAsyncWithHttpInfo($contractID, $hourlyBillableCap = null, $dailyBillableCap = null, $weeklyBillableCap = null, $monthlyBillableCap = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateBillableTransfersCapdoRequest($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -7043,11 +7876,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -7128,10 +7961,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null): void
+    public function callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null)
     {
-        $this->callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
+        list($response) = $this->callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
+        return $response;
     }
 
     /**
@@ -7152,7 +7987,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null)
     {
@@ -7186,9 +8021,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7244,14 +8115,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -7381,11 +8263,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -7460,10 +8342,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays = null, $transferRepeat = null, $repeatBillable = null): void
+    public function callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays = null, $transferRepeat = null, $repeatBillable = null)
     {
-        $this->callRoutingContractsupdateRepeatCallsSettingsdoWithHttpInfo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
+        list($response) = $this->callRoutingContractsupdateRepeatCallsSettingsdoWithHttpInfo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
+        return $response;
     }
 
     /**
@@ -7478,7 +8362,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateRepeatCallsSettingsdoWithHttpInfo($contractID, $repeatCallDays = null, $transferRepeat = null, $repeatBillable = null)
     {
@@ -7512,9 +8396,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7558,14 +8478,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateRepeatCallsSettingsdoAsyncWithHttpInfo($contractID, $repeatCallDays = null, $transferRepeat = null, $repeatBillable = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateRepeatCallsSettingsdoRequest($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -7647,11 +8578,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -7725,10 +8656,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns = null, $autoApproveReturns = null): void
+    public function callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns = null, $autoApproveReturns = null)
     {
-        $this->callRoutingContractsupdateReturnsSettingsdoWithHttpInfo($contractID, $allowReturns, $autoApproveReturns);
+        list($response) = $this->callRoutingContractsupdateReturnsSettingsdoWithHttpInfo($contractID, $allowReturns, $autoApproveReturns);
+        return $response;
     }
 
     /**
@@ -7742,7 +8675,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateReturnsSettingsdoWithHttpInfo($contractID, $allowReturns = null, $autoApproveReturns = null)
     {
@@ -7776,9 +8709,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7820,14 +8789,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateReturnsSettingsdoAsyncWithHttpInfo($contractID, $allowReturns = null, $autoApproveReturns = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateReturnsSettingsdoRequest($contractID, $allowReturns, $autoApproveReturns);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -7901,11 +8881,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -7981,10 +8961,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap = null, $dailyRevenueCap = null, $weeklyRevenueCap = null, $monthlyRevenueCap = null): void
+    public function callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap = null, $dailyRevenueCap = null, $weeklyRevenueCap = null, $monthlyRevenueCap = null)
     {
-        $this->callRoutingContractsupdateRevenueCapdoWithHttpInfo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+        list($response) = $this->callRoutingContractsupdateRevenueCapdoWithHttpInfo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
+        return $response;
     }
 
     /**
@@ -8000,7 +8982,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateRevenueCapdoWithHttpInfo($contractID, $hourlyRevenueCap = null, $dailyRevenueCap = null, $weeklyRevenueCap = null, $monthlyRevenueCap = null)
     {
@@ -8034,9 +9016,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -8082,14 +9100,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateRevenueCapdoAsyncWithHttpInfo($contractID, $hourlyRevenueCap = null, $dailyRevenueCap = null, $weeklyRevenueCap = null, $monthlyRevenueCap = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateRevenueCapdoRequest($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -8179,11 +9208,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -8258,10 +9287,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration = null): void
+    public function callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration = null)
     {
-        $this->callRoutingContractsupdateRevenueModeldoWithHttpInfo($contractID, $revenueModel, $price, $duration);
+        list($response) = $this->callRoutingContractsupdateRevenueModeldoWithHttpInfo($contractID, $revenueModel, $price, $duration);
+        return $response;
     }
 
     /**
@@ -8276,7 +9307,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateRevenueModeldoWithHttpInfo($contractID, $revenueModel, $price, $duration = null)
     {
@@ -8310,9 +9341,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -8356,14 +9423,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateRevenueModeldoAsyncWithHttpInfo($contractID, $revenueModel, $price, $duration = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateRevenueModeldoRequest($contractID, $revenueModel, $price, $duration);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -8457,11 +9535,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -8534,10 +9612,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber): void
+    public function callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber)
     {
-        $this->callRoutingContractsupdateTransferNumberdoWithHttpInfo($contractID, $transferNumber);
+        list($response) = $this->callRoutingContractsupdateTransferNumberdoWithHttpInfo($contractID, $transferNumber);
+        return $response;
     }
 
     /**
@@ -8550,7 +9630,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateTransferNumberdoWithHttpInfo($contractID, $transferNumber)
     {
@@ -8584,9 +9664,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -8626,14 +9742,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateTransferNumberdoAsyncWithHttpInfo($contractID, $transferNumber)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateTransferNumberdoRequest($contractID, $transferNumber);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -8705,11 +9832,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -8785,10 +9912,12 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap = null, $dailyTransfersCap = null, $weeklyTransfersCap = null, $monthlyTransfersCap = null): void
+    public function callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap = null, $dailyTransfersCap = null, $weeklyTransfersCap = null, $monthlyTransfersCap = null)
     {
-        $this->callRoutingContractsupdateTransfersCapdoWithHttpInfo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
+        list($response) = $this->callRoutingContractsupdateTransfersCapdoWithHttpInfo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
+        return $response;
     }
 
     /**
@@ -8804,7 +9933,7 @@ class CallRoutingContractsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function callRoutingContractsupdateTransfersCapdoWithHttpInfo($contractID, $hourlyTransfersCap = null, $dailyTransfersCap = null, $weeklyTransfersCap = null, $monthlyTransfersCap = null)
     {
@@ -8838,9 +9967,45 @@ class CallRoutingContractsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -8886,14 +10051,25 @@ class CallRoutingContractsApi
      */
     public function callRoutingContractsupdateTransfersCapdoAsyncWithHttpInfo($contractID, $hourlyTransfersCap = null, $dailyTransfersCap = null, $weeklyTransfersCap = null, $monthlyTransfersCap = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->callRoutingContractsupdateTransfersCapdoRequest($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -8983,11 +10159,11 @@ class CallRoutingContractsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }

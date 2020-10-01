@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## impressionsgetAllphp
 
-> \Leadspedia\Model\InlineResponse200 impressionsgetAllphp($startDate, $endDate, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 impressionsgetAllphp($startDate, $endDate, $start, $limit)
 
 Get All
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

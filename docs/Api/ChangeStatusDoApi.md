@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## changeStatusdo
 
-> changeStatusdo($verticalID, $status)
+> \Leadspedia\Model\InlineResponse200 changeStatusdo($verticalID, $status)
 
 Change Status
 
@@ -42,7 +42,8 @@ $verticalID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->changeStatusdo($verticalID, $status);
+    $result = $apiInstance->changeStatusdo($verticalID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ChangeStatusDoApi->changeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -68,7 +69,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

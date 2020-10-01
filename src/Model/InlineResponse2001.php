@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse200
+ * InlineResponse2001
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Leadspedia\ObjectSerializer;
 
 /**
- * InlineResponse200 Class Doc Comment
+ * InlineResponse2001 Class Doc Comment
  *
  * @category Class
  * @package  Leadspedia
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse200 implements ModelInterface, ArrayAccess
+class InlineResponse2001 implements ModelInterface, ArrayAccess
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200';
+    protected static $openAPIModelName = 'inline_response_200_1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'message' => 'string'
+        'success'  => 'bool',
+        'message'  => 'string',
+        'response' => 'object',
+        'data'     => 'object'
     ];
 
     /**
@@ -67,8 +69,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'message' => null
+        'success'  => null,
+        'message'  => null,
+        'response' => null,
+        'data'     => null
     ];
 
     /**
@@ -98,8 +102,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'message' => 'message'
+        'success'  => 'success',
+        'message'  => 'message',
+        'response' => 'response',
+        'data'     => 'data'
     ];
 
     /**
@@ -108,8 +114,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'message' => 'setMessage'
+        'success'  => 'setSuccess',
+        'message'  => 'setMessage',
+        'response' => 'setResponse',
+        'data'     => 'setData'
     ];
 
     /**
@@ -118,8 +126,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'message' => 'getMessage'
+        'success'  => 'getSuccess',
+        'message'  => 'getMessage',
+        'response' => 'getResponse',
+        'data'     => 'getData'
     ];
 
     /**
@@ -182,8 +192,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = $data['success'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['success']  = $data['success']  ?? null;
+        $this->container['message']  = $data['message']  ?? null;
+        $this->container['response'] = $data['response'] ?? null;
+        $this->container['data']     = $data['data']     ?? null;
     }
 
     /**
@@ -254,6 +266,54 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     public function setMessage($message)
     {
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets response
+     *
+     * @return object|null
+     */
+    public function getResponse()
+    {
+        return $this->container['response'];
+    }
+
+    /**
+     * Sets response
+     *
+     * @param object|null $response response
+     *
+     * @return $this
+     */
+    public function setResponse($response)
+    {
+        $this->container['response'] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object|null $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

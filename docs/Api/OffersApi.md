@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## offerschangeAutoApprovaldo
 
-> offerschangeAutoApprovaldo($offerID, $autoApprove)
+> \Leadspedia\Model\InlineResponse200 offerschangeAutoApprovaldo($offerID, $autoApprove)
 
 Change Auto Approval
 
@@ -58,7 +58,8 @@ $offerID = 56; // int |
 $autoApprove = 'autoApprove_example'; // string | 
 
 try {
-    $apiInstance->offerschangeAutoApprovaldo($offerID, $autoApprove);
+    $result = $apiInstance->offerschangeAutoApprovaldo($offerID, $autoApprove);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offerschangeAutoApprovaldo: ', $e->getMessage(), PHP_EOL;
 }
@@ -75,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -84,7 +85,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -93,7 +94,7 @@ void (empty response body)
 
 ## offerschangeFeatureListingdo
 
-> offerschangeFeatureListingdo($offerID, $feature)
+> \Leadspedia\Model\InlineResponse200 offerschangeFeatureListingdo($offerID, $feature)
 
 Change Feature Listing
 
@@ -125,7 +126,8 @@ $offerID = 56; // int |
 $feature = 'feature_example'; // string | 
 
 try {
-    $apiInstance->offerschangeFeatureListingdo($offerID, $feature);
+    $result = $apiInstance->offerschangeFeatureListingdo($offerID, $feature);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offerschangeFeatureListingdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -142,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -151,7 +153,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -160,7 +162,7 @@ void (empty response body)
 
 ## offerschangeModedo
 
-> offerschangeModedo($offerID, $mode)
+> \Leadspedia\Model\InlineResponse200 offerschangeModedo($offerID, $mode)
 
 Change Mode
 
@@ -192,7 +194,8 @@ $offerID = 56; // int |
 $mode = 'mode_example'; // string | 
 
 try {
-    $apiInstance->offerschangeModedo($offerID, $mode);
+    $result = $apiInstance->offerschangeModedo($offerID, $mode);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offerschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -209,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -218,7 +221,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -227,7 +230,7 @@ void (empty response body)
 
 ## offerschangeStatusdo
 
-> offerschangeStatusdo($offerID, $status)
+> \Leadspedia\Model\InlineResponse200 offerschangeStatusdo($offerID, $status)
 
 Change Status
 
@@ -259,7 +262,8 @@ $offerID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->offerschangeStatusdo($offerID, $status);
+    $result = $apiInstance->offerschangeStatusdo($offerID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offerschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -276,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -285,7 +289,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -294,7 +298,7 @@ void (empty response body)
 
 ## offersdeletedo
 
-> offersdeletedo($offerID)
+> \Leadspedia\Model\InlineResponse200 offersdeletedo($offerID)
 
 Delete
 
@@ -325,7 +329,8 @@ $apiInstance = new Leadspedia\Api\OffersApi(
 $offerID = 56; // int | 
 
 try {
-    $apiInstance->offersdeletedo($offerID);
+    $result = $apiInstance->offersdeletedo($offerID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -341,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -350,7 +355,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -359,7 +364,7 @@ void (empty response body)
 
 ## offersgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit)
 
 Get All
 
@@ -419,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -437,7 +442,7 @@ Name | Type | Description  | Notes
 
 ## offersgetBasicInfodo
 
-> \Leadspedia\Model\InlineResponse200 offersgetBasicInfodo($offerID)
+> \Leadspedia\Model\InlineResponse2001 offersgetBasicInfodo($offerID)
 
 Get Basic Info
 
@@ -485,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -503,7 +508,7 @@ Name | Type | Description  | Notes
 
 ## offersgetEmailSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 offersgetEmailSettingsdo($offerID)
+> \Leadspedia\Model\InlineResponse2001 offersgetEmailSettingsdo($offerID)
 
 Get Email Settings
 
@@ -551,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -569,7 +574,7 @@ Name | Type | Description  | Notes
 
 ## offersgetTermsSettingsdo
 
-> \Leadspedia\Model\InlineResponse200 offersgetTermsSettingsdo($offerID)
+> \Leadspedia\Model\InlineResponse2001 offersgetTermsSettingsdo($offerID)
 
 Get Terms Settings
 
@@ -617,7 +622,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -635,7 +640,7 @@ Name | Type | Description  | Notes
 
 ## offersremoveExpirationDatedo
 
-> offersremoveExpirationDatedo($offerID)
+> \Leadspedia\Model\InlineResponse200 offersremoveExpirationDatedo($offerID)
 
 Remove Expiration Date
 
@@ -666,7 +671,8 @@ $apiInstance = new Leadspedia\Api\OffersApi(
 $offerID = 56; // int | 
 
 try {
-    $apiInstance->offersremoveExpirationDatedo($offerID);
+    $result = $apiInstance->offersremoveExpirationDatedo($offerID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -682,7 +688,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -691,7 +697,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -700,7 +706,7 @@ void (empty response body)
 
 ## offersrenamedo
 
-> offersrenamedo($offerID, $offerName)
+> \Leadspedia\Model\InlineResponse200 offersrenamedo($offerID, $offerName)
 
 Rename
 
@@ -732,7 +738,8 @@ $offerID = 56; // int |
 $offerName = 'offerName_example'; // string | 
 
 try {
-    $apiInstance->offersrenamedo($offerID, $offerName);
+    $result = $apiInstance->offersrenamedo($offerID, $offerName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersrenamedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -749,7 +756,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -758,7 +765,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -767,7 +774,7 @@ void (empty response body)
 
 ## offerssearchdo
 
-> \Leadspedia\Model\InlineResponse200 offerssearchdo($name, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 offerssearchdo($name, $start, $limit)
 
 Search
 
@@ -819,7 +826,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -837,7 +844,7 @@ Name | Type | Description  | Notes
 
 ## offerssetExpirationDatedo
 
-> offerssetExpirationDatedo($offerID, $expirationDate)
+> \Leadspedia\Model\InlineResponse200 offerssetExpirationDatedo($offerID, $expirationDate)
 
 Set Expiration Date
 
@@ -869,7 +876,8 @@ $offerID = 56; // int |
 $expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
-    $apiInstance->offerssetExpirationDatedo($offerID, $expirationDate);
+    $result = $apiInstance->offerssetExpirationDatedo($offerID, $expirationDate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offerssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -886,7 +894,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -895,7 +903,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -904,7 +912,7 @@ void (empty response body)
 
 ## offersupdateBasicInfodo
 
-> offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions)
+> \Leadspedia\Model\InlineResponse200 offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions)
 
 Update Basic Info
 
@@ -942,7 +950,8 @@ $testingInstructions = 'testingInstructions_example'; // string |
 $offerRestrictions = 'offerRestrictions_example'; // string | 
 
 try {
-    $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
+    $result = $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
@@ -965,7 +974,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -974,7 +983,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -983,7 +992,7 @@ void (empty response body)
 
 ## offersupdateEmailSettingsdo
 
-> offersupdateEmailSettingsdo($offerID, $testEmail, $allowedEmails, $allowedSubjects, $emailInstructions)
+> \Leadspedia\Model\InlineResponse200 offersupdateEmailSettingsdo($offerID, $testEmail, $allowedEmails, $allowedSubjects, $emailInstructions)
 
 Update Email Settings
 
@@ -1018,7 +1027,8 @@ $allowedSubjects = 'allowedSubjects_example'; // string |
 $emailInstructions = 'emailInstructions_example'; // string | 
 
 try {
-    $apiInstance->offersupdateEmailSettingsdo($offerID, $testEmail, $allowedEmails, $allowedSubjects, $emailInstructions);
+    $result = $apiInstance->offersupdateEmailSettingsdo($offerID, $testEmail, $allowedEmails, $allowedSubjects, $emailInstructions);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateEmailSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1038,7 +1048,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1047,7 +1057,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1056,7 +1066,7 @@ void (empty response body)
 
 ## offersupdateTermsSettingsdo
 
-> offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled)
+> \Leadspedia\Model\InlineResponse200 offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled)
 
 Update Terms Settings
 
@@ -1089,7 +1099,8 @@ $terms = 'terms_example'; // string |
 $termsEnabled = 'termsEnabled_example'; // string | 
 
 try {
-    $apiInstance->offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled);
+    $result = $apiInstance->offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateTermsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1107,7 +1118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1116,7 +1127,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -1125,7 +1136,7 @@ void (empty response body)
 
 ## offersupdateVisibilitydo
 
-> offersupdateVisibilitydo($offerID, $visibility)
+> \Leadspedia\Model\InlineResponse200 offersupdateVisibilitydo($offerID, $visibility)
 
 Update Visibility
 
@@ -1157,7 +1168,8 @@ $offerID = 56; // int |
 $visibility = 'visibility_example'; // string | 
 
 try {
-    $apiInstance->offersupdateVisibilitydo($offerID, $visibility);
+    $result = $apiInstance->offersupdateVisibilitydo($offerID, $visibility);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateVisibilitydo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1174,7 +1186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -1183,7 +1195,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

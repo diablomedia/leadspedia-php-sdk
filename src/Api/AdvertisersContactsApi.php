@@ -126,10 +126,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword): void
+    public function advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword)
     {
-        $this->advertisersContactschangePassworddoWithHttpInfo($contactID, $oldPassword, $newPassword);
+        list($response) = $this->advertisersContactschangePassworddoWithHttpInfo($contactID, $oldPassword, $newPassword);
+        return $response;
     }
 
     /**
@@ -143,7 +145,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactschangePassworddoWithHttpInfo($contactID, $oldPassword, $newPassword)
     {
@@ -177,9 +179,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -221,14 +259,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactschangePassworddoAsyncWithHttpInfo($contactID, $oldPassword, $newPassword)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactschangePassworddoRequest($contactID, $oldPassword, $newPassword);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -314,11 +363,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -391,10 +440,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactschangeStatusdo($contactID, $status): void
+    public function advertisersContactschangeStatusdo($contactID, $status)
     {
-        $this->advertisersContactschangeStatusdoWithHttpInfo($contactID, $status);
+        list($response) = $this->advertisersContactschangeStatusdoWithHttpInfo($contactID, $status);
+        return $response;
     }
 
     /**
@@ -407,7 +458,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactschangeStatusdoWithHttpInfo($contactID, $status)
     {
@@ -441,9 +492,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -483,14 +570,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactschangeStatusdoAsyncWithHttpInfo($contactID, $status)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactschangeStatusdoRequest($contactID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -562,11 +660,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -646,10 +744,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active'): void
+    public function advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
     {
-        $this->advertisersContactscreatedoWithHttpInfo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+        list($response) = $this->advertisersContactscreatedoWithHttpInfo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+        return $response;
     }
 
     /**
@@ -669,7 +769,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactscreatedoWithHttpInfo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
     {
@@ -703,9 +803,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -759,14 +895,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactscreatedoAsyncWithHttpInfo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactscreatedoRequest($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -912,11 +1059,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -988,10 +1135,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactsdeletedo($contactID): void
+    public function advertisersContactsdeletedo($contactID)
     {
-        $this->advertisersContactsdeletedoWithHttpInfo($contactID);
+        list($response) = $this->advertisersContactsdeletedoWithHttpInfo($contactID);
+        return $response;
     }
 
     /**
@@ -1003,7 +1152,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactsdeletedoWithHttpInfo($contactID)
     {
@@ -1037,9 +1186,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1077,14 +1262,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactsdeletedoAsyncWithHttpInfo($contactID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactsdeletedoRequest($contactID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1142,11 +1338,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1222,7 +1418,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function advertisersContactsgetAlldo($contactID = null, $advertiserID = null, $portalAccess = null, $start = 0, $limit = 100)
     {
@@ -1243,7 +1439,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactsgetAlldoWithHttpInfo($contactID = null, $advertiserID = null, $portalAccess = null, $start = 0, $limit = 100)
     {
@@ -1280,20 +1476,20 @@ class AdvertisersContactsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1311,7 +1507,7 @@ class AdvertisersContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1361,7 +1557,7 @@ class AdvertisersContactsApi
      */
     public function advertisersContactsgetAlldoAsyncWithHttpInfo($contactID = null, $advertiserID = null, $portalAccess = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->advertisersContactsgetAlldoRequest($contactID, $advertiserID, $portalAccess, $start, $limit);
 
         return $this->client
@@ -1538,7 +1734,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function advertisersContactsgetInfodo($contactID)
     {
@@ -1555,7 +1751,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactsgetInfodoWithHttpInfo($contactID)
     {
@@ -1592,20 +1788,20 @@ class AdvertisersContactsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1623,7 +1819,7 @@ class AdvertisersContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1665,7 +1861,7 @@ class AdvertisersContactsApi
      */
     public function advertisersContactsgetInfodoAsyncWithHttpInfo($contactID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->advertisersContactsgetInfodoRequest($contactID);
 
         return $this->client
@@ -1832,10 +2028,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactsupdatedo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null): void
+    public function advertisersContactsupdatedo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
     {
-        $this->advertisersContactsupdatedoWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+        list($response) = $this->advertisersContactsupdatedoWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+        return $response;
     }
 
     /**
@@ -1862,7 +2060,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactsupdatedoWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
     {
@@ -1896,9 +2094,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1966,14 +2200,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactsupdatedoAsyncWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactsupdatedoRequest($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -2151,11 +2396,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -2228,10 +2473,12 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersContactsverifyCredentialsdo($emailAddress, $password): void
+    public function advertisersContactsverifyCredentialsdo($emailAddress, $password)
     {
-        $this->advertisersContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password);
+        list($response) = $this->advertisersContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password);
+        return $response;
     }
 
     /**
@@ -2244,7 +2491,7 @@ class AdvertisersContactsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password)
     {
@@ -2278,9 +2525,45 @@ class AdvertisersContactsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2320,14 +2603,25 @@ class AdvertisersContactsApi
      */
     public function advertisersContactsverifyCredentialsdoAsyncWithHttpInfo($emailAddress, $password)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersContactsverifyCredentialsdoRequest($emailAddress, $password);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -2399,11 +2693,11 @@ class AdvertisersContactsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }

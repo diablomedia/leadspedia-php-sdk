@@ -136,10 +136,12 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2 = null, $defaultCard = 'No'): void
+    public function advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2 = null, $defaultCard = 'No')
     {
-        $this->advertisersCreditCardsadddoWithHttpInfo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
+        list($response) = $this->advertisersCreditCardsadddoWithHttpInfo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
+        return $response;
     }
 
     /**
@@ -163,7 +165,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsadddoWithHttpInfo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2 = null, $defaultCard = 'No')
     {
@@ -197,9 +199,45 @@ class AdvertisersCreditCardsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -261,14 +299,25 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsadddoAsyncWithHttpInfo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2 = null, $defaultCard = 'No')
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersCreditCardsadddoRequest($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -482,11 +531,11 @@ class AdvertisersCreditCardsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -559,10 +608,12 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsdeletedo($advertiserID, $creditCardID): void
+    public function advertisersCreditCardsdeletedo($advertiserID, $creditCardID)
     {
-        $this->advertisersCreditCardsdeletedoWithHttpInfo($advertiserID, $creditCardID);
+        list($response) = $this->advertisersCreditCardsdeletedoWithHttpInfo($advertiserID, $creditCardID);
+        return $response;
     }
 
     /**
@@ -575,263 +626,11 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsdeletedoWithHttpInfo($advertiserID, $creditCardID)
     {
         $request = $this->advertisersCreditCardsdeletedoRequest($advertiserID, $creditCardID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersCreditCardsdeletedoAsync
-     *
-     * Delete
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $creditCardID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersCreditCardsdeletedoAsync($advertiserID, $creditCardID)
-    {
-        return $this->advertisersCreditCardsdeletedoAsyncWithHttpInfo($advertiserID, $creditCardID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersCreditCardsdeletedoAsyncWithHttpInfo
-     *
-     * Delete
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $creditCardID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersCreditCardsdeletedoAsyncWithHttpInfo($advertiserID, $creditCardID)
-    {
-        $returnType = '';
-        $request    = $this->advertisersCreditCardsdeletedoRequest($advertiserID, $creditCardID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'advertisersCreditCardsdeletedo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $creditCardID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersCreditCardsdeletedoRequest($advertiserID, $creditCardID)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersCreditCardsdeletedo'
-            );
-        }
-        // verify the required parameter 'creditCardID' is set
-        if ($creditCardID === null || (is_array($creditCardID) && count($creditCardID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $creditCardID when calling advertisersCreditCardsdeletedo'
-            );
-        }
-
-        $resourcePath = '/advertisersCreditCards/delete.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if (is_array($advertiserID)) {
-            $advertiserID = ObjectSerializer::serializeCollection($advertiserID, '', true);
-        }
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = $advertiserID;
-        }
-        // query params
-        if (is_array($creditCardID)) {
-            $creditCardID = ObjectSerializer::serializeCollection($creditCardID, '', true);
-        }
-        if ($creditCardID !== null) {
-            $queryParams['creditCardID'] = $creditCardID;
-        }
-
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersCreditCardsgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersCreditCardsgetAlldo($advertiserID, $start = 0, $limit = 100)
-    {
-        list($response) = $this->advertisersCreditCardsgetAlldoWithHttpInfo($advertiserID, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersCreditCardsgetAlldoWithHttpInfo
-     *
-     * Get All
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersCreditCardsgetAlldoWithHttpInfo($advertiserID, $start = 0, $limit = 100)
-    {
-        $request = $this->advertisersCreditCardsgetAlldoRequest($advertiserID, $start, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -906,6 +705,305 @@ class AdvertisersCreditCardsApi
     }
 
     /**
+     * Operation advertisersCreditCardsdeletedoAsync
+     *
+     * Delete
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $creditCardID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersCreditCardsdeletedoAsync($advertiserID, $creditCardID)
+    {
+        return $this->advertisersCreditCardsdeletedoAsyncWithHttpInfo($advertiserID, $creditCardID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersCreditCardsdeletedoAsyncWithHttpInfo
+     *
+     * Delete
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $creditCardID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersCreditCardsdeletedoAsyncWithHttpInfo($advertiserID, $creditCardID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersCreditCardsdeletedoRequest($advertiserID, $creditCardID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'advertisersCreditCardsdeletedo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $creditCardID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersCreditCardsdeletedoRequest($advertiserID, $creditCardID)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersCreditCardsdeletedo'
+            );
+        }
+        // verify the required parameter 'creditCardID' is set
+        if ($creditCardID === null || (is_array($creditCardID) && count($creditCardID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $creditCardID when calling advertisersCreditCardsdeletedo'
+            );
+        }
+
+        $resourcePath = '/advertisersCreditCards/delete.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if (is_array($advertiserID)) {
+            $advertiserID = ObjectSerializer::serializeCollection($advertiserID, '', true);
+        }
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = $advertiserID;
+        }
+        // query params
+        if (is_array($creditCardID)) {
+            $creditCardID = ObjectSerializer::serializeCollection($creditCardID, '', true);
+        }
+        if ($creditCardID !== null) {
+            $queryParams['creditCardID'] = $creditCardID;
+        }
+
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation advertisersCreditCardsgetAlldo
+     *
+     * Get All
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function advertisersCreditCardsgetAlldo($advertiserID, $start = 0, $limit = 100)
+    {
+        list($response) = $this->advertisersCreditCardsgetAlldoWithHttpInfo($advertiserID, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersCreditCardsgetAlldoWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersCreditCardsgetAlldoWithHttpInfo($advertiserID, $start = 0, $limit = 100)
+    {
+        $request = $this->advertisersCreditCardsgetAlldoRequest($advertiserID, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
      * Operation advertisersCreditCardsgetAlldoAsync
      *
      * Get All
@@ -941,7 +1039,7 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsgetAlldoAsyncWithHttpInfo($advertiserID, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->advertisersCreditCardsgetAlldoRequest($advertiserID, $start, $limit);
 
         return $this->client
@@ -1109,7 +1207,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function advertisersCreditCardsgetDefaultdo($advertiserID)
     {
@@ -1126,7 +1224,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsgetDefaultdoWithHttpInfo($advertiserID)
     {
@@ -1163,20 +1261,20 @@ class AdvertisersCreditCardsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1194,7 +1292,7 @@ class AdvertisersCreditCardsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1236,7 +1334,7 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsgetDefaultdoAsyncWithHttpInfo($advertiserID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->advertisersCreditCardsgetDefaultdoRequest($advertiserID);
 
         return $this->client
@@ -1389,7 +1487,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
     {
@@ -1407,7 +1505,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsgetInfodoWithHttpInfo($advertiserID, $creditCardID)
     {
@@ -1444,20 +1542,20 @@ class AdvertisersCreditCardsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1475,7 +1573,7 @@ class AdvertisersCreditCardsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1519,7 +1617,7 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsgetInfodoAsyncWithHttpInfo($advertiserID, $creditCardID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->advertisersCreditCardsgetInfodoRequest($advertiserID, $creditCardID);
 
         return $this->client
@@ -1686,10 +1784,12 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID): void
+    public function advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID)
     {
-        $this->advertisersCreditCardssetDefaultdoWithHttpInfo($advertiserID, $creditCardID);
+        list($response) = $this->advertisersCreditCardssetDefaultdoWithHttpInfo($advertiserID, $creditCardID);
+        return $response;
     }
 
     /**
@@ -1702,7 +1802,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardssetDefaultdoWithHttpInfo($advertiserID, $creditCardID)
     {
@@ -1736,9 +1836,45 @@ class AdvertisersCreditCardsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1778,14 +1914,25 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardssetDefaultdoAsyncWithHttpInfo($advertiserID, $creditCardID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersCreditCardssetDefaultdoRequest($advertiserID, $creditCardID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1857,11 +2004,11 @@ class AdvertisersCreditCardsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1943,10 +2090,12 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null): void
+    public function advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null)
     {
-        $this->advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
+        list($response) = $this->advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
+        return $response;
     }
 
     /**
@@ -1968,7 +2117,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null)
     {
@@ -2002,9 +2151,45 @@ class AdvertisersCreditCardsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2062,14 +2247,25 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsupdatePaymentProfileIDdoAsyncWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersCreditCardsupdatePaymentProfileIDdoRequest($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -2213,11 +2409,11 @@ class AdvertisersCreditCardsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -2299,10 +2495,12 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null): void
+    public function advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null)
     {
-        $this->advertisersCreditCardsupdatedoWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
+        list($response) = $this->advertisersCreditCardsupdatedoWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
+        return $response;
     }
 
     /**
@@ -2324,7 +2522,7 @@ class AdvertisersCreditCardsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function advertisersCreditCardsupdatedoWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null)
     {
@@ -2358,9 +2556,45 @@ class AdvertisersCreditCardsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2418,14 +2652,25 @@ class AdvertisersCreditCardsApi
      */
     public function advertisersCreditCardsupdatedoAsyncWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->advertisersCreditCardsupdatedoRequest($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -2617,11 +2862,11 @@ class AdvertisersCreditCardsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }

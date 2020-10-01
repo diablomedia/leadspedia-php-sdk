@@ -125,10 +125,12 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function verticalscreatedo($verticalName, $groupID): void
+    public function verticalscreatedo($verticalName, $groupID)
     {
-        $this->verticalscreatedoWithHttpInfo($verticalName, $groupID);
+        list($response) = $this->verticalscreatedoWithHttpInfo($verticalName, $groupID);
+        return $response;
     }
 
     /**
@@ -141,495 +143,11 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function verticalscreatedoWithHttpInfo($verticalName, $groupID)
     {
         $request = $this->verticalscreatedoRequest($verticalName, $groupID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation verticalscreatedoAsync
-     *
-     * Create
-     *
-     * @param  string $verticalName (required)
-     * @param  int $groupID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function verticalscreatedoAsync($verticalName, $groupID)
-    {
-        return $this->verticalscreatedoAsyncWithHttpInfo($verticalName, $groupID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation verticalscreatedoAsyncWithHttpInfo
-     *
-     * Create
-     *
-     * @param  string $verticalName (required)
-     * @param  int $groupID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function verticalscreatedoAsyncWithHttpInfo($verticalName, $groupID)
-    {
-        $returnType = '';
-        $request    = $this->verticalscreatedoRequest($verticalName, $groupID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'verticalscreatedo'
-     *
-     * @param  string $verticalName (required)
-     * @param  int $groupID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function verticalscreatedoRequest($verticalName, $groupID)
-    {
-        // verify the required parameter 'verticalName' is set
-        if ($verticalName === null || (is_array($verticalName) && count($verticalName) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $verticalName when calling verticalscreatedo'
-            );
-        }
-        // verify the required parameter 'groupID' is set
-        if ($groupID === null || (is_array($groupID) && count($groupID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $groupID when calling verticalscreatedo'
-            );
-        }
-
-        $resourcePath = '/verticals/create.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if (is_array($verticalName)) {
-            $verticalName = ObjectSerializer::serializeCollection($verticalName, '', true);
-        }
-        if ($verticalName !== null) {
-            $queryParams['verticalName'] = $verticalName;
-        }
-        // query params
-        if (is_array($groupID)) {
-            $groupID = ObjectSerializer::serializeCollection($groupID, '', true);
-        }
-        if ($groupID !== null) {
-            $queryParams['groupID'] = $groupID;
-        }
-
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation verticalsdeletedo
-     *
-     * Delete
-     *
-     * @param  int $verticalID verticalID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     */
-    public function verticalsdeletedo($verticalID): void
-    {
-        $this->verticalsdeletedoWithHttpInfo($verticalID);
-    }
-
-    /**
-     * Operation verticalsdeletedoWithHttpInfo
-     *
-     * Delete
-     *
-     * @param  int $verticalID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function verticalsdeletedoWithHttpInfo($verticalID)
-    {
-        $request = $this->verticalsdeletedoRequest($verticalID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation verticalsdeletedoAsync
-     *
-     * Delete
-     *
-     * @param  int $verticalID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function verticalsdeletedoAsync($verticalID)
-    {
-        return $this->verticalsdeletedoAsyncWithHttpInfo($verticalID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation verticalsdeletedoAsyncWithHttpInfo
-     *
-     * Delete
-     *
-     * @param  int $verticalID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function verticalsdeletedoAsyncWithHttpInfo($verticalID)
-    {
-        $returnType = '';
-        $request    = $this->verticalsdeletedoRequest($verticalID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'verticalsdeletedo'
-     *
-     * @param  int $verticalID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function verticalsdeletedoRequest($verticalID)
-    {
-        // verify the required parameter 'verticalID' is set
-        if ($verticalID === null || (is_array($verticalID) && count($verticalID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $verticalID when calling verticalsdeletedo'
-            );
-        }
-
-        $resourcePath = '/verticals/delete.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if (is_array($verticalID)) {
-            $verticalID = ObjectSerializer::serializeCollection($verticalID, '', true);
-        }
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = $verticalID;
-        }
-
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation verticalsgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $groupID groupID (optional)
-     * @param  string $status status (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function verticalsgetAlldo($groupID = null, $status = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->verticalsgetAlldoWithHttpInfo($groupID, $status, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation verticalsgetAlldoWithHttpInfo
-     *
-     * Get All
-     *
-     * @param  int $groupID (optional)
-     * @param  string $status (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function verticalsgetAlldoWithHttpInfo($groupID = null, $status = null, $start = 0, $limit = 100)
-    {
-        $request = $this->verticalsgetAlldoRequest($groupID, $status, $start, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -704,6 +222,586 @@ class VerticalsApi
     }
 
     /**
+     * Operation verticalscreatedoAsync
+     *
+     * Create
+     *
+     * @param  string $verticalName (required)
+     * @param  int $groupID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verticalscreatedoAsync($verticalName, $groupID)
+    {
+        return $this->verticalscreatedoAsyncWithHttpInfo($verticalName, $groupID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation verticalscreatedoAsyncWithHttpInfo
+     *
+     * Create
+     *
+     * @param  string $verticalName (required)
+     * @param  int $groupID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verticalscreatedoAsyncWithHttpInfo($verticalName, $groupID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->verticalscreatedoRequest($verticalName, $groupID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'verticalscreatedo'
+     *
+     * @param  string $verticalName (required)
+     * @param  int $groupID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function verticalscreatedoRequest($verticalName, $groupID)
+    {
+        // verify the required parameter 'verticalName' is set
+        if ($verticalName === null || (is_array($verticalName) && count($verticalName) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $verticalName when calling verticalscreatedo'
+            );
+        }
+        // verify the required parameter 'groupID' is set
+        if ($groupID === null || (is_array($groupID) && count($groupID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $groupID when calling verticalscreatedo'
+            );
+        }
+
+        $resourcePath = '/verticals/create.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if (is_array($verticalName)) {
+            $verticalName = ObjectSerializer::serializeCollection($verticalName, '', true);
+        }
+        if ($verticalName !== null) {
+            $queryParams['verticalName'] = $verticalName;
+        }
+        // query params
+        if (is_array($groupID)) {
+            $groupID = ObjectSerializer::serializeCollection($groupID, '', true);
+        }
+        if ($groupID !== null) {
+            $queryParams['groupID'] = $groupID;
+        }
+
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation verticalsdeletedo
+     *
+     * Delete
+     *
+     * @param  int $verticalID verticalID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function verticalsdeletedo($verticalID)
+    {
+        list($response) = $this->verticalsdeletedoWithHttpInfo($verticalID);
+        return $response;
+    }
+
+    /**
+     * Operation verticalsdeletedoWithHttpInfo
+     *
+     * Delete
+     *
+     * @param  int $verticalID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function verticalsdeletedoWithHttpInfo($verticalID)
+    {
+        $request = $this->verticalsdeletedoRequest($verticalID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation verticalsdeletedoAsync
+     *
+     * Delete
+     *
+     * @param  int $verticalID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verticalsdeletedoAsync($verticalID)
+    {
+        return $this->verticalsdeletedoAsyncWithHttpInfo($verticalID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation verticalsdeletedoAsyncWithHttpInfo
+     *
+     * Delete
+     *
+     * @param  int $verticalID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verticalsdeletedoAsyncWithHttpInfo($verticalID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->verticalsdeletedoRequest($verticalID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'verticalsdeletedo'
+     *
+     * @param  int $verticalID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function verticalsdeletedoRequest($verticalID)
+    {
+        // verify the required parameter 'verticalID' is set
+        if ($verticalID === null || (is_array($verticalID) && count($verticalID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $verticalID when calling verticalsdeletedo'
+            );
+        }
+
+        $resourcePath = '/verticals/delete.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if (is_array($verticalID)) {
+            $verticalID = ObjectSerializer::serializeCollection($verticalID, '', true);
+        }
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = $verticalID;
+        }
+
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation verticalsgetAlldo
+     *
+     * Get All
+     *
+     * @param  int $groupID groupID (optional)
+     * @param  string $status status (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function verticalsgetAlldo($groupID = null, $status = null, $start = 0, $limit = 100)
+    {
+        list($response) = $this->verticalsgetAlldoWithHttpInfo($groupID, $status, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation verticalsgetAlldoWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  int $groupID (optional)
+     * @param  string $status (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function verticalsgetAlldoWithHttpInfo($groupID = null, $status = null, $start = 0, $limit = 100)
+    {
+        $request = $this->verticalsgetAlldoRequest($groupID, $status, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
      * Operation verticalsgetAlldoAsync
      *
      * Get All
@@ -741,7 +839,7 @@ class VerticalsApi
      */
     public function verticalsgetAlldoAsyncWithHttpInfo($groupID = null, $status = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->verticalsgetAlldoRequest($groupID, $status, $start, $limit);
 
         return $this->client
@@ -910,7 +1008,7 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function verticalsgetInfodo($verticalID)
     {
@@ -927,7 +1025,7 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function verticalsgetInfodoWithHttpInfo($verticalID)
     {
@@ -964,20 +1062,20 @@ class VerticalsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -995,7 +1093,7 @@ class VerticalsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1037,7 +1135,7 @@ class VerticalsApi
      */
     public function verticalsgetInfodoAsyncWithHttpInfo($verticalID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->verticalsgetInfodoRequest($verticalID);
 
         return $this->client
@@ -1192,10 +1290,12 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function verticalsupdatedo($verticalID, $groupID = null, $verticalName = null, $notes = null): void
+    public function verticalsupdatedo($verticalID, $groupID = null, $verticalName = null, $notes = null)
     {
-        $this->verticalsupdatedoWithHttpInfo($verticalID, $groupID, $verticalName, $notes);
+        list($response) = $this->verticalsupdatedoWithHttpInfo($verticalID, $groupID, $verticalName, $notes);
+        return $response;
     }
 
     /**
@@ -1210,7 +1310,7 @@ class VerticalsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function verticalsupdatedoWithHttpInfo($verticalID, $groupID = null, $verticalName = null, $notes = null)
     {
@@ -1244,9 +1344,45 @@ class VerticalsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1290,14 +1426,25 @@ class VerticalsApi
      */
     public function verticalsupdatedoAsyncWithHttpInfo($verticalID, $groupID = null, $verticalName = null, $notes = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->verticalsupdatedoRequest($verticalID, $groupID, $verticalName, $notes);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1379,11 +1526,11 @@ class VerticalsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }

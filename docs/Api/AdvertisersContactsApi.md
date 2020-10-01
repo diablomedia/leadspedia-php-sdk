@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## advertisersContactschangePassworddo
 
-> advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword)
+> \Leadspedia\Model\InlineResponse200 advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword)
 
 Change Password
 
@@ -50,7 +50,8 @@ $oldPassword = 'oldPassword_example'; // string |
 $newPassword = 'newPassword_example'; // string | 
 
 try {
-    $apiInstance->advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword);
+    $result = $apiInstance->advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactschangePassworddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -77,7 +78,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -86,7 +87,7 @@ void (empty response body)
 
 ## advertisersContactschangeStatusdo
 
-> advertisersContactschangeStatusdo($contactID, $status)
+> \Leadspedia\Model\InlineResponse200 advertisersContactschangeStatusdo($contactID, $status)
 
 Change Status
 
@@ -118,7 +119,8 @@ $contactID = 56; // int |
 $status = 'status_example'; // string | 
 
 try {
-    $apiInstance->advertisersContactschangeStatusdo($contactID, $status);
+    $result = $apiInstance->advertisersContactschangeStatusdo($contactID, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -135,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -144,7 +146,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -153,7 +155,7 @@ void (empty response body)
 
 ## advertisersContactscreatedo
 
-> advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status)
+> \Leadspedia\Model\InlineResponse200 advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status)
 
 Create
 
@@ -192,7 +194,8 @@ $portalAccess = 'No'; // string |
 $status = 'Active'; // string | 
 
 try {
-    $apiInstance->advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+    $result = $apiInstance->advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactscreatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -216,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -225,7 +228,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -234,7 +237,7 @@ void (empty response body)
 
 ## advertisersContactsdeletedo
 
-> advertisersContactsdeletedo($contactID)
+> \Leadspedia\Model\InlineResponse200 advertisersContactsdeletedo($contactID)
 
 Delete
 
@@ -265,7 +268,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
 $contactID = 56; // int | 
 
 try {
-    $apiInstance->advertisersContactsdeletedo($contactID);
+    $result = $apiInstance->advertisersContactsdeletedo($contactID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -281,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -290,7 +294,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -299,7 +303,7 @@ void (empty response body)
 
 ## advertisersContactsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit)
 
 Get All
 
@@ -355,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -373,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## advertisersContactsgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 advertisersContactsgetInfodo($contactID)
+> \Leadspedia\Model\InlineResponse2001 advertisersContactsgetInfodo($contactID)
 
 Get Info
 
@@ -421,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -439,7 +443,7 @@ Name | Type | Description  | Notes
 
 ## advertisersContactsupdatedo
 
-> advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers)
+> \Leadspedia\Model\InlineResponse200 advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers)
 
 Update
 
@@ -485,7 +489,8 @@ $permissionReports = 'permissionReports_example'; // string |
 $permissionUsers = 'permissionUsers_example'; // string | 
 
 try {
-    $apiInstance->advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+    $result = $apiInstance->advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -516,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -525,7 +530,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -534,7 +539,7 @@ void (empty response body)
 
 ## advertisersContactsverifyCredentialsdo
 
-> advertisersContactsverifyCredentialsdo($emailAddress, $password)
+> \Leadspedia\Model\InlineResponse200 advertisersContactsverifyCredentialsdo($emailAddress, $password)
 
 Verify Credentials
 
@@ -566,7 +571,8 @@ $emailAddress = 'emailAddress_example'; // string |
 $password = 'password_example'; // string | 
 
 try {
-    $apiInstance->advertisersContactsverifyCredentialsdo($emailAddress, $password);
+    $result = $apiInstance->advertisersContactsverifyCredentialsdo($emailAddress, $password);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsverifyCredentialsdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -583,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -592,7 +598,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

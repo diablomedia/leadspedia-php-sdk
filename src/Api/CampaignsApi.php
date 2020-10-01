@@ -125,10 +125,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsassignTrackingNumberdo($campaignID, $number): void
+    public function campaignsassignTrackingNumberdo($campaignID, $number)
     {
-        $this->campaignsassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        list($response) = $this->campaignsassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        return $response;
     }
 
     /**
@@ -141,7 +143,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsassignTrackingNumberdoWithHttpInfo($campaignID, $number)
     {
@@ -175,9 +177,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -217,14 +255,25 @@ class CampaignsApi
      */
     public function campaignsassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsassignTrackingNumberdoRequest($campaignID, $number);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -296,11 +345,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -373,10 +422,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle): void
+    public function campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
     {
-        $this->campaignschangeGoalsStaticThrottledoWithHttpInfo($campaignID, $goalsStaticThrottle);
+        list($response) = $this->campaignschangeGoalsStaticThrottledoWithHttpInfo($campaignID, $goalsStaticThrottle);
+        return $response;
     }
 
     /**
@@ -389,7 +440,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignschangeGoalsStaticThrottledoWithHttpInfo($campaignID, $goalsStaticThrottle)
     {
@@ -423,9 +474,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -465,14 +552,25 @@ class CampaignsApi
      */
     public function campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo($campaignID, $goalsStaticThrottle)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignschangeGoalsStaticThrottledoRequest($campaignID, $goalsStaticThrottle);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -544,11 +642,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -621,10 +719,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignschangeModedo($campaignID, $mode): void
+    public function campaignschangeModedo($campaignID, $mode)
     {
-        $this->campaignschangeModedoWithHttpInfo($campaignID, $mode);
+        list($response) = $this->campaignschangeModedoWithHttpInfo($campaignID, $mode);
+        return $response;
     }
 
     /**
@@ -637,7 +737,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignschangeModedoWithHttpInfo($campaignID, $mode)
     {
@@ -671,9 +771,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -713,14 +849,25 @@ class CampaignsApi
      */
     public function campaignschangeModedoAsyncWithHttpInfo($campaignID, $mode)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignschangeModedoRequest($campaignID, $mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -792,11 +939,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -869,10 +1016,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle): void
+    public function campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
     {
-        $this->campaignschangeOfferStaticThrottledoWithHttpInfo($campaignID, $offerStaticThrottle);
+        list($response) = $this->campaignschangeOfferStaticThrottledoWithHttpInfo($campaignID, $offerStaticThrottle);
+        return $response;
     }
 
     /**
@@ -885,7 +1034,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignschangeOfferStaticThrottledoWithHttpInfo($campaignID, $offerStaticThrottle)
     {
@@ -919,9 +1068,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -961,14 +1146,25 @@ class CampaignsApi
      */
     public function campaignschangeOfferStaticThrottledoAsyncWithHttpInfo($campaignID, $offerStaticThrottle)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignschangeOfferStaticThrottledoRequest($campaignID, $offerStaticThrottle);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1040,11 +1236,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1117,10 +1313,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignschangeStatusdo($campaignID, $status): void
+    public function campaignschangeStatusdo($campaignID, $status)
     {
-        $this->campaignschangeStatusdoWithHttpInfo($campaignID, $status);
+        list($response) = $this->campaignschangeStatusdoWithHttpInfo($campaignID, $status);
+        return $response;
     }
 
     /**
@@ -1133,7 +1331,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignschangeStatusdoWithHttpInfo($campaignID, $status)
     {
@@ -1167,9 +1365,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1209,14 +1443,25 @@ class CampaignsApi
      */
     public function campaignschangeStatusdoAsyncWithHttpInfo($campaignID, $status)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignschangeStatusdoRequest($campaignID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1288,11 +1533,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1364,10 +1609,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsdeletedo($campaignID): void
+    public function campaignsdeletedo($campaignID)
     {
-        $this->campaignsdeletedoWithHttpInfo($campaignID);
+        list($response) = $this->campaignsdeletedoWithHttpInfo($campaignID);
+        return $response;
     }
 
     /**
@@ -1379,7 +1626,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsdeletedoWithHttpInfo($campaignID)
     {
@@ -1413,9 +1660,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1453,14 +1736,25 @@ class CampaignsApi
      */
     public function campaignsdeletedoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsdeletedoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -1518,11 +1812,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -1601,7 +1895,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function campaignsgetAlldo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
@@ -1625,7 +1919,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsgetAlldoWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
@@ -1662,20 +1956,20 @@ class CampaignsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1693,7 +1987,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1749,7 +2043,7 @@ class CampaignsApi
      */
     public function campaignsgetAlldoAsyncWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->campaignsgetAlldoRequest($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
 
         return $this->client
@@ -1950,7 +2244,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function campaignsgetBasicInfodo($campaignID)
     {
@@ -1967,7 +2261,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsgetBasicInfodoWithHttpInfo($campaignID)
     {
@@ -2004,20 +2298,20 @@ class CampaignsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2035,7 +2329,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2077,7 +2371,7 @@ class CampaignsApi
      */
     public function campaignsgetBasicInfodoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->campaignsgetBasicInfodoRequest($campaignID);
 
         return $this->client
@@ -2229,7 +2523,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function campaignsgetGoalsStaticThrottledo($campaignID)
     {
@@ -2246,7 +2540,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsgetGoalsStaticThrottledoWithHttpInfo($campaignID)
     {
@@ -2283,20 +2577,20 @@ class CampaignsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2314,7 +2608,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2356,7 +2650,7 @@ class CampaignsApi
      */
     public function campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->campaignsgetGoalsStaticThrottledoRequest($campaignID);
 
         return $this->client
@@ -2508,7 +2802,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function campaignsgetOfferStaticThrottledo($campaignID)
     {
@@ -2525,7 +2819,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsgetOfferStaticThrottledoWithHttpInfo($campaignID)
     {
@@ -2562,20 +2856,20 @@ class CampaignsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2593,7 +2887,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2635,7 +2929,7 @@ class CampaignsApi
      */
     public function campaignsgetOfferStaticThrottledoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->campaignsgetOfferStaticThrottledoRequest($campaignID);
 
         return $this->client
@@ -2787,7 +3081,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
+     * @return \Leadspedia\Model\InlineResponse2001
      */
     public function campaignsgetPostKeysdo($campaignID)
     {
@@ -2804,7 +3098,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsgetPostKeysdoWithHttpInfo($campaignID)
     {
@@ -2841,20 +3135,20 @@ class CampaignsApi
             $responseBody = $response->getBody();
             switch ($statusCode) {
                 case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2872,7 +3166,7 @@ class CampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
+                        '\Leadspedia\Model\InlineResponse2001',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2914,7 +3208,7 @@ class CampaignsApi
      */
     public function campaignsgetPostKeysdoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
         $request    = $this->campaignsgetPostKeysdoRequest($campaignID);
 
         return $this->client
@@ -3066,10 +3360,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsremoveExpirationDatedo($campaignID): void
+    public function campaignsremoveExpirationDatedo($campaignID)
     {
-        $this->campaignsremoveExpirationDatedoWithHttpInfo($campaignID);
+        list($response) = $this->campaignsremoveExpirationDatedoWithHttpInfo($campaignID);
+        return $response;
     }
 
     /**
@@ -3081,7 +3377,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsremoveExpirationDatedoWithHttpInfo($campaignID)
     {
@@ -3115,9 +3411,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3155,14 +3487,25 @@ class CampaignsApi
      */
     public function campaignsremoveExpirationDatedoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsremoveExpirationDatedoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -3220,11 +3563,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -3297,10 +3640,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsrenamedo($campaignID, $campaignName): void
+    public function campaignsrenamedo($campaignID, $campaignName)
     {
-        $this->campaignsrenamedoWithHttpInfo($campaignID, $campaignName);
+        list($response) = $this->campaignsrenamedoWithHttpInfo($campaignID, $campaignName);
+        return $response;
     }
 
     /**
@@ -3313,7 +3658,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsrenamedoWithHttpInfo($campaignID, $campaignName)
     {
@@ -3347,9 +3692,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3389,14 +3770,25 @@ class CampaignsApi
      */
     public function campaignsrenamedoAsyncWithHttpInfo($campaignID, $campaignName)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsrenamedoRequest($campaignID, $campaignName);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -3468,11 +3860,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -3545,10 +3937,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignssetExpirationDatedo($campaignID, $expirationDate): void
+    public function campaignssetExpirationDatedo($campaignID, $expirationDate)
     {
-        $this->campaignssetExpirationDatedoWithHttpInfo($campaignID, $expirationDate);
+        list($response) = $this->campaignssetExpirationDatedoWithHttpInfo($campaignID, $expirationDate);
+        return $response;
     }
 
     /**
@@ -3561,7 +3955,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignssetExpirationDatedoWithHttpInfo($campaignID, $expirationDate)
     {
@@ -3595,9 +3989,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3637,14 +4067,25 @@ class CampaignsApi
      */
     public function campaignssetExpirationDatedoAsyncWithHttpInfo($campaignID, $expirationDate)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignssetExpirationDatedoRequest($campaignID, $expirationDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -3716,11 +4157,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -3793,10 +4234,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsunassignTrackingNumberdo($campaignID, $number): void
+    public function campaignsunassignTrackingNumberdo($campaignID, $number)
     {
-        $this->campaignsunassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        list($response) = $this->campaignsunassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        return $response;
     }
 
     /**
@@ -3809,7 +4252,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsunassignTrackingNumberdoWithHttpInfo($campaignID, $number)
     {
@@ -3843,9 +4286,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3885,14 +4364,25 @@ class CampaignsApi
      */
     public function campaignsunassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsunassignTrackingNumberdoRequest($campaignID, $number);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -3964,11 +4454,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -4043,10 +4533,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $notes = null, $alternativeID = null): void
+    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
     {
-        $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID);
+        list($response) = $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID);
+        return $response;
     }
 
     /**
@@ -4061,7 +4553,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
     {
@@ -4095,9 +4587,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4141,14 +4669,25 @@ class CampaignsApi
      */
     public function campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $notes, $alternativeID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -4230,11 +4769,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -4309,10 +4848,12 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue): void
+    public function campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
     {
-        $this->campaignsupdateClicksRevenuedoWithHttpInfo($campaignID, $startDate, $endDate, $revenue);
+        list($response) = $this->campaignsupdateClicksRevenuedoWithHttpInfo($campaignID, $startDate, $endDate, $revenue);
+        return $response;
     }
 
     /**
@@ -4327,7 +4868,7 @@ class CampaignsApi
      *
      * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function campaignsupdateClicksRevenuedoWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
     {
@@ -4361,9 +4902,45 @@ class CampaignsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4407,14 +4984,25 @@ class CampaignsApi
      */
     public function campaignsupdateClicksRevenuedoAsyncWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
     {
-        $returnType = '';
+        $returnType = '\Leadspedia\Model\InlineResponse200';
         $request    = $this->campaignsupdateClicksRevenuedoRequest($campaignID, $startDate, $endDate, $revenue);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception): void {
                     $response = $exception->getResponse();
@@ -4514,11 +5102,11 @@ class CampaignsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }

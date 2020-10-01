@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## leadsReportsgetCampaignsLeadsCapReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
 
 Get Campaigns Leads Cap Report
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetCampaignsLeadsFieldsCapReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
 
 Get Campaigns Leads Fields Cap Report
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetContractsLeadsCapReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
 
 Get Contracts Leads Cap Report
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetContractsLeadsFieldsCapReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
 
 Get Contracts Leads Fields Cap Report
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadDistributionReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Lead Distribution Report
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByAdvertisersDailyReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
 
 Get Leads By Advertisers Daily Report
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByAdvertisersReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Leads By Advertisers Report
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -555,7 +555,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByAffiliatesDailyReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
 
 Get Leads By Affiliates Daily Report
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
 
 Get Leads By Affiliates Report
 
@@ -687,7 +687,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -705,7 +705,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByCampaignsReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Leads By Campaigns Report
 
@@ -767,7 +767,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByContractsReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Leads By Contracts Report
 
@@ -843,7 +843,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -861,7 +861,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByOffersReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
 
 Get Leads By Offers Report
 
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -935,7 +935,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsBySubAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Leads By Sub Affiliates Report
 
@@ -991,7 +991,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1009,7 +1009,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetLeadsByVerticalsReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
 
 Get Leads By Verticals Report
 
@@ -1061,7 +1061,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1079,7 +1079,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetOffersLeadsCapReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetOffersLeadsCapReportdo($verticalID, $verticalGroupID)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetOffersLeadsCapReportdo($verticalID, $verticalGroupID)
 
 Get Offers Leads Cap Report
 
@@ -1129,7 +1129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -1147,7 +1147,7 @@ Name | Type | Description  | Notes
 
 ## leadsReportsgetPingPostReportdo
 
-> \Leadspedia\Model\InlineResponse200 leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Ping Post Report
 
@@ -1201,7 +1201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

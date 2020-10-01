@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## conversionsReportsgetConversionsByAdvertisersReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
 
 Get Conversions By Advertisers Report
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsByAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
 
 Get Conversions By Affiliates Report
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsByCampaignsReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Conversions By Campaigns Report
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsByOffersReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
 
 Get Conversions By Offers Report
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsBySourceReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
 
 Get Conversions By Source Report
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsBySubAffiliatesReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
 
 Get Conversions By Sub Affiliates Report
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsByVerticalsReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
 
 Get Conversions By Verticals Report
 
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 
 ## conversionsReportsgetConversionsDailyReportdo
 
-> \Leadspedia\Model\InlineResponse200 conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+> \Leadspedia\Model\InlineResponse2001 conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
 
 Get Conversions Daily Report
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## audiodeletedo
 
-> audiodeletedo($audioID)
+> \Leadspedia\Model\InlineResponse200 audiodeletedo($audioID)
 
 Delete
 
@@ -42,7 +42,8 @@ $apiInstance = new Leadspedia\Api\AudioApi(
 $audioID = 56; // int | 
 
 try {
-    $apiInstance->audiodeletedo($audioID);
+    $result = $apiInstance->audiodeletedo($audioID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudioApi->audiodeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -67,7 +68,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -76,7 +77,7 @@ void (empty response body)
 
 ## audiogetAlldo
 
-> \Leadspedia\Model\InlineResponse200 audiogetAlldo($audioID, $audioType, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 audiogetAlldo($audioID, $audioType, $start, $limit)
 
 Get All
 
@@ -130,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

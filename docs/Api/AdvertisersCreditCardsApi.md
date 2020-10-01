@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## advertisersCreditCardsadddo
 
-> advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard)
 
 Add
 
@@ -60,7 +60,8 @@ $address2 = 'address2_example'; // string |
 $defaultCard = 'No'; // string | 
 
 try {
-    $apiInstance->advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
+    $result = $apiInstance->advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsadddo: ', $e->getMessage(), PHP_EOL;
 }
@@ -88,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -97,7 +98,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -106,7 +107,7 @@ void (empty response body)
 
 ## advertisersCreditCardsdeletedo
 
-> advertisersCreditCardsdeletedo($advertiserID, $creditCardID)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsdeletedo($advertiserID, $creditCardID)
 
 Delete
 
@@ -138,7 +139,8 @@ $advertiserID = 56; // int |
 $creditCardID = 56; // int | 
 
 try {
-    $apiInstance->advertisersCreditCardsdeletedo($advertiserID, $creditCardID);
+    $result = $apiInstance->advertisersCreditCardsdeletedo($advertiserID, $creditCardID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -164,7 +166,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -173,7 +175,7 @@ void (empty response body)
 
 ## advertisersCreditCardsgetAlldo
 
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetAlldo($advertiserID, $start, $limit)
+> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetAlldo($advertiserID, $start, $limit)
 
 Get All
 
@@ -225,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -243,7 +245,7 @@ Name | Type | Description  | Notes
 
 ## advertisersCreditCardsgetDefaultdo
 
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetDefaultdo($advertiserID)
+> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetDefaultdo($advertiserID)
 
 Get Default
 
@@ -291,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -309,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## advertisersCreditCardsgetInfodo
 
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
+> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
 
 Get Info
 
@@ -359,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -377,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## advertisersCreditCardssetDefaultdo
 
-> advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID)
 
 Set Default
 
@@ -409,7 +411,8 @@ $advertiserID = 56; // int |
 $creditCardID = 56; // int | 
 
 try {
-    $apiInstance->advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID);
+    $result = $apiInstance->advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardssetDefaultdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -426,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -435,7 +438,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -444,7 +447,7 @@ void (empty response body)
 
 ## advertisersCreditCardsupdatePaymentProfileIDdo
 
-> advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country)
 
 Update Payment Profile ID
 
@@ -485,7 +488,8 @@ $zipCode = 'zipCode_example'; // string |
 $country = 'country_example'; // string | 
 
 try {
-    $apiInstance->advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
+    $result = $apiInstance->advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatePaymentProfileIDdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -511,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -520,7 +524,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
@@ -529,7 +533,7 @@ void (empty response body)
 
 ## advertisersCreditCardsupdatedo
 
-> advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2)
+> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2)
 
 Update
 
@@ -570,7 +574,8 @@ $country = 'country_example'; // string |
 $address2 = 'address2_example'; // string | 
 
 try {
-    $apiInstance->advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
+    $result = $apiInstance->advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
@@ -596,7 +601,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -605,7 +610,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

@@ -88,7 +88,8 @@ $transactionFeePercentage = 3.4; // float |
 $transactionFeeAmount = 3.4; // float | 
 
 try {
-    $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
@@ -360,6 +361,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [InlineResponse200](docs/Model/InlineResponse200.md)
+ - [InlineResponse2001](docs/Model/InlineResponse2001.md)
 
 
 ## Documentation For Authorization
