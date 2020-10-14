@@ -10,7 +10,7 @@ curl https://s3.amazonaws.com/api-docs.io/developer.leadspedia.com/v2.0.json -o 
 
 php scripts/convertor.php
 
-./node_modules/.bin/openapi-generator generate -i ./schema/openapi.json -g php -o ./ -c openapi-generator-config.json --git-user-id=diablomedia --git-repo-id=leadspedia-php-sdk
+./node_modules/.bin/openapi-generator-cli generate -i ./schema/openapi.json -g php -o ./ -c openapi-generator-config.json --git-user-id=diablomedia --git-repo-id=leadspedia-php-sdk
 
 composer update
 
