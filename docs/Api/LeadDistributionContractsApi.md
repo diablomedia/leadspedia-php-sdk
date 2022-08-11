@@ -1,59 +1,60 @@
 # Leadspedia\LeadDistributionContractsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**leadDistributionContractsaddFilterdo**](LeadDistributionContractsApi.md#leadDistributionContractsaddFilterdo) | **POST** /leadDistributionContracts/addFilter.do | Add Filter
-[**leadDistributionContractsaddToOfferdo**](LeadDistributionContractsApi.md#leadDistributionContractsaddToOfferdo) | **POST** /leadDistributionContracts/addToOffer.do | Add To Offer
-[**leadDistributionContractsadjustCreditdo**](LeadDistributionContractsApi.md#leadDistributionContractsadjustCreditdo) | **POST** /leadDistributionContracts/adjustCredit.do | Adjust Credit
-[**leadDistributionContractsassignEmailDeliveryMethoddo**](LeadDistributionContractsApi.md#leadDistributionContractsassignEmailDeliveryMethoddo) | **POST** /leadDistributionContracts/assignEmailDeliveryMethod.do | Assign Email Delivery Method
-[**leadDistributionContractsassignSMSDeliveryMethoddo**](LeadDistributionContractsApi.md#leadDistributionContractsassignSMSDeliveryMethoddo) | **POST** /leadDistributionContracts/assignSMSDeliveryMethod.do | Assign SMS Delivery Method
-[**leadDistributionContractschangeModedo**](LeadDistributionContractsApi.md#leadDistributionContractschangeModedo) | **POST** /leadDistributionContracts/changeMode.do | Change Mode
-[**leadDistributionContractschangeStatusdo**](LeadDistributionContractsApi.md#leadDistributionContractschangeStatusdo) | **POST** /leadDistributionContracts/changeStatus.do | Change Status
-[**leadDistributionContractscreateScheduledo**](LeadDistributionContractsApi.md#leadDistributionContractscreateScheduledo) | **POST** /leadDistributionContracts/createSchedule.do | Create Schedule
-[**leadDistributionContractscreatedo**](LeadDistributionContractsApi.md#leadDistributionContractscreatedo) | **POST** /leadDistributionContracts/create.do | Create
-[**leadDistributionContractsdeleteAllDeliveryMethodsdo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteAllDeliveryMethodsdo) | **POST** /leadDistributionContracts/deleteAllDeliveryMethods.do | Delete All Delivery Methods
-[**leadDistributionContractsdeleteAllSchedulesdo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteAllSchedulesdo) | **POST** /leadDistributionContracts/deleteAllSchedules.do | Delete All Schedules
-[**leadDistributionContractsdeleteDeliveryMethoddo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteDeliveryMethoddo) | **POST** /leadDistributionContracts/deleteDeliveryMethod.do | Delete Delivery Method
-[**leadDistributionContractsdeleteFilterdo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteFilterdo) | **POST** /leadDistributionContracts/deleteFilter.do | Delete Filter
-[**leadDistributionContractsdeleteScheduledPausedo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteScheduledPausedo) | **POST** /leadDistributionContracts/deleteScheduledPause.do | Delete Scheduled Pause
-[**leadDistributionContractsdeleteScheduledo**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteScheduledo) | **POST** /leadDistributionContracts/deleteSchedule.do | Delete Schedule
-[**leadDistributionContractsdeletedo**](LeadDistributionContractsApi.md#leadDistributionContractsdeletedo) | **POST** /leadDistributionContracts/delete.do | Delete
-[**leadDistributionContractsenableCreditdo**](LeadDistributionContractsApi.md#leadDistributionContractsenableCreditdo) | **POST** /leadDistributionContracts/enableCredit.do | Enable Credit
-[**leadDistributionContractsenableMultipleDeliveryMethodsdo**](LeadDistributionContractsApi.md#leadDistributionContractsenableMultipleDeliveryMethodsdo) | **POST** /leadDistributionContracts/enableMultipleDeliveryMethods.do | Enable Multiple Delivery Methods
-[**leadDistributionContractsgetAlldo**](LeadDistributionContractsApi.md#leadDistributionContractsgetAlldo) | **GET** /leadDistributionContracts/getAll.do | Get All
-[**leadDistributionContractsgetBasicInfodo**](LeadDistributionContractsApi.md#leadDistributionContractsgetBasicInfodo) | **GET** /leadDistributionContracts/getBasicInfo.do | Get Basic Info
-[**leadDistributionContractsgetDuplicatesSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsgetDuplicatesSettingsdo) | **GET** /leadDistributionContracts/getDuplicatesSettings.do | Get Duplicates Settings
-[**leadDistributionContractsgetFiltersdo**](LeadDistributionContractsApi.md#leadDistributionContractsgetFiltersdo) | **GET** /leadDistributionContracts/getFilters.do | Get Filters
-[**leadDistributionContractsgetLeadsCapInfodo**](LeadDistributionContractsApi.md#leadDistributionContractsgetLeadsCapInfodo) | **GET** /leadDistributionContracts/getLeadsCapInfo.do | Get Leads Cap Info
-[**leadDistributionContractsgetLeadsSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsgetLeadsSettingsdo) | **GET** /leadDistributionContracts/getLeadsSettings.do | Get Leads Settings
-[**leadDistributionContractsgetPortalSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsgetPortalSettingsdo) | **GET** /leadDistributionContracts/getPortalSettings.do | Get Portal Settings
-[**leadDistributionContractsgetReturnsSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsgetReturnsSettingsdo) | **GET** /leadDistributionContracts/getReturnsSettings.do | Get Returns Settings
-[**leadDistributionContractsgetRevenueCapInfodo**](LeadDistributionContractsApi.md#leadDistributionContractsgetRevenueCapInfodo) | **GET** /leadDistributionContracts/getRevenueCapInfo.do | Get Revenue Cap Info
-[**leadDistributionContractsgetScheduledPausedo**](LeadDistributionContractsApi.md#leadDistributionContractsgetScheduledPausedo) | **GET** /leadDistributionContracts/getScheduledPause.do | Get Scheduled Pause
-[**leadDistributionContractsgetScheduledo**](LeadDistributionContractsApi.md#leadDistributionContractsgetScheduledo) | **GET** /leadDistributionContracts/getSchedule.do | Get Schedule
-[**leadDistributionContractsremoveExpirationDatedo**](LeadDistributionContractsApi.md#leadDistributionContractsremoveExpirationDatedo) | **POST** /leadDistributionContracts/removeExpirationDate.do | Remove Expiration Date
-[**leadDistributionContractsrenamedo**](LeadDistributionContractsApi.md#leadDistributionContractsrenamedo) | **POST** /leadDistributionContracts/rename.do | Rename
-[**leadDistributionContractsschedulePausedo**](LeadDistributionContractsApi.md#leadDistributionContractsschedulePausedo) | **POST** /leadDistributionContracts/schedulePause.do | Schedule Pause
-[**leadDistributionContractssetExpirationDatedo**](LeadDistributionContractsApi.md#leadDistributionContractssetExpirationDatedo) | **POST** /leadDistributionContracts/setExpirationDate.do | Set Expiration Date
-[**leadDistributionContractssetPricedo**](LeadDistributionContractsApi.md#leadDistributionContractssetPricedo) | **POST** /leadDistributionContracts/setPrice.do | Set Price
-[**leadDistributionContractsupdateAutoRechargeSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateAutoRechargeSettingsdo) | **POST** /leadDistributionContracts/updateAutoRechargeSettings.do | Update Auto Recharge Settings
-[**leadDistributionContractsupdateBasicInfodo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateBasicInfodo) | **POST** /leadDistributionContracts/updateBasicInfo.do | Update Basic Info
-[**leadDistributionContractsupdateDistributionPrioritydo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateDistributionPrioritydo) | **POST** /leadDistributionContracts/updateDistributionPriority.do | Update Distribution Priority
-[**leadDistributionContractsupdateDuplicatesSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateDuplicatesSettingsdo) | **POST** /leadDistributionContracts/updateDuplicatesSettings.do | Update Duplicates Settings
-[**leadDistributionContractsupdateLeadsCapdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateLeadsCapdo) | **POST** /leadDistributionContracts/updateLeadsCap.do | Update Leads Cap
-[**leadDistributionContractsupdateLeadsSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateLeadsSettingsdo) | **POST** /leadDistributionContracts/updateLeadsSettings.do | Update Leads Settings
-[**leadDistributionContractsupdatePortalSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdatePortalSettingsdo) | **POST** /leadDistributionContracts/updatePortalSettings.do | Update Portal Settings
-[**leadDistributionContractsupdateReturnsSettingsdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateReturnsSettingsdo) | **POST** /leadDistributionContracts/updateReturnsSettings.do | Update Returns Settings
-[**leadDistributionContractsupdateRevenueCapdo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateRevenueCapdo) | **POST** /leadDistributionContracts/updateRevenueCap.do | Update Revenue Cap
-[**leadDistributionContractsupdateScheduledo**](LeadDistributionContractsApi.md#leadDistributionContractsupdateScheduledo) | **POST** /leadDistributionContracts/updateSchedule.do | Update Schedule
+[**leadDistributionContractsaddFilterdo()**](LeadDistributionContractsApi.md#leadDistributionContractsaddFilterdo) | **POST** /leadDistributionContracts/addFilter.do | Add Filter
+[**leadDistributionContractsaddToOfferdo()**](LeadDistributionContractsApi.md#leadDistributionContractsaddToOfferdo) | **POST** /leadDistributionContracts/addToOffer.do | Add To Offer
+[**leadDistributionContractsadjustCreditdo()**](LeadDistributionContractsApi.md#leadDistributionContractsadjustCreditdo) | **POST** /leadDistributionContracts/adjustCredit.do | Adjust Credit
+[**leadDistributionContractsassignEmailDeliveryMethoddo()**](LeadDistributionContractsApi.md#leadDistributionContractsassignEmailDeliveryMethoddo) | **POST** /leadDistributionContracts/assignEmailDeliveryMethod.do | Assign Email Delivery Method
+[**leadDistributionContractsassignSMSDeliveryMethoddo()**](LeadDistributionContractsApi.md#leadDistributionContractsassignSMSDeliveryMethoddo) | **POST** /leadDistributionContracts/assignSMSDeliveryMethod.do | Assign SMS Delivery Method
+[**leadDistributionContractschangeModedo()**](LeadDistributionContractsApi.md#leadDistributionContractschangeModedo) | **POST** /leadDistributionContracts/changeMode.do | Change Mode
+[**leadDistributionContractschangeStatusdo()**](LeadDistributionContractsApi.md#leadDistributionContractschangeStatusdo) | **POST** /leadDistributionContracts/changeStatus.do | Change Status
+[**leadDistributionContractscreateScheduledo()**](LeadDistributionContractsApi.md#leadDistributionContractscreateScheduledo) | **POST** /leadDistributionContracts/createSchedule.do | Create Schedule
+[**leadDistributionContractscreatedo()**](LeadDistributionContractsApi.md#leadDistributionContractscreatedo) | **POST** /leadDistributionContracts/create.do | Create
+[**leadDistributionContractsdeleteAllDeliveryMethodsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteAllDeliveryMethodsdo) | **POST** /leadDistributionContracts/deleteAllDeliveryMethods.do | Delete All Delivery Methods
+[**leadDistributionContractsdeleteAllSchedulesdo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteAllSchedulesdo) | **POST** /leadDistributionContracts/deleteAllSchedules.do | Delete All Schedules
+[**leadDistributionContractsdeleteDeliveryMethoddo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteDeliveryMethoddo) | **POST** /leadDistributionContracts/deleteDeliveryMethod.do | Delete Delivery Method
+[**leadDistributionContractsdeleteFilterdo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteFilterdo) | **POST** /leadDistributionContracts/deleteFilter.do | Delete Filter
+[**leadDistributionContractsdeleteScheduledPausedo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteScheduledPausedo) | **POST** /leadDistributionContracts/deleteScheduledPause.do | Delete Scheduled Pause
+[**leadDistributionContractsdeleteScheduledo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeleteScheduledo) | **POST** /leadDistributionContracts/deleteSchedule.do | Delete Schedule
+[**leadDistributionContractsdeletedo()**](LeadDistributionContractsApi.md#leadDistributionContractsdeletedo) | **POST** /leadDistributionContracts/delete.do | Delete
+[**leadDistributionContractsenableCreditdo()**](LeadDistributionContractsApi.md#leadDistributionContractsenableCreditdo) | **POST** /leadDistributionContracts/enableCredit.do | Enable Credit
+[**leadDistributionContractsenableMultipleDeliveryMethodsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsenableMultipleDeliveryMethodsdo) | **POST** /leadDistributionContracts/enableMultipleDeliveryMethods.do | Enable Multiple Delivery Methods
+[**leadDistributionContractsgetAlldo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetAlldo) | **GET** /leadDistributionContracts/getAll.do | Get All
+[**leadDistributionContractsgetBasicInfodo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetBasicInfodo) | **GET** /leadDistributionContracts/getBasicInfo.do | Get Basic Info
+[**leadDistributionContractsgetDuplicatesSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetDuplicatesSettingsdo) | **GET** /leadDistributionContracts/getDuplicatesSettings.do | Get Duplicates Settings
+[**leadDistributionContractsgetFiltersdo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetFiltersdo) | **GET** /leadDistributionContracts/getFilters.do | Get Filters
+[**leadDistributionContractsgetLeadsCapInfodo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetLeadsCapInfodo) | **GET** /leadDistributionContracts/getLeadsCapInfo.do | Get Leads Cap Info
+[**leadDistributionContractsgetLeadsSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetLeadsSettingsdo) | **GET** /leadDistributionContracts/getLeadsSettings.do | Get Leads Settings
+[**leadDistributionContractsgetPortalSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetPortalSettingsdo) | **GET** /leadDistributionContracts/getPortalSettings.do | Get Portal Settings
+[**leadDistributionContractsgetReturnsSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetReturnsSettingsdo) | **GET** /leadDistributionContracts/getReturnsSettings.do | Get Returns Settings
+[**leadDistributionContractsgetRevenueCapInfodo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetRevenueCapInfodo) | **GET** /leadDistributionContracts/getRevenueCapInfo.do | Get Revenue Cap Info
+[**leadDistributionContractsgetScheduledPausedo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetScheduledPausedo) | **GET** /leadDistributionContracts/getScheduledPause.do | Get Scheduled Pause
+[**leadDistributionContractsgetScheduledo()**](LeadDistributionContractsApi.md#leadDistributionContractsgetScheduledo) | **GET** /leadDistributionContracts/getSchedule.do | Get Schedule
+[**leadDistributionContractsremoveExpirationDatedo()**](LeadDistributionContractsApi.md#leadDistributionContractsremoveExpirationDatedo) | **POST** /leadDistributionContracts/removeExpirationDate.do | Remove Expiration Date
+[**leadDistributionContractsrenamedo()**](LeadDistributionContractsApi.md#leadDistributionContractsrenamedo) | **POST** /leadDistributionContracts/rename.do | Rename
+[**leadDistributionContractsschedulePausedo()**](LeadDistributionContractsApi.md#leadDistributionContractsschedulePausedo) | **POST** /leadDistributionContracts/schedulePause.do | Schedule Pause
+[**leadDistributionContractssetExpirationDatedo()**](LeadDistributionContractsApi.md#leadDistributionContractssetExpirationDatedo) | **POST** /leadDistributionContracts/setExpirationDate.do | Set Expiration Date
+[**leadDistributionContractssetPricedo()**](LeadDistributionContractsApi.md#leadDistributionContractssetPricedo) | **POST** /leadDistributionContracts/setPrice.do | Set Price
+[**leadDistributionContractsupdateAutoRechargeSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateAutoRechargeSettingsdo) | **POST** /leadDistributionContracts/updateAutoRechargeSettings.do | Update Auto Recharge Settings
+[**leadDistributionContractsupdateBasicInfodo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateBasicInfodo) | **POST** /leadDistributionContracts/updateBasicInfo.do | Update Basic Info
+[**leadDistributionContractsupdateDistributionPrioritydo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateDistributionPrioritydo) | **POST** /leadDistributionContracts/updateDistributionPriority.do | Update Distribution Priority
+[**leadDistributionContractsupdateDuplicatesSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateDuplicatesSettingsdo) | **POST** /leadDistributionContracts/updateDuplicatesSettings.do | Update Duplicates Settings
+[**leadDistributionContractsupdateLeadsCapdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateLeadsCapdo) | **POST** /leadDistributionContracts/updateLeadsCap.do | Update Leads Cap
+[**leadDistributionContractsupdateLeadsSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateLeadsSettingsdo) | **POST** /leadDistributionContracts/updateLeadsSettings.do | Update Leads Settings
+[**leadDistributionContractsupdatePortalSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdatePortalSettingsdo) | **POST** /leadDistributionContracts/updatePortalSettings.do | Update Portal Settings
+[**leadDistributionContractsupdateReturnsSettingsdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateReturnsSettingsdo) | **POST** /leadDistributionContracts/updateReturnsSettings.do | Update Returns Settings
+[**leadDistributionContractsupdateRevenueCapdo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateRevenueCapdo) | **POST** /leadDistributionContracts/updateRevenueCap.do | Update Revenue Cap
+[**leadDistributionContractsupdateScheduledo()**](LeadDistributionContractsApi.md#leadDistributionContractsupdateScheduledo) | **POST** /leadDistributionContracts/updateSchedule.do | Update Schedule
 
 
+## `leadDistributionContractsaddFilterdo()`
 
-## leadDistributionContractsaddFilterdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles)
+```php
+leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Add Filter
 
@@ -81,12 +82,12 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$fieldID = 56; // int | 
-$operator = 'operator_example'; // string | 
-$value = 'value_example'; // string | 
-$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$miles = 3.4; // float | 
+$contractID = 56; // int
+$fieldID = 56; // int
+$operator = 'operator_example'; // string
+$value = 'value_example'; // string
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$miles = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractsaddFilterdo($contractID, $fieldID, $operator, $value, $date, $miles);
@@ -94,11 +95,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsaddFilterdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -111,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -120,16 +119,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsaddToOfferdo()`
 
-## leadDistributionContractsaddToOfferdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority)
+```php
+leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Add To Offer
 
@@ -157,9 +157,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$offerID = 56; // int | 
-$priority = 1; // int | 
+$contractID = 56; // int
+$offerID = 56; // int
+$priority = 1; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsaddToOfferdo($contractID, $offerID, $priority);
@@ -167,11 +167,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsaddToOfferdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -181,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -190,16 +188,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsadjustCreditdo()`
 
-## leadDistributionContractsadjustCreditdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+```php
+leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Adjust Credit
 
@@ -227,15 +226,15 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$type = 'type_example'; // string | 
-$amount = 3.4; // float | 
-$charge = 'No'; // string | 
-$generateInvoice = 'No'; // string | 
-$note = 'note_example'; // string | 
-$transactionFee = 'transactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
+$contractID = 56; // int
+$type = 'type_example'; // string
+$amount = 3.4; // float
+$charge = 'No'; // string
+$generateInvoice = 'No'; // string
+$note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
@@ -243,11 +242,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -263,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -272,16 +269,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsassignEmailDeliveryMethoddo()`
 
-## leadDistributionContractsassignEmailDeliveryMethoddo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo)
+```php
+leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Assign Email Delivery Method
 
@@ -309,9 +307,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$deliveryMethodID = 56; // int | 
-$emailTo = 'emailTo_example'; // string | 
+$contractID = 56; // int
+$deliveryMethodID = 56; // int
+$emailTo = 'emailTo_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsassignEmailDeliveryMethoddo($contractID, $deliveryMethodID, $emailTo);
@@ -319,21 +317,19 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsassignEmailDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contractID** | **int**|  |
  **deliveryMethodID** | **int**|  |
- **emailTo** | [**string**](../Model/.md)|  |
+ **emailTo** | **string**|  |
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -342,16 +338,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsassignSMSDeliveryMethoddo()`
 
-## leadDistributionContractsassignSMSDeliveryMethoddo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo)
+```php
+leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Assign SMS Delivery Method
 
@@ -379,9 +376,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$deliveryMethodID = 56; // int | 
-$smsTo = 3.4; // float | 
+$contractID = 56; // int
+$deliveryMethodID = 56; // int
+$smsTo = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractsassignSMSDeliveryMethoddo($contractID, $deliveryMethodID, $smsTo);
@@ -389,11 +386,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsassignSMSDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -403,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -412,16 +407,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractschangeModedo()`
 
-## leadDistributionContractschangeModedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractschangeModedo($contractID, $mode)
+```php
+leadDistributionContractschangeModedo($contractID, $mode): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Change Mode
 
@@ -449,8 +445,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$mode = 'mode_example'; // string | 
+$contractID = 56; // int
+$mode = 'mode_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractschangeModedo($contractID, $mode);
@@ -458,11 +454,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -471,7 +465,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -480,16 +474,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractschangeStatusdo()`
 
-## leadDistributionContractschangeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractschangeStatusdo($contractID, $status)
+```php
+leadDistributionContractschangeStatusdo($contractID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Change Status
 
@@ -517,8 +512,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$status = 'status_example'; // string | 
+$contractID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractschangeStatusdo($contractID, $status);
@@ -526,11 +521,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -539,7 +532,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -548,16 +541,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractscreateScheduledo()`
 
-## leadDistributionContractscreateScheduledo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday)
+```php
+leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Create Schedule
 
@@ -585,20 +579,20 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$cap = 56; // int | 
-$revenueCap = 3.4; // float | 
-$price = 3.4; // float | 
-$startTime = 'startTime_example'; // string | 
-$endTime = 'endTime_example'; // string | 
-$type = 'type_example'; // string | 
-$monday = 'monday_example'; // string | 
-$tuesday = 'tuesday_example'; // string | 
-$wednesday = 'wednesday_example'; // string | 
-$thursday = 'thursday_example'; // string | 
-$friday = 'friday_example'; // string | 
-$saturday = 'saturday_example'; // string | 
-$sunday = 'sunday_example'; // string | 
+$contractID = 56; // int
+$cap = 56; // int
+$revenueCap = 3.4; // float
+$price = 3.4; // float
+$startTime = 'startTime_example'; // string
+$endTime = 'endTime_example'; // string
+$type = 'type_example'; // string
+$monday = 'monday_example'; // string
+$tuesday = 'tuesday_example'; // string
+$wednesday = 'wednesday_example'; // string
+$thursday = 'thursday_example'; // string
+$friday = 'friday_example'; // string
+$saturday = 'saturday_example'; // string
+$sunday = 'sunday_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
@@ -606,11 +600,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreateScheduledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -631,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -640,16 +632,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractscreatedo()`
 
-## leadDistributionContractscreatedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice)
+```php
+leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Create
 
@@ -677,11 +670,11 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$advertiserID = 56; // int | 
-$revenueModel = 'revenueModel_example'; // string | 
-$contractName = 'contractName_example'; // string | 
-$defaultPrice = 3.4; // float | 
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$revenueModel = 'revenueModel_example'; // string
+$contractName = 'contractName_example'; // string
+$defaultPrice = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice);
@@ -689,11 +682,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -705,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -714,16 +705,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteAllDeliveryMethodsdo()`
 
-## leadDistributionContractsdeleteAllDeliveryMethodsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID)
+```php
+leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete All Delivery Methods
 
@@ -751,7 +743,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteAllDeliveryMethodsdo($contractID);
@@ -759,11 +751,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteAllDeliveryMethodsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -771,7 +761,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -780,16 +770,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteAllSchedulesdo()`
 
-## leadDistributionContractsdeleteAllSchedulesdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteAllSchedulesdo($contractID)
+```php
+leadDistributionContractsdeleteAllSchedulesdo($contractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete All Schedules
 
@@ -817,7 +808,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteAllSchedulesdo($contractID);
@@ -825,11 +816,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteAllSchedulesdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -837,7 +826,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -846,16 +835,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteDeliveryMethoddo()`
 
-## leadDistributionContractsdeleteDeliveryMethoddo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID)
+```php
+leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete Delivery Method
 
@@ -883,7 +873,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$deliveryMethodsContractID = 56; // int | 
+$deliveryMethodsContractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteDeliveryMethoddo($deliveryMethodsContractID);
@@ -891,11 +881,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteDeliveryMethoddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -903,7 +891,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -912,16 +900,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteFilterdo()`
 
-## leadDistributionContractsdeleteFilterdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteFilterdo($filterID)
+```php
+leadDistributionContractsdeleteFilterdo($filterID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete Filter
 
@@ -949,7 +938,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$filterID = 56; // int | 
+$filterID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteFilterdo($filterID);
@@ -957,11 +946,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteFilterdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -969,7 +956,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -978,16 +965,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteScheduledPausedo()`
 
-## leadDistributionContractsdeleteScheduledPausedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID)
+```php
+leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete Scheduled Pause
 
@@ -1015,7 +1003,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scheduledPauseID = 56; // int | 
+$scheduledPauseID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteScheduledPausedo($scheduledPauseID);
@@ -1023,11 +1011,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1035,7 +1021,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1044,16 +1030,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeleteScheduledo()`
 
-## leadDistributionContractsdeleteScheduledo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeleteScheduledo($deliveryScheduleID)
+```php
+leadDistributionContractsdeleteScheduledo($deliveryScheduleID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete Schedule
 
@@ -1081,7 +1068,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$deliveryScheduleID = 56; // int | 
+$deliveryScheduleID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeleteScheduledo($deliveryScheduleID);
@@ -1089,11 +1076,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeleteScheduledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1101,7 +1086,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1110,16 +1095,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsdeletedo()`
 
-## leadDistributionContractsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsdeletedo($contractID)
+```php
+leadDistributionContractsdeletedo($contractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete
 
@@ -1147,7 +1133,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsdeletedo($contractID);
@@ -1155,11 +1141,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1167,7 +1151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1176,16 +1160,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsenableCreditdo()`
 
-## leadDistributionContractsenableCreditdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsenableCreditdo($contractID, $buyerLevel)
+```php
+leadDistributionContractsenableCreditdo($contractID, $buyerLevel): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Enable Credit
 
@@ -1213,8 +1198,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$buyerLevel = 'buyerLevel_example'; // string | 
+$contractID = 56; // int
+$buyerLevel = 'buyerLevel_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsenableCreditdo($contractID, $buyerLevel);
@@ -1222,11 +1207,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1235,7 +1218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1244,16 +1227,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsenableMultipleDeliveryMethodsdo()`
 
-## leadDistributionContractsenableMultipleDeliveryMethodsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID)
+```php
+leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Enable Multiple Delivery Methods
 
@@ -1281,7 +1265,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsenableMultipleDeliveryMethodsdo($contractID);
@@ -1289,11 +1273,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsenableMultipleDeliveryMethodsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1301,7 +1283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1310,16 +1292,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetAlldo()`
 
-## leadDistributionContractsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+```php
+leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -1347,12 +1330,12 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$status = 'status_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$status = 'status_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit);
@@ -1360,11 +1343,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1377,7 +1358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1386,16 +1367,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetBasicInfodo()`
 
-## leadDistributionContractsgetBasicInfodo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetBasicInfodo($contractID)
+```php
+leadDistributionContractsgetBasicInfodo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Basic Info
 
@@ -1423,7 +1405,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetBasicInfodo($contractID);
@@ -1431,11 +1413,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1443,7 +1423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1452,16 +1432,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetDuplicatesSettingsdo()`
 
-## leadDistributionContractsgetDuplicatesSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetDuplicatesSettingsdo($contractID)
+```php
+leadDistributionContractsgetDuplicatesSettingsdo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Duplicates Settings
 
@@ -1489,7 +1470,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetDuplicatesSettingsdo($contractID);
@@ -1497,11 +1478,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetDuplicatesSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1509,7 +1488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1518,16 +1497,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetFiltersdo()`
 
-## leadDistributionContractsgetFiltersdo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetFiltersdo($contractID, $start, $limit)
+```php
+leadDistributionContractsgetFiltersdo($contractID, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Filters
 
@@ -1555,9 +1535,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$contractID = 56; // int
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetFiltersdo($contractID, $start, $limit);
@@ -1565,11 +1545,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetFiltersdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1579,7 +1557,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1588,16 +1566,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetLeadsCapInfodo()`
 
-## leadDistributionContractsgetLeadsCapInfodo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetLeadsCapInfodo($contractID)
+```php
+leadDistributionContractsgetLeadsCapInfodo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Leads Cap Info
 
@@ -1625,7 +1604,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetLeadsCapInfodo($contractID);
@@ -1633,11 +1612,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetLeadsCapInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1645,7 +1622,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1654,16 +1631,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetLeadsSettingsdo()`
 
-## leadDistributionContractsgetLeadsSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetLeadsSettingsdo($contractID)
+```php
+leadDistributionContractsgetLeadsSettingsdo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Leads Settings
 
@@ -1691,7 +1669,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetLeadsSettingsdo($contractID);
@@ -1699,11 +1677,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetLeadsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1711,7 +1687,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1720,16 +1696,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetPortalSettingsdo()`
 
-## leadDistributionContractsgetPortalSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetPortalSettingsdo($contractID)
+```php
+leadDistributionContractsgetPortalSettingsdo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Portal Settings
 
@@ -1757,7 +1734,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetPortalSettingsdo($contractID);
@@ -1765,11 +1742,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetPortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1777,7 +1752,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1786,16 +1761,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetReturnsSettingsdo()`
 
-## leadDistributionContractsgetReturnsSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetReturnsSettingsdo($contractID)
+```php
+leadDistributionContractsgetReturnsSettingsdo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Returns Settings
 
@@ -1823,7 +1799,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetReturnsSettingsdo($contractID);
@@ -1831,11 +1807,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1843,7 +1817,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1852,16 +1826,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetRevenueCapInfodo()`
 
-## leadDistributionContractsgetRevenueCapInfodo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetRevenueCapInfodo($contractID)
+```php
+leadDistributionContractsgetRevenueCapInfodo($contractID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Revenue Cap Info
 
@@ -1889,7 +1864,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetRevenueCapInfodo($contractID);
@@ -1897,11 +1872,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetRevenueCapInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1909,7 +1882,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1918,16 +1891,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetScheduledPausedo()`
 
-## leadDistributionContractsgetScheduledPausedo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit)
+```php
+leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Scheduled Pause
 
@@ -1955,9 +1929,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$contractID = 56; // int
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetScheduledPausedo($contractID, $start, $limit);
@@ -1965,11 +1939,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1979,7 +1951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -1988,16 +1960,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsgetScheduledo()`
 
-## leadDistributionContractsgetScheduledo
-
-> \Leadspedia\Model\InlineResponse2001 leadDistributionContractsgetScheduledo($contractID, $start, $limit)
+```php
+leadDistributionContractsgetScheduledo($contractID, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Schedule
 
@@ -2025,9 +1998,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$contractID = 56; // int
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsgetScheduledo($contractID, $start, $limit);
@@ -2035,11 +2008,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsgetScheduledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2049,7 +2020,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -2058,16 +2029,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsremoveExpirationDatedo()`
 
-## leadDistributionContractsremoveExpirationDatedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsremoveExpirationDatedo($contractID)
+```php
+leadDistributionContractsremoveExpirationDatedo($contractID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Remove Expiration Date
 
@@ -2095,7 +2067,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsremoveExpirationDatedo($contractID);
@@ -2103,11 +2075,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2115,7 +2085,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2124,16 +2094,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsrenamedo()`
 
-## leadDistributionContractsrenamedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsrenamedo($contractID, $contractName)
+```php
+leadDistributionContractsrenamedo($contractID, $contractName): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Rename
 
@@ -2161,8 +2132,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$contractName = 'contractName_example'; // string | 
+$contractID = 56; // int
+$contractName = 'contractName_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsrenamedo($contractID, $contractName);
@@ -2170,11 +2141,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2183,7 +2152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2192,16 +2161,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsschedulePausedo()`
 
-## leadDistributionContractsschedulePausedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
+```php
+leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Schedule Pause
 
@@ -2229,9 +2199,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$pauseDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$resumeDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$contractID = 56; // int
+$pauseDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$resumeDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
@@ -2239,11 +2209,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsschedulePausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2253,7 +2221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2262,16 +2230,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractssetExpirationDatedo()`
 
-## leadDistributionContractssetExpirationDatedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractssetExpirationDatedo($contractID, $expirationDate)
+```php
+leadDistributionContractssetExpirationDatedo($contractID, $expirationDate): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Set Expiration Date
 
@@ -2299,8 +2268,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$contractID = 56; // int
+$expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->leadDistributionContractssetExpirationDatedo($contractID, $expirationDate);
@@ -2308,11 +2277,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2321,7 +2288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2330,16 +2297,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractssetPricedo()`
 
-## leadDistributionContractssetPricedo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractssetPricedo($contractID, $price)
+```php
+leadDistributionContractssetPricedo($contractID, $price): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Set Price
 
@@ -2367,8 +2335,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$price = 3.4; // float | 
+$contractID = 56; // int
+$price = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractssetPricedo($contractID, $price);
@@ -2376,11 +2344,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractssetPricedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2389,7 +2355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2398,16 +2364,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateAutoRechargeSettingsdo()`
 
-## leadDistributionContractsupdateAutoRechargeSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+```php
+leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Auto Recharge Settings
 
@@ -2435,14 +2402,14 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$enableAutoRecharge = 'enableAutoRecharge_example'; // string | 
-$autoChargeBalance = 3.4; // float | 
-$autoChargeAmount = 3.4; // float | 
-$chargeTransactionFee = 'chargeTransactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
-$generateInvoice = 'generateInvoice_example'; // string | 
+$contractID = 56; // int
+$enableAutoRecharge = 'enableAutoRecharge_example'; // string
+$autoChargeBalance = 3.4; // float
+$autoChargeAmount = 3.4; // float
+$chargeTransactionFee = 'chargeTransactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
+$generateInvoice = 'generateInvoice_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
@@ -2450,11 +2417,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2469,7 +2434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2478,16 +2443,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateBasicInfodo()`
 
-## leadDistributionContractsupdateBasicInfodo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes)
+```php
+leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Basic Info
 
@@ -2515,10 +2481,10 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$contractName = 'contractName_example'; // string | 
-$alternativeID = 'alternativeID_example'; // string | 
-$notes = 'notes_example'; // string | 
+$contractID = 56; // int
+$contractName = 'contractName_example'; // string
+$alternativeID = 'alternativeID_example'; // string
+$notes = 'notes_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateBasicInfodo($contractID, $contractName, $alternativeID, $notes);
@@ -2526,11 +2492,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2541,7 +2505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2550,16 +2514,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateDistributionPrioritydo()`
 
-## leadDistributionContractsupdateDistributionPrioritydo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority)
+```php
+leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Distribution Priority
 
@@ -2587,9 +2552,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$offerID = 56; // int | 
-$priority = 1; // int | 
+$contractID = 56; // int
+$offerID = 56; // int
+$priority = 1; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateDistributionPrioritydo($contractID, $offerID, $priority);
@@ -2597,11 +2562,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateDistributionPrioritydo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2611,7 +2574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2620,16 +2583,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateDuplicatesSettingsdo()`
 
-## leadDistributionContractsupdateDuplicatesSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays)
+```php
+leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Duplicates Settings
 
@@ -2657,9 +2621,9 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$enableDuplicateCheck = 'enableDuplicateCheck_example'; // string | 
-$numberOfDays = 56; // int | 
+$contractID = 56; // int
+$enableDuplicateCheck = 'enableDuplicateCheck_example'; // string
+$numberOfDays = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateDuplicatesSettingsdo($contractID, $enableDuplicateCheck, $numberOfDays);
@@ -2667,11 +2631,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateDuplicatesSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2681,7 +2643,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2690,16 +2652,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateLeadsCapdo()`
 
-## leadDistributionContractsupdateLeadsCapdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap)
+```php
+leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Cap
 
@@ -2727,11 +2690,11 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$hourlyLeadsCap = 56; // int | 
-$dailyLeadsCap = 56; // int | 
-$weeklyLeadsCap = 56; // int | 
-$monthlyLeadsCap = 56; // int | 
+$contractID = 56; // int
+$hourlyLeadsCap = 56; // int
+$dailyLeadsCap = 56; // int
+$weeklyLeadsCap = 56; // int
+$monthlyLeadsCap = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateLeadsCapdo($contractID, $hourlyLeadsCap, $dailyLeadsCap, $weeklyLeadsCap, $monthlyLeadsCap);
@@ -2739,11 +2702,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateLeadsCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2755,7 +2716,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2764,16 +2725,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateLeadsSettingsdo()`
 
-## leadDistributionContractsupdateLeadsSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads)
+```php
+leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Settings
 
@@ -2801,12 +2763,12 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$minimumLeadAge = 56; // int | 
-$maximumLeadAge = 56; // int | 
-$maximumPostErrors = 56; // int | 
-$timeLeadsPosts = 56; // int | 
-$allowQueueLeads = 'allowQueueLeads_example'; // string | 
+$contractID = 56; // int
+$minimumLeadAge = 56; // int
+$maximumLeadAge = 56; // int
+$maximumPostErrors = 56; // int
+$timeLeadsPosts = 56; // int
+$allowQueueLeads = 'allowQueueLeads_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateLeadsSettingsdo($contractID, $minimumLeadAge, $maximumLeadAge, $maximumPostErrors, $timeLeadsPosts, $allowQueueLeads);
@@ -2814,11 +2776,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateLeadsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2831,7 +2791,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2840,16 +2800,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdatePortalSettingsdo()`
 
-## leadDistributionContractsupdatePortalSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps)
+```php
+leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Portal Settings
 
@@ -2877,15 +2838,15 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$showStatus = 'showStatus_example'; // string | 
-$showLeadData = 'showLeadData_example'; // string | 
-$showSchedule = 'showSchedule_example'; // string | 
-$showCaps = 'showCaps_example'; // string | 
-$showReturnSettings = 'showReturnSettings_example'; // string | 
-$allowStatusPause = 'allowStatusPause_example'; // string | 
-$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | 
-$allowManageCaps = 'allowManageCaps_example'; // string | 
+$contractID = 56; // int
+$showStatus = 'showStatus_example'; // string
+$showLeadData = 'showLeadData_example'; // string
+$showSchedule = 'showSchedule_example'; // string
+$showCaps = 'showCaps_example'; // string
+$showReturnSettings = 'showReturnSettings_example'; // string
+$allowStatusPause = 'allowStatusPause_example'; // string
+$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string
+$allowManageCaps = 'allowManageCaps_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps);
@@ -2893,11 +2854,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2913,7 +2872,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2922,16 +2881,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateReturnsSettingsdo()`
 
-## leadDistributionContractsupdateReturnsSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable)
+```php
+leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Returns Settings
 
@@ -2959,11 +2919,11 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$allowReturns = 'allowReturns_example'; // string | 
-$autoApproveReturns = 'autoApproveReturns_example'; // string | 
-$replaceReturns = 'replaceReturns_example'; // string | 
-$replacementNonReturnable = 'replacementNonReturnable_example'; // string | 
+$contractID = 56; // int
+$allowReturns = 'allowReturns_example'; // string
+$autoApproveReturns = 'autoApproveReturns_example'; // string
+$replaceReturns = 'replaceReturns_example'; // string
+$replacementNonReturnable = 'replacementNonReturnable_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns, $replaceReturns, $replacementNonReturnable);
@@ -2971,11 +2931,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2987,7 +2945,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -2996,16 +2954,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateRevenueCapdo()`
 
-## leadDistributionContractsupdateRevenueCapdo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
+```php
+leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Revenue Cap
 
@@ -3033,11 +2992,11 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$hourlyRevenueCap = 56; // int | 
-$dailyRevenueCap = 56; // int | 
-$weeklyRevenueCap = 56; // int | 
-$monthlyRevenueCap = 56; // int | 
+$contractID = 56; // int
+$hourlyRevenueCap = 56; // int
+$dailyRevenueCap = 56; // int
+$weeklyRevenueCap = 56; // int
+$monthlyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
@@ -3045,11 +3004,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3061,7 +3018,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -3070,16 +3027,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadDistributionContractsupdateScheduledo()`
 
-## leadDistributionContractsupdateScheduledo
-
-> \Leadspedia\Model\InlineResponse200 leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type)
+```php
+leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Schedule
 
@@ -3107,13 +3065,13 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$deliveryScheduleID = 56; // int | 
-$cap = 56; // int | 
-$revenueCap = 3.4; // float | 
-$price = 3.4; // float | 
-$startTime = 'startTime_example'; // string | 
-$endTime = 'endTime_example'; // string | 
-$type = 'type_example'; // string | 
+$deliveryScheduleID = 56; // int
+$cap = 56; // int
+$revenueCap = 3.4; // float
+$price = 3.4; // float
+$startTime = 'startTime_example'; // string
+$endTime = 'endTime_example'; // string
+$type = 'type_example'; // string
 
 try {
     $result = $apiInstance->leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type);
@@ -3121,11 +3079,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateScheduledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3139,7 +3095,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -3148,9 +3104,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

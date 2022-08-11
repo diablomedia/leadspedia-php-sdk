@@ -1,16 +1,17 @@
 # Leadspedia\PixelsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**pixelsgetAlldo**](PixelsApi.md#pixelsgetAlldo) | **GET** /pixels/getAll.do | Get All
+[**pixelsgetAlldo()**](PixelsApi.md#pixelsgetAlldo) | **GET** /pixels/getAll.do | Get All
 
 
+## `pixelsgetAlldo()`
 
-## pixelsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
+```php
+pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -38,11 +39,11 @@ $apiInstance = new Leadspedia\Api\PixelsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$dispositionID = 56; // int | 
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$dispositionID = 56; // int
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->pixelsgetAlldo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
@@ -50,11 +51,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling PixelsApi->pixelsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -66,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -75,9 +74,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -1,36 +1,37 @@
 # Leadspedia\AdvertisersApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**advertisersadjustCreditdo**](AdvertisersApi.md#advertisersadjustCreditdo) | **POST** /advertisers/adjustCredit.do | Adjust Credit
-[**advertiserschangeStatusdo**](AdvertisersApi.md#advertiserschangeStatusdo) | **POST** /advertisers/changeStatus.do | Change Status
-[**advertiserscreatedo**](AdvertisersApi.md#advertiserscreatedo) | **POST** /advertisers/create.do | Create
-[**advertisersdeletedo**](AdvertisersApi.md#advertisersdeletedo) | **POST** /advertisers/delete.do | Delete
-[**advertisersenableCreditdo**](AdvertisersApi.md#advertisersenableCreditdo) | **POST** /advertisers/enableCredit.do | Enable Credit
-[**advertisersgetAlldo**](AdvertisersApi.md#advertisersgetAlldo) | **GET** /advertisers/getAll.do | Get All
-[**advertisersgetInfodo**](AdvertisersApi.md#advertisersgetInfodo) | **GET** /advertisers/getInfo.do | Get Info
-[**advertiserssearchdo**](AdvertisersApi.md#advertiserssearchdo) | **GET** /advertisers/search.do | Search
-[**advertisersupdateAuthorizeNetCustomerProfileIDdo**](AdvertisersApi.md#advertisersupdateAuthorizeNetCustomerProfileIDdo) | **POST** /advertisers/updateAuthorizeNetCustomerProfileID.do | Update Authorize Net Customer Profile ID
-[**advertisersupdateAutoRechargeSettingsdo**](AdvertisersApi.md#advertisersupdateAutoRechargeSettingsdo) | **POST** /advertisers/updateAutoRechargeSettings.do | Update Auto Recharge Settings
-[**advertisersupdateBillingdo**](AdvertisersApi.md#advertisersupdateBillingdo) | **POST** /advertisers/updateBilling.do | Update Billing
-[**advertisersupdateInfodo**](AdvertisersApi.md#advertisersupdateInfodo) | **POST** /advertisers/updateInfo.do | Update Info
-[**advertisersupdateLeadsCapsdo**](AdvertisersApi.md#advertisersupdateLeadsCapsdo) | **POST** /advertisers/updateLeadsCaps.do | Update Leads Caps
-[**advertisersupdateLeadsDailyCapdo**](AdvertisersApi.md#advertisersupdateLeadsDailyCapdo) | **POST** /advertisers/updateLeadsDailyCap.do | Update Leads Daily Cap
-[**advertisersupdateLeadsDailyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsDailyRevenueCapdo) | **POST** /advertisers/updateLeadsDailyRevenueCap.do | Update Leads Daily Revenue Cap
-[**advertisersupdateLeadsMonthlyCapdo**](AdvertisersApi.md#advertisersupdateLeadsMonthlyCapdo) | **POST** /advertisers/updateLeadsMonthlyCap.do | Update Leads Monthly Cap
-[**advertisersupdateLeadsMonthlyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsMonthlyRevenueCapdo) | **POST** /advertisers/updateLeadsMonthlyRevenueCap.do | Update Leads Monthly Revenue Cap
-[**advertisersupdateLeadsRevenueCapsdo**](AdvertisersApi.md#advertisersupdateLeadsRevenueCapsdo) | **POST** /advertisers/updateLeadsRevenueCaps.do | Update Leads Revenue Caps
-[**advertisersupdateLeadsWeeklyCapdo**](AdvertisersApi.md#advertisersupdateLeadsWeeklyCapdo) | **POST** /advertisers/updateLeadsWeeklyCap.do | Update Leads Weekly Cap
-[**advertisersupdateLeadsWeeklyRevenueCapdo**](AdvertisersApi.md#advertisersupdateLeadsWeeklyRevenueCapdo) | **POST** /advertisers/updateLeadsWeeklyRevenueCap.do | Update Leads Weekly Revenue Cap
-[**advertisersupdatePortalSettingsdo**](AdvertisersApi.md#advertisersupdatePortalSettingsdo) | **POST** /advertisers/updatePortalSettings.do | Update Portal Settings
+[**advertisersadjustCreditdo()**](AdvertisersApi.md#advertisersadjustCreditdo) | **POST** /advertisers/adjustCredit.do | Adjust Credit
+[**advertiserschangeStatusdo()**](AdvertisersApi.md#advertiserschangeStatusdo) | **POST** /advertisers/changeStatus.do | Change Status
+[**advertiserscreatedo()**](AdvertisersApi.md#advertiserscreatedo) | **POST** /advertisers/create.do | Create
+[**advertisersdeletedo()**](AdvertisersApi.md#advertisersdeletedo) | **POST** /advertisers/delete.do | Delete
+[**advertisersenableCreditdo()**](AdvertisersApi.md#advertisersenableCreditdo) | **POST** /advertisers/enableCredit.do | Enable Credit
+[**advertisersgetAlldo()**](AdvertisersApi.md#advertisersgetAlldo) | **GET** /advertisers/getAll.do | Get All
+[**advertisersgetInfodo()**](AdvertisersApi.md#advertisersgetInfodo) | **GET** /advertisers/getInfo.do | Get Info
+[**advertiserssearchdo()**](AdvertisersApi.md#advertiserssearchdo) | **GET** /advertisers/search.do | Search
+[**advertisersupdateAuthorizeNetCustomerProfileIDdo()**](AdvertisersApi.md#advertisersupdateAuthorizeNetCustomerProfileIDdo) | **POST** /advertisers/updateAuthorizeNetCustomerProfileID.do | Update Authorize Net Customer Profile ID
+[**advertisersupdateAutoRechargeSettingsdo()**](AdvertisersApi.md#advertisersupdateAutoRechargeSettingsdo) | **POST** /advertisers/updateAutoRechargeSettings.do | Update Auto Recharge Settings
+[**advertisersupdateBillingdo()**](AdvertisersApi.md#advertisersupdateBillingdo) | **POST** /advertisers/updateBilling.do | Update Billing
+[**advertisersupdateInfodo()**](AdvertisersApi.md#advertisersupdateInfodo) | **POST** /advertisers/updateInfo.do | Update Info
+[**advertisersupdateLeadsCapsdo()**](AdvertisersApi.md#advertisersupdateLeadsCapsdo) | **POST** /advertisers/updateLeadsCaps.do | Update Leads Caps
+[**advertisersupdateLeadsDailyCapdo()**](AdvertisersApi.md#advertisersupdateLeadsDailyCapdo) | **POST** /advertisers/updateLeadsDailyCap.do | Update Leads Daily Cap
+[**advertisersupdateLeadsDailyRevenueCapdo()**](AdvertisersApi.md#advertisersupdateLeadsDailyRevenueCapdo) | **POST** /advertisers/updateLeadsDailyRevenueCap.do | Update Leads Daily Revenue Cap
+[**advertisersupdateLeadsMonthlyCapdo()**](AdvertisersApi.md#advertisersupdateLeadsMonthlyCapdo) | **POST** /advertisers/updateLeadsMonthlyCap.do | Update Leads Monthly Cap
+[**advertisersupdateLeadsMonthlyRevenueCapdo()**](AdvertisersApi.md#advertisersupdateLeadsMonthlyRevenueCapdo) | **POST** /advertisers/updateLeadsMonthlyRevenueCap.do | Update Leads Monthly Revenue Cap
+[**advertisersupdateLeadsRevenueCapsdo()**](AdvertisersApi.md#advertisersupdateLeadsRevenueCapsdo) | **POST** /advertisers/updateLeadsRevenueCaps.do | Update Leads Revenue Caps
+[**advertisersupdateLeadsWeeklyCapdo()**](AdvertisersApi.md#advertisersupdateLeadsWeeklyCapdo) | **POST** /advertisers/updateLeadsWeeklyCap.do | Update Leads Weekly Cap
+[**advertisersupdateLeadsWeeklyRevenueCapdo()**](AdvertisersApi.md#advertisersupdateLeadsWeeklyRevenueCapdo) | **POST** /advertisers/updateLeadsWeeklyRevenueCap.do | Update Leads Weekly Revenue Cap
+[**advertisersupdatePortalSettingsdo()**](AdvertisersApi.md#advertisersupdatePortalSettingsdo) | **POST** /advertisers/updatePortalSettings.do | Update Portal Settings
 
 
+## `advertisersadjustCreditdo()`
 
-## advertisersadjustCreditdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+```php
+advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Adjust Credit
 
@@ -58,15 +59,15 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$type = 'type_example'; // string | 
-$amount = 3.4; // float | 
-$charge = 'No'; // string | 
-$generateInvoice = 'No'; // string | 
-$note = 'note_example'; // string | 
-$transactionFee = 'transactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
+$advertiserID = 56; // int
+$type = 'type_example'; // string
+$amount = 3.4; // float
+$charge = 'No'; // string
+$generateInvoice = 'No'; // string
+$note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
     $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
@@ -74,11 +75,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -94,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -103,16 +102,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertiserschangeStatusdo()`
 
-## advertiserschangeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 advertiserschangeStatusdo($advertiserID, $status)
+```php
+advertiserschangeStatusdo($advertiserID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Change Status
 
@@ -140,8 +140,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$status = 'status_example'; // string | 
+$advertiserID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->advertiserschangeStatusdo($advertiserID, $status);
@@ -149,11 +149,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -171,16 +169,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertiserscreatedo()`
 
-## advertiserscreatedo
-
-> \Leadspedia\Model\InlineResponse200 advertiserscreatedo($advertiserName, $accountManagerID, $status)
+```php
+advertiserscreatedo($advertiserName, $accountManagerID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Create
 
@@ -208,9 +207,9 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserName = 'advertiserName_example'; // string | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
+$advertiserName = 'advertiserName_example'; // string
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->advertiserscreatedo($advertiserName, $accountManagerID, $status);
@@ -218,11 +217,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -232,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -241,16 +238,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersdeletedo()`
 
-## advertisersdeletedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersdeletedo($advertiserID)
+```php
+advertisersdeletedo($advertiserID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete
 
@@ -278,7 +276,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
+$advertiserID = 56; // int
 
 try {
     $result = $apiInstance->advertisersdeletedo($advertiserID);
@@ -286,11 +284,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -298,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -307,16 +303,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersenableCreditdo()`
 
-## advertisersenableCreditdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersenableCreditdo($advertiserID)
+```php
+advertisersenableCreditdo($advertiserID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Enable Credit
 
@@ -344,7 +341,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
+$advertiserID = 56; // int
 
 try {
     $result = $apiInstance->advertisersenableCreditdo($advertiserID);
@@ -352,11 +349,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -364,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -373,16 +368,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersgetAlldo()`
 
-## advertisersgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
+```php
+advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -410,15 +406,15 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$advertiserType = 'advertiserType_example'; // string | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
-$isCreditEnabled = 'isCreditEnabled_example'; // string | 
-$hasCreditCardOnFile = 'hasCreditCardOnFile_example'; // string | 
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$advertiserID = 56; // int
+$advertiserType = 'advertiserType_example'; // string
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
+$isCreditEnabled = 'isCreditEnabled_example'; // string
+$hasCreditCardOnFile = 'hasCreditCardOnFile_example'; // string
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
@@ -426,11 +422,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -446,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -455,16 +449,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersgetInfodo()`
 
-## advertisersgetInfodo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersgetInfodo($advertiserID)
+```php
+advertisersgetInfodo($advertiserID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Info
 
@@ -492,7 +487,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
+$advertiserID = 56; // int
 
 try {
     $result = $apiInstance->advertisersgetInfodo($advertiserID);
@@ -500,11 +495,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -512,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -521,16 +514,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertiserssearchdo()`
 
-## advertiserssearchdo
-
-> \Leadspedia\Model\InlineResponse2001 advertiserssearchdo($search, $start, $limit)
+```php
+advertiserssearchdo($search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Search
 
@@ -558,9 +552,9 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->advertiserssearchdo($search, $start, $limit);
@@ -568,11 +562,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertiserssearchdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -582,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -591,16 +583,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateAuthorizeNetCustomerProfileIDdo()`
 
-## advertisersupdateAuthorizeNetCustomerProfileIDdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID)
+```php
+advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Authorize Net Customer Profile ID
 
@@ -628,8 +621,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$authNetCustomerProfileID = 'authNetCustomerProfileID_example'; // string | 
+$advertiserID = 56; // int
+$authNetCustomerProfileID = 'authNetCustomerProfileID_example'; // string
 
 try {
     $result = $apiInstance->advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID);
@@ -637,11 +630,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAuthorizeNetCustomerProfileIDdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -650,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -659,16 +650,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateAutoRechargeSettingsdo()`
 
-## advertisersupdateAutoRechargeSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+```php
+advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Auto Recharge Settings
 
@@ -696,14 +688,14 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$enableAutoRecharge = 'enableAutoRecharge_example'; // string | 
-$autoChargeBalance = 3.4; // float | 
-$autoChargeAmount = 3.4; // float | 
-$chargeTransactionFee = 'chargeTransactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
-$generateInvoice = 'generateInvoice_example'; // string | 
+$advertiserID = 56; // int
+$enableAutoRecharge = 'enableAutoRecharge_example'; // string
+$autoChargeBalance = 3.4; // float
+$autoChargeAmount = 3.4; // float
+$chargeTransactionFee = 'chargeTransactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
+$generateInvoice = 'generateInvoice_example'; // string
 
 try {
     $result = $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
@@ -711,11 +703,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -730,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -739,16 +729,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateBillingdo()`
 
-## advertisersupdateBillingdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass)
+```php
+advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Billing
 
@@ -776,10 +767,10 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$billingCycle = 'billingCycle_example'; // string | 
-$taxID = 'taxID_example'; // string | 
-$taxClass = 'taxClass_example'; // string | 
+$advertiserID = 56; // int
+$billingCycle = 'billingCycle_example'; // string
+$taxID = 'taxID_example'; // string
+$taxClass = 'taxClass_example'; // string
 
 try {
     $result = $apiInstance->advertisersupdateBillingdo($advertiserID, $billingCycle, $taxID, $taxClass);
@@ -787,11 +778,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -802,7 +791,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -811,16 +800,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateInfodo()`
 
-## advertisersupdateInfodo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
+```php
+advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Info
 
@@ -848,22 +838,22 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$advertiserName = 'advertiserName_example'; // string | 
-$website = 'website_example'; // string | 
-$alternateID = 'alternateID_example'; // string | 
-$source = 'source_example'; // string | 
-$externalCRMID = 'externalCRMID_example'; // string | 
-$numberOfStaff = 56; // int | 
-$address = 'address_example'; // string | 
-$address2 = 'address2_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
-$reportingUrl = 'reportingUrl_example'; // string | 
-$reportingUsername = 'reportingUsername_example'; // string | 
-$reportingPassword = 'reportingPassword_example'; // string | 
+$advertiserID = 56; // int
+$advertiserName = 'advertiserName_example'; // string
+$website = 'website_example'; // string
+$alternateID = 'alternateID_example'; // string
+$source = 'source_example'; // string
+$externalCRMID = 'externalCRMID_example'; // string
+$numberOfStaff = 56; // int
+$address = 'address_example'; // string
+$address2 = 'address2_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string
+$zipCode = 'zipCode_example'; // string
+$country = 'country_example'; // string
+$reportingUrl = 'reportingUrl_example'; // string
+$reportingUsername = 'reportingUsername_example'; // string
+$reportingPassword = 'reportingPassword_example'; // string
 
 try {
     $result = $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
@@ -871,11 +861,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -898,7 +886,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -907,16 +895,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsCapsdo()`
 
-## advertisersupdateLeadsCapsdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
+```php
+advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Caps
 
@@ -944,10 +933,10 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsDailyCap = 56; // int | 
-$leadsWeeklyCap = 56; // int | 
-$leadsMonthlyCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsDailyCap = 56; // int
+$leadsWeeklyCap = 56; // int
+$leadsMonthlyCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
@@ -955,11 +944,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsCapsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -970,7 +957,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -979,16 +966,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsDailyCapdo()`
 
-## advertisersupdateLeadsDailyCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap)
+```php
+advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Daily Cap
 
@@ -1016,8 +1004,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsDailyCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsDailyCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap);
@@ -1025,11 +1013,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1038,7 +1024,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1047,16 +1033,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsDailyRevenueCapdo()`
 
-## advertisersupdateLeadsDailyRevenueCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap)
+```php
+advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Daily Revenue Cap
 
@@ -1084,8 +1071,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsDailyRevenueCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsDailyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap);
@@ -1093,11 +1080,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsDailyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1106,7 +1091,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1115,16 +1100,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsMonthlyCapdo()`
 
-## advertisersupdateLeadsMonthlyCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap)
+```php
+advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Monthly Cap
 
@@ -1152,8 +1138,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsMonthlyCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsMonthlyCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap);
@@ -1161,11 +1147,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1174,7 +1158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1183,16 +1167,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsMonthlyRevenueCapdo()`
 
-## advertisersupdateLeadsMonthlyRevenueCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap)
+```php
+advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Monthly Revenue Cap
 
@@ -1220,8 +1205,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsMonthlyRevenueCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsMonthlyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap);
@@ -1229,11 +1214,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsMonthlyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1242,7 +1225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1251,16 +1234,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsRevenueCapsdo()`
 
-## advertisersupdateLeadsRevenueCapsdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
+```php
+advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Revenue Caps
 
@@ -1288,10 +1272,10 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsDailyRevenueCap = 56; // int | 
-$leadsWeeklyRevenueCap = 56; // int | 
-$leadsMonthlyRevenueCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsDailyRevenueCap = 56; // int
+$leadsWeeklyRevenueCap = 56; // int
+$leadsMonthlyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
@@ -1299,11 +1283,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsRevenueCapsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1314,7 +1296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1323,16 +1305,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsWeeklyCapdo()`
 
-## advertisersupdateLeadsWeeklyCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap)
+```php
+advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Weekly Cap
 
@@ -1360,8 +1343,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsWeeklyCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsWeeklyCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap);
@@ -1369,11 +1352,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1382,7 +1363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1391,16 +1372,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdateLeadsWeeklyRevenueCapdo()`
 
-## advertisersupdateLeadsWeeklyRevenueCapdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap)
+```php
+advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Leads Weekly Revenue Cap
 
@@ -1428,8 +1410,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$leadsWeeklyRevenueCap = 56; // int | 
+$advertiserID = 56; // int
+$leadsWeeklyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap);
@@ -1437,11 +1419,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateLeadsWeeklyRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1450,7 +1430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1459,16 +1439,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersupdatePortalSettingsdo()`
 
-## advertisersupdatePortalSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
+```php
+advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Portal Settings
 
@@ -1496,11 +1477,11 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$portalAccess = 'portalAccess_example'; // string | 
-$twoWayAuth = 'twoWayAuth_example'; // string | 
-$manageUsers = 'manageUsers_example'; // string | 
-$manageOffers = 'manageOffers_example'; // string | 
-$updateBillingInfo = 'updateBillingInfo_example'; // string | 
+$portalAccess = 'portalAccess_example'; // string
+$twoWayAuth = 'twoWayAuth_example'; // string
+$manageUsers = 'manageUsers_example'; // string
+$manageOffers = 'manageOffers_example'; // string
+$updateBillingInfo = 'updateBillingInfo_example'; // string
 
 try {
     $result = $apiInstance->advertisersupdatePortalSettingsdo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
@@ -1508,11 +1489,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1524,7 +1503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -1533,9 +1512,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -1,20 +1,21 @@
 # Leadspedia\VerticalsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**verticalscreatedo**](VerticalsApi.md#verticalscreatedo) | **POST** /verticals/create.do | Create
-[**verticalsdeletedo**](VerticalsApi.md#verticalsdeletedo) | **POST** /verticals/delete.do | Delete
-[**verticalsgetAlldo**](VerticalsApi.md#verticalsgetAlldo) | **GET** /verticals/getAll.do | Get All
-[**verticalsgetInfodo**](VerticalsApi.md#verticalsgetInfodo) | **GET** /verticals/getInfo.do | Get Info
-[**verticalsupdatedo**](VerticalsApi.md#verticalsupdatedo) | **POST** /verticals/update.do | Update
+[**verticalscreatedo()**](VerticalsApi.md#verticalscreatedo) | **POST** /verticals/create.do | Create
+[**verticalsdeletedo()**](VerticalsApi.md#verticalsdeletedo) | **POST** /verticals/delete.do | Delete
+[**verticalsgetAlldo()**](VerticalsApi.md#verticalsgetAlldo) | **GET** /verticals/getAll.do | Get All
+[**verticalsgetInfodo()**](VerticalsApi.md#verticalsgetInfodo) | **GET** /verticals/getInfo.do | Get Info
+[**verticalsupdatedo()**](VerticalsApi.md#verticalsupdatedo) | **POST** /verticals/update.do | Update
 
 
+## `verticalscreatedo()`
 
-## verticalscreatedo
-
-> \Leadspedia\Model\InlineResponse200 verticalscreatedo($verticalName, $groupID)
+```php
+verticalscreatedo($verticalName, $groupID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Create
 
@@ -42,8 +43,8 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalName = 'verticalName_example'; // string | 
-$groupID = 56; // int | 
+$verticalName = 'verticalName_example'; // string
+$groupID = 56; // int
 
 try {
     $result = $apiInstance->verticalscreatedo($verticalName, $groupID);
@@ -51,11 +52,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -73,16 +72,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsdeletedo()`
 
-## verticalsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 verticalsdeletedo($verticalID)
+```php
+verticalsdeletedo($verticalID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete
 
@@ -110,7 +110,7 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
+$verticalID = 56; // int
 
 try {
     $result = $apiInstance->verticalsdeletedo($verticalID);
@@ -118,11 +118,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -130,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -139,16 +137,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsgetAlldo()`
 
-## verticalsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 verticalsgetAlldo($groupID, $status, $start, $limit)
+```php
+verticalsgetAlldo($groupID, $status, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -176,10 +175,10 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$groupID = 56; // int | 
-$status = 'status_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$groupID = 56; // int
+$status = 'status_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->verticalsgetAlldo($groupID, $status, $start, $limit);
@@ -187,11 +186,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -202,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -211,16 +208,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsgetInfodo()`
 
-## verticalsgetInfodo
-
-> \Leadspedia\Model\InlineResponse2001 verticalsgetInfodo($verticalID)
+```php
+verticalsgetInfodo($verticalID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Info
 
@@ -248,7 +246,7 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
+$verticalID = 56; // int
 
 try {
     $result = $apiInstance->verticalsgetInfodo($verticalID);
@@ -256,11 +254,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -268,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -277,16 +273,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsupdatedo()`
 
-## verticalsupdatedo
-
-> \Leadspedia\Model\InlineResponse200 verticalsupdatedo($verticalID, $groupID, $verticalName, $notes)
+```php
+verticalsupdatedo($verticalID, $groupID, $verticalName, $notes): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update
 
@@ -314,10 +311,10 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$groupID = 56; // int | 
-$verticalName = 'verticalName_example'; // string | 
-$notes = 'notes_example'; // string | 
+$verticalID = 56; // int
+$groupID = 56; // int
+$verticalName = 'verticalName_example'; // string
+$notes = 'notes_example'; // string
 
 try {
     $result = $apiInstance->verticalsupdatedo($verticalID, $groupID, $verticalName, $notes);
@@ -325,11 +322,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -340,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -349,9 +344,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

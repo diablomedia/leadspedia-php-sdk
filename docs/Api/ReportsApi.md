@@ -1,20 +1,22 @@
 # Leadspedia\ReportsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**reportsgetAdvertisersReportdo**](ReportsApi.md#reportsgetAdvertisersReportdo) | **GET** /reports/getAdvertisersReport.do | Get Advertisers Report
-[**reportsgetAffiliatesReportdo**](ReportsApi.md#reportsgetAffiliatesReportdo) | **GET** /reports/getAffiliatesReport.do | Get Affiliates Report
-[**reportsgetCampaignsReportdo**](ReportsApi.md#reportsgetCampaignsReportdo) | **GET** /reports/getCampaignsReport.do | Get Campaigns Report
-[**reportsgetOffersReportdo**](ReportsApi.md#reportsgetOffersReportdo) | **GET** /reports/getOffersReport.do | Get Offers Report
-[**reportsgetVerticalsReportdo**](ReportsApi.md#reportsgetVerticalsReportdo) | **GET** /reports/getVerticalsReport.do | Get Verticals Report
+[**reportsgetAdvertisersReportdo()**](ReportsApi.md#reportsgetAdvertisersReportdo) | **GET** /reports/getAdvertisersReport.do | Get Advertisers Report
+[**reportsgetAffiliatesReportdo()**](ReportsApi.md#reportsgetAffiliatesReportdo) | **GET** /reports/getAffiliatesReport.do | Get Affiliates Report
+[**reportsgetCampaignsReportdo()**](ReportsApi.md#reportsgetCampaignsReportdo) | **GET** /reports/getCampaignsReport.do | Get Campaigns Report
+[**reportsgetContractsReportdo()**](ReportsApi.md#reportsgetContractsReportdo) | **GET** /reports/getContractsReport.do | Get Contracts Report
+[**reportsgetOffersReportdo()**](ReportsApi.md#reportsgetOffersReportdo) | **GET** /reports/getOffersReport.do | Get Offers Report
+[**reportsgetVerticalsReportdo()**](ReportsApi.md#reportsgetVerticalsReportdo) | **GET** /reports/getVerticalsReport.do | Get Verticals Report
 
 
+## `reportsgetAdvertisersReportdo()`
 
-## reportsgetAdvertisersReportdo
-
-> \Leadspedia\Model\InlineResponse2001 reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate)
+```php
+reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Advertisers Report
 
@@ -42,9 +44,9 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$advertiserAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate);
@@ -52,11 +54,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -75,16 +75,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `reportsgetAffiliatesReportdo()`
 
-## reportsgetAffiliatesReportdo
-
-> \Leadspedia\Model\InlineResponse2001 reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
+```php
+reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Affiliates Report
 
@@ -112,9 +113,9 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$affiliateAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate);
@@ -122,11 +123,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -136,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -145,16 +144,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `reportsgetCampaignsReportdo()`
 
-## reportsgetCampaignsReportdo
-
-> \Leadspedia\Model\InlineResponse2001 reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate)
+```php
+reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Campaigns Report
 
@@ -182,10 +182,10 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate);
@@ -193,11 +193,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -208,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -217,16 +215,90 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `reportsgetContractsReportdo()`
 
-## reportsgetOffersReportdo
+```php
+reportsgetContractsReportdo($fromDate, $contractID, $advertiserID, $verticalID, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
-> \Leadspedia\Model\InlineResponse2001 reportsgetOffersReportdo($fromDate, $verticalID, $toDate)
+Get Contracts Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+
+// Configure API key authorization: apiKey1
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+
+$apiInstance = new Leadspedia\Api\ReportsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$contractID = 56; // int
+$advertiserID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+
+try {
+    $result = $apiInstance->reportsgetContractsReportdo($fromDate, $contractID, $advertiserID, $verticalID, $toDate);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReportsApi->reportsgetContractsReportdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fromDate** | **\DateTime**|  |
+ **contractID** | **int**|  | [optional]
+ **advertiserID** | **int**|  | [optional]
+ **verticalID** | **int**|  | [optional]
+ **toDate** | **\DateTime**|  | [optional]
+
+### Return type
+
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
+
+### Authorization
+
+[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `reportsgetOffersReportdo()`
+
+```php
+reportsgetOffersReportdo($fromDate, $verticalID, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Offers Report
 
@@ -254,9 +326,9 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$verticalID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetOffersReportdo($fromDate, $verticalID, $toDate);
@@ -264,11 +336,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetOffersReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -278,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -287,16 +357,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `reportsgetVerticalsReportdo()`
 
-## reportsgetVerticalsReportdo
-
-> \Leadspedia\Model\InlineResponse2001 reportsgetVerticalsReportdo($fromDate, $toDate)
+```php
+reportsgetVerticalsReportdo($fromDate, $toDate): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Verticals Report
 
@@ -324,8 +395,8 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetVerticalsReportdo($fromDate, $toDate);
@@ -333,11 +404,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -346,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -355,9 +424,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -1,16 +1,17 @@
 # Leadspedia\NumbersApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**numbersgetAvailabledo**](NumbersApi.md#numbersgetAvailabledo) | **GET** /numbers/getAvailable.do | Get Available
+[**numbersgetAvailabledo()**](NumbersApi.md#numbersgetAvailabledo) | **GET** /numbers/getAvailable.do | Get Available
 
 
+## `numbersgetAvailabledo()`
 
-## numbersgetAvailabledo
-
-> \Leadspedia\Model\InlineResponse2001 numbersgetAvailabledo($start, $limit)
+```php
+numbersgetAvailabledo($start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Available
 
@@ -38,8 +39,8 @@ $apiInstance = new Leadspedia\Api\NumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$start = 0; // int | 
-$limit = 100; // int | 
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->numbersgetAvailabledo($start, $limit);
@@ -47,11 +48,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling NumbersApi->numbersgetAvailabledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -60,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -69,9 +68,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

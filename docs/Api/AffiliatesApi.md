@@ -1,23 +1,24 @@
 # Leadspedia\AffiliatesApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**affiliateschangeStatusdo**](AffiliatesApi.md#affiliateschangeStatusdo) | **POST** /affiliates/changeStatus.do | Change Status
-[**affiliatescreatedo**](AffiliatesApi.md#affiliatescreatedo) | **POST** /affiliates/create.do | Create
-[**affiliatesdeletedo**](AffiliatesApi.md#affiliatesdeletedo) | **POST** /affiliates/delete.do | Delete
-[**affiliatesgetAlldo**](AffiliatesApi.md#affiliatesgetAlldo) | **GET** /affiliates/getAll.do | Get All
-[**affiliatesgetInfodo**](AffiliatesApi.md#affiliatesgetInfodo) | **GET** /affiliates/getInfo.do | Get Info
-[**affiliatessearchdo**](AffiliatesApi.md#affiliatessearchdo) | **GET** /affiliates/search.do | Search
-[**affiliatesupdateBillingdo**](AffiliatesApi.md#affiliatesupdateBillingdo) | **POST** /affiliates/updateBilling.do | Update Billing
-[**affiliatesupdateInfodo**](AffiliatesApi.md#affiliatesupdateInfodo) | **POST** /affiliates/updateInfo.do | Update Info
+[**affiliateschangeStatusdo()**](AffiliatesApi.md#affiliateschangeStatusdo) | **POST** /affiliates/changeStatus.do | Change Status
+[**affiliatescreatedo()**](AffiliatesApi.md#affiliatescreatedo) | **POST** /affiliates/create.do | Create
+[**affiliatesdeletedo()**](AffiliatesApi.md#affiliatesdeletedo) | **POST** /affiliates/delete.do | Delete
+[**affiliatesgetAlldo()**](AffiliatesApi.md#affiliatesgetAlldo) | **GET** /affiliates/getAll.do | Get All
+[**affiliatesgetInfodo()**](AffiliatesApi.md#affiliatesgetInfodo) | **GET** /affiliates/getInfo.do | Get Info
+[**affiliatessearchdo()**](AffiliatesApi.md#affiliatessearchdo) | **GET** /affiliates/search.do | Search
+[**affiliatesupdateBillingdo()**](AffiliatesApi.md#affiliatesupdateBillingdo) | **POST** /affiliates/updateBilling.do | Update Billing
+[**affiliatesupdateInfodo()**](AffiliatesApi.md#affiliatesupdateInfodo) | **POST** /affiliates/updateInfo.do | Update Info
 
 
+## `affiliateschangeStatusdo()`
 
-## affiliateschangeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 affiliateschangeStatusdo($affiliateID, $status)
+```php
+affiliateschangeStatusdo($affiliateID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Change Status
 
@@ -45,8 +46,8 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$status = 'status_example'; // string | 
+$affiliateID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->affiliateschangeStatusdo($affiliateID, $status);
@@ -54,11 +55,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliateschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -67,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -76,16 +75,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatescreatedo()`
 
-## affiliatescreatedo
-
-> \Leadspedia\Model\InlineResponse200 affiliatescreatedo($affiliateName, $accountManagerID, $status)
+```php
+affiliatescreatedo($affiliateName, $accountManagerID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Create
 
@@ -113,9 +113,9 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateName = 'affiliateName_example'; // string | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
+$affiliateName = 'affiliateName_example'; // string
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->affiliatescreatedo($affiliateName, $accountManagerID, $status);
@@ -123,11 +123,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatescreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -137,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -146,16 +144,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesdeletedo()`
 
-## affiliatesdeletedo
-
-> \Leadspedia\Model\InlineResponse200 affiliatesdeletedo($affiliateID)
+```php
+affiliatesdeletedo($affiliateID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete
 
@@ -183,7 +182,7 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
+$affiliateID = 56; // int
 
 try {
     $result = $apiInstance->affiliatesdeletedo($affiliateID);
@@ -191,11 +190,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -203,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -212,16 +209,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesgetAlldo()`
 
-## affiliatesgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
+```php
+affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -249,12 +247,12 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$affiliateID = 56; // int
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit);
@@ -262,11 +260,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -279,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -288,16 +284,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesgetInfodo()`
 
-## affiliatesgetInfodo
-
-> \Leadspedia\Model\InlineResponse2001 affiliatesgetInfodo($affiliateID)
+```php
+affiliatesgetInfodo($affiliateID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Info
 
@@ -325,7 +322,7 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
+$affiliateID = 56; // int
 
 try {
     $result = $apiInstance->affiliatesgetInfodo($affiliateID);
@@ -333,11 +330,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -345,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -354,16 +349,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatessearchdo()`
 
-## affiliatessearchdo
-
-> \Leadspedia\Model\InlineResponse2001 affiliatessearchdo($search, $start, $limit)
+```php
+affiliatessearchdo($search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Search
 
@@ -391,9 +387,9 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->affiliatessearchdo($search, $start, $limit);
@@ -401,11 +397,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatessearchdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -415,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -424,16 +418,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesupdateBillingdo()`
 
-## affiliatesupdateBillingdo
-
-> \Leadspedia\Model\InlineResponse200 affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
+```php
+affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Billing
 
@@ -461,11 +456,11 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$billingCycle = 'billingCycle_example'; // string | 
-$taxID = 'taxID_example'; // string | 
-$taxClass = 'taxClass_example'; // string | 
-$taxDocReceived = 'taxDocReceived_example'; // string | 
+$affiliateID = 56; // int
+$billingCycle = 'billingCycle_example'; // string
+$taxID = 'taxID_example'; // string
+$taxClass = 'taxClass_example'; // string
+$taxDocReceived = 'taxDocReceived_example'; // string
 
 try {
     $result = $apiInstance->affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
@@ -473,11 +468,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -489,7 +482,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -498,16 +491,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesupdateInfodo()`
 
-## affiliatesupdateInfodo
-
-> \Leadspedia\Model\InlineResponse200 affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
+```php
+affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Update Info
 
@@ -535,19 +529,19 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$affiliateName = 'affiliateName_example'; // string | 
-$website = 'website_example'; // string | 
-$alternateID = 'alternateID_example'; // string | 
-$address = 'address_example'; // string | 
-$address2 = 'address2_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
-$reportingUrl = 'reportingUrl_example'; // string | 
-$reportingUsername = 'reportingUsername_example'; // string | 
-$reportingPassword = 'reportingPassword_example'; // string | 
+$affiliateID = 56; // int
+$affiliateName = 'affiliateName_example'; // string
+$website = 'website_example'; // string
+$alternateID = 'alternateID_example'; // string
+$address = 'address_example'; // string
+$address2 = 'address2_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string
+$zipCode = 'zipCode_example'; // string
+$country = 'country_example'; // string
+$reportingUrl = 'reportingUrl_example'; // string
+$reportingUsername = 'reportingUsername_example'; // string
+$reportingPassword = 'reportingPassword_example'; // string
 
 try {
     $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
@@ -555,11 +549,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -579,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -588,9 +580,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -1,16 +1,17 @@
 # Leadspedia\UsersApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**usersgetAlldo**](UsersApi.md#usersgetAlldo) | **GET** /users/getAll.do | Get All
+[**usersgetAlldo()**](UsersApi.md#usersgetAlldo) | **GET** /users/getAll.do | Get All
 
 
+## `usersgetAlldo()`
 
-## usersgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 usersgetAlldo($role, $status, $search, $start, $limit)
+```php
+usersgetAlldo($role, $status, $search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -38,11 +39,11 @@ $apiInstance = new Leadspedia\Api\UsersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$role = 56; // int | 
-$status = 'status_example'; // string | 
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$role = 56; // int
+$status = 'status_example'; // string
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->usersgetAlldo($role, $status, $search, $start, $limit);
@@ -50,11 +51,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling UsersApi->usersgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -66,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -75,9 +74,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

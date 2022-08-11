@@ -1,21 +1,22 @@
 # Leadspedia\InboundCallsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**inboundCallsgetAlldo**](InboundCallsApi.md#inboundCallsgetAlldo) | **GET** /inboundCalls/getAll.do | Get All
-[**inboundCallsgetInProgressdo**](InboundCallsApi.md#inboundCallsgetInProgressdo) | **GET** /inboundCalls/getInProgress.do | Get Calls In Progress
-[**inboundCallsgetNumbersdo**](InboundCallsApi.md#inboundCallsgetNumbersdo) | **GET** /inboundCalls/getNumbers.do | Get Numbers
-[**inboundCallsgetReturneddo**](InboundCallsApi.md#inboundCallsgetReturneddo) | **GET** /inboundCalls/getReturned.do | Get Returned Calls
-[**inboundCallsgetScrubbeddo**](InboundCallsApi.md#inboundCallsgetScrubbeddo) | **GET** /inboundCalls/getScrubbed.do | Get Scrubbed Calls
-[**inboundCallsgetTransferreddo**](InboundCallsApi.md#inboundCallsgetTransferreddo) | **GET** /inboundCalls/getTransferred.do | Get Transferred Calls
+[**inboundCallsgetAlldo()**](InboundCallsApi.md#inboundCallsgetAlldo) | **GET** /inboundCalls/getAll.do | Get All
+[**inboundCallsgetInProgressdo()**](InboundCallsApi.md#inboundCallsgetInProgressdo) | **GET** /inboundCalls/getInProgress.do | Get Calls In Progress
+[**inboundCallsgetNumbersdo()**](InboundCallsApi.md#inboundCallsgetNumbersdo) | **GET** /inboundCalls/getNumbers.do | Get Numbers
+[**inboundCallsgetReturneddo()**](InboundCallsApi.md#inboundCallsgetReturneddo) | **GET** /inboundCalls/getReturned.do | Get Returned Calls
+[**inboundCallsgetScrubbeddo()**](InboundCallsApi.md#inboundCallsgetScrubbeddo) | **GET** /inboundCalls/getScrubbed.do | Get Scrubbed Calls
+[**inboundCallsgetTransferreddo()**](InboundCallsApi.md#inboundCallsgetTransferreddo) | **GET** /inboundCalls/getTransferred.do | Get Transferred Calls
 
 
+## `inboundCallsgetAlldo()`
 
-## inboundCallsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -43,17 +44,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -61,11 +62,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -83,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -92,16 +91,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetInProgressdo()`
 
-## inboundCallsgetInProgressdo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Calls In Progress
 
@@ -129,17 +129,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -147,11 +147,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetInProgressdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -169,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -178,16 +176,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetNumbersdo()`
 
-## inboundCallsgetNumbersdo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetNumbersdo($search, $start, $limit)
+```php
+inboundCallsgetNumbersdo($search, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Numbers
 
@@ -215,9 +214,9 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetNumbersdo($search, $start, $limit);
@@ -225,11 +224,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetNumbersdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -239,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -248,16 +245,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetReturneddo()`
 
-## inboundCallsgetReturneddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Returned Calls
 
@@ -285,17 +283,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -303,11 +301,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetReturneddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -325,7 +321,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -334,16 +330,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetScrubbeddo()`
 
-## inboundCallsgetScrubbeddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
+```php
+inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Scrubbed Calls
 
@@ -371,17 +368,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
@@ -389,11 +386,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetScrubbeddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -411,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -420,16 +415,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetTransferreddo()`
 
-## inboundCallsgetTransferreddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get Transferred Calls
 
@@ -457,17 +453,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -475,11 +471,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetTransferreddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -497,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -506,9 +500,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

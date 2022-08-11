@@ -1,17 +1,18 @@
 # Leadspedia\AudioApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**audiodeletedo**](AudioApi.md#audiodeletedo) | **POST** /audio/delete.do | Delete
-[**audiogetAlldo**](AudioApi.md#audiogetAlldo) | **GET** /audio/getAll.do | Get All
+[**audiodeletedo()**](AudioApi.md#audiodeletedo) | **POST** /audio/delete.do | Delete
+[**audiogetAlldo()**](AudioApi.md#audiogetAlldo) | **GET** /audio/getAll.do | Get All
 
 
+## `audiodeletedo()`
 
-## audiodeletedo
-
-> \Leadspedia\Model\InlineResponse200 audiodeletedo($audioID)
+```php
+audiodeletedo($audioID): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Delete
 
@@ -39,7 +40,7 @@ $apiInstance = new Leadspedia\Api\AudioApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audioID = 56; // int | 
+$audioID = 56; // int
 
 try {
     $result = $apiInstance->audiodeletedo($audioID);
@@ -47,11 +48,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AudioApi->audiodeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -59,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -68,16 +67,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `audiogetAlldo()`
 
-## audiogetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 audiogetAlldo($audioID, $audioType, $start, $limit)
+```php
+audiogetAlldo($audioID, $audioType, $start, $limit): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -105,10 +105,10 @@ $apiInstance = new Leadspedia\Api\AudioApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audioID = 56; // int | 
-$audioType = 'audioType_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$audioID = 56; // int
+$audioType = 'audioType_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->audiogetAlldo($audioID, $audioType, $start, $limit);
@@ -116,11 +116,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AudioApi->audiogetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -131,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -140,9 +138,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -1,16 +1,17 @@
 # Leadspedia\ListApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listgetAlldo**](ListApi.md#listgetAlldo) | **GET** /list/getAll.do | Get All
+[**listgetAlldo()**](ListApi.md#listgetAlldo) | **GET** /list/getAll.do | Get All
 
 
+## `listgetAlldo()`
 
-## listgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 listgetAlldo($type, $advertiserID, $verticalID)
+```php
+listgetAlldo($type, $advertiserID, $verticalID): \Leadspedia\Model\VerticalsgetAlldo200Response
+```
 
 Get All
 
@@ -38,9 +39,9 @@ $apiInstance = new Leadspedia\Api\ListApi(
     new GuzzleHttp\Client(),
     $config
 );
-$type = 'type_example'; // string | 
-$advertiserID = 56; // int | 
-$verticalID = 56; // int | 
+$type = 'type_example'; // string
+$advertiserID = 56; // int
+$verticalID = 56; // int
 
 try {
     $result = $apiInstance->listgetAlldo($type, $advertiserID, $verticalID);
@@ -48,11 +49,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ListApi->listgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -62,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Leadspedia\Model\VerticalsgetAlldo200Response**](../Model/VerticalsgetAlldo200Response.md)
 
 ### Authorization
 
@@ -71,9 +70,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

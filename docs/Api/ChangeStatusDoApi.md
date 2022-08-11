@@ -1,16 +1,17 @@
 # Leadspedia\ChangeStatusDoApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
+All URIs are relative to https://api.leadspedia.com/core/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**changeStatusdo**](ChangeStatusDoApi.md#changeStatusdo) | **POST** /changeStatus.do | Change Status
+[**changeStatusdo()**](ChangeStatusDoApi.md#changeStatusdo) | **POST** /changeStatus.do | Change Status
 
 
+## `changeStatusdo()`
 
-## changeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 changeStatusdo($verticalID, $status)
+```php
+changeStatusdo($verticalID, $status): \Leadspedia\Model\Affiliatescreatedo200Response
+```
 
 Change Status
 
@@ -38,8 +39,8 @@ $apiInstance = new Leadspedia\Api\ChangeStatusDoApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$status = 'status_example'; // string | 
+$verticalID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->changeStatusdo($verticalID, $status);
@@ -47,11 +48,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ChangeStatusDoApi->changeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -60,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\Leadspedia\Model\Affiliatescreatedo200Response**](../Model/Affiliatescreatedo200Response.md)
 
 ### Authorization
 
@@ -69,9 +68,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

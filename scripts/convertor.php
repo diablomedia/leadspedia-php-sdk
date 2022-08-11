@@ -138,7 +138,7 @@ foreach ($source->resources->endpoints as $endpoint) {
         $param = [
             'name'        => $name,
             'in'          => 'query',
-            'required'    => in_array($name, $queryParams['required'] ?? []),
+            'required'    => in_array($name, $queryParams['required'] ?? [], true),
             'type'        => is_array($queryParam['type']) ? $queryParam['type'][0] : ($queryParam['type'] ?? ''),
             'description' => '',
             'format'      => $queryParam['format'] ?? '',
