@@ -88,34 +88,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation callTrackingReportsgetCallRoutingReportdo
      *
      * Get Call Routing Report
@@ -135,8 +107,91 @@ class CallTrackingReportsApi
      */
     public function callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        list($response) = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        [$response] = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
         return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallRoutingReportdoAsync
+     *
+     * Get Call Routing Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo
+     *
+     * Get Call Routing Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -234,25 +289,47 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallRoutingReportdoAsync
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdo
      *
-     * Get Call Routing Report
+     * Get Calls By Advertisers Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month month (required)
+     * @param  string $year year (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync
+     *
+     * Get Calls By Advertisers Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $contractID (optional)
      * @param  int $advertiserID (optional)
      * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
-        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -261,26 +338,25 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo
      *
-     * Get Call Routing Report
+     * Get Calls By Advertisers Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $contractID (optional)
      * @param  int $advertiserID (optional)
      * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,6 +390,1671 @@ class CallTrackingReportsApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo
+     *
+     * Get Calls By Advertisers Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdo
+     *
+     * Get Calls By Advertisers Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsync
+     *
+     * Get Calls By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo
+     *
+     * Get Calls By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdo
+     *
+     * Get Calls By Affiliates Daily Report
+     *
+     * @param  string $month month (required)
+     * @param  string $year year (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync
+     *
+     * Get Calls By Affiliates Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Affiliates Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo
+     *
+     * Get Calls By Affiliates Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdo
+     *
+     * Get Calls By Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsync
+     *
+     * Get Calls By Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo
+     *
+     * Get Calls By Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByCampaignsReportdo
+     *
+     * Get Calls By Campaigns Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsync
+     *
+     * Get Calls By Campaigns Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Campaigns Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo
+     *
+     * Get Calls By Campaigns Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByContractsReportdo
+     *
+     * Get Calls By Contracts Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByContractsReportdoAsync
+     *
+     * Get Calls By Contracts Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Contracts Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByContractsReportdoWithHttpInfo
+     *
+     * Get Calls By Contracts Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByOffersReportdo
+     *
+     * Get Calls By Offers Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByOffersReportdoAsync
+     *
+     * Get Calls By Offers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Offers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByOffersReportdoWithHttpInfo
+     *
+     * Get Calls By Offers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdo
+     *
+     * Get Calls By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsync
+     *
+     * Get Calls By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo
+     *
+     * Get Calls By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByVerticalsReportdo
+     *
+     * Get Calls By Verticals Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsync
+     *
+     * Get Calls By Verticals Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalGroupID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo
+     *
+     * Get Calls By Verticals Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalGroupID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo
+     *
+     * Get Calls By Verticals Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalGroupID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        $request = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * @return Configuration
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * Get the host index
+     *
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
     }
 
     /**
@@ -451,203 +2192,6 @@ class CallTrackingReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdo
-     *
-     * Get Calls By Advertisers Daily Report
-     *
-     * @param  string $month month (required)
-     * @param  string $year year (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo
-     *
-     * Get Calls By Advertisers Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync
-     *
-     * Get Calls By Advertisers Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Advertisers Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -789,199 +2333,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdo
-     *
-     * Get Calls By Advertisers Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo
-     *
-     * Get Calls By Advertisers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsync
-     *
-     * Get Calls By Advertisers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Advertisers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'callTrackingReportsgetCallsByAdvertisersReportdo'
      *
      * @param  \DateTime $fromDate (required)
@@ -1106,207 +2457,6 @@ class CallTrackingReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdo
-     *
-     * Get Calls By Affiliates Daily Report
-     *
-     * @param  string $month month (required)
-     * @param  string $year year (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo
-     *
-     * Get Calls By Affiliates Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync
-     *
-     * Get Calls By Affiliates Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Affiliates Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -1453,195 +2603,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdo
-     *
-     * Get Calls By Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo
-     *
-     * Get Calls By Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsync
-     *
-     * Get Calls By Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'callTrackingReportsgetCallsByAffiliatesReportdo'
      *
      * @param  \DateTime $fromDate (required)
@@ -1761,207 +2722,6 @@ class CallTrackingReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdo
-     *
-     * Get Calls By Campaigns Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo
-     *
-     * Get Calls By Campaigns Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsync
-     *
-     * Get Calls By Campaigns Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Campaigns Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -2102,199 +2862,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByContractsReportdo
-     *
-     * Get Calls By Contracts Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByContractsReportdoWithHttpInfo
-     *
-     * Get Calls By Contracts Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByContractsReportdoAsync
-     *
-     * Get Calls By Contracts Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Contracts Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'callTrackingReportsgetCallsByContractsReportdo'
      *
      * @param  \DateTime $fromDate (required)
@@ -2422,195 +2989,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByOffersReportdo
-     *
-     * Get Calls By Offers Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByOffersReportdoWithHttpInfo
-     *
-     * Get Calls By Offers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByOffersReportdoAsync
-     *
-     * Get Calls By Offers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Offers Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'callTrackingReportsgetCallsByOffersReportdo'
      *
      * @param  \DateTime $fromDate (required)
@@ -2730,203 +3108,6 @@ class CallTrackingReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdo
-     *
-     * Get Calls By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo
-     *
-     * Get Calls By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsync
-     *
-     * Get Calls By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -3059,187 +3240,6 @@ class CallTrackingReportsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdo
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        $request = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsync
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**

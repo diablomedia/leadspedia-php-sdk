@@ -88,34 +88,6 @@ class ChangeStatusDoApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation changeStatusdo
      *
      * Change Status
@@ -129,8 +101,79 @@ class ChangeStatusDoApi
      */
     public function changeStatusdo($verticalID, $status = null)
     {
-        list($response) = $this->changeStatusdoWithHttpInfo($verticalID, $status);
+        [$response] = $this->changeStatusdoWithHttpInfo($verticalID, $status);
         return $response;
+    }
+
+    /**
+     * Operation changeStatusdoAsync
+     *
+     * Change Status
+     *
+     * @param  int $verticalID (required)
+     * @param  string $status (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function changeStatusdoAsync($verticalID, $status = null)
+    {
+        return $this->changeStatusdoAsyncWithHttpInfo($verticalID, $status)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation changeStatusdoAsyncWithHttpInfo
+     *
+     * Change Status
+     *
+     * @param  int $verticalID (required)
+     * @param  string $status (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function changeStatusdoAsyncWithHttpInfo($verticalID, $status = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->changeStatusdoRequest($verticalID, $status);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -222,74 +265,31 @@ class ChangeStatusDoApi
     }
 
     /**
-     * Operation changeStatusdoAsync
-     *
-     * Change Status
-     *
-     * @param  int $verticalID (required)
-     * @param  string $status (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function changeStatusdoAsync($verticalID, $status = null)
+    public function getConfig()
     {
-        return $this->changeStatusdoAsyncWithHttpInfo($verticalID, $status)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation changeStatusdoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Change Status
-     *
-     * @param  int $verticalID (required)
-     * @param  string $status (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Host index
      */
-    public function changeStatusdoAsyncWithHttpInfo($verticalID, $status = null)
+    public function getHostIndex()
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->changeStatusdoRequest($verticalID, $status);
+        return $this->hostIndex;
+    }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
     }
 
     /**

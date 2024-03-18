@@ -88,13 +88,11 @@ class RequestsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class RequestsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -131,8 +121,83 @@ class RequestsApi
      */
     public function requestsgetAlldo($date, $affiliateID = null, $campaignID = null, $dispositionID = null)
     {
-        list($response) = $this->requestsgetAlldoWithHttpInfo($date, $affiliateID, $campaignID, $dispositionID);
+        [$response] = $this->requestsgetAlldoWithHttpInfo($date, $affiliateID, $campaignID, $dispositionID);
         return $response;
+    }
+
+    /**
+     * Operation requestsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $date (required)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $dispositionID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function requestsgetAlldoAsync($date, $affiliateID = null, $campaignID = null, $dispositionID = null)
+    {
+        return $this->requestsgetAlldoAsyncWithHttpInfo($date, $affiliateID, $campaignID, $dispositionID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation requestsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  \DateTime $date (required)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $dispositionID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function requestsgetAlldoAsyncWithHttpInfo($date, $affiliateID = null, $campaignID = null, $dispositionID = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->requestsgetAlldoRequest($date, $affiliateID, $campaignID, $dispositionID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -226,78 +291,32 @@ class RequestsApi
     }
 
     /**
-     * Operation requestsgetAlldoAsync
+     * Set the host index
      *
-     * Get All
-     *
-     * @param  \DateTime $date (required)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $dispositionID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @param  int Host index (required)
      */
-    public function requestsgetAlldoAsync($date, $affiliateID = null, $campaignID = null, $dispositionID = null)
+    public function setHostIndex($host_index): void
     {
-        return $this->requestsgetAlldoAsyncWithHttpInfo($date, $affiliateID, $campaignID, $dispositionID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        $this->hostIndex = $host_index;
     }
 
     /**
-     * Operation requestsgetAlldoAsyncWithHttpInfo
+     * Create http client option
      *
-     * Get All
-     *
-     * @param  \DateTime $date (required)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $dispositionID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
-    public function requestsgetAlldoAsyncWithHttpInfo($date, $affiliateID = null, $campaignID = null, $dispositionID = null)
+    protected function createHttpClientOption()
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->requestsgetAlldoRequest($date, $affiliateID, $campaignID, $dispositionID);
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $options;
     }
 
     /**
@@ -415,24 +434,5 @@ class RequestsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

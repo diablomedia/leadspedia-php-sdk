@@ -38,27 +38,6 @@ namespace Leadspedia\Model;
 interface ModelInterface
 {
     /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName();
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes();
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats();
-
-    /**
      * Array of attributes where the key is the local name, and the value is the original name
      *
      * @return array
@@ -66,11 +45,11 @@ interface ModelInterface
     public static function attributeMap();
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * The original name of the model.
      *
-     * @return array
+     * @return string
      */
-    public static function setters();
+    public function getModelName();
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -85,6 +64,27 @@ interface ModelInterface
      * @return array
      */
     public function listInvalidProperties();
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIFormats();
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPITypes();
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @return array
+     */
+    public static function setters();
 
     /**
      * Validate all the properties in the model

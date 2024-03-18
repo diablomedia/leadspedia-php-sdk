@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class LeadDistributionContractsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -59,13 +65,6 @@ class LeadDistributionContractsApiTest extends TestCase
      * Clean up after running each test case
      */
     public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
     {
     }
 
@@ -130,22 +129,22 @@ class LeadDistributionContractsApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractscreateScheduledo
-     *
-     * Create Schedule.
-     *
-     */
-    public function testLeadDistributionContractscreateScheduledo(): void
-    {
-    }
-
-    /**
      * Test case for leadDistributionContractscreatedo
      *
      * Create.
      *
      */
     public function testLeadDistributionContractscreatedo(): void
+    {
+    }
+
+    /**
+     * Test case for leadDistributionContractscreateScheduledo
+     *
+     * Create Schedule.
+     *
+     */
+    public function testLeadDistributionContractscreateScheduledo(): void
     {
     }
 
@@ -180,22 +179,22 @@ class LeadDistributionContractsApiTest extends TestCase
     }
 
     /**
+     * Test case for leadDistributionContractsdeletedo
+     *
+     * Delete.
+     *
+     */
+    public function testLeadDistributionContractsdeletedo(): void
+    {
+    }
+
+    /**
      * Test case for leadDistributionContractsdeleteFilterdo
      *
      * Delete Filter.
      *
      */
     public function testLeadDistributionContractsdeleteFilterdo(): void
-    {
-    }
-
-    /**
-     * Test case for leadDistributionContractsdeleteScheduledPausedo
-     *
-     * Delete Scheduled Pause.
-     *
-     */
-    public function testLeadDistributionContractsdeleteScheduledPausedo(): void
     {
     }
 
@@ -210,12 +209,12 @@ class LeadDistributionContractsApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractsdeletedo
+     * Test case for leadDistributionContractsdeleteScheduledPausedo
      *
-     * Delete.
+     * Delete Scheduled Pause.
      *
      */
-    public function testLeadDistributionContractsdeletedo(): void
+    public function testLeadDistributionContractsdeleteScheduledPausedo(): void
     {
     }
 
@@ -330,22 +329,22 @@ class LeadDistributionContractsApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractsgetScheduledPausedo
-     *
-     * Get Scheduled Pause.
-     *
-     */
-    public function testLeadDistributionContractsgetScheduledPausedo(): void
-    {
-    }
-
-    /**
      * Test case for leadDistributionContractsgetScheduledo
      *
      * Get Schedule.
      *
      */
     public function testLeadDistributionContractsgetScheduledo(): void
+    {
+    }
+
+    /**
+     * Test case for leadDistributionContractsgetScheduledPausedo
+     *
+     * Get Scheduled Pause.
+     *
+     */
+    public function testLeadDistributionContractsgetScheduledPausedo(): void
     {
     }
 

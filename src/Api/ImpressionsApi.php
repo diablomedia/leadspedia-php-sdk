@@ -88,13 +88,11 @@ class ImpressionsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class ImpressionsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -131,8 +121,83 @@ class ImpressionsApi
      */
     public function impressionsgetAllphp($startDate, $endDate = null, $start = 0, $limit = 100)
     {
-        list($response) = $this->impressionsgetAllphpWithHttpInfo($startDate, $endDate, $start, $limit);
+        [$response] = $this->impressionsgetAllphpWithHttpInfo($startDate, $endDate, $start, $limit);
         return $response;
+    }
+
+    /**
+     * Operation impressionsgetAllphpAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $startDate (required)
+     * @param  \DateTime $endDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function impressionsgetAllphpAsync($startDate, $endDate = null, $start = 0, $limit = 100)
+    {
+        return $this->impressionsgetAllphpAsyncWithHttpInfo($startDate, $endDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation impressionsgetAllphpAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  \DateTime $startDate (required)
+     * @param  \DateTime $endDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function impressionsgetAllphpAsyncWithHttpInfo($startDate, $endDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->impressionsgetAllphpRequest($startDate, $endDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -226,78 +291,32 @@ class ImpressionsApi
     }
 
     /**
-     * Operation impressionsgetAllphpAsync
+     * Set the host index
      *
-     * Get All
-     *
-     * @param  \DateTime $startDate (required)
-     * @param  \DateTime $endDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @param  int Host index (required)
      */
-    public function impressionsgetAllphpAsync($startDate, $endDate = null, $start = 0, $limit = 100)
+    public function setHostIndex($host_index): void
     {
-        return $this->impressionsgetAllphpAsyncWithHttpInfo($startDate, $endDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        $this->hostIndex = $host_index;
     }
 
     /**
-     * Operation impressionsgetAllphpAsyncWithHttpInfo
+     * Create http client option
      *
-     * Get All
-     *
-     * @param  \DateTime $startDate (required)
-     * @param  \DateTime $endDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
-    public function impressionsgetAllphpAsyncWithHttpInfo($startDate, $endDate = null, $start = 0, $limit = 100)
+    protected function createHttpClientOption()
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->impressionsgetAllphpRequest($startDate, $endDate, $start, $limit);
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $options;
     }
 
     /**
@@ -415,24 +434,5 @@ class ImpressionsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

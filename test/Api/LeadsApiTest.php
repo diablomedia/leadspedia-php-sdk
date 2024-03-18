@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class LeadsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -59,13 +65,6 @@ class LeadsApiTest extends TestCase
      * Clean up after running each test case
      */
     public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
     {
     }
 
@@ -190,22 +189,22 @@ class LeadsApiTest extends TestCase
     }
 
     /**
-     * Test case for leadsreturnLeadFromAllContractsdo
-     *
-     * Return Lead From All Contracts.
-     *
-     */
-    public function testLeadsreturnLeadFromAllContractsdo(): void
-    {
-    }
-
-    /**
      * Test case for leadsreturnLeaddo
      *
      * Return Lead.
      *
      */
     public function testLeadsreturnLeaddo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsreturnLeadFromAllContractsdo
+     *
+     * Return Lead From All Contracts.
+     *
+     */
+    public function testLeadsreturnLeadFromAllContractsdo(): void
     {
     }
 

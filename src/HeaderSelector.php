@@ -38,7 +38,6 @@ namespace Leadspedia;
  */
 class HeaderSelector
 {
-
     /**
      * @param string[] $accept
      * @param string[] $contentTypes

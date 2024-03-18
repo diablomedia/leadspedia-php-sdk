@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class CallRoutingContractsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -59,13 +65,6 @@ class CallRoutingContractsApiTest extends TestCase
      * Clean up after running each test case
      */
     public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
     {
     }
 
@@ -100,22 +99,22 @@ class CallRoutingContractsApiTest extends TestCase
     }
 
     /**
-     * Test case for callRoutingContractsdeleteScheduledPausedo
-     *
-     * Delete Scheduled Pause.
-     *
-     */
-    public function testCallRoutingContractsdeleteScheduledPausedo(): void
-    {
-    }
-
-    /**
      * Test case for callRoutingContractsdeletedo
      *
      * Delete.
      *
      */
     public function testCallRoutingContractsdeletedo(): void
+    {
+    }
+
+    /**
+     * Test case for callRoutingContractsdeleteScheduledPausedo
+     *
+     * Delete Scheduled Pause.
+     *
+     */
+    public function testCallRoutingContractsdeleteScheduledPausedo(): void
     {
     }
 

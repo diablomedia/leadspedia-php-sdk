@@ -88,34 +88,6 @@ class ConversionsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation conversionsgetAlldo
      *
      * Get All
@@ -143,8 +115,107 @@ class ConversionsApi
      */
     public function conversionsgetAlldo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showGoal = null, $showNonGoal = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100)
     {
-        list($response) = $this->conversionsgetAlldoWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
+        [$response] = $this->conversionsgetAlldoWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
         return $response;
+    }
+
+    /**
+     * Operation conversionsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  string $status (optional)
+     * @param  string $showGoal (optional)
+     * @param  string $showNonGoal (optional)
+     * @param  string $showThrottled (optional)
+     * @param  string $showNonThrottled (optional)
+     * @param  string $showTest (optional)
+     * @param  string $showNonTest (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function conversionsgetAlldoAsync($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showGoal = null, $showNonGoal = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        return $this->conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation conversionsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  string $status (optional)
+     * @param  string $showGoal (optional)
+     * @param  string $showNonGoal (optional)
+     * @param  string $showThrottled (optional)
+     * @param  string $showNonThrottled (optional)
+     * @param  string $showTest (optional)
+     * @param  string $showNonTest (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showGoal = null, $showNonGoal = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->conversionsgetAlldoRequest($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -250,102 +321,31 @@ class ConversionsApi
     }
 
     /**
-     * Operation conversionsgetAlldoAsync
-     *
-     * Get All
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  string $status (optional)
-     * @param  string $showGoal (optional)
-     * @param  string $showNonGoal (optional)
-     * @param  string $showThrottled (optional)
-     * @param  string $showNonThrottled (optional)
-     * @param  string $showTest (optional)
-     * @param  string $showNonTest (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function conversionsgetAlldoAsync($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showGoal = null, $showNonGoal = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100)
+    public function getConfig()
     {
-        return $this->conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation conversionsgetAlldoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Get All
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  string $status (optional)
-     * @param  string $showGoal (optional)
-     * @param  string $showNonGoal (optional)
-     * @param  string $showThrottled (optional)
-     * @param  string $showNonThrottled (optional)
-     * @param  string $showTest (optional)
-     * @param  string $showNonTest (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Host index
      */
-    public function conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showGoal = null, $showNonGoal = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100)
+    public function getHostIndex()
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsgetAlldoRequest($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showGoal, $showNonGoal, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
+        return $this->hostIndex;
+    }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
     }
 
     /**

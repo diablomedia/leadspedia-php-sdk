@@ -42,11 +42,17 @@ use PHPUnit\Framework\TestCase;
  */
 class InlineResponse2001Test extends TestCase
 {
-
     /**
      * Setup before running any test case
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -65,13 +71,6 @@ class InlineResponse2001Test extends TestCase
     }
 
     /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
      * Test "InlineResponse2001"
      */
     public function testInlineResponse2001(): void
@@ -79,9 +78,9 @@ class InlineResponse2001Test extends TestCase
     }
 
     /**
-     * Test attribute "success"
+     * Test attribute "data"
      */
-    public function testPropertySuccess(): void
+    public function testPropertyData(): void
     {
     }
 
@@ -100,9 +99,9 @@ class InlineResponse2001Test extends TestCase
     }
 
     /**
-     * Test attribute "data"
+     * Test attribute "success"
      */
-    public function testPropertyData(): void
+    public function testPropertySuccess(): void
     {
     }
 }

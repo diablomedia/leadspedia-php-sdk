@@ -88,13 +88,11 @@ class InboundCallsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class InboundCallsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -138,8 +128,97 @@ class InboundCallsApi
      */
     public function inboundCallsgetAlldo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        list($response) = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        [$response] = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
         return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetAlldoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -240,9 +319,36 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetAlldoAsync
+     * Operation inboundCallsgetInProgressdo
      *
-     * Get All
+     * Get Calls In Progress
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetInProgressdo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetInProgressdoAsync
+     *
+     * Get Calls In Progress
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
@@ -259,9 +365,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetInProgressdoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -270,9 +376,9 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetAlldoAsyncWithHttpInfo
+     * Operation inboundCallsgetInProgressdoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Calls In Progress
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
@@ -289,10 +395,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,6 +432,952 @@ class InboundCallsApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation inboundCallsgetInProgressdoWithHttpInfo
+     *
+     * Get Calls In Progress
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $request = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation inboundCallsgetNumbersdo
+     *
+     * Get Numbers
+     *
+     * @param  string $search search (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetNumbersdo($search = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetNumbersdoWithHttpInfo($search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetNumbersdoAsync
+     *
+     * Get Numbers
+     *
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetNumbersdoAsync($search = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetNumbersdoAsyncWithHttpInfo($search, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetNumbersdoAsyncWithHttpInfo
+     *
+     * Get Numbers
+     *
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetNumbersdoAsyncWithHttpInfo($search = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetNumbersdoWithHttpInfo
+     *
+     * Get Numbers
+     *
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inboundCallsgetNumbersdoWithHttpInfo($search = null, $start = 0, $limit = 100)
+    {
+        $request = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation inboundCallsgetReturneddo
+     *
+     * Get Returned Calls
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetReturneddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetReturneddoAsync
+     *
+     * Get Returned Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetReturneddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetReturneddoAsyncWithHttpInfo
+     *
+     * Get Returned Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetReturneddoWithHttpInfo
+     *
+     * Get Returned Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $request = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation inboundCallsgetScrubbeddo
+     *
+     * Get Scrubbed Calls
+     *
+     * @param  \DateTime $toDate toDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $fromDate fromDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetScrubbeddo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetScrubbeddoAsync
+     *
+     * Get Scrubbed Calls
+     *
+     * @param  \DateTime $toDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetScrubbeddoAsync($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetScrubbeddoAsyncWithHttpInfo
+     *
+     * Get Scrubbed Calls
+     *
+     * @param  \DateTime $toDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetScrubbeddoWithHttpInfo
+     *
+     * Get Scrubbed Calls
+     *
+     * @param  \DateTime $toDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        $request = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation inboundCallsgetTransferreddo
+     *
+     * Get Transferred Calls
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetTransferreddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetTransferreddoAsync
+     *
+     * Get Transferred Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetTransferreddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetTransferreddoAsyncWithHttpInfo
+     *
+     * Get Transferred Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetTransferreddoWithHttpInfo
+     *
+     * Get Transferred Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $request = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
     }
 
     /**
@@ -481,219 +1533,6 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetInProgressdo
-     *
-     * Get Calls In Progress
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetInProgressdo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation inboundCallsgetInProgressdoWithHttpInfo
-     *
-     * Get Calls In Progress
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $request = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation inboundCallsgetInProgressdoAsync
-     *
-     * Get Calls In Progress
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetInProgressdoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation inboundCallsgetInProgressdoAsyncWithHttpInfo
-     *
-     * Get Calls In Progress
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'inboundCallsgetInProgressdo'
      *
      * @param  \DateTime $fromDate (required)
@@ -846,187 +1685,6 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetNumbersdo
-     *
-     * Get Numbers
-     *
-     * @param  string $search search (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetNumbersdo($search = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetNumbersdoWithHttpInfo($search, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation inboundCallsgetNumbersdoWithHttpInfo
-     *
-     * Get Numbers
-     *
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function inboundCallsgetNumbersdoWithHttpInfo($search = null, $start = 0, $limit = 100)
-    {
-        $request = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation inboundCallsgetNumbersdoAsync
-     *
-     * Get Numbers
-     *
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetNumbersdoAsync($search = null, $start = 0, $limit = 100)
-    {
-        return $this->inboundCallsgetNumbersdoAsyncWithHttpInfo($search, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation inboundCallsgetNumbersdoAsyncWithHttpInfo
-     *
-     * Get Numbers
-     *
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetNumbersdoAsyncWithHttpInfo($search = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'inboundCallsgetNumbersdo'
      *
      * @param  string $search (optional)
@@ -1129,219 +1787,6 @@ class InboundCallsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation inboundCallsgetReturneddo
-     *
-     * Get Returned Calls
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetReturneddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation inboundCallsgetReturneddoWithHttpInfo
-     *
-     * Get Returned Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $request = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation inboundCallsgetReturneddoAsync
-     *
-     * Get Returned Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetReturneddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation inboundCallsgetReturneddoAsyncWithHttpInfo
-     *
-     * Get Returned Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -1497,219 +1942,6 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetScrubbeddo
-     *
-     * Get Scrubbed Calls
-     *
-     * @param  \DateTime $toDate toDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $fromDate fromDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetScrubbeddo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation inboundCallsgetScrubbeddoWithHttpInfo
-     *
-     * Get Scrubbed Calls
-     *
-     * @param  \DateTime $toDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        $request = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation inboundCallsgetScrubbeddoAsync
-     *
-     * Get Scrubbed Calls
-     *
-     * @param  \DateTime $toDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetScrubbeddoAsync($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation inboundCallsgetScrubbeddoAsyncWithHttpInfo
-     *
-     * Get Scrubbed Calls
-     *
-     * @param  \DateTime $toDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'inboundCallsgetScrubbeddo'
      *
      * @param  \DateTime $toDate (required)
@@ -1862,219 +2094,6 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetTransferreddo
-     *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetTransferreddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation inboundCallsgetTransferreddoWithHttpInfo
-     *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $request = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation inboundCallsgetTransferreddoAsync
-     *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetTransferreddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation inboundCallsgetTransferreddoAsyncWithHttpInfo
-     *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'inboundCallsgetTransferreddo'
      *
      * @param  \DateTime $fromDate (required)
@@ -2224,24 +2243,5 @@ class InboundCallsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

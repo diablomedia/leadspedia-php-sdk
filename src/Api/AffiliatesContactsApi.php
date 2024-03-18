@@ -88,34 +88,6 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation affiliatesContactschangePassworddo
      *
      * Change Password
@@ -130,8 +102,81 @@ class AffiliatesContactsApi
      */
     public function affiliatesContactschangePassworddo($contactID, $oldPassword, $newPassword)
     {
-        list($response) = $this->affiliatesContactschangePassworddoWithHttpInfo($contactID, $oldPassword, $newPassword);
+        [$response] = $this->affiliatesContactschangePassworddoWithHttpInfo($contactID, $oldPassword, $newPassword);
         return $response;
+    }
+
+    /**
+     * Operation affiliatesContactschangePassworddoAsync
+     *
+     * Change Password
+     *
+     * @param  int $contactID (required)
+     * @param  string $oldPassword (required)
+     * @param  string $newPassword (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactschangePassworddoAsync($contactID, $oldPassword, $newPassword)
+    {
+        return $this->affiliatesContactschangePassworddoAsyncWithHttpInfo($contactID, $oldPassword, $newPassword)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactschangePassworddoAsyncWithHttpInfo
+     *
+     * Change Password
+     *
+     * @param  int $contactID (required)
+     * @param  string $oldPassword (required)
+     * @param  string $newPassword (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactschangePassworddoAsyncWithHttpInfo($contactID, $oldPassword, $newPassword)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesContactschangePassworddoRequest($contactID, $oldPassword, $newPassword);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -224,20 +269,37 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Operation affiliatesContactschangePassworddoAsync
+     * Operation affiliatesContactschangeStatusdo
      *
-     * Change Password
+     * Change Status
+     *
+     * @param  int $contactID contactID (required)
+     * @param  string $status status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesContactschangeStatusdo($contactID, $status)
+    {
+        [$response] = $this->affiliatesContactschangeStatusdoWithHttpInfo($contactID, $status);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactschangeStatusdoAsync
+     *
+     * Change Status
      *
      * @param  int $contactID (required)
-     * @param  string $oldPassword (required)
-     * @param  string $newPassword (required)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesContactschangePassworddoAsync($contactID, $oldPassword, $newPassword)
+    public function affiliatesContactschangeStatusdoAsync($contactID, $status)
     {
-        return $this->affiliatesContactschangePassworddoAsyncWithHttpInfo($contactID, $oldPassword, $newPassword)
+        return $this->affiliatesContactschangeStatusdoAsyncWithHttpInfo($contactID, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -246,21 +308,20 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Operation affiliatesContactschangePassworddoAsyncWithHttpInfo
+     * Operation affiliatesContactschangeStatusdoAsyncWithHttpInfo
      *
-     * Change Password
+     * Change Status
      *
      * @param  int $contactID (required)
-     * @param  string $oldPassword (required)
-     * @param  string $newPassword (required)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesContactschangePassworddoAsyncWithHttpInfo($contactID, $oldPassword, $newPassword)
+    public function affiliatesContactschangeStatusdoAsyncWithHttpInfo($contactID, $status)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactschangePassworddoRequest($contactID, $oldPassword, $newPassword);
+        $request    = $this->affiliatesContactschangeStatusdoRequest($contactID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -294,6 +355,1272 @@ class AffiliatesContactsApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation affiliatesContactschangeStatusdoWithHttpInfo
+     *
+     * Change Status
+     *
+     * @param  int $contactID (required)
+     * @param  string $status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactschangeStatusdoWithHttpInfo($contactID, $status)
+    {
+        $request = $this->affiliatesContactschangeStatusdoRequest($contactID, $status);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactscreatedo
+     *
+     * Create
+     *
+     * @param  int $affiliateID affiliateID (required)
+     * @param  string $firstName firstName (required)
+     * @param  string $lastName lastName (required)
+     * @param  string $emailAddress emailAddress (required)
+     * @param  string $password password (required)
+     * @param  string $jobTitle jobTitle (optional)
+     * @param  string $phoneNumber phoneNumber (optional)
+     * @param  string $portalAccess portalAccess (optional, default to 'No')
+     * @param  string $status status (optional, default to 'Active')
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesContactscreatedo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
+    {
+        [$response] = $this->affiliatesContactscreatedoWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactscreatedoAsync
+     *
+     * Create
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $firstName (required)
+     * @param  string $lastName (required)
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     * @param  string $jobTitle (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $portalAccess (optional, default to 'No')
+     * @param  string $status (optional, default to 'Active')
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactscreatedoAsync($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
+    {
+        return $this->affiliatesContactscreatedoAsyncWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactscreatedoAsyncWithHttpInfo
+     *
+     * Create
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $firstName (required)
+     * @param  string $lastName (required)
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     * @param  string $jobTitle (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $portalAccess (optional, default to 'No')
+     * @param  string $status (optional, default to 'Active')
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactscreatedoAsyncWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesContactscreatedoRequest($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactscreatedoWithHttpInfo
+     *
+     * Create
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $firstName (required)
+     * @param  string $lastName (required)
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     * @param  string $jobTitle (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $portalAccess (optional, default to 'No')
+     * @param  string $status (optional, default to 'Active')
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactscreatedoWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
+    {
+        $request = $this->affiliatesContactscreatedoRequest($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactsdeletedo
+     *
+     * Delete
+     *
+     * @param  int $contactID contactID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesContactsdeletedo($contactID)
+    {
+        [$response] = $this->affiliatesContactsdeletedoWithHttpInfo($contactID);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactsdeletedoAsync
+     *
+     * Delete
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsdeletedoAsync($contactID)
+    {
+        return $this->affiliatesContactsdeletedoAsyncWithHttpInfo($contactID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsdeletedoAsyncWithHttpInfo
+     *
+     * Delete
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsdeletedoAsyncWithHttpInfo($contactID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesContactsdeletedoRequest($contactID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsdeletedoWithHttpInfo
+     *
+     * Delete
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactsdeletedoWithHttpInfo($contactID)
+    {
+        $request = $this->affiliatesContactsdeletedoRequest($contactID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactsgetAlldo
+     *
+     * Get All
+     *
+     * @param  int $contactID contactID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  string $portalAccess portalAccess (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function affiliatesContactsgetAlldo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->affiliatesContactsgetAlldoWithHttpInfo($contactID, $affiliateID, $portalAccess, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  int $contactID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  string $portalAccess (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsgetAlldoAsync($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
+    {
+        return $this->affiliatesContactsgetAlldoAsyncWithHttpInfo($contactID, $affiliateID, $portalAccess, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  int $contactID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  string $portalAccess (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsgetAlldoAsyncWithHttpInfo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->affiliatesContactsgetAlldoRequest($contactID, $affiliateID, $portalAccess, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsgetAlldoWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  int $contactID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  string $portalAccess (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactsgetAlldoWithHttpInfo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
+    {
+        $request = $this->affiliatesContactsgetAlldoRequest($contactID, $affiliateID, $portalAccess, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactsgetInfodo
+     *
+     * Get Info
+     *
+     * @param  int $contactID contactID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function affiliatesContactsgetInfodo($contactID)
+    {
+        [$response] = $this->affiliatesContactsgetInfodoWithHttpInfo($contactID);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactsgetInfodoAsync
+     *
+     * Get Info
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsgetInfodoAsync($contactID)
+    {
+        return $this->affiliatesContactsgetInfodoAsyncWithHttpInfo($contactID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsgetInfodoAsyncWithHttpInfo
+     *
+     * Get Info
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsgetInfodoAsyncWithHttpInfo($contactID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->affiliatesContactsgetInfodoRequest($contactID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsgetInfodoWithHttpInfo
+     *
+     * Get Info
+     *
+     * @param  int $contactID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactsgetInfodoWithHttpInfo($contactID)
+    {
+        $request = $this->affiliatesContactsgetInfodoRequest($contactID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactsupdatedo
+     *
+     * Update
+     *
+     * @param  int $contactID contactID (required)
+     * @param  string $firstName firstName (optional)
+     * @param  string $lastName lastName (optional)
+     * @param  string $jobTitle jobTitle (optional)
+     * @param  string $emailAddress emailAddress (optional)
+     * @param  string $phoneNumber phoneNumber (optional)
+     * @param  string $officePhone officePhone (optional)
+     * @param  string $ext ext (optional)
+     * @param  string $portalAccess portalAccess (optional)
+     * @param  string $role role (optional)
+     * @param  string $massEmail massEmail (optional)
+     * @param  string $permissionAccount permissionAccount (optional)
+     * @param  string $permissionBilling permissionBilling (optional)
+     * @param  string $permissionOffers permissionOffers (optional)
+     * @param  string $permissionReports permissionReports (optional)
+     * @param  string $permissionUsers permissionUsers (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesContactsupdatedo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
+    {
+        [$response] = $this->affiliatesContactsupdatedoWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactsupdatedoAsync
+     *
+     * Update
+     *
+     * @param  int $contactID (required)
+     * @param  string $firstName (optional)
+     * @param  string $lastName (optional)
+     * @param  string $jobTitle (optional)
+     * @param  string $emailAddress (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $officePhone (optional)
+     * @param  string $ext (optional)
+     * @param  string $portalAccess (optional)
+     * @param  string $role (optional)
+     * @param  string $massEmail (optional)
+     * @param  string $permissionAccount (optional)
+     * @param  string $permissionBilling (optional)
+     * @param  string $permissionOffers (optional)
+     * @param  string $permissionReports (optional)
+     * @param  string $permissionUsers (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsupdatedoAsync($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
+    {
+        return $this->affiliatesContactsupdatedoAsyncWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsupdatedoAsyncWithHttpInfo
+     *
+     * Update
+     *
+     * @param  int $contactID (required)
+     * @param  string $firstName (optional)
+     * @param  string $lastName (optional)
+     * @param  string $jobTitle (optional)
+     * @param  string $emailAddress (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $officePhone (optional)
+     * @param  string $ext (optional)
+     * @param  string $portalAccess (optional)
+     * @param  string $role (optional)
+     * @param  string $massEmail (optional)
+     * @param  string $permissionAccount (optional)
+     * @param  string $permissionBilling (optional)
+     * @param  string $permissionOffers (optional)
+     * @param  string $permissionReports (optional)
+     * @param  string $permissionUsers (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsupdatedoAsyncWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesContactsupdatedoRequest($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsupdatedoWithHttpInfo
+     *
+     * Update
+     *
+     * @param  int $contactID (required)
+     * @param  string $firstName (optional)
+     * @param  string $lastName (optional)
+     * @param  string $jobTitle (optional)
+     * @param  string $emailAddress (optional)
+     * @param  string $phoneNumber (optional)
+     * @param  string $officePhone (optional)
+     * @param  string $ext (optional)
+     * @param  string $portalAccess (optional)
+     * @param  string $role (optional)
+     * @param  string $massEmail (optional)
+     * @param  string $permissionAccount (optional)
+     * @param  string $permissionBilling (optional)
+     * @param  string $permissionOffers (optional)
+     * @param  string $permissionReports (optional)
+     * @param  string $permissionUsers (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactsupdatedoWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
+    {
+        $request = $this->affiliatesContactsupdatedoRequest($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation affiliatesContactsverifyCredentialsdo
+     *
+     * Verify Credentials
+     *
+     * @param  string $emailAddress emailAddress (required)
+     * @param  string $password password (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesContactsverifyCredentialsdo($emailAddress, $password)
+    {
+        [$response] = $this->affiliatesContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesContactsverifyCredentialsdoAsync
+     *
+     * Verify Credentials
+     *
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsverifyCredentialsdoAsync($emailAddress, $password)
+    {
+        return $this->affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo($emailAddress, $password)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo
+     *
+     * Verify Credentials
+     *
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo($emailAddress, $password)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesContactsverifyCredentialsdoRequest($emailAddress, $password);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation affiliatesContactsverifyCredentialsdoWithHttpInfo
+     *
+     * Verify Credentials
+     *
+     * @param  string $emailAddress (required)
+     * @param  string $password (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function affiliatesContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password)
+    {
+        $request = $this->affiliatesContactsverifyCredentialsdoRequest($emailAddress, $password);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * @return Configuration
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * Get the host index
+     *
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
     }
 
     /**
@@ -421,183 +1748,6 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Operation affiliatesContactschangeStatusdo
-     *
-     * Change Status
-     *
-     * @param  int $contactID contactID (required)
-     * @param  string $status status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesContactschangeStatusdo($contactID, $status)
-    {
-        list($response) = $this->affiliatesContactschangeStatusdoWithHttpInfo($contactID, $status);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactschangeStatusdoWithHttpInfo
-     *
-     * Change Status
-     *
-     * @param  int $contactID (required)
-     * @param  string $status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactschangeStatusdoWithHttpInfo($contactID, $status)
-    {
-        $request = $this->affiliatesContactschangeStatusdoRequest($contactID, $status);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactschangeStatusdoAsync
-     *
-     * Change Status
-     *
-     * @param  int $contactID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactschangeStatusdoAsync($contactID, $status)
-    {
-        return $this->affiliatesContactschangeStatusdoAsyncWithHttpInfo($contactID, $status)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactschangeStatusdoAsyncWithHttpInfo
-     *
-     * Change Status
-     *
-     * @param  int $contactID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactschangeStatusdoAsyncWithHttpInfo($contactID, $status)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactschangeStatusdoRequest($contactID, $status);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'affiliatesContactschangeStatusdo'
      *
      * @param  int $contactID (required)
@@ -708,211 +1858,6 @@ class AffiliatesContactsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation affiliatesContactscreatedo
-     *
-     * Create
-     *
-     * @param  int $affiliateID affiliateID (required)
-     * @param  string $firstName firstName (required)
-     * @param  string $lastName lastName (required)
-     * @param  string $emailAddress emailAddress (required)
-     * @param  string $password password (required)
-     * @param  string $jobTitle jobTitle (optional)
-     * @param  string $phoneNumber phoneNumber (optional)
-     * @param  string $portalAccess portalAccess (optional, default to 'No')
-     * @param  string $status status (optional, default to 'Active')
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesContactscreatedo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
-    {
-        list($response) = $this->affiliatesContactscreatedoWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactscreatedoWithHttpInfo
-     *
-     * Create
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $firstName (required)
-     * @param  string $lastName (required)
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     * @param  string $jobTitle (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $portalAccess (optional, default to 'No')
-     * @param  string $status (optional, default to 'Active')
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactscreatedoWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
-    {
-        $request = $this->affiliatesContactscreatedoRequest($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactscreatedoAsync
-     *
-     * Create
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $firstName (required)
-     * @param  string $lastName (required)
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     * @param  string $jobTitle (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $portalAccess (optional, default to 'No')
-     * @param  string $status (optional, default to 'Active')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactscreatedoAsync($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
-    {
-        return $this->affiliatesContactscreatedoAsyncWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactscreatedoAsyncWithHttpInfo
-     *
-     * Create
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $firstName (required)
-     * @param  string $lastName (required)
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     * @param  string $jobTitle (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $portalAccess (optional, default to 'No')
-     * @param  string $status (optional, default to 'Active')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactscreatedoAsyncWithHttpInfo($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle = null, $phoneNumber = null, $portalAccess = 'No', $status = 'Active')
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactscreatedoRequest($affiliateID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -1082,179 +2027,6 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Operation affiliatesContactsdeletedo
-     *
-     * Delete
-     *
-     * @param  int $contactID contactID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesContactsdeletedo($contactID)
-    {
-        list($response) = $this->affiliatesContactsdeletedoWithHttpInfo($contactID);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactsdeletedoWithHttpInfo
-     *
-     * Delete
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactsdeletedoWithHttpInfo($contactID)
-    {
-        $request = $this->affiliatesContactsdeletedoRequest($contactID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactsdeletedoAsync
-     *
-     * Delete
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsdeletedoAsync($contactID)
-    {
-        return $this->affiliatesContactsdeletedoAsyncWithHttpInfo($contactID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactsdeletedoAsyncWithHttpInfo
-     *
-     * Delete
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsdeletedoAsyncWithHttpInfo($contactID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactsdeletedoRequest($contactID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'affiliatesContactsdeletedo'
      *
      * @param  int $contactID (required)
@@ -1354,195 +2126,6 @@ class AffiliatesContactsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation affiliatesContactsgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $contactID contactID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  string $portalAccess portalAccess (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function affiliatesContactsgetAlldo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->affiliatesContactsgetAlldoWithHttpInfo($contactID, $affiliateID, $portalAccess, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactsgetAlldoWithHttpInfo
-     *
-     * Get All
-     *
-     * @param  int $contactID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  string $portalAccess (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactsgetAlldoWithHttpInfo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
-    {
-        $request = $this->affiliatesContactsgetAlldoRequest($contactID, $affiliateID, $portalAccess, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactsgetAlldoAsync
-     *
-     * Get All
-     *
-     * @param  int $contactID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  string $portalAccess (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsgetAlldoAsync($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
-    {
-        return $this->affiliatesContactsgetAlldoAsyncWithHttpInfo($contactID, $affiliateID, $portalAccess, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactsgetAlldoAsyncWithHttpInfo
-     *
-     * Get All
-     *
-     * @param  int $contactID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  string $portalAccess (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsgetAlldoAsyncWithHttpInfo($contactID = null, $affiliateID = null, $portalAccess = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->affiliatesContactsgetAlldoRequest($contactID, $affiliateID, $portalAccess, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -1661,179 +2244,6 @@ class AffiliatesContactsApi
     }
 
     /**
-     * Operation affiliatesContactsgetInfodo
-     *
-     * Get Info
-     *
-     * @param  int $contactID contactID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function affiliatesContactsgetInfodo($contactID)
-    {
-        list($response) = $this->affiliatesContactsgetInfodoWithHttpInfo($contactID);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactsgetInfodoWithHttpInfo
-     *
-     * Get Info
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactsgetInfodoWithHttpInfo($contactID)
-    {
-        $request = $this->affiliatesContactsgetInfodoRequest($contactID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactsgetInfodoAsync
-     *
-     * Get Info
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsgetInfodoAsync($contactID)
-    {
-        return $this->affiliatesContactsgetInfodoAsyncWithHttpInfo($contactID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactsgetInfodoAsyncWithHttpInfo
-     *
-     * Get Info
-     *
-     * @param  int $contactID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsgetInfodoAsyncWithHttpInfo($contactID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->affiliatesContactsgetInfodoRequest($contactID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
      * Create request for operation 'affiliatesContactsgetInfodo'
      *
      * @param  int $contactID (required)
@@ -1933,239 +2343,6 @@ class AffiliatesContactsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation affiliatesContactsupdatedo
-     *
-     * Update
-     *
-     * @param  int $contactID contactID (required)
-     * @param  string $firstName firstName (optional)
-     * @param  string $lastName lastName (optional)
-     * @param  string $jobTitle jobTitle (optional)
-     * @param  string $emailAddress emailAddress (optional)
-     * @param  string $phoneNumber phoneNumber (optional)
-     * @param  string $officePhone officePhone (optional)
-     * @param  string $ext ext (optional)
-     * @param  string $portalAccess portalAccess (optional)
-     * @param  string $role role (optional)
-     * @param  string $massEmail massEmail (optional)
-     * @param  string $permissionAccount permissionAccount (optional)
-     * @param  string $permissionBilling permissionBilling (optional)
-     * @param  string $permissionOffers permissionOffers (optional)
-     * @param  string $permissionReports permissionReports (optional)
-     * @param  string $permissionUsers permissionUsers (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesContactsupdatedo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
-    {
-        list($response) = $this->affiliatesContactsupdatedoWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactsupdatedoWithHttpInfo
-     *
-     * Update
-     *
-     * @param  int $contactID (required)
-     * @param  string $firstName (optional)
-     * @param  string $lastName (optional)
-     * @param  string $jobTitle (optional)
-     * @param  string $emailAddress (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $officePhone (optional)
-     * @param  string $ext (optional)
-     * @param  string $portalAccess (optional)
-     * @param  string $role (optional)
-     * @param  string $massEmail (optional)
-     * @param  string $permissionAccount (optional)
-     * @param  string $permissionBilling (optional)
-     * @param  string $permissionOffers (optional)
-     * @param  string $permissionReports (optional)
-     * @param  string $permissionUsers (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactsupdatedoWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
-    {
-        $request = $this->affiliatesContactsupdatedoRequest($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactsupdatedoAsync
-     *
-     * Update
-     *
-     * @param  int $contactID (required)
-     * @param  string $firstName (optional)
-     * @param  string $lastName (optional)
-     * @param  string $jobTitle (optional)
-     * @param  string $emailAddress (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $officePhone (optional)
-     * @param  string $ext (optional)
-     * @param  string $portalAccess (optional)
-     * @param  string $role (optional)
-     * @param  string $massEmail (optional)
-     * @param  string $permissionAccount (optional)
-     * @param  string $permissionBilling (optional)
-     * @param  string $permissionOffers (optional)
-     * @param  string $permissionReports (optional)
-     * @param  string $permissionUsers (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsupdatedoAsync($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
-    {
-        return $this->affiliatesContactsupdatedoAsyncWithHttpInfo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactsupdatedoAsyncWithHttpInfo
-     *
-     * Update
-     *
-     * @param  int $contactID (required)
-     * @param  string $firstName (optional)
-     * @param  string $lastName (optional)
-     * @param  string $jobTitle (optional)
-     * @param  string $emailAddress (optional)
-     * @param  string $phoneNumber (optional)
-     * @param  string $officePhone (optional)
-     * @param  string $ext (optional)
-     * @param  string $portalAccess (optional)
-     * @param  string $role (optional)
-     * @param  string $massEmail (optional)
-     * @param  string $permissionAccount (optional)
-     * @param  string $permissionBilling (optional)
-     * @param  string $permissionOffers (optional)
-     * @param  string $permissionReports (optional)
-     * @param  string $permissionUsers (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsupdatedoAsyncWithHttpInfo($contactID, $firstName = null, $lastName = null, $jobTitle = null, $emailAddress = null, $phoneNumber = null, $officePhone = null, $ext = null, $portalAccess = null, $role = null, $massEmail = null, $permissionAccount = null, $permissionBilling = null, $permissionOffers = null, $permissionReports = null, $permissionUsers = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactsupdatedoRequest($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -2343,183 +2520,6 @@ class AffiliatesContactsApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation affiliatesContactsverifyCredentialsdo
-     *
-     * Verify Credentials
-     *
-     * @param  string $emailAddress emailAddress (required)
-     * @param  string $password password (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesContactsverifyCredentialsdo($emailAddress, $password)
-    {
-        list($response) = $this->affiliatesContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password);
-        return $response;
-    }
-
-    /**
-     * Operation affiliatesContactsverifyCredentialsdoWithHttpInfo
-     *
-     * Verify Credentials
-     *
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function affiliatesContactsverifyCredentialsdoWithHttpInfo($emailAddress, $password)
-    {
-        $request = $this->affiliatesContactsverifyCredentialsdoRequest($emailAddress, $password);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation affiliatesContactsverifyCredentialsdoAsync
-     *
-     * Verify Credentials
-     *
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsverifyCredentialsdoAsync($emailAddress, $password)
-    {
-        return $this->affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo($emailAddress, $password)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo
-     *
-     * Verify Credentials
-     *
-     * @param  string $emailAddress (required)
-     * @param  string $password (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function affiliatesContactsverifyCredentialsdoAsyncWithHttpInfo($emailAddress, $password)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesContactsverifyCredentialsdoRequest($emailAddress, $password);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**

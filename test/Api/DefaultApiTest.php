@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class DefaultApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -63,9 +69,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Clean up after running all test cases
+     * Test case for advertisersadjustCreditdo
+     *
+     * Adjust Credit.
+     *
      */
-    public static function tearDownAfterClass(): void
+    public function testAdvertisersadjustCreditdo(): void
+    {
+    }
+
+    /**
+     * Test case for advertiserschangeStatusdo
+     *
+     * Change Status.
+     *
+     */
+    public function testAdvertiserschangeStatusdo(): void
     {
     }
 
@@ -150,6 +169,16 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for advertiserscreatedo
+     *
+     * Create.
+     *
+     */
+    public function testAdvertiserscreatedo(): void
+    {
+    }
+
+    /**
      * Test case for advertisersCreditCardsadddo
      *
      * Add.
@@ -210,16 +239,6 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for advertisersCreditCardsupdatePaymentProfileIDdo
-     *
-     * Update Payment Profile ID.
-     *
-     */
-    public function testAdvertisersCreditCardsupdatePaymentProfileIDdo(): void
-    {
-    }
-
-    /**
      * Test case for advertisersCreditCardsupdatedo
      *
      * Update.
@@ -230,32 +249,12 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for advertisersadjustCreditdo
+     * Test case for advertisersCreditCardsupdatePaymentProfileIDdo
      *
-     * Adjust Credit.
-     *
-     */
-    public function testAdvertisersadjustCreditdo(): void
-    {
-    }
-
-    /**
-     * Test case for advertiserschangeStatusdo
-     *
-     * Change Status.
+     * Update Payment Profile ID.
      *
      */
-    public function testAdvertiserschangeStatusdo(): void
-    {
-    }
-
-    /**
-     * Test case for advertiserscreatedo
-     *
-     * Create.
-     *
-     */
-    public function testAdvertiserscreatedo(): void
+    public function testAdvertisersCreditCardsupdatePaymentProfileIDdo(): void
     {
     }
 
@@ -440,6 +439,16 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for affiliateschangeStatusdo
+     *
+     * Change Status.
+     *
+     */
+    public function testAffiliateschangeStatusdo(): void
+    {
+    }
+
+    /**
      * Test case for affiliatesContactschangePassworddo
      *
      * Change Password.
@@ -516,16 +525,6 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testAffiliatesContactsverifyCredentialsdo(): void
-    {
-    }
-
-    /**
-     * Test case for affiliateschangeStatusdo
-     *
-     * Change Status.
-     *
-     */
-    public function testAffiliateschangeStatusdo(): void
     {
     }
 
@@ -650,22 +649,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for callRoutingContractsdeleteScheduledPausedo
-     *
-     * Delete Scheduled Pause.
-     *
-     */
-    public function testCallRoutingContractsdeleteScheduledPausedo(): void
-    {
-    }
-
-    /**
      * Test case for callRoutingContractsdeletedo
      *
      * Delete.
      *
      */
     public function testCallRoutingContractsdeletedo(): void
+    {
+    }
+
+    /**
+     * Test case for callRoutingContractsdeleteScheduledPausedo
+     *
+     * Delete Scheduled Pause.
+     *
+     */
+    public function testCallRoutingContractsdeleteScheduledPausedo(): void
     {
     }
 
@@ -1210,6 +1209,16 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for conversionsgetAlldo
+     *
+     * Get All.
+     *
+     */
+    public function testConversionsgetAlldo(): void
+    {
+    }
+
+    /**
      * Test case for conversionsReportsgetConversionsByAdvertisersReportdo
      *
      * Get Conversions By Advertisers Report.
@@ -1286,16 +1295,6 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testConversionsReportsgetConversionsDailyReportdo(): void
-    {
-    }
-
-    /**
-     * Test case for conversionsgetAlldo
-     *
-     * Get All.
-     *
-     */
-    public function testConversionsgetAlldo(): void
     {
     }
 
@@ -1460,22 +1459,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractscreateScheduledo
-     *
-     * Create Schedule.
-     *
-     */
-    public function testLeadDistributionContractscreateScheduledo(): void
-    {
-    }
-
-    /**
      * Test case for leadDistributionContractscreatedo
      *
      * Create.
      *
      */
     public function testLeadDistributionContractscreatedo(): void
+    {
+    }
+
+    /**
+     * Test case for leadDistributionContractscreateScheduledo
+     *
+     * Create Schedule.
+     *
+     */
+    public function testLeadDistributionContractscreateScheduledo(): void
     {
     }
 
@@ -1510,22 +1509,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for leadDistributionContractsdeletedo
+     *
+     * Delete.
+     *
+     */
+    public function testLeadDistributionContractsdeletedo(): void
+    {
+    }
+
+    /**
      * Test case for leadDistributionContractsdeleteFilterdo
      *
      * Delete Filter.
      *
      */
     public function testLeadDistributionContractsdeleteFilterdo(): void
-    {
-    }
-
-    /**
-     * Test case for leadDistributionContractsdeleteScheduledPausedo
-     *
-     * Delete Scheduled Pause.
-     *
-     */
-    public function testLeadDistributionContractsdeleteScheduledPausedo(): void
     {
     }
 
@@ -1540,12 +1539,12 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractsdeletedo
+     * Test case for leadDistributionContractsdeleteScheduledPausedo
      *
-     * Delete.
+     * Delete Scheduled Pause.
      *
      */
-    public function testLeadDistributionContractsdeletedo(): void
+    public function testLeadDistributionContractsdeleteScheduledPausedo(): void
     {
     }
 
@@ -1660,22 +1659,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for leadDistributionContractsgetScheduledPausedo
-     *
-     * Get Scheduled Pause.
-     *
-     */
-    public function testLeadDistributionContractsgetScheduledPausedo(): void
-    {
-    }
-
-    /**
      * Test case for leadDistributionContractsgetScheduledo
      *
      * Get Schedule.
      *
      */
     public function testLeadDistributionContractsgetScheduledo(): void
+    {
+    }
+
+    /**
+     * Test case for leadDistributionContractsgetScheduledPausedo
+     *
+     * Get Scheduled Pause.
+     *
+     */
+    public function testLeadDistributionContractsgetScheduledPausedo(): void
     {
     }
 
@@ -1826,6 +1825,116 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testLeadDistributionContractsupdateScheduledo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsapproveReturndo
+     *
+     * Approve Return.
+     *
+     */
+    public function testLeadsapproveReturndo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetAlldo
+     *
+     * Get All.
+     *
+     */
+    public function testLeadsgetAlldo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetLeadDatado
+     *
+     * Get Lead Data.
+     *
+     */
+    public function testLeadsgetLeadDatado(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetLeadInfodo
+     *
+     * Get Lead Info.
+     *
+     */
+    public function testLeadsgetLeadInfodo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetQueuedo
+     *
+     * Get Queue.
+     *
+     */
+    public function testLeadsgetQueuedo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetReturnsdo
+     *
+     * Get Returns.
+     *
+     */
+    public function testLeadsgetReturnsdo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetReviewdo
+     *
+     * Get Review.
+     *
+     */
+    public function testLeadsgetReviewdo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetScrubbeddo
+     *
+     * Get Scrubbed.
+     *
+     */
+    public function testLeadsgetScrubbeddo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetSolddo
+     *
+     * Get Sold.
+     *
+     */
+    public function testLeadsgetSolddo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsgetTrashdo
+     *
+     * Get Trash.
+     *
+     */
+    public function testLeadsgetTrashdo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsrejectReturndo
+     *
+     * Reject Return.
+     *
+     */
+    public function testLeadsrejectReturndo(): void
     {
     }
 
@@ -1990,116 +2099,6 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for leadsapproveReturndo
-     *
-     * Approve Return.
-     *
-     */
-    public function testLeadsapproveReturndo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetAlldo
-     *
-     * Get All.
-     *
-     */
-    public function testLeadsgetAlldo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetLeadDatado
-     *
-     * Get Lead Data.
-     *
-     */
-    public function testLeadsgetLeadDatado(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetLeadInfodo
-     *
-     * Get Lead Info.
-     *
-     */
-    public function testLeadsgetLeadInfodo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetQueuedo
-     *
-     * Get Queue.
-     *
-     */
-    public function testLeadsgetQueuedo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetReturnsdo
-     *
-     * Get Returns.
-     *
-     */
-    public function testLeadsgetReturnsdo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetReviewdo
-     *
-     * Get Review.
-     *
-     */
-    public function testLeadsgetReviewdo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetScrubbeddo
-     *
-     * Get Scrubbed.
-     *
-     */
-    public function testLeadsgetScrubbeddo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetSolddo
-     *
-     * Get Sold.
-     *
-     */
-    public function testLeadsgetSolddo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsgetTrashdo
-     *
-     * Get Trash.
-     *
-     */
-    public function testLeadsgetTrashdo(): void
-    {
-    }
-
-    /**
-     * Test case for leadsrejectReturndo
-     *
-     * Reject Return.
-     *
-     */
-    public function testLeadsrejectReturndo(): void
-    {
-    }
-
-    /**
      * Test case for leadsrequestReturndo
      *
      * Request Return.
@@ -2110,22 +2109,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for leadsreturnLeadFromAllContractsdo
-     *
-     * Return Lead From All Contracts.
-     *
-     */
-    public function testLeadsreturnLeadFromAllContractsdo(): void
-    {
-    }
-
-    /**
      * Test case for leadsreturnLeaddo
      *
      * Return Lead.
      *
      */
     public function testLeadsreturnLeaddo(): void
+    {
+    }
+
+    /**
+     * Test case for leadsreturnLeadFromAllContractsdo
+     *
+     * Return Lead From All Contracts.
+     *
+     */
+    public function testLeadsreturnLeadFromAllContractsdo(): void
     {
     }
 
