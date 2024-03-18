@@ -88,13 +88,11 @@ class LeadsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class LeadsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -129,8 +119,79 @@ class LeadsApi
      */
     public function leadsapproveReturndo($leadID, $contractID)
     {
-        list($response) = $this->leadsapproveReturndoWithHttpInfo($leadID, $contractID);
+        [$response] = $this->leadsapproveReturndoWithHttpInfo($leadID, $contractID);
         return $response;
+    }
+
+    /**
+     * Operation leadsapproveReturndoAsync
+     *
+     * Approve Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsapproveReturndoAsync($leadID, $contractID)
+    {
+        return $this->leadsapproveReturndoAsyncWithHttpInfo($leadID, $contractID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsapproveReturndoAsyncWithHttpInfo
+     *
+     * Approve Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsapproveReturndoAsyncWithHttpInfo($leadID, $contractID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsapproveReturndoRequest($leadID, $contractID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -222,19 +283,51 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsapproveReturndoAsync
+     * Operation leadsgetAlldo
      *
-     * Approve Return
+     * Get All
      *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  string $paid paid (optional)
+     * @param  string $scrubbed scrubbed (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetAlldo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetAlldoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $paid (optional)
+     * @param  string $scrubbed (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsapproveReturndoAsync($leadID, $contractID)
+    public function leadsgetAlldoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsapproveReturndoAsyncWithHttpInfo($leadID, $contractID)
+        return $this->leadsgetAlldoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,20 +336,27 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsapproveReturndoAsyncWithHttpInfo
+     * Operation leadsgetAlldoAsyncWithHttpInfo
      *
-     * Approve Return
+     * Get All
      *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $paid (optional)
+     * @param  string $scrubbed (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsapproveReturndoAsyncWithHttpInfo($leadID, $contractID)
+    public function leadsgetAlldoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsapproveReturndoRequest($leadID, $contractID);
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->leadsgetAlldoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -290,144 +390,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsapproveReturndo'
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsapproveReturndoRequest($leadID, $contractID)
-    {
-        // verify the required parameter 'leadID' is set
-        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $leadID when calling leadsapproveReturndo'
-            );
-        }
-        // verify the required parameter 'contractID' is set
-        if ($contractID === null || (is_array($contractID) && count($contractID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $contractID when calling leadsapproveReturndo'
-            );
-        }
-
-        $resourcePath = '/leads/approveReturn.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetAlldo
-     *
-     * Get All
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  string $paid paid (optional)
-     * @param  string $scrubbed scrubbed (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetAlldo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetAlldoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -526,16 +488,45 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetAlldoAsync
+     * Operation leadsgetDelivereddo
      *
-     * Get All
+     * Get Delivered
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $leadID leadID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  string $returned returned (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetDelivereddo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetDelivereddoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetDelivereddoAsync
+     *
+     * Get Delivered
      *
      * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  string $paid (optional)
-     * @param  string $scrubbed (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -543,9 +534,9 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetAlldoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetDelivereddoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetAlldoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
+        return $this->leadsgetDelivereddoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -554,16 +545,18 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetAlldoAsyncWithHttpInfo
+     * Operation leadsgetDelivereddoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Delivered
      *
      * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  string $paid (optional)
-     * @param  string $scrubbed (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -571,10 +564,10 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetAlldoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetDelivereddoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetAlldoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
+        $request    = $this->leadsgetDelivereddoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -608,175 +601,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetAlldo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  string $paid (optional)
-     * @param  string $scrubbed (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetAlldoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling leadsgetAlldo'
-            );
-        }
-
-        $resourcePath = '/leads/getAll.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($paid !== null) {
-            $queryParams['paid'] = ObjectSerializer::toQueryValue($paid);
-        }
-        // query params
-        if ($scrubbed !== null) {
-            $queryParams['scrubbed'] = ObjectSerializer::toQueryValue($scrubbed);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetDelivereddo
-     *
-     * Get Delivered
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $leadID leadID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  string $returned returned (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetDelivereddo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetDelivereddoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -877,28 +701,35 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetDelivereddoAsync
+     * Operation leadsgetLeadDatado
      *
-     * Get Delivered
+     * Get Lead Data
      *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $returned (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  string $leadID leadID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetLeadDatado($leadID)
+    {
+        [$response] = $this->leadsgetLeadDatadoWithHttpInfo($leadID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetLeadDatadoAsync
+     *
+     * Get Lead Data
+     *
+     * @param  string $leadID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetDelivereddoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetLeadDatadoAsync($leadID)
     {
-        return $this->leadsgetDelivereddoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+        return $this->leadsgetLeadDatadoAsyncWithHttpInfo($leadID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -907,29 +738,19 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetDelivereddoAsyncWithHttpInfo
+     * Operation leadsgetLeadDatadoAsyncWithHttpInfo
      *
-     * Get Delivered
+     * Get Lead Data
      *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $returned (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  string $leadID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetDelivereddoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetLeadDatadoAsyncWithHttpInfo($leadID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetDelivereddoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
+        $request    = $this->leadsgetLeadDatadoRequest($leadID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -963,175 +784,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetDelivereddo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $returned (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetDelivereddoRequest($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling leadsgetDelivereddo'
-            );
-        }
-
-        $resourcePath = '/leads/getDelivered.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($returned !== null) {
-            $queryParams['returned'] = ObjectSerializer::toQueryValue($returned);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetLeadDatado
-     *
-     * Get Lead Data
-     *
-     * @param  string $leadID leadID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetLeadDatado($leadID)
-    {
-        list($response) = $this->leadsgetLeadDatadoWithHttpInfo($leadID);
-        return $response;
     }
 
     /**
@@ -1222,18 +874,35 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetLeadDatadoAsync
+     * Operation leadsgetLeadInfodo
      *
-     * Get Lead Data
+     * Get Lead Info
+     *
+     * @param  string $leadID leadID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetLeadInfodo($leadID)
+    {
+        [$response] = $this->leadsgetLeadInfodoWithHttpInfo($leadID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetLeadInfodoAsync
+     *
+     * Get Lead Info
      *
      * @param  string $leadID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetLeadDatadoAsync($leadID)
+    public function leadsgetLeadInfodoAsync($leadID)
     {
-        return $this->leadsgetLeadDatadoAsyncWithHttpInfo($leadID)
+        return $this->leadsgetLeadInfodoAsyncWithHttpInfo($leadID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1242,19 +911,19 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetLeadDatadoAsyncWithHttpInfo
+     * Operation leadsgetLeadInfodoAsyncWithHttpInfo
      *
-     * Get Lead Data
+     * Get Lead Info
      *
      * @param  string $leadID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetLeadDatadoAsyncWithHttpInfo($leadID)
+    public function leadsgetLeadInfodoAsyncWithHttpInfo($leadID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetLeadDatadoRequest($leadID);
+        $request    = $this->leadsgetLeadInfodoRequest($leadID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1288,125 +957,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetLeadDatado'
-     *
-     * @param  string $leadID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetLeadDatadoRequest($leadID)
-    {
-        // verify the required parameter 'leadID' is set
-        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $leadID when calling leadsgetLeadDatado'
-            );
-        }
-
-        $resourcePath = '/leads/getLeadData.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetLeadInfodo
-     *
-     * Get Lead Info
-     *
-     * @param  string $leadID leadID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetLeadInfodo($leadID)
-    {
-        list($response) = $this->leadsgetLeadInfodoWithHttpInfo($leadID);
-        return $response;
     }
 
     /**
@@ -1497,18 +1047,47 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetLeadInfodoAsync
+     * Operation leadsgetQueuedo
      *
-     * Get Lead Info
+     * Get Queue
      *
-     * @param  string $leadID (required)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetQueuedo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetQueuedoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetQueuedoAsync
+     *
+     * Get Queue
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetLeadInfodoAsync($leadID)
+    public function leadsgetQueuedoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetLeadInfodoAsyncWithHttpInfo($leadID)
+        return $this->leadsgetQueuedoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1517,19 +1096,25 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetLeadInfodoAsyncWithHttpInfo
+     * Operation leadsgetQueuedoAsyncWithHttpInfo
      *
-     * Get Lead Info
+     * Get Queue
      *
-     * @param  string $leadID (required)
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetLeadInfodoAsyncWithHttpInfo($leadID)
+    public function leadsgetQueuedoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetLeadInfodoRequest($leadID);
+        $request    = $this->leadsgetQueuedoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1563,131 +1148,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetLeadInfodo'
-     *
-     * @param  string $leadID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetLeadInfodoRequest($leadID)
-    {
-        // verify the required parameter 'leadID' is set
-        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $leadID when calling leadsgetLeadInfodo'
-            );
-        }
-
-        $resourcePath = '/leads/getLeadInfo.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetQueuedo
-     *
-     * Get Queue
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetQueuedo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetQueuedoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1784,14 +1244,45 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetQueuedoAsync
+     * Operation leadsgetReturnsdo
      *
-     * Get Queue
+     * Get Returns
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  string $status status (optional)
+     * @param  int $returnReasonID returnReasonID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetReturnsdo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetReturnsdoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetReturnsdoAsync
+     *
+     * Get Returns
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $status (optional)
+     * @param  int $returnReasonID (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -1799,9 +1290,9 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetQueuedoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetReturnsdoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetQueuedoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+        return $this->leadsgetReturnsdoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1810,14 +1301,18 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetQueuedoAsyncWithHttpInfo
+     * Operation leadsgetReturnsdoAsyncWithHttpInfo
      *
-     * Get Queue
+     * Get Returns
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $status (optional)
+     * @param  int $returnReasonID (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -1825,10 +1320,10 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetQueuedoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetReturnsdoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetQueuedoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+        $request    = $this->leadsgetReturnsdoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1862,165 +1357,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetQueuedo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetQueuedoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling leadsgetQueuedo'
-            );
-        }
-
-        $resourcePath = '/leads/getQueue.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetReturnsdo
-     *
-     * Get Returns
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  string $status status (optional)
-     * @param  int $returnReasonID returnReasonID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetReturnsdo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetReturnsdoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -2121,28 +1457,45 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetReturnsdoAsync
+     * Operation leadsgetReviewdo
      *
-     * Get Returns
+     * Get Review
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $leadID leadID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetReviewdo($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetReviewdoWithHttpInfo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetReviewdoAsync
+     *
+     * Get Review
+     *
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $status (optional)
-     * @param  int $returnReasonID (optional)
-     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetReturnsdoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetReviewdoAsync($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetReturnsdoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
+        return $this->leadsgetReviewdoAsyncWithHttpInfo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2151,29 +1504,24 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetReturnsdoAsyncWithHttpInfo
+     * Operation leadsgetReviewdoAsyncWithHttpInfo
      *
-     * Get Returns
+     * Get Review
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $status (optional)
-     * @param  int $returnReasonID (optional)
-     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetReturnsdoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetReviewdoAsyncWithHttpInfo($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetReturnsdoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
+        $request    = $this->leadsgetReviewdoRequest($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2207,180 +1555,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetReturnsdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $status (optional)
-     * @param  int $returnReasonID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetReturnsdoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling leadsgetReturnsdo'
-            );
-        }
-
-        $resourcePath = '/leads/getReturns.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-        // query params
-        if ($returnReasonID !== null) {
-            $queryParams['returnReasonID'] = ObjectSerializer::toQueryValue($returnReasonID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetReviewdo
-     *
-     * Get Review
-     *
-     * @param  string $leadID leadID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetReviewdo($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetReviewdoWithHttpInfo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
-        return $response;
     }
 
     /**
@@ -2476,23 +1650,47 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetReviewdoAsync
+     * Operation leadsgetScrubbeddo
      *
-     * Get Review
+     * Get Scrubbed
      *
-     * @param  string $leadID (optional)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetScrubbeddo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetScrubbeddoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetScrubbeddoAsync
+     *
+     * Get Scrubbed
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetReviewdoAsync($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
+    public function leadsgetScrubbeddoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetReviewdoAsyncWithHttpInfo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
+        return $this->leadsgetScrubbeddoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2501,24 +1699,25 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetReviewdoAsyncWithHttpInfo
+     * Operation leadsgetScrubbeddoAsyncWithHttpInfo
      *
-     * Get Review
+     * Get Scrubbed
      *
-     * @param  string $leadID (optional)
+     * @param  \DateTime $fromDate (required)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetReviewdoAsyncWithHttpInfo($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
+    public function leadsgetScrubbeddoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetReviewdoRequest($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
+        $request    = $this->leadsgetScrubbeddoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2552,149 +1751,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetReviewdo'
-     *
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetReviewdoRequest($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
-    {
-        $resourcePath = '/leads/getReview.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetScrubbeddo
-     *
-     * Get Scrubbed
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetScrubbeddo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetScrubbeddoWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -2791,14 +1847,45 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetScrubbeddoAsync
+     * Operation leadsgetSolddo
      *
-     * Get Scrubbed
+     * Get Sold
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $leadID leadID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  string $returned returned (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetSolddo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetSolddoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetSolddoAsync
+     *
+     * Get Sold
      *
      * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -2806,9 +1893,9 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetScrubbeddoAsync($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetSolddoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetScrubbeddoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+        return $this->leadsgetSolddoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2817,14 +1904,18 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetScrubbeddoAsyncWithHttpInfo
+     * Operation leadsgetSolddoAsyncWithHttpInfo
      *
-     * Get Scrubbed
+     * Get Sold
      *
      * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -2832,10 +1923,10 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetScrubbeddoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetSolddoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetScrubbeddoRequest($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+        $request    = $this->leadsgetSolddoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2869,165 +1960,6 @@ class LeadsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'leadsgetScrubbeddo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsgetScrubbeddoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling leadsgetScrubbeddo'
-            );
-        }
-
-        $resourcePath = '/leads/getScrubbed.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsgetSolddo
-     *
-     * Get Sold
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $leadID leadID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  string $returned returned (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetSolddo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetSolddoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -3128,18 +2060,39 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetSolddoAsync
+     * Operation leadsgetTrashdo
      *
-     * Get Sold
+     * Get Trash
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $leadID leadID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function leadsgetTrashdo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->leadsgetTrashdoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation leadsgetTrashdoAsync
+     *
+     * Get Trash
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -3147,9 +2100,9 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetSolddoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetTrashdoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->leadsgetSolddoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+        return $this->leadsgetTrashdoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3158,18 +2111,15 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsgetSolddoAsyncWithHttpInfo
+     * Operation leadsgetTrashdoAsyncWithHttpInfo
      *
-     * Get Sold
+     * Get Trash
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $leadID (optional)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $verticalID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  string $returned (optional)
      * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
@@ -3177,10 +2127,10 @@ class LeadsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadsgetSolddoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    public function leadsgetTrashdoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetSolddoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
+        $request    = $this->leadsgetTrashdoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3214,6 +2164,2909 @@ class LeadsApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation leadsgetTrashdoWithHttpInfo
+     *
+     * Get Trash
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsgetTrashdoWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $request = $this->leadsgetTrashdoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsrejectReturndo
+     *
+     * Reject Return
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $contractID contractID (required)
+     * @param  int $rejectReasonID rejectReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsrejectReturndo($leadID, $contractID, $rejectReasonID)
+    {
+        [$response] = $this->leadsrejectReturndoWithHttpInfo($leadID, $contractID, $rejectReasonID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsrejectReturndoAsync
+     *
+     * Reject Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsrejectReturndoAsync($leadID, $contractID, $rejectReasonID)
+    {
+        return $this->leadsrejectReturndoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsrejectReturndoAsyncWithHttpInfo
+     *
+     * Reject Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsrejectReturndoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsrejectReturndoRequest($leadID, $contractID, $rejectReasonID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsrejectReturndoWithHttpInfo
+     *
+     * Reject Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsrejectReturndoWithHttpInfo($leadID, $contractID, $rejectReasonID)
+    {
+        $request = $this->leadsrejectReturndoRequest($leadID, $contractID, $rejectReasonID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsrequestReturndo
+     *
+     * Request Return
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $contractID contractID (required)
+     * @param  int $returnReasonID returnReasonID (required)
+     * @param  string $returnNotes returnNotes (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes = null)
+    {
+        [$response] = $this->leadsrequestReturndoWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes);
+        return $response;
+    }
+
+    /**
+     * Operation leadsrequestReturndoAsync
+     *
+     * Request Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $returnNotes (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsrequestReturndoAsync($leadID, $contractID, $returnReasonID, $returnNotes = null)
+    {
+        return $this->leadsrequestReturndoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsrequestReturndoAsyncWithHttpInfo
+     *
+     * Request Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $returnNotes (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsrequestReturndoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsrequestReturndoRequest($leadID, $contractID, $returnReasonID, $returnNotes);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsrequestReturndoWithHttpInfo
+     *
+     * Request Return
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $returnNotes (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsrequestReturndoWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes = null)
+    {
+        $request = $this->leadsrequestReturndoRequest($leadID, $contractID, $returnReasonID, $returnNotes);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsreturnLeaddo
+     *
+     * Return Lead
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $contractID contractID (required)
+     * @param  int $returnReasonID returnReasonID (required)
+     * @param  string $scrub scrub (optional)
+     * @param  string $replaceReturns replaceReturns (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        [$response] = $this->leadsreturnLeaddoWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
+        return $response;
+    }
+
+    /**
+     * Operation leadsreturnLeaddoAsync
+     *
+     * Return Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreturnLeaddoAsync($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        return $this->leadsreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreturnLeaddoAsyncWithHttpInfo
+     *
+     * Return Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsreturnLeaddoRequest($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreturnLeaddoWithHttpInfo
+     *
+     * Return Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsreturnLeaddoWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        $request = $this->leadsreturnLeaddoRequest($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsreturnLeadFromAllContractsdo
+     *
+     * Return Lead From All Contracts
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $returnReasonID returnReasonID (required)
+     * @param  string $scrub scrub (optional)
+     * @param  string $replaceReturns replaceReturns (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        [$response] = $this->leadsreturnLeadFromAllContractsdoWithHttpInfo($leadID, $returnReasonID, $scrub, $replaceReturns);
+        return $response;
+    }
+
+    /**
+     * Operation leadsreturnLeadFromAllContractsdoAsync
+     *
+     * Return Lead From All Contracts
+     *
+     * @param  string $leadID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreturnLeadFromAllContractsdoAsync($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        return $this->leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo($leadID, $returnReasonID, $scrub, $replaceReturns)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo
+     *
+     * Return Lead From All Contracts
+     *
+     * @param  string $leadID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub, $replaceReturns);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreturnLeadFromAllContractsdoWithHttpInfo
+     *
+     * Return Lead From All Contracts
+     *
+     * @param  string $leadID (required)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsreturnLeadFromAllContractsdoWithHttpInfo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
+    {
+        $request = $this->leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub, $replaceReturns);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsreviewApprovedo
+     *
+     * Review Approve
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $leadAcceptReasonID leadAcceptReasonID (required)
+     * @param  string $leadAcceptReason leadAcceptReason (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
+    {
+        [$response] = $this->leadsreviewApprovedoWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason);
+        return $response;
+    }
+
+    /**
+     * Operation leadsreviewApprovedoAsync
+     *
+     * Review Approve
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadAcceptReasonID (required)
+     * @param  string $leadAcceptReason (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreviewApprovedoAsync($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
+    {
+        return $this->leadsreviewApprovedoAsyncWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreviewApprovedoAsyncWithHttpInfo
+     *
+     * Review Approve
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadAcceptReasonID (required)
+     * @param  string $leadAcceptReason (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreviewApprovedoAsyncWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsreviewApprovedoRequest($leadID, $leadAcceptReasonID, $leadAcceptReason);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreviewApprovedoWithHttpInfo
+     *
+     * Review Approve
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadAcceptReasonID (required)
+     * @param  string $leadAcceptReason (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsreviewApprovedoWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
+    {
+        $request = $this->leadsreviewApprovedoRequest($leadID, $leadAcceptReasonID, $leadAcceptReason);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsreviewRejectdo
+     *
+     * Review Reject
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $leadRejectReasonID leadRejectReasonID (required)
+     * @param  string $leadRejectReason leadRejectReason (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason = null)
+    {
+        [$response] = $this->leadsreviewRejectdoWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason);
+        return $response;
+    }
+
+    /**
+     * Operation leadsreviewRejectdoAsync
+     *
+     * Review Reject
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadRejectReasonID (required)
+     * @param  string $leadRejectReason (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreviewRejectdoAsync($leadID, $leadRejectReasonID, $leadRejectReason = null)
+    {
+        return $this->leadsreviewRejectdoAsyncWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreviewRejectdoAsyncWithHttpInfo
+     *
+     * Review Reject
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadRejectReasonID (required)
+     * @param  string $leadRejectReason (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsreviewRejectdoAsyncWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsreviewRejectdoRequest($leadID, $leadRejectReasonID, $leadRejectReason);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsreviewRejectdoWithHttpInfo
+     *
+     * Review Reject
+     *
+     * @param  string $leadID (required)
+     * @param  int $leadRejectReasonID (required)
+     * @param  string $leadRejectReason (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsreviewRejectdoWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason = null)
+    {
+        $request = $this->leadsreviewRejectdoRequest($leadID, $leadRejectReasonID, $leadRejectReason);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsscrubLeaddo
+     *
+     * Scrub Lead
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $scrubReasonID scrubReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsscrubLeaddo($leadID, $scrubReasonID)
+    {
+        [$response] = $this->leadsscrubLeaddoWithHttpInfo($leadID, $scrubReasonID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsscrubLeaddoAsync
+     *
+     * Scrub Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $scrubReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsscrubLeaddoAsync($leadID, $scrubReasonID)
+    {
+        return $this->leadsscrubLeaddoAsyncWithHttpInfo($leadID, $scrubReasonID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsscrubLeaddoAsyncWithHttpInfo
+     *
+     * Scrub Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $scrubReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsscrubLeaddoAsyncWithHttpInfo($leadID, $scrubReasonID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsscrubLeaddoRequest($leadID, $scrubReasonID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsscrubLeaddoWithHttpInfo
+     *
+     * Scrub Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $scrubReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsscrubLeaddoWithHttpInfo($leadID, $scrubReasonID)
+    {
+        $request = $this->leadsscrubLeaddoRequest($leadID, $scrubReasonID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsunreturnLeaddo
+     *
+     * Unreturn Lead
+     *
+     * @param  string $leadID leadID (required)
+     * @param  int $contractID contractID (required)
+     * @param  int $rejectReasonID rejectReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID)
+    {
+        [$response] = $this->leadsunreturnLeaddoWithHttpInfo($leadID, $contractID, $rejectReasonID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsunreturnLeaddoAsync
+     *
+     * Unreturn Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsunreturnLeaddoAsync($leadID, $contractID, $rejectReasonID)
+    {
+        return $this->leadsunreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsunreturnLeaddoAsyncWithHttpInfo
+     *
+     * Unreturn Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsunreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsunreturnLeaddoRequest($leadID, $contractID, $rejectReasonID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsunreturnLeaddoWithHttpInfo
+     *
+     * Unreturn Lead
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     * @param  int $rejectReasonID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsunreturnLeaddoWithHttpInfo($leadID, $contractID, $rejectReasonID)
+    {
+        $request = $this->leadsunreturnLeaddoRequest($leadID, $contractID, $rejectReasonID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation leadsupdateLeaddo
+     *
+     * Update Lead
+     *
+     * @param  string $leadID leadID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function leadsupdateLeaddo($leadID)
+    {
+        [$response] = $this->leadsupdateLeaddoWithHttpInfo($leadID);
+        return $response;
+    }
+
+    /**
+     * Operation leadsupdateLeaddoAsync
+     *
+     * Update Lead
+     *
+     * @param  string $leadID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsupdateLeaddoAsync($leadID)
+    {
+        return $this->leadsupdateLeaddoAsyncWithHttpInfo($leadID)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation leadsupdateLeaddoAsyncWithHttpInfo
+     *
+     * Update Lead
+     *
+     * @param  string $leadID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function leadsupdateLeaddoAsyncWithHttpInfo($leadID)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->leadsupdateLeaddoRequest($leadID);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation leadsupdateLeaddoWithHttpInfo
+     *
+     * Update Lead
+     *
+     * @param  string $leadID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function leadsupdateLeaddoWithHttpInfo($leadID)
+    {
+        $request = $this->leadsupdateLeaddoRequest($leadID);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
+    }
+
+    /**
+     * Create request for operation 'leadsapproveReturndo'
+     *
+     * @param  string $leadID (required)
+     * @param  int $contractID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsapproveReturndoRequest($leadID, $contractID)
+    {
+        // verify the required parameter 'leadID' is set
+        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $leadID when calling leadsapproveReturndo'
+            );
+        }
+        // verify the required parameter 'contractID' is set
+        if ($contractID === null || (is_array($contractID) && count($contractID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contractID when calling leadsapproveReturndo'
+            );
+        }
+
+        $resourcePath = '/leads/approveReturn.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetAlldo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $paid (optional)
+     * @param  string $scrubbed (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetAlldoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $paid = null, $scrubbed = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling leadsgetAlldo'
+            );
+        }
+
+        $resourcePath = '/leads/getAll.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($paid !== null) {
+            $queryParams['paid'] = ObjectSerializer::toQueryValue($paid);
+        }
+        // query params
+        if ($scrubbed !== null) {
+            $queryParams['scrubbed'] = ObjectSerializer::toQueryValue($scrubbed);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetDelivereddo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $leadID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $returned (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetDelivereddoRequest($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $returned = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling leadsgetDelivereddo'
+            );
+        }
+
+        $resourcePath = '/leads/getDelivered.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($returned !== null) {
+            $queryParams['returned'] = ObjectSerializer::toQueryValue($returned);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetLeadDatado'
+     *
+     * @param  string $leadID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetLeadDatadoRequest($leadID)
+    {
+        // verify the required parameter 'leadID' is set
+        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $leadID when calling leadsgetLeadDatado'
+            );
+        }
+
+        $resourcePath = '/leads/getLeadData.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetLeadInfodo'
+     *
+     * @param  string $leadID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetLeadInfodoRequest($leadID)
+    {
+        // verify the required parameter 'leadID' is set
+        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $leadID when calling leadsgetLeadInfodo'
+            );
+        }
+
+        $resourcePath = '/leads/getLeadInfo.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetQueuedo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetQueuedoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling leadsgetQueuedo'
+            );
+        }
+
+        $resourcePath = '/leads/getQueue.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetReturnsdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  string $status (optional)
+     * @param  int $returnReasonID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetReturnsdoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $advertiserID = null, $contractID = null, $status = null, $returnReasonID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling leadsgetReturnsdo'
+            );
+        }
+
+        $resourcePath = '/leads/getReturns.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+        // query params
+        if ($returnReasonID !== null) {
+            $queryParams['returnReasonID'] = ObjectSerializer::toQueryValue($returnReasonID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetReviewdo'
+     *
+     * @param  string $leadID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetReviewdoRequest($leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $start = 0, $limit = 100)
+    {
+        $resourcePath = '/leads/getReview.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'leadsgetScrubbeddo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $verticalID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function leadsgetScrubbeddoRequest($fromDate, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling leadsgetScrubbeddo'
+            );
+        }
+
+        $resourcePath = '/leads/getScrubbed.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -3314,7 +5167,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3330,10 +5183,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3359,214 +5212,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsgetTrashdo
-     *
-     * Get Trash
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $leadID leadID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function leadsgetTrashdo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->leadsgetTrashdoWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
-        return $response;
-    }
-
-    /**
-     * Operation leadsgetTrashdoWithHttpInfo
-     *
-     * Get Trash
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsgetTrashdoWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $request = $this->leadsgetTrashdoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsgetTrashdoAsync
-     *
-     * Get Trash
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsgetTrashdoAsync($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        return $this->leadsgetTrashdoAsyncWithHttpInfo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsgetTrashdoAsyncWithHttpInfo
-     *
-     * Get Trash
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $leadID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $verticalID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsgetTrashdoAsyncWithHttpInfo($fromDate, $leadID = null, $campaignID = null, $affiliateID = null, $verticalID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->leadsgetTrashdoRequest($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -3652,7 +5304,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3668,10 +5320,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3697,194 +5349,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsrejectReturndo
-     *
-     * Reject Return
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $contractID contractID (required)
-     * @param  int $rejectReasonID rejectReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsrejectReturndo($leadID, $contractID, $rejectReasonID)
-    {
-        list($response) = $this->leadsrejectReturndoWithHttpInfo($leadID, $contractID, $rejectReasonID);
-        return $response;
-    }
-
-    /**
-     * Operation leadsrejectReturndoWithHttpInfo
-     *
-     * Reject Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsrejectReturndoWithHttpInfo($leadID, $contractID, $rejectReasonID)
-    {
-        $request = $this->leadsrejectReturndoRequest($leadID, $contractID, $rejectReasonID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsrejectReturndoAsync
-     *
-     * Reject Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsrejectReturndoAsync($leadID, $contractID, $rejectReasonID)
-    {
-        return $this->leadsrejectReturndoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsrejectReturndoAsyncWithHttpInfo
-     *
-     * Reject Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsrejectReturndoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsrejectReturndoRequest($leadID, $contractID, $rejectReasonID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -3957,7 +5428,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3973,10 +5444,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4002,198 +5473,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsrequestReturndo
-     *
-     * Request Return
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $contractID contractID (required)
-     * @param  int $returnReasonID returnReasonID (required)
-     * @param  string $returnNotes returnNotes (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes = null)
-    {
-        list($response) = $this->leadsrequestReturndoWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes);
-        return $response;
-    }
-
-    /**
-     * Operation leadsrequestReturndoWithHttpInfo
-     *
-     * Request Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $returnNotes (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsrequestReturndoWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes = null)
-    {
-        $request = $this->leadsrequestReturndoRequest($leadID, $contractID, $returnReasonID, $returnNotes);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsrequestReturndoAsync
-     *
-     * Request Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $returnNotes (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsrequestReturndoAsync($leadID, $contractID, $returnReasonID, $returnNotes = null)
-    {
-        return $this->leadsrequestReturndoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsrequestReturndoAsyncWithHttpInfo
-     *
-     * Request Return
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $returnNotes (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsrequestReturndoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $returnNotes = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsrequestReturndoRequest($leadID, $contractID, $returnReasonID, $returnNotes);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4271,7 +5557,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4287,10 +5573,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4316,510 +5602,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsreturnLeadFromAllContractsdo
-     *
-     * Return Lead From All Contracts
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $returnReasonID returnReasonID (required)
-     * @param  string $scrub scrub (optional)
-     * @param  string $replaceReturns replaceReturns (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        list($response) = $this->leadsreturnLeadFromAllContractsdoWithHttpInfo($leadID, $returnReasonID, $scrub, $replaceReturns);
-        return $response;
-    }
-
-    /**
-     * Operation leadsreturnLeadFromAllContractsdoWithHttpInfo
-     *
-     * Return Lead From All Contracts
-     *
-     * @param  string $leadID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsreturnLeadFromAllContractsdoWithHttpInfo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        $request = $this->leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub, $replaceReturns);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsreturnLeadFromAllContractsdoAsync
-     *
-     * Return Lead From All Contracts
-     *
-     * @param  string $leadID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreturnLeadFromAllContractsdoAsync($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        return $this->leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo($leadID, $returnReasonID, $scrub, $replaceReturns)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo
-     *
-     * Return Lead From All Contracts
-     *
-     * @param  string $leadID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreturnLeadFromAllContractsdoAsyncWithHttpInfo($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub, $replaceReturns);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'leadsreturnLeadFromAllContractsdo'
-     *
-     * @param  string $leadID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        // verify the required parameter 'leadID' is set
-        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $leadID when calling leadsreturnLeadFromAllContractsdo'
-            );
-        }
-        // verify the required parameter 'returnReasonID' is set
-        if ($returnReasonID === null || (is_array($returnReasonID) && count($returnReasonID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $returnReasonID when calling leadsreturnLeadFromAllContractsdo'
-            );
-        }
-
-        $resourcePath = '/leads/returnLeadFromAllContracts.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($leadID !== null) {
-            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
-        }
-        // query params
-        if ($returnReasonID !== null) {
-            $queryParams['returnReasonID'] = ObjectSerializer::toQueryValue($returnReasonID);
-        }
-        // query params
-        if ($scrub !== null) {
-            $queryParams['scrub'] = ObjectSerializer::toQueryValue($scrub);
-        }
-        // query params
-        if ($replaceReturns !== null) {
-            $queryParams['replaceReturns'] = ObjectSerializer::toQueryValue($replaceReturns);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation leadsreturnLeaddo
-     *
-     * Return Lead
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $contractID contractID (required)
-     * @param  int $returnReasonID returnReasonID (required)
-     * @param  string $scrub scrub (optional)
-     * @param  string $replaceReturns replaceReturns (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        list($response) = $this->leadsreturnLeaddoWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
-        return $response;
-    }
-
-    /**
-     * Operation leadsreturnLeaddoWithHttpInfo
-     *
-     * Return Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsreturnLeaddoWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        $request = $this->leadsreturnLeaddoRequest($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsreturnLeaddoAsync
-     *
-     * Return Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreturnLeaddoAsync($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        return $this->leadsreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsreturnLeaddoAsyncWithHttpInfo
-     *
-     * Return Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $returnReasonID (required)
-     * @param  string $scrub (optional)
-     * @param  string $replaceReturns (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $returnReasonID, $scrub = null, $replaceReturns = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsreturnLeaddoRequest($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4902,7 +5691,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4918,10 +5707,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4947,7 +5736,7 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4957,184 +5746,126 @@ class LeadsApi
     }
 
     /**
-     * Operation leadsreviewApprovedo
-     *
-     * Review Approve
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $leadAcceptReasonID leadAcceptReasonID (required)
-     * @param  string $leadAcceptReason leadAcceptReason (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
-    {
-        list($response) = $this->leadsreviewApprovedoWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason);
-        return $response;
-    }
-
-    /**
-     * Operation leadsreviewApprovedoWithHttpInfo
-     *
-     * Review Approve
+     * Create request for operation 'leadsreturnLeadFromAllContractsdo'
      *
      * @param  string $leadID (required)
-     * @param  int $leadAcceptReasonID (required)
-     * @param  string $leadAcceptReason (optional)
+     * @param  int $returnReasonID (required)
+     * @param  string $scrub (optional)
+     * @param  string $replaceReturns (optional)
      *
-     * @throws \Leadspedia\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadsreviewApprovedoWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
+    protected function leadsreturnLeadFromAllContractsdoRequest($leadID, $returnReasonID, $scrub = null, $replaceReturns = null)
     {
-        $request = $this->leadsreviewApprovedoRequest($leadID, $leadAcceptReasonID, $leadAcceptReason);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        // verify the required parameter 'leadID' is set
+        if ($leadID === null || (is_array($leadID) && count($leadID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $leadID when calling leadsreturnLeadFromAllContractsdo'
+            );
         }
-    }
-
-    /**
-     * Operation leadsreviewApprovedoAsync
-     *
-     * Review Approve
-     *
-     * @param  string $leadID (required)
-     * @param  int $leadAcceptReasonID (required)
-     * @param  string $leadAcceptReason (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreviewApprovedoAsync($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
-    {
-        return $this->leadsreviewApprovedoAsyncWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
+        // verify the required parameter 'returnReasonID' is set
+        if ($returnReasonID === null || (is_array($returnReasonID) && count($returnReasonID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $returnReasonID when calling leadsreturnLeadFromAllContractsdo'
             );
-    }
+        }
 
-    /**
-     * Operation leadsreviewApprovedoAsyncWithHttpInfo
-     *
-     * Review Approve
-     *
-     * @param  string $leadID (required)
-     * @param  int $leadAcceptReasonID (required)
-     * @param  string $leadAcceptReason (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreviewApprovedoAsyncWithHttpInfo($leadID, $leadAcceptReasonID, $leadAcceptReason = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsreviewApprovedoRequest($leadID, $leadAcceptReasonID, $leadAcceptReason);
+        $resourcePath = '/leads/returnLeadFromAllContracts.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
+        // query params
+        if ($leadID !== null) {
+            $queryParams['leadID'] = ObjectSerializer::toQueryValue($leadID);
+        }
+        // query params
+        if ($returnReasonID !== null) {
+            $queryParams['returnReasonID'] = ObjectSerializer::toQueryValue($returnReasonID);
+        }
+        // query params
+        if ($scrub !== null) {
+            $queryParams['scrub'] = ObjectSerializer::toQueryValue($scrub);
+        }
+        // query params
+        if ($replaceReturns !== null) {
+            $queryParams['replaceReturns'] = ObjectSerializer::toQueryValue($replaceReturns);
+        }
 
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
                     ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
                 }
-            );
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -5201,7 +5932,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5217,10 +5948,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5246,194 +5977,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsreviewRejectdo
-     *
-     * Review Reject
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $leadRejectReasonID leadRejectReasonID (required)
-     * @param  string $leadRejectReason leadRejectReason (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason = null)
-    {
-        list($response) = $this->leadsreviewRejectdoWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason);
-        return $response;
-    }
-
-    /**
-     * Operation leadsreviewRejectdoWithHttpInfo
-     *
-     * Review Reject
-     *
-     * @param  string $leadID (required)
-     * @param  int $leadRejectReasonID (required)
-     * @param  string $leadRejectReason (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsreviewRejectdoWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason = null)
-    {
-        $request = $this->leadsreviewRejectdoRequest($leadID, $leadRejectReasonID, $leadRejectReason);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsreviewRejectdoAsync
-     *
-     * Review Reject
-     *
-     * @param  string $leadID (required)
-     * @param  int $leadRejectReasonID (required)
-     * @param  string $leadRejectReason (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreviewRejectdoAsync($leadID, $leadRejectReasonID, $leadRejectReason = null)
-    {
-        return $this->leadsreviewRejectdoAsyncWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsreviewRejectdoAsyncWithHttpInfo
-     *
-     * Review Reject
-     *
-     * @param  string $leadID (required)
-     * @param  int $leadRejectReasonID (required)
-     * @param  string $leadRejectReason (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsreviewRejectdoAsyncWithHttpInfo($leadID, $leadRejectReasonID, $leadRejectReason = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsreviewRejectdoRequest($leadID, $leadRejectReasonID, $leadRejectReason);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -5500,7 +6050,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5516,10 +6066,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5545,190 +6095,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsscrubLeaddo
-     *
-     * Scrub Lead
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $scrubReasonID scrubReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsscrubLeaddo($leadID, $scrubReasonID)
-    {
-        list($response) = $this->leadsscrubLeaddoWithHttpInfo($leadID, $scrubReasonID);
-        return $response;
-    }
-
-    /**
-     * Operation leadsscrubLeaddoWithHttpInfo
-     *
-     * Scrub Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $scrubReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsscrubLeaddoWithHttpInfo($leadID, $scrubReasonID)
-    {
-        $request = $this->leadsscrubLeaddoRequest($leadID, $scrubReasonID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsscrubLeaddoAsync
-     *
-     * Scrub Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $scrubReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsscrubLeaddoAsync($leadID, $scrubReasonID)
-    {
-        return $this->leadsscrubLeaddoAsyncWithHttpInfo($leadID, $scrubReasonID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsscrubLeaddoAsyncWithHttpInfo
-     *
-     * Scrub Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $scrubReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsscrubLeaddoAsyncWithHttpInfo($leadID, $scrubReasonID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsscrubLeaddoRequest($leadID, $scrubReasonID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -5790,7 +6163,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5806,10 +6179,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5835,194 +6208,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsunreturnLeaddo
-     *
-     * Unreturn Lead
-     *
-     * @param  string $leadID leadID (required)
-     * @param  int $contractID contractID (required)
-     * @param  int $rejectReasonID rejectReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID)
-    {
-        list($response) = $this->leadsunreturnLeaddoWithHttpInfo($leadID, $contractID, $rejectReasonID);
-        return $response;
-    }
-
-    /**
-     * Operation leadsunreturnLeaddoWithHttpInfo
-     *
-     * Unreturn Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsunreturnLeaddoWithHttpInfo($leadID, $contractID, $rejectReasonID)
-    {
-        $request = $this->leadsunreturnLeaddoRequest($leadID, $contractID, $rejectReasonID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsunreturnLeaddoAsync
-     *
-     * Unreturn Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsunreturnLeaddoAsync($leadID, $contractID, $rejectReasonID)
-    {
-        return $this->leadsunreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsunreturnLeaddoAsyncWithHttpInfo
-     *
-     * Unreturn Lead
-     *
-     * @param  string $leadID (required)
-     * @param  int $contractID (required)
-     * @param  int $rejectReasonID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsunreturnLeaddoAsyncWithHttpInfo($leadID, $contractID, $rejectReasonID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsunreturnLeaddoRequest($leadID, $contractID, $rejectReasonID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -6095,7 +6287,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6111,10 +6303,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6140,186 +6332,13 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation leadsupdateLeaddo
-     *
-     * Update Lead
-     *
-     * @param  string $leadID leadID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function leadsupdateLeaddo($leadID)
-    {
-        list($response) = $this->leadsupdateLeaddoWithHttpInfo($leadID);
-        return $response;
-    }
-
-    /**
-     * Operation leadsupdateLeaddoWithHttpInfo
-     *
-     * Update Lead
-     *
-     * @param  string $leadID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function leadsupdateLeaddoWithHttpInfo($leadID)
-    {
-        $request = $this->leadsupdateLeaddoRequest($leadID);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation leadsupdateLeaddoAsync
-     *
-     * Update Lead
-     *
-     * @param  string $leadID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsupdateLeaddoAsync($leadID)
-    {
-        return $this->leadsupdateLeaddoAsyncWithHttpInfo($leadID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation leadsupdateLeaddoAsyncWithHttpInfo
-     *
-     * Update Lead
-     *
-     * @param  string $leadID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function leadsupdateLeaddoAsyncWithHttpInfo($leadID)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->leadsupdateLeaddoRequest($leadID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -6370,7 +6389,7 @@ class LeadsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6386,10 +6405,10 @@ class LeadsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6415,31 +6434,12 @@ class LeadsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

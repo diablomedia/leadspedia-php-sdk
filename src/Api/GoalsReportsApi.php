@@ -88,13 +88,11 @@ class GoalsReportsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class GoalsReportsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -137,8 +127,95 @@ class GoalsReportsApi
      */
     public function goalsReportsgetGoalsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        list($response) = $this->goalsReportsgetGoalsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        [$response] = $this->goalsReportsgetGoalsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
         return $response;
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsByCampaignsReportdoAsync
+     *
+     * Get Goals By Campaigns Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function goalsReportsgetGoalsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo
+     *
+     * Get Goals By Campaigns Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->goalsReportsgetGoalsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -238,27 +315,43 @@ class GoalsReportsApi
     }
 
     /**
-     * Operation goalsReportsgetGoalsByCampaignsReportdoAsync
+     * Operation goalsReportsgetGoalsBySourceReportdo
      *
-     * Get Goals By Campaigns Report
+     * Get Goals By Source Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $offerID offerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function goalsReportsgetGoalsBySourceReportdo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->goalsReportsgetGoalsBySourceReportdoWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySourceReportdoAsync
+     *
+     * Get Goals By Source Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
      * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
      * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function goalsReportsgetGoalsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function goalsReportsgetGoalsBySourceReportdoAsync($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+        return $this->goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -267,28 +360,23 @@ class GoalsReportsApi
     }
 
     /**
-     * Operation goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo
+     * Operation goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo
      *
-     * Get Goals By Campaigns Report
+     * Get Goals By Source Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
      * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
      * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function goalsReportsgetGoalsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->goalsReportsgetGoalsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->goalsReportsgetGoalsBySourceReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -322,6 +410,315 @@ class GoalsReportsApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySourceReportdoWithHttpInfo
+     *
+     * Get Goals By Source Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function goalsReportsgetGoalsBySourceReportdoWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->goalsReportsgetGoalsBySourceReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySubAffiliatesReportdo
+     *
+     * Get Goals By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $offerID offerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function goalsReportsgetGoalsBySubAffiliatesReportdo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoAsync
+     *
+     * Get Goals By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function goalsReportsgetGoalsBySubAffiliatesReportdoAsync($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        return $this->goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo
+     *
+     * Get Goals By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->goalsReportsgetGoalsBySubAffiliatesReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo
+     *
+     * Get Goals By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $offerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        $request = $this->goalsReportsgetGoalsBySubAffiliatesReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse2001';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse2001',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
     }
 
     /**
@@ -417,7 +814,7 @@ class GoalsReportsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -433,10 +830,10 @@ class GoalsReportsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -462,202 +859,13 @@ class GoalsReportsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySourceReportdo
-     *
-     * Get Goals By Source Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $offerID offerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function goalsReportsgetGoalsBySourceReportdo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->goalsReportsgetGoalsBySourceReportdoWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySourceReportdoWithHttpInfo
-     *
-     * Get Goals By Source Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function goalsReportsgetGoalsBySourceReportdoWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->goalsReportsgetGoalsBySourceReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySourceReportdoAsync
-     *
-     * Get Goals By Source Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function goalsReportsgetGoalsBySourceReportdoAsync($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        return $this->goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo
-     *
-     * Get Goals By Source Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function goalsReportsgetGoalsBySourceReportdoAsyncWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->goalsReportsgetGoalsBySourceReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -728,7 +936,7 @@ class GoalsReportsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -744,10 +952,10 @@ class GoalsReportsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -773,202 +981,13 @@ class GoalsReportsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySubAffiliatesReportdo
-     *
-     * Get Goals By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $offerID offerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function goalsReportsgetGoalsBySubAffiliatesReportdo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo
-     *
-     * Get Goals By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function goalsReportsgetGoalsBySubAffiliatesReportdoWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $request = $this->goalsReportsgetGoalsBySubAffiliatesReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse2001' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse2001', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse2001';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse2001',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoAsync
-     *
-     * Get Goals By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function goalsReportsgetGoalsBySubAffiliatesReportdoAsync($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        return $this->goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo
-     *
-     * Get Goals By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $offerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function goalsReportsgetGoalsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $offerID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->goalsReportsgetGoalsBySubAffiliatesReportdoRequest($fromDate, $offerID, $affiliateID, $affiliateAccountManagerID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -1039,7 +1058,7 @@ class GoalsReportsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1055,10 +1074,10 @@ class GoalsReportsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1084,31 +1103,12 @@ class GoalsReportsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

@@ -88,13 +88,11 @@ class InboundCallsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class InboundCallsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -138,8 +128,97 @@ class InboundCallsApi
      */
     public function inboundCallsgetAlldo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        list($response) = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        [$response] = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
         return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetAlldoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inboundCallsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -240,9 +319,36 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetAlldoAsync
+     * Operation inboundCallsgetInProgressdo
      *
-     * Get All
+     * Get Calls In Progress
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetInProgressdo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetInProgressdoAsync
+     *
+     * Get Calls In Progress
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
@@ -259,9 +365,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetInProgressdoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -270,9 +376,9 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetAlldoAsyncWithHttpInfo
+     * Operation inboundCallsgetInProgressdoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Calls In Progress
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
@@ -289,10 +395,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,185 +432,6 @@ class InboundCallsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'inboundCallsgetAlldo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function inboundCallsgetAlldoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling inboundCallsgetAlldo'
-            );
-        }
-
-        $resourcePath = '/inboundCalls/getAll.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($callerID !== null) {
-            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation inboundCallsgetInProgressdo
-     *
-     * Get Calls In Progress
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetInProgressdo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -605,28 +532,39 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetInProgressdoAsync
+     * Operation inboundCallsgetNumbersdo
      *
-     * Get Calls In Progress
+     * Get Numbers
      *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  string $search search (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetNumbersdo($search = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetNumbersdoWithHttpInfo($search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetNumbersdoAsync
+     *
+     * Get Numbers
+     *
+     * @param  string $search (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetInProgressdoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetNumbersdoAsync($search = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+        return $this->inboundCallsgetNumbersdoAsyncWithHttpInfo($search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -635,29 +573,21 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetInProgressdoAsyncWithHttpInfo
+     * Operation inboundCallsgetNumbersdoAsyncWithHttpInfo
      *
-     * Get Calls In Progress
+     * Get Numbers
      *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  string $search (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetNumbersdoAsyncWithHttpInfo($search = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        $request    = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -691,177 +621,6 @@ class InboundCallsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'inboundCallsgetInProgressdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function inboundCallsgetInProgressdoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling inboundCallsgetInProgressdo'
-            );
-        }
-
-        $resourcePath = '/inboundCalls/getInProgress.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($callerID !== null) {
-            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation inboundCallsgetNumbersdo
-     *
-     * Get Numbers
-     *
-     * @param  string $search search (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetNumbersdo($search = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetNumbersdoWithHttpInfo($search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -954,20 +713,55 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetNumbersdoAsync
+     * Operation inboundCallsgetReturneddo
      *
-     * Get Numbers
+     * Get Returned Calls
      *
-     * @param  string $search (optional)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetReturneddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetReturneddoAsync
+     *
+     * Get Returned Calls
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetNumbersdoAsync($search = null, $start = 0, $limit = 100)
+    public function inboundCallsgetReturneddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetNumbersdoAsyncWithHttpInfo($search, $start, $limit)
+        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -976,21 +770,29 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetNumbersdoAsyncWithHttpInfo
+     * Operation inboundCallsgetReturneddoAsyncWithHttpInfo
      *
-     * Get Numbers
+     * Get Returned Calls
      *
-     * @param  string $search (optional)
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetNumbersdoAsyncWithHttpInfo($search = null, $start = 0, $limit = 100)
+    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetNumbersdoRequest($search, $start, $limit);
+        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1024,138 +826,6 @@ class InboundCallsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'inboundCallsgetNumbersdo'
-     *
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function inboundCallsgetNumbersdoRequest($search = null, $start = 0, $limit = 100)
-    {
-        $resourcePath = '/inboundCalls/getNumbers.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation inboundCallsgetReturneddo
-     *
-     * Get Returned Calls
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetReturneddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1256,11 +926,38 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetReturneddoAsync
+     * Operation inboundCallsgetScrubbeddo
      *
-     * Get Returned Calls
+     * Get Scrubbed Calls
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  \DateTime $toDate toDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $fromDate fromDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetScrubbeddo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetScrubbeddoAsync
+     *
+     * Get Scrubbed Calls
+     *
+     * @param  \DateTime $toDate (required)
      * @param  string $callerID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $campaignID (optional)
@@ -1268,16 +965,16 @@ class InboundCallsApi
      * @param  int $contractID (optional)
      * @param  int $verticalID (optional)
      * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  \DateTime $fromDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetReturneddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetScrubbeddoAsync($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1286,11 +983,11 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetReturneddoAsyncWithHttpInfo
+     * Operation inboundCallsgetScrubbeddoAsyncWithHttpInfo
      *
-     * Get Returned Calls
+     * Get Scrubbed Calls
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  \DateTime $toDate (required)
      * @param  string $callerID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $campaignID (optional)
@@ -1298,17 +995,17 @@ class InboundCallsApi
      * @param  int $contractID (optional)
      * @param  int $verticalID (optional)
      * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  \DateTime $fromDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        $request    = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1342,185 +1039,6 @@ class InboundCallsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'inboundCallsgetReturneddo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function inboundCallsgetReturneddoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling inboundCallsgetReturneddo'
-            );
-        }
-
-        $resourcePath = '/inboundCalls/getReturned.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($callerID !== null) {
-            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation inboundCallsgetScrubbeddo
-     *
-     * Get Scrubbed Calls
-     *
-     * @param  \DateTime $toDate toDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $fromDate fromDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetScrubbeddo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetScrubbeddoWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1621,11 +1139,38 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetScrubbeddoAsync
+     * Operation inboundCallsgetTransferreddo
      *
-     * Get Scrubbed Calls
+     * Get Transferred Calls
      *
-     * @param  \DateTime $toDate (required)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  string $callerID callerID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function inboundCallsgetTransferreddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation inboundCallsgetTransferreddoAsync
+     *
+     * Get Transferred Calls
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $campaignID (optional)
@@ -1633,16 +1178,16 @@ class InboundCallsApi
      * @param  int $contractID (optional)
      * @param  int $verticalID (optional)
      * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetScrubbeddoAsync($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetTransferreddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
+        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1651,11 +1196,11 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetScrubbeddoAsyncWithHttpInfo
+     * Operation inboundCallsgetTransferreddoAsyncWithHttpInfo
      *
-     * Get Scrubbed Calls
+     * Get Transferred Calls
      *
-     * @param  \DateTime $toDate (required)
+     * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $campaignID (optional)
@@ -1663,17 +1208,17 @@ class InboundCallsApi
      * @param  int $contractID (optional)
      * @param  int $verticalID (optional)
      * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
+     * @param  \DateTime $toDate (optional)
      * @param  int $start (optional, default to 0)
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetScrubbeddoRequest($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
+        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1707,185 +1252,6 @@ class InboundCallsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'inboundCallsgetScrubbeddo'
-     *
-     * @param  \DateTime $toDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function inboundCallsgetScrubbeddoRequest($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'toDate' is set
-        if ($toDate === null || (is_array($toDate) && count($toDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $toDate when calling inboundCallsgetScrubbeddo'
-            );
-        }
-
-        $resourcePath = '/inboundCalls/getScrubbed.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($callerID !== null) {
-            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation inboundCallsgetTransferreddo
-     *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  string $callerID callerID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function inboundCallsgetTransferreddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1986,39 +1352,36 @@ class InboundCallsApi
     }
 
     /**
-     * Operation inboundCallsgetTransferreddoAsync
+     * Set the host index
      *
-     * Get Transferred Calls
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  string $callerID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $verticalID (optional)
-     * @param  int $offerID (optional)
-     * @param  \DateTime $toDate (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @param  int Host index (required)
      */
-    public function inboundCallsgetTransferreddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    public function setHostIndex($host_index): void
     {
-        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        $this->hostIndex = $host_index;
     }
 
     /**
-     * Operation inboundCallsgetTransferreddoAsyncWithHttpInfo
+     * Create http client option
      *
-     * Get Transferred Calls
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
+    }
+
+    /**
+     * Create request for operation 'inboundCallsgetAlldo'
      *
      * @param  \DateTime $fromDate (required)
      * @param  string $callerID (optional)
@@ -2033,45 +1396,701 @@ class InboundCallsApi
      * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    protected function inboundCallsgetAlldoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling inboundCallsgetAlldo'
             );
+        }
+
+        $resourcePath = '/inboundCalls/getAll.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($callerID !== null) {
+            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'inboundCallsgetInProgressdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function inboundCallsgetInProgressdoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling inboundCallsgetInProgressdo'
+            );
+        }
+
+        $resourcePath = '/inboundCalls/getInProgress.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($callerID !== null) {
+            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'inboundCallsgetNumbersdo'
+     *
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function inboundCallsgetNumbersdoRequest($search = null, $start = 0, $limit = 100)
+    {
+        $resourcePath = '/inboundCalls/getNumbers.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'inboundCallsgetReturneddo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $toDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function inboundCallsgetReturneddoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling inboundCallsgetReturneddo'
+            );
+        }
+
+        $resourcePath = '/inboundCalls/getReturned.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($callerID !== null) {
+            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'inboundCallsgetScrubbeddo'
+     *
+     * @param  \DateTime $toDate (required)
+     * @param  string $callerID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $verticalID (optional)
+     * @param  int $offerID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function inboundCallsgetScrubbeddoRequest($toDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $fromDate = null, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'toDate' is set
+        if ($toDate === null || (is_array($toDate) && count($toDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $toDate when calling inboundCallsgetScrubbeddo'
+            );
+        }
+
+        $resourcePath = '/inboundCalls/getScrubbed.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($callerID !== null) {
+            $queryParams['callerID'] = ObjectSerializer::toQueryValue($callerID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -2172,7 +2191,7 @@ class InboundCallsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2188,10 +2207,10 @@ class InboundCallsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2217,31 +2236,12 @@ class InboundCallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

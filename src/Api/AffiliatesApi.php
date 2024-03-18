@@ -88,34 +88,6 @@ class AffiliatesApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation affiliateschangeStatusdo
      *
      * Change Status
@@ -129,8 +101,79 @@ class AffiliatesApi
      */
     public function affiliateschangeStatusdo($affiliateID, $status)
     {
-        list($response) = $this->affiliateschangeStatusdoWithHttpInfo($affiliateID, $status);
+        [$response] = $this->affiliateschangeStatusdoWithHttpInfo($affiliateID, $status);
         return $response;
+    }
+
+    /**
+     * Operation affiliateschangeStatusdoAsync
+     *
+     * Change Status
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliateschangeStatusdoAsync($affiliateID, $status)
+    {
+        return $this->affiliateschangeStatusdoAsyncWithHttpInfo($affiliateID, $status)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation affiliateschangeStatusdoAsyncWithHttpInfo
+     *
+     * Change Status
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function affiliateschangeStatusdoAsyncWithHttpInfo($affiliateID, $status)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliateschangeStatusdoRequest($affiliateID, $status);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -222,19 +265,39 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliateschangeStatusdoAsync
+     * Operation affiliatescreatedo
      *
-     * Change Status
+     * Create
      *
-     * @param  int $affiliateID (required)
+     * @param  string $affiliateName affiliateName (required)
+     * @param  int $accountManagerID accountManagerID (required)
+     * @param  string $status status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatescreatedo($affiliateName, $accountManagerID, $status)
+    {
+        [$response] = $this->affiliatescreatedoWithHttpInfo($affiliateName, $accountManagerID, $status);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatescreatedoAsync
+     *
+     * Create
+     *
+     * @param  string $affiliateName (required)
+     * @param  int $accountManagerID (required)
      * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliateschangeStatusdoAsync($affiliateID, $status)
+    public function affiliatescreatedoAsync($affiliateName, $accountManagerID, $status)
     {
-        return $this->affiliateschangeStatusdoAsyncWithHttpInfo($affiliateID, $status)
+        return $this->affiliatescreatedoAsyncWithHttpInfo($affiliateName, $accountManagerID, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,20 +306,21 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliateschangeStatusdoAsyncWithHttpInfo
+     * Operation affiliatescreatedoAsyncWithHttpInfo
      *
-     * Change Status
+     * Create
      *
-     * @param  int $affiliateID (required)
+     * @param  string $affiliateName (required)
+     * @param  int $accountManagerID (required)
      * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliateschangeStatusdoAsyncWithHttpInfo($affiliateID, $status)
+    public function affiliatescreatedoAsyncWithHttpInfo($affiliateName, $accountManagerID, $status)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliateschangeStatusdoRequest($affiliateID, $status);
+        $request    = $this->affiliatescreatedoRequest($affiliateName, $accountManagerID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -290,138 +354,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliateschangeStatusdo'
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliateschangeStatusdoRequest($affiliateID, $status)
-    {
-        // verify the required parameter 'affiliateID' is set
-        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $affiliateID when calling affiliateschangeStatusdo'
-            );
-        }
-        // verify the required parameter 'status' is set
-        if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling affiliateschangeStatusdo'
-            );
-        }
-
-        $resourcePath = '/affiliates/changeStatus.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatescreatedo
-     *
-     * Create
-     *
-     * @param  string $affiliateName affiliateName (required)
-     * @param  int $accountManagerID accountManagerID (required)
-     * @param  string $status status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatescreatedo($affiliateName, $accountManagerID, $status)
-    {
-        list($response) = $this->affiliatescreatedoWithHttpInfo($affiliateName, $accountManagerID, $status);
-        return $response;
     }
 
     /**
@@ -514,20 +446,35 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatescreatedoAsync
+     * Operation affiliatesdeletedo
      *
-     * Create
+     * Delete
      *
-     * @param  string $affiliateName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
+     * @param  int $affiliateID affiliateID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesdeletedo($affiliateID)
+    {
+        [$response] = $this->affiliatesdeletedoWithHttpInfo($affiliateID);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesdeletedoAsync
+     *
+     * Delete
+     *
+     * @param  int $affiliateID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatescreatedoAsync($affiliateName, $accountManagerID, $status)
+    public function affiliatesdeletedoAsync($affiliateID)
     {
-        return $this->affiliatescreatedoAsyncWithHttpInfo($affiliateName, $accountManagerID, $status)
+        return $this->affiliatesdeletedoAsyncWithHttpInfo($affiliateID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -536,21 +483,19 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatescreatedoAsyncWithHttpInfo
+     * Operation affiliatesdeletedoAsyncWithHttpInfo
      *
-     * Create
+     * Delete
      *
-     * @param  string $affiliateName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
+     * @param  int $affiliateID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatescreatedoAsyncWithHttpInfo($affiliateName, $accountManagerID, $status)
+    public function affiliatesdeletedoAsyncWithHttpInfo($affiliateID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatescreatedoRequest($affiliateName, $accountManagerID, $status);
+        $request    = $this->affiliatesdeletedoRequest($affiliateID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -584,147 +529,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatescreatedo'
-     *
-     * @param  string $affiliateName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatescreatedoRequest($affiliateName, $accountManagerID, $status)
-    {
-        // verify the required parameter 'affiliateName' is set
-        if ($affiliateName === null || (is_array($affiliateName) && count($affiliateName) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $affiliateName when calling affiliatescreatedo'
-            );
-        }
-        // verify the required parameter 'accountManagerID' is set
-        if ($accountManagerID === null || (is_array($accountManagerID) && count($accountManagerID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $accountManagerID when calling affiliatescreatedo'
-            );
-        }
-        // verify the required parameter 'status' is set
-        if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling affiliatescreatedo'
-            );
-        }
-
-        $resourcePath = '/affiliates/create.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateName !== null) {
-            $queryParams['affiliateName'] = ObjectSerializer::toQueryValue($affiliateName);
-        }
-        // query params
-        if ($accountManagerID !== null) {
-            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatesdeletedo
-     *
-     * Delete
-     *
-     * @param  int $affiliateID affiliateID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesdeletedo($affiliateID)
-    {
-        list($response) = $this->affiliatesdeletedoWithHttpInfo($affiliateID);
-        return $response;
     }
 
     /**
@@ -815,18 +619,45 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesdeletedoAsync
+     * Operation affiliatesgetAlldo
      *
-     * Delete
+     * Get All
      *
-     * @param  int $affiliateID (required)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $accountManagerID accountManagerID (optional)
+     * @param  string $status status (optional)
+     * @param  string $search search (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function affiliatesgetAlldo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->affiliatesgetAlldoWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  int $affiliateID (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesdeletedoAsync($affiliateID)
+    public function affiliatesgetAlldoAsync($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
-        return $this->affiliatesdeletedoAsyncWithHttpInfo($affiliateID)
+        return $this->affiliatesgetAlldoAsyncWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -835,19 +666,24 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesdeletedoAsyncWithHttpInfo
+     * Operation affiliatesgetAlldoAsyncWithHttpInfo
      *
-     * Delete
+     * Get All
      *
-     * @param  int $affiliateID (required)
+     * @param  int $affiliateID (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesdeletedoAsyncWithHttpInfo($affiliateID)
+    public function affiliatesgetAlldoAsyncWithHttpInfo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesdeletedoRequest($affiliateID);
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->affiliatesgetAlldoRequest($affiliateID, $accountManagerID, $status, $search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -881,130 +717,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatesdeletedo'
-     *
-     * @param  int $affiliateID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatesdeletedoRequest($affiliateID)
-    {
-        // verify the required parameter 'affiliateID' is set
-        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $affiliateID when calling affiliatesdeletedo'
-            );
-        }
-
-        $resourcePath = '/affiliates/delete.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatesgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $accountManagerID accountManagerID (optional)
-     * @param  string $status status (optional)
-     * @param  string $search search (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function affiliatesgetAlldo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->affiliatesgetAlldoWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1100,23 +812,35 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesgetAlldoAsync
+     * Operation affiliatesgetInfodo
      *
-     * Get All
+     * Get Info
      *
-     * @param  int $affiliateID (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $affiliateID affiliateID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function affiliatesgetInfodo($affiliateID)
+    {
+        [$response] = $this->affiliatesgetInfodoWithHttpInfo($affiliateID);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesgetInfodoAsync
+     *
+     * Get Info
+     *
+     * @param  int $affiliateID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetAlldoAsync($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    public function affiliatesgetInfodoAsync($affiliateID)
     {
-        return $this->affiliatesgetAlldoAsyncWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
+        return $this->affiliatesgetInfodoAsyncWithHttpInfo($affiliateID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1125,24 +849,19 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesgetAlldoAsyncWithHttpInfo
+     * Operation affiliatesgetInfodoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Info
      *
-     * @param  int $affiliateID (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $affiliateID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetAlldoAsyncWithHttpInfo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    public function affiliatesgetInfodoAsyncWithHttpInfo($affiliateID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->affiliatesgetAlldoRequest($affiliateID, $accountManagerID, $status, $search, $start, $limit);
+        $request    = $this->affiliatesgetInfodoRequest($affiliateID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1176,143 +895,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatesgetAlldo'
-     *
-     * @param  int $affiliateID (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatesgetAlldoRequest($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
-    {
-        $resourcePath = '/affiliates/getAll.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($accountManagerID !== null) {
-            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatesgetInfodo
-     *
-     * Get Info
-     *
-     * @param  int $affiliateID affiliateID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function affiliatesgetInfodo($affiliateID)
-    {
-        list($response) = $this->affiliatesgetInfodoWithHttpInfo($affiliateID);
-        return $response;
     }
 
     /**
@@ -1403,18 +985,39 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesgetInfodoAsync
+     * Operation affiliatessearchdo
      *
-     * Get Info
+     * Search
      *
-     * @param  int $affiliateID (required)
+     * @param  string $search search (required)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function affiliatessearchdo($search, $start = 0, $limit = 100)
+    {
+        [$response] = $this->affiliatessearchdoWithHttpInfo($search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatessearchdoAsync
+     *
+     * Search
+     *
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetInfodoAsync($affiliateID)
+    public function affiliatessearchdoAsync($search, $start = 0, $limit = 100)
     {
-        return $this->affiliatesgetInfodoAsyncWithHttpInfo($affiliateID)
+        return $this->affiliatessearchdoAsyncWithHttpInfo($search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1423,19 +1026,21 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesgetInfodoAsyncWithHttpInfo
+     * Operation affiliatessearchdoAsyncWithHttpInfo
      *
-     * Get Info
+     * Search
      *
-     * @param  int $affiliateID (required)
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetInfodoAsyncWithHttpInfo($affiliateID)
+    public function affiliatessearchdoAsyncWithHttpInfo($search, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->affiliatesgetInfodoRequest($affiliateID);
+        $request    = $this->affiliatessearchdoRequest($search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1469,127 +1074,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatesgetInfodo'
-     *
-     * @param  int $affiliateID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatesgetInfodoRequest($affiliateID)
-    {
-        // verify the required parameter 'affiliateID' is set
-        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $affiliateID when calling affiliatesgetInfodo'
-            );
-        }
-
-        $resourcePath = '/affiliates/getInfo.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatessearchdo
-     *
-     * Search
-     *
-     * @param  string $search search (required)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function affiliatessearchdo($search, $start = 0, $limit = 100)
-    {
-        list($response) = $this->affiliatessearchdoWithHttpInfo($search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1682,20 +1166,43 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatessearchdoAsync
+     * Operation affiliatesupdateBillingdo
      *
-     * Search
+     * Update Billing
      *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $affiliateID affiliateID (required)
+     * @param  string $billingCycle billingCycle (optional)
+     * @param  string $taxID taxID (optional)
+     * @param  string $taxClass taxClass (optional)
+     * @param  string $taxDocReceived taxDocReceived (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesupdateBillingdo($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
+    {
+        [$response] = $this->affiliatesupdateBillingdoWithHttpInfo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesupdateBillingdoAsync
+     *
+     * Update Billing
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
+     * @param  string $taxDocReceived (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatessearchdoAsync($search, $start = 0, $limit = 100)
+    public function affiliatesupdateBillingdoAsync($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
     {
-        return $this->affiliatessearchdoAsyncWithHttpInfo($search, $start, $limit)
+        return $this->affiliatesupdateBillingdoAsyncWithHttpInfo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1704,21 +1211,23 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatessearchdoAsyncWithHttpInfo
+     * Operation affiliatesupdateBillingdoAsyncWithHttpInfo
      *
-     * Search
+     * Update Billing
      *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $affiliateID (required)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
+     * @param  string $taxDocReceived (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatessearchdoAsyncWithHttpInfo($search, $start = 0, $limit = 100)
+    public function affiliatesupdateBillingdoAsyncWithHttpInfo($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->affiliatessearchdoRequest($search, $start, $limit);
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->affiliatesupdateBillingdoRequest($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1752,139 +1261,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatessearchdo'
-     *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatessearchdoRequest($search, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'search' is set
-        if ($search === null || (is_array($search) && count($search) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $search when calling affiliatessearchdo'
-            );
-        }
-
-        $resourcePath = '/affiliates/search.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatesupdateBillingdo
-     *
-     * Update Billing
-     *
-     * @param  int $affiliateID affiliateID (required)
-     * @param  string $billingCycle billingCycle (optional)
-     * @param  string $taxID taxID (optional)
-     * @param  string $taxClass taxClass (optional)
-     * @param  string $taxDocReceived taxDocReceived (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesupdateBillingdo($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
-    {
-        list($response) = $this->affiliatesupdateBillingdoWithHttpInfo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
-        return $response;
     }
 
     /**
@@ -1979,22 +1355,59 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesupdateBillingdoAsync
+     * Operation affiliatesupdateInfodo
      *
-     * Update Billing
+     * Update Info
+     *
+     * @param  int $affiliateID affiliateID (required)
+     * @param  string $affiliateName affiliateName (optional)
+     * @param  string $website website (optional)
+     * @param  string $alternateID alternateID (optional)
+     * @param  string $address address (optional)
+     * @param  string $address2 address2 (optional)
+     * @param  string $city city (optional)
+     * @param  string $state state (optional)
+     * @param  string $zipCode zipCode (optional)
+     * @param  string $country country (optional)
+     * @param  string $reportingUrl reportingUrl (optional)
+     * @param  string $reportingUsername reportingUsername (optional)
+     * @param  string $reportingPassword reportingPassword (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function affiliatesupdateInfodo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    {
+        [$response] = $this->affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+        return $response;
+    }
+
+    /**
+     * Operation affiliatesupdateInfodoAsync
+     *
+     * Update Info
      *
      * @param  int $affiliateID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
-     * @param  string $taxDocReceived (optional)
+     * @param  string $affiliateName (optional)
+     * @param  string $website (optional)
+     * @param  string $alternateID (optional)
+     * @param  string $address (optional)
+     * @param  string $address2 (optional)
+     * @param  string $city (optional)
+     * @param  string $state (optional)
+     * @param  string $zipCode (optional)
+     * @param  string $country (optional)
+     * @param  string $reportingUrl (optional)
+     * @param  string $reportingUsername (optional)
+     * @param  string $reportingPassword (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesupdateBillingdoAsync($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
+    public function affiliatesupdateInfodoAsync($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
     {
-        return $this->affiliatesupdateBillingdoAsyncWithHttpInfo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
+        return $this->affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2003,23 +1416,31 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesupdateBillingdoAsyncWithHttpInfo
+     * Operation affiliatesupdateInfodoAsyncWithHttpInfo
      *
-     * Update Billing
+     * Update Info
      *
      * @param  int $affiliateID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
-     * @param  string $taxDocReceived (optional)
+     * @param  string $affiliateName (optional)
+     * @param  string $website (optional)
+     * @param  string $alternateID (optional)
+     * @param  string $address (optional)
+     * @param  string $address2 (optional)
+     * @param  string $city (optional)
+     * @param  string $state (optional)
+     * @param  string $zipCode (optional)
+     * @param  string $country (optional)
+     * @param  string $reportingUrl (optional)
+     * @param  string $reportingUsername (optional)
+     * @param  string $reportingPassword (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesupdateBillingdoAsyncWithHttpInfo($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
+    public function affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesupdateBillingdoRequest($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
+        $request    = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2053,157 +1474,6 @@ class AffiliatesApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'affiliatesupdateBillingdo'
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
-     * @param  string $taxDocReceived (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function affiliatesupdateBillingdoRequest($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
-    {
-        // verify the required parameter 'affiliateID' is set
-        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $affiliateID when calling affiliatesupdateBillingdo'
-            );
-        }
-
-        $resourcePath = '/affiliates/updateBilling.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($billingCycle !== null) {
-            $queryParams['billingCycle'] = ObjectSerializer::toQueryValue($billingCycle);
-        }
-        // query params
-        if ($taxID !== null) {
-            $queryParams['taxID'] = ObjectSerializer::toQueryValue($taxID);
-        }
-        // query params
-        if ($taxClass !== null) {
-            $queryParams['taxClass'] = ObjectSerializer::toQueryValue($taxClass);
-        }
-        // query params
-        if ($taxDocReceived !== null) {
-            $queryParams['tax_doc_received'] = ObjectSerializer::toQueryValue($taxDocReceived);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation affiliatesupdateInfodo
-     *
-     * Update Info
-     *
-     * @param  int $affiliateID affiliateID (required)
-     * @param  string $affiliateName affiliateName (optional)
-     * @param  string $website website (optional)
-     * @param  string $alternateID alternateID (optional)
-     * @param  string $address address (optional)
-     * @param  string $address2 address2 (optional)
-     * @param  string $city city (optional)
-     * @param  string $state state (optional)
-     * @param  string $zipCode zipCode (optional)
-     * @param  string $country country (optional)
-     * @param  string $reportingUrl reportingUrl (optional)
-     * @param  string $reportingUsername reportingUsername (optional)
-     * @param  string $reportingPassword reportingPassword (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function affiliatesupdateInfodo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
-    {
-        list($response) = $this->affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
-        return $response;
     }
 
     /**
@@ -2306,96 +1576,826 @@ class AffiliatesApi
     }
 
     /**
-     * Operation affiliatesupdateInfodoAsync
-     *
-     * Update Info
-     *
-     * @param  int $affiliateID (required)
-     * @param  string $affiliateName (optional)
-     * @param  string $website (optional)
-     * @param  string $alternateID (optional)
-     * @param  string $address (optional)
-     * @param  string $address2 (optional)
-     * @param  string $city (optional)
-     * @param  string $state (optional)
-     * @param  string $zipCode (optional)
-     * @param  string $country (optional)
-     * @param  string $reportingUrl (optional)
-     * @param  string $reportingUsername (optional)
-     * @param  string $reportingPassword (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function affiliatesupdateInfodoAsync($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    public function getConfig()
     {
-        return $this->affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation affiliatesupdateInfodoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Update Info
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create request for operation 'affiliateschangeStatusdo'
      *
      * @param  int $affiliateID (required)
-     * @param  string $affiliateName (optional)
-     * @param  string $website (optional)
-     * @param  string $alternateID (optional)
-     * @param  string $address (optional)
-     * @param  string $address2 (optional)
-     * @param  string $city (optional)
-     * @param  string $state (optional)
-     * @param  string $zipCode (optional)
-     * @param  string $country (optional)
-     * @param  string $reportingUrl (optional)
-     * @param  string $reportingUsername (optional)
-     * @param  string $reportingPassword (optional)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    protected function affiliateschangeStatusdoRequest($affiliateID, $status)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
+        // verify the required parameter 'affiliateID' is set
+        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $affiliateID when calling affiliateschangeStatusdo'
             );
+        }
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling affiliateschangeStatusdo'
+            );
+        }
+
+        $resourcePath = '/affiliates/changeStatus.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatescreatedo'
+     *
+     * @param  string $affiliateName (required)
+     * @param  int $accountManagerID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatescreatedoRequest($affiliateName, $accountManagerID, $status)
+    {
+        // verify the required parameter 'affiliateName' is set
+        if ($affiliateName === null || (is_array($affiliateName) && count($affiliateName) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $affiliateName when calling affiliatescreatedo'
+            );
+        }
+        // verify the required parameter 'accountManagerID' is set
+        if ($accountManagerID === null || (is_array($accountManagerID) && count($accountManagerID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $accountManagerID when calling affiliatescreatedo'
+            );
+        }
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling affiliatescreatedo'
+            );
+        }
+
+        $resourcePath = '/affiliates/create.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateName !== null) {
+            $queryParams['affiliateName'] = ObjectSerializer::toQueryValue($affiliateName);
+        }
+        // query params
+        if ($accountManagerID !== null) {
+            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatesdeletedo'
+     *
+     * @param  int $affiliateID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatesdeletedoRequest($affiliateID)
+    {
+        // verify the required parameter 'affiliateID' is set
+        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $affiliateID when calling affiliatesdeletedo'
+            );
+        }
+
+        $resourcePath = '/affiliates/delete.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatesgetAlldo'
+     *
+     * @param  int $affiliateID (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatesgetAlldoRequest($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    {
+        $resourcePath = '/affiliates/getAll.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($accountManagerID !== null) {
+            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatesgetInfodo'
+     *
+     * @param  int $affiliateID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatesgetInfodoRequest($affiliateID)
+    {
+        // verify the required parameter 'affiliateID' is set
+        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $affiliateID when calling affiliatesgetInfodo'
+            );
+        }
+
+        $resourcePath = '/affiliates/getInfo.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatessearchdo'
+     *
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatessearchdoRequest($search, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'search' is set
+        if ($search === null || (is_array($search) && count($search) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $search when calling affiliatessearchdo'
+            );
+        }
+
+        $resourcePath = '/affiliates/search.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'affiliatesupdateBillingdo'
+     *
+     * @param  int $affiliateID (required)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
+     * @param  string $taxDocReceived (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function affiliatesupdateBillingdoRequest($affiliateID, $billingCycle = null, $taxID = null, $taxClass = null, $taxDocReceived = null)
+    {
+        // verify the required parameter 'affiliateID' is set
+        if ($affiliateID === null || (is_array($affiliateID) && count($affiliateID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $affiliateID when calling affiliatesupdateBillingdo'
+            );
+        }
+
+        $resourcePath = '/affiliates/updateBilling.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($billingCycle !== null) {
+            $queryParams['billingCycle'] = ObjectSerializer::toQueryValue($billingCycle);
+        }
+        // query params
+        if ($taxID !== null) {
+            $queryParams['taxID'] = ObjectSerializer::toQueryValue($taxID);
+        }
+        // query params
+        if ($taxClass !== null) {
+            $queryParams['taxClass'] = ObjectSerializer::toQueryValue($taxClass);
+        }
+        // query params
+        if ($taxDocReceived !== null) {
+            $queryParams['tax_doc_received'] = ObjectSerializer::toQueryValue($taxDocReceived);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -2506,7 +2506,7 @@ class AffiliatesApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2522,10 +2522,10 @@ class AffiliatesApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2551,7 +2551,7 @@ class AffiliatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

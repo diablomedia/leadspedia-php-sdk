@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class CampaignsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -59,13 +65,6 @@ class CampaignsApiTest extends TestCase
      * Clean up after running each test case
      */
     public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
     {
     }
 

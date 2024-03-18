@@ -88,34 +88,6 @@ class ConversionsReportsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation conversionsReportsgetConversionsByAdvertisersReportdo
      *
      * Get Conversions By Advertisers Report
@@ -133,8 +105,87 @@ class ConversionsReportsApi
      */
     public function conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        list($response) = $this->conversionsReportsgetConversionsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+        [$response] = $this->conversionsReportsgetConversionsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
         return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByAdvertisersReportdoAsync
+     *
+     * Get Conversions By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function conversionsReportsgetConversionsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo
+     *
+     * Get Conversions By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->conversionsReportsgetConversionsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -230,23 +281,43 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByAdvertisersReportdoAsync
+     * Operation conversionsReportsgetConversionsByAffiliatesReportdo
      *
-     * Get Conversions By Advertisers Report
+     * Get Conversions By Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByAffiliatesReportdoAsync
+     *
+     * Get Conversions By Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+        return $this->conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -255,24 +326,23 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Advertisers Report
+     * Get Conversions By Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -306,154 +376,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsByAdvertisersReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsByAdvertisersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByAdvertisersReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsByAdvertisersReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsByAffiliatesReportdo
-     *
-     * Get Conversions By Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -548,22 +470,49 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByAffiliatesReportdoAsync
+     * Operation conversionsReportsgetConversionsByCampaignsReportdo
      *
-     * Get Conversions By Affiliates Report
+     * Get Conversions By Campaigns Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByCampaignsReportdoAsync
+     *
+     * Get Conversions By Campaigns Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
+        return $this->conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -572,23 +521,26 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Affiliates Report
+     * Get Conversions By Campaigns Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -622,152 +574,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsByAffiliatesReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsByAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByAffiliatesReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsByAffiliatesReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsByCampaignsReportdo
-     *
-     * Get Conversions By Campaigns Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -865,25 +671,43 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByCampaignsReportdoAsync
+     * Operation conversionsReportsgetConversionsByOffersReportdo
      *
-     * Get Conversions By Campaigns Report
+     * Get Conversions By Offers Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByOffersReportdoAsync
+     *
+     * Get Conversions By Offers Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
      * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+        return $this->conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -892,26 +716,23 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Campaigns Report
+     * Get Conversions By Offers Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
      * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -945,164 +766,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsByCampaignsReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsByCampaignsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByCampaignsReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsByCampaignsReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($payoutModel !== null) {
-            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsByOffersReportdo
-     *
-     * Get Conversions By Offers Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
-        return $response;
     }
 
     /**
@@ -1197,22 +860,45 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByOffersReportdoAsync
+     * Operation conversionsReportsgetConversionsBySourceReportdo
      *
-     * Get Conversions By Offers Report
+     * Get Conversions By Source Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsBySourceReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsBySourceReportdoAsync
+     *
+     * Get Conversions By Source Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    public function conversionsReportsgetConversionsBySourceReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+        return $this->conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1221,23 +907,24 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Offers Report
+     * Get Conversions By Source Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    public function conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+        $request    = $this->conversionsReportsgetConversionsBySourceReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1271,150 +958,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsByOffersReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsByOffersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByOffersReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsByOffersReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($payoutModel !== null) {
-            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsBySourceReportdo
-     *
-     * Get Conversions By Source Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsBySourceReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -1510,23 +1053,43 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsBySourceReportdoAsync
+     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdo
      *
-     * Get Conversions By Source Report
+     * Get Conversions By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsBySubAffiliatesReportdoWithHttpInfo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdoAsync
+     *
+     * Get Conversions By Sub Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsBySourceReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsBySubAffiliatesReportdoAsync($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+        return $this->conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1535,24 +1098,23 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Source Report
+     * Get Conversions By Sub Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsBySourceReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsBySourceReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsBySubAffiliatesReportdoRequest($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1586,154 +1148,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsBySourceReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsBySourceReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsBySourceReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsBySourceReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdo
-     *
-     * Get Conversions By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsBySubAffiliatesReportdoWithHttpInfo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -1828,22 +1242,39 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdoAsync
+     * Operation conversionsReportsgetConversionsByVerticalsReportdo
      *
-     * Get Conversions By Sub Affiliates Report
+     * Get Conversions By Verticals Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsByVerticalsReportdoAsync
+     *
+     * Get Conversions By Verticals Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $verticalGroupID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsBySubAffiliatesReportdoAsync($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
     {
-        return $this->conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+        return $this->conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1852,23 +1283,21 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Sub Affiliates Report
+     * Get Conversions By Verticals Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $verticalGroupID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsBySubAffiliatesReportdoRequest($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1902,147 +1331,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsBySubAffiliatesReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsBySubAffiliatesReportdoRequest($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsBySubAffiliatesReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsBySubAffiliatesReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsByVerticalsReportdo
-     *
-     * Get Conversions By Verticals Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
-        return $response;
     }
 
     /**
@@ -2135,20 +1423,49 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByVerticalsReportdoAsync
+     * Operation conversionsReportsgetConversionsDailyReportdo
      *
-     * Get Conversions By Verticals Report
+     * Get Conversions Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month month (required)
+     * @param  string $year year (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        [$response] = $this->conversionsReportsgetConversionsDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+        return $response;
+    }
+
+    /**
+     * Operation conversionsReportsgetConversionsDailyReportdoAsync
+     *
+     * Get Conversions Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
+    public function conversionsReportsgetConversionsDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
-        return $this->conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
+        return $this->conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2157,21 +1474,26 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo
+     * Operation conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo
      *
-     * Get Conversions By Verticals Report
+     * Get Conversions Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsReportsgetConversionsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
+    public function conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
+        $request    = $this->conversionsReportsgetConversionsDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2205,142 +1527,6 @@ class ConversionsReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'conversionsReportsgetConversionsByVerticalsReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function conversionsReportsgetConversionsByVerticalsReportdoRequest($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByVerticalsReportdo'
-            );
-        }
-
-        $resourcePath = '/conversionsReports/getConversionsByVerticalsReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation conversionsReportsgetConversionsDailyReportdo
-     *
-     * Get Conversions Daily Report
-     *
-     * @param  string $month month (required)
-     * @param  string $year year (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        list($response) = $this->conversionsReportsgetConversionsDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-        return $response;
     }
 
     /**
@@ -2438,86 +1624,900 @@ class ConversionsReportsApi
     }
 
     /**
-     * Operation conversionsReportsgetConversionsDailyReportdoAsync
-     *
-     * Get Conversions Daily Report
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function conversionsReportsgetConversionsDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    public function getConfig()
     {
-        return $this->conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Get Conversions Daily Report
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
      *
-     * @param  string $month (required)
-     * @param  string $year (required)
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsByAdvertisersReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
      * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsByAdvertisersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByAdvertisersReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsByAdvertisersReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsByAffiliatesReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsByAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByAffiliatesReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsByAffiliatesReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsByCampaignsReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsByCampaignsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByCampaignsReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsByCampaignsReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($payoutModel !== null) {
+            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsByOffersReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsByOffersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByOffersReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsByOffersReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($payoutModel !== null) {
+            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsBySourceReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsBySourceReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsBySourceReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsBySourceReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsBySubAffiliatesReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  int $campaignID (optional)
      * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function conversionsReportsgetConversionsDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    protected function conversionsReportsgetConversionsBySubAffiliatesReportdoRequest($fromDate, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->conversionsReportsgetConversionsDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsBySubAffiliatesReportdo'
             );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsBySubAffiliatesReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'conversionsReportsgetConversionsByVerticalsReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalGroupID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function conversionsReportsgetConversionsByVerticalsReportdoRequest($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling conversionsReportsgetConversionsByVerticalsReportdo'
+            );
+        }
+
+        $resourcePath = '/conversionsReports/getConversionsByVerticalsReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -2609,7 +2609,7 @@ class ConversionsReportsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2625,10 +2625,10 @@ class ConversionsReportsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2654,7 +2654,7 @@ class ConversionsReportsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

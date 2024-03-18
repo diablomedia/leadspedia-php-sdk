@@ -28,7 +28,7 @@
 
 namespace Leadspedia;
 
-use \Exception;
+use Exception;
 
 /**
  * ApiException Class Doc Comment
@@ -40,7 +40,6 @@ use \Exception;
  */
 class ApiException extends Exception
 {
-
     /**
      * The HTTP body of the server response either as Json or string.
      *
@@ -77,6 +76,16 @@ class ApiException extends Exception
     }
 
     /**
+     * Gets the HTTP body of the server response either as Json or string
+     *
+     * @return mixed HTTP body of the server response either as \stdClass or string
+     */
+    public function getResponseBody()
+    {
+        return $this->responseBody;
+    }
+
+    /**
      * Gets the HTTP response header
      *
      * @return string[]|null HTTP response header
@@ -87,13 +96,13 @@ class ApiException extends Exception
     }
 
     /**
-     * Gets the HTTP body of the server response either as Json or string
+     * Gets the deseralized response object (during deserialization)
      *
-     * @return mixed HTTP body of the server response either as \stdClass or string
+     * @return mixed the deserialized response object
      */
-    public function getResponseBody()
+    public function getResponseObject()
     {
-        return $this->responseBody;
+        return $this->responseObject;
     }
 
     /**
@@ -105,15 +114,5 @@ class ApiException extends Exception
     public function setResponseObject($obj): void
     {
         $this->responseObject = $obj;
-    }
-
-    /**
-     * Gets the deseralized response object (during deserialization)
-     *
-     * @return mixed the deserialized response object
-     */
-    public function getResponseObject()
-    {
-        return $this->responseObject;
     }
 }

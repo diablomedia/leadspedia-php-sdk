@@ -88,13 +88,11 @@ class PixelsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -105,14 +103,6 @@ class PixelsApi
     public function getHostIndex()
     {
         return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     /**
@@ -132,8 +122,85 @@ class PixelsApi
      */
     public function pixelsgetAlldo($affiliateID = null, $campaignID = null, $dispositionID = null, $fromDate = null, $toDate = null)
     {
-        list($response) = $this->pixelsgetAlldoWithHttpInfo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
+        [$response] = $this->pixelsgetAlldoWithHttpInfo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
         return $response;
+    }
+
+    /**
+     * Operation pixelsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $dispositionID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function pixelsgetAlldoAsync($affiliateID = null, $campaignID = null, $dispositionID = null, $fromDate = null, $toDate = null)
+    {
+        return $this->pixelsgetAlldoAsyncWithHttpInfo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation pixelsgetAlldoAsyncWithHttpInfo
+     *
+     * Get All
+     *
+     * @param  int $affiliateID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $dispositionID (optional)
+     * @param  \DateTime $fromDate (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function pixelsgetAlldoAsyncWithHttpInfo($affiliateID = null, $campaignID = null, $dispositionID = null, $fromDate = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->pixelsgetAlldoRequest($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -228,80 +295,32 @@ class PixelsApi
     }
 
     /**
-     * Operation pixelsgetAlldoAsync
+     * Set the host index
      *
-     * Get All
-     *
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $dispositionID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @param  int Host index (required)
      */
-    public function pixelsgetAlldoAsync($affiliateID = null, $campaignID = null, $dispositionID = null, $fromDate = null, $toDate = null)
+    public function setHostIndex($host_index): void
     {
-        return $this->pixelsgetAlldoAsyncWithHttpInfo($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        $this->hostIndex = $host_index;
     }
 
     /**
-     * Operation pixelsgetAlldoAsyncWithHttpInfo
+     * Create http client option
      *
-     * Get All
-     *
-     * @param  int $affiliateID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $dispositionID (optional)
-     * @param  \DateTime $fromDate (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
-    public function pixelsgetAlldoAsyncWithHttpInfo($affiliateID = null, $campaignID = null, $dispositionID = null, $fromDate = null, $toDate = null)
+    protected function createHttpClientOption()
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->pixelsgetAlldoRequest($affiliateID, $campaignID, $dispositionID, $fromDate, $toDate);
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $options;
     }
 
     /**
@@ -365,7 +384,7 @@ class PixelsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -381,10 +400,10 @@ class PixelsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -410,31 +429,12 @@ class PixelsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

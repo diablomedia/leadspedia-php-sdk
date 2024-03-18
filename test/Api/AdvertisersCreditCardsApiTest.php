@@ -40,11 +40,17 @@ use PHPUnit\Framework\TestCase;
  */
 class AdvertisersCreditCardsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
     {
     }
 
@@ -59,13 +65,6 @@ class AdvertisersCreditCardsApiTest extends TestCase
      * Clean up after running each test case
      */
     public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
     {
     }
 
@@ -130,22 +129,22 @@ class AdvertisersCreditCardsApiTest extends TestCase
     }
 
     /**
-     * Test case for advertisersCreditCardsupdatePaymentProfileIDdo
-     *
-     * Update Payment Profile ID.
-     *
-     */
-    public function testAdvertisersCreditCardsupdatePaymentProfileIDdo(): void
-    {
-    }
-
-    /**
      * Test case for advertisersCreditCardsupdatedo
      *
      * Update.
      *
      */
     public function testAdvertisersCreditCardsupdatedo(): void
+    {
+    }
+
+    /**
+     * Test case for advertisersCreditCardsupdatePaymentProfileIDdo
+     *
+     * Update Payment Profile ID.
+     *
+     */
+    public function testAdvertisersCreditCardsupdatePaymentProfileIDdo(): void
     {
     }
 }

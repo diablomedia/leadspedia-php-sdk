@@ -88,13 +88,11 @@ class ValidationApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
+     * @return Configuration
      */
-    public function setHostIndex($host_index): void
+    public function getConfig()
     {
-        $this->hostIndex = $host_index;
+        return $this->config;
     }
 
     /**
@@ -108,11 +106,13 @@ class ValidationApi
     }
 
     /**
-     * @return Configuration
+     * Set the host index
+     *
+     * @param  int Host index (required)
      */
-    public function getConfig()
+    public function setHostIndex($host_index): void
     {
-        return $this->config;
+        $this->hostIndex = $host_index;
     }
 
     /**
@@ -130,8 +130,81 @@ class ValidationApi
      */
     public function validationvalidateZipCodedo($apiKey, $apiSecret, $zipCode)
     {
-        list($response) = $this->validationvalidateZipCodedoWithHttpInfo($apiKey, $apiSecret, $zipCode);
+        [$response] = $this->validationvalidateZipCodedoWithHttpInfo($apiKey, $apiSecret, $zipCode);
         return $response;
+    }
+
+    /**
+     * Operation validationvalidateZipCodedoAsync
+     *
+     * Validate Zip Code
+     *
+     * @param  string $apiKey (required)
+     * @param  string $apiSecret (required)
+     * @param  string $zipCode (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function validationvalidateZipCodedoAsync($apiKey, $apiSecret, $zipCode)
+    {
+        return $this->validationvalidateZipCodedoAsyncWithHttpInfo($apiKey, $apiSecret, $zipCode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation validationvalidateZipCodedoAsyncWithHttpInfo
+     *
+     * Validate Zip Code
+     *
+     * @param  string $apiKey (required)
+     * @param  string $apiSecret (required)
+     * @param  string $zipCode (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function validationvalidateZipCodedoAsyncWithHttpInfo($apiKey, $apiSecret, $zipCode)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->validationvalidateZipCodedoRequest($apiKey, $apiSecret, $zipCode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -224,76 +297,22 @@ class ValidationApi
     }
 
     /**
-     * Operation validationvalidateZipCodedoAsync
+     * Create http client option
      *
-     * Validate Zip Code
-     *
-     * @param  string $apiKey (required)
-     * @param  string $apiSecret (required)
-     * @param  string $zipCode (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
      */
-    public function validationvalidateZipCodedoAsync($apiKey, $apiSecret, $zipCode)
+    protected function createHttpClientOption()
     {
-        return $this->validationvalidateZipCodedoAsyncWithHttpInfo($apiKey, $apiSecret, $zipCode)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
 
-    /**
-     * Operation validationvalidateZipCodedoAsyncWithHttpInfo
-     *
-     * Validate Zip Code
-     *
-     * @param  string $apiKey (required)
-     * @param  string $apiSecret (required)
-     * @param  string $zipCode (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function validationvalidateZipCodedoAsyncWithHttpInfo($apiKey, $apiSecret, $zipCode)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->validationvalidateZipCodedoRequest($apiKey, $apiSecret, $zipCode);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $options;
     }
 
     /**
@@ -366,7 +385,7 @@ class ValidationApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -382,10 +401,10 @@ class ValidationApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -411,31 +430,12 @@ class ValidationApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

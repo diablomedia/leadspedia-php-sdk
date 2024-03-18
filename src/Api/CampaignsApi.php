@@ -88,34 +88,6 @@ class CampaignsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation campaignsassignTrackingNumberdo
      *
      * Assign Tracking Number
@@ -129,8 +101,79 @@ class CampaignsApi
      */
     public function campaignsassignTrackingNumberdo($campaignID, $number)
     {
-        list($response) = $this->campaignsassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        [$response] = $this->campaignsassignTrackingNumberdoWithHttpInfo($campaignID, $number);
         return $response;
+    }
+
+    /**
+     * Operation campaignsassignTrackingNumberdoAsync
+     *
+     * Assign Tracking Number
+     *
+     * @param  int $campaignID (required)
+     * @param  string $number (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function campaignsassignTrackingNumberdoAsync($campaignID, $number)
+    {
+        return $this->campaignsassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation campaignsassignTrackingNumberdoAsyncWithHttpInfo
+     *
+     * Assign Tracking Number
+     *
+     * @param  int $campaignID (required)
+     * @param  string $number (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function campaignsassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->campaignsassignTrackingNumberdoRequest($campaignID, $number);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -222,19 +265,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsassignTrackingNumberdoAsync
+     * Operation campaignschangeGoalsStaticThrottledo
      *
-     * Assign Tracking Number
+     * Change Goals Static Throttle
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  float $goalsStaticThrottle goalsStaticThrottle (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
+    {
+        [$response] = $this->campaignschangeGoalsStaticThrottledoWithHttpInfo($campaignID, $goalsStaticThrottle);
+        return $response;
+    }
+
+    /**
+     * Operation campaignschangeGoalsStaticThrottledoAsync
+     *
+     * Change Goals Static Throttle
      *
      * @param  int $campaignID (required)
-     * @param  string $number (required)
+     * @param  float $goalsStaticThrottle (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsassignTrackingNumberdoAsync($campaignID, $number)
+    public function campaignschangeGoalsStaticThrottledoAsync($campaignID, $goalsStaticThrottle)
     {
-        return $this->campaignsassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+        return $this->campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo($campaignID, $goalsStaticThrottle)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,20 +304,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsassignTrackingNumberdoAsyncWithHttpInfo
+     * Operation campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo
      *
-     * Assign Tracking Number
+     * Change Goals Static Throttle
      *
      * @param  int $campaignID (required)
-     * @param  string $number (required)
+     * @param  float $goalsStaticThrottle (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+    public function campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo($campaignID, $goalsStaticThrottle)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsassignTrackingNumberdoRequest($campaignID, $number);
+        $request    = $this->campaignschangeGoalsStaticThrottledoRequest($campaignID, $goalsStaticThrottle);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -290,137 +351,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsassignTrackingNumberdo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $number (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsassignTrackingNumberdoRequest($campaignID, $number)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsassignTrackingNumberdo'
-            );
-        }
-        // verify the required parameter 'number' is set
-        if ($number === null || (is_array($number) && count($number) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $number when calling campaignsassignTrackingNumberdo'
-            );
-        }
-
-        $resourcePath = '/campaigns/assignTrackingNumber.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($number !== null) {
-            $queryParams['number'] = ObjectSerializer::toQueryValue($number);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignschangeGoalsStaticThrottledo
-     *
-     * Change Goals Static Throttle
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  float $goalsStaticThrottle goalsStaticThrottle (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignschangeGoalsStaticThrottledo($campaignID, $goalsStaticThrottle)
-    {
-        list($response) = $this->campaignschangeGoalsStaticThrottledoWithHttpInfo($campaignID, $goalsStaticThrottle);
-        return $response;
     }
 
     /**
@@ -512,19 +442,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeGoalsStaticThrottledoAsync
+     * Operation campaignschangeModedo
      *
-     * Change Goals Static Throttle
+     * Change Mode
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $mode mode (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignschangeModedo($campaignID, $mode)
+    {
+        [$response] = $this->campaignschangeModedoWithHttpInfo($campaignID, $mode);
+        return $response;
+    }
+
+    /**
+     * Operation campaignschangeModedoAsync
+     *
+     * Change Mode
      *
      * @param  int $campaignID (required)
-     * @param  float $goalsStaticThrottle (required)
+     * @param  string $mode (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeGoalsStaticThrottledoAsync($campaignID, $goalsStaticThrottle)
+    public function campaignschangeModedoAsync($campaignID, $mode)
     {
-        return $this->campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo($campaignID, $goalsStaticThrottle)
+        return $this->campaignschangeModedoAsyncWithHttpInfo($campaignID, $mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -533,20 +481,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo
+     * Operation campaignschangeModedoAsyncWithHttpInfo
      *
-     * Change Goals Static Throttle
+     * Change Mode
      *
      * @param  int $campaignID (required)
-     * @param  float $goalsStaticThrottle (required)
+     * @param  string $mode (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeGoalsStaticThrottledoAsyncWithHttpInfo($campaignID, $goalsStaticThrottle)
+    public function campaignschangeModedoAsyncWithHttpInfo($campaignID, $mode)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignschangeGoalsStaticThrottledoRequest($campaignID, $goalsStaticThrottle);
+        $request    = $this->campaignschangeModedoRequest($campaignID, $mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -580,137 +528,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignschangeGoalsStaticThrottledo'
-     *
-     * @param  int $campaignID (required)
-     * @param  float $goalsStaticThrottle (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignschangeGoalsStaticThrottledoRequest($campaignID, $goalsStaticThrottle)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignschangeGoalsStaticThrottledo'
-            );
-        }
-        // verify the required parameter 'goalsStaticThrottle' is set
-        if ($goalsStaticThrottle === null || (is_array($goalsStaticThrottle) && count($goalsStaticThrottle) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $goalsStaticThrottle when calling campaignschangeGoalsStaticThrottledo'
-            );
-        }
-
-        $resourcePath = '/campaigns/changeGoalsStaticThrottle.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($goalsStaticThrottle !== null) {
-            $queryParams['goalsStaticThrottle'] = ObjectSerializer::toQueryValue($goalsStaticThrottle);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignschangeModedo
-     *
-     * Change Mode
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $mode mode (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignschangeModedo($campaignID, $mode)
-    {
-        list($response) = $this->campaignschangeModedoWithHttpInfo($campaignID, $mode);
-        return $response;
     }
 
     /**
@@ -802,19 +619,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeModedoAsync
+     * Operation campaignschangeOfferStaticThrottledo
      *
-     * Change Mode
+     * Change Offer Static Throttle
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  float $offerStaticThrottle offerStaticThrottle (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
+    {
+        [$response] = $this->campaignschangeOfferStaticThrottledoWithHttpInfo($campaignID, $offerStaticThrottle);
+        return $response;
+    }
+
+    /**
+     * Operation campaignschangeOfferStaticThrottledoAsync
+     *
+     * Change Offer Static Throttle
      *
      * @param  int $campaignID (required)
-     * @param  string $mode (required)
+     * @param  float $offerStaticThrottle (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeModedoAsync($campaignID, $mode)
+    public function campaignschangeOfferStaticThrottledoAsync($campaignID, $offerStaticThrottle)
     {
-        return $this->campaignschangeModedoAsyncWithHttpInfo($campaignID, $mode)
+        return $this->campaignschangeOfferStaticThrottledoAsyncWithHttpInfo($campaignID, $offerStaticThrottle)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -823,20 +658,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeModedoAsyncWithHttpInfo
+     * Operation campaignschangeOfferStaticThrottledoAsyncWithHttpInfo
      *
-     * Change Mode
+     * Change Offer Static Throttle
      *
      * @param  int $campaignID (required)
-     * @param  string $mode (required)
+     * @param  float $offerStaticThrottle (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeModedoAsyncWithHttpInfo($campaignID, $mode)
+    public function campaignschangeOfferStaticThrottledoAsyncWithHttpInfo($campaignID, $offerStaticThrottle)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignschangeModedoRequest($campaignID, $mode);
+        $request    = $this->campaignschangeOfferStaticThrottledoRequest($campaignID, $offerStaticThrottle);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -870,137 +705,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignschangeModedo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $mode (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignschangeModedoRequest($campaignID, $mode)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignschangeModedo'
-            );
-        }
-        // verify the required parameter 'mode' is set
-        if ($mode === null || (is_array($mode) && count($mode) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $mode when calling campaignschangeModedo'
-            );
-        }
-
-        $resourcePath = '/campaigns/changeMode.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($mode !== null) {
-            $queryParams['mode'] = ObjectSerializer::toQueryValue($mode);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignschangeOfferStaticThrottledo
-     *
-     * Change Offer Static Throttle
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  float $offerStaticThrottle offerStaticThrottle (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignschangeOfferStaticThrottledo($campaignID, $offerStaticThrottle)
-    {
-        list($response) = $this->campaignschangeOfferStaticThrottledoWithHttpInfo($campaignID, $offerStaticThrottle);
-        return $response;
     }
 
     /**
@@ -1092,19 +796,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeOfferStaticThrottledoAsync
+     * Operation campaignschangeStatusdo
      *
-     * Change Offer Static Throttle
+     * Change Status
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $status status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignschangeStatusdo($campaignID, $status)
+    {
+        [$response] = $this->campaignschangeStatusdoWithHttpInfo($campaignID, $status);
+        return $response;
+    }
+
+    /**
+     * Operation campaignschangeStatusdoAsync
+     *
+     * Change Status
      *
      * @param  int $campaignID (required)
-     * @param  float $offerStaticThrottle (required)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeOfferStaticThrottledoAsync($campaignID, $offerStaticThrottle)
+    public function campaignschangeStatusdoAsync($campaignID, $status)
     {
-        return $this->campaignschangeOfferStaticThrottledoAsyncWithHttpInfo($campaignID, $offerStaticThrottle)
+        return $this->campaignschangeStatusdoAsyncWithHttpInfo($campaignID, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1113,20 +835,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeOfferStaticThrottledoAsyncWithHttpInfo
+     * Operation campaignschangeStatusdoAsyncWithHttpInfo
      *
-     * Change Offer Static Throttle
+     * Change Status
      *
      * @param  int $campaignID (required)
-     * @param  float $offerStaticThrottle (required)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeOfferStaticThrottledoAsyncWithHttpInfo($campaignID, $offerStaticThrottle)
+    public function campaignschangeStatusdoAsyncWithHttpInfo($campaignID, $status)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignschangeOfferStaticThrottledoRequest($campaignID, $offerStaticThrottle);
+        $request    = $this->campaignschangeStatusdoRequest($campaignID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1160,137 +882,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignschangeOfferStaticThrottledo'
-     *
-     * @param  int $campaignID (required)
-     * @param  float $offerStaticThrottle (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignschangeOfferStaticThrottledoRequest($campaignID, $offerStaticThrottle)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignschangeOfferStaticThrottledo'
-            );
-        }
-        // verify the required parameter 'offerStaticThrottle' is set
-        if ($offerStaticThrottle === null || (is_array($offerStaticThrottle) && count($offerStaticThrottle) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $offerStaticThrottle when calling campaignschangeOfferStaticThrottledo'
-            );
-        }
-
-        $resourcePath = '/campaigns/changeOfferStaticThrottle.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($offerStaticThrottle !== null) {
-            $queryParams['offerStaticThrottle'] = ObjectSerializer::toQueryValue($offerStaticThrottle);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignschangeStatusdo
-     *
-     * Change Status
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $status status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignschangeStatusdo($campaignID, $status)
-    {
-        list($response) = $this->campaignschangeStatusdoWithHttpInfo($campaignID, $status);
-        return $response;
     }
 
     /**
@@ -1382,19 +973,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeStatusdoAsync
+     * Operation campaignsdeletedo
      *
-     * Change Status
+     * Delete
+     *
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsdeletedo($campaignID)
+    {
+        [$response] = $this->campaignsdeletedoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsdeletedoAsync
+     *
+     * Delete
      *
      * @param  int $campaignID (required)
-     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeStatusdoAsync($campaignID, $status)
+    public function campaignsdeletedoAsync($campaignID)
     {
-        return $this->campaignschangeStatusdoAsyncWithHttpInfo($campaignID, $status)
+        return $this->campaignsdeletedoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1403,20 +1010,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignschangeStatusdoAsyncWithHttpInfo
+     * Operation campaignsdeletedoAsyncWithHttpInfo
      *
-     * Change Status
+     * Delete
      *
      * @param  int $campaignID (required)
-     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignschangeStatusdoAsyncWithHttpInfo($campaignID, $status)
+    public function campaignsdeletedoAsyncWithHttpInfo($campaignID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignschangeStatusdoRequest($campaignID, $status);
+        $request    = $this->campaignsdeletedoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1450,136 +1056,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignschangeStatusdo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignschangeStatusdoRequest($campaignID, $status)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignschangeStatusdo'
-            );
-        }
-        // verify the required parameter 'status' is set
-        if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling campaignschangeStatusdo'
-            );
-        }
-
-        $resourcePath = '/campaigns/changeStatus.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsdeletedo
-     *
-     * Delete
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsdeletedo($campaignID)
-    {
-        list($response) = $this->campaignsdeletedoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -1670,18 +1146,49 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsdeletedoAsync
+     * Operation campaignsgetAlldo
      *
-     * Delete
+     * Get All
      *
-     * @param  int $campaignID (required)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $verticalID verticalID (optional)
+     * @param  string $status status (optional)
+     * @param  string $search search (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function campaignsgetAlldo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->campaignsgetAlldoWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsdeletedoAsync($campaignID)
+    public function campaignsgetAlldoAsync($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
-        return $this->campaignsdeletedoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsgetAlldoAsyncWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1690,19 +1197,26 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsdeletedoAsyncWithHttpInfo
+     * Operation campaignsgetAlldoAsyncWithHttpInfo
      *
-     * Delete
+     * Get All
      *
-     * @param  int $campaignID (required)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsdeletedoAsyncWithHttpInfo($campaignID)
+    public function campaignsgetAlldoAsyncWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsdeletedoRequest($campaignID);
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->campaignsgetAlldoRequest($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1736,132 +1250,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsdeletedo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsdeletedoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsdeletedo'
-            );
-        }
-
-        $resourcePath = '/campaigns/delete.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $verticalID verticalID (optional)
-     * @param  string $status status (optional)
-     * @param  string $search search (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function campaignsgetAlldo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->campaignsgetAlldoWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1959,25 +1347,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetAlldoAsync
+     * Operation campaignsgetBasicInfodo
      *
-     * Get All
+     * Get Basic Info
      *
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $verticalID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function campaignsgetBasicInfodo($campaignID)
+    {
+        [$response] = $this->campaignsgetBasicInfodoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsgetBasicInfodoAsync
+     *
+     * Get Basic Info
+     *
+     * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetAlldoAsync($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    public function campaignsgetBasicInfodoAsync($campaignID)
     {
-        return $this->campaignsgetAlldoAsyncWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit)
+        return $this->campaignsgetBasicInfodoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1986,26 +1384,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetAlldoAsyncWithHttpInfo
+     * Operation campaignsgetBasicInfodoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Basic Info
      *
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $verticalID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetAlldoAsyncWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    public function campaignsgetBasicInfodoAsyncWithHttpInfo($campaignID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->campaignsgetAlldoRequest($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
+        $request    = $this->campaignsgetBasicInfodoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2039,153 +1430,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsgetAlldo'
-     *
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $verticalID (optional)
-     * @param  string $status (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsgetAlldoRequest($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
-    {
-        $resourcePath = '/campaigns/getAll.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsgetBasicInfodo
-     *
-     * Get Basic Info
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function campaignsgetBasicInfodo($campaignID)
-    {
-        list($response) = $this->campaignsgetBasicInfodoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -2276,18 +1520,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetBasicInfodoAsync
+     * Operation campaignsgetGoalsStaticThrottledo
      *
-     * Get Basic Info
+     * Get Goals Static Throtte
+     *
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function campaignsgetGoalsStaticThrottledo($campaignID)
+    {
+        [$response] = $this->campaignsgetGoalsStaticThrottledoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsgetGoalsStaticThrottledoAsync
+     *
+     * Get Goals Static Throtte
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetBasicInfodoAsync($campaignID)
+    public function campaignsgetGoalsStaticThrottledoAsync($campaignID)
     {
-        return $this->campaignsgetBasicInfodoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2296,19 +1557,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetBasicInfodoAsyncWithHttpInfo
+     * Operation campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo
      *
-     * Get Basic Info
+     * Get Goals Static Throtte
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetBasicInfodoAsyncWithHttpInfo($campaignID)
+    public function campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo($campaignID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->campaignsgetBasicInfodoRequest($campaignID);
+        $request    = $this->campaignsgetGoalsStaticThrottledoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2342,125 +1603,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsgetBasicInfodo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsgetBasicInfodoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsgetBasicInfodo'
-            );
-        }
-
-        $resourcePath = '/campaigns/getBasicInfo.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsgetGoalsStaticThrottledo
-     *
-     * Get Goals Static Throtte
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function campaignsgetGoalsStaticThrottledo($campaignID)
-    {
-        list($response) = $this->campaignsgetGoalsStaticThrottledoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -2551,18 +1693,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetGoalsStaticThrottledoAsync
+     * Operation campaignsgetOfferStaticThrottledo
      *
-     * Get Goals Static Throtte
+     * Get Offer Static Throtte
+     *
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function campaignsgetOfferStaticThrottledo($campaignID)
+    {
+        [$response] = $this->campaignsgetOfferStaticThrottledoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsgetOfferStaticThrottledoAsync
+     *
+     * Get Offer Static Throtte
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetGoalsStaticThrottledoAsync($campaignID)
+    public function campaignsgetOfferStaticThrottledoAsync($campaignID)
     {
-        return $this->campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsgetOfferStaticThrottledoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2571,19 +1730,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo
+     * Operation campaignsgetOfferStaticThrottledoAsyncWithHttpInfo
      *
-     * Get Goals Static Throtte
+     * Get Offer Static Throtte
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetGoalsStaticThrottledoAsyncWithHttpInfo($campaignID)
+    public function campaignsgetOfferStaticThrottledoAsyncWithHttpInfo($campaignID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->campaignsgetGoalsStaticThrottledoRequest($campaignID);
+        $request    = $this->campaignsgetOfferStaticThrottledoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2617,125 +1776,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsgetGoalsStaticThrottledo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsgetGoalsStaticThrottledoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsgetGoalsStaticThrottledo'
-            );
-        }
-
-        $resourcePath = '/campaigns/getGoalsStaticThrottle.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsgetOfferStaticThrottledo
-     *
-     * Get Offer Static Throtte
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function campaignsgetOfferStaticThrottledo($campaignID)
-    {
-        list($response) = $this->campaignsgetOfferStaticThrottledoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -2826,18 +1866,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetOfferStaticThrottledoAsync
+     * Operation campaignsgetPostKeysdo
      *
-     * Get Offer Static Throtte
+     * Get Post Keys
+     *
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function campaignsgetPostKeysdo($campaignID)
+    {
+        [$response] = $this->campaignsgetPostKeysdoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsgetPostKeysdoAsync
+     *
+     * Get Post Keys
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetOfferStaticThrottledoAsync($campaignID)
+    public function campaignsgetPostKeysdoAsync($campaignID)
     {
-        return $this->campaignsgetOfferStaticThrottledoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsgetPostKeysdoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2846,19 +1903,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetOfferStaticThrottledoAsyncWithHttpInfo
+     * Operation campaignsgetPostKeysdoAsyncWithHttpInfo
      *
-     * Get Offer Static Throtte
+     * Get Post Keys
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetOfferStaticThrottledoAsyncWithHttpInfo($campaignID)
+    public function campaignsgetPostKeysdoAsyncWithHttpInfo($campaignID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->campaignsgetOfferStaticThrottledoRequest($campaignID);
+        $request    = $this->campaignsgetPostKeysdoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2892,125 +1949,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsgetOfferStaticThrottledo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsgetOfferStaticThrottledoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsgetOfferStaticThrottledo'
-            );
-        }
-
-        $resourcePath = '/campaigns/getOfferStaticThrottle.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsgetPostKeysdo
-     *
-     * Get Post Keys
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function campaignsgetPostKeysdo($campaignID)
-    {
-        list($response) = $this->campaignsgetPostKeysdoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -3101,18 +2039,35 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetPostKeysdoAsync
+     * Operation campaignsremoveExpirationDatedo
      *
-     * Get Post Keys
+     * Remove Expiration Date
+     *
+     * @param  int $campaignID campaignID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsremoveExpirationDatedo($campaignID)
+    {
+        [$response] = $this->campaignsremoveExpirationDatedoWithHttpInfo($campaignID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsremoveExpirationDatedoAsync
+     *
+     * Remove Expiration Date
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetPostKeysdoAsync($campaignID)
+    public function campaignsremoveExpirationDatedoAsync($campaignID)
     {
-        return $this->campaignsgetPostKeysdoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsremoveExpirationDatedoAsyncWithHttpInfo($campaignID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3121,19 +2076,19 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsgetPostKeysdoAsyncWithHttpInfo
+     * Operation campaignsremoveExpirationDatedoAsyncWithHttpInfo
      *
-     * Get Post Keys
+     * Remove Expiration Date
      *
      * @param  int $campaignID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetPostKeysdoAsyncWithHttpInfo($campaignID)
+    public function campaignsremoveExpirationDatedoAsyncWithHttpInfo($campaignID)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->campaignsgetPostKeysdoRequest($campaignID);
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->campaignsremoveExpirationDatedoRequest($campaignID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3167,125 +2122,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsgetPostKeysdo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsgetPostKeysdoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsgetPostKeysdo'
-            );
-        }
-
-        $resourcePath = '/campaigns/getPostKeys.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsremoveExpirationDatedo
-     *
-     * Remove Expiration Date
-     *
-     * @param  int $campaignID campaignID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsremoveExpirationDatedo($campaignID)
-    {
-        list($response) = $this->campaignsremoveExpirationDatedoWithHttpInfo($campaignID);
-        return $response;
     }
 
     /**
@@ -3376,18 +2212,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsremoveExpirationDatedoAsync
+     * Operation campaignsrenamedo
      *
-     * Remove Expiration Date
+     * Rename
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $campaignName campaignName (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsrenamedo($campaignID, $campaignName)
+    {
+        [$response] = $this->campaignsrenamedoWithHttpInfo($campaignID, $campaignName);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsrenamedoAsync
+     *
+     * Rename
      *
      * @param  int $campaignID (required)
+     * @param  string $campaignName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsremoveExpirationDatedoAsync($campaignID)
+    public function campaignsrenamedoAsync($campaignID, $campaignName)
     {
-        return $this->campaignsremoveExpirationDatedoAsyncWithHttpInfo($campaignID)
+        return $this->campaignsrenamedoAsyncWithHttpInfo($campaignID, $campaignName)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3396,19 +2251,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsremoveExpirationDatedoAsyncWithHttpInfo
+     * Operation campaignsrenamedoAsyncWithHttpInfo
      *
-     * Remove Expiration Date
+     * Rename
      *
      * @param  int $campaignID (required)
+     * @param  string $campaignName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsremoveExpirationDatedoAsyncWithHttpInfo($campaignID)
+    public function campaignsrenamedoAsyncWithHttpInfo($campaignID, $campaignName)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsremoveExpirationDatedoRequest($campaignID);
+        $request    = $this->campaignsrenamedoRequest($campaignID, $campaignName);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3442,126 +2298,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsremoveExpirationDatedo'
-     *
-     * @param  int $campaignID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsremoveExpirationDatedoRequest($campaignID)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsremoveExpirationDatedo'
-            );
-        }
-
-        $resourcePath = '/campaigns/removeExpirationDate.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsrenamedo
-     *
-     * Rename
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $campaignName campaignName (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsrenamedo($campaignID, $campaignName)
-    {
-        list($response) = $this->campaignsrenamedoWithHttpInfo($campaignID, $campaignName);
-        return $response;
     }
 
     /**
@@ -3653,19 +2389,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsrenamedoAsync
+     * Operation campaignssetExpirationDatedo
      *
-     * Rename
+     * Set Expiration Date
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  \DateTime $expirationDate expirationDate (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignssetExpirationDatedo($campaignID, $expirationDate)
+    {
+        [$response] = $this->campaignssetExpirationDatedoWithHttpInfo($campaignID, $expirationDate);
+        return $response;
+    }
+
+    /**
+     * Operation campaignssetExpirationDatedoAsync
+     *
+     * Set Expiration Date
      *
      * @param  int $campaignID (required)
-     * @param  string $campaignName (required)
+     * @param  \DateTime $expirationDate (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsrenamedoAsync($campaignID, $campaignName)
+    public function campaignssetExpirationDatedoAsync($campaignID, $expirationDate)
     {
-        return $this->campaignsrenamedoAsyncWithHttpInfo($campaignID, $campaignName)
+        return $this->campaignssetExpirationDatedoAsyncWithHttpInfo($campaignID, $expirationDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3674,20 +2428,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsrenamedoAsyncWithHttpInfo
+     * Operation campaignssetExpirationDatedoAsyncWithHttpInfo
      *
-     * Rename
+     * Set Expiration Date
      *
      * @param  int $campaignID (required)
-     * @param  string $campaignName (required)
+     * @param  \DateTime $expirationDate (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsrenamedoAsyncWithHttpInfo($campaignID, $campaignName)
+    public function campaignssetExpirationDatedoAsyncWithHttpInfo($campaignID, $expirationDate)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsrenamedoRequest($campaignID, $campaignName);
+        $request    = $this->campaignssetExpirationDatedoRequest($campaignID, $expirationDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3721,137 +2475,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsrenamedo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $campaignName (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsrenamedoRequest($campaignID, $campaignName)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsrenamedo'
-            );
-        }
-        // verify the required parameter 'campaignName' is set
-        if ($campaignName === null || (is_array($campaignName) && count($campaignName) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignName when calling campaignsrenamedo'
-            );
-        }
-
-        $resourcePath = '/campaigns/rename.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($campaignName !== null) {
-            $queryParams['campaignName'] = ObjectSerializer::toQueryValue($campaignName);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignssetExpirationDatedo
-     *
-     * Set Expiration Date
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  \DateTime $expirationDate expirationDate (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignssetExpirationDatedo($campaignID, $expirationDate)
-    {
-        list($response) = $this->campaignssetExpirationDatedoWithHttpInfo($campaignID, $expirationDate);
-        return $response;
     }
 
     /**
@@ -3943,19 +2566,37 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignssetExpirationDatedoAsync
+     * Operation campaignsunassignTrackingNumberdo
      *
-     * Set Expiration Date
+     * Unassign Tracking Number
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $number number (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsunassignTrackingNumberdo($campaignID, $number)
+    {
+        [$response] = $this->campaignsunassignTrackingNumberdoWithHttpInfo($campaignID, $number);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsunassignTrackingNumberdoAsync
+     *
+     * Unassign Tracking Number
      *
      * @param  int $campaignID (required)
-     * @param  \DateTime $expirationDate (required)
+     * @param  string $number (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignssetExpirationDatedoAsync($campaignID, $expirationDate)
+    public function campaignsunassignTrackingNumberdoAsync($campaignID, $number)
     {
-        return $this->campaignssetExpirationDatedoAsyncWithHttpInfo($campaignID, $expirationDate)
+        return $this->campaignsunassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3964,20 +2605,20 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignssetExpirationDatedoAsyncWithHttpInfo
+     * Operation campaignsunassignTrackingNumberdoAsyncWithHttpInfo
      *
-     * Set Expiration Date
+     * Unassign Tracking Number
      *
      * @param  int $campaignID (required)
-     * @param  \DateTime $expirationDate (required)
+     * @param  string $number (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignssetExpirationDatedoAsyncWithHttpInfo($campaignID, $expirationDate)
+    public function campaignsunassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignssetExpirationDatedoRequest($campaignID, $expirationDate);
+        $request    = $this->campaignsunassignTrackingNumberdoRequest($campaignID, $number);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4011,137 +2652,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignssetExpirationDatedo'
-     *
-     * @param  int $campaignID (required)
-     * @param  \DateTime $expirationDate (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignssetExpirationDatedoRequest($campaignID, $expirationDate)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignssetExpirationDatedo'
-            );
-        }
-        // verify the required parameter 'expirationDate' is set
-        if ($expirationDate === null || (is_array($expirationDate) && count($expirationDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $expirationDate when calling campaignssetExpirationDatedo'
-            );
-        }
-
-        $resourcePath = '/campaigns/setExpirationDate.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($expirationDate !== null) {
-            $queryParams['expirationDate'] = ObjectSerializer::toQueryValue($expirationDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsunassignTrackingNumberdo
-     *
-     * Unassign Tracking Number
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $number number (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsunassignTrackingNumberdo($campaignID, $number)
-    {
-        list($response) = $this->campaignsunassignTrackingNumberdoWithHttpInfo($campaignID, $number);
-        return $response;
     }
 
     /**
@@ -4233,19 +2743,41 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsunassignTrackingNumberdoAsync
+     * Operation campaignsupdateBasicInfodo
      *
-     * Unassign Tracking Number
+     * Update Basic Info
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $campaignName campaignName (optional)
+     * @param  string $notes notes (optional)
+     * @param  string $alternativeID alternativeID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
+    {
+        [$response] = $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsupdateBasicInfodoAsync
+     *
+     * Update Basic Info
      *
      * @param  int $campaignID (required)
-     * @param  string $number (required)
+     * @param  string $campaignName (optional)
+     * @param  string $notes (optional)
+     * @param  string $alternativeID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsunassignTrackingNumberdoAsync($campaignID, $number)
+    public function campaignsupdateBasicInfodoAsync($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
     {
-        return $this->campaignsunassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+        return $this->campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4254,20 +2786,22 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsunassignTrackingNumberdoAsyncWithHttpInfo
+     * Operation campaignsupdateBasicInfodoAsyncWithHttpInfo
      *
-     * Unassign Tracking Number
+     * Update Basic Info
      *
      * @param  int $campaignID (required)
-     * @param  string $number (required)
+     * @param  string $campaignName (optional)
+     * @param  string $notes (optional)
+     * @param  string $alternativeID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsunassignTrackingNumberdoAsyncWithHttpInfo($campaignID, $number)
+    public function campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsunassignTrackingNumberdoRequest($campaignID, $number);
+        $request    = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $notes, $alternativeID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4301,139 +2835,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsunassignTrackingNumberdo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $number (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsunassignTrackingNumberdoRequest($campaignID, $number)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsunassignTrackingNumberdo'
-            );
-        }
-        // verify the required parameter 'number' is set
-        if ($number === null || (is_array($number) && count($number) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $number when calling campaignsunassignTrackingNumberdo'
-            );
-        }
-
-        $resourcePath = '/campaigns/unassignTrackingNumber.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($number !== null) {
-            $queryParams['number'] = ObjectSerializer::toQueryValue($number);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsupdateBasicInfodo
-     *
-     * Update Basic Info
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $campaignName campaignName (optional)
-     * @param  string $notes notes (optional)
-     * @param  string $alternativeID alternativeID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
-    {
-        list($response) = $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID);
-        return $response;
     }
 
     /**
@@ -4527,21 +2928,41 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsupdateBasicInfodoAsync
+     * Operation campaignsupdateClicksRevenuedo
      *
-     * Update Basic Info
+     * Update Clicks Revenue
+     *
+     * @param  int $campaignID campaignID (required)
+     * @param  string $startDate startDate (required)
+     * @param  string $endDate endDate (required)
+     * @param  float $revenue revenue (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
+    {
+        [$response] = $this->campaignsupdateClicksRevenuedoWithHttpInfo($campaignID, $startDate, $endDate, $revenue);
+        return $response;
+    }
+
+    /**
+     * Operation campaignsupdateClicksRevenuedoAsync
+     *
+     * Update Clicks Revenue
      *
      * @param  int $campaignID (required)
-     * @param  string $campaignName (optional)
-     * @param  string $notes (optional)
-     * @param  string $alternativeID (optional)
+     * @param  string $startDate (required)
+     * @param  string $endDate (required)
+     * @param  float $revenue (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsupdateBasicInfodoAsync($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
+    public function campaignsupdateClicksRevenuedoAsync($campaignID, $startDate, $endDate, $revenue)
     {
-        return $this->campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID)
+        return $this->campaignsupdateClicksRevenuedoAsyncWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4550,22 +2971,22 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsupdateBasicInfodoAsyncWithHttpInfo
+     * Operation campaignsupdateClicksRevenuedoAsyncWithHttpInfo
      *
-     * Update Basic Info
+     * Update Clicks Revenue
      *
      * @param  int $campaignID (required)
-     * @param  string $campaignName (optional)
-     * @param  string $notes (optional)
-     * @param  string $alternativeID (optional)
+     * @param  string $startDate (required)
+     * @param  string $endDate (required)
+     * @param  float $revenue (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
+    public function campaignsupdateClicksRevenuedoAsyncWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $notes, $alternativeID);
+        $request    = $this->campaignsupdateClicksRevenuedoRequest($campaignID, $startDate, $endDate, $revenue);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4599,143 +3020,6 @@ class CampaignsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'campaignsupdateBasicInfodo'
-     *
-     * @param  int $campaignID (required)
-     * @param  string $campaignName (optional)
-     * @param  string $notes (optional)
-     * @param  string $alternativeID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function campaignsupdateBasicInfodoRequest($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
-    {
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsupdateBasicInfodo'
-            );
-        }
-
-        $resourcePath = '/campaigns/updateBasicInfo.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($campaignName !== null) {
-            $queryParams['campaignName'] = ObjectSerializer::toQueryValue($campaignName);
-        }
-        // query params
-        if ($notes !== null) {
-            $queryParams['notes'] = ObjectSerializer::toQueryValue($notes);
-        }
-        // query params
-        if ($alternativeID !== null) {
-            $queryParams['alternativeID'] = ObjectSerializer::toQueryValue($alternativeID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation campaignsupdateClicksRevenuedo
-     *
-     * Update Clicks Revenue
-     *
-     * @param  int $campaignID campaignID (required)
-     * @param  string $startDate startDate (required)
-     * @param  string $endDate endDate (required)
-     * @param  float $revenue revenue (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function campaignsupdateClicksRevenuedo($campaignID, $startDate, $endDate, $revenue)
-    {
-        list($response) = $this->campaignsupdateClicksRevenuedoWithHttpInfo($campaignID, $startDate, $endDate, $revenue);
-        return $response;
     }
 
     /**
@@ -4829,78 +3113,1794 @@ class CampaignsApi
     }
 
     /**
-     * Operation campaignsupdateClicksRevenuedoAsync
-     *
-     * Update Clicks Revenue
-     *
-     * @param  int $campaignID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
-     * @param  float $revenue (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function campaignsupdateClicksRevenuedoAsync($campaignID, $startDate, $endDate, $revenue)
+    public function getConfig()
     {
-        return $this->campaignsupdateClicksRevenuedoAsyncWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation campaignsupdateClicksRevenuedoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Update Clicks Revenue
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create request for operation 'campaignsassignTrackingNumberdo'
      *
      * @param  int $campaignID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
-     * @param  float $revenue (required)
+     * @param  string $number (required)
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function campaignsupdateClicksRevenuedoAsyncWithHttpInfo($campaignID, $startDate, $endDate, $revenue)
+    protected function campaignsassignTrackingNumberdoRequest($campaignID, $number)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->campaignsupdateClicksRevenuedoRequest($campaignID, $startDate, $endDate, $revenue);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsassignTrackingNumberdo'
             );
+        }
+        // verify the required parameter 'number' is set
+        if ($number === null || (is_array($number) && count($number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $number when calling campaignsassignTrackingNumberdo'
+            );
+        }
+
+        $resourcePath = '/campaigns/assignTrackingNumber.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($number !== null) {
+            $queryParams['number'] = ObjectSerializer::toQueryValue($number);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignschangeGoalsStaticThrottledo'
+     *
+     * @param  int $campaignID (required)
+     * @param  float $goalsStaticThrottle (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignschangeGoalsStaticThrottledoRequest($campaignID, $goalsStaticThrottle)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignschangeGoalsStaticThrottledo'
+            );
+        }
+        // verify the required parameter 'goalsStaticThrottle' is set
+        if ($goalsStaticThrottle === null || (is_array($goalsStaticThrottle) && count($goalsStaticThrottle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $goalsStaticThrottle when calling campaignschangeGoalsStaticThrottledo'
+            );
+        }
+
+        $resourcePath = '/campaigns/changeGoalsStaticThrottle.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($goalsStaticThrottle !== null) {
+            $queryParams['goalsStaticThrottle'] = ObjectSerializer::toQueryValue($goalsStaticThrottle);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignschangeModedo'
+     *
+     * @param  int $campaignID (required)
+     * @param  string $mode (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignschangeModedoRequest($campaignID, $mode)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignschangeModedo'
+            );
+        }
+        // verify the required parameter 'mode' is set
+        if ($mode === null || (is_array($mode) && count($mode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $mode when calling campaignschangeModedo'
+            );
+        }
+
+        $resourcePath = '/campaigns/changeMode.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($mode !== null) {
+            $queryParams['mode'] = ObjectSerializer::toQueryValue($mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignschangeOfferStaticThrottledo'
+     *
+     * @param  int $campaignID (required)
+     * @param  float $offerStaticThrottle (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignschangeOfferStaticThrottledoRequest($campaignID, $offerStaticThrottle)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignschangeOfferStaticThrottledo'
+            );
+        }
+        // verify the required parameter 'offerStaticThrottle' is set
+        if ($offerStaticThrottle === null || (is_array($offerStaticThrottle) && count($offerStaticThrottle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $offerStaticThrottle when calling campaignschangeOfferStaticThrottledo'
+            );
+        }
+
+        $resourcePath = '/campaigns/changeOfferStaticThrottle.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($offerStaticThrottle !== null) {
+            $queryParams['offerStaticThrottle'] = ObjectSerializer::toQueryValue($offerStaticThrottle);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignschangeStatusdo'
+     *
+     * @param  int $campaignID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignschangeStatusdoRequest($campaignID, $status)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignschangeStatusdo'
+            );
+        }
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling campaignschangeStatusdo'
+            );
+        }
+
+        $resourcePath = '/campaigns/changeStatus.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsdeletedo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsdeletedoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsdeletedo'
+            );
+        }
+
+        $resourcePath = '/campaigns/delete.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsgetAlldo'
+     *
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $verticalID (optional)
+     * @param  string $status (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsgetAlldoRequest($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100)
+    {
+        $resourcePath = '/campaigns/getAll.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsgetBasicInfodo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsgetBasicInfodoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsgetBasicInfodo'
+            );
+        }
+
+        $resourcePath = '/campaigns/getBasicInfo.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsgetGoalsStaticThrottledo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsgetGoalsStaticThrottledoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsgetGoalsStaticThrottledo'
+            );
+        }
+
+        $resourcePath = '/campaigns/getGoalsStaticThrottle.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsgetOfferStaticThrottledo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsgetOfferStaticThrottledoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsgetOfferStaticThrottledo'
+            );
+        }
+
+        $resourcePath = '/campaigns/getOfferStaticThrottle.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsgetPostKeysdo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsgetPostKeysdoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsgetPostKeysdo'
+            );
+        }
+
+        $resourcePath = '/campaigns/getPostKeys.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsremoveExpirationDatedo'
+     *
+     * @param  int $campaignID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsremoveExpirationDatedoRequest($campaignID)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsremoveExpirationDatedo'
+            );
+        }
+
+        $resourcePath = '/campaigns/removeExpirationDate.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsrenamedo'
+     *
+     * @param  int $campaignID (required)
+     * @param  string $campaignName (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsrenamedoRequest($campaignID, $campaignName)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsrenamedo'
+            );
+        }
+        // verify the required parameter 'campaignName' is set
+        if ($campaignName === null || (is_array($campaignName) && count($campaignName) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignName when calling campaignsrenamedo'
+            );
+        }
+
+        $resourcePath = '/campaigns/rename.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($campaignName !== null) {
+            $queryParams['campaignName'] = ObjectSerializer::toQueryValue($campaignName);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignssetExpirationDatedo'
+     *
+     * @param  int $campaignID (required)
+     * @param  \DateTime $expirationDate (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignssetExpirationDatedoRequest($campaignID, $expirationDate)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignssetExpirationDatedo'
+            );
+        }
+        // verify the required parameter 'expirationDate' is set
+        if ($expirationDate === null || (is_array($expirationDate) && count($expirationDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $expirationDate when calling campaignssetExpirationDatedo'
+            );
+        }
+
+        $resourcePath = '/campaigns/setExpirationDate.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($expirationDate !== null) {
+            $queryParams['expirationDate'] = ObjectSerializer::toQueryValue($expirationDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsunassignTrackingNumberdo'
+     *
+     * @param  int $campaignID (required)
+     * @param  string $number (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsunassignTrackingNumberdoRequest($campaignID, $number)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsunassignTrackingNumberdo'
+            );
+        }
+        // verify the required parameter 'number' is set
+        if ($number === null || (is_array($number) && count($number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $number when calling campaignsunassignTrackingNumberdo'
+            );
+        }
+
+        $resourcePath = '/campaigns/unassignTrackingNumber.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($number !== null) {
+            $queryParams['number'] = ObjectSerializer::toQueryValue($number);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'campaignsupdateBasicInfodo'
+     *
+     * @param  int $campaignID (required)
+     * @param  string $campaignName (optional)
+     * @param  string $notes (optional)
+     * @param  string $alternativeID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function campaignsupdateBasicInfodoRequest($campaignID, $campaignName = null, $notes = null, $alternativeID = null)
+    {
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsupdateBasicInfodo'
+            );
+        }
+
+        $resourcePath = '/campaigns/updateBasicInfo.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($campaignName !== null) {
+            $queryParams['campaignName'] = ObjectSerializer::toQueryValue($campaignName);
+        }
+        // query params
+        if ($notes !== null) {
+            $queryParams['notes'] = ObjectSerializer::toQueryValue($notes);
+        }
+        // query params
+        if ($alternativeID !== null) {
+            $queryParams['alternativeID'] = ObjectSerializer::toQueryValue($alternativeID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -4984,7 +4984,7 @@ class CampaignsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5000,10 +5000,10 @@ class CampaignsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5029,7 +5029,7 @@ class CampaignsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

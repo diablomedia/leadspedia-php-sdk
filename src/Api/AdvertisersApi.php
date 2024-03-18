@@ -88,34 +88,6 @@ class AdvertisersApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation advertisersadjustCreditdo
      *
      * Adjust Credit
@@ -136,8 +108,93 @@ class AdvertisersApi
      */
     public function advertisersadjustCreditdo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
     {
-        list($response) = $this->advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+        [$response] = $this->advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
         return $response;
+    }
+
+    /**
+     * Operation advertisersadjustCreditdoAsync
+     *
+     * Adjust Credit
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $type (required)
+     * @param  float $amount (required)
+     * @param  string $charge (optional, default to 'No')
+     * @param  string $generateInvoice (optional, default to 'No')
+     * @param  string $note (optional)
+     * @param  string $transactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersadjustCreditdoAsync($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
+    {
+        return $this->advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersadjustCreditdoAsyncWithHttpInfo
+     *
+     * Adjust Credit
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $type (required)
+     * @param  float $amount (required)
+     * @param  string $charge (optional, default to 'No')
+     * @param  string $generateInvoice (optional, default to 'No')
+     * @param  string $note (optional)
+     * @param  string $transactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -236,26 +293,37 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersadjustCreditdoAsync
+     * Operation advertiserschangeStatusdo
      *
-     * Adjust Credit
+     * Change Status
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  string $status status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertiserschangeStatusdo($advertiserID, $status)
+    {
+        [$response] = $this->advertiserschangeStatusdoWithHttpInfo($advertiserID, $status);
+        return $response;
+    }
+
+    /**
+     * Operation advertiserschangeStatusdoAsync
+     *
+     * Change Status
      *
      * @param  int $advertiserID (required)
-     * @param  string $type (required)
-     * @param  float $amount (required)
-     * @param  string $charge (optional, default to 'No')
-     * @param  string $generateInvoice (optional, default to 'No')
-     * @param  string $note (optional)
-     * @param  string $transactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersadjustCreditdoAsync($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
+    public function advertiserschangeStatusdoAsync($advertiserID, $status)
     {
-        return $this->advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+        return $this->advertiserschangeStatusdoAsyncWithHttpInfo($advertiserID, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -264,27 +332,20 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersadjustCreditdoAsyncWithHttpInfo
+     * Operation advertiserschangeStatusdoAsyncWithHttpInfo
      *
-     * Adjust Credit
+     * Change Status
      *
      * @param  int $advertiserID (required)
-     * @param  string $type (required)
-     * @param  float $amount (required)
-     * @param  string $charge (optional, default to 'No')
-     * @param  string $generateInvoice (optional, default to 'No')
-     * @param  string $note (optional)
-     * @param  string $transactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
+     * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
+    public function advertiserschangeStatusdoAsyncWithHttpInfo($advertiserID, $status)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
+        $request    = $this->advertiserschangeStatusdoRequest($advertiserID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -318,178 +379,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersadjustCreditdo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  string $type (required)
-     * @param  float $amount (required)
-     * @param  string $charge (optional, default to 'No')
-     * @param  string $generateInvoice (optional, default to 'No')
-     * @param  string $note (optional)
-     * @param  string $transactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersadjustCreditdo'
-            );
-        }
-        // verify the required parameter 'type' is set
-        if ($type === null || (is_array($type) && count($type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $type when calling advertisersadjustCreditdo'
-            );
-        }
-        // verify the required parameter 'amount' is set
-        if ($amount === null || (is_array($amount) && count($amount) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $amount when calling advertisersadjustCreditdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/adjustCredit.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($type !== null) {
-            $queryParams['type'] = ObjectSerializer::toQueryValue($type);
-        }
-        // query params
-        if ($amount !== null) {
-            $queryParams['amount'] = ObjectSerializer::toQueryValue($amount);
-        }
-        // query params
-        if ($charge !== null) {
-            $queryParams['charge'] = ObjectSerializer::toQueryValue($charge);
-        }
-        // query params
-        if ($generateInvoice !== null) {
-            $queryParams['generateInvoice'] = ObjectSerializer::toQueryValue($generateInvoice);
-        }
-        // query params
-        if ($note !== null) {
-            $queryParams['note'] = ObjectSerializer::toQueryValue($note);
-        }
-        // query params
-        if ($transactionFee !== null) {
-            $queryParams['transactionFee'] = ObjectSerializer::toQueryValue($transactionFee);
-        }
-        // query params
-        if ($transactionFeePercentage !== null) {
-            $queryParams['transactionFeePercentage'] = ObjectSerializer::toQueryValue($transactionFeePercentage);
-        }
-        // query params
-        if ($transactionFeeAmount !== null) {
-            $queryParams['transactionFeeAmount'] = ObjectSerializer::toQueryValue($transactionFeeAmount);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertiserschangeStatusdo
-     *
-     * Change Status
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  string $status status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertiserschangeStatusdo($advertiserID, $status)
-    {
-        list($response) = $this->advertiserschangeStatusdoWithHttpInfo($advertiserID, $status);
-        return $response;
     }
 
     /**
@@ -581,19 +470,39 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserschangeStatusdoAsync
+     * Operation advertiserscreatedo
      *
-     * Change Status
+     * Create
      *
-     * @param  int $advertiserID (required)
+     * @param  string $advertiserName advertiserName (required)
+     * @param  int $accountManagerID accountManagerID (required)
+     * @param  string $status status (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertiserscreatedo($advertiserName, $accountManagerID, $status)
+    {
+        [$response] = $this->advertiserscreatedoWithHttpInfo($advertiserName, $accountManagerID, $status);
+        return $response;
+    }
+
+    /**
+     * Operation advertiserscreatedoAsync
+     *
+     * Create
+     *
+     * @param  string $advertiserName (required)
+     * @param  int $accountManagerID (required)
      * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserschangeStatusdoAsync($advertiserID, $status)
+    public function advertiserscreatedoAsync($advertiserName, $accountManagerID, $status)
     {
-        return $this->advertiserschangeStatusdoAsyncWithHttpInfo($advertiserID, $status)
+        return $this->advertiserscreatedoAsyncWithHttpInfo($advertiserName, $accountManagerID, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -602,20 +511,21 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserschangeStatusdoAsyncWithHttpInfo
+     * Operation advertiserscreatedoAsyncWithHttpInfo
      *
-     * Change Status
+     * Create
      *
-     * @param  int $advertiserID (required)
+     * @param  string $advertiserName (required)
+     * @param  int $accountManagerID (required)
      * @param  string $status (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserschangeStatusdoAsyncWithHttpInfo($advertiserID, $status)
+    public function advertiserscreatedoAsyncWithHttpInfo($advertiserName, $accountManagerID, $status)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertiserschangeStatusdoRequest($advertiserID, $status);
+        $request    = $this->advertiserscreatedoRequest($advertiserName, $accountManagerID, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -649,138 +559,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertiserschangeStatusdo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertiserschangeStatusdoRequest($advertiserID, $status)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertiserschangeStatusdo'
-            );
-        }
-        // verify the required parameter 'status' is set
-        if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling advertiserschangeStatusdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/changeStatus.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertiserscreatedo
-     *
-     * Create
-     *
-     * @param  string $advertiserName advertiserName (required)
-     * @param  int $accountManagerID accountManagerID (required)
-     * @param  string $status status (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertiserscreatedo($advertiserName, $accountManagerID, $status)
-    {
-        list($response) = $this->advertiserscreatedoWithHttpInfo($advertiserName, $accountManagerID, $status);
-        return $response;
     }
 
     /**
@@ -873,20 +651,35 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserscreatedoAsync
+     * Operation advertisersdeletedo
      *
-     * Create
+     * Delete
      *
-     * @param  string $advertiserName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
+     * @param  int $advertiserID advertiserID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersdeletedo($advertiserID)
+    {
+        [$response] = $this->advertisersdeletedoWithHttpInfo($advertiserID);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersdeletedoAsync
+     *
+     * Delete
+     *
+     * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserscreatedoAsync($advertiserName, $accountManagerID, $status)
+    public function advertisersdeletedoAsync($advertiserID)
     {
-        return $this->advertiserscreatedoAsyncWithHttpInfo($advertiserName, $accountManagerID, $status)
+        return $this->advertisersdeletedoAsyncWithHttpInfo($advertiserID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -895,21 +688,19 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserscreatedoAsyncWithHttpInfo
+     * Operation advertisersdeletedoAsyncWithHttpInfo
      *
-     * Create
+     * Delete
      *
-     * @param  string $advertiserName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
+     * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserscreatedoAsyncWithHttpInfo($advertiserName, $accountManagerID, $status)
+    public function advertisersdeletedoAsyncWithHttpInfo($advertiserID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertiserscreatedoRequest($advertiserName, $accountManagerID, $status);
+        $request    = $this->advertisersdeletedoRequest($advertiserID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -943,147 +734,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertiserscreatedo'
-     *
-     * @param  string $advertiserName (required)
-     * @param  int $accountManagerID (required)
-     * @param  string $status (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertiserscreatedoRequest($advertiserName, $accountManagerID, $status)
-    {
-        // verify the required parameter 'advertiserName' is set
-        if ($advertiserName === null || (is_array($advertiserName) && count($advertiserName) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserName when calling advertiserscreatedo'
-            );
-        }
-        // verify the required parameter 'accountManagerID' is set
-        if ($accountManagerID === null || (is_array($accountManagerID) && count($accountManagerID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $accountManagerID when calling advertiserscreatedo'
-            );
-        }
-        // verify the required parameter 'status' is set
-        if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling advertiserscreatedo'
-            );
-        }
-
-        $resourcePath = '/advertisers/create.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserName !== null) {
-            $queryParams['advertiserName'] = ObjectSerializer::toQueryValue($advertiserName);
-        }
-        // query params
-        if ($accountManagerID !== null) {
-            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersdeletedo
-     *
-     * Delete
-     *
-     * @param  int $advertiserID advertiserID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersdeletedo($advertiserID)
-    {
-        list($response) = $this->advertisersdeletedoWithHttpInfo($advertiserID);
-        return $response;
     }
 
     /**
@@ -1174,18 +824,35 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersdeletedoAsync
+     * Operation advertisersenableCreditdo
      *
-     * Delete
+     * Enable Credit
+     *
+     * @param  int $advertiserID advertiserID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersenableCreditdo($advertiserID)
+    {
+        [$response] = $this->advertisersenableCreditdoWithHttpInfo($advertiserID);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersenableCreditdoAsync
+     *
+     * Enable Credit
      *
      * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersdeletedoAsync($advertiserID)
+    public function advertisersenableCreditdoAsync($advertiserID)
     {
-        return $this->advertisersdeletedoAsyncWithHttpInfo($advertiserID)
+        return $this->advertisersenableCreditdoAsyncWithHttpInfo($advertiserID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1194,19 +861,19 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersdeletedoAsyncWithHttpInfo
+     * Operation advertisersenableCreditdoAsyncWithHttpInfo
      *
-     * Delete
+     * Enable Credit
      *
      * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersdeletedoAsyncWithHttpInfo($advertiserID)
+    public function advertisersenableCreditdoAsyncWithHttpInfo($advertiserID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersdeletedoRequest($advertiserID);
+        $request    = $this->advertisersenableCreditdoRequest($advertiserID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1240,125 +907,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersdeletedo'
-     *
-     * @param  int $advertiserID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersdeletedoRequest($advertiserID)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersdeletedo'
-            );
-        }
-
-        $resourcePath = '/advertisers/delete.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersenableCreditdo
-     *
-     * Enable Credit
-     *
-     * @param  int $advertiserID advertiserID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersenableCreditdo($advertiserID)
-    {
-        list($response) = $this->advertisersenableCreditdoWithHttpInfo($advertiserID);
-        return $response;
     }
 
     /**
@@ -1449,18 +997,51 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersenableCreditdoAsync
+     * Operation advertisersgetAlldo
      *
-     * Enable Credit
+     * Get All
      *
-     * @param  int $advertiserID (required)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  string $advertiserType advertiserType (optional)
+     * @param  int $accountManagerID accountManagerID (optional)
+     * @param  string $status status (optional)
+     * @param  string $isCreditEnabled isCreditEnabled (optional)
+     * @param  string $hasCreditCardOnFile hasCreditCardOnFile (optional)
+     * @param  string $search search (optional)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function advertisersgetAlldo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
+    {
+        [$response] = $this->advertisersgetAlldoWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersgetAlldoAsync
+     *
+     * Get All
+     *
+     * @param  int $advertiserID (optional)
+     * @param  string $advertiserType (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $isCreditEnabled (optional)
+     * @param  string $hasCreditCardOnFile (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersenableCreditdoAsync($advertiserID)
+    public function advertisersgetAlldoAsync($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
     {
-        return $this->advertisersenableCreditdoAsyncWithHttpInfo($advertiserID)
+        return $this->advertisersgetAlldoAsyncWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1469,19 +1050,27 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersenableCreditdoAsyncWithHttpInfo
+     * Operation advertisersgetAlldoAsyncWithHttpInfo
      *
-     * Enable Credit
+     * Get All
      *
-     * @param  int $advertiserID (required)
+     * @param  int $advertiserID (optional)
+     * @param  string $advertiserType (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $isCreditEnabled (optional)
+     * @param  string $hasCreditCardOnFile (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersenableCreditdoAsyncWithHttpInfo($advertiserID)
+    public function advertisersgetAlldoAsyncWithHttpInfo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersenableCreditdoRequest($advertiserID);
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->advertisersgetAlldoRequest($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1515,133 +1104,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersenableCreditdo'
-     *
-     * @param  int $advertiserID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersenableCreditdoRequest($advertiserID)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersenableCreditdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/enableCredit.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersgetAlldo
-     *
-     * Get All
-     *
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  string $advertiserType advertiserType (optional)
-     * @param  int $accountManagerID accountManagerID (optional)
-     * @param  string $status status (optional)
-     * @param  string $isCreditEnabled isCreditEnabled (optional)
-     * @param  string $hasCreditCardOnFile hasCreditCardOnFile (optional)
-     * @param  string $search search (optional)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function advertisersgetAlldo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
-    {
-        list($response) = $this->advertisersgetAlldoWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -1740,26 +1202,35 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersgetAlldoAsync
+     * Operation advertisersgetInfodo
      *
-     * Get All
+     * Get Info
      *
-     * @param  int $advertiserID (optional)
-     * @param  string $advertiserType (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $isCreditEnabled (optional)
-     * @param  string $hasCreditCardOnFile (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $advertiserID advertiserID (required)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function advertisersgetInfodo($advertiserID)
+    {
+        [$response] = $this->advertisersgetInfodoWithHttpInfo($advertiserID);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersgetInfodoAsync
+     *
+     * Get Info
+     *
+     * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetAlldoAsync($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
+    public function advertisersgetInfodoAsync($advertiserID)
     {
-        return $this->advertisersgetAlldoAsyncWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit)
+        return $this->advertisersgetInfodoAsyncWithHttpInfo($advertiserID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1768,27 +1239,19 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersgetAlldoAsyncWithHttpInfo
+     * Operation advertisersgetInfodoAsyncWithHttpInfo
      *
-     * Get All
+     * Get Info
      *
-     * @param  int $advertiserID (optional)
-     * @param  string $advertiserType (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $isCreditEnabled (optional)
-     * @param  string $hasCreditCardOnFile (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $advertiserID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetAlldoAsyncWithHttpInfo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
+    public function advertisersgetInfodoAsyncWithHttpInfo($advertiserID)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->advertisersgetAlldoRequest($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
+        $request    = $this->advertisersgetInfodoRequest($advertiserID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1822,158 +1285,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersgetAlldo'
-     *
-     * @param  int $advertiserID (optional)
-     * @param  string $advertiserType (optional)
-     * @param  int $accountManagerID (optional)
-     * @param  string $status (optional)
-     * @param  string $isCreditEnabled (optional)
-     * @param  string $hasCreditCardOnFile (optional)
-     * @param  string $search (optional)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersgetAlldoRequest($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
-    {
-        $resourcePath = '/advertisers/getAll.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($advertiserType !== null) {
-            $queryParams['advertiserType'] = ObjectSerializer::toQueryValue($advertiserType);
-        }
-        // query params
-        if ($accountManagerID !== null) {
-            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
-        }
-        // query params
-        if ($status !== null) {
-            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
-        }
-        // query params
-        if ($isCreditEnabled !== null) {
-            $queryParams['isCreditEnabled'] = ObjectSerializer::toQueryValue($isCreditEnabled);
-        }
-        // query params
-        if ($hasCreditCardOnFile !== null) {
-            $queryParams['hasCreditCardOnFile'] = ObjectSerializer::toQueryValue($hasCreditCardOnFile);
-        }
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersgetInfodo
-     *
-     * Get Info
-     *
-     * @param  int $advertiserID advertiserID (required)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function advertisersgetInfodo($advertiserID)
-    {
-        list($response) = $this->advertisersgetInfodoWithHttpInfo($advertiserID);
-        return $response;
     }
 
     /**
@@ -2064,18 +1375,39 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersgetInfodoAsync
+     * Operation advertiserssearchdo
      *
-     * Get Info
+     * Search
      *
-     * @param  int $advertiserID (required)
+     * @param  string $search search (required)
+     * @param  int $start start (optional, default to 0)
+     * @param  int $limit limit (optional, default to 100)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function advertiserssearchdo($search, $start = 0, $limit = 100)
+    {
+        [$response] = $this->advertiserssearchdoWithHttpInfo($search, $start, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation advertiserssearchdoAsync
+     *
+     * Search
+     *
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetInfodoAsync($advertiserID)
+    public function advertiserssearchdoAsync($search, $start = 0, $limit = 100)
     {
-        return $this->advertisersgetInfodoAsyncWithHttpInfo($advertiserID)
+        return $this->advertiserssearchdoAsyncWithHttpInfo($search, $start, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2084,19 +1416,21 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersgetInfodoAsyncWithHttpInfo
+     * Operation advertiserssearchdoAsyncWithHttpInfo
      *
-     * Get Info
+     * Search
      *
-     * @param  int $advertiserID (required)
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetInfodoAsyncWithHttpInfo($advertiserID)
+    public function advertiserssearchdoAsyncWithHttpInfo($search, $start = 0, $limit = 100)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->advertisersgetInfodoRequest($advertiserID);
+        $request    = $this->advertiserssearchdoRequest($search, $start, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2130,127 +1464,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersgetInfodo'
-     *
-     * @param  int $advertiserID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersgetInfodoRequest($advertiserID)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersgetInfodo'
-            );
-        }
-
-        $resourcePath = '/advertisers/getInfo.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertiserssearchdo
-     *
-     * Search
-     *
-     * @param  string $search search (required)
-     * @param  int $start start (optional, default to 0)
-     * @param  int $limit limit (optional, default to 100)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function advertiserssearchdo($search, $start = 0, $limit = 100)
-    {
-        list($response) = $this->advertiserssearchdoWithHttpInfo($search, $start, $limit);
-        return $response;
     }
 
     /**
@@ -2343,20 +1556,37 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserssearchdoAsync
+     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdo
      *
-     * Search
+     * Update Authorize Net Customer Profile ID
      *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $advertiserID advertiserID (required)
+     * @param  string $authNetCustomerProfileID authNetCustomerProfileID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID = null)
+    {
+        [$response] = $this->advertisersupdateAuthorizeNetCustomerProfileIDdoWithHttpInfo($advertiserID, $authNetCustomerProfileID);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdoAsync
+     *
+     * Update Authorize Net Customer Profile ID
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $authNetCustomerProfileID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserssearchdoAsync($search, $start = 0, $limit = 100)
+    public function advertisersupdateAuthorizeNetCustomerProfileIDdoAsync($advertiserID, $authNetCustomerProfileID = null)
     {
-        return $this->advertiserssearchdoAsyncWithHttpInfo($search, $start, $limit)
+        return $this->advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo($advertiserID, $authNetCustomerProfileID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2365,21 +1595,20 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertiserssearchdoAsyncWithHttpInfo
+     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo
      *
-     * Search
+     * Update Authorize Net Customer Profile ID
      *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $advertiserID (required)
+     * @param  string $authNetCustomerProfileID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertiserssearchdoAsyncWithHttpInfo($search, $start = 0, $limit = 100)
+    public function advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo($advertiserID, $authNetCustomerProfileID = null)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->advertiserssearchdoRequest($search, $start, $limit);
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateAuthorizeNetCustomerProfileIDdoRequest($advertiserID, $authNetCustomerProfileID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2413,136 +1642,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertiserssearchdo'
-     *
-     * @param  string $search (required)
-     * @param  int $start (optional, default to 0)
-     * @param  int $limit (optional, default to 100)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertiserssearchdoRequest($search, $start = 0, $limit = 100)
-    {
-        // verify the required parameter 'search' is set
-        if ($search === null || (is_array($search) && count($search) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $search when calling advertiserssearchdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/search.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($search !== null) {
-            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
-        }
-        // query params
-        if ($start !== null) {
-            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdo
-     *
-     * Update Authorize Net Customer Profile ID
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  string $authNetCustomerProfileID authNetCustomerProfileID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateAuthorizeNetCustomerProfileIDdo($advertiserID, $authNetCustomerProfileID = null)
-    {
-        list($response) = $this->advertisersupdateAuthorizeNetCustomerProfileIDdoWithHttpInfo($advertiserID, $authNetCustomerProfileID);
-        return $response;
     }
 
     /**
@@ -2634,19 +1733,49 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdoAsync
+     * Operation advertisersupdateAutoRechargeSettingsdo
      *
-     * Update Authorize Net Customer Profile ID
+     * Update Auto Recharge Settings
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  string $enableAutoRecharge enableAutoRecharge (optional)
+     * @param  float $autoChargeBalance autoChargeBalance (optional)
+     * @param  float $autoChargeAmount autoChargeAmount (optional)
+     * @param  string $chargeTransactionFee chargeTransactionFee (optional)
+     * @param  float $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount transactionFeeAmount (optional)
+     * @param  string $generateInvoice generateInvoice (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
+    {
+        [$response] = $this->advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateAutoRechargeSettingsdoAsync
+     *
+     * Update Auto Recharge Settings
      *
      * @param  int $advertiserID (required)
-     * @param  string $authNetCustomerProfileID (optional)
+     * @param  string $enableAutoRecharge (optional)
+     * @param  float $autoChargeBalance (optional)
+     * @param  float $autoChargeAmount (optional)
+     * @param  string $chargeTransactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     * @param  string $generateInvoice (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAuthorizeNetCustomerProfileIDdoAsync($advertiserID, $authNetCustomerProfileID = null)
+    public function advertisersupdateAutoRechargeSettingsdoAsync($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
     {
-        return $this->advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo($advertiserID, $authNetCustomerProfileID)
+        return $this->advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2655,20 +1784,26 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo
+     * Operation advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo
      *
-     * Update Authorize Net Customer Profile ID
+     * Update Auto Recharge Settings
      *
      * @param  int $advertiserID (required)
-     * @param  string $authNetCustomerProfileID (optional)
+     * @param  string $enableAutoRecharge (optional)
+     * @param  float $autoChargeBalance (optional)
+     * @param  float $autoChargeAmount (optional)
+     * @param  string $chargeTransactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     * @param  string $generateInvoice (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAuthorizeNetCustomerProfileIDdoAsyncWithHttpInfo($advertiserID, $authNetCustomerProfileID = null)
+    public function advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateAuthorizeNetCustomerProfileIDdoRequest($advertiserID, $authNetCustomerProfileID);
+        $request    = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2702,137 +1837,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersupdateAuthorizeNetCustomerProfileIDdo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  string $authNetCustomerProfileID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersupdateAuthorizeNetCustomerProfileIDdoRequest($advertiserID, $authNetCustomerProfileID = null)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersupdateAuthorizeNetCustomerProfileIDdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/updateAuthorizeNetCustomerProfileID.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($authNetCustomerProfileID !== null) {
-            $queryParams['authNetCustomerProfileID'] = ObjectSerializer::toQueryValue($authNetCustomerProfileID);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersupdateAutoRechargeSettingsdo
-     *
-     * Update Auto Recharge Settings
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  string $enableAutoRecharge enableAutoRecharge (optional)
-     * @param  float $autoChargeBalance autoChargeBalance (optional)
-     * @param  float $autoChargeAmount autoChargeAmount (optional)
-     * @param  string $chargeTransactionFee chargeTransactionFee (optional)
-     * @param  float $transactionFeePercentage transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  string $generateInvoice generateInvoice (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
-    {
-        list($response) = $this->advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
-        return $response;
     }
 
     /**
@@ -2930,25 +1934,41 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateAutoRechargeSettingsdoAsync
+     * Operation advertisersupdateBillingdo
      *
-     * Update Auto Recharge Settings
+     * Update Billing
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  string $billingCycle billingCycle (optional)
+     * @param  string $taxID taxID (optional)
+     * @param  string $taxClass taxClass (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateBillingdo($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
+    {
+        [$response] = $this->advertisersupdateBillingdoWithHttpInfo($advertiserID, $billingCycle, $taxID, $taxClass);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateBillingdoAsync
+     *
+     * Update Billing
      *
      * @param  int $advertiserID (required)
-     * @param  string $enableAutoRecharge (optional)
-     * @param  float $autoChargeBalance (optional)
-     * @param  float $autoChargeAmount (optional)
-     * @param  string $chargeTransactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
-     * @param  string $generateInvoice (optional)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAutoRechargeSettingsdoAsync($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
+    public function advertisersupdateBillingdoAsync($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
     {
-        return $this->advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+        return $this->advertisersupdateBillingdoAsyncWithHttpInfo($advertiserID, $billingCycle, $taxID, $taxClass)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2957,26 +1977,22 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo
+     * Operation advertisersupdateBillingdoAsyncWithHttpInfo
      *
-     * Update Auto Recharge Settings
+     * Update Billing
      *
      * @param  int $advertiserID (required)
-     * @param  string $enableAutoRecharge (optional)
-     * @param  float $autoChargeBalance (optional)
-     * @param  float $autoChargeAmount (optional)
-     * @param  string $chargeTransactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
-     * @param  string $generateInvoice (optional)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
+    public function advertisersupdateBillingdoAsyncWithHttpInfo($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
+        $request    = $this->advertisersupdateBillingdoRequest($advertiserID, $billingCycle, $taxID, $taxClass);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3010,163 +2026,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersupdateAutoRechargeSettingsdo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  string $enableAutoRecharge (optional)
-     * @param  float $autoChargeBalance (optional)
-     * @param  float $autoChargeAmount (optional)
-     * @param  string $chargeTransactionFee (optional)
-     * @param  float $transactionFeePercentage (optional)
-     * @param  float $transactionFeeAmount (optional)
-     * @param  string $generateInvoice (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersupdateAutoRechargeSettingsdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/updateAutoRechargeSettings.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($enableAutoRecharge !== null) {
-            $queryParams['enableAutoRecharge'] = ObjectSerializer::toQueryValue($enableAutoRecharge);
-        }
-        // query params
-        if ($autoChargeBalance !== null) {
-            $queryParams['autoChargeBalance'] = ObjectSerializer::toQueryValue($autoChargeBalance);
-        }
-        // query params
-        if ($autoChargeAmount !== null) {
-            $queryParams['autoChargeAmount'] = ObjectSerializer::toQueryValue($autoChargeAmount);
-        }
-        // query params
-        if ($chargeTransactionFee !== null) {
-            $queryParams['chargeTransactionFee'] = ObjectSerializer::toQueryValue($chargeTransactionFee);
-        }
-        // query params
-        if ($transactionFeePercentage !== null) {
-            $queryParams['transactionFeePercentage'] = ObjectSerializer::toQueryValue($transactionFeePercentage);
-        }
-        // query params
-        if ($transactionFeeAmount !== null) {
-            $queryParams['transactionFeeAmount'] = ObjectSerializer::toQueryValue($transactionFeeAmount);
-        }
-        // query params
-        if ($generateInvoice !== null) {
-            $queryParams['generateInvoice'] = ObjectSerializer::toQueryValue($generateInvoice);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersupdateBillingdo
-     *
-     * Update Billing
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  string $billingCycle billingCycle (optional)
-     * @param  string $taxID taxID (optional)
-     * @param  string $taxClass taxClass (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateBillingdo($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
-    {
-        list($response) = $this->advertisersupdateBillingdoWithHttpInfo($advertiserID, $billingCycle, $taxID, $taxClass);
-        return $response;
     }
 
     /**
@@ -3260,21 +2119,65 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateBillingdoAsync
+     * Operation advertisersupdateInfodo
      *
-     * Update Billing
+     * Update Info
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  string $advertiserName advertiserName (optional)
+     * @param  string $website website (optional)
+     * @param  string $alternateID alternateID (optional)
+     * @param  string $source source (optional)
+     * @param  string $externalCRMID externalCRMID (optional)
+     * @param  int $numberOfStaff numberOfStaff (optional)
+     * @param  string $address address (optional)
+     * @param  string $address2 address2 (optional)
+     * @param  string $city city (optional)
+     * @param  string $state state (optional)
+     * @param  string $zipCode zipCode (optional)
+     * @param  string $country country (optional)
+     * @param  string $reportingUrl reportingUrl (optional)
+     * @param  string $reportingUsername reportingUsername (optional)
+     * @param  string $reportingPassword reportingPassword (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateInfodo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    {
+        [$response] = $this->advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateInfodoAsync
+     *
+     * Update Info
      *
      * @param  int $advertiserID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
+     * @param  string $advertiserName (optional)
+     * @param  string $website (optional)
+     * @param  string $alternateID (optional)
+     * @param  string $source (optional)
+     * @param  string $externalCRMID (optional)
+     * @param  int $numberOfStaff (optional)
+     * @param  string $address (optional)
+     * @param  string $address2 (optional)
+     * @param  string $city (optional)
+     * @param  string $state (optional)
+     * @param  string $zipCode (optional)
+     * @param  string $country (optional)
+     * @param  string $reportingUrl (optional)
+     * @param  string $reportingUsername (optional)
+     * @param  string $reportingPassword (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateBillingdoAsync($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
+    public function advertisersupdateInfodoAsync($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
     {
-        return $this->advertisersupdateBillingdoAsyncWithHttpInfo($advertiserID, $billingCycle, $taxID, $taxClass)
+        return $this->advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3283,22 +2186,34 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateBillingdoAsyncWithHttpInfo
+     * Operation advertisersupdateInfodoAsyncWithHttpInfo
      *
-     * Update Billing
+     * Update Info
      *
      * @param  int $advertiserID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
+     * @param  string $advertiserName (optional)
+     * @param  string $website (optional)
+     * @param  string $alternateID (optional)
+     * @param  string $source (optional)
+     * @param  string $externalCRMID (optional)
+     * @param  int $numberOfStaff (optional)
+     * @param  string $address (optional)
+     * @param  string $address2 (optional)
+     * @param  string $city (optional)
+     * @param  string $state (optional)
+     * @param  string $zipCode (optional)
+     * @param  string $country (optional)
+     * @param  string $reportingUrl (optional)
+     * @param  string $reportingUsername (optional)
+     * @param  string $reportingPassword (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateBillingdoAsyncWithHttpInfo($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
+    public function advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateBillingdoRequest($advertiserID, $billingCycle, $taxID, $taxClass);
+        $request    = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3332,155 +2247,6 @@ class AdvertisersApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'advertisersupdateBillingdo'
-     *
-     * @param  int $advertiserID (required)
-     * @param  string $billingCycle (optional)
-     * @param  string $taxID (optional)
-     * @param  string $taxClass (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function advertisersupdateBillingdoRequest($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
-    {
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersupdateBillingdo'
-            );
-        }
-
-        $resourcePath = '/advertisers/updateBilling.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($billingCycle !== null) {
-            $queryParams['billingCycle'] = ObjectSerializer::toQueryValue($billingCycle);
-        }
-        // query params
-        if ($taxID !== null) {
-            $queryParams['taxID'] = ObjectSerializer::toQueryValue($taxID);
-        }
-        // query params
-        if ($taxClass !== null) {
-            $queryParams['taxClass'] = ObjectSerializer::toQueryValue($taxClass);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation advertisersupdateInfodo
-     *
-     * Update Info
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  string $advertiserName advertiserName (optional)
-     * @param  string $website website (optional)
-     * @param  string $alternateID alternateID (optional)
-     * @param  string $source source (optional)
-     * @param  string $externalCRMID externalCRMID (optional)
-     * @param  int $numberOfStaff numberOfStaff (optional)
-     * @param  string $address address (optional)
-     * @param  string $address2 address2 (optional)
-     * @param  string $city city (optional)
-     * @param  string $state state (optional)
-     * @param  string $zipCode zipCode (optional)
-     * @param  string $country country (optional)
-     * @param  string $reportingUrl reportingUrl (optional)
-     * @param  string $reportingUsername reportingUsername (optional)
-     * @param  string $reportingPassword reportingPassword (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateInfodo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
-    {
-        list($response) = $this->advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
-        return $response;
     }
 
     /**
@@ -3586,33 +2352,41 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateInfodoAsync
+     * Operation advertisersupdateLeadsCapsdo
      *
-     * Update Info
+     * Update Leads Caps
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsDailyCap leadsDailyCap (optional)
+     * @param  int $leadsWeeklyCap leadsWeeklyCap (optional)
+     * @param  int $leadsMonthlyCap leadsMonthlyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsCapsdoWithHttpInfo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsCapsdoAsync
+     *
+     * Update Leads Caps
      *
      * @param  int $advertiserID (required)
-     * @param  string $advertiserName (optional)
-     * @param  string $website (optional)
-     * @param  string $alternateID (optional)
-     * @param  string $source (optional)
-     * @param  string $externalCRMID (optional)
-     * @param  int $numberOfStaff (optional)
-     * @param  string $address (optional)
-     * @param  string $address2 (optional)
-     * @param  string $city (optional)
-     * @param  string $state (optional)
-     * @param  string $zipCode (optional)
-     * @param  string $country (optional)
-     * @param  string $reportingUrl (optional)
-     * @param  string $reportingUsername (optional)
-     * @param  string $reportingPassword (optional)
+     * @param  int $leadsDailyCap (optional)
+     * @param  int $leadsWeeklyCap (optional)
+     * @param  int $leadsMonthlyCap (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateInfodoAsync($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    public function advertisersupdateLeadsCapsdoAsync($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
     {
-        return $this->advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
+        return $this->advertisersupdateLeadsCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3621,34 +2395,22 @@ class AdvertisersApi
     }
 
     /**
-     * Operation advertisersupdateInfodoAsyncWithHttpInfo
+     * Operation advertisersupdateLeadsCapsdoAsyncWithHttpInfo
      *
-     * Update Info
+     * Update Leads Caps
      *
      * @param  int $advertiserID (required)
-     * @param  string $advertiserName (optional)
-     * @param  string $website (optional)
-     * @param  string $alternateID (optional)
-     * @param  string $source (optional)
-     * @param  string $externalCRMID (optional)
-     * @param  int $numberOfStaff (optional)
-     * @param  string $address (optional)
-     * @param  string $address2 (optional)
-     * @param  string $city (optional)
-     * @param  string $state (optional)
-     * @param  string $zipCode (optional)
-     * @param  string $country (optional)
-     * @param  string $reportingUrl (optional)
-     * @param  string $reportingUsername (optional)
-     * @param  string $reportingPassword (optional)
+     * @param  int $leadsDailyCap (optional)
+     * @param  int $leadsWeeklyCap (optional)
+     * @param  int $leadsMonthlyCap (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $numberOfStaff = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $reportingUrl = null, $reportingUsername = null, $reportingPassword = null)
+    public function advertisersupdateLeadsCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $numberOfStaff, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+        $request    = $this->advertisersupdateLeadsCapsdoRequest($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3682,6 +2444,2865 @@ class AdvertisersApi
                     );
                 }
             );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsCapsdoWithHttpInfo
+     *
+     * Update Leads Caps
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyCap (optional)
+     * @param  int $leadsWeeklyCap (optional)
+     * @param  int $leadsMonthlyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsCapsdoWithHttpInfo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
+    {
+        $request = $this->advertisersupdateLeadsCapsdoRequest($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyCapdo
+     *
+     * Update Leads Daily Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsDailyCap leadsDailyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsDailyCapdoWithHttpInfo($advertiserID, $leadsDailyCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyCapdoAsync
+     *
+     * Update Leads Daily Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsDailyCapdoAsync($advertiserID, $leadsDailyCap = null)
+    {
+        return $this->advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Daily Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsDailyCapdoRequest($advertiserID, $leadsDailyCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyCapdoWithHttpInfo
+     *
+     * Update Leads Daily Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsDailyCapdoWithHttpInfo($advertiserID, $leadsDailyCap = null)
+    {
+        $request = $this->advertisersupdateLeadsDailyCapdoRequest($advertiserID, $leadsDailyCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyRevenueCapdo
+     *
+     * Update Leads Daily Revenue Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsDailyRevenueCap leadsDailyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyRevenueCapdoAsync
+     *
+     * Update Leads Daily Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsDailyRevenueCapdoAsync($advertiserID, $leadsDailyRevenueCap = null)
+    {
+        return $this->advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Daily Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsDailyRevenueCapdoRequest($advertiserID, $leadsDailyRevenueCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo
+     *
+     * Update Leads Daily Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null)
+    {
+        $request = $this->advertisersupdateLeadsDailyRevenueCapdoRequest($advertiserID, $leadsDailyRevenueCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyCapdo
+     *
+     * Update Leads Monthly Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsMonthlyCap leadsMonthlyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsMonthlyCapdoWithHttpInfo($advertiserID, $leadsMonthlyCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyCapdoAsync
+     *
+     * Update Leads Monthly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsMonthlyCapdoAsync($advertiserID, $leadsMonthlyCap = null)
+    {
+        return $this->advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Monthly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsMonthlyCapdoRequest($advertiserID, $leadsMonthlyCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyCapdoWithHttpInfo
+     *
+     * Update Leads Monthly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsMonthlyCapdoWithHttpInfo($advertiserID, $leadsMonthlyCap = null)
+    {
+        $request = $this->advertisersupdateLeadsMonthlyCapdoRequest($advertiserID, $leadsMonthlyCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyRevenueCapdo
+     *
+     * Update Leads Monthly Revenue Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsMonthlyRevenueCap leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyRevenueCapdoAsync
+     *
+     * Update Leads Monthly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsMonthlyRevenueCapdoAsync($advertiserID, $leadsMonthlyRevenueCap = null)
+    {
+        return $this->advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Monthly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsMonthlyRevenueCapdoRequest($advertiserID, $leadsMonthlyRevenueCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo
+     *
+     * Update Leads Monthly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap = null)
+    {
+        $request = $this->advertisersupdateLeadsMonthlyRevenueCapdoRequest($advertiserID, $leadsMonthlyRevenueCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsRevenueCapsdo
+     *
+     * Update Leads Revenue Caps
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsDailyRevenueCap leadsDailyRevenueCap (optional)
+     * @param  int $leadsWeeklyRevenueCap leadsWeeklyRevenueCap (optional)
+     * @param  int $leadsMonthlyRevenueCap leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsRevenueCapsdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsRevenueCapsdoAsync
+     *
+     * Update Leads Revenue Caps
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsRevenueCapsdoAsync($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
+    {
+        return $this->advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo
+     *
+     * Update Leads Revenue Caps
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsRevenueCapsdoRequest($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsRevenueCapsdoWithHttpInfo
+     *
+     * Update Leads Revenue Caps
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsDailyRevenueCap (optional)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     * @param  int $leadsMonthlyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsRevenueCapsdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
+    {
+        $request = $this->advertisersupdateLeadsRevenueCapsdoRequest($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyCapdo
+     *
+     * Update Leads Weekly Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsWeeklyCap leadsWeeklyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsWeeklyCapdoWithHttpInfo($advertiserID, $leadsWeeklyCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyCapdoAsync
+     *
+     * Update Leads Weekly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsWeeklyCapdoAsync($advertiserID, $leadsWeeklyCap = null)
+    {
+        return $this->advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Weekly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsWeeklyCapdoRequest($advertiserID, $leadsWeeklyCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyCapdoWithHttpInfo
+     *
+     * Update Leads Weekly Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsWeeklyCapdoWithHttpInfo($advertiserID, $leadsWeeklyCap = null)
+    {
+        $request = $this->advertisersupdateLeadsWeeklyCapdoRequest($advertiserID, $leadsWeeklyCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyRevenueCapdo
+     *
+     * Update Leads Weekly Revenue Cap
+     *
+     * @param  int $advertiserID advertiserID (required)
+     * @param  int $leadsWeeklyRevenueCap leadsWeeklyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap = null)
+    {
+        [$response] = $this->advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyRevenueCapdoAsync
+     *
+     * Update Leads Weekly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsWeeklyRevenueCapdoAsync($advertiserID, $leadsWeeklyRevenueCap = null)
+    {
+        return $this->advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo
+     *
+     * Update Leads Weekly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdateLeadsWeeklyRevenueCapdoRequest($advertiserID, $leadsWeeklyRevenueCap);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo
+     *
+     * Update Leads Weekly Revenue Cap
+     *
+     * @param  int $advertiserID (required)
+     * @param  int $leadsWeeklyRevenueCap (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap = null)
+    {
+        $request = $this->advertisersupdateLeadsWeeklyRevenueCapdoRequest($advertiserID, $leadsWeeklyRevenueCap);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation advertisersupdatePortalSettingsdo
+     *
+     * Update Portal Settings
+     *
+     * @param  string $portalAccess portalAccess (optional)
+     * @param  string $twoWayAuth twoWayAuth (optional)
+     * @param  string $manageUsers manageUsers (optional)
+     * @param  string $manageOffers manageOffers (optional)
+     * @param  string $updateBillingInfo updateBillingInfo (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse200
+     */
+    public function advertisersupdatePortalSettingsdo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
+    {
+        [$response] = $this->advertisersupdatePortalSettingsdoWithHttpInfo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
+        return $response;
+    }
+
+    /**
+     * Operation advertisersupdatePortalSettingsdoAsync
+     *
+     * Update Portal Settings
+     *
+     * @param  string $portalAccess (optional)
+     * @param  string $twoWayAuth (optional)
+     * @param  string $manageUsers (optional)
+     * @param  string $manageOffers (optional)
+     * @param  string $updateBillingInfo (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdatePortalSettingsdoAsync($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
+    {
+        return $this->advertisersupdatePortalSettingsdoAsyncWithHttpInfo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdatePortalSettingsdoAsyncWithHttpInfo
+     *
+     * Update Portal Settings
+     *
+     * @param  string $portalAccess (optional)
+     * @param  string $twoWayAuth (optional)
+     * @param  string $manageUsers (optional)
+     * @param  string $manageOffers (optional)
+     * @param  string $updateBillingInfo (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function advertisersupdatePortalSettingsdoAsyncWithHttpInfo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse200';
+        $request    = $this->advertisersupdatePortalSettingsdoRequest($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Operation advertisersupdatePortalSettingsdoWithHttpInfo
+     *
+     * Update Portal Settings
+     *
+     * @param  string $portalAccess (optional)
+     * @param  string $twoWayAuth (optional)
+     * @param  string $manageUsers (optional)
+     * @param  string $manageOffers (optional)
+     * @param  string $updateBillingInfo (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function advertisersupdatePortalSettingsdoWithHttpInfo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
+    {
+        $request = $this->advertisersupdatePortalSettingsdoRequest($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch ($statusCode) {
+                case 200:
+                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType   = '\Leadspedia\Model\InlineResponse200';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Leadspedia\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * @return Configuration
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * Get the host index
+     *
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create request for operation 'advertisersadjustCreditdo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $type (required)
+     * @param  float $amount (required)
+     * @param  string $charge (optional, default to 'No')
+     * @param  string $generateInvoice (optional, default to 'No')
+     * @param  string $note (optional)
+     * @param  string $transactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersadjustCreditdo'
+            );
+        }
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling advertisersadjustCreditdo'
+            );
+        }
+        // verify the required parameter 'amount' is set
+        if ($amount === null || (is_array($amount) && count($amount) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $amount when calling advertisersadjustCreditdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/adjustCredit.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = ObjectSerializer::toQueryValue($type);
+        }
+        // query params
+        if ($amount !== null) {
+            $queryParams['amount'] = ObjectSerializer::toQueryValue($amount);
+        }
+        // query params
+        if ($charge !== null) {
+            $queryParams['charge'] = ObjectSerializer::toQueryValue($charge);
+        }
+        // query params
+        if ($generateInvoice !== null) {
+            $queryParams['generateInvoice'] = ObjectSerializer::toQueryValue($generateInvoice);
+        }
+        // query params
+        if ($note !== null) {
+            $queryParams['note'] = ObjectSerializer::toQueryValue($note);
+        }
+        // query params
+        if ($transactionFee !== null) {
+            $queryParams['transactionFee'] = ObjectSerializer::toQueryValue($transactionFee);
+        }
+        // query params
+        if ($transactionFeePercentage !== null) {
+            $queryParams['transactionFeePercentage'] = ObjectSerializer::toQueryValue($transactionFeePercentage);
+        }
+        // query params
+        if ($transactionFeeAmount !== null) {
+            $queryParams['transactionFeeAmount'] = ObjectSerializer::toQueryValue($transactionFeeAmount);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertiserschangeStatusdo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertiserschangeStatusdoRequest($advertiserID, $status)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertiserschangeStatusdo'
+            );
+        }
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling advertiserschangeStatusdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/changeStatus.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertiserscreatedo'
+     *
+     * @param  string $advertiserName (required)
+     * @param  int $accountManagerID (required)
+     * @param  string $status (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertiserscreatedoRequest($advertiserName, $accountManagerID, $status)
+    {
+        // verify the required parameter 'advertiserName' is set
+        if ($advertiserName === null || (is_array($advertiserName) && count($advertiserName) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserName when calling advertiserscreatedo'
+            );
+        }
+        // verify the required parameter 'accountManagerID' is set
+        if ($accountManagerID === null || (is_array($accountManagerID) && count($accountManagerID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $accountManagerID when calling advertiserscreatedo'
+            );
+        }
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling advertiserscreatedo'
+            );
+        }
+
+        $resourcePath = '/advertisers/create.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserName !== null) {
+            $queryParams['advertiserName'] = ObjectSerializer::toQueryValue($advertiserName);
+        }
+        // query params
+        if ($accountManagerID !== null) {
+            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersdeletedo'
+     *
+     * @param  int $advertiserID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersdeletedoRequest($advertiserID)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersdeletedo'
+            );
+        }
+
+        $resourcePath = '/advertisers/delete.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersenableCreditdo'
+     *
+     * @param  int $advertiserID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersenableCreditdoRequest($advertiserID)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersenableCreditdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/enableCredit.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersgetAlldo'
+     *
+     * @param  int $advertiserID (optional)
+     * @param  string $advertiserType (optional)
+     * @param  int $accountManagerID (optional)
+     * @param  string $status (optional)
+     * @param  string $isCreditEnabled (optional)
+     * @param  string $hasCreditCardOnFile (optional)
+     * @param  string $search (optional)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersgetAlldoRequest($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100)
+    {
+        $resourcePath = '/advertisers/getAll.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($advertiserType !== null) {
+            $queryParams['advertiserType'] = ObjectSerializer::toQueryValue($advertiserType);
+        }
+        // query params
+        if ($accountManagerID !== null) {
+            $queryParams['accountManagerID'] = ObjectSerializer::toQueryValue($accountManagerID);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
+        }
+        // query params
+        if ($isCreditEnabled !== null) {
+            $queryParams['isCreditEnabled'] = ObjectSerializer::toQueryValue($isCreditEnabled);
+        }
+        // query params
+        if ($hasCreditCardOnFile !== null) {
+            $queryParams['hasCreditCardOnFile'] = ObjectSerializer::toQueryValue($hasCreditCardOnFile);
+        }
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersgetInfodo'
+     *
+     * @param  int $advertiserID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersgetInfodoRequest($advertiserID)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersgetInfodo'
+            );
+        }
+
+        $resourcePath = '/advertisers/getInfo.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertiserssearchdo'
+     *
+     * @param  string $search (required)
+     * @param  int $start (optional, default to 0)
+     * @param  int $limit (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertiserssearchdoRequest($search, $start = 0, $limit = 100)
+    {
+        // verify the required parameter 'search' is set
+        if ($search === null || (is_array($search) && count($search) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $search when calling advertiserssearchdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/search.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($search !== null) {
+            $queryParams['search'] = ObjectSerializer::toQueryValue($search);
+        }
+        // query params
+        if ($start !== null) {
+            $queryParams['start'] = ObjectSerializer::toQueryValue($start);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersupdateAuthorizeNetCustomerProfileIDdo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $authNetCustomerProfileID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersupdateAuthorizeNetCustomerProfileIDdoRequest($advertiserID, $authNetCustomerProfileID = null)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersupdateAuthorizeNetCustomerProfileIDdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/updateAuthorizeNetCustomerProfileID.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($authNetCustomerProfileID !== null) {
+            $queryParams['authNetCustomerProfileID'] = ObjectSerializer::toQueryValue($authNetCustomerProfileID);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersupdateAutoRechargeSettingsdo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $enableAutoRecharge (optional)
+     * @param  float $autoChargeBalance (optional)
+     * @param  float $autoChargeAmount (optional)
+     * @param  string $chargeTransactionFee (optional)
+     * @param  float $transactionFeePercentage (optional)
+     * @param  float $transactionFeeAmount (optional)
+     * @param  string $generateInvoice (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersupdateAutoRechargeSettingsdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/updateAutoRechargeSettings.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($enableAutoRecharge !== null) {
+            $queryParams['enableAutoRecharge'] = ObjectSerializer::toQueryValue($enableAutoRecharge);
+        }
+        // query params
+        if ($autoChargeBalance !== null) {
+            $queryParams['autoChargeBalance'] = ObjectSerializer::toQueryValue($autoChargeBalance);
+        }
+        // query params
+        if ($autoChargeAmount !== null) {
+            $queryParams['autoChargeAmount'] = ObjectSerializer::toQueryValue($autoChargeAmount);
+        }
+        // query params
+        if ($chargeTransactionFee !== null) {
+            $queryParams['chargeTransactionFee'] = ObjectSerializer::toQueryValue($chargeTransactionFee);
+        }
+        // query params
+        if ($transactionFeePercentage !== null) {
+            $queryParams['transactionFeePercentage'] = ObjectSerializer::toQueryValue($transactionFeePercentage);
+        }
+        // query params
+        if ($transactionFeeAmount !== null) {
+            $queryParams['transactionFeeAmount'] = ObjectSerializer::toQueryValue($transactionFeeAmount);
+        }
+        // query params
+        if ($generateInvoice !== null) {
+            $queryParams['generateInvoice'] = ObjectSerializer::toQueryValue($generateInvoice);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'advertisersupdateBillingdo'
+     *
+     * @param  int $advertiserID (required)
+     * @param  string $billingCycle (optional)
+     * @param  string $taxID (optional)
+     * @param  string $taxClass (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function advertisersupdateBillingdoRequest($advertiserID, $billingCycle = null, $taxID = null, $taxClass = null)
+    {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersupdateBillingdo'
+            );
+        }
+
+        $resourcePath = '/advertisers/updateBilling.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($billingCycle !== null) {
+            $queryParams['billingCycle'] = ObjectSerializer::toQueryValue($billingCycle);
+        }
+        // query params
+        if ($taxID !== null) {
+            $queryParams['taxID'] = ObjectSerializer::toQueryValue($taxID);
+        }
+        // query params
+        if ($taxClass !== null) {
+            $queryParams['taxClass'] = ObjectSerializer::toQueryValue($taxClass);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -3807,7 +5428,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3823,10 +5444,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3852,198 +5473,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsCapsdo
-     *
-     * Update Leads Caps
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsDailyCap leadsDailyCap (optional)
-     * @param  int $leadsWeeklyCap leadsWeeklyCap (optional)
-     * @param  int $leadsMonthlyCap leadsMonthlyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsCapsdo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsCapsdoWithHttpInfo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsCapsdoWithHttpInfo
-     *
-     * Update Leads Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     * @param  int $leadsWeeklyCap (optional)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsCapsdoWithHttpInfo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
-    {
-        $request = $this->advertisersupdateLeadsCapsdoRequest($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsCapsdoAsync
-     *
-     * Update Leads Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     * @param  int $leadsWeeklyCap (optional)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsCapsdoAsync($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
-    {
-        return $this->advertisersupdateLeadsCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsCapsdoAsyncWithHttpInfo
-     *
-     * Update Leads Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     * @param  int $leadsWeeklyCap (optional)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap = null, $leadsWeeklyCap = null, $leadsMonthlyCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsCapsdoRequest($advertiserID, $leadsDailyCap, $leadsWeeklyCap, $leadsMonthlyCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4109,7 +5545,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4125,10 +5561,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4154,190 +5590,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyCapdo
-     *
-     * Update Leads Daily Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsDailyCap leadsDailyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsDailyCapdo($advertiserID, $leadsDailyCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsDailyCapdoWithHttpInfo($advertiserID, $leadsDailyCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyCapdoWithHttpInfo
-     *
-     * Update Leads Daily Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsDailyCapdoWithHttpInfo($advertiserID, $leadsDailyCap = null)
-    {
-        $request = $this->advertisersupdateLeadsDailyCapdoRequest($advertiserID, $leadsDailyCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyCapdoAsync
-     *
-     * Update Leads Daily Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsDailyCapdoAsync($advertiserID, $leadsDailyCap = null)
-    {
-        return $this->advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Daily Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsDailyCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsDailyCapdoRequest($advertiserID, $leadsDailyCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4393,7 +5652,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4409,10 +5668,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4438,190 +5697,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyRevenueCapdo
-     *
-     * Update Leads Daily Revenue Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsDailyRevenueCap leadsDailyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsDailyRevenueCapdo($advertiserID, $leadsDailyRevenueCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo
-     *
-     * Update Leads Daily Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsDailyRevenueCapdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null)
-    {
-        $request = $this->advertisersupdateLeadsDailyRevenueCapdoRequest($advertiserID, $leadsDailyRevenueCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyRevenueCapdoAsync
-     *
-     * Update Leads Daily Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsDailyRevenueCapdoAsync($advertiserID, $leadsDailyRevenueCap = null)
-    {
-        return $this->advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Daily Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsDailyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsDailyRevenueCapdoRequest($advertiserID, $leadsDailyRevenueCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4677,7 +5759,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4693,10 +5775,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -4722,190 +5804,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyCapdo
-     *
-     * Update Leads Monthly Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsMonthlyCap leadsMonthlyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsMonthlyCapdo($advertiserID, $leadsMonthlyCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsMonthlyCapdoWithHttpInfo($advertiserID, $leadsMonthlyCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyCapdoWithHttpInfo
-     *
-     * Update Leads Monthly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsMonthlyCapdoWithHttpInfo($advertiserID, $leadsMonthlyCap = null)
-    {
-        $request = $this->advertisersupdateLeadsMonthlyCapdoRequest($advertiserID, $leadsMonthlyCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyCapdoAsync
-     *
-     * Update Leads Monthly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsMonthlyCapdoAsync($advertiserID, $leadsMonthlyCap = null)
-    {
-        return $this->advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Monthly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsMonthlyCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsMonthlyCapdoRequest($advertiserID, $leadsMonthlyCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -4961,7 +5866,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4977,10 +5882,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5006,190 +5911,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyRevenueCapdo
-     *
-     * Update Leads Monthly Revenue Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsMonthlyRevenueCap leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsMonthlyRevenueCapdo($advertiserID, $leadsMonthlyRevenueCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo
-     *
-     * Update Leads Monthly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsMonthlyRevenueCapdoWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap = null)
-    {
-        $request = $this->advertisersupdateLeadsMonthlyRevenueCapdoRequest($advertiserID, $leadsMonthlyRevenueCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyRevenueCapdoAsync
-     *
-     * Update Leads Monthly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsMonthlyRevenueCapdoAsync($advertiserID, $leadsMonthlyRevenueCap = null)
-    {
-        return $this->advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Monthly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsMonthlyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsMonthlyRevenueCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsMonthlyRevenueCapdoRequest($advertiserID, $leadsMonthlyRevenueCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -5245,7 +5973,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5261,10 +5989,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5290,198 +6018,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsRevenueCapsdo
-     *
-     * Update Leads Revenue Caps
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsDailyRevenueCap leadsDailyRevenueCap (optional)
-     * @param  int $leadsWeeklyRevenueCap leadsWeeklyRevenueCap (optional)
-     * @param  int $leadsMonthlyRevenueCap leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsRevenueCapsdo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsRevenueCapsdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsRevenueCapsdoWithHttpInfo
-     *
-     * Update Leads Revenue Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsRevenueCapsdoWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
-    {
-        $request = $this->advertisersupdateLeadsRevenueCapsdoRequest($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsRevenueCapsdoAsync
-     *
-     * Update Leads Revenue Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsRevenueCapsdoAsync($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
-    {
-        return $this->advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo
-     *
-     * Update Leads Revenue Caps
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsDailyRevenueCap (optional)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     * @param  int $leadsMonthlyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsRevenueCapsdoAsyncWithHttpInfo($advertiserID, $leadsDailyRevenueCap = null, $leadsWeeklyRevenueCap = null, $leadsMonthlyRevenueCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsRevenueCapsdoRequest($advertiserID, $leadsDailyRevenueCap, $leadsWeeklyRevenueCap, $leadsMonthlyRevenueCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -5547,7 +6090,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5563,10 +6106,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5592,190 +6135,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyCapdo
-     *
-     * Update Leads Weekly Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsWeeklyCap leadsWeeklyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsWeeklyCapdo($advertiserID, $leadsWeeklyCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsWeeklyCapdoWithHttpInfo($advertiserID, $leadsWeeklyCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyCapdoWithHttpInfo
-     *
-     * Update Leads Weekly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsWeeklyCapdoWithHttpInfo($advertiserID, $leadsWeeklyCap = null)
-    {
-        $request = $this->advertisersupdateLeadsWeeklyCapdoRequest($advertiserID, $leadsWeeklyCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyCapdoAsync
-     *
-     * Update Leads Weekly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsWeeklyCapdoAsync($advertiserID, $leadsWeeklyCap = null)
-    {
-        return $this->advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Weekly Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsWeeklyCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsWeeklyCapdoRequest($advertiserID, $leadsWeeklyCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -5831,7 +6197,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5847,10 +6213,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -5876,190 +6242,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyRevenueCapdo
-     *
-     * Update Leads Weekly Revenue Cap
-     *
-     * @param  int $advertiserID advertiserID (required)
-     * @param  int $leadsWeeklyRevenueCap leadsWeeklyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdateLeadsWeeklyRevenueCapdo($advertiserID, $leadsWeeklyRevenueCap = null)
-    {
-        list($response) = $this->advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo
-     *
-     * Update Leads Weekly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdateLeadsWeeklyRevenueCapdoWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap = null)
-    {
-        $request = $this->advertisersupdateLeadsWeeklyRevenueCapdoRequest($advertiserID, $leadsWeeklyRevenueCap);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyRevenueCapdoAsync
-     *
-     * Update Leads Weekly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsWeeklyRevenueCapdoAsync($advertiserID, $leadsWeeklyRevenueCap = null)
-    {
-        return $this->advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo
-     *
-     * Update Leads Weekly Revenue Cap
-     *
-     * @param  int $advertiserID (required)
-     * @param  int $leadsWeeklyRevenueCap (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdateLeadsWeeklyRevenueCapdoAsyncWithHttpInfo($advertiserID, $leadsWeeklyRevenueCap = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdateLeadsWeeklyRevenueCapdoRequest($advertiserID, $leadsWeeklyRevenueCap);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -6115,7 +6304,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6131,10 +6320,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6160,202 +6349,13 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Operation advertisersupdatePortalSettingsdo
-     *
-     * Update Portal Settings
-     *
-     * @param  string $portalAccess portalAccess (optional)
-     * @param  string $twoWayAuth twoWayAuth (optional)
-     * @param  string $manageUsers manageUsers (optional)
-     * @param  string $manageOffers manageOffers (optional)
-     * @param  string $updateBillingInfo updateBillingInfo (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse200
-     */
-    public function advertisersupdatePortalSettingsdo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
-    {
-        list($response) = $this->advertisersupdatePortalSettingsdoWithHttpInfo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
-        return $response;
-    }
-
-    /**
-     * Operation advertisersupdatePortalSettingsdoWithHttpInfo
-     *
-     * Update Portal Settings
-     *
-     * @param  string $portalAccess (optional)
-     * @param  string $twoWayAuth (optional)
-     * @param  string $manageUsers (optional)
-     * @param  string $manageOffers (optional)
-     * @param  string $updateBillingInfo (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function advertisersupdatePortalSettingsdoWithHttpInfo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
-    {
-        $request = $this->advertisersupdatePortalSettingsdoRequest($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch ($statusCode) {
-                case 200:
-                    if ('\Leadspedia\Model\InlineResponse200' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Leadspedia\Model\InlineResponse200', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType   = '\Leadspedia\Model\InlineResponse200';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Leadspedia\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation advertisersupdatePortalSettingsdoAsync
-     *
-     * Update Portal Settings
-     *
-     * @param  string $portalAccess (optional)
-     * @param  string $twoWayAuth (optional)
-     * @param  string $manageUsers (optional)
-     * @param  string $manageOffers (optional)
-     * @param  string $updateBillingInfo (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdatePortalSettingsdoAsync($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
-    {
-        return $this->advertisersupdatePortalSettingsdoAsyncWithHttpInfo($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation advertisersupdatePortalSettingsdoAsyncWithHttpInfo
-     *
-     * Update Portal Settings
-     *
-     * @param  string $portalAccess (optional)
-     * @param  string $twoWayAuth (optional)
-     * @param  string $manageUsers (optional)
-     * @param  string $manageOffers (optional)
-     * @param  string $updateBillingInfo (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function advertisersupdatePortalSettingsdoAsyncWithHttpInfo($portalAccess = null, $twoWayAuth = null, $manageUsers = null, $manageOffers = null, $updateBillingInfo = null)
-    {
-        $returnType = '\Leadspedia\Model\InlineResponse200';
-        $request    = $this->advertisersupdatePortalSettingsdoRequest($portalAccess, $twoWayAuth, $manageUsers, $manageOffers, $updateBillingInfo);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
     }
 
     /**
@@ -6419,7 +6419,7 @@ class AdvertisersApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6435,10 +6435,10 @@ class AdvertisersApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -6464,7 +6464,7 @@ class AdvertisersApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

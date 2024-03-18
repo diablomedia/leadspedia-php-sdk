@@ -88,34 +88,6 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Set the host index
-     *
-     * @param  int Host index (required)
-     */
-    public function setHostIndex($host_index): void
-    {
-        $this->hostIndex = $host_index;
-    }
-
-    /**
-     * Get the host index
-     *
-     * @return Host index
-     */
-    public function getHostIndex()
-    {
-        return $this->hostIndex;
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation callTrackingReportsgetCallRoutingReportdo
      *
      * Get Call Routing Report
@@ -135,8 +107,91 @@ class CallTrackingReportsApi
      */
     public function callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        list($response) = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        [$response] = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
         return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallRoutingReportdoAsync
+     *
+     * Get Call Routing Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo
+     *
+     * Get Call Routing Report
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        $returnType = '\Leadspedia\Model\InlineResponse2001';
+        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
     }
 
     /**
@@ -234,25 +289,47 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallRoutingReportdoAsync
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdo
      *
-     * Get Call Routing Report
+     * Get Calls By Advertisers Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month month (required)
+     * @param  string $year year (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $contractID contractID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync
+     *
+     * Get Calls By Advertisers Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $contractID (optional)
      * @param  int $advertiserID (optional)
      * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
-        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -261,26 +338,25 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo
      *
-     * Get Call Routing Report
+     * Get Calls By Advertisers Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $contractID (optional)
      * @param  int $advertiserID (optional)
      * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,166 +390,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallRoutingReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallRoutingReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallRoutingReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdo
-     *
-     * Get Calls By Advertisers Daily Report
-     *
-     * @param  string $month month (required)
-     * @param  string $year year (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $contractID contractID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
-        return $response;
     }
 
     /**
@@ -570,24 +486,45 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdo
      *
-     * Get Calls By Advertisers Daily Report
+     * Get Calls By Advertisers Report
      *
-     * @param  string $month (required)
-     * @param  string $year (required)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsync
+     *
+     * Get Calls By Advertisers Report
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
+     * @param  int $offerID (optional)
      * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
+        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -596,25 +533,24 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Advertisers Daily Report
+     * Get Calls By Advertisers Report
      *
-     * @param  string $month (required)
-     * @param  string $year (required)
+     * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
+     * @param  int $offerID (optional)
      * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -648,166 +584,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByAdvertisersDailyReportdo'
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $contractID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
-    {
-        // verify the required parameter 'month' is set
-        if ($month === null || (is_array($month) && count($month) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $month when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
-            );
-        }
-        // verify the required parameter 'year' is set
-        if ($year === null || (is_array($year) && count($year) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByAdvertisersDailyReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($contractID !== null) {
-            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($month !== null) {
-            $queryParams['month'] = ObjectSerializer::toQueryValue($month);
-        }
-        // query params
-        if ($year !== null) {
-            $queryParams['year'] = ObjectSerializer::toQueryValue($year);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdo
-     *
-     * Get Calls By Advertisers Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -903,23 +679,49 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsync
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdo
      *
-     * Get Calls By Advertisers Report
+     * Get Calls By Affiliates Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month month (required)
+     * @param  string $year year (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync
+     *
+     * Get Calls By Affiliates Daily Report
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
      * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
-        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -928,24 +730,26 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Advertisers Report
+     * Get Calls By Affiliates Daily Report
      *
-     * @param  \DateTime $fromDate (required)
+     * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
      * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -979,157 +783,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByAdvertisersReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByAdvertisersReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByAdvertisersReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdo
-     *
-     * Get Calls By Affiliates Daily Report
-     *
-     * @param  string $month month (required)
-     * @param  string $year year (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
-        return $response;
     }
 
     /**
@@ -1227,25 +880,43 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdo
      *
-     * Get Calls By Affiliates Daily Report
+     * Get Calls By Affiliates Report
      *
-     * @param  string $month (required)
-     * @param  string $year (required)
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsync
+     *
+     * Get Calls By Affiliates Report
+     *
+     * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1254,26 +925,23 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Affiliates Daily Report
+     * Get Calls By Affiliates Report
      *
-     * @param  string $month (required)
-     * @param  string $year (required)
+     * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1307,170 +975,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByAffiliatesDailyReportdo'
-     *
-     * @param  string $month (required)
-     * @param  string $year (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
-    {
-        // verify the required parameter 'month' is set
-        if ($month === null || (is_array($month) && count($month) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $month when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
-            );
-        }
-        // verify the required parameter 'year' is set
-        if ($year === null || (is_array($year) && count($year) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByAffiliatesDailyReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($month !== null) {
-            $queryParams['month'] = ObjectSerializer::toQueryValue($month);
-        }
-        // query params
-        if ($year !== null) {
-            $queryParams['year'] = ObjectSerializer::toQueryValue($year);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdo
-     *
-     * Get Calls By Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -1565,22 +1069,49 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsync
+     * Operation callTrackingReportsgetCallsByCampaignsReportdo
      *
-     * Get Calls By Affiliates Report
+     * Get Calls By Campaigns Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $offerID offerID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsync
+     *
+     * Get Calls By Campaigns Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1589,23 +1120,26 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Affiliates Report
+     * Get Calls By Campaigns Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
      * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1639,152 +1173,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByAffiliatesReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByAffiliatesReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByAffiliatesReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdo
-     *
-     * Get Calls By Campaigns Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $offerID offerID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -1882,25 +1270,45 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsync
+     * Operation callTrackingReportsgetCallsByContractsReportdo
      *
-     * Get Calls By Campaigns Report
+     * Get Calls By Contracts Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $advertiserID advertiserID (optional)
+     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByContractsReportdoAsync
+     *
+     * Get Calls By Contracts Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1909,26 +1317,24 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Campaigns Report
+     * Get Calls By Contracts Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1962,165 +1368,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByCampaignsReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $offerID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByCampaignsReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByCampaignsReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($offerID !== null) {
-            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
-        }
-        // query params
-        if ($payoutModel !== null) {
-            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByContractsReportdo
-     *
-     * Get Calls By Contracts Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $advertiserID advertiserID (optional)
-     * @param  int $advertiserAccountManagerID advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -2216,23 +1463,43 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByContractsReportdoAsync
+     * Operation callTrackingReportsgetCallsByOffersReportdo
      *
-     * Get Calls By Contracts Report
+     * Get Calls By Offers Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  string $payoutModel payoutModel (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByOffersReportdoAsync
+     *
+     * Get Calls By Offers Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  string $payoutModel (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2241,24 +1508,23 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Contracts Report
+     * Get Calls By Offers Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
+     * @param  string $payoutModel (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2292,154 +1558,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByContractsReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $advertiserID (optional)
-     * @param  int $advertiserAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByContractsReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByContractsReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($advertiserID !== null) {
-            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
-        }
-        // query params
-        if ($advertiserAccountManagerID !== null) {
-            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByOffersReportdo
-     *
-     * Get Calls By Offers Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  string $payoutModel payoutModel (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
-        return $response;
     }
 
     /**
@@ -2534,22 +1652,47 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByOffersReportdoAsync
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdo
      *
-     * Get Calls By Offers Report
+     * Get Calls By Sub Affiliates Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalID verticalID (optional)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  int $campaignID campaignID (optional)
+     * @param  int $affiliateID affiliateID (optional)
+     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsync
+     *
+     * Get Calls By Sub Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2558,23 +1701,25 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Offers Report
+     * Get Calls By Sub Affiliates Report
      *
      * @param  \DateTime $fromDate (required)
      * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2608,151 +1753,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsByOffersReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  string $payoutModel (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByOffersReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsByOffersReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($payoutModel !== null) {
-            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdo
-     *
-     * Get Calls By Sub Affiliates Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalID verticalID (optional)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  int $campaignID campaignID (optional)
-     * @param  int $affiliateID affiliateID (optional)
-     * @param  int $affiliateAccountManagerID affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
-        return $response;
     }
 
     /**
@@ -2849,24 +1849,39 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsync
+     * Operation callTrackingReportsgetCallsByVerticalsReportdo
      *
-     * Get Calls By Sub Affiliates Report
+     * Get Calls By Verticals Report
+     *
+     * @param  \DateTime $fromDate fromDate (required)
+     * @param  int $verticalGroupID verticalGroupID (optional)
+     * @param  \DateTime $toDate toDate (optional)
+     *
+     * @throws \Leadspedia\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Leadspedia\Model\InlineResponse2001
+     */
+    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
+    {
+        [$response] = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
+        return $response;
+    }
+
+    /**
+     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsync
+     *
+     * Get Calls By Verticals Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
     {
-        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2875,25 +1890,21 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo
+     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo
      *
-     * Get Calls By Sub Affiliates Report
+     * Get Calls By Verticals Report
      *
      * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
     {
         $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2927,157 +1938,6 @@ class CallTrackingReportsApi
                     );
                 }
             );
-    }
-
-    /**
-     * Create request for operation 'callTrackingReportsgetCallsBySubAffiliatesReportdo'
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalID (optional)
-     * @param  int $verticalGroupID (optional)
-     * @param  int $campaignID (optional)
-     * @param  int $affiliateID (optional)
-     * @param  int $affiliateAccountManagerID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
-    {
-        // verify the required parameter 'fromDate' is set
-        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsBySubAffiliatesReportdo'
-            );
-        }
-
-        $resourcePath = '/callTrackingReports/getCallsBySubAffiliatesReport.do';
-        $formParams   = [];
-        $queryParams  = [];
-        $headerParams = [];
-        $httpBody     = '';
-        $multipart    = false;
-
-        // query params
-        if ($verticalID !== null) {
-            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
-        }
-        // query params
-        if ($verticalGroupID !== null) {
-            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
-        }
-        // query params
-        if ($campaignID !== null) {
-            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
-        }
-        // query params
-        if ($affiliateID !== null) {
-            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
-        }
-        // query params
-        if ($affiliateAccountManagerID !== null) {
-            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
-        }
-        // query params
-        if ($fromDate !== null) {
-            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
-        }
-        // query params
-        if ($toDate !== null) {
-            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name'     => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
-        if ($apiKey !== null) {
-            $queryParams['api_key'] = $apiKey;
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
-        if ($apiKey !== null) {
-            $queryParams['api_secret'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdo
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate fromDate (required)
-     * @param  int $verticalGroupID verticalGroupID (optional)
-     * @param  \DateTime $toDate toDate (optional)
-     *
-     * @throws \Leadspedia\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Leadspedia\Model\InlineResponse2001
-     */
-    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null)
-    {
-        list($response) = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate);
-        return $response;
     }
 
     /**
@@ -3170,76 +2030,1216 @@ class CallTrackingReportsApi
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsync
-     *
-     * Get Calls By Verticals Report
-     *
-     * @param  \DateTime $fromDate (required)
-     * @param  int $verticalGroupID (optional)
-     * @param  \DateTime $toDate (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return Configuration
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null)
+    public function getConfig()
     {
-        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->config;
     }
 
     /**
-     * Operation callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo
+     * Get the host index
      *
-     * Get Calls By Verticals Report
+     * @return Host index
+     */
+    public function getHostIndex()
+    {
+        return $this->hostIndex;
+    }
+
+    /**
+     * Set the host index
+     *
+     * @param  int Host index (required)
+     */
+    public function setHostIndex($host_index): void
+    {
+        $this->hostIndex = $host_index;
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallRoutingReportdo'
      *
      * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
      * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
      * @param  \DateTime $toDate (optional)
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null)
+    protected function callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
     {
-        $returnType = '\Leadspedia\Model\InlineResponse2001';
-        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallRoutingReportdo'
             );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallRoutingReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByAdvertisersDailyReportdo'
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $contractID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null)
+    {
+        // verify the required parameter 'month' is set
+        if ($month === null || (is_array($month) && count($month) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $month when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
+            );
+        }
+        // verify the required parameter 'year' is set
+        if ($year === null || (is_array($year) && count($year) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByAdvertisersDailyReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($contractID !== null) {
+            $queryParams['contractID'] = ObjectSerializer::toQueryValue($contractID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($month !== null) {
+            $queryParams['month'] = ObjectSerializer::toQueryValue($month);
+        }
+        // query params
+        if ($year !== null) {
+            $queryParams['year'] = ObjectSerializer::toQueryValue($year);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByAdvertisersReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByAdvertisersReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByAdvertisersReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByAffiliatesDailyReportdo'
+     *
+     * @param  string $month (required)
+     * @param  string $year (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null)
+    {
+        // verify the required parameter 'month' is set
+        if ($month === null || (is_array($month) && count($month) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $month when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
+            );
+        }
+        // verify the required parameter 'year' is set
+        if ($year === null || (is_array($year) && count($year) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByAffiliatesDailyReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($month !== null) {
+            $queryParams['month'] = ObjectSerializer::toQueryValue($month);
+        }
+        // query params
+        if ($year !== null) {
+            $queryParams['year'] = ObjectSerializer::toQueryValue($year);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByAffiliatesReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByAffiliatesReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByAffiliatesReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByCampaignsReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $offerID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByCampaignsReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByCampaignsReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($offerID !== null) {
+            $queryParams['offerID'] = ObjectSerializer::toQueryValue($offerID);
+        }
+        // query params
+        if ($payoutModel !== null) {
+            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByContractsReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $advertiserID (optional)
+     * @param  int $advertiserAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByContractsReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByContractsReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($advertiserID !== null) {
+            $queryParams['advertiserID'] = ObjectSerializer::toQueryValue($advertiserID);
+        }
+        // query params
+        if ($advertiserAccountManagerID !== null) {
+            $queryParams['advertiserAccountManagerID'] = ObjectSerializer::toQueryValue($advertiserAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsByOffersReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  string $payoutModel (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsByOffersReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsByOffersReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($payoutModel !== null) {
+            $queryParams['payoutModel'] = ObjectSerializer::toQueryValue($payoutModel);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create request for operation 'callTrackingReportsgetCallsBySubAffiliatesReportdo'
+     *
+     * @param  \DateTime $fromDate (required)
+     * @param  int $verticalID (optional)
+     * @param  int $verticalGroupID (optional)
+     * @param  int $campaignID (optional)
+     * @param  int $affiliateID (optional)
+     * @param  int $affiliateAccountManagerID (optional)
+     * @param  \DateTime $toDate (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null)
+    {
+        // verify the required parameter 'fromDate' is set
+        if ($fromDate === null || (is_array($fromDate) && count($fromDate) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fromDate when calling callTrackingReportsgetCallsBySubAffiliatesReportdo'
+            );
+        }
+
+        $resourcePath = '/callTrackingReports/getCallsBySubAffiliatesReport.do';
+        $formParams   = [];
+        $queryParams  = [];
+        $headerParams = [];
+        $httpBody     = '';
+        $multipart    = false;
+
+        // query params
+        if ($verticalID !== null) {
+            $queryParams['verticalID'] = ObjectSerializer::toQueryValue($verticalID);
+        }
+        // query params
+        if ($verticalGroupID !== null) {
+            $queryParams['verticalGroupID'] = ObjectSerializer::toQueryValue($verticalGroupID);
+        }
+        // query params
+        if ($campaignID !== null) {
+            $queryParams['campaignID'] = ObjectSerializer::toQueryValue($campaignID);
+        }
+        // query params
+        if ($affiliateID !== null) {
+            $queryParams['affiliateID'] = ObjectSerializer::toQueryValue($affiliateID);
+        }
+        // query params
+        if ($affiliateAccountManagerID !== null) {
+            $queryParams['affiliateAccountManagerID'] = ObjectSerializer::toQueryValue($affiliateAccountManagerID);
+        }
+        // query params
+        if ($fromDate !== null) {
+            $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
+        }
+        // query params
+        if ($toDate !== null) {
+            $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name'     => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_key');
+        if ($apiKey !== null) {
+            $queryParams['api_key'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('api_secret');
+        if ($apiKey !== null) {
+            $queryParams['api_secret'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -3300,7 +3300,7 @@ class CallTrackingReportsApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3316,10 +3316,10 @@ class CallTrackingReportsApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -3345,7 +3345,7 @@ class CallTrackingReportsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
