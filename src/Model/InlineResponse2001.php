@@ -247,6 +247,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @param integer $offset Offset
      *
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->container[$offset] ?? null;
