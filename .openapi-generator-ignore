@@ -23,3 +23,5 @@
 #!docs/README.md
 .php_cs
 .travis.yml
+.php-cs-fixer.dist.php
+.gitignore

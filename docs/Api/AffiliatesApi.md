@@ -1,23 +1,26 @@
 # Leadspedia\AffiliatesApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**affiliateschangeStatusdo**](AffiliatesApi.md#affiliateschangeStatusdo) | **POST** /affiliates/changeStatus.do | Change Status
-[**affiliatescreatedo**](AffiliatesApi.md#affiliatescreatedo) | **POST** /affiliates/create.do | Create
-[**affiliatesdeletedo**](AffiliatesApi.md#affiliatesdeletedo) | **POST** /affiliates/delete.do | Delete
-[**affiliatesgetAlldo**](AffiliatesApi.md#affiliatesgetAlldo) | **GET** /affiliates/getAll.do | Get All
-[**affiliatesgetInfodo**](AffiliatesApi.md#affiliatesgetInfodo) | **GET** /affiliates/getInfo.do | Get Info
-[**affiliatessearchdo**](AffiliatesApi.md#affiliatessearchdo) | **GET** /affiliates/search.do | Search
-[**affiliatesupdateBillingdo**](AffiliatesApi.md#affiliatesupdateBillingdo) | **POST** /affiliates/updateBilling.do | Update Billing
-[**affiliatesupdateInfodo**](AffiliatesApi.md#affiliatesupdateInfodo) | **POST** /affiliates/updateInfo.do | Update Info
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## affiliateschangeStatusdo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**affiliateschangeStatusdo()**](AffiliatesApi.md#affiliateschangeStatusdo) | **POST** /affiliates/changeStatus.do | Change Status |
+| [**affiliatescreatedo()**](AffiliatesApi.md#affiliatescreatedo) | **POST** /affiliates/create.do | Create |
+| [**affiliatesdeletedo()**](AffiliatesApi.md#affiliatesdeletedo) | **POST** /affiliates/delete.do | Delete |
+| [**affiliatesgetAlldo()**](AffiliatesApi.md#affiliatesgetAlldo) | **GET** /affiliates/getAll.do | Get All |
+| [**affiliatesgetInfodo()**](AffiliatesApi.md#affiliatesgetInfodo) | **GET** /affiliates/getInfo.do | Get |
+| [**affiliatessearchdo()**](AffiliatesApi.md#affiliatessearchdo) | **GET** /affiliates/search.do | Search |
+| [**affiliatesupdateBillingdo()**](AffiliatesApi.md#affiliatesupdateBillingdo) | **POST** /affiliates/updateBilling.do | Update Billing |
+| [**affiliatesupdateInfodo()**](AffiliatesApi.md#affiliatesupdateInfodo) | **POST** /affiliates/updateInfo.do | Update |
 
-> \Leadspedia\Model\InlineResponse200 affiliateschangeStatusdo($affiliateID, $status)
+
+## `affiliateschangeStatusdo()`
+
+```php
+affiliateschangeStatusdo($affiliateID, $status): \Leadspedia\Model\InlineResponse200
+```
 
 Change Status
 
@@ -28,15 +31,10 @@ Change Status
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -45,8 +43,8 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$status = 'status_example'; // string | 
+$affiliateID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->affiliateschangeStatusdo($affiliateID, $status);
@@ -54,16 +52,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliateschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  |
- **status** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | |
+| **status** | **string**|  | |
 
 ### Return type
 
@@ -71,21 +67,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatescreatedo()`
 
-## affiliatescreatedo
-
-> \Leadspedia\Model\InlineResponse200 affiliatescreatedo($affiliateName, $accountManagerID, $status)
+```php
+affiliatescreatedo($affiliateName, $accountManagerID, $status): \Leadspedia\Model\InlineResponse200
+```
 
 Create
 
@@ -96,15 +93,10 @@ Create
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -113,9 +105,9 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateName = 'affiliateName_example'; // string | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
+$affiliateName = 'affiliateName_example'; // string
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->affiliatescreatedo($affiliateName, $accountManagerID, $status);
@@ -123,17 +115,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatescreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateName** | **string**|  |
- **accountManagerID** | **int**|  |
- **status** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateName** | **string**|  | |
+| **accountManagerID** | **int**|  | |
+| **status** | **string**|  | |
 
 ### Return type
 
@@ -141,21 +131,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesdeletedo()`
 
-## affiliatesdeletedo
-
-> \Leadspedia\Model\InlineResponse200 affiliatesdeletedo($affiliateID)
+```php
+affiliatesdeletedo($affiliateID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete
 
@@ -166,15 +157,10 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -183,7 +169,7 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
+$affiliateID = 56; // int
 
 try {
     $result = $apiInstance->affiliatesdeletedo($affiliateID);
@@ -191,15 +177,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | |
 
 ### Return type
 
@@ -207,21 +191,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesgetAlldo()`
 
-## affiliatesgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit)
+```php
+affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -232,15 +217,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -249,12 +229,12 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$accountManagerID = 56; // int | 
-$status = 'status_example'; // string | 
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$affiliateID = 56; // int
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
+$search = 'search_example'; // string
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit);
@@ -262,20 +242,18 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  | [optional]
- **accountManagerID** | **int**|  | [optional]
- **status** | **string**|  | [optional]
- **search** | **string**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | [optional] |
+| **accountManagerID** | **int**|  | [optional] |
+| **status** | **string**|  | [optional] |
+| **search** | **string**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -283,23 +261,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesgetInfodo()`
 
-## affiliatesgetInfodo
+```php
+affiliatesgetInfodo($affiliateID): \Leadspedia\Model\InlineResponse2001
+```
 
-> \Leadspedia\Model\InlineResponse2001 affiliatesgetInfodo($affiliateID)
-
-Get Info
+Get
 
 ### Example
 
@@ -308,15 +287,10 @@ Get Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -325,7 +299,7 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
+$affiliateID = 56; // int
 
 try {
     $result = $apiInstance->affiliatesgetInfodo($affiliateID);
@@ -333,15 +307,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | |
 
 ### Return type
 
@@ -349,21 +321,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatessearchdo()`
 
-## affiliatessearchdo
-
-> \Leadspedia\Model\InlineResponse2001 affiliatessearchdo($search, $start, $limit)
+```php
+affiliatessearchdo($search, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Search
 
@@ -374,15 +347,10 @@ Search
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -391,9 +359,9 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$search = 'search_example'; // string
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->affiliatessearchdo($search, $start, $limit);
@@ -401,17 +369,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatessearchdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **string**|  |
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **search** | **string**|  | |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -419,21 +385,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesupdateBillingdo()`
 
-## affiliatesupdateBillingdo
-
-> \Leadspedia\Model\InlineResponse200 affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived)
+```php
+affiliatesupdateBillingdo($affiliateID, $billingCycle): \Leadspedia\Model\InlineResponse200
+```
 
 Update Billing
 
@@ -444,15 +411,10 @@ Update Billing
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -461,31 +423,23 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$billingCycle = 'billingCycle_example'; // string | 
-$taxID = 'taxID_example'; // string | 
-$taxClass = 'taxClass_example'; // string | 
-$taxDocReceived = 'taxDocReceived_example'; // string | 
+$affiliateID = 56; // int
+$billingCycle = 'billingCycle_example'; // string
 
 try {
-    $result = $apiInstance->affiliatesupdateBillingdo($affiliateID, $billingCycle, $taxID, $taxClass, $taxDocReceived);
+    $result = $apiInstance->affiliatesupdateBillingdo($affiliateID, $billingCycle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateBillingdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  |
- **billingCycle** | **string**|  | [optional]
- **taxID** | **string**|  | [optional]
- **taxClass** | **string**|  | [optional]
- **taxDocReceived** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | |
+| **billingCycle** | **string**|  | [optional] |
 
 ### Return type
 
@@ -493,23 +447,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `affiliatesupdateInfodo()`
 
-## affiliatesupdateInfodo
+```php
+affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
+```
 
-> \Leadspedia\Model\InlineResponse200 affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword)
-
-Update Info
+Update
 
 ### Example
 
@@ -518,15 +473,10 @@ Update Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AffiliatesApi(
@@ -535,47 +485,39 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int | 
-$affiliateName = 'affiliateName_example'; // string | 
-$website = 'website_example'; // string | 
-$alternateID = 'alternateID_example'; // string | 
-$address = 'address_example'; // string | 
-$address2 = 'address2_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
-$reportingUrl = 'reportingUrl_example'; // string | 
-$reportingUsername = 'reportingUsername_example'; // string | 
-$reportingPassword = 'reportingPassword_example'; // string | 
+$affiliateID = 56; // int
+$affiliateName = 'affiliateName_example'; // string | >= 1 characters
+$website = 'website_example'; // string
+$alternateID = 'alternateID_example'; // string
+$address = 'address_example'; // string
+$address2 = 'address2_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string
+$zipCode = 'zipCode_example'; // string
+$country = 'country_example'; // string
 
 try {
-    $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $reportingUrl, $reportingUsername, $reportingPassword);
+    $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateID** | **int**|  |
- **affiliateName** | **string**|  | [optional]
- **website** | **string**|  | [optional]
- **alternateID** | **string**|  | [optional]
- **address** | **string**|  | [optional]
- **address2** | **string**|  | [optional]
- **city** | **string**|  | [optional]
- **state** | **string**|  | [optional]
- **zipCode** | **string**|  | [optional]
- **country** | **string**|  | [optional]
- **reportingUrl** | **string**|  | [optional]
- **reportingUsername** | **string**|  | [optional]
- **reportingPassword** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliateID** | **int**|  | |
+| **affiliateName** | **string**| &gt;&#x3D; 1 characters | [optional] |
+| **website** | **string**|  | [optional] |
+| **alternateID** | **string**|  | [optional] |
+| **address** | **string**|  | [optional] |
+| **address2** | **string**|  | [optional] |
+| **city** | **string**|  | [optional] |
+| **state** | **string**|  | [optional] |
+| **zipCode** | **string**|  | [optional] |
+| **country** | **string**|  | [optional] |
 
 ### Return type
 
@@ -583,14 +525,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

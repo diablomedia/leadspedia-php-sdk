@@ -1,23 +1,26 @@
 # Leadspedia\AdvertisersCreditCardsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**advertisersCreditCardsadddo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsadddo) | **POST** /advertisersCreditCards/add.do | Add
-[**advertisersCreditCardsdeletedo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsdeletedo) | **POST** /advertisersCreditCards/delete.do | Delete
-[**advertisersCreditCardsgetAlldo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetAlldo) | **GET** /advertisersCreditCards/getAll.do | Get All
-[**advertisersCreditCardsgetDefaultdo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetDefaultdo) | **GET** /advertisersCreditCards/getDefault.do | Get Default
-[**advertisersCreditCardsgetInfodo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetInfodo) | **GET** /advertisersCreditCards/getInfo.do | Get Info
-[**advertisersCreditCardssetDefaultdo**](AdvertisersCreditCardsApi.md#advertisersCreditCardssetDefaultdo) | **POST** /advertisersCreditCards/setDefault.do | Set Default
-[**advertisersCreditCardsupdatePaymentProfileIDdo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsupdatePaymentProfileIDdo) | **POST** /advertisersCreditCards/updatePaymentProfileID.do | Update Payment Profile ID
-[**advertisersCreditCardsupdatedo**](AdvertisersCreditCardsApi.md#advertisersCreditCardsupdatedo) | **POST** /advertisersCreditCards/update.do | Update
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## advertisersCreditCardsadddo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**advertisersCreditCardsadddo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsadddo) | **POST** /advertisersCreditCards/add.do | Add |
+| [**advertisersCreditCardsdeletedo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsdeletedo) | **POST** /advertisersCreditCards/delete.do | Delete |
+| [**advertisersCreditCardsgetAlldo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetAlldo) | **GET** /advertisersCreditCards/getAll.do | Get All |
+| [**advertisersCreditCardsgetDefaultdo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetDefaultdo) | **GET** /advertisersCreditCards/getDefault.do | Get Default |
+| [**advertisersCreditCardsgetInfodo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsgetInfodo) | **GET** /advertisersCreditCards/getInfo.do | Get Info |
+| [**advertisersCreditCardssetDefaultdo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardssetDefaultdo) | **POST** /advertisersCreditCards/setDefault.do | Set Default |
+| [**advertisersCreditCardsupdatePaymentProfileIDdo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsupdatePaymentProfileIDdo) | **POST** /advertisersCreditCards/updatePaymentProfileID.do | Update Payment Profile ID |
+| [**advertisersCreditCardsupdatedo()**](AdvertisersCreditCardsApi.md#advertisersCreditCardsupdatedo) | **POST** /advertisersCreditCards/update.do | Update |
 
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard)
+
+## `advertisersCreditCardsadddo()`
+
+```php
+advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard): \Leadspedia\Model\InlineResponse200
+```
 
 Add
 
@@ -28,15 +31,10 @@ Add
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -45,19 +43,19 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$cardNumber = 'cardNumber_example'; // string | 
-$nameOnCard = 'nameOnCard_example'; // string | 
-$expMonth = 'expMonth_example'; // string | 
-$expYear = 'expYear_example'; // string | 
-$cvv = 'cvv_example'; // string | 
-$address = 'address_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
-$address2 = 'address2_example'; // string | 
-$defaultCard = 'No'; // string | 
+$advertiserID = 56; // int
+$cardNumber = 'cardNumber_example'; // string
+$nameOnCard = 'nameOnCard_example'; // string | First and last name
+$expMonth = 'expMonth_example'; // string | 2-digit expiration month (MM)
+$expYear = 'expYear_example'; // string | 4-digit expiration year (YYYY)
+$cvv = 'cvv_example'; // string | 3 or 4-digit cvv code
+$address = 'address_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string | 2-character US state or region
+$zipCode = 'zipCode_example'; // string | Zip or postal code
+$country = 'country_example'; // string | 2-character country code (example: US)
+$address2 = 'address2_example'; // string
+$defaultCard = 'No'; // string | Make this card a default card. No if not provided.
 
 try {
     $result = $apiInstance->advertisersCreditCardsadddo($advertiserID, $cardNumber, $nameOnCard, $expMonth, $expYear, $cvv, $address, $city, $state, $zipCode, $country, $address2, $defaultCard);
@@ -65,27 +63,25 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsadddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **cardNumber** | **string**|  |
- **nameOnCard** | **string**|  |
- **expMonth** | **string**|  |
- **expYear** | **string**|  |
- **cvv** | **string**|  |
- **address** | **string**|  |
- **city** | **string**|  |
- **state** | **string**|  |
- **zipCode** | **string**|  |
- **country** | **string**|  |
- **address2** | **string**|  | [optional]
- **defaultCard** | **string**|  | [optional] [default to &#39;No&#39;]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **cardNumber** | **string**|  | |
+| **nameOnCard** | **string**| First and last name | |
+| **expMonth** | **string**| 2-digit expiration month (MM) | |
+| **expYear** | **string**| 4-digit expiration year (YYYY) | |
+| **cvv** | **string**| 3 or 4-digit cvv code | |
+| **address** | **string**|  | |
+| **city** | **string**|  | |
+| **state** | **string**| 2-character US state or region | |
+| **zipCode** | **string**| Zip or postal code | |
+| **country** | **string**| 2-character country code (example: US) | |
+| **address2** | **string**|  | [optional] |
+| **defaultCard** | **string**| Make this card a default card. No if not provided. | [optional] [default to &#39;No&#39;] |
 
 ### Return type
 
@@ -93,21 +89,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsdeletedo()`
 
-## advertisersCreditCardsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsdeletedo($advertiserID, $creditCardID)
+```php
+advertisersCreditCardsdeletedo($advertiserID, $creditCardID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete
 
@@ -118,15 +115,10 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -135,8 +127,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$creditCardID = 56; // int | 
+$advertiserID = 56; // int
+$creditCardID = 56; // int
 
 try {
     $result = $apiInstance->advertisersCreditCardsdeletedo($advertiserID, $creditCardID);
@@ -144,16 +136,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **creditCardID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **creditCardID** | **int**|  | |
 
 ### Return type
 
@@ -161,21 +151,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsgetAlldo()`
 
-## advertisersCreditCardsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetAlldo($advertiserID, $start, $limit)
+```php
+advertisersCreditCardsgetAlldo($advertiserID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -186,15 +177,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -203,9 +189,9 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$advertiserID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->advertisersCreditCardsgetAlldo($advertiserID, $start, $limit);
@@ -213,17 +199,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -231,21 +215,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsgetDefaultdo()`
 
-## advertisersCreditCardsgetDefaultdo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetDefaultdo($advertiserID)
+```php
+advertisersCreditCardsgetDefaultdo($advertiserID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Default
 
@@ -256,15 +241,10 @@ Get Default
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -273,7 +253,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
+$advertiserID = 56; // int
 
 try {
     $result = $apiInstance->advertisersCreditCardsgetDefaultdo($advertiserID);
@@ -281,15 +261,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsgetDefaultdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
 
 ### Return type
 
@@ -297,21 +275,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsgetInfodo()`
 
-## advertisersCreditCardsgetInfodo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersCreditCardsgetInfodo($advertiserID, $creditCardID)
+```php
+advertisersCreditCardsgetInfodo($advertiserID, $creditCardID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Info
 
@@ -322,15 +301,10 @@ Get Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -339,8 +313,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$creditCardID = 56; // int | 
+$advertiserID = 56; // int
+$creditCardID = 56; // int
 
 try {
     $result = $apiInstance->advertisersCreditCardsgetInfodo($advertiserID, $creditCardID);
@@ -348,16 +322,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **creditCardID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **creditCardID** | **int**|  | |
 
 ### Return type
 
@@ -365,21 +337,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardssetDefaultdo()`
 
-## advertisersCreditCardssetDefaultdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID)
+```php
+advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID): \Leadspedia\Model\InlineResponse200
+```
 
 Set Default
 
@@ -390,15 +363,10 @@ Set Default
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -407,8 +375,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$creditCardID = 56; // int | 
+$advertiserID = 56; // int
+$creditCardID = 56; // int
 
 try {
     $result = $apiInstance->advertisersCreditCardssetDefaultdo($advertiserID, $creditCardID);
@@ -416,16 +384,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardssetDefaultdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **creditCardID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **creditCardID** | **int**|  | |
 
 ### Return type
 
@@ -433,21 +399,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsupdatePaymentProfileIDdo()`
 
-## advertisersCreditCardsupdatePaymentProfileIDdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country)
+```php
+advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
+```
 
 Update Payment Profile ID
 
@@ -458,15 +425,10 @@ Update Payment Profile ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -475,17 +437,17 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditCardID = 56; // int | 
-$advertiserID = 56; // int | 
-$paymentProfileID = 'paymentProfileID_example'; // string | 
-$expMonth = 'expMonth_example'; // string | 
-$expYear = 'expYear_example'; // string | 
-$address = 'address_example'; // string | 
-$address2 = 'address2_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
+$creditCardID = 56; // int
+$advertiserID = 56; // int
+$paymentProfileID = 'paymentProfileID_example'; // string
+$expMonth = 'expMonth_example'; // string | 2-digit expiration month (MM)
+$expYear = 'expYear_example'; // string | 4-digit expiration year (YYYY)
+$address = 'address_example'; // string
+$address2 = 'address2_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string | 2-character US state or region
+$zipCode = 'zipCode_example'; // string | Zip or postal code
+$country = 'country_example'; // string | 2-character country code (example: US)
 
 try {
     $result = $apiInstance->advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
@@ -493,25 +455,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatePaymentProfileIDdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **creditCardID** | **int**|  |
- **advertiserID** | **int**|  |
- **paymentProfileID** | **string**|  | [optional]
- **expMonth** | **string**|  | [optional]
- **expYear** | **string**|  | [optional]
- **address** | **string**|  | [optional]
- **address2** | **string**|  | [optional]
- **city** | **string**|  | [optional]
- **state** | **string**|  | [optional]
- **zipCode** | **string**|  | [optional]
- **country** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **creditCardID** | **int**|  | |
+| **advertiserID** | **int**|  | |
+| **paymentProfileID** | **string**|  | [optional] |
+| **expMonth** | **string**| 2-digit expiration month (MM) | [optional] |
+| **expYear** | **string**| 4-digit expiration year (YYYY) | [optional] |
+| **address** | **string**|  | [optional] |
+| **address2** | **string**|  | [optional] |
+| **city** | **string**|  | [optional] |
+| **state** | **string**| 2-character US state or region | [optional] |
+| **zipCode** | **string**| Zip or postal code | [optional] |
+| **country** | **string**| 2-character country code (example: US) | [optional] |
 
 ### Return type
 
@@ -519,21 +479,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersCreditCardsupdatedo()`
 
-## advertisersCreditCardsupdatedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2)
+```php
+advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2): \Leadspedia\Model\InlineResponse200
+```
 
 Update
 
@@ -544,15 +505,10 @@ Update
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
@@ -561,17 +517,17 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditCardID = 56; // int | 
-$advertiserID = 56; // int | 
-$nameOnCard = 'nameOnCard_example'; // string | 
-$expMonth = 'expMonth_example'; // string | 
-$expYear = 'expYear_example'; // string | 
-$address = 'address_example'; // string | 
-$city = 'city_example'; // string | 
-$state = 'state_example'; // string | 
-$zipCode = 'zipCode_example'; // string | 
-$country = 'country_example'; // string | 
-$address2 = 'address2_example'; // string | 
+$creditCardID = 56; // int
+$advertiserID = 56; // int
+$nameOnCard = 'nameOnCard_example'; // string | First and last name
+$expMonth = 'expMonth_example'; // string | 2-digit expiration month (MM)
+$expYear = 'expYear_example'; // string | 4-digit expiration year (YYYY)
+$address = 'address_example'; // string
+$city = 'city_example'; // string
+$state = 'state_example'; // string | 2-character US state or region
+$zipCode = 'zipCode_example'; // string | Zip or postal code
+$country = 'country_example'; // string | 2-character country code (example: US)
+$address2 = 'address2_example'; // string
 
 try {
     $result = $apiInstance->advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
@@ -579,25 +535,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **creditCardID** | **int**|  |
- **advertiserID** | **int**|  |
- **nameOnCard** | **string**|  |
- **expMonth** | **string**|  |
- **expYear** | **string**|  |
- **address** | **string**|  |
- **city** | **string**|  |
- **state** | **string**|  |
- **zipCode** | **string**|  |
- **country** | **string**|  |
- **address2** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **creditCardID** | **int**|  | |
+| **advertiserID** | **int**|  | |
+| **nameOnCard** | **string**| First and last name | |
+| **expMonth** | **string**| 2-digit expiration month (MM) | |
+| **expYear** | **string**| 4-digit expiration year (YYYY) | |
+| **address** | **string**|  | |
+| **city** | **string**|  | |
+| **state** | **string**| 2-character US state or region | |
+| **zipCode** | **string**| Zip or postal code | |
+| **country** | **string**| 2-character country code (example: US) | |
+| **address2** | **string**|  | [optional] |
 
 ### Return type
 
@@ -605,14 +559,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

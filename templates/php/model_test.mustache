@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+{{>partial_header}}
+
+// Generated contract tests. Edit templates/php/model_test.mustache to change them.
+{{#models}}{{#model}}
+namespace {{invokerPackage}}\Test\Model;
+
+use {{modelPackage}}\{{classname}};
+use {{invokerPackage}}\Test\Support\ModelContractTestCase;
+
+final class {{classname}}Test extends ModelContractTestCase
+{
+    public function test{{classname}}(): void
+    {
+        $this->assertModelRoundTrip({{classname}}::class, [
+{{#vars}}
+            '{{baseName}}' => '{{{dataType}}}',
+{{/vars}}
+        ]);
+    }
+
+{{#vars}}
+    public function testProperty{{nameInPascalCase}}(): void
+    {
+        $this->assertModelProperty(
+            {{classname}}::class,
+            '{{name}}',
+            '{{getter}}',
+            '{{setter}}',
+            '{{{dataType}}}',
+        );
+    }
+
+{{/vars}}
+}
+{{/model}}{{/models}}

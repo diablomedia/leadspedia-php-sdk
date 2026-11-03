@@ -1,16 +1,19 @@
 # Leadspedia\ListApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**listgetAlldo**](ListApi.md#listgetAlldo) | **GET** /list/getAll.do | Get All
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## listgetAlldo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**listgetAlldo()**](ListApi.md#listgetAlldo) | **GET** /list/getAll.do | Get All |
 
-> \Leadspedia\Model\InlineResponse2001 listgetAlldo($type, $advertiserID, $verticalID)
+
+## `listgetAlldo()`
+
+```php
+listgetAlldo($type, $advertiserID, $verticalID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -21,15 +24,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ListApi(
@@ -38,9 +36,9 @@ $apiInstance = new Leadspedia\Api\ListApi(
     new GuzzleHttp\Client(),
     $config
 );
-$type = 'type_example'; // string | 
-$advertiserID = 56; // int | 
-$verticalID = 56; // int | 
+$type = 'type_example'; // string
+$advertiserID = 56; // int | Can be passed to retrieve advertiser specific return reasons
+$verticalID = 56; // int | Can be passed to retrieve vertical specific return reasons
 
 try {
     $result = $apiInstance->listgetAlldo($type, $advertiserID, $verticalID);
@@ -48,17 +46,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling ListApi->listgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **type** | **string**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **type** | **string**|  | [optional] |
+| **advertiserID** | **int**| Can be passed to retrieve advertiser specific return reasons | [optional] |
+| **verticalID** | **int**| Can be passed to retrieve vertical specific return reasons | [optional] |
 
 ### Return type
 
@@ -66,14 +62,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

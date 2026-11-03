@@ -1,37 +1,47 @@
 # Leadspedia\LeadsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**leadsapproveReturndo**](LeadsApi.md#leadsapproveReturndo) | **POST** /leads/approveReturn.do | Approve Return
-[**leadsgetAlldo**](LeadsApi.md#leadsgetAlldo) | **GET** /leads/getAll.do | Get All
-[**leadsgetDelivereddo**](LeadsApi.md#leadsgetDelivereddo) | **GET** /leads/getDelivered.do | Get Delivered
-[**leadsgetLeadDatado**](LeadsApi.md#leadsgetLeadDatado) | **GET** /leads/getLeadData.do | Get Lead Data
-[**leadsgetLeadInfodo**](LeadsApi.md#leadsgetLeadInfodo) | **GET** /leads/getLeadInfo.do | Get Lead Info
-[**leadsgetQueuedo**](LeadsApi.md#leadsgetQueuedo) | **GET** /leads/getQueue.do | Get Queue
-[**leadsgetReturnsdo**](LeadsApi.md#leadsgetReturnsdo) | **GET** /leads/getReturns.do | Get Returns
-[**leadsgetReviewdo**](LeadsApi.md#leadsgetReviewdo) | **GET** /leads/getReview.do | Get Review
-[**leadsgetScrubbeddo**](LeadsApi.md#leadsgetScrubbeddo) | **GET** /leads/getScrubbed.do | Get Scrubbed
-[**leadsgetSolddo**](LeadsApi.md#leadsgetSolddo) | **GET** /leads/getSold.do | Get Sold
-[**leadsgetTrashdo**](LeadsApi.md#leadsgetTrashdo) | **GET** /leads/getTrash.do | Get Trash
-[**leadsrejectReturndo**](LeadsApi.md#leadsrejectReturndo) | **POST** /leads/rejectReturn.do | Reject Return
-[**leadsrequestReturndo**](LeadsApi.md#leadsrequestReturndo) | **POST** /leads/requestReturn.do | Request Return
-[**leadsreturnLeadFromAllContractsdo**](LeadsApi.md#leadsreturnLeadFromAllContractsdo) | **POST** /leads/returnLeadFromAllContracts.do | Return Lead From All Contracts
-[**leadsreturnLeaddo**](LeadsApi.md#leadsreturnLeaddo) | **POST** /leads/returnLead.do | Return Lead
-[**leadsreviewApprovedo**](LeadsApi.md#leadsreviewApprovedo) | **POST** /leads/reviewApprove.do | Review Approve
-[**leadsreviewRejectdo**](LeadsApi.md#leadsreviewRejectdo) | **POST** /leads/reviewReject.do | Review Reject
-[**leadsscrubLeaddo**](LeadsApi.md#leadsscrubLeaddo) | **POST** /leads/scrubLead.do | Scrub Lead
-[**leadsunreturnLeaddo**](LeadsApi.md#leadsunreturnLeaddo) | **POST** /leads/unreturnLead.do | Unreturn Lead
-[**leadsupdateLeaddo**](LeadsApi.md#leadsupdateLeaddo) | **POST** /leads/updateLead.do | Update Lead
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## leadsapproveReturndo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**leadsapproveReturndo()**](LeadsApi.md#leadsapproveReturndo) | **POST** /leads/approveReturn.do | Approve Return Request |
+| [**leadsdeleteDatado()**](LeadsApi.md#leadsdeleteDatado) | **POST** /leads/deleteData.do | Delete Data |
+| [**leadsgetAlldo()**](LeadsApi.md#leadsgetAlldo) | **GET** /leads/getAll.do | Get All |
+| [**leadsgetDelivereddo()**](LeadsApi.md#leadsgetDelivereddo) | **GET** /leads/getDelivered.do | Get Delivered |
+| [**leadsgetLeadDatado()**](LeadsApi.md#leadsgetLeadDatado) | **GET** /leads/getLeadData.do | Get Lead Data |
+| [**leadsgetLeadInfodo()**](LeadsApi.md#leadsgetLeadInfodo) | **GET** /leads/getLeadInfo.do | Get Lead Info |
+| [**leadsgetPostbackdo()**](LeadsApi.md#leadsgetPostbackdo) | **GET** /leads/getPostback.do | Get Postback |
+| [**leadsgetPostsdo()**](LeadsApi.md#leadsgetPostsdo) | **GET** /leads/getPosts.do | Get Posts |
+| [**leadsgetQueuedo()**](LeadsApi.md#leadsgetQueuedo) | **GET** /leads/getQueue.do | Get Queue |
+| [**leadsgetReturnsdo()**](LeadsApi.md#leadsgetReturnsdo) | **GET** /leads/getReturns.do | Get Returns |
+| [**leadsgetReviewdo()**](LeadsApi.md#leadsgetReviewdo) | **GET** /leads/getReview.do | Get Review |
+| [**leadsgetScrubbeddo()**](LeadsApi.md#leadsgetScrubbeddo) | **GET** /leads/getScrubbed.do | Get Scrubbed |
+| [**leadsgetSolddo()**](LeadsApi.md#leadsgetSolddo) | **GET** /leads/getSold.do | Get Sold |
+| [**leadsgetTrashdo()**](LeadsApi.md#leadsgetTrashdo) | **GET** /leads/getTrash.do | Get Trash |
+| [**leadsrejectReturndo()**](LeadsApi.md#leadsrejectReturndo) | **POST** /leads/rejectReturn.do | Reject Return Request |
+| [**leadsrequestReturndo()**](LeadsApi.md#leadsrequestReturndo) | **POST** /leads/requestReturn.do | Request Return |
+| [**leadsreturnLeadFromAllContractsdo()**](LeadsApi.md#leadsreturnLeadFromAllContractsdo) | **POST** /leads/returnLeadFromAllContracts.do | Return Lead From All Contracts |
+| [**leadsreturnLeaddo()**](LeadsApi.md#leadsreturnLeaddo) | **POST** /leads/returnLead.do | Return Lead |
+| [**leadsreviewApprovedo()**](LeadsApi.md#leadsreviewApprovedo) | **POST** /leads/reviewApprove.do | Review Approve |
+| [**leadsreviewRejectdo()**](LeadsApi.md#leadsreviewRejectdo) | **POST** /leads/reviewReject.do | Review Reject |
+| [**leadsscrubLeaddo()**](LeadsApi.md#leadsscrubLeaddo) | **POST** /leads/scrubLead.do | Scrub Lead |
+| [**leadsunreturnLeaddo()**](LeadsApi.md#leadsunreturnLeaddo) | **POST** /leads/unreturnLead.do | Unreturn Lead |
+| [**leadsunscrubLeaddo()**](LeadsApi.md#leadsunscrubLeaddo) | **POST** /leads/unscrubLead.do | Unscrub Lead |
+| [**leadsupdateLeadSoldPricedo()**](LeadsApi.md#leadsupdateLeadSoldPricedo) | **POST** /leads/updateLeadSoldPrice.do | Update Lead Sold Price |
+| [**leadsupdateLeadStatusdo()**](LeadsApi.md#leadsupdateLeadStatusdo) | **POST** /leads/updateLeadStatus.do | Update Lead Status |
+| [**leadsupdateLeaddo()**](LeadsApi.md#leadsupdateLeaddo) | **POST** /leads/updateLead.do | Update Lead Data |
+| [**leadsupdatePayoutdo()**](LeadsApi.md#leadsupdatePayoutdo) | **POST** /leads/updatePayout.do | Update Payout |
 
-> \Leadspedia\Model\InlineResponse200 leadsapproveReturndo($leadID, $contractID)
 
-Approve Return
+## `leadsapproveReturndo()`
+
+```php
+leadsapproveReturndo($leadID, $contractID): \Leadspedia\Model\InlineResponse200
+```
+
+Approve Return Request
 
 ### Example
 
@@ -40,15 +50,10 @@ Approve Return
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -57,8 +62,8 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$contractID = 56; // int | 
+$leadID = 'leadID_example'; // string
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->leadsapproveReturndo($leadID, $contractID);
@@ -66,16 +71,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsapproveReturndo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -83,23 +86,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsdeleteDatado()`
 
-## leadsgetAlldo
+```php
+leadsdeleteDatado($leadID): \Leadspedia\Model\InlineResponse200
+```
 
-> \Leadspedia\Model\InlineResponse2001 leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit)
-
-Get All
+Delete Data
 
 ### Example
 
@@ -108,15 +112,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -125,15 +124,77 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$paid = 'paid_example'; // string | 
-$scrubbed = 'scrubbed_example'; // string | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$leadID = 'leadID_example'; // string
+
+try {
+    $result = $apiInstance->leadsdeleteDatado($leadID);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsdeleteDatado: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsgetAlldo()`
+
+```php
+leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
+
+Get All
+
+Get All Leads
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$paid = 'paid_example'; // string
+$scrubbed = 'scrubbed_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
@@ -141,23 +202,21 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **paid** | **string**|  | [optional]
- **scrubbed** | **string**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **paid** | **string**|  | [optional] |
+| **scrubbed** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -165,21 +224,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetDelivereddo()`
 
-## leadsgetDelivereddo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+```php
+leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Delivered
 
@@ -190,15 +250,10 @@ Get Delivered
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -207,17 +262,17 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$leadID = 'leadID_example'; // string | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$returned = 'returned_example'; // string | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$returned = 'returned_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
@@ -225,25 +280,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetDelivereddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **leadID** | **string**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **returned** | **string**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | [optional] |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **returned** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -251,21 +304,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetLeadDatado()`
 
-## leadsgetLeadDatado
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetLeadDatado($leadID)
+```php
+leadsgetLeadDatado($leadID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Lead Data
 
@@ -276,15 +330,10 @@ Get Lead Data
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -293,7 +342,7 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
+$leadID = 'leadID_example'; // string
 
 try {
     $result = $apiInstance->leadsgetLeadDatado($leadID);
@@ -301,15 +350,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetLeadDatado: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
 
 ### Return type
 
@@ -317,21 +364,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetLeadInfodo()`
 
-## leadsgetLeadInfodo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetLeadInfodo($leadID)
+```php
+leadsgetLeadInfodo($leadID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Lead Info
 
@@ -342,15 +390,10 @@ Get Lead Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -359,7 +402,7 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
+$leadID = 'leadID_example'; // string
 
 try {
     $result = $apiInstance->leadsgetLeadInfodo($leadID);
@@ -367,15 +410,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetLeadInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
 
 ### Return type
 
@@ -383,21 +424,164 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetPostbackdo()`
 
-## leadsgetQueuedo
+```php
+leadsgetPostbackdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
-> \Leadspedia\Model\InlineResponse2001 leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+Get Postback
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
+
+try {
+    $result = $apiInstance->leadsgetPostbackdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $start, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsgetPostbackdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsgetPostsdo()`
+
+```php
+leadsgetPostsdo($date, $contractID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
+
+Get Posts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$contractID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
+
+try {
+    $result = $apiInstance->leadsgetPostsdo($date, $contractID, $start, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsgetPostsdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **date** | **\DateTime**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsgetQueuedo()`
+
+```php
+leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Queue
 
@@ -408,15 +592,10 @@ Get Queue
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -425,13 +604,13 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
@@ -439,21 +618,19 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetQueuedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -461,21 +638,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetReturnsdo()`
 
-## leadsgetReturnsdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit)
+```php
+leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Returns
 
@@ -486,15 +664,10 @@ Get Returns
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -503,17 +676,17 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$status = 'status_example'; // string | 
-$returnReasonID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$status = 'status_example'; // string
+$returnReasonID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
@@ -521,25 +694,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetReturnsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **status** | **string**|  | [optional]
- **returnReasonID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **status** | **string**|  | [optional] |
+| **returnReasonID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -547,21 +718,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetReviewdo()`
 
-## leadsgetReviewdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit)
+```php
+leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Review
 
@@ -572,15 +744,10 @@ Get Review
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -589,12 +756,12 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
@@ -602,20 +769,18 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetReviewdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -623,21 +788,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetScrubbeddo()`
 
-## leadsgetScrubbeddo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+```php
+leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Scrubbed
 
@@ -648,15 +814,10 @@ Get Scrubbed
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -665,13 +826,13 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
@@ -679,21 +840,19 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetScrubbeddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -701,21 +860,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetSolddo()`
 
-## leadsgetSolddo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit)
+```php
+leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Sold
 
@@ -726,15 +886,10 @@ Get Sold
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -743,17 +898,17 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$leadID = 'leadID_example'; // string | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$returned = 'returned_example'; // string | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$returned = 'returned_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
@@ -761,25 +916,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetSolddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **leadID** | **string**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **returned** | **string**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **returned** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -787,21 +940,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsgetTrashdo()`
 
-## leadsgetTrashdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit)
+```php
+leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Trash
 
@@ -812,15 +966,10 @@ Get Trash
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -829,14 +978,14 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$leadID = 'leadID_example'; // string | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$verticalID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
@@ -844,22 +993,20 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetTrashdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **leadID** | **string**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -867,23 +1014,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsrejectReturndo()`
 
-## leadsrejectReturndo
+```php
+leadsrejectReturndo($leadID, $contractID, $rejectReasonID): \Leadspedia\Model\InlineResponse200
+```
 
-> \Leadspedia\Model\InlineResponse200 leadsrejectReturndo($leadID, $contractID, $rejectReasonID)
-
-Reject Return
+Reject Return Request
 
 ### Example
 
@@ -892,15 +1040,10 @@ Reject Return
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -909,9 +1052,9 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$contractID = 56; // int | 
-$rejectReasonID = 56; // int | 
+$leadID = 'leadID_example'; // string
+$contractID = 56; // int
+$rejectReasonID = 56; // int
 
 try {
     $result = $apiInstance->leadsrejectReturndo($leadID, $contractID, $rejectReasonID);
@@ -919,17 +1062,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsrejectReturndo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **contractID** | **int**|  |
- **rejectReasonID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **contractID** | **int**|  | |
+| **rejectReasonID** | **int**|  | |
 
 ### Return type
 
@@ -937,21 +1078,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsrequestReturndo()`
 
-## leadsrequestReturndo
-
-> \Leadspedia\Model\InlineResponse200 leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes)
+```php
+leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes): \Leadspedia\Model\InlineResponse200
+```
 
 Request Return
 
@@ -962,15 +1104,10 @@ Request Return
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -979,10 +1116,10 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$contractID = 56; // int | 
-$returnReasonID = 56; // int | 
-$returnNotes = 'returnNotes_example'; // string | 
+$leadID = 'leadID_example'; // string
+$contractID = 56; // int
+$returnReasonID = 56; // int
+$returnNotes = 'returnNotes_example'; // string
 
 try {
     $result = $apiInstance->leadsrequestReturndo($leadID, $contractID, $returnReasonID, $returnNotes);
@@ -990,18 +1127,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsrequestReturndo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **contractID** | **int**|  |
- **returnReasonID** | **int**|  |
- **returnNotes** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **contractID** | **int**|  | |
+| **returnReasonID** | **int**|  | |
+| **returnNotes** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1009,21 +1144,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsreturnLeadFromAllContractsdo()`
 
-## leadsreturnLeadFromAllContractsdo
-
-> \Leadspedia\Model\InlineResponse200 leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns)
+```php
+leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns): \Leadspedia\Model\InlineResponse200
+```
 
 Return Lead From All Contracts
 
@@ -1034,15 +1170,10 @@ Return Lead From All Contracts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1051,10 +1182,10 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$returnReasonID = 56; // int | 
-$scrub = 'scrub_example'; // string | 
-$replaceReturns = 'replaceReturns_example'; // string | 
+$leadID = 'leadID_example'; // string
+$returnReasonID = 56; // int
+$scrub = 'scrub_example'; // string
+$replaceReturns = 'replaceReturns_example'; // string
 
 try {
     $result = $apiInstance->leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns);
@@ -1062,18 +1193,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeadFromAllContractsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **returnReasonID** | **int**|  |
- **scrub** | **string**|  | [optional]
- **replaceReturns** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **returnReasonID** | **int**|  | |
+| **scrub** | **string**|  | [optional] |
+| **replaceReturns** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1081,21 +1210,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsreturnLeaddo()`
 
-## leadsreturnLeaddo
-
-> \Leadspedia\Model\InlineResponse200 leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns)
+```php
+leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns): \Leadspedia\Model\InlineResponse200
+```
 
 Return Lead
 
@@ -1106,15 +1236,10 @@ Return Lead
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1123,11 +1248,11 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$contractID = 56; // int | 
-$returnReasonID = 56; // int | 
-$scrub = 'scrub_example'; // string | 
-$replaceReturns = 'replaceReturns_example'; // string | 
+$leadID = 'leadID_example'; // string
+$contractID = 56; // int
+$returnReasonID = 56; // int
+$scrub = 'scrub_example'; // string
+$replaceReturns = 'replaceReturns_example'; // string
 
 try {
     $result = $apiInstance->leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
@@ -1135,19 +1260,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeaddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **contractID** | **int**|  |
- **returnReasonID** | **int**|  |
- **scrub** | **string**|  | [optional]
- **replaceReturns** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **contractID** | **int**|  | |
+| **returnReasonID** | **int**|  | |
+| **scrub** | **string**|  | [optional] |
+| **replaceReturns** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1155,21 +1278,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsreviewApprovedo()`
 
-## leadsreviewApprovedo
-
-> \Leadspedia\Model\InlineResponse200 leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason)
+```php
+leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason): \Leadspedia\Model\InlineResponse200
+```
 
 Review Approve
 
@@ -1180,15 +1304,10 @@ Review Approve
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1197,9 +1316,9 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$leadAcceptReasonID = 56; // int | 
-$leadAcceptReason = 'leadAcceptReason_example'; // string | 
+$leadID = 'leadID_example'; // string
+$leadAcceptReasonID = 56; // int
+$leadAcceptReason = 'leadAcceptReason_example'; // string | Required if leadAcceptReasonID is not provided
 
 try {
     $result = $apiInstance->leadsreviewApprovedo($leadID, $leadAcceptReasonID, $leadAcceptReason);
@@ -1207,17 +1326,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreviewApprovedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **leadAcceptReasonID** | **int**|  |
- **leadAcceptReason** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **leadAcceptReasonID** | **int**|  | |
+| **leadAcceptReason** | **string**| Required if leadAcceptReasonID is not provided | [optional] |
 
 ### Return type
 
@@ -1225,21 +1342,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsreviewRejectdo()`
 
-## leadsreviewRejectdo
-
-> \Leadspedia\Model\InlineResponse200 leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason)
+```php
+leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason): \Leadspedia\Model\InlineResponse200
+```
 
 Review Reject
 
@@ -1250,15 +1368,10 @@ Review Reject
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1267,9 +1380,9 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$leadRejectReasonID = 56; // int | 
-$leadRejectReason = 'leadRejectReason_example'; // string | 
+$leadID = 'leadID_example'; // string
+$leadRejectReasonID = 56; // int
+$leadRejectReason = 'leadRejectReason_example'; // string | Required if leadRejectReasonID is not provided
 
 try {
     $result = $apiInstance->leadsreviewRejectdo($leadID, $leadRejectReasonID, $leadRejectReason);
@@ -1277,17 +1390,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreviewRejectdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **leadRejectReasonID** | **int**|  |
- **leadRejectReason** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **leadRejectReasonID** | **int**|  | |
+| **leadRejectReason** | **string**| Required if leadRejectReasonID is not provided | [optional] |
 
 ### Return type
 
@@ -1295,21 +1406,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsscrubLeaddo()`
 
-## leadsscrubLeaddo
-
-> \Leadspedia\Model\InlineResponse200 leadsscrubLeaddo($leadID, $scrubReasonID)
+```php
+leadsscrubLeaddo($leadID, $scrubReasonID): \Leadspedia\Model\InlineResponse200
+```
 
 Scrub Lead
 
@@ -1320,15 +1432,10 @@ Scrub Lead
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1337,8 +1444,8 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$scrubReasonID = 56; // int | 
+$leadID = 'leadID_example'; // string
+$scrubReasonID = 56; // int
 
 try {
     $result = $apiInstance->leadsscrubLeaddo($leadID, $scrubReasonID);
@@ -1346,16 +1453,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsscrubLeaddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **scrubReasonID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **scrubReasonID** | **int**|  | |
 
 ### Return type
 
@@ -1363,21 +1468,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsunreturnLeaddo()`
 
-## leadsunreturnLeaddo
-
-> \Leadspedia\Model\InlineResponse200 leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID)
+```php
+leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID): \Leadspedia\Model\InlineResponse200
+```
 
 Unreturn Lead
 
@@ -1388,15 +1494,10 @@ Unreturn Lead
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1405,9 +1506,9 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
-$contractID = 56; // int | 
-$rejectReasonID = 56; // int | 
+$leadID = 'leadID_example'; // string
+$contractID = 56; // int
+$rejectReasonID = 56; // int
 
 try {
     $result = $apiInstance->leadsunreturnLeaddo($leadID, $contractID, $rejectReasonID);
@@ -1415,17 +1516,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsunreturnLeaddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
- **contractID** | **int**|  |
- **rejectReasonID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **contractID** | **int**|  | |
+| **rejectReasonID** | **int**|  | |
 
 ### Return type
 
@@ -1433,23 +1532,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsunscrubLeaddo()`
 
-## leadsupdateLeaddo
+```php
+leadsunscrubLeaddo($leadID, $id): \Leadspedia\Model\InlineResponse200
+```
 
-> \Leadspedia\Model\InlineResponse200 leadsupdateLeaddo($leadID)
-
-Update Lead
+Unscrub Lead
 
 ### Example
 
@@ -1458,15 +1558,10 @@ Update Lead
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\LeadsApi(
@@ -1475,23 +1570,23 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$leadID = 'leadID_example'; // string | 
+$leadID = 'leadID_example'; // string | Either id or leadID is required
+$id = 56; // int | Either id or leadID is required
 
 try {
-    $result = $apiInstance->leadsupdateLeaddo($leadID);
+    $result = $apiInstance->leadsunscrubLeaddo($leadID, $id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadsApi->leadsupdateLeaddo: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadsApi->leadsunscrubLeaddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **leadID** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**| Either id or leadID is required | |
+| **id** | **int**| Either id or leadID is required | |
 
 ### Return type
 
@@ -1499,14 +1594,265 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsupdateLeadSoldPricedo()`
+
+```php
+leadsupdateLeadSoldPricedo($soldID, $leadID, $contractID, $price): \Leadspedia\Model\InlineResponse200
+```
+
+Update Lead Sold Price
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$soldID = 56; // int | Either soldID or a combination of leadID and contractID is required
+$leadID = 'leadID_example'; // string | Must pass contractID when using this field. May skip both if using soldID.
+$contractID = 56; // int | Required when using leadID. May skip if using soldID
+$price = 3.4; // float
+
+try {
+    $result = $apiInstance->leadsupdateLeadSoldPricedo($soldID, $leadID, $contractID, $price);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsupdateLeadSoldPricedo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **soldID** | **int**| Either soldID or a combination of leadID and contractID is required | |
+| **leadID** | **string**| Must pass contractID when using this field. May skip both if using soldID. | |
+| **contractID** | **int**| Required when using leadID. May skip if using soldID | |
+| **price** | **float**|  | |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsupdateLeadStatusdo()`
+
+```php
+leadsupdateLeadStatusdo($leadID, $status, $disposition): \Leadspedia\Model\InlineResponse200
+```
+
+Update Lead Status
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$leadID = 'leadID_example'; // string
+$status = 'status_example'; // string
+$disposition = 'disposition_example'; // string
+
+try {
+    $result = $apiInstance->leadsupdateLeadStatusdo($leadID, $status, $disposition);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsupdateLeadStatusdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **status** | **string**|  | [optional] |
+| **disposition** | **string**|  | [optional] |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsupdateLeaddo()`
+
+```php
+leadsupdateLeaddo($leadID): \Leadspedia\Model\InlineResponse200
+```
+
+Update Lead Data
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$leadID = 'leadID_example'; // string
+
+try {
+    $result = $apiInstance->leadsupdateLeaddo($leadID);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsupdateLeaddo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `leadsupdatePayoutdo()`
+
+```php
+leadsupdatePayoutdo($leadID, $payout): \Leadspedia\Model\InlineResponse200
+```
+
+Update Payout
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\LeadsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$leadID = 'leadID_example'; // string
+$payout = 3.4; // float
+
+try {
+    $result = $apiInstance->leadsupdatePayoutdo($leadID, $payout);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadsApi->leadsupdatePayoutdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **leadID** | **string**|  | |
+| **payout** | **float**|  | |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)

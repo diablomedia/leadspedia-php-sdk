@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./vendor/autoload.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         bootstrap="./vendor/autoload.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         failOnIncomplete="true"
+         failOnRisky="true"
          stopOnFailure="false">
     <testsuites>
         <testsuite name="tests">
             <directory>./test/Api</directory>
             <directory>./test/Model</directory>
+            <directory>./test/Scripts</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <source>
+        <include>
             <directory suffix=".php">./src/Api</directory>
             <directory suffix=".php">./src/Model</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </source>
     <php>
         <ini name="error_reporting" value="E_ALL" />
     </php>

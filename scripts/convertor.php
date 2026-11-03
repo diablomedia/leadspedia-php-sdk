@@ -1,6 +1,12 @@
 <?php
 
-$source = json_decode(file_get_contents(__DIR__ . '/../schema/api-docs.json'));
+$source = json_decode(file_get_contents(__DIR__ . '/../schema/api-docs.json'), false, 512, JSON_THROW_ON_ERROR);
+
+if (isset($source->openapi)) {
+    $output = convertOfficialDocument($source);
+    file_put_contents(__DIR__ . '/../schema/openapi.json', json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR));
+    exit(0);
+}
 
 $securityDefinitions = [];
 $securityArray       = [];
@@ -35,13 +41,13 @@ $output = [
     "basePath"            => $source->basePath,
     "securityDefinitions" => $securityDefinitions,
     "schemes"             => [
-        "https"
+        "https",
     ],
     "consumes" => [
-        "application/json"
+        "application/json",
     ],
     "produces" => [
-        "application/json"
+        "application/json",
     ],
     "paths"       => [],
     "definitions" => new stdClass(),
@@ -109,7 +115,7 @@ foreach ($source->resources->endpoints as $endpoint) {
                         'data' => [
                             'type' => 'object',
                         ],
-                    ]
+                    ],
                 ],
             ];
         } elseif ($endpoint->request->method === 'post') {
@@ -123,8 +129,8 @@ foreach ($source->resources->endpoints as $endpoint) {
                         ],
                         'message' => [
                             'type' => 'string',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ];
         } else {
@@ -141,7 +147,7 @@ foreach ($source->resources->endpoints as $endpoint) {
             'required'    => in_array($name, $queryParams['required'] ?? []),
             'type'        => is_array($queryParam['type']) ? $queryParam['type'][0] : ($queryParam['type'] ?? ''),
             'description' => '',
-            'format'      => $queryParam['format'] ?? '',
+            'format'      => $queryParam['format']  ?? '',
             'default'     => $queryParam['default'] ?? '',
         ];
 
@@ -156,3 +162,123 @@ foreach ($source->resources->endpoints as $endpoint) {
 }
 
 file_put_contents(__DIR__ . '/../schema/openapi.json', json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+/**
+ * Normalize the published OpenAPI 3 Core contract for the existing PHP generator.
+ * The official document currently has no response schemas, so retain the SDK's
+ * generic response envelopes rather than generating methods that return void.
+ */
+function convertOfficialDocument(stdClass $source): array
+{
+    $compatibility = json_decode(file_get_contents(__DIR__ . '/../schema/compatibility.json'), true, 512, JSON_THROW_ON_ERROR);
+    if (!str_starts_with($source->openapi, '3.')) {
+        throw new RuntimeException('Unsupported OpenAPI version: ' . $source->openapi);
+    }
+    $server = parse_url($source->servers[0]->url ?? '');
+    if (($server['scheme'] ?? '') !== 'https' || empty($server['host']) || !empty(trim($server['path'] ?? '', '/'))) {
+        throw new RuntimeException('Expected an HTTPS server URL without a path.');
+    }
+    $definitions = [];
+    foreach (['inline_response_200' => ['success', 'message'], 'inline_response_200_1' => ['success', 'message', 'response', 'data']] as $name => $properties) {
+        $definitions[$name] = ['type' => 'object', 'properties' => []];
+        foreach ($properties as $property) {
+            $definitions[$name]['properties'][$property] = ['type' => match ($property) {
+                'success' => 'boolean',
+                'message' => 'string',
+                default   => 'object',
+            }];
+        }
+    }
+    $securityDefinitions = [];
+    foreach ($source->components->securitySchemes as $name => $scheme) {
+        if ($scheme->type !== 'http' || $scheme->scheme !== 'basic') {
+            throw new RuntimeException('Unsupported security scheme: ' . $name);
+        }
+        $securityDefinitions[$name] = ['type' => 'basic'];
+    }
+    $output = [
+        'swagger'             => '2.0',
+        'info'                => $source->info,
+        'host'                => $server['host'] . (isset($server['port']) ? ':' . $server['port'] : ''),
+        'basePath'            => '/core/v2',
+        'schemes'             => ['https'],
+        'consumes'            => ['application/json'],
+        'produces'            => ['application/json'],
+        'securityDefinitions' => $securityDefinitions,
+        'paths'               => [],
+        'definitions'         => $definitions,
+    ];
+    foreach ($source->paths as $fullPath => $methods) {
+        if (!str_starts_with($fullPath, '/core/v2/')) {
+            continue;
+        }
+        $path = substr($fullPath, strlen('/core/v2'));
+        foreach ($methods as $method => $operation) {
+            if (!in_array($method, ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace'], true)) {
+                throw new RuntimeException('Unsupported path entry: ' . $fullPath . ' ' . $method);
+            }
+            if (isset($operation->requestBody)) {
+                throw new RuntimeException('Request bodies need explicit conversion: ' . $fullPath);
+            }
+            $request = [
+                'summary'     => $operation->summary     ?? '',
+                'description' => $operation->description ?? '',
+                'tags'        => [explode('/', $path)[1]],
+                'operationId' => str_replace(['/', '.'], '', $path),
+                'deprecated'  => $operation->deprecated ?? false,
+                'security'    => $operation->security   ?? $source->security ?? [],
+                'parameters'  => [],
+                'responses'   => [],
+            ];
+            foreach ($operation->parameters ?? [] as $parameter) {
+                if ($parameter->in !== 'query' || !isset($parameter->schema->type)) {
+                    throw new RuntimeException('Unsupported parameter: ' . $fullPath);
+                }
+                $schema = (array) $parameter->schema;
+                if (!isset($schema['format']) && isset($compatibility['dateFormats'][$schema['x-matching-pattern'] ?? ''])) {
+                    $schema['format'] = $compatibility['dateFormats'][$schema['x-matching-pattern']];
+                }
+                $request['parameters'][] = array_merge($schema, [
+                    'name'        => $parameter->name,
+                    'in'          => $parameter->in,
+                    'required'    => $parameter->required    ?? false,
+                    'description' => $parameter->description ?? '',
+                ]);
+            }
+            $overrides = $compatibility['operations'][$path][$method] ?? [];
+            foreach ($request['parameters'] as &$parameter) {
+                $type = $overrides['parameterTypes'][$parameter['name']] ?? null;
+                if ($type !== null) {
+                    if (!in_array($parameter['type'], ['integer', 'number'], true)) {
+                        throw new RuntimeException('Review numeric compatibility override: ' . $path . ' ' . $parameter['name']);
+                    }
+                    $parameter['type'] = $type;
+                }
+            }
+            unset($parameter);
+            $ranks = array_flip($overrides['parameterOrder'] ?? []);
+            // PHP's stable sort keeps new parameters in upstream order after existing ones.
+            // The generator subsequently groups required parameters before optional ones.
+            usort($request['parameters'], static fn (array $left, array $right): int => ($ranks[$left['name']] ?? PHP_INT_MAX) <=> ($ranks[$right['name']] ?? PHP_INT_MAX));
+            foreach ($operation->responses as $status => $response) {
+                $normalized = ['description' => $response->description ?? ''];
+                if (isset($response->content->{'application/json'}->schema)) {
+                    $normalized['schema'] = $response->content->{'application/json'}->schema;
+                }
+                $request['responses'][$status] = $normalized;
+            }
+            // Preserve documented responses, supplementing only an undocumented success body.
+            if (!isset($request['responses']['200']['schema'])) {
+                $model                       = $method === 'get' ? 'inline_response_200_1' : 'inline_response_200';
+                $request['responses']['200'] = array_merge($request['responses']['200'] ?? ['description' => 'SDK response envelope (not specified upstream)'], [
+                    'schema' => ['$ref' => '#/definitions/' . $model],
+                ]);
+            }
+            $output['paths'][$path][$method] = $request;
+        }
+    }
+    if ($output['paths'] === []) {
+        throw new RuntimeException('The official document contains no Core API paths.');
+    }
+    return $output;
+}

@@ -1,8 +1,13 @@
 {
+    "templateDir": "templates/php",
     "variableNamingConvention": "camelCase",
     "srcBasePath": "src",
     "packageName": "Leadspedia",
     "invokerPackage": "Leadspedia",
     "apiPackage": "Api",
-    "modelPackage": "Model"
+    "modelPackage": "Model",
+    "inlineSchemaNameMappings": {
+        "affiliatescreatedo_200_response": "inline_response_200",
+        "verticalsgetAlldo_200_response": "inline_response_200_1"
+    }
 }

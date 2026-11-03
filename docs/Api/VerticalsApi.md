@@ -1,20 +1,86 @@
 # Leadspedia\VerticalsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**verticalscreatedo**](VerticalsApi.md#verticalscreatedo) | **POST** /verticals/create.do | Create
-[**verticalsdeletedo**](VerticalsApi.md#verticalsdeletedo) | **POST** /verticals/delete.do | Delete
-[**verticalsgetAlldo**](VerticalsApi.md#verticalsgetAlldo) | **GET** /verticals/getAll.do | Get All
-[**verticalsgetInfodo**](VerticalsApi.md#verticalsgetInfodo) | **GET** /verticals/getInfo.do | Get Info
-[**verticalsupdatedo**](VerticalsApi.md#verticalsupdatedo) | **POST** /verticals/update.do | Update
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## verticalscreatedo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**verticalschangeStatusdo()**](VerticalsApi.md#verticalschangeStatusdo) | **POST** /verticals/changeStatus.do | Change Status |
+| [**verticalscreatedo()**](VerticalsApi.md#verticalscreatedo) | **POST** /verticals/create.do | Create |
+| [**verticalsdeletedo()**](VerticalsApi.md#verticalsdeletedo) | **POST** /verticals/delete.do | Delete |
+| [**verticalsgetAlldo()**](VerticalsApi.md#verticalsgetAlldo) | **GET** /verticals/getAll.do | Get All |
+| [**verticalsgetInfodo()**](VerticalsApi.md#verticalsgetInfodo) | **GET** /verticals/getInfo.do | Get |
+| [**verticalsupdatedo()**](VerticalsApi.md#verticalsupdatedo) | **POST** /verticals/update.do | Update |
 
-> \Leadspedia\Model\InlineResponse200 verticalscreatedo($verticalName, $groupID)
+
+## `verticalschangeStatusdo()`
+
+```php
+verticalschangeStatusdo($verticalID, $status): \Leadspedia\Model\InlineResponse200
+```
+
+Change Status
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\VerticalsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$verticalID = 56; // int
+$status = 'status_example'; // string
+
+try {
+    $result = $apiInstance->verticalschangeStatusdo($verticalID, $status);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VerticalsApi->verticalschangeStatusdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | |
+| **status** | **string**|  | |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verticalscreatedo()`
+
+```php
+verticalscreatedo($verticalName, $groupID): \Leadspedia\Model\InlineResponse200
+```
 
 Create
 
@@ -25,15 +91,10 @@ Create
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\VerticalsApi(
@@ -42,8 +103,8 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalName = 'verticalName_example'; // string | 
-$groupID = 56; // int | 
+$verticalName = 'verticalName_example'; // string
+$groupID = 56; // int | Vertical Group ID
 
 try {
     $result = $apiInstance->verticalscreatedo($verticalName, $groupID);
@@ -51,16 +112,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalName** | **string**|  |
- **groupID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalName** | **string**|  | |
+| **groupID** | **int**| Vertical Group ID | |
 
 ### Return type
 
@@ -68,21 +127,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsdeletedo()`
 
-## verticalsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 verticalsdeletedo($verticalID)
+```php
+verticalsdeletedo($verticalID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete
 
@@ -93,15 +153,10 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\VerticalsApi(
@@ -110,7 +165,7 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
+$verticalID = 56; // int
 
 try {
     $result = $apiInstance->verticalsdeletedo($verticalID);
@@ -118,15 +173,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | |
 
 ### Return type
 
@@ -134,21 +187,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsgetAlldo()`
 
-## verticalsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 verticalsgetAlldo($groupID, $status, $start, $limit)
+```php
+verticalsgetAlldo($groupID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -159,15 +213,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\VerticalsApi(
@@ -176,10 +225,10 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$groupID = 56; // int | 
-$status = 'status_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$groupID = 56; // int | Vertical Group ID
+$status = 'status_example'; // string | Vertical Status
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->verticalsgetAlldo($groupID, $status, $start, $limit);
@@ -187,18 +236,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupID** | **int**|  | [optional]
- **status** | **string**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **groupID** | **int**| Vertical Group ID | [optional] |
+| **status** | **string**| Vertical Status | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -206,23 +253,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsgetInfodo()`
 
-## verticalsgetInfodo
+```php
+verticalsgetInfodo($verticalID): \Leadspedia\Model\InlineResponse2001
+```
 
-> \Leadspedia\Model\InlineResponse2001 verticalsgetInfodo($verticalID)
-
-Get Info
+Get
 
 ### Example
 
@@ -231,15 +279,10 @@ Get Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\VerticalsApi(
@@ -248,7 +291,7 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
+$verticalID = 56; // int
 
 try {
     $result = $apiInstance->verticalsgetInfodo($verticalID);
@@ -256,15 +299,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | |
 
 ### Return type
 
@@ -272,21 +313,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verticalsupdatedo()`
 
-## verticalsupdatedo
-
-> \Leadspedia\Model\InlineResponse200 verticalsupdatedo($verticalID, $groupID, $verticalName, $notes)
+```php
+verticalsupdatedo($verticalID, $groupID, $verticalName, $notes): \Leadspedia\Model\InlineResponse200
+```
 
 Update
 
@@ -297,15 +339,10 @@ Update
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\VerticalsApi(
@@ -314,10 +351,10 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$groupID = 56; // int | 
-$verticalName = 'verticalName_example'; // string | 
-$notes = 'notes_example'; // string | 
+$verticalID = 56; // int
+$groupID = 56; // int
+$verticalName = 'verticalName_example'; // string
+$notes = 'notes_example'; // string
 
 try {
     $result = $apiInstance->verticalsupdatedo($verticalID, $groupID, $verticalName, $notes);
@@ -325,18 +362,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  |
- **groupID** | **int**|  | [optional]
- **verticalName** | **string**|  | [optional]
- **notes** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | |
+| **groupID** | **int**|  | [optional] |
+| **verticalName** | **string**|  | [optional] |
+| **notes** | **string**|  | [optional] |
 
 ### Return type
 
@@ -344,14 +379,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

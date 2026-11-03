@@ -1,16 +1,19 @@
 # Leadspedia\NumbersApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**numbersgetAvailabledo**](NumbersApi.md#numbersgetAvailabledo) | **GET** /numbers/getAvailable.do | Get Available
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## numbersgetAvailabledo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**numbersgetAvailabledo()**](NumbersApi.md#numbersgetAvailabledo) | **GET** /numbers/getAvailable.do | Get Available |
 
-> \Leadspedia\Model\InlineResponse2001 numbersgetAvailabledo($start, $limit)
+
+## `numbersgetAvailabledo()`
+
+```php
+numbersgetAvailabledo($start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Available
 
@@ -21,15 +24,10 @@ Get Available
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\NumbersApi(
@@ -38,8 +36,8 @@ $apiInstance = new Leadspedia\Api\NumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$start = 0; // int | 
-$limit = 100; // int | 
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->numbersgetAvailabledo($start, $limit);
@@ -47,16 +45,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling NumbersApi->numbersgetAvailabledo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -64,14 +60,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

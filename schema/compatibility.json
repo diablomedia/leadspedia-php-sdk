@@ -1,0 +1,2377 @@
+{
+    "description": "Compatibility with the last SDK schema before migrating to the official OpenAPI source. Ordering applies only to parameters still documented upstream. Decimal overrides are limited to previously supported monetary fields.",
+    "baselineCommit": "888154e02f7e0b0a2efa2c7ea558a582eb109ad7",
+    "dateFormats": {
+        "YYYY-MM-DD": "date"
+    },
+    "operations": {
+        "/affiliates/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "affiliateName",
+                    "accountManagerID",
+                    "status"
+                ]
+            }
+        },
+        "/verticals/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "groupID",
+                    "status",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/offers/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID",
+                    "revenueModel",
+                    "payoutModel",
+                    "advertiserID",
+                    "status",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getReturned.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "callerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "offerID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/campaigns/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "campaignID",
+                    "affiliateID",
+                    "offerID",
+                    "verticalID",
+                    "status",
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/offers/search.do": {
+            "get": {
+                "parameterOrder": [
+                    "name",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getInProgress.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "callerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "offerID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getScrubbed.do": {
+            "get": {
+                "parameterOrder": [
+                    "toDate",
+                    "callerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "offerID",
+                    "fromDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "callerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "offerID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getNumbers.do": {
+            "get": {
+                "parameterOrder": [
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/inboundCalls/getTransferred.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "callerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "offerID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/advertisers/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "advertiserType",
+                    "accountManagerID",
+                    "status",
+                    "isCreditEnabled",
+                    "hasCreditCardOnFile",
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/affiliates/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "affiliateID",
+                    "accountManagerID",
+                    "status",
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/callRoutingContracts/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "status",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "contractID",
+                    "verticalID",
+                    "status",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "paid",
+                    "scrubbed",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getQueue.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getScrubbed.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getSold.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "leadID",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "advertiserID",
+                    "contractID",
+                    "returned",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getTrash.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "leadID",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getReview.do": {
+            "get": {
+                "parameterOrder": [
+                    "leadID",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getReturns.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "advertiserID",
+                    "contractID",
+                    "status",
+                    "returnReasonID",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/conversions/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "offerID",
+                    "affiliateID",
+                    "campaignID",
+                    "advertiserID",
+                    "status",
+                    "showGoal",
+                    "showNonGoal",
+                    "showThrottled",
+                    "showNonThrottled",
+                    "showTest",
+                    "showNonTest",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/verticals/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalID"
+                ]
+            }
+        },
+        "/verticalGroups/update.do": {
+            "post": {
+                "parameterOrder": [
+                    "groupID",
+                    "groupName"
+                ]
+            }
+        },
+        "/verticalGroups/getInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "groupID"
+                ]
+            }
+        },
+        "/affiliates/getInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "affiliateID"
+                ]
+            }
+        },
+        "/verticals/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalName",
+                    "groupID"
+                ]
+            }
+        },
+        "/verticals/update.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalID",
+                    "groupID",
+                    "verticalName",
+                    "notes"
+                ]
+            }
+        },
+        "/verticalGroups/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/verticalGroups/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "groupName"
+                ]
+            }
+        },
+        "/verticalGroups/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "groupID"
+                ]
+            }
+        },
+        "/verticals/getInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID"
+                ]
+            }
+        },
+        "/advertisers/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID"
+                ]
+            }
+        },
+        "/advertisers/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserName",
+                    "accountManagerID",
+                    "status"
+                ]
+            }
+        },
+        "/affiliates/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "affiliateID"
+                ]
+            }
+        },
+        "/affiliates/updateInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "affiliateID",
+                    "affiliateName",
+                    "website",
+                    "alternateID",
+                    "address",
+                    "address2",
+                    "city",
+                    "state",
+                    "zipCode",
+                    "country",
+                    "reportingUrl",
+                    "reportingUsername",
+                    "reportingPassword"
+                ]
+            }
+        },
+        "/advertisers/getInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID"
+                ]
+            }
+        },
+        "/affiliates/updateBilling.do": {
+            "post": {
+                "parameterOrder": [
+                    "affiliateID",
+                    "billingCycle",
+                    "taxID",
+                    "taxClass",
+                    "tax_doc_received"
+                ]
+            }
+        },
+        "/affiliates/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "affiliateID",
+                    "status"
+                ]
+            }
+        },
+        "/advertisers/updateBilling.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "billingCycle",
+                    "taxID",
+                    "taxClass"
+                ]
+            }
+        },
+        "/advertisers/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "status"
+                ]
+            }
+        },
+        "/advertisers/updateInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "advertiserName",
+                    "website",
+                    "alternateID",
+                    "source",
+                    "externalCRMID",
+                    "numberOfStaff",
+                    "address",
+                    "address2",
+                    "city",
+                    "state",
+                    "zipCode",
+                    "country",
+                    "reportingUrl",
+                    "reportingUsername",
+                    "reportingPassword"
+                ]
+            }
+        },
+        "/leadDistributionContracts/changeMode.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "mode"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateLeadsCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "hourlyLeadsCap",
+                    "dailyLeadsCap",
+                    "weeklyLeadsCap",
+                    "monthlyLeadsCap"
+                ]
+            }
+        },
+        "/leadDistributionContracts/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "status"
+                ]
+            }
+        },
+        "/affiliates/search.do": {
+            "get": {
+                "parameterOrder": [
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leadDistributionContracts/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalID",
+                    "advertiserID",
+                    "revenueModel",
+                    "contractName",
+                    "defaultPrice"
+                ],
+                "parameterTypes": {
+                    "defaultPrice": "number"
+                }
+            }
+        },
+        "/advertisers/search.do": {
+            "get": {
+                "parameterOrder": [
+                    "search",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/advertisers/updatePortalSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "portal_access",
+                    "two_way_auth",
+                    "manage_users",
+                    "manage_offers",
+                    "update_billing_info"
+                ]
+            }
+        },
+        "/leadDistributionContracts/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateBasicInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "contractName",
+                    "alternativeID",
+                    "notes"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getSchedule.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updatePortalSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "showStatus",
+                    "showLeadData",
+                    "showSchedule",
+                    "showCaps",
+                    "showReturnSettings",
+                    "allowStatusPause",
+                    "allowUpdateSchedule",
+                    "allowManageCaps"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateLeadsSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "minimumLeadAge",
+                    "maximumLeadAge",
+                    "maximumPostErrors",
+                    "timeLeadsPosts",
+                    "allowQueueLeads"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateDuplicatesSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "enableDuplicateCheck",
+                    "numberOfDays"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateReturnsSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "allowReturns",
+                    "autoApproveReturns",
+                    "replaceReturns",
+                    "replacementNonReturnable"
+                ]
+            }
+        },
+        "/leadDistributionContracts/createSchedule.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "cap",
+                    "revenueCap",
+                    "price",
+                    "startTime",
+                    "endTime",
+                    "type",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "parameterTypes": {
+                    "revenueCap": "number",
+                    "price": "number"
+                }
+            }
+        },
+        "/leadDistributionContracts/updateSchedule.do": {
+            "post": {
+                "parameterOrder": [
+                    "deliveryScheduleID",
+                    "cap",
+                    "revenueCap",
+                    "price",
+                    "startTime",
+                    "endTime",
+                    "type"
+                ],
+                "parameterTypes": {
+                    "revenueCap": "number",
+                    "price": "number"
+                }
+            }
+        },
+        "/leadDistributionContracts/rename.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "contractName"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateRevenueCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "hourlyRevenueCap",
+                    "dailyRevenueCap",
+                    "weeklyRevenueCap",
+                    "monthlyRevenueCap"
+                ]
+            }
+        },
+        "/leadDistributionContracts/setExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "expirationDate"
+                ]
+            }
+        },
+        "/callRoutingContracts/setExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "expirationDate"
+                ]
+            }
+        },
+        "/callRoutingContracts/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalID",
+                    "advertiserID",
+                    "contractName",
+                    "defaultPrice"
+                ],
+                "parameterTypes": {
+                    "defaultPrice": "number"
+                }
+            }
+        },
+        "/leadDistributionContracts/deleteAllSchedules.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/rename.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "contractName"
+                ]
+            }
+        },
+        "/leadDistributionContracts/deleteSchedule.do": {
+            "post": {
+                "parameterOrder": [
+                    "deliveryScheduleID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getBasicInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/changeMode.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "mode"
+                ]
+            }
+        },
+        "/callRoutingContracts/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "status"
+                ]
+            }
+        },
+        "/callRoutingContracts/getBasicInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/offers/updateVisibility.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "visibility"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateBasicInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "contractName",
+                    "transferNumber",
+                    "alternativeID",
+                    "notes"
+                ]
+            }
+        },
+        "/callRoutingContracts/removeExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/schedulePause.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "pauseDate",
+                    "resumeDate"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateTransferNumber.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "transferNumber"
+                ]
+            }
+        },
+        "/callRoutingContracts/deleteScheduledPause.do": {
+            "post": {
+                "parameterOrder": [
+                    "scheduledPauseID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getScheduledPause.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leadDistributionContracts/schedulePause.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "pauseDate",
+                    "resumeDate"
+                ]
+            }
+        },
+        "/leadDistributionContracts/deleteScheduledPause.do": {
+            "post": {
+                "parameterOrder": [
+                    "scheduledPauseID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/removeExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/offers/setExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "expirationDate"
+                ]
+            }
+        },
+        "/offers/removeExpirationDate.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getScheduledPause.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateRevenueModel.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "revenueModel",
+                    "price",
+                    "duration"
+                ],
+                "parameterTypes": {
+                    "price": "number"
+                }
+            }
+        },
+        "/callRoutingContracts/updatePortalSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "showStatus",
+                    "showSchedule",
+                    "showCaps",
+                    "showReturnSettings",
+                    "allowStatusPause",
+                    "allowUpdateSchedule",
+                    "allowManageCaps",
+                    "callRecordings",
+                    "hideCallerID"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateReturnsSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "allowReturns",
+                    "autoApproveReturns"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateRepeatCallsSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "repeatCallDays",
+                    "transferRepeat",
+                    "repeatBillable"
+                ]
+            }
+        },
+        "/offers/rename.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "offerName"
+                ]
+            }
+        },
+        "/offers/updateBasicInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "offerName",
+                    "notes",
+                    "alternativeID",
+                    "previewURL",
+                    "offerDescription",
+                    "testingInstructions",
+                    "offerRestrictions"
+                ]
+            }
+        },
+        "/offers/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID"
+                ]
+            }
+        },
+        "/offers/changeMode.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "mode"
+                ]
+            }
+        },
+        "/offers/updateTermsSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "terms",
+                    "termsEnabled"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getReturnsSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getRepeatCallsSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getDuplicatesSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getPortalSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getPortalSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/offers/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "status"
+                ]
+            }
+        },
+        "/callRoutingContracts/getReturnsSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getRevenueCapInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getRevenueCapInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getTransfersCapInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/callRoutingContracts/getBillableTransfersCapInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getLeadsCapInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/getLeadsSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/offers/updateEmailSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "offerID",
+                    "testEmail",
+                    "allowedEmails",
+                    "allowedSubjects",
+                    "emailInstructions"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateRevenueCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "hourlyRevenueCap",
+                    "dailyRevenueCap",
+                    "weeklyRevenueCap",
+                    "monthlyRevenueCap"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateBillableTransfersCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "hourlyBillableCap",
+                    "dailyBillableCap",
+                    "weeklyBillableCap",
+                    "monthlyBillableCap"
+                ]
+            }
+        },
+        "/callRoutingContracts/updateTransfersCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "hourlyTransfersCap",
+                    "dailyTransfersCap",
+                    "weeklyTransfersCap",
+                    "monthlyTransfersCap"
+                ]
+            }
+        },
+        "/campaigns/changeStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "status"
+                ]
+            }
+        },
+        "/audio/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "audioID"
+                ]
+            }
+        },
+        "/audio/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "audioID",
+                    "audioType",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/campaigns/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID"
+                ]
+            }
+        },
+        "/campaigns/rename.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "campaignName"
+                ]
+            }
+        },
+        "/campaigns/changeMode.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "mode"
+                ]
+            }
+        },
+        "/campaigns/updateBasicInfo.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "campaignName",
+                    "notes",
+                    "alternativeID"
+                ]
+            }
+        },
+        "/campaigns/getBasicInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "campaignID"
+                ]
+            }
+        },
+        "/offers/getBasicInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "offerID"
+                ]
+            }
+        },
+        "/offers/getTermsSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "offerID"
+                ]
+            }
+        },
+        "/campaigns/unassignTrackingNumber.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "number"
+                ]
+            }
+        },
+        "/campaigns/assignTrackingNumber.do": {
+            "post": {
+                "parameterOrder": [
+                    "campaignID",
+                    "number"
+                ]
+            }
+        },
+        "/offers/getEmailSettings.do": {
+            "get": {
+                "parameterOrder": [
+                    "offerID"
+                ]
+            }
+        },
+        "/numbers/getAvailable.do": {
+            "get": {
+                "parameterOrder": [
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/advertisersCreditCards/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/getLeadInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "leadID"
+                ]
+            }
+        },
+        "/advertisersCreditCards/getInfo.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "creditCardID"
+                ]
+            }
+        },
+        "/advertisersCreditCards/getDefault.do": {
+            "get": {
+                "parameterOrder": [
+                    "advertiserID"
+                ]
+            }
+        },
+        "/leads/getLeadData.do": {
+            "get": {
+                "parameterOrder": [
+                    "leadID"
+                ]
+            }
+        },
+        "/advertisersCreditCards/setDefault.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "creditCardID"
+                ]
+            }
+        },
+        "/advertisersCreditCards/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "creditCardID"
+                ]
+            }
+        },
+        "/advertisersCreditCards/add.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "cardNumber",
+                    "nameOnCard",
+                    "expMonth",
+                    "expYear",
+                    "cvv",
+                    "address",
+                    "city",
+                    "state",
+                    "zipCode",
+                    "country",
+                    "address2",
+                    "defaultCard"
+                ]
+            }
+        },
+        "/advertisersCreditCards/update.do": {
+            "post": {
+                "parameterOrder": [
+                    "creditCardID",
+                    "advertiserID",
+                    "nameOnCard",
+                    "expMonth",
+                    "expYear",
+                    "address",
+                    "city",
+                    "state",
+                    "zipCode",
+                    "country",
+                    "address2"
+                ]
+            }
+        },
+        "/advertisers/updateAuthorizeNetCustomerProfileID.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "authNetCustomerProfileID"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallRoutingReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leads/scrubLead.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "scrubReasonID"
+                ]
+            }
+        },
+        "/leads/returnLead.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "contractID",
+                    "returnReasonID",
+                    "scrub",
+                    "replaceReturns"
+                ]
+            }
+        },
+        "/leads/returnLeadFromAllContracts.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "returnReasonID",
+                    "scrub",
+                    "replaceReturns"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByVerticalsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalGroupID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getOffersLeadsCapReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID",
+                    "verticalGroupID"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByOffersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "payoutModel",
+                    "toDate"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByAdvertisersDailyReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "month",
+                    "year",
+                    "verticalID",
+                    "verticalGroupID",
+                    "contractID",
+                    "advertiserID",
+                    "advertiserAccountManagerID"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsBySubAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByAdvertisersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByOffersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "payoutModel",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByContractsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByAffiliatesDailyReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "month",
+                    "year",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByCampaignsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "payoutModel",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getCampaignsLeadsCapReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID",
+                    "verticalGroupID",
+                    "affiliateID",
+                    "affiliateAccountManagerID"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByAdvertisersDailyReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "month",
+                    "year",
+                    "verticalID",
+                    "verticalGroupID",
+                    "contractID",
+                    "advertiserID",
+                    "advertiserAccountManagerID"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByCampaignsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "payoutModel",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsBySubAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getContractsLeadsCapReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID",
+                    "verticalGroupID",
+                    "advertiserID",
+                    "advertiserAccountManagerID"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByAdvertisersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByAffiliatesDailyReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "month",
+                    "year",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID"
+                ]
+            }
+        },
+        "/leadsReports/getPingPostReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadsByVerticalsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalGroupID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getCampaignsLeadsFieldsCapReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "verticalID",
+                    "verticalGroupID",
+                    "affiliateID",
+                    "affiliateAccountManagerID"
+                ]
+            }
+        },
+        "/callTrackingReports/getCallsByContractsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadsReports/getLeadDistributionReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "campaignID",
+                    "payoutModel",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsByCampaignsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "payoutModel",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsDailyReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "month",
+                    "year",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsBySubAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "campaignID",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsByOffersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "payoutModel",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsBySourceReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "advertiserID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsByVerticalsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalGroupID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsByAdvertisersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/conversionsReports/getConversionsByAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leads/requestReturn.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "contractID",
+                    "returnReasonID",
+                    "returnNotes"
+                ]
+            }
+        },
+        "/advertisersCreditCards/updatePaymentProfileID.do": {
+            "post": {
+                "parameterOrder": [
+                    "creditCardID",
+                    "advertiserID",
+                    "paymentProfileID",
+                    "expMonth",
+                    "expYear",
+                    "address",
+                    "address2",
+                    "city",
+                    "state",
+                    "zipCode",
+                    "country"
+                ]
+            }
+        },
+        "/leads/rejectReturn.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "contractID",
+                    "rejectReasonID"
+                ]
+            }
+        },
+        "/leads/approveReturn.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "contractID"
+                ]
+            }
+        },
+        "/leads/updateLead.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID"
+                ]
+            }
+        },
+        "/leads/reviewApprove.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "leadAcceptReasonID",
+                    "leadAcceptReason"
+                ]
+            }
+        },
+        "/leads/reviewReject.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "leadRejectReasonID",
+                    "leadRejectReason"
+                ]
+            }
+        },
+        "/list/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "type",
+                    "advertiserID",
+                    "verticalID"
+                ]
+            }
+        },
+        "/requests/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "date",
+                    "affiliateID",
+                    "campaignID",
+                    "dispositionID"
+                ]
+            }
+        },
+        "/advertisers/enableCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID"
+                ]
+            }
+        },
+        "/advertisers/adjustCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "type",
+                    "amount",
+                    "charge",
+                    "generateInvoice",
+                    "note",
+                    "transactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount"
+                ],
+                "parameterTypes": {
+                    "amount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/advertisers/updateAutoRechargeSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "enableAutoRecharge",
+                    "autoChargeBalance",
+                    "autoChargeAmount",
+                    "chargeTransactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount",
+                    "generateInvoice"
+                ],
+                "parameterTypes": {
+                    "autoChargeBalance": "number",
+                    "autoChargeAmount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/leadDistributionContracts/enableCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "buyerLevel"
+                ]
+            }
+        },
+        "/leadDistributionContracts/addToOffer.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "offerID",
+                    "priority"
+                ]
+            }
+        },
+        "/leadDistributionContracts/addFilter.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "fieldID",
+                    "operator",
+                    "value",
+                    "date",
+                    "miles"
+                ]
+            }
+        },
+        "/leadDistributionContracts/assignEmailDeliveryMethod.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "deliveryMethodID",
+                    "email_to"
+                ]
+            }
+        },
+        "/leadDistributionContracts/assignSMSDeliveryMethod.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "deliveryMethodID",
+                    "sms_to"
+                ]
+            }
+        },
+        "/leadDistributionContracts/deleteAllDeliveryMethods.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/deleteFilter.do": {
+            "post": {
+                "parameterOrder": [
+                    "filterID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/setPrice.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "price"
+                ],
+                "parameterTypes": {
+                    "price": "number"
+                }
+            }
+        },
+        "/leadDistributionContracts/getFilters.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/reports/getVerticalsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "toDate"
+                ]
+            }
+        },
+        "/reports/getOffersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "toDate"
+                ]
+            }
+        },
+        "/reports/getCampaignsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "affiliateID",
+                    "verticalID",
+                    "toDate"
+                ]
+            }
+        },
+        "/reports/getAffiliatesReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/reports/getAdvertisersReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "advertiserAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateDistributionPriority.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "offerID",
+                    "priority"
+                ]
+            }
+        },
+        "/leadDistributionContracts/updateAutoRechargeSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "enableAutoRecharge",
+                    "autoChargeBalance",
+                    "autoChargeAmount",
+                    "chargeTransactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount",
+                    "generateInvoice"
+                ],
+                "parameterTypes": {
+                    "autoChargeBalance": "number",
+                    "autoChargeAmount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/callRoutingContracts/updateAutoRechargeSettings.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "enableAutoRecharge",
+                    "autoChargeBalance",
+                    "autoChargeAmount",
+                    "chargeTransactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount",
+                    "generateInvoice"
+                ],
+                "parameterTypes": {
+                    "autoChargeBalance": "number",
+                    "autoChargeAmount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/advertisers/updateLeadsCaps.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsDailyCap",
+                    "leadsWeeklyCap",
+                    "leadsMonthlyCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsRevenueCaps.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsDailyRevenueCap",
+                    "leadsWeeklyRevenueCap",
+                    "leadsMonthlyRevenueCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsDailyCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsDailyCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsWeeklyCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsWeeklyCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsMonthlyCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsMonthlyCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsDailyRevenueCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsDailyRevenueCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsWeeklyRevenueCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsWeeklyRevenueCap"
+                ]
+            }
+        },
+        "/advertisers/updateLeadsMonthlyRevenueCap.do": {
+            "post": {
+                "parameterOrder": [
+                    "advertiserID",
+                    "leadsMonthlyRevenueCap"
+                ]
+            }
+        },
+        "/leads/unreturnLead.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "contractID",
+                    "rejectReasonID"
+                ]
+            }
+        },
+        "/leadDistributionContracts/adjustCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "type",
+                    "amount",
+                    "charge",
+                    "generateInvoice",
+                    "note",
+                    "transactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount"
+                ],
+                "parameterTypes": {
+                    "amount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/callRoutingContracts/adjustCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "type",
+                    "amount",
+                    "charge",
+                    "generateInvoice",
+                    "note",
+                    "transactionFee",
+                    "transactionFeePercentage",
+                    "transactionFeeAmount"
+                ],
+                "parameterTypes": {
+                    "amount": "number",
+                    "transactionFeePercentage": "number",
+                    "transactionFeeAmount": "number"
+                }
+            }
+        },
+        "/callRoutingContracts/enableCredit.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "buyerLevel"
+                ]
+            }
+        },
+        "/leads/getDelivered.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "leadID",
+                    "campaignID",
+                    "affiliateID",
+                    "verticalID",
+                    "advertiserID",
+                    "contractID",
+                    "returned",
+                    "toDate",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/updateLeadStatus.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "status",
+                    "disposition"
+                ]
+            }
+        },
+        "/clicksReports/getClicksByCampaignsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "verticalID",
+                    "verticalGroupID",
+                    "offerID",
+                    "payoutModel",
+                    "affiliateID",
+                    "affiliateAccountManagerID",
+                    "toDate"
+                ]
+            }
+        },
+        "/leads/updateLeadSoldPrice.do": {
+            "post": {
+                "parameterOrder": [
+                    "soldID",
+                    "leadID",
+                    "contractID",
+                    "price"
+                ],
+                "parameterTypes": {
+                    "price": "number"
+                }
+            }
+        },
+        "/leads/getPosts.do": {
+            "get": {
+                "parameterOrder": [
+                    "date",
+                    "contractID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/dnc/add.do": {
+            "post": {
+                "parameterOrder": [
+                    "verticalID",
+                    "phoneNumber",
+                    "emailAddress"
+                ]
+            }
+        },
+        "/blockedCallerIDs/add.do": {
+            "post": {
+                "parameterOrder": [
+                    "phoneNumber",
+                    "note"
+                ]
+            }
+        },
+        "/campaigns/addFilter.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "fieldID",
+                    "operator",
+                    "value",
+                    "date",
+                    "miles"
+                ]
+            }
+        },
+        "/campaigns/deleteFilter.do": {
+            "post": {
+                "parameterOrder": [
+                    "filterID"
+                ]
+            }
+        },
+        "/campaigns/getFilters.do": {
+            "get": {
+                "parameterOrder": [
+                    "campaignID",
+                    "start",
+                    "limit"
+                ]
+            }
+        },
+        "/leads/updatePayout.do": {
+            "post": {
+                "parameterOrder": [
+                    "leadID",
+                    "payout"
+                ],
+                "parameterTypes": {
+                    "payout": "number"
+                }
+            }
+        },
+        "/reports/getContractsReport.do": {
+            "get": {
+                "parameterOrder": [
+                    "fromDate",
+                    "contractID",
+                    "advertiserID",
+                    "verticalID",
+                    "toDate"
+                ]
+            }
+        },
+        "/contractFieldRevenueRules/getAll.do": {
+            "get": {
+                "parameterOrder": [
+                    "contractID"
+                ]
+            }
+        },
+        "/contractFieldRevenueRules/create.do": {
+            "post": {
+                "parameterOrder": [
+                    "contractID",
+                    "fieldID",
+                    "fieldValue",
+                    "price",
+                    "effectivePriceRate",
+                    "effectivePriceAmount"
+                ],
+                "parameterTypes": {
+                    "price": "number"
+                }
+            }
+        },
+        "/contractFieldRevenueRules/update.do": {
+            "post": {
+                "parameterOrder": [
+                    "fieldRevenueRuleID",
+                    "fieldID",
+                    "fieldValue",
+                    "price",
+                    "effectivePriceRate",
+                    "effectivePriceAmount"
+                ],
+                "parameterTypes": {
+                    "price": "number"
+                }
+            }
+        },
+        "/contractFieldRevenueRules/delete.do": {
+            "post": {
+                "parameterOrder": [
+                    "fieldRevenueRuleID"
+                ]
+            }
+        }
+    }
+}
