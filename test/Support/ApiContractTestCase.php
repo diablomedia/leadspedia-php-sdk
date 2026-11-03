@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Response;
 use InvalidArgumentException;
@@ -103,6 +104,40 @@ abstract class ApiContractTestCase extends TestCase
             }
         }
         self::assertCount(4, $history, 'Required parameter validation must happen before HTTP transport.');
+
+        foreach (['Async', 'AsyncWithHttpInfo'] as $suffix) {
+            $mock->append(new Response(200, ['X-Contract' => 'async'], $body));
+            $promise = $api->{$operationId . $suffix}(...$arguments);
+            self::assertInstanceOf(PromiseInterface::class, $promise);
+            $asyncResult = $promise->wait();
+            if ($suffix === 'AsyncWithHttpInfo') {
+                [$asyncResult, $status, $headers] = $asyncResult;
+                self::assertSame(200, $status);
+                self::assertSame(['async'], $headers['X-Contract']);
+            }
+            self::assertEquals($result, $asyncResult);
+            $this->assertRequest($history[array_key_last($history)]['request'], $operation, $expectedQuery);
+        }
+
+        foreach (['', 'WithHttpInfo', 'Async', 'AsyncWithHttpInfo'] as $suffix) {
+            foreach (['{broken', ''] as $invalidBody) {
+                $mock->append(new Response(200, ['Content-Type' => 'application/json', 'X-Contract' => 'invalid-json'], $invalidBody));
+                try {
+                    $response = $api->{$operationId . $suffix}(...$arguments);
+                    if (str_starts_with($suffix, 'Async')) {
+                        self::assertInstanceOf(PromiseInterface::class, $response);
+                        $response->wait();
+                    }
+                    self::fail('Expected ApiException for invalid JSON from ' . $operationId . $suffix);
+                } catch (ApiException $exception) {
+                    self::assertSame(200, $exception->getCode());
+                    self::assertSame($invalidBody, $exception->getResponseBody());
+                    self::assertSame(['invalid-json'], $exception->getResponseHeaders()['X-Contract']);
+                    self::assertStringContainsString('Error JSON decoding server response', $exception->getMessage());
+                    self::assertStringContainsString((string) $history[array_key_last($history)]['request']->getUri(), $exception->getMessage());
+                }
+            }
+        }
     }
 
     private function assertRequest(RequestInterface $request, array $operation, array $parameters): void

@@ -270,22 +270,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -671,22 +656,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -982,22 +952,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -1299,22 +1254,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -1643,22 +1583,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -1933,22 +1858,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -2226,22 +2136,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -2549,22 +2444,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -2893,22 +2773,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -3183,22 +3048,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -3473,22 +3323,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -3763,22 +3598,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -4053,22 +3873,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -4343,22 +4148,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -4639,22 +4429,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -4947,22 +4722,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -5237,22 +4997,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -5527,22 +5272,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -5820,22 +5550,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -6134,22 +5849,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -6463,22 +6163,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -6774,22 +6459,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -7085,22 +6755,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -7414,22 +7069,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -7800,22 +7440,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -8150,22 +7775,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -8515,22 +8125,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -8922,22 +8517,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -9254,22 +8834,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -9580,22 +9145,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -9927,22 +9477,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -10268,22 +9803,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {
@@ -10588,22 +10108,7 @@ class CallRoutingContractsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
+                fn ($response) => $this->handleResponseWithDataType($returnType, $request, $response),
                 function ($exception): void {
                     $response = $this->getExceptionResponse($exception);
                     if ($response === null) {

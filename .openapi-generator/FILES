@@ -1,7 +1,4 @@
 .gitignore
-.openapi-generator-ignore
-.php-cs-fixer.dist.php
-.travis.yml
 README.md
 composer.json
 docs/Api/AdvertisersApi.md

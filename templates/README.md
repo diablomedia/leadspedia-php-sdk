@@ -5,12 +5,23 @@ so `build.sh` uses these overrides whenever it regenerates the SDK. Other files
 use the defaults bundled with OpenAPI Generator 7.27.0. Generation requires
 Java 11 or newer on `PATH`.
 
+`build.sh` also accepts `JAVA_HOME` and checks the Java version before installing
+dependencies. On macOS with Homebrew OpenJDK installed, run:
+
+```sh
+JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home" ./build.sh
+```
+
 `php/composer.mustache` sets the PHP, PHPUnit, PHP_CodeSniffer, and Diablo Media
 fixer configuration requirements. It retains the current upstream runtime
 dependencies and test autoload namespace. `php/phpunit.xml.mustache` provides
 the PHPUnit 10 configuration, and `php/README.mustache` documents the supported
 PHP versions. The API and model test templates generate executable contract
 checks using the shared helpers in `test/Support/`.
+
+`php/api.mustache` routes async success responses through the same response handler
+as synchronous calls. Malformed or empty JSON rejects the promise with an
+`ApiException` containing the HTTP status, headers, and original response body.
 
 The Composer template preserves the SDK's Guzzle 7 requirement.
 
@@ -31,8 +42,10 @@ Every generated API test checks its operation against `schema/openapi.json` usin
 Guzzle's mock handler and request history. It verifies the HTTP method, configured
 host, path, query serialization, authentication, response model data and HTTP
 metadata, omission of optional null parameters, missing required parameters, and
-preservation of 400/500 error response details. Fixtures include dates, enum
-values, numbers, and strings containing characters that need URL encoding.
+preservation of 400/500 error response details. It also checks both async methods
+for successful model deserialization and HTTP metadata, plus malformed and empty
+JSON rejection through all synchronous and asynchronous variants. Fixtures include
+dates, enum values, numbers, and strings containing characters that need URL encoding.
 
 Generated model tests check constructor/JSON round trips, deserialization,
 getters/setters, array access, falsy values, and unsetting properties. These tests
