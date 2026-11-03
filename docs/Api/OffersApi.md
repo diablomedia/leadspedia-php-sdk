@@ -6,158 +6,24 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**offerschangeAutoApprovaldo()**](OffersApi.md#offerschangeAutoApprovaldo) | **POST** /offers/changeAutoApproval.do | Change Auto Approval |
-| [**offerschangeFeatureListingdo()**](OffersApi.md#offerschangeFeatureListingdo) | **POST** /offers/changeFeatureListing.do | Change Feature Listing |
 | [**offerschangeModedo()**](OffersApi.md#offerschangeModedo) | **POST** /offers/changeMode.do | Change Mode |
 | [**offerschangeStatusdo()**](OffersApi.md#offerschangeStatusdo) | **POST** /offers/changeStatus.do | Change Status |
 | [**offersdeletedo()**](OffersApi.md#offersdeletedo) | **POST** /offers/delete.do | Delete |
 | [**offersgetAlldo()**](OffersApi.md#offersgetAlldo) | **GET** /offers/getAll.do | Get All |
-| [**offersgetBasicInfodo()**](OffersApi.md#offersgetBasicInfodo) | **GET** /offers/getBasicInfo.do | Get Basic Info |
+| [**offersgetBasicInfodo()**](OffersApi.md#offersgetBasicInfodo) | **GET** /offers/getBasicInfo.do | Get |
+| [**offersgetCallRoutingContractsdo()**](OffersApi.md#offersgetCallRoutingContractsdo) | **GET** /offers/getCallRoutingContracts.do | Get Call Contracts |
 | [**offersgetEmailSettingsdo()**](OffersApi.md#offersgetEmailSettingsdo) | **GET** /offers/getEmailSettings.do | Get Email Settings |
+| [**offersgetLeadContractsdo()**](OffersApi.md#offersgetLeadContractsdo) | **GET** /offers/getLeadContracts.do | Get Lead Contracts |
 | [**offersgetTermsSettingsdo()**](OffersApi.md#offersgetTermsSettingsdo) | **GET** /offers/getTermsSettings.do | Get Terms Settings |
 | [**offersremoveExpirationDatedo()**](OffersApi.md#offersremoveExpirationDatedo) | **POST** /offers/removeExpirationDate.do | Remove Expiration Date |
 | [**offersrenamedo()**](OffersApi.md#offersrenamedo) | **POST** /offers/rename.do | Rename |
 | [**offerssearchdo()**](OffersApi.md#offerssearchdo) | **GET** /offers/search.do | Search |
 | [**offerssetExpirationDatedo()**](OffersApi.md#offerssetExpirationDatedo) | **POST** /offers/setExpirationDate.do | Set Expiration Date |
-| [**offersupdateBasicInfodo()**](OffersApi.md#offersupdateBasicInfodo) | **POST** /offers/updateBasicInfo.do | Update Basic Info |
+| [**offersupdateBasicInfodo()**](OffersApi.md#offersupdateBasicInfodo) | **POST** /offers/updateBasicInfo.do | Update |
 | [**offersupdateEmailSettingsdo()**](OffersApi.md#offersupdateEmailSettingsdo) | **POST** /offers/updateEmailSettings.do | Update Email Settings |
 | [**offersupdateTermsSettingsdo()**](OffersApi.md#offersupdateTermsSettingsdo) | **POST** /offers/updateTermsSettings.do | Update Terms Settings |
 | [**offersupdateVisibilitydo()**](OffersApi.md#offersupdateVisibilitydo) | **POST** /offers/updateVisibility.do | Update Visibility |
 
-
-## `offerschangeAutoApprovaldo()`
-
-```php
-offerschangeAutoApprovaldo($offerID, $autoApprove): \Leadspedia\Model\InlineResponse200
-```
-
-Change Auto Approval
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-
-$apiInstance = new Leadspedia\Api\OffersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$offerID = 56; // int
-$autoApprove = 'autoApprove_example'; // string
-
-try {
-    $result = $apiInstance->offerschangeAutoApprovaldo($offerID, $autoApprove);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OffersApi->offerschangeAutoApprovaldo: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **offerID** | **int**|  | |
-| **autoApprove** | **string**|  | |
-
-### Return type
-
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
-
-### Authorization
-
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `offerschangeFeatureListingdo()`
-
-```php
-offerschangeFeatureListingdo($offerID, $feature): \Leadspedia\Model\InlineResponse200
-```
-
-Change Feature Listing
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
-
-$apiInstance = new Leadspedia\Api\OffersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$offerID = 56; // int
-$feature = 'feature_example'; // string
-
-try {
-    $result = $apiInstance->offerschangeFeatureListingdo($offerID, $feature);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OffersApi->offerschangeFeatureListingdo: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **offerID** | **int**|  | |
-| **feature** | **string**|  | |
-
-### Return type
-
-[**\Leadspedia\Model\InlineResponse200**](../Model/InlineResponse200.md)
-
-### Authorization
-
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `offerschangeModedo()`
 
@@ -174,15 +40,10 @@ Change Mode
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -215,7 +76,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -241,15 +102,10 @@ Change Status
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -282,7 +138,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -308,15 +164,10 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -347,7 +198,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -361,7 +212,7 @@ try {
 ## `offersgetAlldo()`
 
 ```php
-offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
+offersgetAlldo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -373,15 +224,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -391,15 +237,15 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $verticalID = 56; // int
-$revenueModel = 'revenueModel_example'; // string
-$payoutModel = 'payoutModel_example'; // string
 $advertiserID = 56; // int
 $status = 'status_example'; // string
-$start = 0; // int
-$limit = 100; // int
+$payoutModel = 'payoutModel_example'; // string
+$revenueModel = 'revenueModel_example'; // string
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit);
+    $result = $apiInstance->offersgetAlldo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -411,12 +257,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | [optional] |
-| **revenueModel** | **string**|  | [optional] |
-| **payoutModel** | **string**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
-| **start** | **int**|  | [optional] [default to 0] |
-| **limit** | **int**|  | [optional] [default to 100] |
+| **payoutModel** | **string**|  | [optional] |
+| **revenueModel** | **string**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -424,7 +270,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -441,7 +287,7 @@ try {
 offersgetBasicInfodo($offerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Basic Info
+Get
 
 ### Example
 
@@ -450,15 +296,10 @@ Get Basic Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -489,7 +330,71 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `offersgetCallRoutingContractsdo()`
+
+```php
+offersgetCallRoutingContractsdo($offerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
+
+Get Call Contracts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\OffersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$offerID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
+
+try {
+    $result = $apiInstance->offersgetCallRoutingContractsdo($offerID, $start, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OffersApi->offersgetCallRoutingContractsdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offerID** | **int**|  | |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -515,15 +420,10 @@ Get Email Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -554,7 +454,71 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `offersgetLeadContractsdo()`
+
+```php
+offersgetLeadContractsdo($offerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
+
+Get Lead Contracts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Leadspedia\Api\OffersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$offerID = 56; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
+
+try {
+    $result = $apiInstance->offersgetLeadContractsdo($offerID, $start, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OffersApi->offersgetLeadContractsdo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offerID** | **int**|  | [optional] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
+
+### Return type
+
+[**\Leadspedia\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -580,15 +544,10 @@ Get Terms Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -619,7 +578,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -645,15 +604,10 @@ Remove Expiration Date
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -684,7 +638,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -710,15 +664,10 @@ Rename
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -751,7 +700,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -777,15 +726,10 @@ Search
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -795,8 +739,8 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $name = 'name_example'; // string
-$start = 0; // int
-$limit = 100; // int
+$start = 0; // int | Offset of the first row to return.
+$limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
     $result = $apiInstance->offerssearchdo($name, $start, $limit);
@@ -811,8 +755,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **name** | **string**|  | [optional] |
-| **start** | **int**|  | [optional] [default to 0] |
-| **limit** | **int**|  | [optional] [default to 100] |
+| **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
+| **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
 ### Return type
 
@@ -820,7 +764,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -846,15 +790,10 @@ Set Expiration Date
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -864,7 +803,7 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $offerID = 56; // int
-$expirationDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$expirationDate = 'expirationDate_example'; // string
 
 try {
     $result = $apiInstance->offerssetExpirationDatedo($offerID, $expirationDate);
@@ -879,7 +818,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
-| **expirationDate** | **\DateTime**|  | |
+| **expirationDate** | **string**|  | |
 
 ### Return type
 
@@ -887,7 +826,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -901,10 +840,10 @@ try {
 ## `offersupdateBasicInfodo()`
 
 ```php
-offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions): \Leadspedia\Model\InlineResponse200
+offersupdateBasicInfodo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions): \Leadspedia\Model\InlineResponse200
 ```
 
-Update Basic Info
+Update
 
 ### Example
 
@@ -913,15 +852,10 @@ Update Basic Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -931,16 +865,16 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $offerID = 56; // int
-$offerName = 'offerName_example'; // string
-$notes = 'notes_example'; // string
+$offerName = 'offerName_example'; // string | >= 1 characters
 $alternativeID = 'alternativeID_example'; // string
+$notes = 'notes_example'; // string
 $previewURL = 'previewURL_example'; // string
 $offerDescription = 'offerDescription_example'; // string
 $testingInstructions = 'testingInstructions_example'; // string
 $offerRestrictions = 'offerRestrictions_example'; // string
 
 try {
-    $result = $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
+    $result = $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
@@ -952,9 +886,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
-| **offerName** | **string**|  | [optional] |
-| **notes** | **string**|  | [optional] |
+| **offerName** | **string**| &gt;&#x3D; 1 characters | [optional] |
 | **alternativeID** | **string**|  | [optional] |
+| **notes** | **string**|  | [optional] |
 | **previewURL** | **string**|  | [optional] |
 | **offerDescription** | **string**|  | [optional] |
 | **testingInstructions** | **string**|  | [optional] |
@@ -966,7 +900,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -992,15 +926,10 @@ Update Email Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -1011,8 +940,8 @@ $apiInstance = new Leadspedia\Api\OffersApi(
 );
 $offerID = 56; // int
 $testEmail = 'testEmail_example'; // string
-$allowedEmails = 'allowedEmails_example'; // string
-$allowedSubjects = 'allowedSubjects_example'; // string
+$allowedEmails = 'allowedEmails_example'; // string | Enter multiple values by separating them with commas (,)
+$allowedSubjects = 'allowedSubjects_example'; // string | Enter multiple values by separating them with commas (,)
 $emailInstructions = 'emailInstructions_example'; // string
 
 try {
@@ -1029,8 +958,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
 | **testEmail** | **string**|  | [optional] |
-| **allowedEmails** | **string**|  | [optional] |
-| **allowedSubjects** | **string**|  | [optional] |
+| **allowedEmails** | **string**| Enter multiple values by separating them with commas (,) | [optional] |
+| **allowedSubjects** | **string**| Enter multiple values by separating them with commas (,) | [optional] |
 | **emailInstructions** | **string**|  | [optional] |
 
 ### Return type
@@ -1039,7 +968,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -1053,7 +982,7 @@ try {
 ## `offersupdateTermsSettingsdo()`
 
 ```php
-offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled): \Leadspedia\Model\InlineResponse200
+offersupdateTermsSettingsdo($offerID, $termsEnabled, $terms): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Terms Settings
@@ -1065,15 +994,10 @@ Update Terms Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -1083,11 +1007,11 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $offerID = 56; // int
-$terms = 'terms_example'; // string
 $termsEnabled = 'termsEnabled_example'; // string
+$terms = 'terms_example'; // string
 
 try {
-    $result = $apiInstance->offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled);
+    $result = $apiInstance->offersupdateTermsSettingsdo($offerID, $termsEnabled, $terms);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateTermsSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -1099,8 +1023,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
-| **terms** | **string**|  | [optional] |
 | **termsEnabled** | **string**|  | [optional] |
+| **terms** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1108,7 +1032,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -1134,15 +1058,10 @@ Update Visibility
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\OffersApi(
@@ -1175,7 +1094,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

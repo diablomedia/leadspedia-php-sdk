@@ -12,7 +12,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `listgetAlldo()`
 
 ```php
-listgetAlldo($type, $advertiserID, $verticalID): \Leadspedia\Model\InlineResponse2001
+listgetAlldo($type, $verticalID, $advertiserID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -24,15 +24,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ListApi(
@@ -42,11 +37,11 @@ $apiInstance = new Leadspedia\Api\ListApi(
     $config
 );
 $type = 'type_example'; // string
-$advertiserID = 56; // int
-$verticalID = 56; // int
+$verticalID = 56; // int | Can be passed to retrieve vertical specific return reasons
+$advertiserID = 56; // int | Can be passed to retrieve advertiser specific return reasons
 
 try {
-    $result = $apiInstance->listgetAlldo($type, $advertiserID, $verticalID);
+    $result = $apiInstance->listgetAlldo($type, $verticalID, $advertiserID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ListApi->listgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -58,8 +53,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **type** | **string**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **verticalID** | **int**| Can be passed to retrieve vertical specific return reasons | [optional] |
+| **advertiserID** | **int**| Can be passed to retrieve advertiser specific return reasons | [optional] |
 
 ### Return type
 
@@ -67,7 +62,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

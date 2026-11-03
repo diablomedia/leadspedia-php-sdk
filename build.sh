@@ -29,7 +29,7 @@ npm install
 # OpenAPI Generator 7 requires Java 11 or newer on PATH.
 ./node_modules/.bin/openapi-generator-cli version
 
-curl https://s3.amazonaws.com/api-docs.io/developer.leadspedia.com/v2.0.json -o ./schema/api-docs.json
+curl --fail --location --show-error https://developer.leadspedia.com/openapi.json -o ./schema/api-docs.json
 
 php scripts/convertor.php
 

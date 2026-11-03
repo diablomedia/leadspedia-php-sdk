@@ -6,25 +6,25 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**callTrackingReportsgetCallRoutingReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallRoutingReportdo) | **GET** /callTrackingReports/getCallRoutingReport.do | Get Call Routing Report |
-| [**callTrackingReportsgetCallsByAdvertisersDailyReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAdvertisersDailyReportdo) | **GET** /callTrackingReports/getCallsByAdvertisersDailyReport.do | Get Calls By Advertisers Daily Report |
-| [**callTrackingReportsgetCallsByAdvertisersReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAdvertisersReportdo) | **GET** /callTrackingReports/getCallsByAdvertisersReport.do | Get Calls By Advertisers Report |
-| [**callTrackingReportsgetCallsByAffiliatesDailyReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAffiliatesDailyReportdo) | **GET** /callTrackingReports/getCallsByAffiliatesDailyReport.do | Get Calls By Affiliates Daily Report |
-| [**callTrackingReportsgetCallsByAffiliatesReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAffiliatesReportdo) | **GET** /callTrackingReports/getCallsByAffiliatesReport.do | Get Calls By Affiliates Report |
-| [**callTrackingReportsgetCallsByCampaignsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByCampaignsReportdo) | **GET** /callTrackingReports/getCallsByCampaignsReport.do | Get Calls By Campaigns Report |
-| [**callTrackingReportsgetCallsByContractsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByContractsReportdo) | **GET** /callTrackingReports/getCallsByContractsReport.do | Get Calls By Contracts Report |
-| [**callTrackingReportsgetCallsByOffersReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByOffersReportdo) | **GET** /callTrackingReports/getCallsByOffersReport.do | Get Calls By Offers Report |
-| [**callTrackingReportsgetCallsBySubAffiliatesReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsBySubAffiliatesReportdo) | **GET** /callTrackingReports/getCallsBySubAffiliatesReport.do | Get Calls By Sub Affiliates Report |
-| [**callTrackingReportsgetCallsByVerticalsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByVerticalsReportdo) | **GET** /callTrackingReports/getCallsByVerticalsReport.do | Get Calls By Verticals Report |
+| [**callTrackingReportsgetCallRoutingReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallRoutingReportdo) | **GET** /callTrackingReports/getCallRoutingReport.do | Call Routing |
+| [**callTrackingReportsgetCallsByAdvertisersDailyReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAdvertisersDailyReportdo) | **GET** /callTrackingReports/getCallsByAdvertisersDailyReport.do | Daily Calls by Advertisers |
+| [**callTrackingReportsgetCallsByAdvertisersReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAdvertisersReportdo) | **GET** /callTrackingReports/getCallsByAdvertisersReport.do | Calls by Advertisers |
+| [**callTrackingReportsgetCallsByAffiliatesDailyReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAffiliatesDailyReportdo) | **GET** /callTrackingReports/getCallsByAffiliatesDailyReport.do | Daily Calls by Affiliates |
+| [**callTrackingReportsgetCallsByAffiliatesReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByAffiliatesReportdo) | **GET** /callTrackingReports/getCallsByAffiliatesReport.do | Calls by Affiliates |
+| [**callTrackingReportsgetCallsByCampaignsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByCampaignsReportdo) | **GET** /callTrackingReports/getCallsByCampaignsReport.do | Calls by Campaigns |
+| [**callTrackingReportsgetCallsByContractsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByContractsReportdo) | **GET** /callTrackingReports/getCallsByContractsReport.do | Calls by Contracts |
+| [**callTrackingReportsgetCallsByOffersReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByOffersReportdo) | **GET** /callTrackingReports/getCallsByOffersReport.do | Calls by Offers |
+| [**callTrackingReportsgetCallsBySubAffiliatesReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsBySubAffiliatesReportdo) | **GET** /callTrackingReports/getCallsBySubAffiliatesReport.do | Calls by Sub Affiliates |
+| [**callTrackingReportsgetCallsByVerticalsReportdo()**](CallTrackingReportsApi.md#callTrackingReportsgetCallsByVerticalsReportdo) | **GET** /callTrackingReports/getCallsByVerticalsReport.do | Calls by Verticals |
 
 
 ## `callTrackingReportsgetCallRoutingReportdo()`
 
 ```php
-callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallRoutingReportdo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Call Routing Report
+Call Routing
 
 ### Example
 
@@ -33,15 +33,10 @@ Get Call Routing Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -50,17 +45,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
 $affiliateID = 56; // int
-$affiliateAccountManagerID = 56; // int
 $advertiserID = 56; // int
+$verticalGroupID = 56; // int
+$affiliateAccountManagerID = 56; // int
 $advertiserAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallRoutingReportdo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallRoutingReportdo: ', $e->getMessage(), PHP_EOL;
@@ -71,14 +66,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
-| **affiliateAccountManagerID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -86,7 +81,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -100,10 +95,10 @@ try {
 ## `callTrackingReportsgetCallsByAdvertisersDailyReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Advertisers Daily Report
+Daily Calls by Advertisers
 
 ### Example
 
@@ -112,15 +107,10 @@ Get Calls By Advertisers Daily Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -129,16 +119,16 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$month = 'month_example'; // string
 $year = 'year_example'; // string
+$month = 'month_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
-$contractID = 56; // int
 $advertiserID = 56; // int
+$contractID = 56; // int
+$verticalGroupID = 56; // int
 $advertiserAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAdvertisersDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -149,12 +139,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **month** | **string**|  | |
 | **year** | **string**|  | |
+| **month** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
-| **contractID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -163,7 +153,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -177,10 +167,10 @@ try {
 ## `callTrackingReportsgetCallsByAdvertisersReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Advertisers Report
+Calls by Advertisers
 
 ### Example
 
@@ -189,15 +179,10 @@ Get Calls By Advertisers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -206,15 +191,15 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
 $offerID = 56; // int
+$verticalGroupID = 56; // int
 $advertiserAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -225,12 +210,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -238,7 +223,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -252,10 +237,10 @@ try {
 ## `callTrackingReportsgetCallsByAffiliatesDailyReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Affiliates Daily Report
+Daily Calls by Affiliates
 
 ### Example
 
@@ -264,15 +249,10 @@ Get Calls By Affiliates Daily Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -281,17 +261,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$month = 'month_example'; // string
 $year = 'year_example'; // string
+$month = 'month_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
-$offerID = 56; // int
-$campaignID = 56; // int
 $affiliateID = 56; // int
+$campaignID = 56; // int
+$offerID = 56; // int
+$verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAffiliatesDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -302,13 +282,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **month** | **string**|  | |
 | **year** | **string**|  | |
+| **month** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -317,7 +297,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -331,10 +311,10 @@ try {
 ## `callTrackingReportsgetCallsByAffiliatesReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Affiliates Report
+Calls by Affiliates
 
 ### Example
 
@@ -343,15 +323,10 @@ Get Calls By Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -360,14 +335,14 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -378,11 +353,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -390,7 +365,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -404,10 +379,10 @@ try {
 ## `callTrackingReportsgetCallsByCampaignsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Campaigns Report
+Calls by Campaigns
 
 ### Example
 
@@ -416,15 +391,10 @@ Get Calls By Campaigns Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -433,17 +403,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $offerID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$affiliateID = 56; // int
+$verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -454,14 +424,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -469,7 +439,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -483,10 +453,10 @@ try {
 ## `callTrackingReportsgetCallsByContractsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Contracts Report
+Calls by Contracts
 
 ### Example
 
@@ -495,15 +465,10 @@ Get Calls By Contracts Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -512,15 +477,15 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
 $advertiserID = 56; // int
+$verticalGroupID = 56; // int
 $advertiserAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByContractsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -531,12 +496,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -544,7 +509,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -558,10 +523,10 @@ try {
 ## `callTrackingReportsgetCallsByOffersReportdo()`
 
 ```php
-callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByOffersReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Offers Report
+Calls by Offers
 
 ### Example
 
@@ -570,15 +535,10 @@ Get Calls By Offers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -587,14 +547,14 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByOffersReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByOffersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -605,11 +565,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -617,7 +577,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -631,10 +591,10 @@ try {
 ## `callTrackingReportsgetCallsBySubAffiliatesReportdo()`
 
 ```php
-callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Sub Affiliates Report
+Calls by Sub Affiliates
 
 ### Example
 
@@ -643,15 +603,10 @@ Get Calls By Sub Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -660,16 +615,16 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
-$campaignID = 56; // int
 $affiliateID = 56; // int
+$campaignID = 56; // int
+$verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsBySubAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -680,13 +635,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -694,7 +649,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -708,10 +663,10 @@ try {
 ## `callTrackingReportsgetCallsByVerticalsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Calls By Verticals Report
+Calls by Verticals
 
 ### Example
 
@@ -720,15 +675,10 @@ Get Calls By Verticals Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
@@ -737,12 +687,12 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalGroupID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate);
+    $result = $apiInstance->callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -753,9 +703,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -763,7 +713,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

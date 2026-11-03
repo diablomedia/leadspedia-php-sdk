@@ -64,9 +64,19 @@ tests fail the PHPUnit checks.
 `test/Scripts/ConvertorTest.php` runs a copy of `scripts/convertor.php` with small
 fixtures in a temporary directory. It checks document/security mapping, query
 types and defaults, response synthesis and preservation, duplicate paths, and the
-delivered-leads path correction. It also verifies that the checked-in API docs
+legacy delivered-leads path correction. Official OpenAPI fixtures also check Core
+path filtering, Basic authentication, parameter schemas, and fallback model names.
+It also verifies that the checked-in API docs
 reproduce `schema/openapi.json`. The project schema files are never overwritten
 by these tests.
+
+`build.sh` downloads the official `https://developer.leadspedia.com/openapi.json`.
+The converter normalizes its Core API operations to Swagger 2.0, retaining the
+SDK's path-based class/method naming and two generic response models. It follows
+the official Basic authentication contract; configure `setUsername()` and
+`setPassword()` instead of query-string API keys. See `schema/README.md` for the
+source migration details and removed/new endpoints. The legacy API docs.io input
+format remains supported for existing fixtures and archived specifications.
 
 Run just these tests with `vendor/bin/phpunit --filter ConvertorTest`. They are
 also included in the normal PHPUnit suite and the PHP 8.2–8.5 CI matrix. The

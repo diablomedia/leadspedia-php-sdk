@@ -6,23 +6,23 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**conversionsReportsgetConversionsByAdvertisersReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByAdvertisersReportdo) | **GET** /conversionsReports/getConversionsByAdvertisersReport.do | Get Conversions By Advertisers Report |
-| [**conversionsReportsgetConversionsByAffiliatesReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByAffiliatesReportdo) | **GET** /conversionsReports/getConversionsByAffiliatesReport.do | Get Conversions By Affiliates Report |
-| [**conversionsReportsgetConversionsByCampaignsReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByCampaignsReportdo) | **GET** /conversionsReports/getConversionsByCampaignsReport.do | Get Conversions By Campaigns Report |
-| [**conversionsReportsgetConversionsByOffersReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByOffersReportdo) | **GET** /conversionsReports/getConversionsByOffersReport.do | Get Conversions By Offers Report |
-| [**conversionsReportsgetConversionsBySourceReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsBySourceReportdo) | **GET** /conversionsReports/getConversionsBySourceReport.do | Get Conversions By Source Report |
-| [**conversionsReportsgetConversionsBySubAffiliatesReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsBySubAffiliatesReportdo) | **GET** /conversionsReports/getConversionsBySubAffiliatesReport.do | Get Conversions By Sub Affiliates Report |
-| [**conversionsReportsgetConversionsByVerticalsReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByVerticalsReportdo) | **GET** /conversionsReports/getConversionsByVerticalsReport.do | Get Conversions By Verticals Report |
-| [**conversionsReportsgetConversionsDailyReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsDailyReportdo) | **GET** /conversionsReports/getConversionsDailyReport.do | Get Conversions Daily Report |
+| [**conversionsReportsgetConversionsByAdvertisersReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByAdvertisersReportdo) | **GET** /conversionsReports/getConversionsByAdvertisersReport.do | Conversions by Advertisers |
+| [**conversionsReportsgetConversionsByAffiliatesReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByAffiliatesReportdo) | **GET** /conversionsReports/getConversionsByAffiliatesReport.do | Conversions by Affiliates |
+| [**conversionsReportsgetConversionsByCampaignsReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByCampaignsReportdo) | **GET** /conversionsReports/getConversionsByCampaignsReport.do | Conversions by Campaigns |
+| [**conversionsReportsgetConversionsByOffersReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByOffersReportdo) | **GET** /conversionsReports/getConversionsByOffersReport.do | Conversions by Offers |
+| [**conversionsReportsgetConversionsBySourceReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsBySourceReportdo) | **GET** /conversionsReports/getConversionsBySourceReport.do | Conversions by Source |
+| [**conversionsReportsgetConversionsBySubAffiliatesReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsBySubAffiliatesReportdo) | **GET** /conversionsReports/getConversionsBySubAffiliatesReport.do | Conversions by Sub Affiliates |
+| [**conversionsReportsgetConversionsByVerticalsReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsByVerticalsReportdo) | **GET** /conversionsReports/getConversionsByVerticalsReport.do | Conversions by Verticals |
+| [**conversionsReportsgetConversionsDailyReportdo()**](ConversionsReportsApi.md#conversionsReportsgetConversionsDailyReportdo) | **GET** /conversionsReports/getConversionsDailyReport.do | Daily Conversions |
 
 
 ## `conversionsReportsgetConversionsByAdvertisersReportdo()`
 
 ```php
-conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $toDate, $offerID, $verticalID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Advertisers Report
+Conversions by Advertisers
 
 ### Example
 
@@ -31,15 +31,10 @@ Get Conversions By Advertisers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -48,15 +43,15 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
+$offerID = 56; // int
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
-$offerID = 56; // int
 $advertiserAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsByAdvertisersReportdo($fromDate, $toDate, $offerID, $verticalID, $verticalGroupID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsByAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -67,12 +62,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -80,7 +75,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -94,10 +89,10 @@ try {
 ## `conversionsReportsgetConversionsByAffiliatesReportdo()`
 
 ```php
-conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Affiliates Report
+Conversions by Affiliates
 
 ### Example
 
@@ -106,15 +101,10 @@ Get Conversions By Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -123,14 +113,14 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsByAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -141,11 +131,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -153,7 +143,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -167,10 +157,10 @@ try {
 ## `conversionsReportsgetConversionsByCampaignsReportdo()`
 
 ```php
-conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Campaigns Report
+Conversions by Campaigns
 
 ### Example
 
@@ -179,15 +169,10 @@ Get Conversions By Campaigns Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -196,17 +181,17 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
-$offerID = 56; // int
-$payoutModel = 'payoutModel_example'; // string
 $affiliateID = 56; // int
+$offerID = 56; // int
+$payoutModel = 56; // int
+$verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -217,14 +202,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
-| **payoutModel** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **payoutModel** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -232,7 +217,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -246,10 +231,10 @@ try {
 ## `conversionsReportsgetConversionsByOffersReportdo()`
 
 ```php
-conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsByOffersReportdo($fromDate, $toDate, $verticalID, $payoutModel, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Offers Report
+Conversions by Offers
 
 ### Example
 
@@ -258,15 +243,10 @@ Get Conversions By Offers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -275,14 +255,14 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalGroupID = 56; // int
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsByOffersReportdo($fromDate, $toDate, $verticalID, $payoutModel, $verticalGroupID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsByOffersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -293,11 +273,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -305,7 +285,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -319,10 +299,10 @@ try {
 ## `conversionsReportsgetConversionsBySourceReportdo()`
 
 ```php
-conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsBySourceReportdo($fromDate, $toDate, $advertiserID, $verticalID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Source Report
+Conversions by Source
 
 ### Example
 
@@ -331,15 +311,10 @@ Get Conversions By Source Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -348,15 +323,15 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
+$advertiserID = 56; // int
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
-$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsBySourceReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsBySourceReportdo($fromDate, $toDate, $advertiserID, $verticalID, $verticalGroupID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsBySourceReportdo: ', $e->getMessage(), PHP_EOL;
@@ -367,12 +342,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -380,7 +355,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -394,10 +369,10 @@ try {
 ## `conversionsReportsgetConversionsBySubAffiliatesReportdo()`
 
 ```php
-conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $toDate, $affiliateID, $campaignID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Sub Affiliates Report
+Conversions by Sub Affiliates
 
 ### Example
 
@@ -406,15 +381,10 @@ Get Conversions By Sub Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -423,14 +393,14 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$campaignID = 56; // int
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $affiliateID = 56; // int
+$campaignID = 56; // int
 $affiliateAccountManagerID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsBySubAffiliatesReportdo($fromDate, $toDate, $affiliateID, $campaignID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsBySubAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -441,11 +411,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
-| **campaignID** | **int**|  | [optional] |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -453,7 +423,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -467,10 +437,10 @@ try {
 ## `conversionsReportsgetConversionsByVerticalsReportdo()`
 
 ```php
-conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions By Verticals Report
+Conversions by Verticals
 
 ### Example
 
@@ -479,15 +449,10 @@ Get Conversions By Verticals Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -496,12 +461,12 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$fromDate = 'fromDate_example'; // string
+$toDate = 'toDate_example'; // string
 $verticalGroupID = 56; // int
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate);
+    $result = $apiInstance->conversionsReportsgetConversionsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsByVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -512,9 +477,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **\DateTime**|  | |
+| **fromDate** | **string**|  | |
+| **toDate** | **string**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
-| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -522,7 +487,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -536,10 +501,10 @@ try {
 ## `conversionsReportsgetConversionsDailyReportdo()`
 
 ```php
-conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+conversionsReportsgetConversionsDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
-Get Conversions Daily Report
+Daily Conversions
 
 ### Example
 
@@ -548,15 +513,10 @@ Get Conversions Daily Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
@@ -565,17 +525,17 @@ $apiInstance = new Leadspedia\Api\ConversionsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$month = 'month_example'; // string
 $year = 'year_example'; // string
+$month = 'month_example'; // string
 $verticalID = 56; // int
-$verticalGroupID = 56; // int
-$offerID = 56; // int
-$campaignID = 56; // int
 $affiliateID = 56; // int
+$campaignID = 56; // int
+$offerID = 56; // int
+$verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->conversionsReportsgetConversionsDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
+    $result = $apiInstance->conversionsReportsgetConversionsDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsReportsApi->conversionsReportsgetConversionsDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -586,13 +546,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **month** | **string**|  | |
 | **year** | **string**|  | |
+| **month** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -601,7 +561,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

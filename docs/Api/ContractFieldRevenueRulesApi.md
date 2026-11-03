@@ -15,7 +15,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `contractFieldRevenueRulescreatedo()`
 
 ```php
-contractFieldRevenueRulescreatedo($contractID, $fieldID, $fieldValue, $price, $effectivePriceRate, $effectivePriceAmount): \Leadspedia\Model\InlineResponse200
+contractFieldRevenueRulescreatedo($contractID, $fieldID, $fieldValue, $price): \Leadspedia\Model\InlineResponse200
 ```
 
 Create
@@ -27,15 +27,10 @@ Create
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
@@ -47,12 +42,10 @@ $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
 $contractID = 56; // int
 $fieldID = 56; // int
 $fieldValue = 'fieldValue_example'; // string
-$price = 3.4; // float
-$effectivePriceRate = 3.4; // float
-$effectivePriceAmount = 3.4; // float
+$price = 56; // int
 
 try {
-    $result = $apiInstance->contractFieldRevenueRulescreatedo($contractID, $fieldID, $fieldValue, $price, $effectivePriceRate, $effectivePriceAmount);
+    $result = $apiInstance->contractFieldRevenueRulescreatedo($contractID, $fieldID, $fieldValue, $price);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContractFieldRevenueRulesApi->contractFieldRevenueRulescreatedo: ', $e->getMessage(), PHP_EOL;
@@ -66,9 +59,7 @@ try {
 | **contractID** | **int**|  | |
 | **fieldID** | **int**|  | |
 | **fieldValue** | **string**|  | |
-| **price** | **float**|  | |
-| **effectivePriceRate** | **float**|  | [optional] |
-| **effectivePriceAmount** | **float**|  | [optional] |
+| **price** | **int**|  | |
 
 ### Return type
 
@@ -76,7 +67,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -102,15 +93,10 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
@@ -141,7 +127,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -167,15 +153,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
@@ -206,7 +187,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 
@@ -220,7 +201,7 @@ try {
 ## `contractFieldRevenueRulesupdatedo()`
 
 ```php
-contractFieldRevenueRulesupdatedo($fieldRevenueRuleID, $fieldID, $fieldValue, $price, $effectivePriceRate, $effectivePriceAmount): \Leadspedia\Model\InlineResponse200
+contractFieldRevenueRulesupdatedo($fieldRevenueRuleID, $fieldID, $fieldValue, $price): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -232,15 +213,10 @@ Update
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
@@ -252,12 +228,10 @@ $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
 $fieldRevenueRuleID = 56; // int
 $fieldID = 56; // int
 $fieldValue = 'fieldValue_example'; // string
-$price = 3.4; // float
-$effectivePriceRate = 3.4; // float
-$effectivePriceAmount = 3.4; // float
+$price = 56; // int
 
 try {
-    $result = $apiInstance->contractFieldRevenueRulesupdatedo($fieldRevenueRuleID, $fieldID, $fieldValue, $price, $effectivePriceRate, $effectivePriceAmount);
+    $result = $apiInstance->contractFieldRevenueRulesupdatedo($fieldRevenueRuleID, $fieldID, $fieldValue, $price);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContractFieldRevenueRulesApi->contractFieldRevenueRulesupdatedo: ', $e->getMessage(), PHP_EOL;
@@ -271,9 +245,7 @@ try {
 | **fieldRevenueRuleID** | **int**|  | |
 | **fieldID** | **int**|  | |
 | **fieldValue** | **string**|  | |
-| **price** | **float**|  | |
-| **effectivePriceRate** | **float**|  | [optional] |
-| **effectivePriceAmount** | **float**|  | [optional] |
+| **price** | **int**|  | |
 
 ### Return type
 
@@ -281,7 +253,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

@@ -24,3 +24,4 @@
 .php_cs
 .travis.yml
 .php-cs-fixer.dist.php
+.gitignore

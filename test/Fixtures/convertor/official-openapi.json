@@ -1,0 +1,205 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Official Fixture API",
+        "version": "current",
+        "description": "Published contract"
+    },
+    "externalDocs": {
+        "url": "https://developer.leadspedia.com"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.test"
+        }
+    ],
+    "paths": {
+        "/core/v2/widgets/getAll.do": {
+            "get": {
+                "tags": [
+                    "Core API \u00b7 Advertisers"
+                ],
+                "summary": "Get All",
+                "operationId": "core_api.advertisers.get_all",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "widgetID",
+                        "in": "query",
+                        "required": true,
+                        "description": "Widget identifier",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Active",
+                                "Paused"
+                            ],
+                            "default": "Active"
+                        }
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "x-matching-pattern": "YYYY-MM-DD"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response"
+                    }
+                }
+            }
+        },
+        "/core/v2/widgets/delete.do": {
+            "post": {
+                "summary": "Delete Widget",
+                "operationId": "core_api.widgets.delete",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "widgetID",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response"
+                    }
+                }
+            }
+        },
+        "/affiliate/v2/widgets/getAll.do": {
+            "get": {
+                "tags": [
+                    "Core API \u00b7 Advertisers"
+                ],
+                "summary": "Get All",
+                "operationId": "core_api.advertisers.get_all",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "widgetID",
+                        "in": "query",
+                        "required": true,
+                        "description": "Widget identifier",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Active",
+                                "Paused"
+                            ],
+                            "default": "Active"
+                        }
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "x-matching-pattern": "YYYY-MM-DD"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response"
+                    }
+                }
+            }
+        },
+        "/advertiser/v2/widgets/getAll.do": {
+            "get": {
+                "tags": [
+                    "Core API \u00b7 Advertisers"
+                ],
+                "summary": "Get All",
+                "operationId": "core_api.advertisers.get_all",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "widgetID",
+                        "in": "query",
+                        "required": true,
+                        "description": "Widget identifier",
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Active",
+                                "Paused"
+                            ],
+                            "default": "Active"
+                        }
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "x-matching-pattern": "YYYY-MM-DD"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "basicAuth": {
+                "type": "http",
+                "scheme": "basic"
+            }
+        }
+    }
+}

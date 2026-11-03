@@ -6,7 +6,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**blockedCallerIDsadddo()**](BlockedCallerIDsApi.md#blockedCallerIDsadddo) | **POST** /blockedCallerIDs/add.do | Add Caller ID |
+| [**blockedCallerIDsadddo()**](BlockedCallerIDsApi.md#blockedCallerIDsadddo) | **POST** /blockedCallerIDs/add.do | Block Caller ID |
 
 
 ## `blockedCallerIDsadddo()`
@@ -15,7 +15,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 blockedCallerIDsadddo($phoneNumber, $note): \Leadspedia\Model\InlineResponse200
 ```
 
-Add Caller ID
+Block Caller ID
 
 ### Example
 
@@ -24,15 +24,10 @@ Add Caller ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\BlockedCallerIDsApi(
@@ -65,7 +60,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

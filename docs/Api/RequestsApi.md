@@ -24,15 +24,10 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey1
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
-
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure HTTP basic authorization: basicAuth
+$config = Leadspedia\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new Leadspedia\Api\RequestsApi(
@@ -41,7 +36,7 @@ $apiInstance = new Leadspedia\Api\RequestsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$date = 'date_example'; // string
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $dispositionID = 56; // int
@@ -58,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date** | **\DateTime**|  | |
+| **date** | **string**|  | |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **dispositionID** | **int**|  | [optional] |
@@ -69,7 +64,7 @@ try {
 
 ### Authorization
 
-[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
+[basicAuth](../../README.md#basicAuth)
 
 ### HTTP request headers
 

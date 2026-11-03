@@ -60,10 +60,10 @@ abstract class ApiContractTestCase extends TestCase
         $history = [];
         $handler = HandlerStack::create($mock);
         $handler->push(Middleware::history($history));
-        $configuration = (new Configuration())->setHost('https://example.test/core/v2');
-        foreach (self::CREDENTIALS as $name => $value) {
-            $configuration->setApiKey($name, $value);
-        }
+        $configuration = (new Configuration())
+            ->setHost('https://example.test/core/v2')
+            ->setUsername(self::CREDENTIALS['api_key'])
+            ->setPassword(self::CREDENTIALS['api_secret']);
         $api = new $apiClass(new Client(['handler' => $handler]), $configuration);
 
         [$result, $status, $headers] = $api->{$operationId . 'WithHttpInfo'}(...$arguments);
@@ -146,7 +146,8 @@ abstract class ApiContractTestCase extends TestCase
         self::assertSame('https', $request->getUri()->getScheme());
         self::assertSame('example.test', $request->getUri()->getHost());
         self::assertSame('/core/v2' . $operation['path'], $request->getUri()->getPath());
-        $expected = array_merge($parameters, self::CREDENTIALS);
+        self::assertSame('Basic ' . base64_encode(self::CREDENTIALS['api_key'] . ':' . self::CREDENTIALS['api_secret']), $request->getHeaderLine('Authorization'));
+        $expected = $parameters;
         $actual   = Query::parse($request->getUri()->getQuery());
         ksort($expected);
         ksort($actual);
@@ -164,6 +165,11 @@ abstract class ApiContractTestCase extends TestCase
             foreach ($methods as $method => $operation) {
                 if (!isset($operation['operationId'])) {
                     continue;
+                }
+                $schema = $operation['responses']['200']['schema'];
+                if (isset($schema['$ref'])) {
+                    $name                                    = basename($schema['$ref']);
+                    $operation['responses']['200']['schema'] = $spec['definitions'][$name];
                 }
                 self::$operations[$operation['operationId']] = $operation + ['method' => $method, 'path' => $path];
             }

@@ -59,8 +59,8 @@ final class GeneratedClientCompatibilityTest extends TestCase
         ]));
         $handler->push(Middleware::history($history));
         $configuration = (new Configuration())
-            ->setApiKey('api_key', 'test-key')
-            ->setApiKey('api_secret', 'test-secret');
+            ->setUsername('test-key')
+            ->setPassword('test-secret');
         $api = new AdvertisersApi(
             client: new Client(['handler' => $handler]),
             config: $configuration,
@@ -78,7 +78,8 @@ final class GeneratedClientCompatibilityTest extends TestCase
         self::assertSame('/core/v2/advertisers/delete.do', $request->getUri()->getPath());
         $query = Query::parse($request->getUri()->getQuery());
         self::assertSame('42', $query['advertiserID']);
-        self::assertSame('test-key', $query['api_key']);
-        self::assertSame('test-secret', $query['api_secret']);
+        self::assertSame('Basic ' . base64_encode('test-key:test-secret'), $request->getHeaderLine('Authorization'));
+        self::assertArrayNotHasKey('api_key', $query);
+        self::assertArrayNotHasKey('api_secret', $query);
     }
 }
