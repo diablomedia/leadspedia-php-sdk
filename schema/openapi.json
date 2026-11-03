@@ -18889,6 +18889,1326 @@
                     }
                 }
             }
+        },
+        "/validation/phone.do": {
+            "post": {
+                "description": "",
+                "summary": "Validate Phone Number",
+                "tags": [
+                    "validation"
+                ],
+                "operationId": "validationphonedo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "api_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/validation/email.do": {
+            "post": {
+                "description": "",
+                "summary": "Validate Email Addreses",
+                "tags": [
+                    "validation"
+                ],
+                "operationId": "validationemaildo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "api_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/leads/updateLeadStatus.do": {
+            "post": {
+                "description": "",
+                "summary": "Update Lead Status",
+                "tags": [
+                    "leads"
+                ],
+                "operationId": "leadsupdateLeadStatusdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "leadID",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "disposition",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clicksReports/getClicksByCampaignsReport.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Clicks By Campaigns Report",
+                "tags": [
+                    "clicksReports"
+                ],
+                "operationId": "clicksReportsgetClicksByCampaignsReportdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "verticalGroupID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "payoutModel",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clicksReports/getClicksBySubAffiliatesReport.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Clicks By Sub Affiliates Report",
+                "tags": [
+                    "clicksReports"
+                ],
+                "operationId": "clicksReportsgetClicksBySubAffiliatesReportdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "verticalGroupID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "payoutModel",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/leads/updateLeadSoldPrice.do": {
+            "post": {
+                "description": "",
+                "summary": "Update Lead Sold Price",
+                "tags": [
+                    "leads"
+                ],
+                "operationId": "leadsupdateLeadSoldPricedo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "soldID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "leadID",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/leads/getPosts.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Posts",
+                "tags": [
+                    "leads"
+                ],
+                "operationId": "leadsgetPostsdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 0
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 100
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dnc/add.do": {
+            "post": {
+                "description": "",
+                "summary": "Add to DNC List",
+                "tags": [
+                    "dnc"
+                ],
+                "operationId": "dncadddo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "emailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dnc/check.do": {
+            "post": {
+                "description": "",
+                "summary": "Check DNC List",
+                "tags": [
+                    "dnc"
+                ],
+                "operationId": "dnccheckdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "emailAddress",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blockedCallerIDs/add.do": {
+            "post": {
+                "description": "",
+                "summary": "Add Caller ID",
+                "tags": [
+                    "blockedCallerIDs"
+                ],
+                "operationId": "blockedCallerIDsadddo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "note",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/campaigns/addFilter.do": {
+            "post": {
+                "description": "",
+                "summary": "Add Filter",
+                "tags": [
+                    "campaigns"
+                ],
+                "operationId": "campaignsaddFilterdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fieldID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "operator",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "miles",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/campaigns/deleteFilter.do": {
+            "post": {
+                "description": "",
+                "summary": "Delete Filter",
+                "tags": [
+                    "campaigns"
+                ],
+                "operationId": "campaignsdeleteFilterdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "filterID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/campaigns/getFilters.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Filters",
+                "tags": [
+                    "campaigns"
+                ],
+                "operationId": "campaignsgetFiltersdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 0
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": 100
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/leads/updatePayout.do": {
+            "post": {
+                "description": "",
+                "summary": "Update Payout",
+                "tags": [
+                    "leads"
+                ],
+                "operationId": "leadsupdatePayoutdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "leadID",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "payout",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reports/getContractsReport.do": {
+            "get": {
+                "description": "",
+                "summary": "Get Contracts Report",
+                "tags": [
+                    "reports"
+                ],
+                "operationId": "reportsgetContractsReportdo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "format": "date",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contractFieldRevenueRules/getAll.do": {
+            "get": {
+                "description": "",
+                "summary": "Get All",
+                "tags": [
+                    "contractFieldRevenueRules"
+                ],
+                "operationId": "contractFieldRevenueRulesgetAlldo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "type": "object"
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contractFieldRevenueRules/create.do": {
+            "post": {
+                "description": "",
+                "summary": "Create",
+                "tags": [
+                    "contractFieldRevenueRules"
+                ],
+                "operationId": "contractFieldRevenueRulescreatedo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fieldID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fieldValue",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "effectivePriceRate",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "effectivePriceAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contractFieldRevenueRules/update.do": {
+            "post": {
+                "description": "",
+                "summary": "Update",
+                "tags": [
+                    "contractFieldRevenueRules"
+                ],
+                "operationId": "contractFieldRevenueRulesupdatedo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "fieldRevenueRuleID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fieldID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "fieldValue",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "effectivePriceRate",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "effectivePriceAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contractFieldRevenueRules/delete.do": {
+            "post": {
+                "description": "",
+                "summary": "Delete",
+                "tags": [
+                    "contractFieldRevenueRules"
+                ],
+                "operationId": "contractFieldRevenueRulesdeletedo",
+                "deprecated": false,
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "fieldRevenueRuleID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "description": "",
+                        "format": "",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "post-response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {},

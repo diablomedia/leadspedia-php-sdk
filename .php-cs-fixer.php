@@ -1,12 +1,12 @@
 <?php
 
 use Ergebnis\PhpCsFixer\Config;
-use DiabloMedia\PhpCsFixer\Config\RuleSet\Php71;
+use DiabloMedia\PhpCsFixer\Config\RuleSet\Php82;
 
-$config = Config\Factory::fromRuleSet(new Php71());
+$config = Config\Factory::fromRuleSet(Php82::create());
 
-$config->setUsingCache(true)
-    ->getFinder()
+$config->setCacheFile(__DIR__ . '/.php_cs.cache');
+$config->getFinder()
     ->exclude('vendor')
     ->in(__DIR__)
 ;

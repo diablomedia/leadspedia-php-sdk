@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+{{>partial_header}}
+
+// Generated contract tests. Edit templates/php/api_test.mustache to change them.
+namespace {{invokerPackage}}\Test\Api;
+
+use {{apiPackage}}\{{classname}};
+use {{invokerPackage}}\Test\Support\ApiContractTestCase;
+
+{{#operations}}
+final class {{classname}}Test extends ApiContractTestCase
+{
+{{#operation}}
+    public function test{{exts.x-test-operation-id}}(): void
+    {
+        $this->assertOperationContract({{classname}}::class, '{{{operationId}}}', [
+{{#allParams}}
+            '{{paramName}}' => '{{baseName}}',
+{{/allParams}}
+        ]);
+    }
+
+{{/operation}}
+}
+{{/operations}}

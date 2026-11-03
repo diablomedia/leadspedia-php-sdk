@@ -1,48 +1,51 @@
 # Leadspedia\CallRoutingContractsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**callRoutingContractsadjustCreditdo**](CallRoutingContractsApi.md#callRoutingContractsadjustCreditdo) | **POST** /callRoutingContracts/adjustCredit.do | Adjust Credit
-[**callRoutingContractschangeModedo**](CallRoutingContractsApi.md#callRoutingContractschangeModedo) | **POST** /callRoutingContracts/changeMode.do | Change Mode
-[**callRoutingContractschangeStatusdo**](CallRoutingContractsApi.md#callRoutingContractschangeStatusdo) | **POST** /callRoutingContracts/changeStatus.do | Change Status
-[**callRoutingContractscreatedo**](CallRoutingContractsApi.md#callRoutingContractscreatedo) | **POST** /callRoutingContracts/create.do | Create
-[**callRoutingContractsdeleteScheduledPausedo**](CallRoutingContractsApi.md#callRoutingContractsdeleteScheduledPausedo) | **POST** /callRoutingContracts/deleteScheduledPause.do | Delete Scheduled Pause
-[**callRoutingContractsdeletedo**](CallRoutingContractsApi.md#callRoutingContractsdeletedo) | **POST** /callRoutingContracts/delete.do | Delete
-[**callRoutingContractsenableCreditdo**](CallRoutingContractsApi.md#callRoutingContractsenableCreditdo) | **POST** /callRoutingContracts/enableCredit.do | Enable Credit
-[**callRoutingContractsgetAlldo**](CallRoutingContractsApi.md#callRoutingContractsgetAlldo) | **GET** /callRoutingContracts/getAll.do | Get All
-[**callRoutingContractsgetBasicInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetBasicInfodo) | **GET** /callRoutingContracts/getBasicInfo.do | Get Basic Info
-[**callRoutingContractsgetBillableTransfersCapInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetBillableTransfersCapInfodo) | **GET** /callRoutingContracts/getBillableTransfersCapInfo.do | Get Billable Transfers Cap Info
-[**callRoutingContractsgetPortalSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsgetPortalSettingsdo) | **GET** /callRoutingContracts/getPortalSettings.do | Get Portal Settings
-[**callRoutingContractsgetRepeatCallsSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsgetRepeatCallsSettingsdo) | **GET** /callRoutingContracts/getRepeatCallsSettings.do | Get Repeat Calls Settings
-[**callRoutingContractsgetReturnsSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsgetReturnsSettingsdo) | **GET** /callRoutingContracts/getReturnsSettings.do | Get Returns Settings
-[**callRoutingContractsgetRevenueCapInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetRevenueCapInfodo) | **GET** /callRoutingContracts/getRevenueCapInfo.do | Get Revenue Cap Info
-[**callRoutingContractsgetScheduledPausedo**](CallRoutingContractsApi.md#callRoutingContractsgetScheduledPausedo) | **GET** /callRoutingContracts/getScheduledPause.do | Get Scheduled Pause
-[**callRoutingContractsgetTransfersCapInfodo**](CallRoutingContractsApi.md#callRoutingContractsgetTransfersCapInfodo) | **GET** /callRoutingContracts/getTransfersCapInfo.do | Get Transfers Cap Info
-[**callRoutingContractsremoveExpirationDatedo**](CallRoutingContractsApi.md#callRoutingContractsremoveExpirationDatedo) | **POST** /callRoutingContracts/removeExpirationDate.do | Remove Expiration Date
-[**callRoutingContractsremoveWhisperMessagedo**](CallRoutingContractsApi.md#callRoutingContractsremoveWhisperMessagedo) | **POST** /callRoutingContracts/removeWhisperMessage.do | Remove Whisper Message
-[**callRoutingContractsrenamedo**](CallRoutingContractsApi.md#callRoutingContractsrenamedo) | **POST** /callRoutingContracts/rename.do | Rename
-[**callRoutingContractsschedulePausedo**](CallRoutingContractsApi.md#callRoutingContractsschedulePausedo) | **POST** /callRoutingContracts/schedulePause.do | Schedule Pause
-[**callRoutingContractssetAudioWhisperMessagedo**](CallRoutingContractsApi.md#callRoutingContractssetAudioWhisperMessagedo) | **POST** /callRoutingContracts/setAudioWhisperMessage.do | Set Audio Whisper Message
-[**callRoutingContractssetExpirationDatedo**](CallRoutingContractsApi.md#callRoutingContractssetExpirationDatedo) | **POST** /callRoutingContracts/setExpirationDate.do | Set Expiration Date
-[**callRoutingContractssetTextToSpeechWhisperMessagedo**](CallRoutingContractsApi.md#callRoutingContractssetTextToSpeechWhisperMessagedo) | **POST** /callRoutingContracts/setTextToSpeechWhisperMessage.do | Set Text-To-Speech Whisper Message
-[**callRoutingContractsupdateAutoRechargeSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsupdateAutoRechargeSettingsdo) | **POST** /callRoutingContracts/updateAutoRechargeSettings.do | Update Auto Recharge Settings
-[**callRoutingContractsupdateBasicInfodo**](CallRoutingContractsApi.md#callRoutingContractsupdateBasicInfodo) | **POST** /callRoutingContracts/updateBasicInfo.do | Update Basic Info
-[**callRoutingContractsupdateBillableTransfersCapdo**](CallRoutingContractsApi.md#callRoutingContractsupdateBillableTransfersCapdo) | **POST** /callRoutingContracts/updateBillableTransfersCap.do | Update Billable Transfers Cap
-[**callRoutingContractsupdatePortalSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsupdatePortalSettingsdo) | **POST** /callRoutingContracts/updatePortalSettings.do | Update Portal Settings
-[**callRoutingContractsupdateRepeatCallsSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsupdateRepeatCallsSettingsdo) | **POST** /callRoutingContracts/updateRepeatCallsSettings.do | Update Repeat Calls Settings
-[**callRoutingContractsupdateReturnsSettingsdo**](CallRoutingContractsApi.md#callRoutingContractsupdateReturnsSettingsdo) | **POST** /callRoutingContracts/updateReturnsSettings.do | Update Returns Settings
-[**callRoutingContractsupdateRevenueCapdo**](CallRoutingContractsApi.md#callRoutingContractsupdateRevenueCapdo) | **POST** /callRoutingContracts/updateRevenueCap.do | Update Revenue Cap
-[**callRoutingContractsupdateRevenueModeldo**](CallRoutingContractsApi.md#callRoutingContractsupdateRevenueModeldo) | **POST** /callRoutingContracts/updateRevenueModel.do | Update Revenue Model
-[**callRoutingContractsupdateTransferNumberdo**](CallRoutingContractsApi.md#callRoutingContractsupdateTransferNumberdo) | **POST** /callRoutingContracts/updateTransferNumber.do | Update Transfer Number
-[**callRoutingContractsupdateTransfersCapdo**](CallRoutingContractsApi.md#callRoutingContractsupdateTransfersCapdo) | **POST** /callRoutingContracts/updateTransfersCap.do | Update Transfers Cap
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## callRoutingContractsadjustCreditdo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**callRoutingContractsadjustCreditdo()**](CallRoutingContractsApi.md#callRoutingContractsadjustCreditdo) | **POST** /callRoutingContracts/adjustCredit.do | Adjust Credit |
+| [**callRoutingContractschangeModedo()**](CallRoutingContractsApi.md#callRoutingContractschangeModedo) | **POST** /callRoutingContracts/changeMode.do | Change Mode |
+| [**callRoutingContractschangeStatusdo()**](CallRoutingContractsApi.md#callRoutingContractschangeStatusdo) | **POST** /callRoutingContracts/changeStatus.do | Change Status |
+| [**callRoutingContractscreatedo()**](CallRoutingContractsApi.md#callRoutingContractscreatedo) | **POST** /callRoutingContracts/create.do | Create |
+| [**callRoutingContractsdeleteScheduledPausedo()**](CallRoutingContractsApi.md#callRoutingContractsdeleteScheduledPausedo) | **POST** /callRoutingContracts/deleteScheduledPause.do | Delete Scheduled Pause |
+| [**callRoutingContractsdeletedo()**](CallRoutingContractsApi.md#callRoutingContractsdeletedo) | **POST** /callRoutingContracts/delete.do | Delete |
+| [**callRoutingContractsenableCreditdo()**](CallRoutingContractsApi.md#callRoutingContractsenableCreditdo) | **POST** /callRoutingContracts/enableCredit.do | Enable Credit |
+| [**callRoutingContractsgetAlldo()**](CallRoutingContractsApi.md#callRoutingContractsgetAlldo) | **GET** /callRoutingContracts/getAll.do | Get All |
+| [**callRoutingContractsgetBasicInfodo()**](CallRoutingContractsApi.md#callRoutingContractsgetBasicInfodo) | **GET** /callRoutingContracts/getBasicInfo.do | Get Basic Info |
+| [**callRoutingContractsgetBillableTransfersCapInfodo()**](CallRoutingContractsApi.md#callRoutingContractsgetBillableTransfersCapInfodo) | **GET** /callRoutingContracts/getBillableTransfersCapInfo.do | Get Billable Transfers Cap Info |
+| [**callRoutingContractsgetPortalSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsgetPortalSettingsdo) | **GET** /callRoutingContracts/getPortalSettings.do | Get Portal Settings |
+| [**callRoutingContractsgetRepeatCallsSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsgetRepeatCallsSettingsdo) | **GET** /callRoutingContracts/getRepeatCallsSettings.do | Get Repeat Calls Settings |
+| [**callRoutingContractsgetReturnsSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsgetReturnsSettingsdo) | **GET** /callRoutingContracts/getReturnsSettings.do | Get Returns Settings |
+| [**callRoutingContractsgetRevenueCapInfodo()**](CallRoutingContractsApi.md#callRoutingContractsgetRevenueCapInfodo) | **GET** /callRoutingContracts/getRevenueCapInfo.do | Get Revenue Cap Info |
+| [**callRoutingContractsgetScheduledPausedo()**](CallRoutingContractsApi.md#callRoutingContractsgetScheduledPausedo) | **GET** /callRoutingContracts/getScheduledPause.do | Get Scheduled Pause |
+| [**callRoutingContractsgetTransfersCapInfodo()**](CallRoutingContractsApi.md#callRoutingContractsgetTransfersCapInfodo) | **GET** /callRoutingContracts/getTransfersCapInfo.do | Get Transfers Cap Info |
+| [**callRoutingContractsremoveExpirationDatedo()**](CallRoutingContractsApi.md#callRoutingContractsremoveExpirationDatedo) | **POST** /callRoutingContracts/removeExpirationDate.do | Remove Expiration Date |
+| [**callRoutingContractsremoveWhisperMessagedo()**](CallRoutingContractsApi.md#callRoutingContractsremoveWhisperMessagedo) | **POST** /callRoutingContracts/removeWhisperMessage.do | Remove Whisper Message |
+| [**callRoutingContractsrenamedo()**](CallRoutingContractsApi.md#callRoutingContractsrenamedo) | **POST** /callRoutingContracts/rename.do | Rename |
+| [**callRoutingContractsschedulePausedo()**](CallRoutingContractsApi.md#callRoutingContractsschedulePausedo) | **POST** /callRoutingContracts/schedulePause.do | Schedule Pause |
+| [**callRoutingContractssetAudioWhisperMessagedo()**](CallRoutingContractsApi.md#callRoutingContractssetAudioWhisperMessagedo) | **POST** /callRoutingContracts/setAudioWhisperMessage.do | Set Audio Whisper Message |
+| [**callRoutingContractssetExpirationDatedo()**](CallRoutingContractsApi.md#callRoutingContractssetExpirationDatedo) | **POST** /callRoutingContracts/setExpirationDate.do | Set Expiration Date |
+| [**callRoutingContractssetTextToSpeechWhisperMessagedo()**](CallRoutingContractsApi.md#callRoutingContractssetTextToSpeechWhisperMessagedo) | **POST** /callRoutingContracts/setTextToSpeechWhisperMessage.do | Set Text-To-Speech Whisper Message |
+| [**callRoutingContractsupdateAutoRechargeSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateAutoRechargeSettingsdo) | **POST** /callRoutingContracts/updateAutoRechargeSettings.do | Update Auto Recharge Settings |
+| [**callRoutingContractsupdateBasicInfodo()**](CallRoutingContractsApi.md#callRoutingContractsupdateBasicInfodo) | **POST** /callRoutingContracts/updateBasicInfo.do | Update Basic Info |
+| [**callRoutingContractsupdateBillableTransfersCapdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateBillableTransfersCapdo) | **POST** /callRoutingContracts/updateBillableTransfersCap.do | Update Billable Transfers Cap |
+| [**callRoutingContractsupdatePortalSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsupdatePortalSettingsdo) | **POST** /callRoutingContracts/updatePortalSettings.do | Update Portal Settings |
+| [**callRoutingContractsupdateRepeatCallsSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateRepeatCallsSettingsdo) | **POST** /callRoutingContracts/updateRepeatCallsSettings.do | Update Repeat Calls Settings |
+| [**callRoutingContractsupdateReturnsSettingsdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateReturnsSettingsdo) | **POST** /callRoutingContracts/updateReturnsSettings.do | Update Returns Settings |
+| [**callRoutingContractsupdateRevenueCapdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateRevenueCapdo) | **POST** /callRoutingContracts/updateRevenueCap.do | Update Revenue Cap |
+| [**callRoutingContractsupdateRevenueModeldo()**](CallRoutingContractsApi.md#callRoutingContractsupdateRevenueModeldo) | **POST** /callRoutingContracts/updateRevenueModel.do | Update Revenue Model |
+| [**callRoutingContractsupdateTransferNumberdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateTransferNumberdo) | **POST** /callRoutingContracts/updateTransferNumber.do | Update Transfer Number |
+| [**callRoutingContractsupdateTransfersCapdo()**](CallRoutingContractsApi.md#callRoutingContractsupdateTransfersCapdo) | **POST** /callRoutingContracts/updateTransfersCap.do | Update Transfers Cap |
 
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount)
+
+## `callRoutingContractsadjustCreditdo()`
+
+```php
+callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\InlineResponse200
+```
 
 Adjust Credit
 
@@ -53,15 +56,15 @@ Adjust Credit
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -70,15 +73,15 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$type = 'type_example'; // string | 
-$amount = 3.4; // float | 
-$charge = 'No'; // string | 
-$generateInvoice = 'No'; // string | 
-$note = 'note_example'; // string | 
-$transactionFee = 'transactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
+$contractID = 56; // int
+$type = 'type_example'; // string
+$amount = 3.4; // float
+$charge = 'No'; // string
+$generateInvoice = 'No'; // string
+$note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
     $result = $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
@@ -86,23 +89,21 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **type** | **string**|  |
- **amount** | **float**|  |
- **charge** | **string**|  | [optional] [default to &#39;No&#39;]
- **generateInvoice** | **string**|  | [optional] [default to &#39;No&#39;]
- **note** | **string**|  | [optional]
- **transactionFee** | **string**|  | [optional]
- **transactionFeePercentage** | **float**|  | [optional]
- **transactionFeeAmount** | **float**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **type** | **string**|  | |
+| **amount** | **float**|  | |
+| **charge** | **string**|  | [optional] [default to &#39;No&#39;] |
+| **generateInvoice** | **string**|  | [optional] [default to &#39;No&#39;] |
+| **note** | **string**|  | [optional] |
+| **transactionFee** | **string**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 
 ### Return type
 
@@ -110,21 +111,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractschangeModedo()`
 
-## callRoutingContractschangeModedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractschangeModedo($contractID, $mode)
+```php
+callRoutingContractschangeModedo($contractID, $mode): \Leadspedia\Model\InlineResponse200
+```
 
 Change Mode
 
@@ -135,15 +137,15 @@ Change Mode
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -152,8 +154,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$mode = 'mode_example'; // string | 
+$contractID = 56; // int
+$mode = 'mode_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractschangeModedo($contractID, $mode);
@@ -161,16 +163,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractschangeModedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **mode** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **mode** | **string**|  | |
 
 ### Return type
 
@@ -178,21 +178,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractschangeStatusdo()`
 
-## callRoutingContractschangeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractschangeStatusdo($contractID, $status)
+```php
+callRoutingContractschangeStatusdo($contractID, $status): \Leadspedia\Model\InlineResponse200
+```
 
 Change Status
 
@@ -203,15 +204,15 @@ Change Status
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -220,8 +221,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$status = 'status_example'; // string | 
+$contractID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractschangeStatusdo($contractID, $status);
@@ -229,16 +230,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **status** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **status** | **string**|  | |
 
 ### Return type
 
@@ -246,21 +245,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractscreatedo()`
 
-## callRoutingContractscreatedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice)
+```php
+callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice): \Leadspedia\Model\InlineResponse200
+```
 
 Create
 
@@ -271,15 +271,15 @@ Create
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -288,10 +288,10 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractName = 'contractName_example'; // string | 
-$defaultPrice = 3.4; // float | 
+$verticalID = 56; // int
+$advertiserID = 56; // int
+$contractName = 'contractName_example'; // string
+$defaultPrice = 3.4; // float
 
 try {
     $result = $apiInstance->callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice);
@@ -299,18 +299,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  |
- **advertiserID** | **int**|  |
- **contractName** | **string**|  |
- **defaultPrice** | **float**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | |
+| **advertiserID** | **int**|  | |
+| **contractName** | **string**|  | |
+| **defaultPrice** | **float**|  | |
 
 ### Return type
 
@@ -318,21 +316,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsdeleteScheduledPausedo()`
 
-## callRoutingContractsdeleteScheduledPausedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsdeleteScheduledPausedo($scheduledPauseID)
+```php
+callRoutingContractsdeleteScheduledPausedo($scheduledPauseID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete Scheduled Pause
 
@@ -343,15 +342,15 @@ Delete Scheduled Pause
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -360,7 +359,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scheduledPauseID = 56; // int | 
+$scheduledPauseID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsdeleteScheduledPausedo($scheduledPauseID);
@@ -368,15 +367,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsdeleteScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scheduledPauseID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **scheduledPauseID** | **int**|  | |
 
 ### Return type
 
@@ -384,21 +381,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsdeletedo()`
 
-## callRoutingContractsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsdeletedo($contractID)
+```php
+callRoutingContractsdeletedo($contractID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete
 
@@ -409,15 +407,15 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -426,7 +424,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsdeletedo($contractID);
@@ -434,15 +432,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -450,21 +446,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsenableCreditdo()`
 
-## callRoutingContractsenableCreditdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsenableCreditdo($contractID, $buyerLevel)
+```php
+callRoutingContractsenableCreditdo($contractID, $buyerLevel): \Leadspedia\Model\InlineResponse200
+```
 
 Enable Credit
 
@@ -475,15 +472,15 @@ Enable Credit
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -492,8 +489,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$buyerLevel = 'buyerLevel_example'; // string | 
+$contractID = 56; // int
+$buyerLevel = 'buyerLevel_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsenableCreditdo($contractID, $buyerLevel);
@@ -501,16 +498,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsenableCreditdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **buyerLevel** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **buyerLevel** | **string**|  | |
 
 ### Return type
 
@@ -518,21 +513,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetAlldo()`
 
-## callRoutingContractsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit)
+```php
+callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -543,15 +539,15 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -560,12 +556,12 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$status = 'status_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$status = 'status_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit);
@@ -573,20 +569,18 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **status** | **string**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **status** | **string**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -594,21 +588,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetBasicInfodo()`
 
-## callRoutingContractsgetBasicInfodo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetBasicInfodo($contractID)
+```php
+callRoutingContractsgetBasicInfodo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Basic Info
 
@@ -619,15 +614,15 @@ Get Basic Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -636,7 +631,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetBasicInfodo($contractID);
@@ -644,15 +639,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -660,21 +653,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetBillableTransfersCapInfodo()`
 
-## callRoutingContractsgetBillableTransfersCapInfodo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetBillableTransfersCapInfodo($contractID)
+```php
+callRoutingContractsgetBillableTransfersCapInfodo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Billable Transfers Cap Info
 
@@ -685,15 +679,15 @@ Get Billable Transfers Cap Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -702,7 +696,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetBillableTransfersCapInfodo($contractID);
@@ -710,15 +704,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetBillableTransfersCapInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -726,21 +718,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetPortalSettingsdo()`
 
-## callRoutingContractsgetPortalSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetPortalSettingsdo($contractID)
+```php
+callRoutingContractsgetPortalSettingsdo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Portal Settings
 
@@ -751,15 +744,15 @@ Get Portal Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -768,7 +761,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetPortalSettingsdo($contractID);
@@ -776,15 +769,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetPortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -792,21 +783,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetRepeatCallsSettingsdo()`
 
-## callRoutingContractsgetRepeatCallsSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetRepeatCallsSettingsdo($contractID)
+```php
+callRoutingContractsgetRepeatCallsSettingsdo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Repeat Calls Settings
 
@@ -817,15 +809,15 @@ Get Repeat Calls Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -834,7 +826,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetRepeatCallsSettingsdo($contractID);
@@ -842,15 +834,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetRepeatCallsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -858,21 +848,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetReturnsSettingsdo()`
 
-## callRoutingContractsgetReturnsSettingsdo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetReturnsSettingsdo($contractID)
+```php
+callRoutingContractsgetReturnsSettingsdo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Returns Settings
 
@@ -883,15 +874,15 @@ Get Returns Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -900,7 +891,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetReturnsSettingsdo($contractID);
@@ -908,15 +899,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -924,21 +913,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetRevenueCapInfodo()`
 
-## callRoutingContractsgetRevenueCapInfodo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetRevenueCapInfodo($contractID)
+```php
+callRoutingContractsgetRevenueCapInfodo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Revenue Cap Info
 
@@ -949,15 +939,15 @@ Get Revenue Cap Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -966,7 +956,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetRevenueCapInfodo($contractID);
@@ -974,15 +964,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetRevenueCapInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -990,21 +978,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetScheduledPausedo()`
 
-## callRoutingContractsgetScheduledPausedo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetScheduledPausedo($contractID, $start, $limit)
+```php
+callRoutingContractsgetScheduledPausedo($contractID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Scheduled Pause
 
@@ -1015,15 +1004,15 @@ Get Scheduled Pause
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1032,9 +1021,9 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$contractID = 56; // int
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetScheduledPausedo($contractID, $start, $limit);
@@ -1042,17 +1031,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetScheduledPausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -1060,21 +1047,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsgetTransfersCapInfodo()`
 
-## callRoutingContractsgetTransfersCapInfodo
-
-> \Leadspedia\Model\InlineResponse2001 callRoutingContractsgetTransfersCapInfodo($contractID)
+```php
+callRoutingContractsgetTransfersCapInfodo($contractID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Transfers Cap Info
 
@@ -1085,15 +1073,15 @@ Get Transfers Cap Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1102,7 +1090,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsgetTransfersCapInfodo($contractID);
@@ -1110,15 +1098,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetTransfersCapInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -1126,21 +1112,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsremoveExpirationDatedo()`
 
-## callRoutingContractsremoveExpirationDatedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsremoveExpirationDatedo($contractID)
+```php
+callRoutingContractsremoveExpirationDatedo($contractID): \Leadspedia\Model\InlineResponse200
+```
 
 Remove Expiration Date
 
@@ -1151,15 +1138,15 @@ Remove Expiration Date
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1168,7 +1155,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsremoveExpirationDatedo($contractID);
@@ -1176,15 +1163,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsremoveExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -1192,21 +1177,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsremoveWhisperMessagedo()`
 
-## callRoutingContractsremoveWhisperMessagedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsremoveWhisperMessagedo($contractID)
+```php
+callRoutingContractsremoveWhisperMessagedo($contractID): \Leadspedia\Model\InlineResponse200
+```
 
 Remove Whisper Message
 
@@ -1217,15 +1203,15 @@ Remove Whisper Message
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1234,7 +1220,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
+$contractID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsremoveWhisperMessagedo($contractID);
@@ -1242,15 +1228,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsremoveWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
 
 ### Return type
 
@@ -1258,21 +1242,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsrenamedo()`
 
-## callRoutingContractsrenamedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsrenamedo($contractID, $contractName)
+```php
+callRoutingContractsrenamedo($contractID, $contractName): \Leadspedia\Model\InlineResponse200
+```
 
 Rename
 
@@ -1283,15 +1268,15 @@ Rename
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1300,8 +1285,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$contractName = 'contractName_example'; // string | 
+$contractID = 56; // int
+$contractName = 'contractName_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsrenamedo($contractID, $contractName);
@@ -1309,16 +1294,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsrenamedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **contractName** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **contractName** | **string**|  | |
 
 ### Return type
 
@@ -1326,21 +1309,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsschedulePausedo()`
 
-## callRoutingContractsschedulePausedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate)
+```php
+callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate): \Leadspedia\Model\InlineResponse200
+```
 
 Schedule Pause
 
@@ -1351,15 +1335,15 @@ Schedule Pause
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1368,9 +1352,9 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$pauseDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$resumeDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$contractID = 56; // int
+$pauseDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$resumeDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
@@ -1378,17 +1362,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsschedulePausedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **pauseDate** | **\DateTime**|  |
- **resumeDate** | **\DateTime**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **pauseDate** | **\DateTime**|  | |
+| **resumeDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -1396,21 +1378,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractssetAudioWhisperMessagedo()`
 
-## callRoutingContractssetAudioWhisperMessagedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID)
+```php
+callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID): \Leadspedia\Model\InlineResponse200
+```
 
 Set Audio Whisper Message
 
@@ -1421,15 +1404,15 @@ Set Audio Whisper Message
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1438,8 +1421,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 'contractID_example'; // string | 
-$audioID = 56; // int | 
+$contractID = 'contractID_example'; // string
+$audioID = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractssetAudioWhisperMessagedo($contractID, $audioID);
@@ -1447,16 +1430,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetAudioWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **string**|  |
- **audioID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **string**|  | |
+| **audioID** | **int**|  | |
 
 ### Return type
 
@@ -1464,21 +1445,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractssetExpirationDatedo()`
 
-## callRoutingContractssetExpirationDatedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractssetExpirationDatedo($contractID, $expirationDate)
+```php
+callRoutingContractssetExpirationDatedo($contractID, $expirationDate): \Leadspedia\Model\InlineResponse200
+```
 
 Set Expiration Date
 
@@ -1489,15 +1471,15 @@ Set Expiration Date
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1506,8 +1488,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$expirationDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$contractID = 56; // int
+$expirationDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->callRoutingContractssetExpirationDatedo($contractID, $expirationDate);
@@ -1515,16 +1497,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetExpirationDatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **expirationDate** | **\DateTime**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **expirationDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -1532,21 +1512,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractssetTextToSpeechWhisperMessagedo()`
 
-## callRoutingContractssetTextToSpeechWhisperMessagedo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message)
+```php
+callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message): \Leadspedia\Model\InlineResponse200
+```
 
 Set Text-To-Speech Whisper Message
 
@@ -1557,15 +1538,15 @@ Set Text-To-Speech Whisper Message
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1574,8 +1555,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 'contractID_example'; // string | 
-$message = 'message_example'; // string | 
+$contractID = 'contractID_example'; // string
+$message = 'message_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractssetTextToSpeechWhisperMessagedo($contractID, $message);
@@ -1583,16 +1564,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractssetTextToSpeechWhisperMessagedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **string**|  |
- **message** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **string**|  | |
+| **message** | **string**|  | |
 
 ### Return type
 
@@ -1600,21 +1579,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateAutoRechargeSettingsdo()`
 
-## callRoutingContractsupdateAutoRechargeSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice)
+```php
+callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\InlineResponse200
+```
 
 Update Auto Recharge Settings
 
@@ -1625,15 +1605,15 @@ Update Auto Recharge Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1642,14 +1622,14 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$enableAutoRecharge = 'enableAutoRecharge_example'; // string | 
-$autoChargeBalance = 3.4; // float | 
-$autoChargeAmount = 3.4; // float | 
-$chargeTransactionFee = 'chargeTransactionFee_example'; // string | 
-$transactionFeePercentage = 3.4; // float | 
-$transactionFeeAmount = 3.4; // float | 
-$generateInvoice = 'generateInvoice_example'; // string | 
+$contractID = 56; // int
+$enableAutoRecharge = 'enableAutoRecharge_example'; // string
+$autoChargeBalance = 3.4; // float
+$autoChargeAmount = 3.4; // float
+$chargeTransactionFee = 'chargeTransactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
+$generateInvoice = 'generateInvoice_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
@@ -1657,22 +1637,20 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **enableAutoRecharge** | **string**|  | [optional]
- **autoChargeBalance** | **float**|  | [optional]
- **autoChargeAmount** | **float**|  | [optional]
- **chargeTransactionFee** | **string**|  | [optional]
- **transactionFeePercentage** | **float**|  | [optional]
- **transactionFeeAmount** | **float**|  | [optional]
- **generateInvoice** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **enableAutoRecharge** | **string**|  | [optional] |
+| **autoChargeBalance** | **float**|  | [optional] |
+| **autoChargeAmount** | **float**|  | [optional] |
+| **chargeTransactionFee** | **string**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
+| **generateInvoice** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1680,21 +1658,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateBasicInfodo()`
 
-## callRoutingContractsupdateBasicInfodo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes)
+```php
+callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes): \Leadspedia\Model\InlineResponse200
+```
 
 Update Basic Info
 
@@ -1705,15 +1684,15 @@ Update Basic Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1722,11 +1701,11 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$contractName = 'contractName_example'; // string | 
-$transferNumber = 'transferNumber_example'; // string | 
-$alternativeID = 'alternativeID_example'; // string | 
-$notes = 'notes_example'; // string | 
+$contractID = 56; // int
+$contractName = 'contractName_example'; // string
+$transferNumber = 'transferNumber_example'; // string
+$alternativeID = 'alternativeID_example'; // string
+$notes = 'notes_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateBasicInfodo($contractID, $contractName, $transferNumber, $alternativeID, $notes);
@@ -1734,19 +1713,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **contractName** | **string**|  | [optional]
- **transferNumber** | **string**|  | [optional]
- **alternativeID** | **string**|  | [optional]
- **notes** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **contractName** | **string**|  | [optional] |
+| **transferNumber** | **string**|  | [optional] |
+| **alternativeID** | **string**|  | [optional] |
+| **notes** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1754,21 +1731,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateBillableTransfersCapdo()`
 
-## callRoutingContractsupdateBillableTransfersCapdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap)
+```php
+callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap): \Leadspedia\Model\InlineResponse200
+```
 
 Update Billable Transfers Cap
 
@@ -1779,15 +1757,15 @@ Update Billable Transfers Cap
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1796,11 +1774,11 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$hourlyBillableCap = 56; // int | 
-$dailyBillableCap = 56; // int | 
-$weeklyBillableCap = 56; // int | 
-$monthlyBillableCap = 56; // int | 
+$contractID = 56; // int
+$hourlyBillableCap = 56; // int
+$dailyBillableCap = 56; // int
+$weeklyBillableCap = 56; // int
+$monthlyBillableCap = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsupdateBillableTransfersCapdo($contractID, $hourlyBillableCap, $dailyBillableCap, $weeklyBillableCap, $monthlyBillableCap);
@@ -1808,19 +1786,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateBillableTransfersCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **hourlyBillableCap** | **int**|  | [optional]
- **dailyBillableCap** | **int**|  | [optional]
- **weeklyBillableCap** | **int**|  | [optional]
- **monthlyBillableCap** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **hourlyBillableCap** | **int**|  | [optional] |
+| **dailyBillableCap** | **int**|  | [optional] |
+| **weeklyBillableCap** | **int**|  | [optional] |
+| **monthlyBillableCap** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1828,21 +1804,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdatePortalSettingsdo()`
 
-## callRoutingContractsupdatePortalSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID)
+```php
+callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID): \Leadspedia\Model\InlineResponse200
+```
 
 Update Portal Settings
 
@@ -1853,15 +1830,15 @@ Update Portal Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1870,16 +1847,16 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$showStatus = 'showStatus_example'; // string | 
-$showSchedule = 'showSchedule_example'; // string | 
-$showCaps = 'showCaps_example'; // string | 
-$showReturnSettings = 'showReturnSettings_example'; // string | 
-$allowStatusPause = 'allowStatusPause_example'; // string | 
-$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | 
-$allowManageCaps = 'allowManageCaps_example'; // string | 
-$callRecordings = 'callRecordings_example'; // string | 
-$hideCallerID = 'hideCallerID_example'; // string | 
+$contractID = 56; // int
+$showStatus = 'showStatus_example'; // string
+$showSchedule = 'showSchedule_example'; // string
+$showCaps = 'showCaps_example'; // string
+$showReturnSettings = 'showReturnSettings_example'; // string
+$allowStatusPause = 'allowStatusPause_example'; // string
+$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string
+$allowManageCaps = 'allowManageCaps_example'; // string
+$callRecordings = 'callRecordings_example'; // string
+$hideCallerID = 'hideCallerID_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
@@ -1887,24 +1864,22 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **showStatus** | **string**|  | [optional]
- **showSchedule** | **string**|  | [optional]
- **showCaps** | **string**|  | [optional]
- **showReturnSettings** | **string**|  | [optional]
- **allowStatusPause** | **string**|  | [optional]
- **allowUpdateSchedule** | **string**|  | [optional]
- **allowManageCaps** | **string**|  | [optional]
- **callRecordings** | **string**|  | [optional]
- **hideCallerID** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **showStatus** | **string**|  | [optional] |
+| **showSchedule** | **string**|  | [optional] |
+| **showCaps** | **string**|  | [optional] |
+| **showReturnSettings** | **string**|  | [optional] |
+| **allowStatusPause** | **string**|  | [optional] |
+| **allowUpdateSchedule** | **string**|  | [optional] |
+| **allowManageCaps** | **string**|  | [optional] |
+| **callRecordings** | **string**|  | [optional] |
+| **hideCallerID** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1912,21 +1887,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateRepeatCallsSettingsdo()`
 
-## callRoutingContractsupdateRepeatCallsSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable)
+```php
+callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable): \Leadspedia\Model\InlineResponse200
+```
 
 Update Repeat Calls Settings
 
@@ -1937,15 +1913,15 @@ Update Repeat Calls Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -1954,10 +1930,10 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$repeatCallDays = 56; // int | 
-$transferRepeat = 'transferRepeat_example'; // string | 
-$repeatBillable = 'repeatBillable_example'; // string | 
+$contractID = 56; // int
+$repeatCallDays = 56; // int
+$transferRepeat = 'transferRepeat_example'; // string
+$repeatBillable = 'repeatBillable_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateRepeatCallsSettingsdo($contractID, $repeatCallDays, $transferRepeat, $repeatBillable);
@@ -1965,18 +1941,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRepeatCallsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **repeatCallDays** | **int**|  | [optional]
- **transferRepeat** | **string**|  | [optional]
- **repeatBillable** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **repeatCallDays** | **int**|  | [optional] |
+| **transferRepeat** | **string**|  | [optional] |
+| **repeatBillable** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1984,21 +1958,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateReturnsSettingsdo()`
 
-## callRoutingContractsupdateReturnsSettingsdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns)
+```php
+callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns): \Leadspedia\Model\InlineResponse200
+```
 
 Update Returns Settings
 
@@ -2009,15 +1984,15 @@ Update Returns Settings
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -2026,9 +2001,9 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$allowReturns = 'allowReturns_example'; // string | 
-$autoApproveReturns = 'autoApproveReturns_example'; // string | 
+$contractID = 56; // int
+$allowReturns = 'allowReturns_example'; // string
+$autoApproveReturns = 'autoApproveReturns_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateReturnsSettingsdo($contractID, $allowReturns, $autoApproveReturns);
@@ -2036,17 +2011,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateReturnsSettingsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **allowReturns** | **string**|  | [optional]
- **autoApproveReturns** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **allowReturns** | **string**|  | [optional] |
+| **autoApproveReturns** | **string**|  | [optional] |
 
 ### Return type
 
@@ -2054,21 +2027,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateRevenueCapdo()`
 
-## callRoutingContractsupdateRevenueCapdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap)
+```php
+callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap): \Leadspedia\Model\InlineResponse200
+```
 
 Update Revenue Cap
 
@@ -2079,15 +2053,15 @@ Update Revenue Cap
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -2096,11 +2070,11 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$hourlyRevenueCap = 56; // int | 
-$dailyRevenueCap = 56; // int | 
-$weeklyRevenueCap = 56; // int | 
-$monthlyRevenueCap = 56; // int | 
+$contractID = 56; // int
+$hourlyRevenueCap = 56; // int
+$dailyRevenueCap = 56; // int
+$weeklyRevenueCap = 56; // int
+$monthlyRevenueCap = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsupdateRevenueCapdo($contractID, $hourlyRevenueCap, $dailyRevenueCap, $weeklyRevenueCap, $monthlyRevenueCap);
@@ -2108,19 +2082,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRevenueCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **hourlyRevenueCap** | **int**|  | [optional]
- **dailyRevenueCap** | **int**|  | [optional]
- **weeklyRevenueCap** | **int**|  | [optional]
- **monthlyRevenueCap** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **hourlyRevenueCap** | **int**|  | [optional] |
+| **dailyRevenueCap** | **int**|  | [optional] |
+| **weeklyRevenueCap** | **int**|  | [optional] |
+| **monthlyRevenueCap** | **int**|  | [optional] |
 
 ### Return type
 
@@ -2128,21 +2100,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateRevenueModeldo()`
 
-## callRoutingContractsupdateRevenueModeldo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration)
+```php
+callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration): \Leadspedia\Model\InlineResponse200
+```
 
 Update Revenue Model
 
@@ -2153,15 +2126,15 @@ Update Revenue Model
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -2170,10 +2143,10 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$revenueModel = 'revenueModel_example'; // string | 
-$price = 3.4; // float | 
-$duration = 'duration_example'; // string | 
+$contractID = 56; // int
+$revenueModel = 'revenueModel_example'; // string
+$price = 3.4; // float
+$duration = 'duration_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateRevenueModeldo($contractID, $revenueModel, $price, $duration);
@@ -2181,18 +2154,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateRevenueModeldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **revenueModel** | **string**|  |
- **price** | **float**|  |
- **duration** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **revenueModel** | **string**|  | |
+| **price** | **float**|  | |
+| **duration** | **string**|  | [optional] |
 
 ### Return type
 
@@ -2200,21 +2171,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateTransferNumberdo()`
 
-## callRoutingContractsupdateTransferNumberdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber)
+```php
+callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber): \Leadspedia\Model\InlineResponse200
+```
 
 Update Transfer Number
 
@@ -2225,15 +2197,15 @@ Update Transfer Number
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -2242,8 +2214,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$transferNumber = 'transferNumber_example'; // string | 
+$contractID = 56; // int
+$transferNumber = 'transferNumber_example'; // string
 
 try {
     $result = $apiInstance->callRoutingContractsupdateTransferNumberdo($contractID, $transferNumber);
@@ -2251,16 +2223,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateTransferNumberdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **transferNumber** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **transferNumber** | **string**|  | |
 
 ### Return type
 
@@ -2268,21 +2238,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `callRoutingContractsupdateTransfersCapdo()`
 
-## callRoutingContractsupdateTransfersCapdo
-
-> \Leadspedia\Model\InlineResponse200 callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap)
+```php
+callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap): \Leadspedia\Model\InlineResponse200
+```
 
 Update Transfers Cap
 
@@ -2293,15 +2264,15 @@ Update Transfers Cap
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
@@ -2310,11 +2281,11 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int | 
-$hourlyTransfersCap = 56; // int | 
-$dailyTransfersCap = 56; // int | 
-$weeklyTransfersCap = 56; // int | 
-$monthlyTransfersCap = 56; // int | 
+$contractID = 56; // int
+$hourlyTransfersCap = 56; // int
+$dailyTransfersCap = 56; // int
+$weeklyTransfersCap = 56; // int
+$monthlyTransfersCap = 56; // int
 
 try {
     $result = $apiInstance->callRoutingContractsupdateTransfersCapdo($contractID, $hourlyTransfersCap, $dailyTransfersCap, $weeklyTransfersCap, $monthlyTransfersCap);
@@ -2322,19 +2293,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateTransfersCapdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contractID** | **int**|  |
- **hourlyTransfersCap** | **int**|  | [optional]
- **dailyTransfersCap** | **int**|  | [optional]
- **weeklyTransfersCap** | **int**|  | [optional]
- **monthlyTransfersCap** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contractID** | **int**|  | |
+| **hourlyTransfersCap** | **int**|  | [optional] |
+| **dailyTransfersCap** | **int**|  | [optional] |
+| **weeklyTransfersCap** | **int**|  | [optional] |
+| **monthlyTransfersCap** | **int**|  | [optional] |
 
 ### Return type
 
@@ -2342,14 +2311,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

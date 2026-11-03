@@ -1,31 +1,34 @@
 # Leadspedia\LeadsReportsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**leadsReportsgetCampaignsLeadsCapReportdo**](LeadsReportsApi.md#leadsReportsgetCampaignsLeadsCapReportdo) | **GET** /leadsReports/getCampaignsLeadsCapReport.do | Get Campaigns Leads Cap Report
-[**leadsReportsgetCampaignsLeadsFieldsCapReportdo**](LeadsReportsApi.md#leadsReportsgetCampaignsLeadsFieldsCapReportdo) | **GET** /leadsReports/getCampaignsLeadsFieldsCapReport.do | Get Campaigns Leads Fields Cap Report
-[**leadsReportsgetContractsLeadsCapReportdo**](LeadsReportsApi.md#leadsReportsgetContractsLeadsCapReportdo) | **GET** /leadsReports/getContractsLeadsCapReport.do | Get Contracts Leads Cap Report
-[**leadsReportsgetContractsLeadsFieldsCapReportdo**](LeadsReportsApi.md#leadsReportsgetContractsLeadsFieldsCapReportdo) | **GET** /leadsReports/getContractsLeadsFieldsCapReport.do | Get Contracts Leads Fields Cap Report
-[**leadsReportsgetLeadDistributionReportdo**](LeadsReportsApi.md#leadsReportsgetLeadDistributionReportdo) | **GET** /leadsReports/getLeadDistributionReport.do | Get Lead Distribution Report
-[**leadsReportsgetLeadsByAdvertisersDailyReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByAdvertisersDailyReportdo) | **GET** /leadsReports/getLeadsByAdvertisersDailyReport.do | Get Leads By Advertisers Daily Report
-[**leadsReportsgetLeadsByAdvertisersReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByAdvertisersReportdo) | **GET** /leadsReports/getLeadsByAdvertisersReport.do | Get Leads By Advertisers Report
-[**leadsReportsgetLeadsByAffiliatesDailyReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByAffiliatesDailyReportdo) | **GET** /leadsReports/getLeadsByAffiliatesDailyReport.do | Get Leads By Affiliates Daily Report
-[**leadsReportsgetLeadsByAffiliatesReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByAffiliatesReportdo) | **GET** /leadsReports/getLeadsByAffiliatesReport.do | Get Leads By Affiliates Report
-[**leadsReportsgetLeadsByCampaignsReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByCampaignsReportdo) | **GET** /leadsReports/getLeadsByCampaignsReport.do | Get Leads By Campaigns Report
-[**leadsReportsgetLeadsByContractsReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByContractsReportdo) | **GET** /leadsReports/getLeadsByContractsReport.do | Get Leads By Contracts Report
-[**leadsReportsgetLeadsByOffersReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByOffersReportdo) | **GET** /leadsReports/getLeadsByOffersReport.do | Get Leads By Offers Report
-[**leadsReportsgetLeadsBySubAffiliatesReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsBySubAffiliatesReportdo) | **GET** /leadsReports/getLeadsBySubAffiliatesReport.do | Get Leads By Sub Affiliates Report
-[**leadsReportsgetLeadsByVerticalsReportdo**](LeadsReportsApi.md#leadsReportsgetLeadsByVerticalsReportdo) | **GET** /leadsReports/getLeadsByVerticalsReport.do | Get Leads By Verticals Report
-[**leadsReportsgetOffersLeadsCapReportdo**](LeadsReportsApi.md#leadsReportsgetOffersLeadsCapReportdo) | **GET** /leadsReports/getOffersLeadsCapReport.do | Get Offers Leads Cap Report
-[**leadsReportsgetPingPostReportdo**](LeadsReportsApi.md#leadsReportsgetPingPostReportdo) | **GET** /leadsReports/getPingPostReport.do | Get Ping Post Report
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## leadsReportsgetCampaignsLeadsCapReportdo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**leadsReportsgetCampaignsLeadsCapReportdo()**](LeadsReportsApi.md#leadsReportsgetCampaignsLeadsCapReportdo) | **GET** /leadsReports/getCampaignsLeadsCapReport.do | Get Campaigns Leads Cap Report |
+| [**leadsReportsgetCampaignsLeadsFieldsCapReportdo()**](LeadsReportsApi.md#leadsReportsgetCampaignsLeadsFieldsCapReportdo) | **GET** /leadsReports/getCampaignsLeadsFieldsCapReport.do | Get Campaigns Leads Fields Cap Report |
+| [**leadsReportsgetContractsLeadsCapReportdo()**](LeadsReportsApi.md#leadsReportsgetContractsLeadsCapReportdo) | **GET** /leadsReports/getContractsLeadsCapReport.do | Get Contracts Leads Cap Report |
+| [**leadsReportsgetContractsLeadsFieldsCapReportdo()**](LeadsReportsApi.md#leadsReportsgetContractsLeadsFieldsCapReportdo) | **GET** /leadsReports/getContractsLeadsFieldsCapReport.do | Get Contracts Leads Fields Cap Report |
+| [**leadsReportsgetLeadDistributionReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadDistributionReportdo) | **GET** /leadsReports/getLeadDistributionReport.do | Get Lead Distribution Report |
+| [**leadsReportsgetLeadsByAdvertisersDailyReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByAdvertisersDailyReportdo) | **GET** /leadsReports/getLeadsByAdvertisersDailyReport.do | Get Leads By Advertisers Daily Report |
+| [**leadsReportsgetLeadsByAdvertisersReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByAdvertisersReportdo) | **GET** /leadsReports/getLeadsByAdvertisersReport.do | Get Leads By Advertisers Report |
+| [**leadsReportsgetLeadsByAffiliatesDailyReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByAffiliatesDailyReportdo) | **GET** /leadsReports/getLeadsByAffiliatesDailyReport.do | Get Leads By Affiliates Daily Report |
+| [**leadsReportsgetLeadsByAffiliatesReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByAffiliatesReportdo) | **GET** /leadsReports/getLeadsByAffiliatesReport.do | Get Leads By Affiliates Report |
+| [**leadsReportsgetLeadsByCampaignsReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByCampaignsReportdo) | **GET** /leadsReports/getLeadsByCampaignsReport.do | Get Leads By Campaigns Report |
+| [**leadsReportsgetLeadsByContractsReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByContractsReportdo) | **GET** /leadsReports/getLeadsByContractsReport.do | Get Leads By Contracts Report |
+| [**leadsReportsgetLeadsByOffersReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByOffersReportdo) | **GET** /leadsReports/getLeadsByOffersReport.do | Get Leads By Offers Report |
+| [**leadsReportsgetLeadsBySubAffiliatesReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsBySubAffiliatesReportdo) | **GET** /leadsReports/getLeadsBySubAffiliatesReport.do | Get Leads By Sub Affiliates Report |
+| [**leadsReportsgetLeadsByVerticalsReportdo()**](LeadsReportsApi.md#leadsReportsgetLeadsByVerticalsReportdo) | **GET** /leadsReports/getLeadsByVerticalsReport.do | Get Leads By Verticals Report |
+| [**leadsReportsgetOffersLeadsCapReportdo()**](LeadsReportsApi.md#leadsReportsgetOffersLeadsCapReportdo) | **GET** /leadsReports/getOffersLeadsCapReport.do | Get Offers Leads Cap Report |
+| [**leadsReportsgetPingPostReportdo()**](LeadsReportsApi.md#leadsReportsgetPingPostReportdo) | **GET** /leadsReports/getPingPostReport.do | Get Ping Post Report |
 
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
+
+## `leadsReportsgetCampaignsLeadsCapReportdo()`
+
+```php
+leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Campaigns Leads Cap Report
 
@@ -36,15 +39,15 @@ Get Campaigns Leads Cap Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -53,10 +56,10 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
@@ -64,18 +67,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetCampaignsLeadsCapReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -83,21 +84,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetCampaignsLeadsFieldsCapReportdo()`
 
-## leadsReportsgetCampaignsLeadsFieldsCapReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID)
+```php
+leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Campaigns Leads Fields Cap Report
 
@@ -108,15 +110,15 @@ Get Campaigns Leads Fields Cap Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -125,10 +127,10 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
@@ -136,18 +138,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetCampaignsLeadsFieldsCapReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -155,21 +155,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetContractsLeadsCapReportdo()`
 
-## leadsReportsgetContractsLeadsCapReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
+```php
+leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Contracts Leads Cap Report
 
@@ -180,15 +181,15 @@ Get Contracts Leads Cap Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -197,10 +198,10 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID);
@@ -208,18 +209,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetContractsLeadsCapReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -227,21 +226,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetContractsLeadsFieldsCapReportdo()`
 
-## leadsReportsgetContractsLeadsFieldsCapReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID)
+```php
+leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Contracts Leads Fields Cap Report
 
@@ -252,15 +252,15 @@ Get Contracts Leads Fields Cap Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -269,10 +269,10 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetContractsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID);
@@ -280,18 +280,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetContractsLeadsFieldsCapReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -299,21 +297,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadDistributionReportdo()`
 
-## leadsReportsgetLeadDistributionReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Lead Distribution Report
 
@@ -324,15 +323,15 @@ Get Lead Distribution Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -341,17 +340,17 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$offerID = 56; // int | 
-$campaignID = 56; // int | 
-$payoutModel = 'payoutModel_example'; // string | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$offerID = 56; // int
+$campaignID = 56; // int
+$payoutModel = 'payoutModel_example'; // string
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
@@ -359,25 +358,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadDistributionReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **payoutModel** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -385,21 +382,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByAdvertisersDailyReportdo()`
 
-## leadsReportsgetLeadsByAdvertisersDailyReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID)
+```php
+leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Advertisers Daily Report
 
@@ -410,15 +408,15 @@ Get Leads By Advertisers Daily Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -427,13 +425,13 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$month = 'month_example'; // string | 
-$year = 'year_example'; // string | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$contractID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
+$month = 'month_example'; // string
+$year = 'year_example'; // string
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$contractID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
@@ -441,21 +439,19 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAdvertisersDailyReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **month** | **string**|  |
- **year** | **string**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **month** | **string**|  | |
+| **year** | **string**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -463,21 +459,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByAdvertisersReportdo()`
 
-## leadsReportsgetLeadsByAdvertisersReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Advertisers Report
 
@@ -488,15 +485,15 @@ Get Leads By Advertisers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -505,13 +502,13 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$offerID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$offerID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate);
@@ -519,21 +516,19 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -541,21 +536,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByAffiliatesDailyReportdo()`
 
-## leadsReportsgetLeadsByAffiliatesDailyReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID)
+```php
+leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Affiliates Daily Report
 
@@ -566,15 +562,15 @@ Get Leads By Affiliates Daily Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -583,14 +579,14 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$month = 'month_example'; // string | 
-$year = 'year_example'; // string | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$offerID = 56; // int | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
+$month = 'month_example'; // string
+$year = 'year_example'; // string
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$offerID = 56; // int
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
@@ -598,22 +594,20 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAffiliatesDailyReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **month** | **string**|  |
- **year** | **string**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **month** | **string**|  | |
+| **year** | **string**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -621,21 +615,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByAffiliatesReportdo()`
 
-## leadsReportsgetLeadsByAffiliatesReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Affiliates Report
 
@@ -646,15 +641,15 @@ Get Leads By Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -663,9 +658,9 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$affiliateAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate);
@@ -673,17 +668,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **affiliateAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -691,21 +684,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByCampaignsReportdo()`
 
-## leadsReportsgetLeadsByCampaignsReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Campaigns Report
 
@@ -716,15 +710,15 @@ Get Leads By Campaigns Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -733,14 +727,14 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$offerID = 56; // int | 
-$payoutModel = 'payoutModel_example'; // string | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$offerID = 56; // int
+$payoutModel = 'payoutModel_example'; // string
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
@@ -748,22 +742,20 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **payoutModel** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -771,21 +763,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByContractsReportdo()`
 
-## leadsReportsgetLeadsByContractsReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Contracts Report
 
@@ -796,15 +789,15 @@ Get Leads By Contracts Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -813,12 +806,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
@@ -826,20 +819,18 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByContractsReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -847,21 +838,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByOffersReportdo()`
 
-## leadsReportsgetLeadsByOffersReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate)
+```php
+leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Offers Report
 
@@ -872,15 +864,15 @@ Get Leads By Offers Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -889,11 +881,11 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
-$payoutModel = 'payoutModel_example'; // string | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
+$payoutModel = 'payoutModel_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
@@ -901,19 +893,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByOffersReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
- **payoutModel** | **string**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -921,21 +911,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsBySubAffiliatesReportdo()`
 
-## leadsReportsgetLeadsBySubAffiliatesReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate)
+```php
+leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Sub Affiliates Report
 
@@ -946,15 +937,15 @@ Get Leads By Sub Affiliates Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -963,11 +954,11 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$campaignID = 56; // int | 
-$affiliateID = 56; // int | 
-$affiliateAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
@@ -975,19 +966,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsBySubAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **campaignID** | **int**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **affiliateAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -995,21 +984,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetLeadsByVerticalsReportdo()`
 
-## leadsReportsgetLeadsByVerticalsReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate)
+```php
+leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Leads By Verticals Report
 
@@ -1020,15 +1010,15 @@ Get Leads By Verticals Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -1037,9 +1027,9 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$verticalGroupID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$verticalGroupID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate);
@@ -1047,17 +1037,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **verticalGroupID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **verticalGroupID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -1065,21 +1053,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetOffersLeadsCapReportdo()`
 
-## leadsReportsgetOffersLeadsCapReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetOffersLeadsCapReportdo($verticalID, $verticalGroupID)
+```php
+leadsReportsgetOffersLeadsCapReportdo($verticalID, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Offers Leads Cap Report
 
@@ -1090,15 +1079,15 @@ Get Offers Leads Cap Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -1107,8 +1096,8 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int | 
-$verticalGroupID = 56; // int | 
+$verticalID = 56; // int
+$verticalGroupID = 56; // int
 
 try {
     $result = $apiInstance->leadsReportsgetOffersLeadsCapReportdo($verticalID, $verticalGroupID);
@@ -1116,16 +1105,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetOffersLeadsCapReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verticalID** | **int**|  | [optional]
- **verticalGroupID** | **int**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **verticalID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 
 ### Return type
 
@@ -1133,21 +1120,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `leadsReportsgetPingPostReportdo()`
 
-## leadsReportsgetPingPostReportdo
-
-> \Leadspedia\Model\InlineResponse2001 leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate)
+```php
+leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Ping Post Report
 
@@ -1158,15 +1146,15 @@ Get Ping Post Report
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\LeadsReportsApi(
@@ -1175,10 +1163,10 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$advertiserID = 56; // int | 
-$advertiserAccountManagerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$advertiserID = 56; // int
+$advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate);
@@ -1186,18 +1174,16 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetPingPostReportdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **advertiserID** | **int**|  | [optional]
- **advertiserAccountManagerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **advertiserID** | **int**|  | [optional] |
+| **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -1205,14 +1191,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

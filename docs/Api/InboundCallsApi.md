@@ -1,21 +1,24 @@
 # Leadspedia\InboundCallsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**inboundCallsgetAlldo**](InboundCallsApi.md#inboundCallsgetAlldo) | **GET** /inboundCalls/getAll.do | Get All
-[**inboundCallsgetInProgressdo**](InboundCallsApi.md#inboundCallsgetInProgressdo) | **GET** /inboundCalls/getInProgress.do | Get Calls In Progress
-[**inboundCallsgetNumbersdo**](InboundCallsApi.md#inboundCallsgetNumbersdo) | **GET** /inboundCalls/getNumbers.do | Get Numbers
-[**inboundCallsgetReturneddo**](InboundCallsApi.md#inboundCallsgetReturneddo) | **GET** /inboundCalls/getReturned.do | Get Returned Calls
-[**inboundCallsgetScrubbeddo**](InboundCallsApi.md#inboundCallsgetScrubbeddo) | **GET** /inboundCalls/getScrubbed.do | Get Scrubbed Calls
-[**inboundCallsgetTransferreddo**](InboundCallsApi.md#inboundCallsgetTransferreddo) | **GET** /inboundCalls/getTransferred.do | Get Transferred Calls
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## inboundCallsgetAlldo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**inboundCallsgetAlldo()**](InboundCallsApi.md#inboundCallsgetAlldo) | **GET** /inboundCalls/getAll.do | Get All |
+| [**inboundCallsgetInProgressdo()**](InboundCallsApi.md#inboundCallsgetInProgressdo) | **GET** /inboundCalls/getInProgress.do | Get Calls In Progress |
+| [**inboundCallsgetNumbersdo()**](InboundCallsApi.md#inboundCallsgetNumbersdo) | **GET** /inboundCalls/getNumbers.do | Get Numbers |
+| [**inboundCallsgetReturneddo()**](InboundCallsApi.md#inboundCallsgetReturneddo) | **GET** /inboundCalls/getReturned.do | Get Returned Calls |
+| [**inboundCallsgetScrubbeddo()**](InboundCallsApi.md#inboundCallsgetScrubbeddo) | **GET** /inboundCalls/getScrubbed.do | Get Scrubbed Calls |
+| [**inboundCallsgetTransferreddo()**](InboundCallsApi.md#inboundCallsgetTransferreddo) | **GET** /inboundCalls/getTransferred.do | Get Transferred Calls |
 
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+
+## `inboundCallsgetAlldo()`
+
+```php
+inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -26,15 +29,15 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -43,17 +46,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -61,25 +64,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **callerID** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -87,21 +88,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetInProgressdo()`
 
-## inboundCallsgetInProgressdo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Calls In Progress
 
@@ -112,15 +114,15 @@ Get Calls In Progress
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -129,17 +131,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -147,25 +149,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetInProgressdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **callerID** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -173,21 +173,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetNumbersdo()`
 
-## inboundCallsgetNumbersdo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetNumbersdo($search, $start, $limit)
+```php
+inboundCallsgetNumbersdo($search, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Numbers
 
@@ -198,15 +199,15 @@ Get Numbers
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -215,9 +216,9 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$search = 'search_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetNumbersdo($search, $start, $limit);
@@ -225,17 +226,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetNumbersdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **string**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **search** | **string**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -243,21 +242,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetReturneddo()`
 
-## inboundCallsgetReturneddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Returned Calls
 
@@ -268,15 +268,15 @@ Get Returned Calls
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -285,17 +285,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -303,25 +303,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetReturneddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **callerID** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -329,21 +327,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetScrubbeddo()`
 
-## inboundCallsgetScrubbeddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit)
+```php
+inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Scrubbed Calls
 
@@ -354,15 +353,15 @@ Get Scrubbed Calls
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -371,17 +370,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetScrubbeddo($toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $fromDate, $start, $limit);
@@ -389,25 +388,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetScrubbeddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **toDate** | **\DateTime**|  |
- **callerID** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **fromDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **toDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -415,21 +412,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inboundCallsgetTransferreddo()`
 
-## inboundCallsgetTransferreddo
-
-> \Leadspedia\Model\InlineResponse2001 inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit)
+```php
+inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Transferred Calls
 
@@ -440,15 +438,15 @@ Get Transferred Calls
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\InboundCallsApi(
@@ -457,17 +455,17 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$callerID = 'callerID_example'; // string | 
-$affiliateID = 56; // int | 
-$campaignID = 56; // int | 
-$advertiserID = 56; // int | 
-$contractID = 56; // int | 
-$verticalID = 56; // int | 
-$offerID = 56; // int | 
-$toDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
+$affiliateID = 56; // int
+$campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
+$offerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
@@ -475,25 +473,23 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetTransferreddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fromDate** | **\DateTime**|  |
- **callerID** | **string**|  | [optional]
- **affiliateID** | **int**|  | [optional]
- **campaignID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **contractID** | **int**|  | [optional]
- **verticalID** | **int**|  | [optional]
- **offerID** | **int**|  | [optional]
- **toDate** | **\DateTime**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -501,14 +497,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

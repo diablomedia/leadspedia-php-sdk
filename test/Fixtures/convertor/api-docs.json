@@ -1,0 +1,20 @@
+{
+    "version": "v2.0",
+    "publishSettings": {
+        "title": "Converter Fixture API"
+    },
+    "forwardHost": "https://api.example.test",
+    "basePath": "/core/v2",
+    "securitySchemes": {
+        "apiKey": {
+            "queryString": [
+                { "name": "api_key" },
+                { "name": "api_secret" }
+            ],
+            "headers": []
+        }
+    },
+    "resources": {
+        "endpoints": []
+    }
+}

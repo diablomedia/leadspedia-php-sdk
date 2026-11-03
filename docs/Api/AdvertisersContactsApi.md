@@ -1,23 +1,26 @@
 # Leadspedia\AdvertisersContactsApi
 
-All URIs are relative to *https://api.leadspedia.com/core/v2*
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**advertisersContactschangePassworddo**](AdvertisersContactsApi.md#advertisersContactschangePassworddo) | **POST** /advertisersContacts/changePassword.do | Change Password
-[**advertisersContactschangeStatusdo**](AdvertisersContactsApi.md#advertisersContactschangeStatusdo) | **POST** /advertisersContacts/changeStatus.do | Change Status
-[**advertisersContactscreatedo**](AdvertisersContactsApi.md#advertisersContactscreatedo) | **POST** /advertisersContacts/create.do | Create
-[**advertisersContactsdeletedo**](AdvertisersContactsApi.md#advertisersContactsdeletedo) | **POST** /advertisersContacts/delete.do | Delete
-[**advertisersContactsgetAlldo**](AdvertisersContactsApi.md#advertisersContactsgetAlldo) | **GET** /advertisersContacts/getAll.do | Get All
-[**advertisersContactsgetInfodo**](AdvertisersContactsApi.md#advertisersContactsgetInfodo) | **GET** /advertisersContacts/getInfo.do | Get Info
-[**advertisersContactsupdatedo**](AdvertisersContactsApi.md#advertisersContactsupdatedo) | **POST** /advertisersContacts/update.do | Update
-[**advertisersContactsverifyCredentialsdo**](AdvertisersContactsApi.md#advertisersContactsverifyCredentialsdo) | **POST** /advertisersContacts/verifyCredentials.do | Verify Credentials
 
 
+All URIs are relative to https://api.leadspedia.com/core/v2, except if the operation defines another base path.
 
-## advertisersContactschangePassworddo
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**advertisersContactschangePassworddo()**](AdvertisersContactsApi.md#advertisersContactschangePassworddo) | **POST** /advertisersContacts/changePassword.do | Change Password |
+| [**advertisersContactschangeStatusdo()**](AdvertisersContactsApi.md#advertisersContactschangeStatusdo) | **POST** /advertisersContacts/changeStatus.do | Change Status |
+| [**advertisersContactscreatedo()**](AdvertisersContactsApi.md#advertisersContactscreatedo) | **POST** /advertisersContacts/create.do | Create |
+| [**advertisersContactsdeletedo()**](AdvertisersContactsApi.md#advertisersContactsdeletedo) | **POST** /advertisersContacts/delete.do | Delete |
+| [**advertisersContactsgetAlldo()**](AdvertisersContactsApi.md#advertisersContactsgetAlldo) | **GET** /advertisersContacts/getAll.do | Get All |
+| [**advertisersContactsgetInfodo()**](AdvertisersContactsApi.md#advertisersContactsgetInfodo) | **GET** /advertisersContacts/getInfo.do | Get Info |
+| [**advertisersContactsupdatedo()**](AdvertisersContactsApi.md#advertisersContactsupdatedo) | **POST** /advertisersContacts/update.do | Update |
+| [**advertisersContactsverifyCredentialsdo()**](AdvertisersContactsApi.md#advertisersContactsverifyCredentialsdo) | **POST** /advertisersContacts/verifyCredentials.do | Verify Credentials |
 
-> \Leadspedia\Model\InlineResponse200 advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword)
+
+## `advertisersContactschangePassworddo()`
+
+```php
+advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword): \Leadspedia\Model\InlineResponse200
+```
 
 Change Password
 
@@ -28,15 +31,15 @@ Change Password
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -45,9 +48,9 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
-$oldPassword = 'oldPassword_example'; // string | 
-$newPassword = 'newPassword_example'; // string | 
+$contactID = 56; // int
+$oldPassword = 'oldPassword_example'; // string
+$newPassword = 'newPassword_example'; // string
 
 try {
     $result = $apiInstance->advertisersContactschangePassworddo($contactID, $oldPassword, $newPassword);
@@ -55,17 +58,15 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactschangePassworddo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  |
- **oldPassword** | **string**|  |
- **newPassword** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | |
+| **oldPassword** | **string**|  | |
+| **newPassword** | **string**|  | |
 
 ### Return type
 
@@ -73,21 +74,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactschangeStatusdo()`
 
-## advertisersContactschangeStatusdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersContactschangeStatusdo($contactID, $status)
+```php
+advertisersContactschangeStatusdo($contactID, $status): \Leadspedia\Model\InlineResponse200
+```
 
 Change Status
 
@@ -98,15 +100,15 @@ Change Status
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -115,8 +117,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
-$status = 'status_example'; // string | 
+$contactID = 56; // int
+$status = 'status_example'; // string
 
 try {
     $result = $apiInstance->advertisersContactschangeStatusdo($contactID, $status);
@@ -124,16 +126,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactschangeStatusdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  |
- **status** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | |
+| **status** | **string**|  | |
 
 ### Return type
 
@@ -141,21 +141,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactscreatedo()`
 
-## advertisersContactscreatedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status)
+```php
+advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status): \Leadspedia\Model\InlineResponse200
+```
 
 Create
 
@@ -166,15 +167,15 @@ Create
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -183,15 +184,15 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int | 
-$firstName = 'firstName_example'; // string | 
-$lastName = 'lastName_example'; // string | 
-$emailAddress = 'emailAddress_example'; // string | 
-$password = 'password_example'; // string | 
-$jobTitle = 'jobTitle_example'; // string | 
-$phoneNumber = 'phoneNumber_example'; // string | 
-$portalAccess = 'No'; // string | 
-$status = 'Active'; // string | 
+$advertiserID = 56; // int
+$firstName = 'firstName_example'; // string
+$lastName = 'lastName_example'; // string
+$emailAddress = 'emailAddress_example'; // string
+$password = 'password_example'; // string
+$jobTitle = 'jobTitle_example'; // string
+$phoneNumber = 'phoneNumber_example'; // string
+$portalAccess = 'No'; // string
+$status = 'Active'; // string
 
 try {
     $result = $apiInstance->advertisersContactscreatedo($advertiserID, $firstName, $lastName, $emailAddress, $password, $jobTitle, $phoneNumber, $portalAccess, $status);
@@ -199,23 +200,21 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactscreatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserID** | **int**|  |
- **firstName** | **string**|  |
- **lastName** | **string**|  |
- **emailAddress** | [**string**](../Model/.md)|  |
- **password** | **string**|  |
- **jobTitle** | **string**|  | [optional]
- **phoneNumber** | **string**|  | [optional]
- **portalAccess** | **string**|  | [optional] [default to &#39;No&#39;]
- **status** | **string**|  | [optional] [default to &#39;Active&#39;]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **advertiserID** | **int**|  | |
+| **firstName** | **string**|  | |
+| **lastName** | **string**|  | |
+| **emailAddress** | **string**|  | |
+| **password** | **string**|  | |
+| **jobTitle** | **string**|  | [optional] |
+| **phoneNumber** | **string**|  | [optional] |
+| **portalAccess** | **string**|  | [optional] [default to &#39;No&#39;] |
+| **status** | **string**|  | [optional] [default to &#39;Active&#39;] |
 
 ### Return type
 
@@ -223,21 +222,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactsdeletedo()`
 
-## advertisersContactsdeletedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersContactsdeletedo($contactID)
+```php
+advertisersContactsdeletedo($contactID): \Leadspedia\Model\InlineResponse200
+```
 
 Delete
 
@@ -248,15 +248,15 @@ Delete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -265,7 +265,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
+$contactID = 56; // int
 
 try {
     $result = $apiInstance->advertisersContactsdeletedo($contactID);
@@ -273,15 +273,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsdeletedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | |
 
 ### Return type
 
@@ -289,21 +287,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactsgetAlldo()`
 
-## advertisersContactsgetAlldo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit)
+```php
+advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit): \Leadspedia\Model\InlineResponse2001
+```
 
 Get All
 
@@ -314,15 +313,15 @@ Get All
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -331,11 +330,11 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
-$advertiserID = 56; // int | 
-$portalAccess = 'portalAccess_example'; // string | 
-$start = 0; // int | 
-$limit = 100; // int | 
+$contactID = 56; // int
+$advertiserID = 56; // int
+$portalAccess = 'portalAccess_example'; // string
+$start = 0; // int
+$limit = 100; // int
 
 try {
     $result = $apiInstance->advertisersContactsgetAlldo($contactID, $advertiserID, $portalAccess, $start, $limit);
@@ -343,19 +342,17 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsgetAlldo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  | [optional]
- **advertiserID** | **int**|  | [optional]
- **portalAccess** | **string**|  | [optional]
- **start** | **int**|  | [optional] [default to 0]
- **limit** | **int**|  | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **portalAccess** | **string**|  | [optional] |
+| **start** | **int**|  | [optional] [default to 0] |
+| **limit** | **int**|  | [optional] [default to 100] |
 
 ### Return type
 
@@ -363,21 +360,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactsgetInfodo()`
 
-## advertisersContactsgetInfodo
-
-> \Leadspedia\Model\InlineResponse2001 advertisersContactsgetInfodo($contactID)
+```php
+advertisersContactsgetInfodo($contactID): \Leadspedia\Model\InlineResponse2001
+```
 
 Get Info
 
@@ -388,15 +386,15 @@ Get Info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -405,7 +403,7 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
+$contactID = 56; // int
 
 try {
     $result = $apiInstance->advertisersContactsgetInfodo($contactID);
@@ -413,15 +411,13 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsgetInfodo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | |
 
 ### Return type
 
@@ -429,21 +425,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactsupdatedo()`
 
-## advertisersContactsupdatedo
-
-> \Leadspedia\Model\InlineResponse200 advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers)
+```php
+advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers): \Leadspedia\Model\InlineResponse200
+```
 
 Update
 
@@ -454,15 +451,15 @@ Update
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -471,22 +468,22 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contactID = 56; // int | 
-$firstName = 'firstName_example'; // string | 
-$lastName = 'lastName_example'; // string | 
-$jobTitle = 'jobTitle_example'; // string | 
-$emailAddress = 'emailAddress_example'; // string | 
-$phoneNumber = 'phoneNumber_example'; // string | 
-$officePhone = 'officePhone_example'; // string | 
-$ext = 'ext_example'; // string | 
-$portalAccess = 'portalAccess_example'; // string | 
-$role = 'role_example'; // string | 
-$massEmail = 'massEmail_example'; // string | 
-$permissionAccount = 'permissionAccount_example'; // string | 
-$permissionBilling = 'permissionBilling_example'; // string | 
-$permissionOffers = 'permissionOffers_example'; // string | 
-$permissionReports = 'permissionReports_example'; // string | 
-$permissionUsers = 'permissionUsers_example'; // string | 
+$contactID = 56; // int
+$firstName = 'firstName_example'; // string
+$lastName = 'lastName_example'; // string
+$jobTitle = 'jobTitle_example'; // string
+$emailAddress = 'emailAddress_example'; // string
+$phoneNumber = 'phoneNumber_example'; // string
+$officePhone = 'officePhone_example'; // string
+$ext = 'ext_example'; // string
+$portalAccess = 'portalAccess_example'; // string
+$role = 'role_example'; // string
+$massEmail = 'massEmail_example'; // string
+$permissionAccount = 'permissionAccount_example'; // string
+$permissionBilling = 'permissionBilling_example'; // string
+$permissionOffers = 'permissionOffers_example'; // string
+$permissionReports = 'permissionReports_example'; // string
+$permissionUsers = 'permissionUsers_example'; // string
 
 try {
     $result = $apiInstance->advertisersContactsupdatedo($contactID, $firstName, $lastName, $jobTitle, $emailAddress, $phoneNumber, $officePhone, $ext, $portalAccess, $role, $massEmail, $permissionAccount, $permissionBilling, $permissionOffers, $permissionReports, $permissionUsers);
@@ -494,30 +491,28 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsupdatedo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactID** | **int**|  |
- **firstName** | **string**|  | [optional]
- **lastName** | **string**|  | [optional]
- **jobTitle** | **string**|  | [optional]
- **emailAddress** | [**string**](../Model/.md)|  | [optional]
- **phoneNumber** | **string**|  | [optional]
- **officePhone** | **string**|  | [optional]
- **ext** | **string**|  | [optional]
- **portalAccess** | **string**|  | [optional]
- **role** | **string**|  | [optional]
- **massEmail** | **string**|  | [optional]
- **permissionAccount** | **string**|  | [optional]
- **permissionBilling** | **string**|  | [optional]
- **permissionOffers** | **string**|  | [optional]
- **permissionReports** | **string**|  | [optional]
- **permissionUsers** | **string**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contactID** | **int**|  | |
+| **firstName** | **string**|  | [optional] |
+| **lastName** | **string**|  | [optional] |
+| **jobTitle** | **string**|  | [optional] |
+| **emailAddress** | **string**|  | [optional] |
+| **phoneNumber** | **string**|  | [optional] |
+| **officePhone** | **string**|  | [optional] |
+| **ext** | **string**|  | [optional] |
+| **portalAccess** | **string**|  | [optional] |
+| **role** | **string**|  | [optional] |
+| **massEmail** | **string**|  | [optional] |
+| **permissionAccount** | **string**|  | [optional] |
+| **permissionBilling** | **string**|  | [optional] |
+| **permissionOffers** | **string**|  | [optional] |
+| **permissionReports** | **string**|  | [optional] |
+| **permissionUsers** | **string**|  | [optional] |
 
 ### Return type
 
@@ -525,21 +520,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `advertisersContactsverifyCredentialsdo()`
 
-## advertisersContactsverifyCredentialsdo
-
-> \Leadspedia\Model\InlineResponse200 advertisersContactsverifyCredentialsdo($emailAddress, $password)
+```php
+advertisersContactsverifyCredentialsdo($emailAddress, $password): \Leadspedia\Model\InlineResponse200
+```
 
 Verify Credentials
 
@@ -550,15 +546,15 @@ Verify Credentials
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: apiKey0
-$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
-
 // Configure API key authorization: apiKey1
 $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_secret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_secret', 'Bearer');
+
+// Configure API key authorization: apiKey0
+$config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Leadspedia\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
 
 
 $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
@@ -567,8 +563,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$emailAddress = 'emailAddress_example'; // string | 
-$password = 'password_example'; // string | 
+$emailAddress = 'emailAddress_example'; // string
+$password = 'password_example'; // string
 
 try {
     $result = $apiInstance->advertisersContactsverifyCredentialsdo($emailAddress, $password);
@@ -576,16 +572,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersContactsApi->advertisersContactsverifyCredentialsdo: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **emailAddress** | [**string**](../Model/.md)|  |
- **password** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **emailAddress** | **string**|  | |
+| **password** | **string**|  | |
 
 ### Return type
 
@@ -593,14 +587,13 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey0](../../README.md#apiKey0), [apiKey1](../../README.md#apiKey1)
+[apiKey1](../../README.md#apiKey1), [apiKey0](../../README.md#apiKey0)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

@@ -35,13 +35,13 @@ $output = [
     "basePath"            => $source->basePath,
     "securityDefinitions" => $securityDefinitions,
     "schemes"             => [
-        "https"
+        "https",
     ],
     "consumes" => [
-        "application/json"
+        "application/json",
     ],
     "produces" => [
-        "application/json"
+        "application/json",
     ],
     "paths"       => [],
     "definitions" => new stdClass(),
@@ -109,7 +109,7 @@ foreach ($source->resources->endpoints as $endpoint) {
                         'data' => [
                             'type' => 'object',
                         ],
-                    ]
+                    ],
                 ],
             ];
         } elseif ($endpoint->request->method === 'post') {
@@ -123,8 +123,8 @@ foreach ($source->resources->endpoints as $endpoint) {
                         ],
                         'message' => [
                             'type' => 'string',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ];
         } else {
@@ -141,7 +141,7 @@ foreach ($source->resources->endpoints as $endpoint) {
             'required'    => in_array($name, $queryParams['required'] ?? []),
             'type'        => is_array($queryParam['type']) ? $queryParam['type'][0] : ($queryParam['type'] ?? ''),
             'description' => '',
-            'format'      => $queryParam['format'] ?? '',
+            'format'      => $queryParam['format']  ?? '',
             'default'     => $queryParam['default'] ?? '',
         ];
 
