@@ -141,15 +141,15 @@ class InboundCallsApi
      *
      * Get All
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
-     * @param  int|null $verticalID verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  int|null $callerID callerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $contractID contractID (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $offerID offerID (optional)
-     * @param  int|null $callerID callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetAlldo'] to see the possible values for this operation
@@ -158,9 +158,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function inboundCallsgetAlldo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
+    public function inboundCallsgetAlldo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
     {
-        [$response] = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        [$response] = $this->inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
         return $response;
     }
 
@@ -169,15 +169,15 @@ class InboundCallsApi
      *
      * Get All
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  int|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  int|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetAlldo'] to see the possible values for this operation
@@ -185,9 +185,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
+    public function inboundCallsgetAlldoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
     {
-        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType)
+        return $this->inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -198,15 +198,15 @@ class InboundCallsApi
      *
      * Get All
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  int|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  int|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetAlldo'] to see the possible values for this operation
@@ -214,10 +214,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
+    public function inboundCallsgetAlldoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request    = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -251,15 +251,15 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetAlldo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  int|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  int|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetAlldo'] to see the possible values for this operation
@@ -267,7 +267,7 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetAlldoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
+    public function inboundCallsgetAlldoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -296,6 +296,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -306,17 +309,8 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $callerID,
+            'callerID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -360,6 +354,15 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $offerID,
             'offerID', // param base name
             'integer', // openApiType
@@ -368,10 +371,13 @@ class InboundCallsApi
             false // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $callerID,
-            'callerID', // param base name
-            'integer', // openApiType
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -464,15 +470,15 @@ class InboundCallsApi
      *
      * Get All
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  int|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  int|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetAlldo'] to see the possible values for this operation
@@ -481,9 +487,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function inboundCallsgetAlldoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
+    public function inboundCallsgetAlldoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetAlldo'][0])
     {
-        $request = $this->inboundCallsgetAlldoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request = $this->inboundCallsgetAlldoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -560,7 +566,7 @@ class InboundCallsApi
      *
      * Get Call Integrations Log
      *
-     * @param  string $date date (required)
+     * @param  \DateTimeInterface|string $date date (required)
      * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $contractID contractID (optional)
@@ -587,7 +593,7 @@ class InboundCallsApi
      *
      * Get Call Integrations Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
@@ -615,7 +621,7 @@ class InboundCallsApi
      *
      * Get Call Integrations Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
@@ -667,7 +673,7 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetCallIntegrationsLogdo'
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
@@ -710,6 +716,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($date instanceof \DateTimeInterface) {
+            $date = $date->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $date,
             'date', // param base name
@@ -869,7 +878,7 @@ class InboundCallsApi
      *
      * Get Call Integrations Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
@@ -964,15 +973,15 @@ class InboundCallsApi
      *
      * Get Calls In Progress
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
-     * @param  int|null $verticalID verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  string|null $callerID callerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $contractID contractID (optional)
-     * @param  string|null $callerID callerID (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $offerID offerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetInProgressdo'] to see the possible values for this operation
@@ -981,9 +990,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function inboundCallsgetInProgressdo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $callerID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
+    public function inboundCallsgetInProgressdo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
     {
-        [$response] = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit, $contentType);
+        [$response] = $this->inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
         return $response;
     }
 
@@ -992,15 +1001,15 @@ class InboundCallsApi
      *
      * Get Calls In Progress
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetInProgressdo'] to see the possible values for this operation
@@ -1008,9 +1017,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetInProgressdoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $callerID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
+    public function inboundCallsgetInProgressdoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
     {
-        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit, $contentType)
+        return $this->inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1021,15 +1030,15 @@ class InboundCallsApi
      *
      * Get Calls In Progress
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetInProgressdo'] to see the possible values for this operation
@@ -1037,10 +1046,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $callerID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
+    public function inboundCallsgetInProgressdoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit, $contentType);
+        $request    = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1074,15 +1083,15 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetInProgressdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetInProgressdo'] to see the possible values for this operation
@@ -1090,7 +1099,7 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetInProgressdoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $callerID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
+    public function inboundCallsgetInProgressdoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -1119,6 +1128,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -1129,18 +1141,9 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
+            $callerID,
+            'callerID', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1183,9 +1186,9 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $callerID,
-            'callerID', // param base name
-            'string', // openApiType
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1195,6 +1198,18 @@ class InboundCallsApi
             $offerID,
             'offerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1287,15 +1302,15 @@ class InboundCallsApi
      *
      * Get Calls In Progress
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetInProgressdo'] to see the possible values for this operation
@@ -1304,9 +1319,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function inboundCallsgetInProgressdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $callerID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
+    public function inboundCallsgetInProgressdoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetInProgressdo'][0])
     {
-        $request = $this->inboundCallsgetInProgressdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit, $contentType);
+        $request = $this->inboundCallsgetInProgressdoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1676,7 +1691,7 @@ class InboundCallsApi
      *
      * Get One Step Ping Tree Log
      *
-     * @param  string $date date (required)
+     * @param  \DateTimeInterface|string $date date (required)
      * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
@@ -1703,7 +1718,7 @@ class InboundCallsApi
      *
      * Get One Step Ping Tree Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
@@ -1731,7 +1746,7 @@ class InboundCallsApi
      *
      * Get One Step Ping Tree Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
@@ -1783,7 +1798,7 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetOneStepPingTreeLogdo'
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
@@ -1826,6 +1841,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($date instanceof \DateTimeInterface) {
+            $date = $date->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $date,
             'date', // param base name
@@ -1985,7 +2003,7 @@ class InboundCallsApi
      *
      * Get One Step Ping Tree Log
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
@@ -2349,15 +2367,15 @@ class InboundCallsApi
      *
      * Get Returned Calls
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
-     * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $advertiserID advertiserID (optional)
-     * @param  int|null $contractID contractID (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  string|null $callerID callerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
+     * @param  int|null $advertiserID advertiserID (optional)
+     * @param  int|null $contractID contractID (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $offerID offerID (optional)
-     * @param  string|null $callerID callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetReturneddo'] to see the possible values for this operation
@@ -2366,9 +2384,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function inboundCallsgetReturneddo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $contractID = null, $affiliateID = null, $campaignID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
+    public function inboundCallsgetReturneddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
     {
-        [$response] = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit, $contentType);
+        [$response] = $this->inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
         return $response;
     }
 
@@ -2377,15 +2395,15 @@ class InboundCallsApi
      *
      * Get Returned Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
+     * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetReturneddo'] to see the possible values for this operation
@@ -2393,9 +2411,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetReturneddoAsync($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $contractID = null, $affiliateID = null, $campaignID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
+    public function inboundCallsgetReturneddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
     {
-        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit, $contentType)
+        return $this->inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2406,15 +2424,15 @@ class InboundCallsApi
      *
      * Get Returned Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
+     * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetReturneddo'] to see the possible values for this operation
@@ -2422,10 +2440,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $contractID = null, $affiliateID = null, $campaignID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
+    public function inboundCallsgetReturneddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit, $contentType);
+        $request    = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2459,15 +2477,15 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetReturneddo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
+     * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetReturneddo'] to see the possible values for this operation
@@ -2475,7 +2493,7 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetReturneddoRequest($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $contractID = null, $affiliateID = null, $campaignID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
+    public function inboundCallsgetReturneddoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -2504,6 +2522,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -2514,8 +2535,8 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
+            $callerID,
+            'callerID', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2523,8 +2544,17 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $affiliateID,
+            'affiliateID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignID,
+            'campaignID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2550,17 +2580,8 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $campaignID,
-            'campaignID', // param base name
+            $verticalID,
+            'verticalID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2576,9 +2597,12 @@ class InboundCallsApi
             false // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $callerID,
-            'callerID', // param base name
+            $toDate,
+            'toDate', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2672,15 +2696,15 @@ class InboundCallsApi
      *
      * Get Returned Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
+     * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetReturneddo'] to see the possible values for this operation
@@ -2689,9 +2713,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function inboundCallsgetReturneddoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $contractID = null, $affiliateID = null, $campaignID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
+    public function inboundCallsgetReturneddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetReturneddo'][0])
     {
-        $request = $this->inboundCallsgetReturneddoRequest($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit, $contentType);
+        $request = $this->inboundCallsgetReturneddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2768,15 +2792,15 @@ class InboundCallsApi
      *
      * Get Scrubbed Calls
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
-     * @param  int|null $verticalID verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
+     * @param  string|null $callerID callerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $contractID contractID (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $offerID offerID (optional)
-     * @param  string|null $callerID callerID (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetScrubbeddo'] to see the possible values for this operation
@@ -2785,9 +2809,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function inboundCallsgetScrubbeddo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
+    public function inboundCallsgetScrubbeddo($fromDate, $toDate = null, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
     {
-        [$response] = $this->inboundCallsgetScrubbeddoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        [$response] = $this->inboundCallsgetScrubbeddoWithHttpInfo($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit, $contentType);
         return $response;
     }
 
@@ -2796,15 +2820,15 @@ class InboundCallsApi
      *
      * Get Scrubbed Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetScrubbeddo'] to see the possible values for this operation
@@ -2812,9 +2836,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetScrubbeddoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
+    public function inboundCallsgetScrubbeddoAsync($fromDate, $toDate = null, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
     {
-        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType)
+        return $this->inboundCallsgetScrubbeddoAsyncWithHttpInfo($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2825,15 +2849,15 @@ class InboundCallsApi
      *
      * Get Scrubbed Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetScrubbeddo'] to see the possible values for this operation
@@ -2841,10 +2865,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
+    public function inboundCallsgetScrubbeddoAsyncWithHttpInfo($fromDate, $toDate = null, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->inboundCallsgetScrubbeddoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request    = $this->inboundCallsgetScrubbeddoRequest($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2878,15 +2902,15 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetScrubbeddo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetScrubbeddo'] to see the possible values for this operation
@@ -2894,7 +2918,7 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetScrubbeddoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
+    public function inboundCallsgetScrubbeddoRequest($fromDate, $toDate = null, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -2923,15 +2947,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $fromDate,
-            'fromDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
-        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $toDate,
             'toDate', // param base name
@@ -2942,9 +2960,9 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
-            'integer', // openApiType
+            $callerID,
+            'callerID', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2987,6 +3005,15 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $offerID,
             'offerID', // param base name
             'integer', // openApiType
@@ -2995,13 +3022,16 @@ class InboundCallsApi
             false // required
         ) ?? []);
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $callerID,
-            'callerID', // param base name
+            $fromDate,
+            'fromDate', // param base name
             'string', // openApiType
             '', // style
             false, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3091,15 +3121,15 @@ class InboundCallsApi
      *
      * Get Scrubbed Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetScrubbeddo'] to see the possible values for this operation
@@ -3108,9 +3138,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function inboundCallsgetScrubbeddoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
+    public function inboundCallsgetScrubbeddoWithHttpInfo($fromDate, $toDate = null, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetScrubbeddo'][0])
     {
-        $request = $this->inboundCallsgetScrubbeddoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request = $this->inboundCallsgetScrubbeddoRequest($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3187,15 +3217,15 @@ class InboundCallsApi
      *
      * Get Transferred Calls
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
-     * @param  int|null $verticalID verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  string|null $callerID callerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $contractID contractID (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $offerID offerID (optional)
-     * @param  string|null $callerID callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetTransferreddo'] to see the possible values for this operation
@@ -3204,9 +3234,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function inboundCallsgetTransferreddo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
+    public function inboundCallsgetTransferreddo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
     {
-        [$response] = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        [$response] = $this->inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
         return $response;
     }
 
@@ -3215,15 +3245,15 @@ class InboundCallsApi
      *
      * Get Transferred Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetTransferreddo'] to see the possible values for this operation
@@ -3231,9 +3261,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetTransferreddoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
+    public function inboundCallsgetTransferreddoAsync($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
     {
-        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType)
+        return $this->inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3244,15 +3274,15 @@ class InboundCallsApi
      *
      * Get Transferred Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetTransferreddo'] to see the possible values for this operation
@@ -3260,10 +3290,10 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
+    public function inboundCallsgetTransferreddoAsyncWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request    = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3297,15 +3327,15 @@ class InboundCallsApi
     /**
      * Create request for operation 'inboundCallsgetTransferreddo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetTransferreddo'] to see the possible values for this operation
@@ -3313,7 +3343,7 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function inboundCallsgetTransferreddoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
+    public function inboundCallsgetTransferreddoRequest($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -3342,6 +3372,9 @@ class InboundCallsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -3352,18 +3385,9 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
+            $callerID,
+            'callerID', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -3406,6 +3430,15 @@ class InboundCallsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $offerID,
             'offerID', // param base name
             'integer', // openApiType
@@ -3414,9 +3447,12 @@ class InboundCallsApi
             false // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $callerID,
-            'callerID', // param base name
+            $toDate,
+            'toDate', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -3510,15 +3546,15 @@ class InboundCallsApi
      *
      * Get Transferred Calls
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  string|null $callerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
      * @param  int|null $contractID (optional)
+     * @param  int|null $verticalID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $callerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inboundCallsgetTransferreddo'] to see the possible values for this operation
@@ -3527,9 +3563,9 @@ class InboundCallsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function inboundCallsgetTransferreddoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $offerID = null, $callerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
+    public function inboundCallsgetTransferreddoWithHttpInfo($fromDate, $callerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $contractID = null, $verticalID = null, $offerID = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['inboundCallsgetTransferreddo'][0])
     {
-        $request = $this->inboundCallsgetTransferreddoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit, $contentType);
+        $request = $this->inboundCallsgetTransferreddoRequest($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

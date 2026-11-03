@@ -25,8 +25,8 @@ final class ReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ReportsApi::class, 'reportsgetAdvertisersReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
@@ -34,8 +34,8 @@ final class ReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ReportsApi::class, 'reportsgetAffiliatesReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -43,9 +43,9 @@ final class ReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ReportsApi::class, 'reportsgetCampaignsReportdo', [
             'fromDate'    => 'fromDate',
-            'toDate'      => 'toDate',
-            'verticalID'  => 'verticalID',
             'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
+            'toDate'      => 'toDate',
         ]);
     }
 
@@ -53,10 +53,10 @@ final class ReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ReportsApi::class, 'reportsgetContractsReportdo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
-            'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
+            'advertiserID' => 'advertiserID',
+            'verticalID'   => 'verticalID',
+            'toDate'       => 'toDate',
         ]);
     }
 
@@ -64,8 +64,8 @@ final class ReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ReportsApi::class, 'reportsgetOffersReportdo', [
             'fromDate'   => 'fromDate',
-            'toDate'     => 'toDate',
             'verticalID' => 'verticalID',
+            'toDate'     => 'toDate',
         ]);
     }
 

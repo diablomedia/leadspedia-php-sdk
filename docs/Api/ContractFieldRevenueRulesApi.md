@@ -42,7 +42,7 @@ $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
 $contractID = 56; // int
 $fieldID = 56; // int
 $fieldValue = 'fieldValue_example'; // string
-$price = 56; // int
+$price = 3.4; // float
 
 try {
     $result = $apiInstance->contractFieldRevenueRulescreatedo($contractID, $fieldID, $fieldValue, $price);
@@ -59,7 +59,7 @@ try {
 | **contractID** | **int**|  | |
 | **fieldID** | **int**|  | |
 | **fieldValue** | **string**|  | |
-| **price** | **int**|  | |
+| **price** | **float**|  | |
 
 ### Return type
 
@@ -228,7 +228,7 @@ $apiInstance = new Leadspedia\Api\ContractFieldRevenueRulesApi(
 $fieldRevenueRuleID = 56; // int
 $fieldID = 56; // int
 $fieldValue = 'fieldValue_example'; // string
-$price = 56; // int
+$price = 3.4; // float
 
 try {
     $result = $apiInstance->contractFieldRevenueRulesupdatedo($fieldRevenueRuleID, $fieldID, $fieldValue, $price);
@@ -245,7 +245,7 @@ try {
 | **fieldRevenueRuleID** | **int**|  | |
 | **fieldID** | **int**|  | |
 | **fieldValue** | **string**|  | |
-| **price** | **int**|  | |
+| **price** | **float**|  | |
 
 ### Return type
 

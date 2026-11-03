@@ -40,12 +40,12 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetAlldo', [
             'fromDate'    => 'fromDate',
-            'toDate'      => 'toDate',
-            'verticalID'  => 'verticalID',
-            'affiliateID' => 'affiliateID',
             'campaignID'  => 'campaignID',
+            'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
             'paid'        => 'paid',
             'scrubbed'    => 'scrubbed',
+            'toDate'      => 'toDate',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -55,14 +55,14 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetDelivereddo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
+            'leadID'       => 'leadID',
+            'campaignID'   => 'campaignID',
+            'affiliateID'  => 'affiliateID',
             'verticalID'   => 'verticalID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
-            'affiliateID'  => 'affiliateID',
-            'campaignID'   => 'campaignID',
-            'leadID'       => 'leadID',
             'returned'     => 'returned',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -111,10 +111,10 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetQueuedo', [
             'fromDate'    => 'fromDate',
-            'toDate'      => 'toDate',
-            'verticalID'  => 'verticalID',
-            'affiliateID' => 'affiliateID',
             'campaignID'  => 'campaignID',
+            'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
+            'toDate'      => 'toDate',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -124,14 +124,14 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetReturnsdo', [
             'fromDate'       => 'fromDate',
-            'toDate'         => 'toDate',
+            'campaignID'     => 'campaignID',
+            'affiliateID'    => 'affiliateID',
             'verticalID'     => 'verticalID',
             'advertiserID'   => 'advertiserID',
             'contractID'     => 'contractID',
-            'affiliateID'    => 'affiliateID',
-            'campaignID'     => 'campaignID',
             'status'         => 'status',
             'returnReasonID' => 'returnReasonID',
+            'toDate'         => 'toDate',
             'start'          => 'start',
             'limit'          => 'limit',
         ]);
@@ -140,10 +140,10 @@ final class LeadsApiTest extends ApiContractTestCase
     public function testLeadsgetReviewdo(): void
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetReviewdo', [
-            'verticalID'  => 'verticalID',
-            'affiliateID' => 'affiliateID',
-            'campaignID'  => 'campaignID',
             'leadID'      => 'leadID',
+            'campaignID'  => 'campaignID',
+            'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -153,10 +153,10 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetScrubbeddo', [
             'fromDate'    => 'fromDate',
-            'toDate'      => 'toDate',
-            'verticalID'  => 'verticalID',
-            'affiliateID' => 'affiliateID',
             'campaignID'  => 'campaignID',
+            'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
+            'toDate'      => 'toDate',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -166,14 +166,14 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetSolddo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
+            'leadID'       => 'leadID',
+            'campaignID'   => 'campaignID',
+            'affiliateID'  => 'affiliateID',
             'verticalID'   => 'verticalID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
-            'affiliateID'  => 'affiliateID',
-            'campaignID'   => 'campaignID',
-            'leadID'       => 'leadID',
             'returned'     => 'returned',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -183,11 +183,11 @@ final class LeadsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsgetTrashdo', [
             'fromDate'    => 'fromDate',
-            'toDate'      => 'toDate',
-            'verticalID'  => 'verticalID',
-            'affiliateID' => 'affiliateID',
-            'campaignID'  => 'campaignID',
             'leadID'      => 'leadID',
+            'campaignID'  => 'campaignID',
+            'affiliateID' => 'affiliateID',
+            'verticalID'  => 'verticalID',
+            'toDate'      => 'toDate',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -218,8 +218,8 @@ final class LeadsApiTest extends ApiContractTestCase
             'leadID'         => 'leadID',
             'contractID'     => 'contractID',
             'returnReasonID' => 'returnReasonID',
-            'replaceReturns' => 'replaceReturns',
             'scrub'          => 'scrub',
+            'replaceReturns' => 'replaceReturns',
         ]);
     }
 
@@ -228,8 +228,8 @@ final class LeadsApiTest extends ApiContractTestCase
         $this->assertOperationContract(LeadsApi::class, 'leadsreturnLeadFromAllContractsdo', [
             'leadID'         => 'leadID',
             'returnReasonID' => 'returnReasonID',
-            'replaceReturns' => 'replaceReturns',
             'scrub'          => 'scrub',
+            'replaceReturns' => 'replaceReturns',
         ]);
     }
 
@@ -286,9 +286,9 @@ final class LeadsApiTest extends ApiContractTestCase
     public function testLeadsupdateLeadSoldPricedo(): void
     {
         $this->assertOperationContract(LeadsApi::class, 'leadsupdateLeadSoldPricedo', [
+            'soldID'     => 'soldID',
             'leadID'     => 'leadID',
             'contractID' => 'contractID',
-            'soldID'     => 'soldID',
             'price'      => 'price',
         ]);
     }

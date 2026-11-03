@@ -26,7 +26,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `leadsReportsgetCampaignsLeadsCapReportdo()`
 
 ```php
-leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $affiliateID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads Caps by Campaigns
@@ -51,12 +51,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     $config
 );
 $verticalID = 56; // int
-$affiliateID = 56; // int
 $verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $affiliateID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetCampaignsLeadsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetCampaignsLeadsCapReportdo: ', $e->getMessage(), PHP_EOL;
@@ -68,8 +68,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -92,7 +92,7 @@ try {
 ## `leadsReportsgetCampaignsLeadsFieldsCapReportdo()`
 
 ```php
-leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $affiliateID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads Fields Caps by Campaigns
@@ -117,12 +117,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     $config
 );
 $verticalID = 56; // int
-$affiliateID = 56; // int
 $verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $affiliateID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetCampaignsLeadsFieldsCapReportdo($verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetCampaignsLeadsFieldsCapReportdo: ', $e->getMessage(), PHP_EOL;
@@ -134,8 +134,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -158,7 +158,7 @@ try {
 ## `leadsReportsgetContractsLeadsCapReportdo()`
 
 ```php
-leadsReportsgetContractsLeadsCapReportdo($verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads Caps by Contracts
@@ -183,12 +183,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     $config
 );
 $verticalID = 56; // int
-$advertiserID = 56; // int
 $verticalGroupID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->leadsReportsgetContractsLeadsCapReportdo($verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetContractsLeadsCapReportdo($verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetContractsLeadsCapReportdo: ', $e->getMessage(), PHP_EOL;
@@ -200,8 +200,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -224,7 +224,7 @@ try {
 ## `leadsReportsgetLeadDistributionReportdo()`
 
 ```php
-leadsReportsgetLeadDistributionReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Lead Distribution
@@ -248,20 +248,20 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
-$advertiserID = 56; // int
-$offerID = 56; // int
-$payoutModel = 'payoutModel_example'; // string
 $verticalGroupID = 56; // int
+$offerID = 56; // int
+$campaignID = 56; // int
+$payoutModel = 'payoutModel_example'; // string
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadDistributionReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadDistributionReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $campaignID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadDistributionReportdo: ', $e->getMessage(), PHP_EOL;
@@ -272,17 +272,17 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
-| **payoutModel** | **string**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -304,7 +304,7 @@ try {
 ## `leadsReportsgetLeadsByAdvertisersDailyReportdo()`
 
 ```php
-leadsReportsgetLeadsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Daily Leads by Advertisers
@@ -328,16 +328,16 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$year = 'year_example'; // string
 $month = 'month_example'; // string
+$year = 'year_example'; // string
 $verticalID = 56; // int
-$advertiserID = 56; // int
-$contractID = 56; // int
 $verticalGroupID = 56; // int
+$contractID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAdvertisersDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -348,12 +348,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **year** | **string**|  | |
 | **month** | **string**|  | |
+| **year** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **contractID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -376,7 +376,7 @@ try {
 ## `leadsReportsgetLeadsByAdvertisersReportdo()`
 
 ```php
-leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $advertiserID, $offerID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Advertisers
@@ -400,16 +400,16 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$advertiserID = 56; // int
-$offerID = 56; // int
 $verticalGroupID = 56; // int
+$offerID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $advertiserID, $offerID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -420,13 +420,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -448,7 +448,7 @@ try {
 ## `leadsReportsgetLeadsByAffiliatesDailyReportdo()`
 
 ```php
-leadsReportsgetLeadsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Daily Leads by Affiliates
@@ -472,17 +472,17 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$year = 'year_example'; // string
 $month = 'month_example'; // string
+$year = 'year_example'; // string
 $verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
-$offerID = 56; // int
 $verticalGroupID = 56; // int
+$offerID = 56; // int
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAffiliatesDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -493,13 +493,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **year** | **string**|  | |
 | **month** | **string**|  | |
+| **year** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -522,7 +522,7 @@ try {
 ## `leadsReportsgetLeadsByAffiliatesReportdo()`
 
 ```php
-leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $toDate, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Affiliates
@@ -546,12 +546,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $toDate, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -562,9 +562,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -586,7 +586,7 @@ try {
 ## `leadsReportsgetLeadsByCampaignsReportdo()`
 
 ```php
-leadsReportsgetLeadsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Campaigns
@@ -610,17 +610,17 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
+$verticalGroupID = 56; // int
 $offerID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -631,14 +631,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -660,7 +660,7 @@ try {
 ## `leadsReportsgetLeadsByContractsReportdo()`
 
 ```php
-leadsReportsgetLeadsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Contracts
@@ -684,15 +684,15 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$advertiserID = 56; // int
 $verticalGroupID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByContractsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -703,12 +703,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -730,7 +730,7 @@ try {
 ## `leadsReportsgetLeadsByOffersReportdo()`
 
 ```php
-leadsReportsgetLeadsByOffersReportdo($fromDate, $toDate, $verticalID, $payoutModel, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Offers
@@ -754,14 +754,14 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$payoutModel = 'payoutModel_example'; // string
 $verticalGroupID = 56; // int
+$payoutModel = 'payoutModel_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByOffersReportdo($fromDate, $toDate, $verticalID, $payoutModel, $verticalGroupID);
+    $result = $apiInstance->leadsReportsgetLeadsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByOffersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -772,11 +772,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **payoutModel** | **string**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -798,7 +798,7 @@ try {
 ## `leadsReportsgetLeadsBySubAffiliatesReportdo()`
 
 ```php
-leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $toDate, $affiliateID, $campaignID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Sub Affiliates
@@ -822,14 +822,14 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$affiliateID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $campaignID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $toDate, $affiliateID, $campaignID, $affiliateAccountManagerID);
+    $result = $apiInstance->leadsReportsgetLeadsBySubAffiliatesReportdo($fromDate, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsBySubAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -840,11 +840,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -866,7 +866,7 @@ try {
 ## `leadsReportsgetLeadsByVerticalsReportdo()`
 
 ```php
-leadsReportsgetLeadsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Leads by Verticals
@@ -890,12 +890,12 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalGroupID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetLeadsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID);
+    $result = $apiInstance->leadsReportsgetLeadsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetLeadsByVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -906,9 +906,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalGroupID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -992,7 +992,7 @@ try {
 ## `leadsReportsgetPingPostReportdo()`
 
 ```php
-leadsReportsgetPingPostReportdo($fromDate, $toDate, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Ping Post
@@ -1016,13 +1016,13 @@ $apiInstance = new Leadspedia\Api\LeadsReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->leadsReportsgetPingPostReportdo($fromDate, $toDate, $advertiserID, $advertiserAccountManagerID);
+    $result = $apiInstance->leadsReportsgetPingPostReportdo($fromDate, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsReportsApi->leadsReportsgetPingPostReportdo: ', $e->getMessage(), PHP_EOL;
@@ -1033,10 +1033,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 

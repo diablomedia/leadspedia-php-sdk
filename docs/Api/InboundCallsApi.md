@@ -20,7 +20,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `inboundCallsgetAlldo()`
 
 ```php
-inboundCallsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -44,20 +44,20 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 56; // int
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
+$verticalID = 56; // int
 $offerID = 56; // int
-$callerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->inboundCallsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit);
+    $result = $apiInstance->inboundCallsgetAlldo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -68,15 +68,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
-| **callerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -124,7 +124,7 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
@@ -147,7 +147,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date** | **string**|  | |
+| **date** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
@@ -178,7 +178,7 @@ try {
 ## `inboundCallsgetInProgressdo()`
 
 ```php
-inboundCallsgetInProgressdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Calls In Progress
@@ -202,20 +202,20 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
-$callerID = 'callerID_example'; // string
+$verticalID = 56; // int
 $offerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->inboundCallsgetInProgressdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $callerID, $offerID, $start, $limit);
+    $result = $apiInstance->inboundCallsgetInProgressdo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetInProgressdo: ', $e->getMessage(), PHP_EOL;
@@ -226,15 +226,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
-| **callerID** | **string**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -346,7 +346,7 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
 $affiliateID = 56; // int
 $campaignID = 56; // int
@@ -369,7 +369,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date** | **string**|  | |
+| **date** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
@@ -460,7 +460,7 @@ try {
 ## `inboundCallsgetReturneddo()`
 
 ```php
-inboundCallsgetReturneddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Returned Calls
@@ -484,20 +484,20 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$advertiserID = 56; // int
-$contractID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
 $affiliateID = 56; // int
 $campaignID = 56; // int
+$advertiserID = 56; // int
+$contractID = 56; // int
+$verticalID = 56; // int
 $offerID = 56; // int
-$callerID = 'callerID_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->inboundCallsgetReturneddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $offerID, $callerID, $start, $limit);
+    $result = $apiInstance->inboundCallsgetReturneddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetReturneddo: ', $e->getMessage(), PHP_EOL;
@@ -508,15 +508,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **contractID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
-| **callerID** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -540,7 +540,7 @@ try {
 ## `inboundCallsgetScrubbeddo()`
 
 ```php
-inboundCallsgetScrubbeddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+inboundCallsgetScrubbeddo($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Scrubbed Calls
@@ -564,20 +564,20 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
+$verticalID = 56; // int
 $offerID = 56; // int
-$callerID = 'callerID_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->inboundCallsgetScrubbeddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit);
+    $result = $apiInstance->inboundCallsgetScrubbeddo($fromDate, $toDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetScrubbeddo: ', $e->getMessage(), PHP_EOL;
@@ -588,15 +588,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
+| **callerID** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
-| **callerID** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -620,7 +620,7 @@ try {
 ## `inboundCallsgetTransferreddo()`
 
 ```php
-inboundCallsgetTransferreddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Transferred Calls
@@ -644,20 +644,20 @@ $apiInstance = new Leadspedia\Api\InboundCallsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$callerID = 'callerID_example'; // string
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
+$verticalID = 56; // int
 $offerID = 56; // int
-$callerID = 'callerID_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->inboundCallsgetTransferreddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $contractID, $offerID, $callerID, $start, $limit);
+    $result = $apiInstance->inboundCallsgetTransferreddo($fromDate, $callerID, $affiliateID, $campaignID, $advertiserID, $contractID, $verticalID, $offerID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboundCallsApi->inboundCallsgetTransferreddo: ', $e->getMessage(), PHP_EOL;
@@ -668,15 +668,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **callerID** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
-| **callerID** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 

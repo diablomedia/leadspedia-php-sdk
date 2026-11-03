@@ -150,11 +150,11 @@ class CampaignsApi
      *
      * Add Filter
      *
-     * @param  int $campaignID campaignID (required)
      * @param  int $fieldID fieldID (required)
      * @param  string $operator Operator types are dependent on the data type of the field. (required)
+     * @param  int $campaignID campaignID (required)
      * @param  string|null $value value (optional)
-     * @param  string|null $date date (optional)
+     * @param  \DateTimeInterface|string|null $date date (optional)
      * @param  int|null $miles miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsaddFilterdo'] to see the possible values for this operation
      *
@@ -162,9 +162,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsaddFilterdo($campaignID, $fieldID, $operator, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
+    public function campaignsaddFilterdo($fieldID, $operator, $campaignID, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
     {
-        [$response] = $this->campaignsaddFilterdoWithHttpInfo($campaignID, $fieldID, $operator, $value, $date, $miles, $contentType);
+        [$response] = $this->campaignsaddFilterdoWithHttpInfo($fieldID, $operator, $campaignID, $value, $date, $miles, $contentType);
         return $response;
     }
 
@@ -173,20 +173,20 @@ class CampaignsApi
      *
      * Add Filter
      *
-     * @param  int $campaignID (required)
      * @param  int $fieldID (required)
      * @param  string $operator Operator types are dependent on the data type of the field. (required)
+     * @param  int $campaignID (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsaddFilterdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsaddFilterdoAsync($campaignID, $fieldID, $operator, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
+    public function campaignsaddFilterdoAsync($fieldID, $operator, $campaignID, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
     {
-        return $this->campaignsaddFilterdoAsyncWithHttpInfo($campaignID, $fieldID, $operator, $value, $date, $miles, $contentType)
+        return $this->campaignsaddFilterdoAsyncWithHttpInfo($fieldID, $operator, $campaignID, $value, $date, $miles, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -197,21 +197,21 @@ class CampaignsApi
      *
      * Add Filter
      *
-     * @param  int $campaignID (required)
      * @param  int $fieldID (required)
      * @param  string $operator Operator types are dependent on the data type of the field. (required)
+     * @param  int $campaignID (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsaddFilterdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsaddFilterdoAsyncWithHttpInfo($campaignID, $fieldID, $operator, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
+    public function campaignsaddFilterdoAsyncWithHttpInfo($fieldID, $operator, $campaignID, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->campaignsaddFilterdoRequest($campaignID, $fieldID, $operator, $value, $date, $miles, $contentType);
+        $request    = $this->campaignsaddFilterdoRequest($fieldID, $operator, $campaignID, $value, $date, $miles, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -245,26 +245,19 @@ class CampaignsApi
     /**
      * Create request for operation 'campaignsaddFilterdo'
      *
-     * @param  int $campaignID (required)
      * @param  int $fieldID (required)
      * @param  string $operator Operator types are dependent on the data type of the field. (required)
+     * @param  int $campaignID (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsaddFilterdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function campaignsaddFilterdoRequest($campaignID, $fieldID, $operator, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
+    public function campaignsaddFilterdoRequest($fieldID, $operator, $campaignID, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
     {
-
-        // verify the required parameter 'campaignID' is set
-        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaignID when calling campaignsaddFilterdo'
-            );
-        }
 
         // verify the required parameter 'fieldID' is set
         if ($fieldID === null || (is_array($fieldID) && count($fieldID) === 0)) {
@@ -280,6 +273,13 @@ class CampaignsApi
             );
         }
 
+        // verify the required parameter 'campaignID' is set
+        if ($campaignID === null || (is_array($campaignID) && count($campaignID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignID when calling campaignsaddFilterdo'
+            );
+        }
+
 
 
 
@@ -291,15 +291,6 @@ class CampaignsApi
         $httpBody     = '';
         $multipart    = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $campaignID,
-            'campaignID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fieldID,
@@ -328,6 +319,9 @@ class CampaignsApi
             false // required
         ) ?? []);
         // query params
+        if ($date instanceof \DateTimeInterface) {
+            $date = $date->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $date,
             'date', // param base name
@@ -344,6 +338,15 @@ class CampaignsApi
             '', // style
             false, // explode
             false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignID,
+            'campaignID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            true // required
         ) ?? []);
 
 
@@ -415,11 +418,11 @@ class CampaignsApi
      *
      * Add Filter
      *
-     * @param  int $campaignID (required)
      * @param  int $fieldID (required)
      * @param  string $operator Operator types are dependent on the data type of the field. (required)
+     * @param  int $campaignID (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsaddFilterdo'] to see the possible values for this operation
      *
@@ -427,9 +430,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function campaignsaddFilterdoWithHttpInfo($campaignID, $fieldID, $operator, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
+    public function campaignsaddFilterdoWithHttpInfo($fieldID, $operator, $campaignID, $value = null, $date = null, $miles = null, string $contentType = self::contentTypes['campaignsaddFilterdo'][0])
     {
-        $request = $this->campaignsaddFilterdoRequest($campaignID, $fieldID, $operator, $value, $date, $miles, $contentType);
+        $request = $this->campaignsaddFilterdoRequest($fieldID, $operator, $campaignID, $value, $date, $miles, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2560,12 +2563,12 @@ class CampaignsApi
      *
      * Get All
      *
-     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
-     * @param  int|null $verticalID verticalID (optional)
+     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $offerID offerID (optional)
-     * @param  string|null $search Search campaign name (optional)
+     * @param  int|null $verticalID verticalID (optional)
      * @param  string|null $status status (optional)
+     * @param  string|null $search Search campaign name (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsgetAlldo'] to see the possible values for this operation
@@ -2574,9 +2577,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function campaignsgetAlldo($affiliateID = null, $campaignID = null, $verticalID = null, $offerID = null, $search = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
+    public function campaignsgetAlldo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
     {
-        [$response] = $this->campaignsgetAlldoWithHttpInfo($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit, $contentType);
+        [$response] = $this->campaignsgetAlldoWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit, $contentType);
         return $response;
     }
 
@@ -2585,12 +2588,12 @@ class CampaignsApi
      *
      * Get All
      *
-     * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $search Search campaign name (optional)
+     * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
+     * @param  string|null $search Search campaign name (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsgetAlldo'] to see the possible values for this operation
@@ -2598,9 +2601,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetAlldoAsync($affiliateID = null, $campaignID = null, $verticalID = null, $offerID = null, $search = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
+    public function campaignsgetAlldoAsync($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
     {
-        return $this->campaignsgetAlldoAsyncWithHttpInfo($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit, $contentType)
+        return $this->campaignsgetAlldoAsyncWithHttpInfo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2611,12 +2614,12 @@ class CampaignsApi
      *
      * Get All
      *
-     * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $search Search campaign name (optional)
+     * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
+     * @param  string|null $search Search campaign name (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsgetAlldo'] to see the possible values for this operation
@@ -2624,10 +2627,10 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsgetAlldoAsyncWithHttpInfo($affiliateID = null, $campaignID = null, $verticalID = null, $offerID = null, $search = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
+    public function campaignsgetAlldoAsyncWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->campaignsgetAlldoRequest($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit, $contentType);
+        $request    = $this->campaignsgetAlldoRequest($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2661,12 +2664,12 @@ class CampaignsApi
     /**
      * Create request for operation 'campaignsgetAlldo'
      *
-     * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $search Search campaign name (optional)
+     * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
+     * @param  string|null $search Search campaign name (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsgetAlldo'] to see the possible values for this operation
@@ -2674,7 +2677,7 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function campaignsgetAlldoRequest($affiliateID = null, $campaignID = null, $verticalID = null, $offerID = null, $search = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
+    public function campaignsgetAlldoRequest($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
     {
 
 
@@ -2695,15 +2698,6 @@ class CampaignsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $campaignID,
             'campaignID', // param base name
             'integer', // openApiType
@@ -2713,8 +2707,8 @@ class CampaignsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $affiliateID,
+            'affiliateID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2731,9 +2725,9 @@ class CampaignsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2742,6 +2736,15 @@ class CampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2835,12 +2838,12 @@ class CampaignsApi
      *
      * Get All
      *
-     * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
-     * @param  int|null $verticalID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $offerID (optional)
-     * @param  string|null $search Search campaign name (optional)
+     * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
+     * @param  string|null $search Search campaign name (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsgetAlldo'] to see the possible values for this operation
@@ -2849,9 +2852,9 @@ class CampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function campaignsgetAlldoWithHttpInfo($affiliateID = null, $campaignID = null, $verticalID = null, $offerID = null, $search = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
+    public function campaignsgetAlldoWithHttpInfo($campaignID = null, $affiliateID = null, $offerID = null, $verticalID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['campaignsgetAlldo'][0])
     {
-        $request = $this->campaignsgetAlldoRequest($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit, $contentType);
+        $request = $this->campaignsgetAlldoRequest($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4365,17 +4368,17 @@ class CampaignsApi
      *
      * @param  int $campaignID campaignID (required)
      * @param  string|null $campaignName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID alternativeID (optional)
      * @param  string|null $notes notes (optional)
+     * @param  string|null $alternativeID alternativeID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsupdateBasicInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $alternativeID = null, $notes = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
+    public function campaignsupdateBasicInfodo($campaignID, $campaignName = null, $notes = null, $alternativeID = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
     {
-        [$response] = $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $alternativeID, $notes, $contentType);
+        [$response] = $this->campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID, $contentType);
         return $response;
     }
 
@@ -4386,16 +4389,16 @@ class CampaignsApi
      *
      * @param  int $campaignID (required)
      * @param  string|null $campaignName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsupdateBasicInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsupdateBasicInfodoAsync($campaignID, $campaignName = null, $alternativeID = null, $notes = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
+    public function campaignsupdateBasicInfodoAsync($campaignID, $campaignName = null, $notes = null, $alternativeID = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
     {
-        return $this->campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName, $alternativeID, $notes, $contentType)
+        return $this->campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName, $notes, $alternativeID, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -4408,17 +4411,17 @@ class CampaignsApi
      *
      * @param  int $campaignID (required)
      * @param  string|null $campaignName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsupdateBasicInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName = null, $alternativeID = null, $notes = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
+    public function campaignsupdateBasicInfodoAsyncWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $alternativeID, $notes, $contentType);
+        $request    = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $notes, $alternativeID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4454,14 +4457,14 @@ class CampaignsApi
      *
      * @param  int $campaignID (required)
      * @param  string|null $campaignName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsupdateBasicInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function campaignsupdateBasicInfodoRequest($campaignID, $campaignName = null, $alternativeID = null, $notes = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
+    public function campaignsupdateBasicInfodoRequest($campaignID, $campaignName = null, $notes = null, $alternativeID = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
     {
 
         // verify the required parameter 'campaignID' is set
@@ -4502,8 +4505,8 @@ class CampaignsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $alternativeID,
-            'alternativeID', // param base name
+            $notes,
+            'notes', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4511,8 +4514,8 @@ class CampaignsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $notes,
-            'notes', // param base name
+            $alternativeID,
+            'alternativeID', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4590,17 +4593,17 @@ class CampaignsApi
      *
      * @param  int $campaignID (required)
      * @param  string|null $campaignName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['campaignsupdateBasicInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName = null, $alternativeID = null, $notes = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
+    public function campaignsupdateBasicInfodoWithHttpInfo($campaignID, $campaignName = null, $notes = null, $alternativeID = null, string $contentType = self::contentTypes['campaignsupdateBasicInfodo'][0])
     {
-        $request = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $alternativeID, $notes, $contentType);
+        $request = $this->campaignsupdateBasicInfodoRequest($campaignID, $campaignName, $notes, $alternativeID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

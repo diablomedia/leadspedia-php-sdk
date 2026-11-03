@@ -990,10 +990,10 @@ class AffiliatesApi
      *
      * Get All
      *
-     * @param  string|null $status status (optional)
-     * @param  string|null $search search (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $accountManagerID accountManagerID (optional)
+     * @param  string|null $status status (optional)
+     * @param  string|null $search search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesgetAlldo'] to see the possible values for this operation
@@ -1002,9 +1002,9 @@ class AffiliatesApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function affiliatesgetAlldo($status = null, $search = null, $affiliateID = null, $accountManagerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
+    public function affiliatesgetAlldo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
     {
-        [$response] = $this->affiliatesgetAlldoWithHttpInfo($status, $search, $affiliateID, $accountManagerID, $start, $limit, $contentType);
+        [$response] = $this->affiliatesgetAlldoWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit, $contentType);
         return $response;
     }
 
@@ -1013,10 +1013,10 @@ class AffiliatesApi
      *
      * Get All
      *
-     * @param  string|null $status (optional)
-     * @param  string|null $search (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesgetAlldo'] to see the possible values for this operation
@@ -1024,9 +1024,9 @@ class AffiliatesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetAlldoAsync($status = null, $search = null, $affiliateID = null, $accountManagerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
+    public function affiliatesgetAlldoAsync($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
     {
-        return $this->affiliatesgetAlldoAsyncWithHttpInfo($status, $search, $affiliateID, $accountManagerID, $start, $limit, $contentType)
+        return $this->affiliatesgetAlldoAsyncWithHttpInfo($affiliateID, $accountManagerID, $status, $search, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1037,10 +1037,10 @@ class AffiliatesApi
      *
      * Get All
      *
-     * @param  string|null $status (optional)
-     * @param  string|null $search (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesgetAlldo'] to see the possible values for this operation
@@ -1048,10 +1048,10 @@ class AffiliatesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesgetAlldoAsyncWithHttpInfo($status = null, $search = null, $affiliateID = null, $accountManagerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
+    public function affiliatesgetAlldoAsyncWithHttpInfo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->affiliatesgetAlldoRequest($status, $search, $affiliateID, $accountManagerID, $start, $limit, $contentType);
+        $request    = $this->affiliatesgetAlldoRequest($affiliateID, $accountManagerID, $status, $search, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1085,10 +1085,10 @@ class AffiliatesApi
     /**
      * Create request for operation 'affiliatesgetAlldo'
      *
-     * @param  string|null $status (optional)
-     * @param  string|null $search (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesgetAlldo'] to see the possible values for this operation
@@ -1096,7 +1096,7 @@ class AffiliatesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function affiliatesgetAlldoRequest($status = null, $search = null, $affiliateID = null, $accountManagerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
+    public function affiliatesgetAlldoRequest($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
     {
 
 
@@ -1115,24 +1115,6 @@ class AffiliatesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $affiliateID,
             'affiliateID', // param base name
             'integer', // openApiType
@@ -1145,6 +1127,24 @@ class AffiliatesApi
             $accountManagerID,
             'accountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1237,10 +1237,10 @@ class AffiliatesApi
      *
      * Get All
      *
-     * @param  string|null $status (optional)
-     * @param  string|null $search (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesgetAlldo'] to see the possible values for this operation
@@ -1249,9 +1249,9 @@ class AffiliatesApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function affiliatesgetAlldoWithHttpInfo($status = null, $search = null, $affiliateID = null, $accountManagerID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
+    public function affiliatesgetAlldoWithHttpInfo($affiliateID = null, $accountManagerID = null, $status = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['affiliatesgetAlldo'][0])
     {
-        $request = $this->affiliatesgetAlldoRequest($status, $search, $affiliateID, $accountManagerID, $start, $limit, $contentType);
+        $request = $this->affiliatesgetAlldoRequest($affiliateID, $accountManagerID, $status, $search, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2182,6 +2182,7 @@ class AffiliatesApi
      *
      * @param  int $affiliateID affiliateID (required)
      * @param  string|null $affiliateName &gt;&#x3D; 1 characters (optional)
+     * @param  string|null $website website (optional)
      * @param  string|null $alternateID alternateID (optional)
      * @param  string|null $address address (optional)
      * @param  string|null $address2 address2 (optional)
@@ -2189,16 +2190,15 @@ class AffiliatesApi
      * @param  string|null $state state (optional)
      * @param  string|null $zipCode zipCode (optional)
      * @param  string|null $country country (optional)
-     * @param  string|null $website website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesupdateInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function affiliatesupdateInfodo($affiliateID, $affiliateName = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $website = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
+    public function affiliatesupdateInfodo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
     {
-        [$response] = $this->affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website, $contentType);
+        [$response] = $this->affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
         return $response;
     }
 
@@ -2209,6 +2209,7 @@ class AffiliatesApi
      *
      * @param  int $affiliateID (required)
      * @param  string|null $affiliateName &gt;&#x3D; 1 characters (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -2216,15 +2217,14 @@ class AffiliatesApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesupdateInfodoAsync($affiliateID, $affiliateName = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $website = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
+    public function affiliatesupdateInfodoAsync($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
     {
-        return $this->affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website, $contentType)
+        return $this->affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2237,6 +2237,7 @@ class AffiliatesApi
      *
      * @param  int $affiliateID (required)
      * @param  string|null $affiliateName &gt;&#x3D; 1 characters (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -2244,16 +2245,15 @@ class AffiliatesApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $website = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
+    public function affiliatesupdateInfodoAsyncWithHttpInfo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website, $contentType);
+        $request    = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2289,6 +2289,7 @@ class AffiliatesApi
      *
      * @param  int $affiliateID (required)
      * @param  string|null $affiliateName &gt;&#x3D; 1 characters (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -2296,13 +2297,12 @@ class AffiliatesApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function affiliatesupdateInfodoRequest($affiliateID, $affiliateName = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $website = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
+    public function affiliatesupdateInfodoRequest($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
     {
 
         // verify the required parameter 'affiliateID' is set
@@ -2342,6 +2342,15 @@ class AffiliatesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $affiliateName,
             'affiliateName', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $website,
+            'website', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2405,15 +2414,6 @@ class AffiliatesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $country,
             'country', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $website,
-            'website', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2491,6 +2491,7 @@ class AffiliatesApi
      *
      * @param  int $affiliateID (required)
      * @param  string|null $affiliateName &gt;&#x3D; 1 characters (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -2498,16 +2499,15 @@ class AffiliatesApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['affiliatesupdateInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $website = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
+    public function affiliatesupdateInfodoWithHttpInfo($affiliateID, $affiliateName = null, $website = null, $alternateID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['affiliatesupdateInfodo'][0])
     {
-        $request = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website, $contentType);
+        $request = $this->affiliatesupdateInfodoRequest($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

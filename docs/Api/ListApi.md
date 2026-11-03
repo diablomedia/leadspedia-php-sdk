@@ -12,7 +12,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `listgetAlldo()`
 
 ```php
-listgetAlldo($type, $verticalID, $advertiserID): \Leadspedia\Model\InlineResponse2001
+listgetAlldo($type, $advertiserID, $verticalID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -37,11 +37,11 @@ $apiInstance = new Leadspedia\Api\ListApi(
     $config
 );
 $type = 'type_example'; // string
-$verticalID = 56; // int | Can be passed to retrieve vertical specific return reasons
 $advertiserID = 56; // int | Can be passed to retrieve advertiser specific return reasons
+$verticalID = 56; // int | Can be passed to retrieve vertical specific return reasons
 
 try {
-    $result = $apiInstance->listgetAlldo($type, $verticalID, $advertiserID);
+    $result = $apiInstance->listgetAlldo($type, $advertiserID, $verticalID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ListApi->listgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -53,8 +53,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **type** | **string**|  | [optional] |
-| **verticalID** | **int**| Can be passed to retrieve vertical specific return reasons | [optional] |
 | **advertiserID** | **int**| Can be passed to retrieve advertiser specific return reasons | [optional] |
+| **verticalID** | **int**| Can be passed to retrieve vertical specific return reasons | [optional] |
 
 ### Return type
 

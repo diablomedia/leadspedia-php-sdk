@@ -167,22 +167,22 @@ class AdvertisersApi
      *
      * @param  int $advertiserID advertiserID (required)
      * @param  string $type type (required)
-     * @param  int $amount amount (required)
+     * @param  float $amount amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee transactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note note (optional)
+     * @param  string|null $transactionFee transactionFee (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersadjustCreditdo($advertiserID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
+    public function advertisersadjustCreditdo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
     {
-        [$response] = $this->advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        [$response] = $this->advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
         return $response;
     }
 
@@ -193,21 +193,21 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersadjustCreditdoAsync($advertiserID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
+    public function advertisersadjustCreditdoAsync($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
     {
-        return $this->advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType)
+        return $this->advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -220,22 +220,22 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
+    public function advertisersadjustCreditdoAsyncWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request    = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -271,19 +271,19 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
+    public function advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
     {
 
         // verify the required parameter 'advertiserID' is set
@@ -343,7 +343,7 @@ class AdvertisersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $amount,
             'amount', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -353,33 +353,6 @@ class AdvertisersApi
             $charge,
             'charge', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFee,
-            'transactionFee', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -398,6 +371,33 @@ class AdvertisersApi
             $note,
             'note', // param base name
             'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFee,
+            'transactionFee', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -474,22 +474,22 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
+    public function advertisersadjustCreditdoWithHttpInfo($advertiserID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['advertisersadjustCreditdo'][0])
     {
-        $request = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request = $this->advertisersadjustCreditdoRequest($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1706,8 +1706,8 @@ class AdvertisersApi
      * Generate Invoices
      *
      * @param  int $advertiserID advertiserID (required)
-     * @param  string $startDate startDate (required)
-     * @param  string $endDate endDate (required)
+     * @param  \DateTimeInterface|string $startDate startDate (required)
+     * @param  \DateTimeInterface|string $endDate endDate (required)
      * @param  string|null $autoCalculateItems autoCalculateItems (optional)
      * @param  string|null $approveInvoice approveInvoice (optional)
      * @param  string|null $forceBilling forceBilling (optional)
@@ -1732,8 +1732,8 @@ class AdvertisersApi
      * Generate Invoices
      *
      * @param  int $advertiserID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
+     * @param  \DateTimeInterface|string $startDate (required)
+     * @param  \DateTimeInterface|string $endDate (required)
      * @param  string|null $autoCalculateItems (optional)
      * @param  string|null $approveInvoice (optional)
      * @param  string|null $forceBilling (optional)
@@ -1759,8 +1759,8 @@ class AdvertisersApi
      * Generate Invoices
      *
      * @param  int $advertiserID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
+     * @param  \DateTimeInterface|string $startDate (required)
+     * @param  \DateTimeInterface|string $endDate (required)
      * @param  string|null $autoCalculateItems (optional)
      * @param  string|null $approveInvoice (optional)
      * @param  string|null $forceBilling (optional)
@@ -1810,8 +1810,8 @@ class AdvertisersApi
      * Create request for operation 'advertisersgenerateInvoicesdo'
      *
      * @param  int $advertiserID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
+     * @param  \DateTimeInterface|string $startDate (required)
+     * @param  \DateTimeInterface|string $endDate (required)
      * @param  string|null $autoCalculateItems (optional)
      * @param  string|null $approveInvoice (optional)
      * @param  string|null $forceBilling (optional)
@@ -1871,6 +1871,9 @@ class AdvertisersApi
             true // required
         ) ?? []);
         // query params
+        if ($startDate instanceof \DateTimeInterface) {
+            $startDate = $startDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startDate,
             'startDate', // param base name
@@ -1880,6 +1883,9 @@ class AdvertisersApi
             true // required
         ) ?? []);
         // query params
+        if ($endDate instanceof \DateTimeInterface) {
+            $endDate = $endDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endDate,
             'endDate', // param base name
@@ -2013,8 +2019,8 @@ class AdvertisersApi
      * Generate Invoices
      *
      * @param  int $advertiserID (required)
-     * @param  string $startDate (required)
-     * @param  string $endDate (required)
+     * @param  \DateTimeInterface|string $startDate (required)
+     * @param  \DateTimeInterface|string $endDate (required)
      * @param  string|null $autoCalculateItems (optional)
      * @param  string|null $approveInvoice (optional)
      * @param  string|null $forceBilling (optional)
@@ -2106,13 +2112,13 @@ class AdvertisersApi
      *
      * Get All
      *
-     * @param  string|null $search search (optional)
-     * @param  string|null $status status (optional)
      * @param  int|null $advertiserID advertiserID (optional)
-     * @param  int|null $accountManagerID accountManagerID (optional)
      * @param  string|null $advertiserType advertiserType (optional)
+     * @param  int|null $accountManagerID accountManagerID (optional)
+     * @param  string|null $status status (optional)
      * @param  string|null $isCreditEnabled isCreditEnabled (optional)
      * @param  string|null $hasCreditCardOnFile hasCreditCardOnFile (optional)
+     * @param  string|null $search search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersgetAlldo'] to see the possible values for this operation
@@ -2121,9 +2127,9 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function advertisersgetAlldo($search = null, $status = null, $advertiserID = null, $accountManagerID = null, $advertiserType = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
+    public function advertisersgetAlldo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
     {
-        [$response] = $this->advertisersgetAlldoWithHttpInfo($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit, $contentType);
+        [$response] = $this->advertisersgetAlldoWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit, $contentType);
         return $response;
     }
 
@@ -2132,13 +2138,13 @@ class AdvertisersApi
      *
      * Get All
      *
-     * @param  string|null $search (optional)
-     * @param  string|null $status (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $accountManagerID (optional)
      * @param  string|null $advertiserType (optional)
+     * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
      * @param  string|null $isCreditEnabled (optional)
      * @param  string|null $hasCreditCardOnFile (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersgetAlldo'] to see the possible values for this operation
@@ -2146,9 +2152,9 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetAlldoAsync($search = null, $status = null, $advertiserID = null, $accountManagerID = null, $advertiserType = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
+    public function advertisersgetAlldoAsync($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
     {
-        return $this->advertisersgetAlldoAsyncWithHttpInfo($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit, $contentType)
+        return $this->advertisersgetAlldoAsyncWithHttpInfo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2159,13 +2165,13 @@ class AdvertisersApi
      *
      * Get All
      *
-     * @param  string|null $search (optional)
-     * @param  string|null $status (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $accountManagerID (optional)
      * @param  string|null $advertiserType (optional)
+     * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
      * @param  string|null $isCreditEnabled (optional)
      * @param  string|null $hasCreditCardOnFile (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersgetAlldo'] to see the possible values for this operation
@@ -2173,10 +2179,10 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersgetAlldoAsyncWithHttpInfo($search = null, $status = null, $advertiserID = null, $accountManagerID = null, $advertiserType = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
+    public function advertisersgetAlldoAsyncWithHttpInfo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->advertisersgetAlldoRequest($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit, $contentType);
+        $request    = $this->advertisersgetAlldoRequest($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2210,13 +2216,13 @@ class AdvertisersApi
     /**
      * Create request for operation 'advertisersgetAlldo'
      *
-     * @param  string|null $search (optional)
-     * @param  string|null $status (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $accountManagerID (optional)
      * @param  string|null $advertiserType (optional)
+     * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
      * @param  string|null $isCreditEnabled (optional)
      * @param  string|null $hasCreditCardOnFile (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersgetAlldo'] to see the possible values for this operation
@@ -2224,7 +2230,7 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersgetAlldoRequest($search = null, $status = null, $advertiserID = null, $accountManagerID = null, $advertiserType = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
+    public function advertisersgetAlldoRequest($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
     {
 
 
@@ -2246,27 +2252,18 @@ class AdvertisersApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $advertiserID,
             'advertiserID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $advertiserType,
+            'advertiserType', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2282,8 +2279,8 @@ class AdvertisersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserType,
-            'advertiserType', // param base name
+            $status,
+            'status', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2302,6 +2299,15 @@ class AdvertisersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $hasCreditCardOnFile,
             'hasCreditCardOnFile', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2395,13 +2401,13 @@ class AdvertisersApi
      *
      * Get All
      *
-     * @param  string|null $search (optional)
-     * @param  string|null $status (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $accountManagerID (optional)
      * @param  string|null $advertiserType (optional)
+     * @param  int|null $accountManagerID (optional)
+     * @param  string|null $status (optional)
      * @param  string|null $isCreditEnabled (optional)
      * @param  string|null $hasCreditCardOnFile (optional)
+     * @param  string|null $search (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersgetAlldo'] to see the possible values for this operation
@@ -2410,9 +2416,9 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersgetAlldoWithHttpInfo($search = null, $status = null, $advertiserID = null, $accountManagerID = null, $advertiserType = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
+    public function advertisersgetAlldoWithHttpInfo($advertiserID = null, $advertiserType = null, $accountManagerID = null, $status = null, $isCreditEnabled = null, $hasCreditCardOnFile = null, $search = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['advertisersgetAlldo'][0])
     {
-        $request = $this->advertisersgetAlldoRequest($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit, $contentType);
+        $request = $this->advertisersgetAlldoRequest($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2490,8 +2496,8 @@ class AdvertisersApi
      * Get Credit History
      *
      * @param  int $advertiserID advertiserID (required)
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string|null $disposition disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -2513,8 +2519,8 @@ class AdvertisersApi
      * Get Credit History
      *
      * @param  int $advertiserID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -2537,8 +2543,8 @@ class AdvertisersApi
      * Get Credit History
      *
      * @param  int $advertiserID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -2585,8 +2591,8 @@ class AdvertisersApi
      * Create request for operation 'advertisersgetCreditHistorydo'
      *
      * @param  int $advertiserID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -2634,6 +2640,9 @@ class AdvertisersApi
             true // required
         ) ?? []);
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -2643,6 +2652,9 @@ class AdvertisersApi
             true // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $toDate,
             'toDate', // param base name
@@ -2749,8 +2761,8 @@ class AdvertisersApi
      * Get Credit History
      *
      * @param  int $advertiserID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -3693,11 +3705,11 @@ class AdvertisersApi
      *
      * @param  int $advertiserID advertiserID (required)
      * @param  string|null $enableAutoRecharge enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string|null $generateInvoice generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -3705,9 +3717,9 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
+    public function advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
     {
-        [$response] = $this->advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        [$response] = $this->advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
         return $response;
     }
 
@@ -3718,20 +3730,20 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAutoRechargeSettingsdoAsync($advertiserID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
+    public function advertisersupdateAutoRechargeSettingsdoAsync($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
     {
-        return $this->advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType)
+        return $this->advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3744,21 +3756,21 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
+    public function advertisersupdateAutoRechargeSettingsdoAsyncWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request    = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3794,18 +3806,18 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
+    public function advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
     {
 
         // verify the required parameter 'advertiserID' is set
@@ -3850,18 +3862,18 @@ class AdvertisersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeAmount,
-            'autoChargeAmount', // param base name
-            'integer', // openApiType
+            $autoChargeBalance,
+            'autoChargeBalance', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeBalance,
-            'autoChargeBalance', // param base name
-            'integer', // openApiType
+            $autoChargeAmount,
+            'autoChargeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -3877,18 +3889,18 @@ class AdvertisersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -3974,11 +3986,11 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -3986,9 +3998,9 @@ class AdvertisersApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
+    public function advertisersupdateAutoRechargeSettingsdoWithHttpInfo($advertiserID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['advertisersupdateAutoRechargeSettingsdo'][0])
     {
-        $request = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request = $this->advertisersupdateAutoRechargeSettingsdoRequest($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4381,7 +4393,9 @@ class AdvertisersApi
      *
      * @param  int $advertiserID advertiserID (required)
      * @param  string|null $advertiserName advertiserName (optional)
+     * @param  string|null $website website (optional)
      * @param  string|null $alternateID alternateID (optional)
+     * @param  string|null $source source (optional)
      * @param  string|null $externalCRMID externalCRMID (optional)
      * @param  string|null $address address (optional)
      * @param  string|null $address2 address2 (optional)
@@ -4389,17 +4403,15 @@ class AdvertisersApi
      * @param  string|null $state state (optional)
      * @param  string|null $zipCode zipCode (optional)
      * @param  string|null $country country (optional)
-     * @param  string|null $source source (optional)
-     * @param  string|null $website website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersupdateInfodo($advertiserID, $advertiserName = null, $alternateID = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $source = null, $website = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
+    public function advertisersupdateInfodo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
     {
-        [$response] = $this->advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website, $contentType);
+        [$response] = $this->advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
         return $response;
     }
 
@@ -4410,7 +4422,9 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $advertiserName (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
+     * @param  string|null $source (optional)
      * @param  string|null $externalCRMID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -4418,16 +4432,14 @@ class AdvertisersApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $source (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateInfodoAsync($advertiserID, $advertiserName = null, $alternateID = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $source = null, $website = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
+    public function advertisersupdateInfodoAsync($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
     {
-        return $this->advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website, $contentType)
+        return $this->advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -4440,7 +4452,9 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $advertiserName (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
+     * @param  string|null $source (optional)
      * @param  string|null $externalCRMID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -4448,17 +4462,15 @@ class AdvertisersApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $source (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName = null, $alternateID = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $source = null, $website = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
+    public function advertisersupdateInfodoAsyncWithHttpInfo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website, $contentType);
+        $request    = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4494,7 +4506,9 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $advertiserName (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
+     * @param  string|null $source (optional)
      * @param  string|null $externalCRMID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -4502,14 +4516,12 @@ class AdvertisersApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $source (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateInfodo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersupdateInfodoRequest($advertiserID, $advertiserName = null, $alternateID = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $source = null, $website = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
+    public function advertisersupdateInfodoRequest($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
     {
 
         // verify the required parameter 'advertiserID' is set
@@ -4558,8 +4570,26 @@ class AdvertisersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $website,
+            'website', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $alternateID,
             'alternateID', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4623,24 +4653,6 @@ class AdvertisersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $country,
             'country', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $source,
-            'source', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $website,
-            'website', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4718,7 +4730,9 @@ class AdvertisersApi
      *
      * @param  int $advertiserID (required)
      * @param  string|null $advertiserName (optional)
+     * @param  string|null $website (optional)
      * @param  string|null $alternateID (optional)
+     * @param  string|null $source (optional)
      * @param  string|null $externalCRMID (optional)
      * @param  string|null $address (optional)
      * @param  string|null $address2 (optional)
@@ -4726,17 +4740,15 @@ class AdvertisersApi
      * @param  string|null $state (optional)
      * @param  string|null $zipCode (optional)
      * @param  string|null $country (optional)
-     * @param  string|null $source (optional)
-     * @param  string|null $website (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['advertisersupdateInfodo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName = null, $alternateID = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, $source = null, $website = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
+    public function advertisersupdateInfodoWithHttpInfo($advertiserID, $advertiserName = null, $website = null, $alternateID = null, $source = null, $externalCRMID = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersupdateInfodo'][0])
     {
-        $request = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website, $contentType);
+        $request = $this->advertisersupdateInfodoRequest($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

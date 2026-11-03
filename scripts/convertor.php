@@ -170,6 +170,7 @@ file_put_contents(__DIR__ . '/../schema/openapi.json', json_encode($output, JSON
  */
 function convertOfficialDocument(stdClass $source): array
 {
+    $compatibility = json_decode(file_get_contents(__DIR__ . '/../schema/compatibility.json'), true, 512, JSON_THROW_ON_ERROR);
     if (!str_starts_with($source->openapi, '3.')) {
         throw new RuntimeException('Unsupported OpenAPI version: ' . $source->openapi);
     }
@@ -233,7 +234,10 @@ function convertOfficialDocument(stdClass $source): array
                 if ($parameter->in !== 'query' || !isset($parameter->schema->type)) {
                     throw new RuntimeException('Unsupported parameter: ' . $fullPath);
                 }
-                $schema                  = (array) $parameter->schema;
+                $schema = (array) $parameter->schema;
+                if (!isset($schema['format']) && isset($compatibility['dateFormats'][$schema['x-matching-pattern'] ?? ''])) {
+                    $schema['format'] = $compatibility['dateFormats'][$schema['x-matching-pattern']];
+                }
                 $request['parameters'][] = array_merge($schema, [
                     'name'        => $parameter->name,
                     'in'          => $parameter->in,
@@ -241,6 +245,21 @@ function convertOfficialDocument(stdClass $source): array
                     'description' => $parameter->description ?? '',
                 ]);
             }
+            $overrides = $compatibility['operations'][$path][$method] ?? [];
+            foreach ($request['parameters'] as &$parameter) {
+                $type = $overrides['parameterTypes'][$parameter['name']] ?? null;
+                if ($type !== null) {
+                    if (!in_array($parameter['type'], ['integer', 'number'], true)) {
+                        throw new RuntimeException('Review numeric compatibility override: ' . $path . ' ' . $parameter['name']);
+                    }
+                    $parameter['type'] = $type;
+                }
+            }
+            unset($parameter);
+            $ranks = array_flip($overrides['parameterOrder'] ?? []);
+            // PHP's stable sort keeps new parameters in upstream order after existing ones.
+            // The generator subsequently groups required parameters before optional ones.
+            usort($request['parameters'], static fn (array $left, array $right): int => ($ranks[$left['name']] ?? PHP_INT_MAX) <=> ($ranks[$right['name']] ?? PHP_INT_MAX));
             foreach ($operation->responses as $status => $response) {
                 $normalized = ['description' => $response->description ?? ''];
                 if (isset($response->content->{'application/json'}->schema)) {

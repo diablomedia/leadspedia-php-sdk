@@ -28,11 +28,11 @@ final class AdvertisersApiTest extends ApiContractTestCase
             'type'                     => 'type',
             'amount'                   => 'amount',
             'charge'                   => 'charge',
-            'transactionFee'           => 'transactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
-            'transactionFeePercentage' => 'transactionFeePercentage',
             'generateInvoice'          => 'generateInvoice',
             'note'                     => 'note',
+            'transactionFee'           => 'transactionFee',
+            'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
         ]);
     }
 
@@ -85,13 +85,13 @@ final class AdvertisersApiTest extends ApiContractTestCase
     public function testAdvertisersgetAlldo(): void
     {
         $this->assertOperationContract(AdvertisersApi::class, 'advertisersgetAlldo', [
-            'search'              => 'search',
-            'status'              => 'status',
             'advertiserID'        => 'advertiserID',
-            'accountManagerID'    => 'accountManagerID',
             'advertiserType'      => 'advertiserType',
+            'accountManagerID'    => 'accountManagerID',
+            'status'              => 'status',
             'isCreditEnabled'     => 'isCreditEnabled',
             'hasCreditCardOnFile' => 'hasCreditCardOnFile',
+            'search'              => 'search',
             'start'               => 'start',
             'limit'               => 'limit',
         ]);
@@ -138,11 +138,11 @@ final class AdvertisersApiTest extends ApiContractTestCase
         $this->assertOperationContract(AdvertisersApi::class, 'advertisersupdateAutoRechargeSettingsdo', [
             'advertiserID'             => 'advertiserID',
             'enableAutoRecharge'       => 'enableAutoRecharge',
-            'autoChargeAmount'         => 'autoChargeAmount',
             'autoChargeBalance'        => 'autoChargeBalance',
+            'autoChargeAmount'         => 'autoChargeAmount',
             'chargeTransactionFee'     => 'chargeTransactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
             'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
             'generateInvoice'          => 'generateInvoice',
         ]);
     }
@@ -162,7 +162,9 @@ final class AdvertisersApiTest extends ApiContractTestCase
         $this->assertOperationContract(AdvertisersApi::class, 'advertisersupdateInfodo', [
             'advertiserID'   => 'advertiserID',
             'advertiserName' => 'advertiserName',
+            'website'        => 'website',
             'alternateID'    => 'alternateID',
+            'source'         => 'source',
             'externalCRMID'  => 'externalCRMID',
             'address'        => 'address',
             'address2'       => 'address2',
@@ -170,8 +172,6 @@ final class AdvertisersApiTest extends ApiContractTestCase
             'state'          => 'state',
             'zipCode'        => 'zipCode',
             'country'        => 'country',
-            'source'         => 'source',
-            'website'        => 'website',
         ]);
     }
 

@@ -87,7 +87,7 @@ $contractID = 56; // int
 $fieldID = 56; // int
 $operator = 'operator_example'; // string
 $value = 'value_example'; // string
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $miles = 56; // int
 
 try {
@@ -106,7 +106,7 @@ try {
 | **fieldID** | **int**|  | |
 | **operator** | **string**|  | |
 | **value** | **string**|  | [optional] |
-| **date** | **string**|  | [optional] |
+| **date** | **\DateTime**|  | [optional] |
 | **miles** | **int**|  | [optional] |
 
 ### Return type
@@ -193,7 +193,7 @@ try {
 ## `leadDistributionContractsadjustCreditdo()`
 
 ```php
-leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note): \Leadspedia\Model\InlineResponse200
+leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\InlineResponse200
 ```
 
 Adjust Credit
@@ -219,16 +219,16 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 );
 $contractID = 56; // int
 $type = 'type_example'; // string
-$amount = 56; // int
+$amount = 3.4; // float
 $charge = 'No'; // string | If Yes, the default credit card of the advertiser will be charged
-$transactionFee = 'transactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
 $generateInvoice = 'No'; // string | If Yes and the type is Credit, an invoice will be generated
 $note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
-    $result = $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note);
+    $result = $apiInstance->leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
@@ -241,13 +241,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **type** | **string**|  | |
-| **amount** | **int**|  | |
+| **amount** | **float**|  | |
 | **charge** | **string**| If Yes, the default credit card of the advertiser will be charged | [optional] [default to &#39;No&#39;] |
-| **transactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
 | **generateInvoice** | **string**| If Yes and the type is Credit, an invoice will be generated | [optional] [default to &#39;No&#39;] |
 | **note** | **string**|  | [optional] |
+| **transactionFee** | **string**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 
 ### Return type
 
@@ -589,7 +589,7 @@ try {
 ## `leadDistributionContractscreateScheduledo()`
 
 ```php
-leadDistributionContractscreateScheduledo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday): \Leadspedia\Model\InlineResponse200
+leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday): \Leadspedia\Model\InlineResponse200
 ```
 
 Create Schedule
@@ -616,12 +616,12 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $contractID = 56; // int
-$type = 'type_example'; // string
-$price = 56; // int
 $cap = 56; // int | If you do not want a Schedule Cap pass a value of 0
-$revenueCap = 56; // int | If you do not want a Schedule Revenue Cap pass a value of 0
+$revenueCap = 3.4; // float | If you do not want a Schedule Revenue Cap pass a value of 0
+$price = 3.4; // float
 $startTime = 'startTime_example'; // string | HH:mm
 $endTime = 'endTime_example'; // string | HH:mm
+$type = 'type_example'; // string
 $monday = 'monday_example'; // string
 $tuesday = 'tuesday_example'; // string
 $wednesday = 'wednesday_example'; // string
@@ -631,7 +631,7 @@ $saturday = 'saturday_example'; // string
 $sunday = 'sunday_example'; // string
 
 try {
-    $result = $apiInstance->leadDistributionContractscreateScheduledo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
+    $result = $apiInstance->leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreateScheduledo: ', $e->getMessage(), PHP_EOL;
@@ -643,12 +643,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **type** | **string**|  | |
-| **price** | **int**|  | |
 | **cap** | **int**| If you do not want a Schedule Cap pass a value of 0 | |
-| **revenueCap** | **int**| If you do not want a Schedule Revenue Cap pass a value of 0 | |
+| **revenueCap** | **float**| If you do not want a Schedule Revenue Cap pass a value of 0 | |
+| **price** | **float**|  | |
 | **startTime** | **string**| HH:mm | |
 | **endTime** | **string**| HH:mm | |
+| **type** | **string**|  | |
 | **monday** | **string**|  | [optional] |
 | **tuesday** | **string**|  | [optional] |
 | **wednesday** | **string**|  | [optional] |
@@ -677,7 +677,7 @@ try {
 ## `leadDistributionContractscreatedo()`
 
 ```php
-leadDistributionContractscreatedo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice): \Leadspedia\Model\InlineResponse200
+leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice): \Leadspedia\Model\InlineResponse200
 ```
 
 Create
@@ -701,14 +701,14 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int
 $verticalID = 56; // int
-$contractName = 'contractName_example'; // string
+$advertiserID = 56; // int
 $revenueModel = 'revenueModel_example'; // string
-$defaultPrice = 56; // int
+$contractName = 'contractName_example'; // string
+$defaultPrice = 3.4; // float
 
 try {
-    $result = $apiInstance->leadDistributionContractscreatedo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice);
+    $result = $apiInstance->leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractscreatedo: ', $e->getMessage(), PHP_EOL;
@@ -719,11 +719,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **advertiserID** | **int**|  | |
 | **verticalID** | **int**|  | |
-| **contractName** | **string**|  | |
+| **advertiserID** | **int**|  | |
 | **revenueModel** | **string**|  | |
-| **defaultPrice** | **int**|  | |
+| **contractName** | **string**|  | |
+| **defaultPrice** | **float**|  | |
 
 ### Return type
 
@@ -1448,8 +1448,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $contractID = 56; // int
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $disposition = 'disposition_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
@@ -1467,8 +1467,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | |
 | **disposition** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
@@ -2318,8 +2318,8 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $contractID = 56; // int
-$pauseDate = 'pauseDate_example'; // string | Pause date has to be later than today's date but before the resume date
-$resumeDate = 'resumeDate_example'; // string
+$pauseDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Pause date has to be later than today's date but before the resume date
+$resumeDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadDistributionContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
@@ -2334,8 +2334,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **pauseDate** | **string**| Pause date has to be later than today&#39;s date but before the resume date | |
-| **resumeDate** | **string**|  | |
+| **pauseDate** | **\DateTime**| Pause date has to be later than today&#39;s date but before the resume date | |
+| **resumeDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -2382,7 +2382,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $contractID = 56; // int
-$expirationDate = 'expirationDate_example'; // string
+$expirationDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->leadDistributionContractssetExpirationDatedo($contractID, $expirationDate);
@@ -2397,7 +2397,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **expirationDate** | **string**|  | |
+| **expirationDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -2446,7 +2446,7 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $contractID = 56; // int
-$price = 56; // int
+$price = 3.4; // float
 
 try {
     $result = $apiInstance->leadDistributionContractssetPricedo($contractID, $price);
@@ -2461,7 +2461,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **price** | **int**|  | |
+| **price** | **float**|  | |
 
 ### Return type
 
@@ -2483,7 +2483,7 @@ try {
 ## `leadDistributionContractsupdateAutoRechargeSettingsdo()`
 
 ```php
-leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice): \Leadspedia\Model\InlineResponse200
+leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Auto Recharge Settings
@@ -2509,15 +2509,15 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 );
 $contractID = 56; // int
 $enableAutoRecharge = 'enableAutoRecharge_example'; // string
-$autoChargeAmount = 56; // int
-$autoChargeBalance = 56; // int | Credit will be auto charged when the balance falls below this amount
+$autoChargeBalance = 3.4; // float | Credit will be auto charged when the balance falls below this amount
+$autoChargeAmount = 3.4; // float
 $chargeTransactionFee = 'chargeTransactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 $generateInvoice = 'generateInvoice_example'; // string
 
 try {
-    $result = $apiInstance->leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice);
+    $result = $apiInstance->leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -2530,11 +2530,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **enableAutoRecharge** | **string**|  | [optional] |
-| **autoChargeAmount** | **int**|  | [optional] |
-| **autoChargeBalance** | **int**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeBalance** | **float**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeAmount** | **float**|  | [optional] |
 | **chargeTransactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 | **generateInvoice** | **string**|  | [optional] |
 
 ### Return type
@@ -2889,7 +2889,7 @@ try {
 ## `leadDistributionContractsupdatePortalSettingsdo()`
 
 ```php
-leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings): \Leadspedia\Model\InlineResponse200
+leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Portal Settings
@@ -2915,16 +2915,16 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
 );
 $contractID = 56; // int
 $showStatus = 'showStatus_example'; // string
-$allowStatusPause = 'allowStatusPause_example'; // string | Allow advertiser to pause contract
 $showLeadData = 'showLeadData_example'; // string
 $showSchedule = 'showSchedule_example'; // string
-$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | Allow advertiser to manage delivery schedule
 $showCaps = 'showCaps_example'; // string
-$allowManageCaps = 'allowManageCaps_example'; // string | Allow advertiser to manage caps
 $showReturnSettings = 'showReturnSettings_example'; // string
+$allowStatusPause = 'allowStatusPause_example'; // string | Allow advertiser to pause contract
+$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | Allow advertiser to manage delivery schedule
+$allowManageCaps = 'allowManageCaps_example'; // string | Allow advertiser to manage caps
 
 try {
-    $result = $apiInstance->leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings);
+    $result = $apiInstance->leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -2937,13 +2937,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **showStatus** | **string**|  | [optional] |
-| **allowStatusPause** | **string**| Allow advertiser to pause contract | [optional] |
 | **showLeadData** | **string**|  | [optional] |
 | **showSchedule** | **string**|  | [optional] |
-| **allowUpdateSchedule** | **string**| Allow advertiser to manage delivery schedule | [optional] |
 | **showCaps** | **string**|  | [optional] |
-| **allowManageCaps** | **string**| Allow advertiser to manage caps | [optional] |
 | **showReturnSettings** | **string**|  | [optional] |
+| **allowStatusPause** | **string**| Allow advertiser to pause contract | [optional] |
+| **allowUpdateSchedule** | **string**| Allow advertiser to manage delivery schedule | [optional] |
+| **allowManageCaps** | **string**| Allow advertiser to manage caps | [optional] |
 
 ### Return type
 
@@ -3097,7 +3097,7 @@ try {
 ## `leadDistributionContractsupdateScheduledo()`
 
 ```php
-leadDistributionContractsupdateScheduledo($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap): \Leadspedia\Model\InlineResponse200
+leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Schedule
@@ -3122,15 +3122,15 @@ $apiInstance = new Leadspedia\Api\LeadDistributionContractsApi(
     $config
 );
 $deliveryScheduleID = 56; // int
-$type = 'type_example'; // string
-$price = 56; // int
+$cap = 56; // int
+$revenueCap = 3.4; // float
+$price = 3.4; // float
 $startTime = 'startTime_example'; // string | HH:mm
 $endTime = 'endTime_example'; // string | HH:mm
-$cap = 56; // int
-$revenueCap = 56; // int
+$type = 'type_example'; // string
 
 try {
-    $result = $apiInstance->leadDistributionContractsupdateScheduledo($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap);
+    $result = $apiInstance->leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadDistributionContractsApi->leadDistributionContractsupdateScheduledo: ', $e->getMessage(), PHP_EOL;
@@ -3142,12 +3142,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **deliveryScheduleID** | **int**|  | |
-| **type** | **string**|  | [optional] |
-| **price** | **int**|  | [optional] |
+| **cap** | **int**|  | [optional] |
+| **revenueCap** | **float**|  | [optional] |
+| **price** | **float**|  | [optional] |
 | **startTime** | **string**| HH:mm | [optional] |
 | **endTime** | **string**| HH:mm | [optional] |
-| **cap** | **int**|  | [optional] |
-| **revenueCap** | **int**|  | [optional] |
+| **type** | **string**|  | [optional] |
 
 ### Return type
 

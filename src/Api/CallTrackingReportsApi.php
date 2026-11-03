@@ -126,23 +126,23 @@ class CallTrackingReportsApi
      *
      * Call Routing
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $affiliateID affiliateID (optional)
-     * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallRoutingReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallRoutingReportdo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $advertiserID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
+    public function callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -151,22 +151,22 @@ class CallTrackingReportsApi
      *
      * Call Routing
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallRoutingReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $advertiserID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
+    public function callTrackingReportsgetCallRoutingReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -177,23 +177,23 @@ class CallTrackingReportsApi
      *
      * Call Routing
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallRoutingReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $advertiserID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
+    public function callTrackingReportsgetCallRoutingReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -227,20 +227,20 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallRoutingReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallRoutingReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $advertiserID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
+    public function callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -266,6 +266,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -276,35 +279,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalID,
             'verticalID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -321,8 +297,26 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $affiliateID,
+            'affiliateID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $affiliateAccountManagerID,
             'affiliateAccountManagerID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -333,6 +327,18 @@ class CallTrackingReportsApi
             $advertiserAccountManagerID,
             'advertiserAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -407,23 +413,23 @@ class CallTrackingReportsApi
      *
      * Call Routing
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallRoutingReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $advertiserID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
+    public function callTrackingReportsgetCallRoutingReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateID = null, $affiliateAccountManagerID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallRoutingReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallRoutingReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -500,12 +506,12 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Advertisers
      *
-     * @param  string $year year (required)
      * @param  string $month month (required)
+     * @param  string $year year (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $advertiserID advertiserID (optional)
-     * @param  int|null $contractID contractID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $contractID contractID (optional)
+     * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID advertiserAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'] to see the possible values for this operation
      *
@@ -513,9 +519,9 @@ class CallTrackingReportsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($year, $month, $verticalID = null, $advertiserID = null, $contractID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID, $contentType);
         return $response;
     }
 
@@ -524,21 +530,21 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Advertisers
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($year, $month, $verticalID = null, $advertiserID = null, $contractID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -549,22 +555,22 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Advertisers
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($year, $month, $verticalID = null, $advertiserID = null, $contractID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -598,32 +604,32 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByAdvertisersDailyReportdo'
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($year, $month, $verticalID = null, $advertiserID = null, $contractID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
     {
-
-        // verify the required parameter 'year' is set
-        if ($year === null || (is_array($year) && count($year) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
-            );
-        }
 
         // verify the required parameter 'month' is set
         if ($month === null || (is_array($month) && count($month) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $month when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
+            );
+        }
+
+        // verify the required parameter 'year' is set
+        if ($year === null || (is_array($year) && count($year) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAdvertisersDailyReportdo'
             );
         }
 
@@ -642,8 +648,8 @@ class CallTrackingReportsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $year,
-            'year', // param base name
+            $month,
+            'month', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -651,8 +657,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $month,
-            'month', // param base name
+            $year,
+            'year', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -669,8 +675,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $verticalGroupID,
+            'verticalGroupID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -687,8 +693,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalGroupID,
-            'verticalGroupID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -773,12 +779,12 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Advertisers
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
-     * @param  int|null $contractID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $contractID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'] to see the possible values for this operation
      *
@@ -786,9 +792,9 @@ class CallTrackingReportsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($year, $month, $verticalID = null, $advertiserID = null, $contractID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $contractID = null, $advertiserID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersDailyReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByAdvertisersDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -865,21 +871,21 @@ class CallTrackingReportsApi
      *
      * Calls by Advertisers
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $offerID offerID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $offerID offerID (optional)
      * @param  int|null $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $toDate = null, $verticalID = null, $offerID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -888,20 +894,20 @@ class CallTrackingReportsApi
      *
      * Calls by Advertisers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $toDate = null, $verticalID = null, $offerID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -912,21 +918,21 @@ class CallTrackingReportsApi
      *
      * Calls by Advertisers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $offerID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -960,18 +966,18 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByAdvertisersReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $toDate = null, $verticalID = null, $offerID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -995,6 +1001,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -1005,26 +1014,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalID,
             'verticalID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offerID,
-            'offerID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -1041,9 +1032,30 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offerID,
+            'offerID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $advertiserAccountManagerID,
             'advertiserAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1118,21 +1130,21 @@ class CallTrackingReportsApi
      *
      * Calls by Advertisers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $offerID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
+    public function callTrackingReportsgetCallsByAdvertisersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAdvertisersReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByAdvertisersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1209,13 +1221,13 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Affiliates
      *
-     * @param  string $year year (required)
      * @param  string $month month (required)
+     * @param  string $year year (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $affiliateID affiliateID (optional)
-     * @param  int|null $campaignID campaignID (optional)
-     * @param  int|null $offerID offerID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $offerID offerID (optional)
+     * @param  int|null $campaignID campaignID (optional)
+     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID affiliateAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'] to see the possible values for this operation
      *
@@ -1223,9 +1235,9 @@ class CallTrackingReportsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($year, $month, $verticalID = null, $affiliateID = null, $campaignID = null, $offerID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID, $contentType);
         return $response;
     }
 
@@ -1234,22 +1246,22 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Affiliates
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($year, $month, $verticalID = null, $affiliateID = null, $campaignID = null, $offerID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsync($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1260,23 +1272,23 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Affiliates
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($year, $month, $verticalID = null, $affiliateID = null, $campaignID = null, $offerID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoAsyncWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1310,33 +1322,33 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByAffiliatesDailyReportdo'
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($year, $month, $verticalID = null, $affiliateID = null, $campaignID = null, $offerID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
     {
-
-        // verify the required parameter 'year' is set
-        if ($year === null || (is_array($year) && count($year) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
-            );
-        }
 
         // verify the required parameter 'month' is set
         if ($month === null || (is_array($month) && count($month) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $month when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
+            );
+        }
+
+        // verify the required parameter 'year' is set
+        if ($year === null || (is_array($year) && count($year) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $year when calling callTrackingReportsgetCallsByAffiliatesDailyReportdo'
             );
         }
 
@@ -1356,8 +1368,8 @@ class CallTrackingReportsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $year,
-            'year', // param base name
+            $month,
+            'month', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -1365,8 +1377,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $month,
-            'month', // param base name
+            $year,
+            'year', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -1383,17 +1395,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $campaignID,
-            'campaignID', // param base name
+            $verticalGroupID,
+            'verticalGroupID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -1410,8 +1413,17 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalGroupID,
-            'verticalGroupID', // param base name
+            $campaignID,
+            'campaignID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $affiliateID,
+            'affiliateID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -1496,13 +1508,13 @@ class CallTrackingReportsApi
      *
      * Daily Calls by Affiliates
      *
-     * @param  string $year (required)
      * @param  string $month (required)
+     * @param  string $year (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
-     * @param  int|null $offerID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $offerID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'] to see the possible values for this operation
      *
@@ -1510,9 +1522,9 @@ class CallTrackingReportsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($year, $month, $verticalID = null, $affiliateID = null, $campaignID = null, $offerID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesDailyReportdoWithHttpInfo($month, $year, $verticalID = null, $verticalGroupID = null, $offerID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesDailyReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByAffiliatesDailyReportdoRequest($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1589,20 +1601,20 @@ class CallTrackingReportsApi
      *
      * Calls by Affiliates
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
      * @param  int|null $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -1611,19 +1623,19 @@ class CallTrackingReportsApi
      *
      * Calls by Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1634,20 +1646,20 @@ class CallTrackingReportsApi
      *
      * Calls by Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1681,17 +1693,17 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByAffiliatesReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -1714,6 +1726,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -1721,15 +1736,6 @@ class CallTrackingReportsApi
             '', // style
             false, // explode
             true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1754,6 +1760,18 @@ class CallTrackingReportsApi
             $affiliateAccountManagerID,
             'affiliateAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1828,20 +1846,20 @@ class CallTrackingReportsApi
      *
      * Calls by Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsByAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByAffiliatesReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1918,23 +1936,23 @@ class CallTrackingReportsApi
      *
      * Calls by Campaigns
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $affiliateID affiliateID (optional)
+     * @param  int|null $verticalGroupID verticalGroupID (optional)
      * @param  int|null $offerID offerID (optional)
      * @param  string|null $payoutModel payoutModel (optional)
-     * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $offerID = null, $payoutModel = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
+    public function callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -1943,22 +1961,22 @@ class CallTrackingReportsApi
      *
      * Calls by Campaigns
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
+     * @param  int|null $verticalGroupID (optional)
      * @param  int|null $offerID (optional)
      * @param  string|null $payoutModel (optional)
-     * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $offerID = null, $payoutModel = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1969,23 +1987,23 @@ class CallTrackingReportsApi
      *
      * Calls by Campaigns
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
+     * @param  int|null $verticalGroupID (optional)
      * @param  int|null $offerID (optional)
      * @param  string|null $payoutModel (optional)
-     * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $offerID = null, $payoutModel = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
+    public function callTrackingReportsgetCallsByCampaignsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2019,20 +2037,20 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByCampaignsReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
+     * @param  int|null $verticalGroupID (optional)
      * @param  int|null $offerID (optional)
      * @param  string|null $payoutModel (optional)
-     * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $offerID = null, $payoutModel = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
+    public function callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -2058,6 +2076,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -2065,15 +2086,6 @@ class CallTrackingReportsApi
             '', // style
             false, // explode
             true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2086,8 +2098,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
+            $verticalGroupID,
+            'verticalGroupID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2113,8 +2125,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalGroupID,
-            'verticalGroupID', // param base name
+            $affiliateID,
+            'affiliateID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2125,6 +2137,18 @@ class CallTrackingReportsApi
             $affiliateAccountManagerID,
             'affiliateAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2199,23 +2223,23 @@ class CallTrackingReportsApi
      *
      * Calls by Campaigns
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
+     * @param  int|null $verticalGroupID (optional)
      * @param  int|null $offerID (optional)
      * @param  string|null $payoutModel (optional)
-     * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $offerID = null, $payoutModel = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
+    public function callTrackingReportsgetCallsByCampaignsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $offerID = null, $payoutModel = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByCampaignsReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByCampaignsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2292,21 +2316,21 @@ class CallTrackingReportsApi
      *
      * Calls by Contracts
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $advertiserID advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
+    public function callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -2315,20 +2339,20 @@ class CallTrackingReportsApi
      *
      * Calls by Contracts
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
+    public function callTrackingReportsgetCallsByContractsReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2339,21 +2363,21 @@ class CallTrackingReportsApi
      *
      * Calls by Contracts
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
+    public function callTrackingReportsgetCallsByContractsReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2387,18 +2411,18 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByContractsReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
+    public function callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -2422,6 +2446,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -2432,26 +2459,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalID,
             'verticalID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2468,9 +2477,30 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $advertiserID,
+            'advertiserID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $advertiserAccountManagerID,
             'advertiserAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -2545,21 +2575,21 @@ class CallTrackingReportsApi
      *
      * Calls by Contracts
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $advertiserID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $advertiserID (optional)
      * @param  int|null $advertiserAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $advertiserID = null, $verticalGroupID = null, $advertiserAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
+    public function callTrackingReportsgetCallsByContractsReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $advertiserID = null, $advertiserAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByContractsReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByContractsReportdoRequest($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2636,20 +2666,20 @@ class CallTrackingReportsApi
      *
      * Calls by Offers
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
      * @param  string|null $payoutModel payoutModel (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $payoutModel = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
+    public function callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate, $contentType);
         return $response;
     }
 
@@ -2658,19 +2688,19 @@ class CallTrackingReportsApi
      *
      * Calls by Offers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  string|null $payoutModel (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $payoutModel = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
+    public function callTrackingReportsgetCallsByOffersReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel, $contentType)
+        return $this->callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2681,20 +2711,20 @@ class CallTrackingReportsApi
      *
      * Calls by Offers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  string|null $payoutModel (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $payoutModel = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
+    public function callTrackingReportsgetCallsByOffersReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2728,17 +2758,17 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByOffersReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  string|null $payoutModel (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $payoutModel = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
+    public function callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -2761,6 +2791,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -2768,15 +2801,6 @@ class CallTrackingReportsApi
             '', // style
             false, // explode
             true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2800,6 +2824,18 @@ class CallTrackingReportsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $payoutModel,
             'payoutModel', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2875,20 +2911,20 @@ class CallTrackingReportsApi
      *
      * Calls by Offers
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
      * @param  int|null $verticalGroupID (optional)
      * @param  string|null $payoutModel (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $verticalGroupID = null, $payoutModel = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
+    public function callTrackingReportsgetCallsByOffersReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $payoutModel = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByOffersReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel, $contentType);
+        $request = $this->callTrackingReportsgetCallsByOffersReportdoRequest($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2965,22 +3001,22 @@ class CallTrackingReportsApi
      *
      * Calls by Sub Affiliates
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
-     * @param  int|null $affiliateID affiliateID (optional)
-     * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  int|null $campaignID campaignID (optional)
+     * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
         return $response;
     }
 
@@ -2989,21 +3025,21 @@ class CallTrackingReportsApi
      *
      * Calls by Sub Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsync($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID, $contentType)
+        return $this->callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3014,22 +3050,22 @@ class CallTrackingReportsApi
      *
      * Calls by Sub Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoAsyncWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3063,19 +3099,19 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsBySubAffiliatesReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -3100,6 +3136,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -3110,35 +3149,8 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalID,
             'verticalID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $affiliateID,
-            'affiliateID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $campaignID,
-            'campaignID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -3155,9 +3167,39 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignID,
+            'campaignID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $affiliateID,
+            'affiliateID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $affiliateAccountManagerID,
             'affiliateAccountManagerID', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -3232,22 +3274,22 @@ class CallTrackingReportsApi
      *
      * Calls by Sub Affiliates
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
-     * @param  int|null $affiliateID (optional)
-     * @param  int|null $campaignID (optional)
      * @param  int|null $verticalGroupID (optional)
+     * @param  int|null $campaignID (optional)
+     * @param  int|null $affiliateID (optional)
      * @param  int|null $affiliateAccountManagerID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $verticalGroupID = null, $affiliateAccountManagerID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
+    public function callTrackingReportsgetCallsBySubAffiliatesReportdoWithHttpInfo($fromDate, $verticalID = null, $verticalGroupID = null, $campaignID = null, $affiliateID = null, $affiliateAccountManagerID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsBySubAffiliatesReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID, $contentType);
+        $request = $this->callTrackingReportsgetCallsBySubAffiliatesReportdoRequest($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3324,18 +3366,18 @@ class CallTrackingReportsApi
      *
      * Calls by Verticals
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalGroupID verticalGroupID (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $toDate = null, $verticalGroupID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
+    public function callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
     {
-        [$response] = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $toDate, $verticalGroupID, $contentType);
+        [$response] = $this->callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID, $toDate, $contentType);
         return $response;
     }
 
@@ -3344,17 +3386,17 @@ class CallTrackingReportsApi
      *
      * Calls by Verticals
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalGroupID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $toDate = null, $verticalGroupID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsync($fromDate, $verticalGroupID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
     {
-        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $toDate, $verticalGroupID, $contentType)
+        return $this->callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID, $toDate, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3365,18 +3407,18 @@ class CallTrackingReportsApi
      *
      * Calls by Verticals
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalGroupID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalGroupID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
+    public function callTrackingReportsgetCallsByVerticalsReportdoAsyncWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $toDate, $verticalGroupID, $contentType);
+        $request    = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3410,15 +3452,15 @@ class CallTrackingReportsApi
     /**
      * Create request for operation 'callTrackingReportsgetCallsByVerticalsReportdo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalGroupID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $toDate = null, $verticalGroupID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
+    public function callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -3439,6 +3481,9 @@ class CallTrackingReportsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -3449,18 +3494,21 @@ class CallTrackingReportsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
+            $verticalGroupID,
+            'verticalGroupID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalGroupID,
-            'verticalGroupID', // param base name
-            'integer', // openApiType
+            $toDate,
+            'toDate', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -3535,18 +3583,18 @@ class CallTrackingReportsApi
      *
      * Calls by Verticals
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalGroupID (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $toDate = null, $verticalGroupID = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
+    public function callTrackingReportsgetCallsByVerticalsReportdoWithHttpInfo($fromDate, $verticalGroupID = null, $toDate = null, string $contentType = self::contentTypes['callTrackingReportsgetCallsByVerticalsReportdo'][0])
     {
-        $request = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $toDate, $verticalGroupID, $contentType);
+        $request = $this->callTrackingReportsgetCallsByVerticalsReportdoRequest($fromDate, $verticalGroupID, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

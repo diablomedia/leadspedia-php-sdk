@@ -111,7 +111,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $contractID contractID (required)
      * @param  int $fieldID fieldID (required)
      * @param  string $fieldValue fieldValue (required)
-     * @param  int $price price (required)
+     * @param  float $price price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulescreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -132,7 +132,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $contractID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulescreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -154,7 +154,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $contractID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulescreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -200,7 +200,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $contractID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulescreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -276,7 +276,7 @@ class ContractFieldRevenueRulesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $price,
             'price', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -354,7 +354,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $contractID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulescreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -975,7 +975,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $fieldRevenueRuleID fieldRevenueRuleID (required)
      * @param  int $fieldID fieldID (required)
      * @param  string $fieldValue fieldValue (required)
-     * @param  int $price price (required)
+     * @param  float $price price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulesupdatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -996,7 +996,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $fieldRevenueRuleID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulesupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1018,7 +1018,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $fieldRevenueRuleID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulesupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1064,7 +1064,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $fieldRevenueRuleID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulesupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1140,7 +1140,7 @@ class ContractFieldRevenueRulesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $price,
             'price', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -1218,7 +1218,7 @@ class ContractFieldRevenueRulesApi
      * @param  int $fieldRevenueRuleID (required)
      * @param  int $fieldID (required)
      * @param  string $fieldValue (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contractFieldRevenueRulesupdatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format

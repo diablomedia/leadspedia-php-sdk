@@ -205,7 +205,7 @@ try {
 ## `affiliatesgetAlldo()`
 
 ```php
-affiliatesgetAlldo($status, $search, $affiliateID, $accountManagerID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -229,15 +229,15 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$status = 'status_example'; // string
-$search = 'search_example'; // string
 $affiliateID = 56; // int
 $accountManagerID = 56; // int
+$status = 'status_example'; // string
+$search = 'search_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->affiliatesgetAlldo($status, $search, $affiliateID, $accountManagerID, $start, $limit);
+    $result = $apiInstance->affiliatesgetAlldo($affiliateID, $accountManagerID, $status, $search, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -248,10 +248,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **status** | **string**|  | [optional] |
-| **search** | **string**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **accountManagerID** | **int**|  | [optional] |
+| **status** | **string**|  | [optional] |
+| **search** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -461,7 +461,7 @@ try {
 ## `affiliatesupdateInfodo()`
 
 ```php
-affiliatesupdateInfodo($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website): \Leadspedia\Model\InlineResponse200
+affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -487,6 +487,7 @@ $apiInstance = new Leadspedia\Api\AffiliatesApi(
 );
 $affiliateID = 56; // int
 $affiliateName = 'affiliateName_example'; // string | >= 1 characters
+$website = 'website_example'; // string
 $alternateID = 'alternateID_example'; // string
 $address = 'address_example'; // string
 $address2 = 'address2_example'; // string
@@ -494,10 +495,9 @@ $city = 'city_example'; // string
 $state = 'state_example'; // string
 $zipCode = 'zipCode_example'; // string
 $country = 'country_example'; // string
-$website = 'website_example'; // string
 
 try {
-    $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $alternateID, $address, $address2, $city, $state, $zipCode, $country, $website);
+    $result = $apiInstance->affiliatesupdateInfodo($affiliateID, $affiliateName, $website, $alternateID, $address, $address2, $city, $state, $zipCode, $country);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliatesApi->affiliatesupdateInfodo: ', $e->getMessage(), PHP_EOL;
@@ -510,6 +510,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **affiliateID** | **int**|  | |
 | **affiliateName** | **string**| &gt;&#x3D; 1 characters | [optional] |
+| **website** | **string**|  | [optional] |
 | **alternateID** | **string**|  | [optional] |
 | **address** | **string**|  | [optional] |
 | **address2** | **string**|  | [optional] |
@@ -517,7 +518,6 @@ try {
 | **state** | **string**|  | [optional] |
 | **zipCode** | **string**|  | [optional] |
 | **country** | **string**|  | [optional] |
-| **website** | **string**|  | [optional] |
 
 ### Return type
 

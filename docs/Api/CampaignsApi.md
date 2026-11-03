@@ -29,7 +29,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `campaignsaddFilterdo()`
 
 ```php
-campaignsaddFilterdo($campaignID, $fieldID, $operator, $value, $date, $miles): \Leadspedia\Model\InlineResponse200
+campaignsaddFilterdo($fieldID, $operator, $campaignID, $value, $date, $miles): \Leadspedia\Model\InlineResponse200
 ```
 
 Add Filter
@@ -53,15 +53,15 @@ $apiInstance = new Leadspedia\Api\CampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaignID = 56; // int
 $fieldID = 56; // int
 $operator = 'operator_example'; // string | Operator types are dependent on the data type of the field.
+$campaignID = 56; // int
 $value = 'value_example'; // string
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $miles = 56; // int
 
 try {
-    $result = $apiInstance->campaignsaddFilterdo($campaignID, $fieldID, $operator, $value, $date, $miles);
+    $result = $apiInstance->campaignsaddFilterdo($fieldID, $operator, $campaignID, $value, $date, $miles);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsaddFilterdo: ', $e->getMessage(), PHP_EOL;
@@ -72,11 +72,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaignID** | **int**|  | |
 | **fieldID** | **int**|  | |
 | **operator** | **string**| Operator types are dependent on the data type of the field. | |
+| **campaignID** | **int**|  | |
 | **value** | **string**|  | [optional] |
-| **date** | **string**|  | [optional] |
+| **date** | **\DateTime**|  | [optional] |
 | **miles** | **int**|  | [optional] |
 
 ### Return type
@@ -537,7 +537,7 @@ try {
 ## `campaignsgetAlldo()`
 
 ```php
-campaignsgetAlldo($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
+campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -561,17 +561,17 @@ $apiInstance = new Leadspedia\Api\CampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$affiliateID = 56; // int
 $campaignID = 56; // int
-$verticalID = 56; // int
+$affiliateID = 56; // int
 $offerID = 56; // int
-$search = 'search_example'; // string | Search campaign name
+$verticalID = 56; // int
 $status = 'status_example'; // string
+$search = 'search_example'; // string | Search campaign name
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->campaignsgetAlldo($affiliateID, $campaignID, $verticalID, $offerID, $search, $status, $start, $limit);
+    $result = $apiInstance->campaignsgetAlldo($campaignID, $affiliateID, $offerID, $verticalID, $status, $search, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -582,12 +582,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
-| **search** | **string**| Search campaign name | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
+| **search** | **string**| Search campaign name | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -923,7 +923,7 @@ try {
 ## `campaignsupdateBasicInfodo()`
 
 ```php
-campaignsupdateBasicInfodo($campaignID, $campaignName, $alternativeID, $notes): \Leadspedia\Model\InlineResponse200
+campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -949,11 +949,11 @@ $apiInstance = new Leadspedia\Api\CampaignsApi(
 );
 $campaignID = 56; // int
 $campaignName = 'campaignName_example'; // string | >= 1 characters
-$alternativeID = 'alternativeID_example'; // string
 $notes = 'notes_example'; // string
+$alternativeID = 'alternativeID_example'; // string
 
 try {
-    $result = $apiInstance->campaignsupdateBasicInfodo($campaignID, $campaignName, $alternativeID, $notes);
+    $result = $apiInstance->campaignsupdateBasicInfodo($campaignID, $campaignName, $notes, $alternativeID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignsApi->campaignsupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
@@ -966,8 +966,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaignID** | **int**|  | |
 | **campaignName** | **string**| &gt;&#x3D; 1 characters | [optional] |
-| **alternativeID** | **string**|  | [optional] |
 | **notes** | **string**|  | [optional] |
+| **alternativeID** | **string**|  | [optional] |
 
 ### Return type
 

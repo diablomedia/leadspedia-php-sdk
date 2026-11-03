@@ -118,17 +118,17 @@ class ListApi
      * Get All
      *
      * @param  string|null $type type (optional)
-     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  int|null $advertiserID Can be passed to retrieve advertiser specific return reasons (optional)
+     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listgetAlldo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function listgetAlldo($type = null, $verticalID = null, $advertiserID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
+    public function listgetAlldo($type = null, $advertiserID = null, $verticalID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
     {
-        [$response] = $this->listgetAlldoWithHttpInfo($type, $verticalID, $advertiserID, $contentType);
+        [$response] = $this->listgetAlldoWithHttpInfo($type, $advertiserID, $verticalID, $contentType);
         return $response;
     }
 
@@ -138,16 +138,16 @@ class ListApi
      * Get All
      *
      * @param  string|null $type (optional)
-     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  int|null $advertiserID Can be passed to retrieve advertiser specific return reasons (optional)
+     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listgetAlldo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listgetAlldoAsync($type = null, $verticalID = null, $advertiserID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
+    public function listgetAlldoAsync($type = null, $advertiserID = null, $verticalID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
     {
-        return $this->listgetAlldoAsyncWithHttpInfo($type, $verticalID, $advertiserID, $contentType)
+        return $this->listgetAlldoAsyncWithHttpInfo($type, $advertiserID, $verticalID, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -159,17 +159,17 @@ class ListApi
      * Get All
      *
      * @param  string|null $type (optional)
-     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  int|null $advertiserID Can be passed to retrieve advertiser specific return reasons (optional)
+     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listgetAlldo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listgetAlldoAsyncWithHttpInfo($type = null, $verticalID = null, $advertiserID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
+    public function listgetAlldoAsyncWithHttpInfo($type = null, $advertiserID = null, $verticalID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->listgetAlldoRequest($type, $verticalID, $advertiserID, $contentType);
+        $request    = $this->listgetAlldoRequest($type, $advertiserID, $verticalID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -204,14 +204,14 @@ class ListApi
      * Create request for operation 'listgetAlldo'
      *
      * @param  string|null $type (optional)
-     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  int|null $advertiserID Can be passed to retrieve advertiser specific return reasons (optional)
+     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listgetAlldo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listgetAlldoRequest($type = null, $verticalID = null, $advertiserID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
+    public function listgetAlldoRequest($type = null, $advertiserID = null, $verticalID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
     {
 
 
@@ -236,8 +236,8 @@ class ListApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -245,8 +245,8 @@ class ListApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $verticalID,
+            'verticalID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -323,17 +323,17 @@ class ListApi
      * Get All
      *
      * @param  string|null $type (optional)
-     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  int|null $advertiserID Can be passed to retrieve advertiser specific return reasons (optional)
+     * @param  int|null $verticalID Can be passed to retrieve vertical specific return reasons (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listgetAlldo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listgetAlldoWithHttpInfo($type = null, $verticalID = null, $advertiserID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
+    public function listgetAlldoWithHttpInfo($type = null, $advertiserID = null, $verticalID = null, string $contentType = self::contentTypes['listgetAlldo'][0])
     {
-        $request = $this->listgetAlldoRequest($type, $verticalID, $advertiserID, $contentType);
+        $request = $this->listgetAlldoRequest($type, $advertiserID, $verticalID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

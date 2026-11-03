@@ -1,4 +1,3 @@
-.gitignore
 README.md
 composer.json
 docs/Api/AdvertisersApi.md

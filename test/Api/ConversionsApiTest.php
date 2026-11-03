@@ -25,17 +25,17 @@ final class ConversionsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsApi::class, 'conversionsgetAlldo', [
             'fromDate'         => 'fromDate',
-            'toDate'           => 'toDate',
             'verticalID'       => 'verticalID',
+            'offerID'          => 'offerID',
             'affiliateID'      => 'affiliateID',
             'campaignID'       => 'campaignID',
             'advertiserID'     => 'advertiserID',
-            'offerID'          => 'offerID',
             'status'           => 'status',
-            'showTest'         => 'showTest',
-            'showNonTest'      => 'showNonTest',
             'showThrottled'    => 'showThrottled',
             'showNonThrottled' => 'showNonThrottled',
+            'showTest'         => 'showTest',
+            'showNonTest'      => 'showNonTest',
+            'toDate'           => 'toDate',
             'start'            => 'start',
             'limit'            => 'limit',
         ]);

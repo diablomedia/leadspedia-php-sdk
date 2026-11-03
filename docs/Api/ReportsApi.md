@@ -17,7 +17,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `reportsgetAdvertisersReportdo()`
 
 ```php
-reportsgetAdvertisersReportdo($fromDate, $toDate, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Advertisers
@@ -41,12 +41,12 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->reportsgetAdvertisersReportdo($fromDate, $toDate, $advertiserAccountManagerID);
+    $result = $apiInstance->reportsgetAdvertisersReportdo($fromDate, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -57,9 +57,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -81,7 +81,7 @@ try {
 ## `reportsgetAffiliatesReportdo()`
 
 ```php
-reportsgetAffiliatesReportdo($fromDate, $toDate, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Affiliates
@@ -105,12 +105,12 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->reportsgetAffiliatesReportdo($fromDate, $toDate, $affiliateAccountManagerID);
+    $result = $apiInstance->reportsgetAffiliatesReportdo($fromDate, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -121,9 +121,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -145,7 +145,7 @@ try {
 ## `reportsgetCampaignsReportdo()`
 
 ```php
-reportsgetCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID): \Leadspedia\Model\InlineResponse2001
+reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Campaigns
@@ -169,13 +169,13 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->reportsgetCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID);
+    $result = $apiInstance->reportsgetCampaignsReportdo($fromDate, $affiliateID, $verticalID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -186,10 +186,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -211,7 +211,7 @@ try {
 ## `reportsgetContractsReportdo()`
 
 ```php
-reportsgetContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID): \Leadspedia\Model\InlineResponse2001
+reportsgetContractsReportdo($fromDate, $contractID, $advertiserID, $verticalID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Contracts
@@ -235,14 +235,14 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$advertiserID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $contractID = 56; // int
+$advertiserID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->reportsgetContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID);
+    $result = $apiInstance->reportsgetContractsReportdo($fromDate, $contractID, $advertiserID, $verticalID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetContractsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -253,11 +253,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **contractID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -279,7 +279,7 @@ try {
 ## `reportsgetOffersReportdo()`
 
 ```php
-reportsgetOffersReportdo($fromDate, $toDate, $verticalID): \Leadspedia\Model\InlineResponse2001
+reportsgetOffersReportdo($fromDate, $verticalID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Offers
@@ -303,12 +303,12 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->reportsgetOffersReportdo($fromDate, $toDate, $verticalID);
+    $result = $apiInstance->reportsgetOffersReportdo($fromDate, $verticalID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportsApi->reportsgetOffersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -319,9 +319,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -367,8 +367,8 @@ $apiInstance = new Leadspedia\Api\ReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->reportsgetVerticalsReportdo($fromDate, $toDate);
@@ -382,8 +382,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 

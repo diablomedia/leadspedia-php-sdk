@@ -413,7 +413,7 @@ try {
 ## `advertisersCreditCardsupdatePaymentProfileIDdo()`
 
 ```php
-advertisersCreditCardsupdatePaymentProfileIDdo($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
+advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Payment Profile ID
@@ -437,8 +437,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int
 $creditCardID = 56; // int
+$advertiserID = 56; // int
 $paymentProfileID = 'paymentProfileID_example'; // string
 $expMonth = 'expMonth_example'; // string | 2-digit expiration month (MM)
 $expYear = 'expYear_example'; // string | 4-digit expiration year (YYYY)
@@ -450,7 +450,7 @@ $zipCode = 'zipCode_example'; // string | Zip or postal code
 $country = 'country_example'; // string | 2-character country code (example: US)
 
 try {
-    $result = $apiInstance->advertisersCreditCardsupdatePaymentProfileIDdo($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
+    $result = $apiInstance->advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatePaymentProfileIDdo: ', $e->getMessage(), PHP_EOL;
@@ -461,8 +461,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **advertiserID** | **int**|  | |
 | **creditCardID** | **int**|  | |
+| **advertiserID** | **int**|  | |
 | **paymentProfileID** | **string**|  | [optional] |
 | **expMonth** | **string**| 2-digit expiration month (MM) | [optional] |
 | **expYear** | **string**| 4-digit expiration year (YYYY) | [optional] |
@@ -493,7 +493,7 @@ try {
 ## `advertisersCreditCardsupdatedo()`
 
 ```php
-advertisersCreditCardsupdatedo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2): \Leadspedia\Model\InlineResponse200
+advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -517,8 +517,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersCreditCardsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int
 $creditCardID = 56; // int
+$advertiserID = 56; // int
 $nameOnCard = 'nameOnCard_example'; // string | First and last name
 $expMonth = 'expMonth_example'; // string | 2-digit expiration month (MM)
 $expYear = 'expYear_example'; // string | 4-digit expiration year (YYYY)
@@ -530,7 +530,7 @@ $country = 'country_example'; // string | 2-character country code (example: US)
 $address2 = 'address2_example'; // string
 
 try {
-    $result = $apiInstance->advertisersCreditCardsupdatedo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
+    $result = $apiInstance->advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersCreditCardsApi->advertisersCreditCardsupdatedo: ', $e->getMessage(), PHP_EOL;
@@ -541,8 +541,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **advertiserID** | **int**|  | |
 | **creditCardID** | **int**|  | |
+| **advertiserID** | **int**|  | |
 | **nameOnCard** | **string**| First and last name | |
 | **expMonth** | **string**| 2-digit expiration month (MM) | |
 | **expYear** | **string**| 4-digit expiration year (YYYY) | |

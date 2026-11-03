@@ -34,7 +34,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `advertisersadjustCreditdo()`
 
 ```php
-advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note): \Leadspedia\Model\InlineResponse200
+advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\InlineResponse200
 ```
 
 Adjust Credit
@@ -60,16 +60,16 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 );
 $advertiserID = 56; // int
 $type = 'type_example'; // string
-$amount = 56; // int
+$amount = 3.4; // float
 $charge = 'No'; // string | If Yes, the default credit card of the advertiser will be charged
-$transactionFee = 'transactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
 $generateInvoice = 'No'; // string | If Yes and the type is Credit, an invoice will be generated
 $note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
-    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note);
+    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;
@@ -82,13 +82,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **advertiserID** | **int**|  | |
 | **type** | **string**|  | |
-| **amount** | **int**|  | |
+| **amount** | **float**|  | |
 | **charge** | **string**| If Yes, the default credit card of the advertiser will be charged | [optional] [default to &#39;No&#39;] |
-| **transactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
 | **generateInvoice** | **string**| If Yes and the type is Credit, an invoice will be generated | [optional] [default to &#39;No&#39;] |
 | **note** | **string**|  | [optional] |
+| **transactionFee** | **string**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 
 ### Return type
 
@@ -381,8 +381,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     $config
 );
 $advertiserID = 56; // int
-$startDate = 'startDate_example'; // string
-$endDate = 'endDate_example'; // string
+$startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $autoCalculateItems = 'autoCalculateItems_example'; // string
 $approveInvoice = 'approveInvoice_example'; // string
 $forceBilling = 'forceBilling_example'; // string
@@ -403,8 +403,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **advertiserID** | **int**|  | |
-| **startDate** | **string**|  | |
-| **endDate** | **string**|  | |
+| **startDate** | **\DateTime**|  | |
+| **endDate** | **\DateTime**|  | |
 | **autoCalculateItems** | **string**|  | [optional] |
 | **approveInvoice** | **string**|  | [optional] |
 | **forceBilling** | **string**|  | [optional] |
@@ -432,7 +432,7 @@ try {
 ## `advertisersgetAlldo()`
 
 ```php
-advertisersgetAlldo($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit): \Leadspedia\Model\InlineResponse2001
+advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -456,18 +456,18 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$search = 'search_example'; // string
-$status = 'status_example'; // string
 $advertiserID = 56; // int
-$accountManagerID = 56; // int
 $advertiserType = 'advertiserType_example'; // string
+$accountManagerID = 56; // int
+$status = 'status_example'; // string
 $isCreditEnabled = 'isCreditEnabled_example'; // string
 $hasCreditCardOnFile = 'hasCreditCardOnFile_example'; // string
+$search = 'search_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return.
 
 try {
-    $result = $apiInstance->advertisersgetAlldo($search, $status, $advertiserID, $accountManagerID, $advertiserType, $isCreditEnabled, $hasCreditCardOnFile, $start, $limit);
+    $result = $apiInstance->advertisersgetAlldo($advertiserID, $advertiserType, $accountManagerID, $status, $isCreditEnabled, $hasCreditCardOnFile, $search, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -478,13 +478,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **search** | **string**|  | [optional] |
-| **status** | **string**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
-| **accountManagerID** | **int**|  | [optional] |
 | **advertiserType** | **string**|  | [optional] |
+| **accountManagerID** | **int**|  | [optional] |
+| **status** | **string**|  | [optional] |
 | **isCreditEnabled** | **string**|  | [optional] |
 | **hasCreditCardOnFile** | **string**|  | [optional] |
+| **search** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. | [optional] [default to 100] |
 
@@ -533,8 +533,8 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
     $config
 );
 $advertiserID = 56; // int
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $disposition = 'disposition_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
@@ -552,8 +552,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **advertiserID** | **int**|  | |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
 | **disposition** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
@@ -764,7 +764,7 @@ try {
 ## `advertisersupdateAutoRechargeSettingsdo()`
 
 ```php
-advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice): \Leadspedia\Model\InlineResponse200
+advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Auto Recharge Settings
@@ -790,15 +790,15 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 );
 $advertiserID = 56; // int
 $enableAutoRecharge = 'enableAutoRecharge_example'; // string
-$autoChargeAmount = 56; // int
-$autoChargeBalance = 56; // int | Credit will be auto charged when the balance falls below this amount
+$autoChargeBalance = 3.4; // float | Credit will be auto charged when the balance falls below this amount
+$autoChargeAmount = 3.4; // float
 $chargeTransactionFee = 'chargeTransactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 $generateInvoice = 'generateInvoice_example'; // string
 
 try {
-    $result = $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice);
+    $result = $apiInstance->advertisersupdateAutoRechargeSettingsdo($advertiserID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -811,11 +811,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **advertiserID** | **int**|  | |
 | **enableAutoRecharge** | **string**|  | [optional] |
-| **autoChargeAmount** | **int**|  | [optional] |
-| **autoChargeBalance** | **int**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeBalance** | **float**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeAmount** | **float**|  | [optional] |
 | **chargeTransactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 | **generateInvoice** | **string**|  | [optional] |
 
 ### Return type
@@ -904,7 +904,7 @@ try {
 ## `advertisersupdateInfodo()`
 
 ```php
-advertisersupdateInfodo($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website): \Leadspedia\Model\InlineResponse200
+advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -930,7 +930,9 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 );
 $advertiserID = 56; // int
 $advertiserName = 'advertiserName_example'; // string
+$website = 'website_example'; // string
 $alternateID = 'alternateID_example'; // string
+$source = 'source_example'; // string
 $externalCRMID = 'externalCRMID_example'; // string
 $address = 'address_example'; // string
 $address2 = 'address2_example'; // string
@@ -938,11 +940,9 @@ $city = 'city_example'; // string
 $state = 'state_example'; // string
 $zipCode = 'zipCode_example'; // string
 $country = 'country_example'; // string
-$source = 'source_example'; // string
-$website = 'website_example'; // string
 
 try {
-    $result = $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $alternateID, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country, $source, $website);
+    $result = $apiInstance->advertisersupdateInfodo($advertiserID, $advertiserName, $website, $alternateID, $source, $externalCRMID, $address, $address2, $city, $state, $zipCode, $country);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersupdateInfodo: ', $e->getMessage(), PHP_EOL;
@@ -955,7 +955,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **advertiserID** | **int**|  | |
 | **advertiserName** | **string**|  | [optional] |
+| **website** | **string**|  | [optional] |
 | **alternateID** | **string**|  | [optional] |
+| **source** | **string**|  | [optional] |
 | **externalCRMID** | **string**|  | [optional] |
 | **address** | **string**|  | [optional] |
 | **address2** | **string**|  | [optional] |
@@ -963,8 +965,6 @@ try {
 | **state** | **string**|  | [optional] |
 | **zipCode** | **string**|  | [optional] |
 | **country** | **string**|  | [optional] |
-| **source** | **string**|  | [optional] |
-| **website** | **string**|  | [optional] |
 
 ### Return type
 

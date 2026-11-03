@@ -160,7 +160,7 @@ try {
 ## `leadsgetAlldo()`
 
 ```php
-leadsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $paid, $scrubbed, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -186,18 +186,18 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$affiliateID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
 $paid = 'paid_example'; // string
 $scrubbed = 'scrubbed_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $paid, $scrubbed, $start, $limit);
+    $result = $apiInstance->leadsgetAlldo($fromDate, $campaignID, $affiliateID, $verticalID, $paid, $scrubbed, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -208,13 +208,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **paid** | **string**|  | [optional] |
 | **scrubbed** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -238,7 +238,7 @@ try {
 ## `leadsgetDelivereddo()`
 
 ```php
-leadsgetDelivereddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $leadID, $returned, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Delivered
@@ -262,20 +262,20 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $verticalID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
-$leadID = 'leadID_example'; // string
 $returned = 'returned_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetDelivereddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $leadID, $returned, $start, $limit);
+    $result = $apiInstance->leadsgetDelivereddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetDelivereddo: ', $e->getMessage(), PHP_EOL;
@@ -286,15 +286,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | [optional] |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | [optional] |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
-| **leadID** | **string**|  | [optional] |
 | **returned** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -462,8 +462,8 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
@@ -484,8 +484,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
@@ -538,7 +538,7 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $contractID = 56; // int
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
@@ -555,7 +555,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date** | **string**|  | [optional] |
+| **date** | **\DateTime**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
@@ -580,7 +580,7 @@ try {
 ## `leadsgetQueuedo()`
 
 ```php
-leadsgetQueuedo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Queue
@@ -604,16 +604,16 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$affiliateID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetQueuedo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $start, $limit);
+    $result = $apiInstance->leadsgetQueuedo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetQueuedo: ', $e->getMessage(), PHP_EOL;
@@ -624,11 +624,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | [optional] |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -652,7 +652,7 @@ try {
 ## `leadsgetReturnsdo()`
 
 ```php
-leadsgetReturnsdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $status, $returnReasonID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Returns
@@ -676,20 +676,20 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $verticalID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
 $status = 'status_example'; // string
 $returnReasonID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetReturnsdo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $status, $returnReasonID, $start, $limit);
+    $result = $apiInstance->leadsgetReturnsdo($fromDate, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $status, $returnReasonID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetReturnsdo: ', $e->getMessage(), PHP_EOL;
@@ -700,15 +700,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
 | **returnReasonID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -732,7 +732,7 @@ try {
 ## `leadsgetReviewdo()`
 
 ```php
-leadsgetReviewdo($verticalID, $affiliateID, $campaignID, $leadID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Review
@@ -756,15 +756,15 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
 $leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetReviewdo($verticalID, $affiliateID, $campaignID, $leadID, $start, $limit);
+    $result = $apiInstance->leadsgetReviewdo($leadID, $campaignID, $affiliateID, $verticalID, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetReviewdo: ', $e->getMessage(), PHP_EOL;
@@ -775,10 +775,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -802,7 +802,7 @@ try {
 ## `leadsgetScrubbeddo()`
 
 ```php
-leadsgetScrubbeddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Scrubbed
@@ -826,16 +826,16 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$affiliateID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetScrubbeddo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $start, $limit);
+    $result = $apiInstance->leadsgetScrubbeddo($fromDate, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetScrubbeddo: ', $e->getMessage(), PHP_EOL;
@@ -846,11 +846,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -874,7 +874,7 @@ try {
 ## `leadsgetSolddo()`
 
 ```php
-leadsgetSolddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $leadID, $returned, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Sold
@@ -898,20 +898,20 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $verticalID = 56; // int
 $advertiserID = 56; // int
 $contractID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
-$leadID = 'leadID_example'; // string
 $returned = 'returned_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetSolddo($fromDate, $toDate, $verticalID, $advertiserID, $contractID, $affiliateID, $campaignID, $leadID, $returned, $start, $limit);
+    $result = $apiInstance->leadsgetSolddo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $advertiserID, $contractID, $returned, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetSolddo: ', $e->getMessage(), PHP_EOL;
@@ -922,15 +922,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **contractID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
-| **leadID** | **string**|  | [optional] |
 | **returned** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -954,7 +954,7 @@ try {
 ## `leadsgetTrashdo()`
 
 ```php
-leadsgetTrashdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $leadID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get Trash
@@ -978,17 +978,17 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
-$verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $leadID = 'leadID_example'; // string
+$campaignID = 56; // int
+$affiliateID = 56; // int
+$verticalID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->leadsgetTrashdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $leadID, $start, $limit);
+    $result = $apiInstance->leadsgetTrashdo($fromDate, $leadID, $campaignID, $affiliateID, $verticalID, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsgetTrashdo: ', $e->getMessage(), PHP_EOL;
@@ -999,12 +999,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
-| **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **leadID** | **string**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
+| **verticalID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -1158,7 +1158,7 @@ try {
 ## `leadsreturnLeadFromAllContractsdo()`
 
 ```php
-leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $replaceReturns, $scrub): \Leadspedia\Model\InlineResponse200
+leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns): \Leadspedia\Model\InlineResponse200
 ```
 
 Return Lead From All Contracts
@@ -1184,11 +1184,11 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
 );
 $leadID = 'leadID_example'; // string
 $returnReasonID = 56; // int
-$replaceReturns = 'replaceReturns_example'; // string
 $scrub = 'scrub_example'; // string
+$replaceReturns = 'replaceReturns_example'; // string
 
 try {
-    $result = $apiInstance->leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $replaceReturns, $scrub);
+    $result = $apiInstance->leadsreturnLeadFromAllContractsdo($leadID, $returnReasonID, $scrub, $replaceReturns);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeadFromAllContractsdo: ', $e->getMessage(), PHP_EOL;
@@ -1201,8 +1201,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **leadID** | **string**|  | |
 | **returnReasonID** | **int**|  | |
-| **replaceReturns** | **string**|  | [optional] |
 | **scrub** | **string**|  | [optional] |
+| **replaceReturns** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1224,7 +1224,7 @@ try {
 ## `leadsreturnLeaddo()`
 
 ```php
-leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $replaceReturns, $scrub): \Leadspedia\Model\InlineResponse200
+leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns): \Leadspedia\Model\InlineResponse200
 ```
 
 Return Lead
@@ -1251,11 +1251,11 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
 $leadID = 'leadID_example'; // string
 $contractID = 56; // int
 $returnReasonID = 56; // int
-$replaceReturns = 'replaceReturns_example'; // string
 $scrub = 'scrub_example'; // string
+$replaceReturns = 'replaceReturns_example'; // string
 
 try {
-    $result = $apiInstance->leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $replaceReturns, $scrub);
+    $result = $apiInstance->leadsreturnLeaddo($leadID, $contractID, $returnReasonID, $scrub, $replaceReturns);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsreturnLeaddo: ', $e->getMessage(), PHP_EOL;
@@ -1269,8 +1269,8 @@ try {
 | **leadID** | **string**|  | |
 | **contractID** | **int**|  | |
 | **returnReasonID** | **int**|  | |
-| **replaceReturns** | **string**|  | [optional] |
 | **scrub** | **string**|  | [optional] |
+| **replaceReturns** | **string**|  | [optional] |
 
 ### Return type
 
@@ -1608,7 +1608,7 @@ try {
 ## `leadsupdateLeadSoldPricedo()`
 
 ```php
-leadsupdateLeadSoldPricedo($leadID, $contractID, $soldID, $price): \Leadspedia\Model\InlineResponse200
+leadsupdateLeadSoldPricedo($soldID, $leadID, $contractID, $price): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Lead Sold Price
@@ -1632,13 +1632,13 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$soldID = 56; // int | Either soldID or a combination of leadID and contractID is required
 $leadID = 'leadID_example'; // string | Must pass contractID when using this field. May skip both if using soldID.
 $contractID = 56; // int | Required when using leadID. May skip if using soldID
-$soldID = 56; // int | Either soldID or a combination of leadID and contractID is required
-$price = 56; // int
+$price = 3.4; // float
 
 try {
-    $result = $apiInstance->leadsupdateLeadSoldPricedo($leadID, $contractID, $soldID, $price);
+    $result = $apiInstance->leadsupdateLeadSoldPricedo($soldID, $leadID, $contractID, $price);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsApi->leadsupdateLeadSoldPricedo: ', $e->getMessage(), PHP_EOL;
@@ -1649,10 +1649,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **soldID** | **int**| Either soldID or a combination of leadID and contractID is required | |
 | **leadID** | **string**| Must pass contractID when using this field. May skip both if using soldID. | |
 | **contractID** | **int**| Required when using leadID. May skip if using soldID | |
-| **soldID** | **int**| Either soldID or a combination of leadID and contractID is required | |
-| **price** | **int**|  | |
+| **price** | **float**|  | |
 
 ### Return type
 
@@ -1823,7 +1823,7 @@ $apiInstance = new Leadspedia\Api\LeadsApi(
     $config
 );
 $leadID = 'leadID_example'; // string
-$payout = 56; // int
+$payout = 3.4; // float
 
 try {
     $result = $apiInstance->leadsupdatePayoutdo($leadID, $payout);
@@ -1838,7 +1838,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **leadID** | **string**|  | |
-| **payout** | **int**|  | |
+| **payout** | **float**|  | |
 
 ### Return type
 

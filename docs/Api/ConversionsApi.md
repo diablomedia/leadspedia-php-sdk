@@ -12,7 +12,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `conversionsgetAlldo()`
 
 ```php
-conversionsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit): \Leadspedia\Model\InlineResponse2001
+conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All Conversions
@@ -36,23 +36,23 @@ $apiInstance = new Leadspedia\Api\ConversionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
+$offerID = 56; // int
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $advertiserID = 56; // int
-$offerID = 56; // int
 $status = 'status_example'; // string
-$showTest = 'showTest_example'; // string
-$showNonTest = 'showNonTest_example'; // string
 $showThrottled = 'showThrottled_example'; // string
 $showNonThrottled = 'showNonThrottled_example'; // string
+$showTest = 'showTest_example'; // string
+$showNonTest = 'showNonTest_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->conversionsgetAlldo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit);
+    $result = $apiInstance->conversionsgetAlldo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->conversionsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -63,18 +63,18 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
-| **showTest** | **string**|  | [optional] |
-| **showNonTest** | **string**|  | [optional] |
 | **showThrottled** | **string**|  | [optional] |
 | **showNonThrottled** | **string**|  | [optional] |
+| **showTest** | **string**|  | [optional] |
+| **showNonTest** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 

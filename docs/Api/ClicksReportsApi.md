@@ -12,7 +12,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `clicksReportsgetClicksByCampaignsReportdo()`
 
 ```php
-clicksReportsgetClicksByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+clicksReportsgetClicksByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Clicks by Campaigns
@@ -36,17 +36,17 @@ $apiInstance = new Leadspedia\Api\ClicksReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
+$verticalGroupID = 56; // int
 $offerID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->clicksReportsgetClicksByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->clicksReportsgetClicksByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ClicksReportsApi->clicksReportsgetClicksByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -57,14 +57,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 

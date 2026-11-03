@@ -114,7 +114,7 @@ try {
 ## `callRoutingContractsadjustCreditdo()`
 
 ```php
-callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note): \Leadspedia\Model\InlineResponse200
+callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount): \Leadspedia\Model\InlineResponse200
 ```
 
 Adjust Credit
@@ -140,16 +140,16 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 );
 $contractID = 56; // int
 $type = 'type_example'; // string
-$amount = 56; // int
+$amount = 3.4; // float
 $charge = 'No'; // string | If Yes, the default credit card of the advertiser will be charged
-$transactionFee = 'transactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
 $generateInvoice = 'No'; // string | If Yes and the type is Credit, an invoice will be generated
 $note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
-    $result = $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note);
+    $result = $apiInstance->callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsadjustCreditdo: ', $e->getMessage(), PHP_EOL;
@@ -162,13 +162,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **type** | **string**|  | |
-| **amount** | **int**|  | |
+| **amount** | **float**|  | |
 | **charge** | **string**| If Yes, the default credit card of the advertiser will be charged | [optional] [default to &#39;No&#39;] |
-| **transactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
 | **generateInvoice** | **string**| If Yes and the type is Credit, an invoice will be generated | [optional] [default to &#39;No&#39;] |
 | **note** | **string**|  | [optional] |
+| **transactionFee** | **string**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 
 ### Return type
 
@@ -314,7 +314,7 @@ try {
 ## `callRoutingContractscreatedo()`
 
 ```php
-callRoutingContractscreatedo($advertiserID, $verticalID, $contractName, $defaultPrice): \Leadspedia\Model\InlineResponse200
+callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice): \Leadspedia\Model\InlineResponse200
 ```
 
 Create
@@ -338,13 +338,13 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$advertiserID = 56; // int
 $verticalID = 56; // int
+$advertiserID = 56; // int
 $contractName = 'contractName_example'; // string
-$defaultPrice = 56; // int
+$defaultPrice = 3.4; // float
 
 try {
-    $result = $apiInstance->callRoutingContractscreatedo($advertiserID, $verticalID, $contractName, $defaultPrice);
+    $result = $apiInstance->callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractscreatedo: ', $e->getMessage(), PHP_EOL;
@@ -355,10 +355,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **advertiserID** | **int**|  | |
 | **verticalID** | **int**|  | |
+| **advertiserID** | **int**|  | |
 | **contractName** | **string**|  | |
-| **defaultPrice** | **int**|  | |
+| **defaultPrice** | **float**|  | |
 
 ### Return type
 
@@ -562,7 +562,7 @@ try {
 ## `callRoutingContractsgetAlldo()`
 
 ```php
-callRoutingContractsgetAlldo($contractID, $advertiserID, $verticalID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
+callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -586,15 +586,15 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$contractID = 56; // int
 $advertiserID = 56; // int
+$contractID = 56; // int
 $verticalID = 56; // int
 $status = 'status_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->callRoutingContractsgetAlldo($contractID, $advertiserID, $verticalID, $status, $start, $limit);
+    $result = $apiInstance->callRoutingContractsgetAlldo($advertiserID, $contractID, $verticalID, $status, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -605,8 +605,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **contractID** | **int**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
 | **verticalID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
@@ -777,8 +777,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     $config
 );
 $contractID = 56; // int
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $disposition = 'disposition_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
@@ -796,8 +796,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
+| **toDate** | **\DateTime**|  | [optional] |
 | **disposition** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
@@ -1579,8 +1579,8 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     $config
 );
 $contractID = 56; // int
-$pauseDate = 'pauseDate_example'; // string | Pause date has to be later than today's date but before the resume date
-$resumeDate = 'resumeDate_example'; // string
+$pauseDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Pause date has to be later than today's date but before the resume date
+$resumeDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->callRoutingContractsschedulePausedo($contractID, $pauseDate, $resumeDate);
@@ -1595,8 +1595,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **pauseDate** | **string**| Pause date has to be later than today&#39;s date but before the resume date | |
-| **resumeDate** | **string**|  | |
+| **pauseDate** | **\DateTime**| Pause date has to be later than today&#39;s date but before the resume date | |
+| **resumeDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -1643,7 +1643,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
     $config
 );
 $contractID = 56; // int
-$expirationDate = 'expirationDate_example'; // string
+$expirationDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->callRoutingContractssetExpirationDatedo($contractID, $expirationDate);
@@ -1658,7 +1658,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
-| **expirationDate** | **string**|  | |
+| **expirationDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -1680,7 +1680,7 @@ try {
 ## `callRoutingContractsupdateAutoRechargeSettingsdo()`
 
 ```php
-callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice): \Leadspedia\Model\InlineResponse200
+callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Auto Recharge Settings
@@ -1706,15 +1706,15 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 );
 $contractID = 56; // int
 $enableAutoRecharge = 'enableAutoRecharge_example'; // string
-$autoChargeAmount = 56; // int
-$autoChargeBalance = 56; // int | Credit will be auto charged when the balance falls below this amount
+$autoChargeBalance = 3.4; // float | Credit will be auto charged when the balance falls below this amount
+$autoChargeAmount = 3.4; // float
 $chargeTransactionFee = 'chargeTransactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 $generateInvoice = 'generateInvoice_example'; // string
 
 try {
-    $result = $apiInstance->callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice);
+    $result = $apiInstance->callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdateAutoRechargeSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -1727,11 +1727,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **enableAutoRecharge** | **string**|  | [optional] |
-| **autoChargeAmount** | **int**|  | [optional] |
-| **autoChargeBalance** | **int**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeBalance** | **float**| Credit will be auto charged when the balance falls below this amount | [optional] |
+| **autoChargeAmount** | **float**|  | [optional] |
 | **chargeTransactionFee** | **string**|  | [optional] |
-| **transactionFeeAmount** | **int**|  | [optional] |
-| **transactionFeePercentage** | **int**|  | [optional] |
+| **transactionFeePercentage** | **float**|  | [optional] |
+| **transactionFeeAmount** | **float**|  | [optional] |
 | **generateInvoice** | **string**|  | [optional] |
 
 ### Return type
@@ -1954,7 +1954,7 @@ try {
 ## `callRoutingContractsupdatePortalSettingsdo()`
 
 ```php
-callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID): \Leadspedia\Model\InlineResponse200
+callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Portal Settings
@@ -1980,17 +1980,17 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 );
 $contractID = 56; // int
 $showStatus = 'showStatus_example'; // string
-$allowStatusPause = 'allowStatusPause_example'; // string | Allow advertiser to pause contract
-$allowManageCaps = 'allowManageCaps_example'; // string | Allow advertiser to manage caps
 $showSchedule = 'showSchedule_example'; // string
-$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | Allow advertiser to manage delivery schedule
 $showCaps = 'showCaps_example'; // string
 $showReturnSettings = 'showReturnSettings_example'; // string
+$allowStatusPause = 'allowStatusPause_example'; // string | Allow advertiser to pause contract
+$allowUpdateSchedule = 'allowUpdateSchedule_example'; // string | Allow advertiser to manage delivery schedule
+$allowManageCaps = 'allowManageCaps_example'; // string | Allow advertiser to manage caps
 $callRecordings = 'callRecordings_example'; // string | Allow advertiser to listen to call recordings in the advertiser portal
 $hideCallerID = 'hideCallerID_example'; // string | Hide caller ID when calls are transferred to advertiser
 
 try {
-    $result = $apiInstance->callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID);
+    $result = $apiInstance->callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallRoutingContractsApi->callRoutingContractsupdatePortalSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -2003,12 +2003,12 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **showStatus** | **string**|  | [optional] |
-| **allowStatusPause** | **string**| Allow advertiser to pause contract | [optional] |
-| **allowManageCaps** | **string**| Allow advertiser to manage caps | [optional] |
 | **showSchedule** | **string**|  | [optional] |
-| **allowUpdateSchedule** | **string**| Allow advertiser to manage delivery schedule | [optional] |
 | **showCaps** | **string**|  | [optional] |
 | **showReturnSettings** | **string**|  | [optional] |
+| **allowStatusPause** | **string**| Allow advertiser to pause contract | [optional] |
+| **allowUpdateSchedule** | **string**| Allow advertiser to manage delivery schedule | [optional] |
+| **allowManageCaps** | **string**| Allow advertiser to manage caps | [optional] |
 | **callRecordings** | **string**| Allow advertiser to listen to call recordings in the advertiser portal | [optional] |
 | **hideCallerID** | **string**| Hide caller ID when calls are transferred to advertiser | [optional] |
 
@@ -2332,7 +2332,7 @@ $apiInstance = new Leadspedia\Api\CallRoutingContractsApi(
 );
 $contractID = 56; // int
 $revenueModel = 'revenueModel_example'; // string
-$price = 56; // int
+$price = 3.4; // float
 $duration = 'duration_example'; // string | Required if revenueModel is Duration
 
 try {
@@ -2349,7 +2349,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contractID** | **int**|  | |
 | **revenueModel** | **string**|  | |
-| **price** | **int**|  | |
+| **price** | **float**|  | |
 | **duration** | **string**| Required if revenueModel is Duration | [optional] |
 
 ### Return type

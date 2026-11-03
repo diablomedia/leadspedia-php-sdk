@@ -25,14 +25,14 @@ final class InboundCallsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(InboundCallsApi::class, 'inboundCallsgetAlldo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
+            'callerID'     => 'callerID',
             'affiliateID'  => 'affiliateID',
             'campaignID'   => 'campaignID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
+            'verticalID'   => 'verticalID',
             'offerID'      => 'offerID',
-            'callerID'     => 'callerID',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -58,14 +58,14 @@ final class InboundCallsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(InboundCallsApi::class, 'inboundCallsgetInProgressdo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
+            'callerID'     => 'callerID',
             'affiliateID'  => 'affiliateID',
             'campaignID'   => 'campaignID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
-            'callerID'     => 'callerID',
+            'verticalID'   => 'verticalID',
             'offerID'      => 'offerID',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -107,14 +107,14 @@ final class InboundCallsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(InboundCallsApi::class, 'inboundCallsgetReturneddo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
-            'advertiserID' => 'advertiserID',
-            'contractID'   => 'contractID',
+            'callerID'     => 'callerID',
             'affiliateID'  => 'affiliateID',
             'campaignID'   => 'campaignID',
+            'advertiserID' => 'advertiserID',
+            'contractID'   => 'contractID',
+            'verticalID'   => 'verticalID',
             'offerID'      => 'offerID',
-            'callerID'     => 'callerID',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -125,13 +125,13 @@ final class InboundCallsApiTest extends ApiContractTestCase
         $this->assertOperationContract(InboundCallsApi::class, 'inboundCallsgetScrubbeddo', [
             'fromDate'     => 'fromDate',
             'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
+            'callerID'     => 'callerID',
             'affiliateID'  => 'affiliateID',
             'campaignID'   => 'campaignID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
+            'verticalID'   => 'verticalID',
             'offerID'      => 'offerID',
-            'callerID'     => 'callerID',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -141,14 +141,14 @@ final class InboundCallsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(InboundCallsApi::class, 'inboundCallsgetTransferreddo', [
             'fromDate'     => 'fromDate',
-            'toDate'       => 'toDate',
-            'verticalID'   => 'verticalID',
+            'callerID'     => 'callerID',
             'affiliateID'  => 'affiliateID',
             'campaignID'   => 'campaignID',
             'advertiserID' => 'advertiserID',
             'contractID'   => 'contractID',
+            'verticalID'   => 'verticalID',
             'offerID'      => 'offerID',
-            'callerID'     => 'callerID',
+            'toDate'       => 'toDate',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);

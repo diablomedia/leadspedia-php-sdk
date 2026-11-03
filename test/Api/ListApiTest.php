@@ -25,8 +25,8 @@ final class ListApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ListApi::class, 'listgetAlldo', [
             'type'         => 'type',
-            'verticalID'   => 'verticalID',
             'advertiserID' => 'advertiserID',
+            'verticalID'   => 'verticalID',
         ]);
     }
 }

@@ -19,11 +19,12 @@ final class ConvertorTest extends TestCase
         mkdir($this->temporaryDirectory . '/scripts', 0o700, true);
         mkdir($this->temporaryDirectory . '/schema', 0o700, true);
         copy(__DIR__ . '/../../scripts/convertor.php', $this->temporaryDirectory . '/scripts/convertor.php');
+        copy(__DIR__ . '/../../schema/compatibility.json', $this->temporaryDirectory . '/schema/compatibility.json');
     }
 
     protected function tearDown(): void
     {
-        foreach (['schema/openapi.json', 'schema/api-docs.json', 'scripts/convertor.php'] as $path) {
+        foreach (['schema/openapi.json', 'schema/api-docs.json', 'schema/compatibility.json', 'scripts/convertor.php'] as $path) {
             $file = $this->temporaryDirectory . '/' . $path;
             if (is_file($file)) {
                 unlink($file);
@@ -59,6 +60,56 @@ final class ConvertorTest extends TestCase
             ],
         ]];
         yield 'other methods have no invented schema' => ['delete', ['description' => '']];
+    }
+
+    public function testCompatibilityKeepsAmountsDecimalAndIdentifiersInteger(): void
+    {
+        $source                                                                        = self::officialSource();
+        $operation                                                                     = $source['paths']['/core/v2/widgets/delete.do']['post'];
+        $operation['parameters'][]                                                     = ['name' => 'amount', 'in' => 'query', 'required' => true, 'schema' => ['type' => 'integer']];
+        $source['paths']['/core/v2/leadDistributionContracts/adjustCredit.do']['post'] = $operation;
+        $output                                                                        = $this->convert($source);
+        $parameters                                                                    = array_column($output['paths']['/leadDistributionContracts/adjustCredit.do']['post']['parameters'], null, 'name');
+
+        self::assertSame('number', $parameters['amount']['type']);
+        self::assertTrue($parameters['amount']['required']);
+        self::assertSame('integer', $parameters['widgetID']['type']);
+    }
+
+    public function testCompatibilityOrdersExistingParametersBeforeNewOnesWithoutRestoringRemovedFields(): void
+    {
+        $source                  = self::officialSource();
+        $operation               = $source['paths']['/core/v2/widgets/getAll.do']['get'];
+        $operation['parameters'] = [];
+        foreach (['search', 'status', 'advertiserID', 'newFilter'] as $name) {
+            $operation['parameters'][] = ['name' => $name, 'in' => 'query', 'schema' => ['type' => 'string']];
+        }
+        $source['paths']['/core/v2/advertisers/getAll.do']['get'] = $operation;
+        $output                                                   = $this->convert($source);
+
+        self::assertSame(['advertiserID', 'status', 'search', 'newFilter'], array_column($output['paths']['/advertisers/getAll.do']['get']['parameters'], 'name'));
+    }
+
+    public function testCompatibilityPreservesExplicitUpstreamDateFormats(): void
+    {
+        $source                                                                                    = self::officialSource();
+        $source['paths']['/core/v2/widgets/getAll.do']['get']['parameters'][2]['schema']['format'] = 'date-time';
+        $output                                                                                    = $this->convert($source);
+
+        self::assertSame('date-time', $output['paths']['/widgets/getAll.do']['get']['parameters'][2]['format']);
+    }
+
+    public function testCompatibilityRejectsUnexpectedNonNumericAmountTypes(): void
+    {
+        $source                                                                        = self::officialSource();
+        $operation                                                                     = $source['paths']['/core/v2/widgets/delete.do']['post'];
+        $operation['parameters'][]                                                     = ['name' => 'amount', 'in' => 'query', 'schema' => ['type' => 'string']];
+        $source['paths']['/core/v2/leadDistributionContracts/adjustCredit.do']['post'] = $operation;
+        $result                                                                        = $this->runConverter($source);
+
+        self::assertNotSame(0, $result['status']);
+        self::assertStringContainsString('Review numeric compatibility override', (string) $result['stderr']);
+        self::assertFileDoesNotExist($this->outputPath());
     }
 
     public function testCorrectsDeliveredLeadsWithoutChangingOtherSoldPaths(): void
@@ -220,6 +271,7 @@ final class ConvertorTest extends TestCase
         self::assertSame('Active', $parameters[1]['default']);
         self::assertFalse($parameters[1]['required']);
         self::assertSame('YYYY-MM-DD', $parameters[2]['x-matching-pattern']);
+        self::assertSame('date', $parameters[2]['format']);
         self::assertArrayNotHasKey('default', $parameters[2]);
     }
 

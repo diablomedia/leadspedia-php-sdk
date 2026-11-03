@@ -262,7 +262,7 @@ class LeadDistributionContractsApi
      * @param  int $fieldID fieldID (required)
      * @param  string $operator operator (required)
      * @param  string|null $value value (optional)
-     * @param  string|null $date date (optional)
+     * @param  \DateTimeInterface|string|null $date date (optional)
      * @param  int|null $miles miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsaddFilterdo'] to see the possible values for this operation
      *
@@ -285,7 +285,7 @@ class LeadDistributionContractsApi
      * @param  int $fieldID (required)
      * @param  string $operator (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsaddFilterdo'] to see the possible values for this operation
      *
@@ -309,7 +309,7 @@ class LeadDistributionContractsApi
      * @param  int $fieldID (required)
      * @param  string $operator (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsaddFilterdo'] to see the possible values for this operation
      *
@@ -357,7 +357,7 @@ class LeadDistributionContractsApi
      * @param  int $fieldID (required)
      * @param  string $operator (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsaddFilterdo'] to see the possible values for this operation
      *
@@ -436,6 +436,9 @@ class LeadDistributionContractsApi
             false // required
         ) ?? []);
         // query params
+        if ($date instanceof \DateTimeInterface) {
+            $date = $date->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $date,
             'date', // param base name
@@ -527,7 +530,7 @@ class LeadDistributionContractsApi
      * @param  int $fieldID (required)
      * @param  string $operator (required)
      * @param  string|null $value (optional)
-     * @param  string|null $date (optional)
+     * @param  \DateTimeInterface|string|null $date (optional)
      * @param  int|null $miles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsaddFilterdo'] to see the possible values for this operation
      *
@@ -921,22 +924,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string $type type (required)
-     * @param  int $amount amount (required)
+     * @param  float $amount amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee transactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note note (optional)
+     * @param  string|null $transactionFee transactionFee (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
+    public function leadDistributionContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
     {
-        [$response] = $this->leadDistributionContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        [$response] = $this->leadDistributionContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
         return $response;
     }
 
@@ -947,21 +950,21 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsadjustCreditdoAsync($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
+    public function leadDistributionContractsadjustCreditdoAsync($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
     {
-        return $this->leadDistributionContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType)
+        return $this->leadDistributionContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -974,22 +977,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
+    public function leadDistributionContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request    = $this->leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1025,19 +1028,19 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
+    public function leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -1097,7 +1100,7 @@ class LeadDistributionContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $amount,
             'amount', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -1107,33 +1110,6 @@ class LeadDistributionContractsApi
             $charge,
             'charge', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFee,
-            'transactionFee', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1152,6 +1128,33 @@ class LeadDistributionContractsApi
             $note,
             'note', // param base name
             'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFee,
+            'transactionFee', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1228,22 +1231,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
+    public function leadDistributionContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['leadDistributionContractsadjustCreditdo'][0])
     {
-        $request = $this->leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request = $this->leadDistributionContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2875,20 +2878,20 @@ class LeadDistributionContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID advertiserID (required)
      * @param  int $verticalID verticalID (required)
-     * @param  string $contractName contractName (required)
+     * @param  int $advertiserID advertiserID (required)
      * @param  string $revenueModel revenueModel (required)
-     * @param  int $defaultPrice defaultPrice (required)
+     * @param  string $contractName contractName (required)
+     * @param  float $defaultPrice defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractscreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractscreatedo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
+    public function leadDistributionContractscreatedo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
     {
-        [$response] = $this->leadDistributionContractscreatedoWithHttpInfo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, $contentType);
+        [$response] = $this->leadDistributionContractscreatedoWithHttpInfo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, $contentType);
         return $response;
     }
 
@@ -2897,19 +2900,19 @@ class LeadDistributionContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
-     * @param  string $contractName (required)
+     * @param  int $advertiserID (required)
      * @param  string $revenueModel (required)
-     * @param  int $defaultPrice (required)
+     * @param  string $contractName (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractscreatedoAsync($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
+    public function leadDistributionContractscreatedoAsync($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
     {
-        return $this->leadDistributionContractscreatedoAsyncWithHttpInfo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, $contentType)
+        return $this->leadDistributionContractscreatedoAsyncWithHttpInfo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2920,20 +2923,20 @@ class LeadDistributionContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
-     * @param  string $contractName (required)
+     * @param  int $advertiserID (required)
      * @param  string $revenueModel (required)
-     * @param  int $defaultPrice (required)
+     * @param  string $contractName (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractscreatedoAsyncWithHttpInfo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
+    public function leadDistributionContractscreatedoAsyncWithHttpInfo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractscreatedoRequest($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, $contentType);
+        $request    = $this->leadDistributionContractscreatedoRequest($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2967,25 +2970,18 @@ class LeadDistributionContractsApi
     /**
      * Create request for operation 'leadDistributionContractscreatedo'
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
-     * @param  string $contractName (required)
+     * @param  int $advertiserID (required)
      * @param  string $revenueModel (required)
-     * @param  int $defaultPrice (required)
+     * @param  string $contractName (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractscreatedoRequest($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
+    public function leadDistributionContractscreatedoRequest($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
     {
-
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling leadDistributionContractscreatedo'
-            );
-        }
 
         // verify the required parameter 'verticalID' is set
         if ($verticalID === null || (is_array($verticalID) && count($verticalID) === 0)) {
@@ -2994,10 +2990,10 @@ class LeadDistributionContractsApi
             );
         }
 
-        // verify the required parameter 'contractName' is set
-        if ($contractName === null || (is_array($contractName) && count($contractName) === 0)) {
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $contractName when calling leadDistributionContractscreatedo'
+                'Missing the required parameter $advertiserID when calling leadDistributionContractscreatedo'
             );
         }
 
@@ -3005,6 +3001,13 @@ class LeadDistributionContractsApi
         if ($revenueModel === null || (is_array($revenueModel) && count($revenueModel) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $revenueModel when calling leadDistributionContractscreatedo'
+            );
+        }
+
+        // verify the required parameter 'contractName' is set
+        if ($contractName === null || (is_array($contractName) && count($contractName) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contractName when calling leadDistributionContractscreatedo'
             );
         }
 
@@ -3025,15 +3028,6 @@ class LeadDistributionContractsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalID,
             'verticalID', // param base name
             'integer', // openApiType
@@ -3043,9 +3037,9 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $contractName,
-            'contractName', // param base name
-            'string', // openApiType
+            $advertiserID,
+            'advertiserID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             true // required
@@ -3061,9 +3055,18 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $contractName,
+            'contractName', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $defaultPrice,
             'defaultPrice', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -3138,20 +3141,20 @@ class LeadDistributionContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
-     * @param  string $contractName (required)
+     * @param  int $advertiserID (required)
      * @param  string $revenueModel (required)
-     * @param  int $defaultPrice (required)
+     * @param  string $contractName (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractscreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractscreatedoWithHttpInfo($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
+    public function leadDistributionContractscreatedoWithHttpInfo($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, string $contentType = self::contentTypes['leadDistributionContractscreatedo'][0])
     {
-        $request = $this->leadDistributionContractscreatedoRequest($advertiserID, $verticalID, $contractName, $revenueModel, $defaultPrice, $contentType);
+        $request = $this->leadDistributionContractscreatedoRequest($verticalID, $advertiserID, $revenueModel, $contractName, $defaultPrice, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3229,12 +3232,12 @@ class LeadDistributionContractsApi
      * Create Schedule
      *
      * @param  int $contractID contractID (required)
-     * @param  string $type type (required)
-     * @param  int $price price (required)
      * @param  int $cap If you do not want a Schedule Cap pass a value of 0 (required)
-     * @param  int $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $price price (required)
      * @param  string $startTime HH:mm (required)
      * @param  string $endTime HH:mm (required)
+     * @param  string $type type (required)
      * @param  string|null $monday monday (optional)
      * @param  string|null $tuesday tuesday (optional)
      * @param  string|null $wednesday wednesday (optional)
@@ -3248,9 +3251,9 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractscreateScheduledo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
+    public function leadDistributionContractscreateScheduledo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
     {
-        [$response] = $this->leadDistributionContractscreateScheduledoWithHttpInfo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
+        [$response] = $this->leadDistributionContractscreateScheduledoWithHttpInfo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
         return $response;
     }
 
@@ -3260,12 +3263,12 @@ class LeadDistributionContractsApi
      * Create Schedule
      *
      * @param  int $contractID (required)
-     * @param  string $type (required)
-     * @param  int $price (required)
      * @param  int $cap If you do not want a Schedule Cap pass a value of 0 (required)
-     * @param  int $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $price (required)
      * @param  string $startTime HH:mm (required)
      * @param  string $endTime HH:mm (required)
+     * @param  string $type (required)
      * @param  string|null $monday (optional)
      * @param  string|null $tuesday (optional)
      * @param  string|null $wednesday (optional)
@@ -3278,9 +3281,9 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractscreateScheduledoAsync($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
+    public function leadDistributionContractscreateScheduledoAsync($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
     {
-        return $this->leadDistributionContractscreateScheduledoAsyncWithHttpInfo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType)
+        return $this->leadDistributionContractscreateScheduledoAsyncWithHttpInfo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3292,12 +3295,12 @@ class LeadDistributionContractsApi
      * Create Schedule
      *
      * @param  int $contractID (required)
-     * @param  string $type (required)
-     * @param  int $price (required)
      * @param  int $cap If you do not want a Schedule Cap pass a value of 0 (required)
-     * @param  int $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $price (required)
      * @param  string $startTime HH:mm (required)
      * @param  string $endTime HH:mm (required)
+     * @param  string $type (required)
      * @param  string|null $monday (optional)
      * @param  string|null $tuesday (optional)
      * @param  string|null $wednesday (optional)
@@ -3310,10 +3313,10 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractscreateScheduledoAsyncWithHttpInfo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
+    public function leadDistributionContractscreateScheduledoAsyncWithHttpInfo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractscreateScheduledoRequest($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
+        $request    = $this->leadDistributionContractscreateScheduledoRequest($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3348,12 +3351,12 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractscreateScheduledo'
      *
      * @param  int $contractID (required)
-     * @param  string $type (required)
-     * @param  int $price (required)
      * @param  int $cap If you do not want a Schedule Cap pass a value of 0 (required)
-     * @param  int $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $price (required)
      * @param  string $startTime HH:mm (required)
      * @param  string $endTime HH:mm (required)
+     * @param  string $type (required)
      * @param  string|null $monday (optional)
      * @param  string|null $tuesday (optional)
      * @param  string|null $wednesday (optional)
@@ -3366,27 +3369,13 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractscreateScheduledoRequest($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
+    public function leadDistributionContractscreateScheduledoRequest($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
     {
 
         // verify the required parameter 'contractID' is set
         if ($contractID === null || (is_array($contractID) && count($contractID) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $contractID when calling leadDistributionContractscreateScheduledo'
-            );
-        }
-
-        // verify the required parameter 'type' is set
-        if ($type === null || (is_array($type) && count($type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $type when calling leadDistributionContractscreateScheduledo'
-            );
-        }
-
-        // verify the required parameter 'price' is set
-        if ($price === null || (is_array($price) && count($price) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $price when calling leadDistributionContractscreateScheduledo'
             );
         }
 
@@ -3404,6 +3393,13 @@ class LeadDistributionContractsApi
             );
         }
 
+        // verify the required parameter 'price' is set
+        if ($price === null || (is_array($price) && count($price) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $price when calling leadDistributionContractscreateScheduledo'
+            );
+        }
+
         // verify the required parameter 'startTime' is set
         if ($startTime === null || (is_array($startTime) && count($startTime) === 0)) {
             throw new \InvalidArgumentException(
@@ -3415,6 +3411,13 @@ class LeadDistributionContractsApi
         if ($endTime === null || (is_array($endTime) && count($endTime) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $endTime when calling leadDistributionContractscreateScheduledo'
+            );
+        }
+
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling leadDistributionContractscreateScheduledo'
             );
         }
 
@@ -3444,24 +3447,6 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $price,
-            'price', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $cap,
             'cap', // param base name
             'integer', // openApiType
@@ -3473,7 +3458,16 @@ class LeadDistributionContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $revenueCap,
             'revenueCap', // param base name
-            'integer', // openApiType
+            'number', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $price,
+            'price', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -3491,6 +3485,15 @@ class LeadDistributionContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $endTime,
             'endTime', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -3630,12 +3633,12 @@ class LeadDistributionContractsApi
      * Create Schedule
      *
      * @param  int $contractID (required)
-     * @param  string $type (required)
-     * @param  int $price (required)
      * @param  int $cap If you do not want a Schedule Cap pass a value of 0 (required)
-     * @param  int $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $revenueCap If you do not want a Schedule Revenue Cap pass a value of 0 (required)
+     * @param  float $price (required)
      * @param  string $startTime HH:mm (required)
      * @param  string $endTime HH:mm (required)
+     * @param  string $type (required)
      * @param  string|null $monday (optional)
      * @param  string|null $tuesday (optional)
      * @param  string|null $wednesday (optional)
@@ -3649,9 +3652,9 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractscreateScheduledoWithHttpInfo($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
+    public function leadDistributionContractscreateScheduledoWithHttpInfo($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday = null, $tuesday = null, $wednesday = null, $thursday = null, $friday = null, $saturday = null, $sunday = null, string $contentType = self::contentTypes['leadDistributionContractscreateScheduledo'][0])
     {
-        $request = $this->leadDistributionContractscreateScheduledoRequest($contractID, $type, $price, $cap, $revenueCap, $startTime, $endTime, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
+        $request = $this->leadDistributionContractscreateScheduledoRequest($contractID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6802,8 +6805,8 @@ class LeadDistributionContractsApi
      * Get Credit History
      *
      * @param  int $contractID contractID (required)
-     * @param  string $fromDate fromDate (required)
-     * @param  string $toDate toDate (required)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  \DateTimeInterface|string $toDate toDate (required)
      * @param  string|null $disposition disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -6825,8 +6828,8 @@ class LeadDistributionContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string $toDate (required)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string $toDate (required)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -6849,8 +6852,8 @@ class LeadDistributionContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string $toDate (required)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string $toDate (required)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -6897,8 +6900,8 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractsgetCreditHistorydo'
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string $toDate (required)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string $toDate (required)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -6952,6 +6955,9 @@ class LeadDistributionContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -6961,6 +6967,9 @@ class LeadDistributionContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $toDate,
             'toDate', // param base name
@@ -7067,8 +7076,8 @@ class LeadDistributionContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string $toDate (required)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string $toDate (required)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -10805,8 +10814,8 @@ class LeadDistributionContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10825,8 +10834,8 @@ class LeadDistributionContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10846,8 +10855,8 @@ class LeadDistributionContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10891,8 +10900,8 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractsschedulePausedo'
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10940,6 +10949,9 @@ class LeadDistributionContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($pauseDate instanceof \DateTimeInterface) {
+            $pauseDate = $pauseDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $pauseDate,
             'pauseDate', // param base name
@@ -10949,6 +10961,9 @@ class LeadDistributionContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($resumeDate instanceof \DateTimeInterface) {
+            $resumeDate = $resumeDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $resumeDate,
             'resumeDate', // param base name
@@ -11028,8 +11043,8 @@ class LeadDistributionContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11116,7 +11131,7 @@ class LeadDistributionContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID contractID (required)
-     * @param  string $expirationDate expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11135,7 +11150,7 @@ class LeadDistributionContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11155,7 +11170,7 @@ class LeadDistributionContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11199,7 +11214,7 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractssetExpirationDatedo'
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11240,6 +11255,9 @@ class LeadDistributionContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($expirationDate instanceof \DateTimeInterface) {
+            $expirationDate = $expirationDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expirationDate,
             'expirationDate', // param base name
@@ -11319,7 +11337,7 @@ class LeadDistributionContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11406,7 +11424,7 @@ class LeadDistributionContractsApi
      * Set All Schedule Price
      *
      * @param  int $contractID contractID (required)
-     * @param  int $price price (required)
+     * @param  float $price price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetPricedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11425,7 +11443,7 @@ class LeadDistributionContractsApi
      * Set All Schedule Price
      *
      * @param  int $contractID (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetPricedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11445,7 +11463,7 @@ class LeadDistributionContractsApi
      * Set All Schedule Price
      *
      * @param  int $contractID (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetPricedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11489,7 +11507,7 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractssetPricedo'
      *
      * @param  int $contractID (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetPricedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11533,7 +11551,7 @@ class LeadDistributionContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $price,
             'price', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -11609,7 +11627,7 @@ class LeadDistributionContractsApi
      * Set All Schedule Price
      *
      * @param  int $contractID (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractssetPricedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11697,11 +11715,11 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string|null $enableAutoRecharge enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string|null $generateInvoice generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -11709,9 +11727,9 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
+    public function leadDistributionContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
     {
-        [$response] = $this->leadDistributionContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        [$response] = $this->leadDistributionContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
         return $response;
     }
 
@@ -11722,20 +11740,20 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdateAutoRechargeSettingsdoAsync($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
+    public function leadDistributionContractsupdateAutoRechargeSettingsdoAsync($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
     {
-        return $this->leadDistributionContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType)
+        return $this->leadDistributionContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -11748,21 +11766,21 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
+    public function leadDistributionContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request    = $this->leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11798,18 +11816,18 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
+    public function leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -11854,18 +11872,18 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeAmount,
-            'autoChargeAmount', // param base name
-            'integer', // openApiType
+            $autoChargeBalance,
+            'autoChargeBalance', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeBalance,
-            'autoChargeBalance', // param base name
-            'integer', // openApiType
+            $autoChargeAmount,
+            'autoChargeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -11881,18 +11899,18 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -11978,11 +11996,11 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -11990,9 +12008,9 @@ class LeadDistributionContractsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
+    public function leadDistributionContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['leadDistributionContractsupdateAutoRechargeSettingsdo'][0])
     {
-        $request = $this->leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request = $this->leadDistributionContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13662,22 +13680,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string|null $showStatus showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
      * @param  string|null $showLeadData showLeadData (optional)
      * @param  string|null $showSchedule showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps showCaps (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showReturnSettings showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus = null, $allowStatusPause = null, $showLeadData = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $allowManageCaps = null, $showReturnSettings = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
+    public function leadDistributionContractsupdatePortalSettingsdo($contractID, $showStatus = null, $showLeadData = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
     {
-        [$response] = $this->leadDistributionContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings, $contentType);
+        [$response] = $this->leadDistributionContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $contentType);
         return $response;
     }
 
@@ -13688,21 +13706,21 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
      * @param  string|null $showLeadData (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdatePortalSettingsdoAsync($contractID, $showStatus = null, $allowStatusPause = null, $showLeadData = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $allowManageCaps = null, $showReturnSettings = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
+    public function leadDistributionContractsupdatePortalSettingsdoAsync($contractID, $showStatus = null, $showLeadData = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
     {
-        return $this->leadDistributionContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings, $contentType)
+        return $this->leadDistributionContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -13715,22 +13733,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
      * @param  string|null $showLeadData (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus = null, $allowStatusPause = null, $showLeadData = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $allowManageCaps = null, $showReturnSettings = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
+    public function leadDistributionContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus = null, $showLeadData = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings, $contentType);
+        $request    = $this->leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13766,19 +13784,19 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
      * @param  string|null $showLeadData (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus = null, $allowStatusPause = null, $showLeadData = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $allowManageCaps = null, $showReturnSettings = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
+    public function leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus = null, $showLeadData = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -13824,15 +13842,6 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowStatusPause,
-            'allowStatusPause', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $showLeadData,
             'showLeadData', // param base name
             'string', // openApiType
@@ -13851,15 +13860,6 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowUpdateSchedule,
-            'allowUpdateSchedule', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $showCaps,
             'showCaps', // param base name
             'string', // openApiType
@@ -13869,8 +13869,8 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowManageCaps,
-            'allowManageCaps', // param base name
+            $showReturnSettings,
+            'showReturnSettings', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -13878,8 +13878,26 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $showReturnSettings,
-            'showReturnSettings', // param base name
+            $allowStatusPause,
+            'allowStatusPause', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allowUpdateSchedule,
+            'allowUpdateSchedule', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allowManageCaps,
+            'allowManageCaps', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -13957,22 +13975,22 @@ class LeadDistributionContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
      * @param  string|null $showLeadData (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus = null, $allowStatusPause = null, $showLeadData = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $allowManageCaps = null, $showReturnSettings = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
+    public function leadDistributionContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus = null, $showLeadData = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, string $contentType = self::contentTypes['leadDistributionContractsupdatePortalSettingsdo'][0])
     {
-        $request = $this->leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $allowStatusPause, $showLeadData, $showSchedule, $allowUpdateSchedule, $showCaps, $allowManageCaps, $showReturnSettings, $contentType);
+        $request = $this->leadDistributionContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $showLeadData, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14678,21 +14696,21 @@ class LeadDistributionContractsApi
      * Update Schedule
      *
      * @param  int $deliveryScheduleID deliveryScheduleID (required)
-     * @param  string|null $type type (optional)
-     * @param  int|null $price price (optional)
+     * @param  int|null $cap cap (optional)
+     * @param  float|null $revenueCap revenueCap (optional)
+     * @param  float|null $price price (optional)
      * @param  string|null $startTime HH:mm (optional)
      * @param  string|null $endTime HH:mm (optional)
-     * @param  int|null $cap cap (optional)
-     * @param  int|null $revenueCap revenueCap (optional)
+     * @param  string|null $type type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateScheduledo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function leadDistributionContractsupdateScheduledo($deliveryScheduleID, $type = null, $price = null, $startTime = null, $endTime = null, $cap = null, $revenueCap = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
+    public function leadDistributionContractsupdateScheduledo($deliveryScheduleID, $cap = null, $revenueCap = null, $price = null, $startTime = null, $endTime = null, $type = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
     {
-        [$response] = $this->leadDistributionContractsupdateScheduledoWithHttpInfo($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap, $contentType);
+        [$response] = $this->leadDistributionContractsupdateScheduledoWithHttpInfo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $contentType);
         return $response;
     }
 
@@ -14702,20 +14720,20 @@ class LeadDistributionContractsApi
      * Update Schedule
      *
      * @param  int $deliveryScheduleID (required)
-     * @param  string|null $type (optional)
-     * @param  int|null $price (optional)
+     * @param  int|null $cap (optional)
+     * @param  float|null $revenueCap (optional)
+     * @param  float|null $price (optional)
      * @param  string|null $startTime HH:mm (optional)
      * @param  string|null $endTime HH:mm (optional)
-     * @param  int|null $cap (optional)
-     * @param  int|null $revenueCap (optional)
+     * @param  string|null $type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateScheduledo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdateScheduledoAsync($deliveryScheduleID, $type = null, $price = null, $startTime = null, $endTime = null, $cap = null, $revenueCap = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
+    public function leadDistributionContractsupdateScheduledoAsync($deliveryScheduleID, $cap = null, $revenueCap = null, $price = null, $startTime = null, $endTime = null, $type = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
     {
-        return $this->leadDistributionContractsupdateScheduledoAsyncWithHttpInfo($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap, $contentType)
+        return $this->leadDistributionContractsupdateScheduledoAsyncWithHttpInfo($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -14727,21 +14745,21 @@ class LeadDistributionContractsApi
      * Update Schedule
      *
      * @param  int $deliveryScheduleID (required)
-     * @param  string|null $type (optional)
-     * @param  int|null $price (optional)
+     * @param  int|null $cap (optional)
+     * @param  float|null $revenueCap (optional)
+     * @param  float|null $price (optional)
      * @param  string|null $startTime HH:mm (optional)
      * @param  string|null $endTime HH:mm (optional)
-     * @param  int|null $cap (optional)
-     * @param  int|null $revenueCap (optional)
+     * @param  string|null $type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateScheduledo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function leadDistributionContractsupdateScheduledoAsyncWithHttpInfo($deliveryScheduleID, $type = null, $price = null, $startTime = null, $endTime = null, $cap = null, $revenueCap = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
+    public function leadDistributionContractsupdateScheduledoAsyncWithHttpInfo($deliveryScheduleID, $cap = null, $revenueCap = null, $price = null, $startTime = null, $endTime = null, $type = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap, $contentType);
+        $request    = $this->leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14776,18 +14794,18 @@ class LeadDistributionContractsApi
      * Create request for operation 'leadDistributionContractsupdateScheduledo'
      *
      * @param  int $deliveryScheduleID (required)
-     * @param  string|null $type (optional)
-     * @param  int|null $price (optional)
+     * @param  int|null $cap (optional)
+     * @param  float|null $revenueCap (optional)
+     * @param  float|null $price (optional)
      * @param  string|null $startTime HH:mm (optional)
      * @param  string|null $endTime HH:mm (optional)
-     * @param  int|null $cap (optional)
-     * @param  int|null $revenueCap (optional)
+     * @param  string|null $type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateScheduledo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $type = null, $price = null, $startTime = null, $endTime = null, $cap = null, $revenueCap = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
+    public function leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $cap = null, $revenueCap = null, $price = null, $startTime = null, $endTime = null, $type = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
     {
 
         // verify the required parameter 'deliveryScheduleID' is set
@@ -14822,9 +14840,18 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'string', // openApiType
+            $cap,
+            'cap', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $revenueCap,
+            'revenueCap', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -14833,7 +14860,7 @@ class LeadDistributionContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $price,
             'price', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -14858,18 +14885,9 @@ class LeadDistributionContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $cap,
-            'cap', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $revenueCap,
-            'revenueCap', // param base name
-            'integer', // openApiType
+            $type,
+            'type', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -14945,21 +14963,21 @@ class LeadDistributionContractsApi
      * Update Schedule
      *
      * @param  int $deliveryScheduleID (required)
-     * @param  string|null $type (optional)
-     * @param  int|null $price (optional)
+     * @param  int|null $cap (optional)
+     * @param  float|null $revenueCap (optional)
+     * @param  float|null $price (optional)
      * @param  string|null $startTime HH:mm (optional)
      * @param  string|null $endTime HH:mm (optional)
-     * @param  int|null $cap (optional)
-     * @param  int|null $revenueCap (optional)
+     * @param  string|null $type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['leadDistributionContractsupdateScheduledo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function leadDistributionContractsupdateScheduledoWithHttpInfo($deliveryScheduleID, $type = null, $price = null, $startTime = null, $endTime = null, $cap = null, $revenueCap = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
+    public function leadDistributionContractsupdateScheduledoWithHttpInfo($deliveryScheduleID, $cap = null, $revenueCap = null, $price = null, $startTime = null, $endTime = null, $type = null, string $contentType = self::contentTypes['leadDistributionContractsupdateScheduledo'][0])
     {
-        $request = $this->leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $type, $price, $startTime, $endTime, $cap, $revenueCap, $contentType);
+        $request = $this->leadDistributionContractsupdateScheduledoRequest($deliveryScheduleID, $cap, $revenueCap, $price, $startTime, $endTime, $type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

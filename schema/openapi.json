@@ -38,8 +38,26 @@
                 ],
                 "parameters": [
                     {
+                        "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
                         "type": "string",
-                        "name": "search",
+                        "enum": [
+                            "Corporate",
+                            "Individual"
+                        ],
+                        "name": "advertiserType",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "accountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -55,31 +73,6 @@
                             "Pending InActive"
                         ],
                         "name": "status",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "accountManagerID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Corporate",
-                            "Individual"
-                        ],
-                        "name": "advertiserType",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -102,6 +95,13 @@
                             "No"
                         ],
                         "name": "hasCreditCardOnFile",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "name": "search",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -309,7 +309,21 @@
                     },
                     {
                         "type": "string",
+                        "name": "website",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
                         "name": "alternateID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "name": "source",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -359,20 +373,6 @@
                     {
                         "type": "string",
                         "name": "country",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "source",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "website",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -605,6 +605,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "startDate",
                         "in": "query",
                         "required": true,
@@ -613,6 +614,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "endDate",
                         "in": "query",
                         "required": true,
@@ -715,6 +717,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -723,6 +726,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": false,
@@ -845,7 +849,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "amount",
                         "in": "query",
                         "required": true,
@@ -869,21 +873,15 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "transactionFee",
+                        "default": "No",
+                        "name": "generateInvoice",
                         "in": "query",
                         "required": false,
-                        "description": ""
+                        "description": "If Yes and the type is Credit, an invoice will be generated"
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "string",
+                        "name": "note",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -894,15 +892,21 @@
                             "Yes",
                             "No"
                         ],
-                        "default": "No",
-                        "name": "generateInvoice",
+                        "name": "transactionFee",
                         "in": "query",
                         "required": false,
-                        "description": "If Yes and the type is Credit, an invoice will be generated"
+                        "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "note",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -955,18 +959,18 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "autoChargeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
+                        "type": "number",
                         "name": "autoChargeBalance",
                         "in": "query",
                         "required": false,
                         "description": "Credit will be auto charged when the balance falls below this amount"
+                    },
+                    {
+                        "type": "number",
+                        "name": "autoChargeAmount",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -980,15 +984,15 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -1258,13 +1262,6 @@
                     },
                     {
                         "type": "string",
-                        "name": "address2",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
                         "name": "city",
                         "in": "query",
                         "required": true,
@@ -1290,6 +1287,13 @@
                         "in": "query",
                         "required": true,
                         "description": "2-character country code (example: US)"
+                    },
+                    {
+                        "type": "string",
+                        "name": "address2",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -1334,14 +1338,14 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "creditCardID",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "creditCardID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -1376,13 +1380,6 @@
                     },
                     {
                         "type": "string",
-                        "name": "address2",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
                         "name": "city",
                         "in": "query",
                         "required": true,
@@ -1408,6 +1405,13 @@
                         "in": "query",
                         "required": true,
                         "description": "2-character country code (example: US)"
+                    },
+                    {
+                        "type": "string",
+                        "name": "address2",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
                     }
                 ],
                 "responses": {
@@ -1440,14 +1444,14 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "creditCardID",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "creditCardID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -2003,6 +2007,20 @@
                 ],
                 "parameters": [
                     {
+                        "type": "integer",
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "accountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
                         "type": "string",
                         "enum": [
                             "Active",
@@ -2017,20 +2035,6 @@
                     {
                         "type": "string",
                         "name": "search",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "accountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2239,6 +2243,13 @@
                     },
                     {
                         "type": "string",
+                        "name": "website",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
                         "name": "alternateID",
                         "in": "query",
                         "required": false,
@@ -2282,13 +2293,6 @@
                     {
                         "type": "string",
                         "name": "country",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "website",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2560,22 +2564,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "callerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2610,14 +2607,23 @@
                     },
                     {
                         "type": "integer",
-                        "name": "offerID",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "callerID",
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2670,6 +2676,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -2677,15 +2684,7 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "verticalID",
+                        "name": "callerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2719,8 +2718,8 @@
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "callerID",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2728,6 +2727,15 @@
                     {
                         "type": "integer",
                         "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2780,6 +2788,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -2787,15 +2796,7 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "verticalID",
+                        "name": "callerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2830,6 +2831,13 @@
                     },
                     {
                         "type": "integer",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "offerID",
                         "in": "query",
                         "required": false,
@@ -2837,7 +2845,9 @@
                     },
                     {
                         "type": "string",
-                        "name": "callerID",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -2926,6 +2936,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": true,
@@ -3036,6 +3047,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": true,
@@ -3184,6 +3196,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -3191,29 +3204,7 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "contractID",
+                        "name": "callerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -3234,6 +3225,27 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "contractID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "offerID",
                         "in": "query",
                         "required": false,
@@ -3241,7 +3253,9 @@
                     },
                     {
                         "type": "string",
-                        "name": "callerID",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -3294,22 +3308,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "fromDate",
-                        "in": "query",
-                        "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalID",
+                        "type": "string",
+                        "name": "callerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -3344,6 +3351,13 @@
                     },
                     {
                         "type": "integer",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "offerID",
                         "in": "query",
                         "required": false,
@@ -3351,9 +3365,11 @@
                     },
                     {
                         "type": "string",
-                        "name": "callerID",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "fromDate",
                         "in": "query",
-                        "required": false,
+                        "required": true,
                         "description": ""
                     },
                     {
@@ -3403,14 +3419,14 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "contractID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "contractID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -3517,14 +3533,14 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "verticalID",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -3537,7 +3553,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "defaultPrice",
                         "in": "query",
                         "required": true,
@@ -3837,7 +3853,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": true,
@@ -4510,6 +4526,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -4518,6 +4535,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": false,
@@ -4651,7 +4669,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "amount",
                         "in": "query",
                         "required": true,
@@ -4675,21 +4693,15 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "transactionFee",
+                        "default": "No",
+                        "name": "generateInvoice",
                         "in": "query",
                         "required": false,
-                        "description": ""
+                        "description": "If Yes and the type is Credit, an invoice will be generated"
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "string",
+                        "name": "note",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -4700,15 +4712,21 @@
                             "Yes",
                             "No"
                         ],
-                        "default": "No",
-                        "name": "generateInvoice",
+                        "name": "transactionFee",
                         "in": "query",
                         "required": false,
-                        "description": "If Yes and the type is Credit, an invoice will be generated"
+                        "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "note",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -4761,18 +4779,18 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "autoChargeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
+                        "type": "number",
                         "name": "autoChargeBalance",
                         "in": "query",
                         "required": false,
                         "description": "Credit will be auto charged when the balance falls below this amount"
+                    },
+                    {
+                        "type": "number",
+                        "name": "autoChargeAmount",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -4786,15 +4804,15 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -5094,43 +5112,10 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "allowStatusPause",
-                        "in": "query",
-                        "required": false,
-                        "description": "Allow advertiser to pause contract"
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
-                        "name": "allowManageCaps",
-                        "in": "query",
-                        "required": false,
-                        "description": "Allow advertiser to manage caps"
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
                         "name": "showSchedule",
                         "in": "query",
                         "required": false,
                         "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
-                        "name": "allowUpdateSchedule",
-                        "in": "query",
-                        "required": false,
-                        "description": "Allow advertiser to manage delivery schedule"
                     },
                     {
                         "type": "string",
@@ -5153,6 +5138,39 @@
                         "in": "query",
                         "required": false,
                         "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "allowStatusPause",
+                        "in": "query",
+                        "required": false,
+                        "description": "Allow advertiser to pause contract"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "allowUpdateSchedule",
+                        "in": "query",
+                        "required": false,
+                        "description": "Allow advertiser to manage delivery schedule"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "allowManageCaps",
+                        "in": "query",
+                        "required": false,
+                        "description": "Allow advertiser to manage caps"
                     },
                     {
                         "type": "string",
@@ -5364,6 +5382,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "expirationDate",
                         "in": "query",
                         "required": true,
@@ -5496,6 +5515,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "pauseDate",
                         "in": "query",
                         "required": true,
@@ -5504,6 +5524,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "resumeDate",
                         "in": "query",
                         "required": true,
@@ -5725,13 +5746,6 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
                         "name": "campaignID",
                         "in": "query",
                         "required": false,
@@ -5739,7 +5753,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -5752,11 +5766,11 @@
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "search",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
-                        "description": "Search campaign name"
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -5769,6 +5783,13 @@
                         "in": "query",
                         "required": false,
                         "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "description": "Search campaign name"
                     },
                     {
                         "type": "integer",
@@ -5867,14 +5888,14 @@
                     },
                     {
                         "type": "string",
-                        "name": "alternativeID",
+                        "name": "notes",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "notes",
+                        "name": "alternativeID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -6136,13 +6157,6 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
                         "name": "fieldID",
                         "in": "query",
                         "required": true,
@@ -6165,6 +6179,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": false,
@@ -6175,6 +6190,13 @@
                         "name": "miles",
                         "in": "query",
                         "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": true,
                         "description": ""
                     }
                 ],
@@ -6669,6 +6691,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": true,
@@ -6727,22 +6750,22 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "offerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -6769,13 +6792,6 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "offerID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "enum": [
                             "Approved",
@@ -6783,6 +6799,28 @@
                             "Rejected"
                         ],
                         "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "showThrottled",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "showNonThrottled",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -6811,22 +6849,9 @@
                     },
                     {
                         "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
-                        "name": "showThrottled",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
-                        "name": "showNonThrottled",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7091,17 +7116,17 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": "Can be passed to retrieve vertical specific return reasons"
-                    },
-                    {
-                        "type": "integer",
                         "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": "Can be passed to retrieve advertiser specific return reasons"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": "Can be passed to retrieve vertical specific return reasons"
                     }
                 ],
                 "responses": {
@@ -7135,22 +7160,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7164,7 +7182,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7187,6 +7205,15 @@
                             "No"
                         ],
                         "name": "scrubbed",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7239,6 +7266,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -7246,8 +7274,21 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "name": "leadID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7274,33 +7315,21 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "leadID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "enum": [
                             "Yes",
                             "No"
                         ],
                         "name": "returned",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7353,6 +7382,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -7360,15 +7390,14 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "name": "leadID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7382,14 +7411,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "leadID",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7442,6 +7473,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": false,
@@ -7502,22 +7534,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7531,7 +7556,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7584,6 +7618,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": false,
@@ -7591,8 +7626,21 @@
                     },
                     {
                         "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "name": "leadID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7619,33 +7667,21 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "leadID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "enum": [
                             "Yes",
                             "No"
                         ],
                         "name": "returned",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -7698,6 +7734,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -7706,6 +7743,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": false,
@@ -7943,7 +7981,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "payout",
                         "in": "query",
                         "required": true,
@@ -7979,6 +8017,13 @@
                 ],
                 "parameters": [
                     {
+                        "type": "integer",
+                        "name": "soldID",
+                        "in": "query",
+                        "required": true,
+                        "description": "Either soldID or a combination of leadID and contractID is required"
+                    },
+                    {
                         "type": "string",
                         "name": "leadID",
                         "in": "query",
@@ -7993,14 +8038,7 @@
                         "description": "Required when using leadID. May skip if using soldID"
                     },
                     {
-                        "type": "integer",
-                        "name": "soldID",
-                        "in": "query",
-                        "required": true,
-                        "description": "Either soldID or a combination of leadID and contractID is required"
-                    },
-                    {
-                        "type": "integer",
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": true,
@@ -8088,15 +8126,22 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8123,20 +8168,6 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "enum": [
                             "Pending",
@@ -8153,6 +8184,15 @@
                     {
                         "type": "integer",
                         "name": "returnReasonID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8229,7 +8269,7 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "replaceReturns",
+                        "name": "scrub",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8240,7 +8280,7 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "scrub",
+                        "name": "replaceReturns",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8294,7 +8334,7 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "replaceReturns",
+                        "name": "scrub",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8305,7 +8345,7 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "scrub",
+                        "name": "replaceReturns",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8542,22 +8582,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8571,7 +8604,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8708,8 +8750,15 @@
                 ],
                 "parameters": [
                     {
+                        "type": "string",
+                        "name": "leadID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8723,14 +8772,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "leadID",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -8996,21 +9038,14 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
                         "name": "verticalID",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "contractName",
+                        "type": "integer",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -9027,7 +9062,14 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "string",
+                        "name": "contractName",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "type": "number",
                         "name": "defaultPrice",
                         "in": "query",
                         "required": true,
@@ -9354,24 +9396,6 @@
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "enum": [
-                            "Exclusive",
-                            "Multisell"
-                        ],
-                        "name": "type",
-                        "in": "query",
-                        "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "price",
-                        "in": "query",
-                        "required": true,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "cap",
                         "in": "query",
@@ -9379,11 +9403,18 @@
                         "description": "If you do not want a Schedule Cap pass a value of 0"
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "revenueCap",
                         "in": "query",
                         "required": true,
                         "description": "If you do not want a Schedule Revenue Cap pass a value of 0"
+                    },
+                    {
+                        "type": "number",
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -9398,6 +9429,17 @@
                         "in": "query",
                         "required": true,
                         "description": "HH:mm"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Exclusive",
+                            "Multisell"
+                        ],
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -9513,18 +9555,21 @@
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "enum": [
-                            "Exclusive",
-                            "Multisell"
-                        ],
-                        "name": "type",
+                        "type": "integer",
+                        "name": "cap",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
+                        "name": "revenueCap",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": false,
@@ -9545,15 +9590,12 @@
                         "description": "HH:mm"
                     },
                     {
-                        "type": "integer",
-                        "name": "cap",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "revenueCap",
+                        "type": "string",
+                        "enum": [
+                            "Exclusive",
+                            "Multisell"
+                        ],
+                        "name": "type",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -9667,7 +9709,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": true,
@@ -9982,6 +10024,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "date",
                         "in": "query",
                         "required": false,
@@ -10069,6 +10112,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -10077,6 +10121,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": true,
@@ -10210,7 +10255,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "amount",
                         "in": "query",
                         "required": true,
@@ -10234,21 +10279,15 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "transactionFee",
+                        "default": "No",
+                        "name": "generateInvoice",
                         "in": "query",
                         "required": false,
-                        "description": ""
+                        "description": "If Yes and the type is Credit, an invoice will be generated"
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "string",
+                        "name": "note",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -10259,15 +10298,21 @@
                             "Yes",
                             "No"
                         ],
-                        "default": "No",
-                        "name": "generateInvoice",
+                        "name": "transactionFee",
                         "in": "query",
                         "required": false,
-                        "description": "If Yes and the type is Credit, an invoice will be generated"
+                        "description": ""
                     },
                     {
-                        "type": "string",
-                        "name": "note",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -10320,18 +10365,18 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "autoChargeAmount",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
+                        "type": "number",
                         "name": "autoChargeBalance",
                         "in": "query",
                         "required": false,
                         "description": "Credit will be auto charged when the balance falls below this amount"
+                    },
+                    {
+                        "type": "number",
+                        "name": "autoChargeAmount",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -10345,15 +10390,15 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeeAmount",
+                        "type": "number",
+                        "name": "transactionFeePercentage",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "transactionFeePercentage",
+                        "type": "number",
+                        "name": "transactionFeeAmount",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -10813,7 +10858,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": true,
@@ -10870,7 +10915,7 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
+                        "type": "number",
                         "name": "price",
                         "in": "query",
                         "required": true,
@@ -11296,17 +11341,6 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "allowStatusPause",
-                        "in": "query",
-                        "required": false,
-                        "description": "Allow advertiser to pause contract"
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
                         "name": "showLeadData",
                         "in": "query",
                         "required": false,
@@ -11329,17 +11363,6 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "allowUpdateSchedule",
-                        "in": "query",
-                        "required": false,
-                        "description": "Allow advertiser to manage delivery schedule"
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
                         "name": "showCaps",
                         "in": "query",
                         "required": false,
@@ -11351,10 +11374,10 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "allowManageCaps",
+                        "name": "showReturnSettings",
                         "in": "query",
                         "required": false,
-                        "description": "Allow advertiser to manage caps"
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -11362,10 +11385,32 @@
                             "Yes",
                             "No"
                         ],
-                        "name": "showReturnSettings",
+                        "name": "allowStatusPause",
                         "in": "query",
                         "required": false,
-                        "description": ""
+                        "description": "Allow advertiser to pause contract"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "allowUpdateSchedule",
+                        "in": "query",
+                        "required": false,
+                        "description": "Allow advertiser to manage delivery schedule"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "allowManageCaps",
+                        "in": "query",
+                        "required": false,
+                        "description": "Allow advertiser to manage caps"
                     }
                 ],
                 "responses": {
@@ -11406,6 +11451,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "expirationDate",
                         "in": "query",
                         "required": true,
@@ -11538,6 +11584,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "pauseDate",
                         "in": "query",
                         "required": true,
@@ -11546,6 +11593,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "resumeDate",
                         "in": "query",
                         "required": true,
@@ -11773,19 +11821,13 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "enum": [
-                            "Active",
-                            "InActive"
+                            "Revenue Per Lead",
+                            "Revenue Per Call",
+                            "Revenue Per Action"
                         ],
-                        "name": "status",
+                        "name": "revenueModel",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -11803,13 +11845,19 @@
                         "description": ""
                     },
                     {
+                        "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
                         "type": "string",
                         "enum": [
-                            "Revenue Per Lead",
-                            "Revenue Per Call",
-                            "Revenue Per Action"
+                            "Active",
+                            "InActive"
                         ],
-                        "name": "revenueModel",
+                        "name": "status",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -11963,14 +12011,14 @@
                     },
                     {
                         "type": "string",
-                        "name": "alternativeID",
+                        "name": "notes",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "notes",
+                        "name": "alternativeID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12355,18 +12403,18 @@
                     },
                     {
                         "type": "string",
-                        "enum": [
-                            "Yes",
-                            "No"
-                        ],
-                        "name": "termsEnabled",
+                        "name": "terms",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "terms",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "name": "termsEnabled",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12558,6 +12606,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "expirationDate",
                         "in": "query",
                         "required": true,
@@ -12631,22 +12680,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalGroupID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12683,22 +12734,22 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12711,8 +12762,10 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalGroupID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12749,22 +12802,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateAccountManagerID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12801,15 +12856,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12823,14 +12878,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateAccountManagerID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12867,17 +12924,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -12889,7 +12939,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12910,7 +12960,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12918,6 +12968,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12954,36 +13013,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "offerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -12997,7 +13035,30 @@
                     },
                     {
                         "type": "integer",
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13034,29 +13095,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13070,7 +13117,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13106,14 +13169,14 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "year",
+                        "name": "month",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "month",
+                        "name": "year",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -13127,14 +13190,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13148,7 +13204,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13191,14 +13254,14 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "year",
+                        "name": "month",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "month",
+                        "name": "year",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -13212,7 +13275,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13226,7 +13289,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13270,57 +13333,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "offerID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "name": "payoutModel",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13334,6 +13355,34 @@
                     },
                     {
                         "type": "integer",
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "name": "payoutModel",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
@@ -13341,7 +13390,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13378,17 +13443,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -13401,6 +13459,15 @@
                     {
                         "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13486,14 +13553,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13543,14 +13610,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13600,14 +13667,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13651,22 +13718,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalGroupID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13703,17 +13772,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -13733,6 +13795,15 @@
                     {
                         "type": "string",
                         "name": "payoutModel",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13769,17 +13840,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -13799,6 +13863,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13835,36 +13908,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13878,7 +13930,30 @@
                     },
                     {
                         "type": "integer",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13915,17 +13990,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -13937,7 +14005,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13958,7 +14026,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -13966,6 +14034,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14002,29 +14079,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "offerID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14038,7 +14101,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14075,29 +14154,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14111,7 +14176,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14147,14 +14228,14 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "year",
+                        "name": "month",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "month",
+                        "name": "year",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -14168,14 +14249,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14189,7 +14263,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14232,14 +14313,14 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "year",
+                        "name": "month",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "month",
+                        "name": "year",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -14253,7 +14334,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "advertiserID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14267,7 +14348,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14311,36 +14392,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
                         "name": "verticalID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14354,6 +14414,13 @@
                     },
                     {
                         "type": "integer",
+                        "name": "affiliateID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
@@ -14361,7 +14428,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14398,17 +14481,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -14420,7 +14496,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14441,7 +14517,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14449,6 +14525,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14485,22 +14570,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalGroupID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14537,22 +14624,22 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14565,8 +14652,10 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalGroupID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14603,17 +14692,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -14633,6 +14715,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14669,15 +14760,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "campaignID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14691,14 +14782,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "campaignID",
+                        "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateAccountManagerID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14735,17 +14828,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -14757,7 +14843,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14778,7 +14864,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14786,6 +14872,15 @@
                     {
                         "type": "integer",
                         "name": "affiliateAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14822,24 +14917,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "offerID",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -14858,7 +14939,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "offerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14895,24 +14992,10 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
-                        "description": ""
-                    },
-                    {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "advertiserID",
-                        "in": "query",
-                        "required": false,
                         "description": ""
                     },
                     {
@@ -14931,7 +15014,23 @@
                     },
                     {
                         "type": "integer",
+                        "name": "advertiserID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
                         "name": "advertiserAccountManagerID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -14967,14 +15066,14 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "year",
+                        "name": "month",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
                         "type": "string",
-                        "name": "month",
+                        "name": "year",
                         "in": "query",
                         "required": true,
                         "description": ""
@@ -14988,14 +15087,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "affiliateID",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "campaignID",
+                        "name": "verticalGroupID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15009,7 +15101,14 @@
                     },
                     {
                         "type": "integer",
-                        "name": "verticalGroupID",
+                        "name": "campaignID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15053,6 +15152,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
@@ -15061,6 +15161,7 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "toDate",
                         "in": "query",
                         "required": false,
@@ -15098,22 +15199,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "verticalID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "verticalID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15150,22 +15253,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "affiliateAccountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateAccountManagerID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15202,15 +15307,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "affiliateID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15223,8 +15328,10 @@
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "affiliateID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15261,22 +15368,24 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
+                        "type": "integer",
+                        "name": "advertiserAccountManagerID",
                         "in": "query",
                         "required": false,
                         "description": ""
                     },
                     {
-                        "type": "integer",
-                        "name": "advertiserAccountManagerID",
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15313,22 +15422,15 @@
                     {
                         "type": "string",
                         "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
                         "name": "fromDate",
                         "in": "query",
                         "required": true,
                         "description": ""
                     },
                     {
-                        "type": "string",
-                        "x-matching-pattern": "YYYY-MM-DD",
-                        "name": "toDate",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
                         "type": "integer",
-                        "name": "verticalID",
+                        "name": "contractID",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15342,7 +15444,16 @@
                     },
                     {
                         "type": "integer",
-                        "name": "contractID",
+                        "name": "verticalID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "x-matching-pattern": "YYYY-MM-DD",
+                        "format": "date",
+                        "name": "toDate",
                         "in": "query",
                         "required": false,
                         "description": ""
@@ -15474,6 +15585,13 @@
                 ],
                 "parameters": [
                     {
+                        "type": "integer",
+                        "name": "groupID",
+                        "in": "query",
+                        "required": false,
+                        "description": "Vertical Group ID"
+                    },
+                    {
                         "type": "string",
                         "enum": [
                             "Active",
@@ -15483,13 +15601,6 @@
                         "in": "query",
                         "required": false,
                         "description": "Vertical Status"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "groupID",
-                        "in": "query",
-                        "required": false,
-                        "description": "Vertical Group ID"
                     },
                     {
                         "type": "integer",
@@ -15623,6 +15734,13 @@
                         "description": ""
                     },
                     {
+                        "type": "integer",
+                        "name": "groupID",
+                        "in": "query",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
                         "type": "string",
                         "name": "verticalName",
                         "in": "query",
@@ -15632,13 +15750,6 @@
                     {
                         "type": "string",
                         "name": "notes",
-                        "in": "query",
-                        "required": false,
-                        "description": ""
-                    },
-                    {
-                        "type": "integer",
-                        "name": "groupID",
                         "in": "query",
                         "required": false,
                         "description": ""

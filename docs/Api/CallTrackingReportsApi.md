@@ -21,7 +21,7 @@ All URIs are relative to https://api.leadspedia.com/core/v2, except if the opera
 ## `callTrackingReportsgetCallRoutingReportdo()`
 
 ```php
-callTrackingReportsgetCallRoutingReportdo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Call Routing
@@ -45,17 +45,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
-$advertiserID = 56; // int
 $verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallRoutingReportdo($fromDate, $toDate, $verticalID, $affiliateID, $advertiserID, $verticalGroupID, $affiliateAccountManagerID, $advertiserAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallRoutingReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateID, $affiliateAccountManagerID, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallRoutingReportdo: ', $e->getMessage(), PHP_EOL;
@@ -66,14 +66,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -95,7 +95,7 @@ try {
 ## `callTrackingReportsgetCallsByAdvertisersDailyReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Daily Calls by Advertisers
@@ -119,16 +119,16 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$year = 'year_example'; // string
 $month = 'month_example'; // string
+$year = 'year_example'; // string
 $verticalID = 56; // int
-$advertiserID = 56; // int
-$contractID = 56; // int
 $verticalGroupID = 56; // int
+$contractID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersDailyReportdo($year, $month, $verticalID, $advertiserID, $contractID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersDailyReportdo($month, $year, $verticalID, $verticalGroupID, $contractID, $advertiserID, $advertiserAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAdvertisersDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -139,12 +139,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **year** | **string**|  | |
 | **month** | **string**|  | |
+| **year** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
-| **contractID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **contractID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -167,7 +167,7 @@ try {
 ## `callTrackingReportsgetCallsByAdvertisersReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Advertisers
@@ -191,15 +191,15 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$offerID = 56; // int
 $verticalGroupID = 56; // int
+$offerID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $toDate, $verticalID, $offerID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAdvertisersReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAdvertisersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -210,12 +210,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -237,7 +237,7 @@ try {
 ## `callTrackingReportsgetCallsByAffiliatesDailyReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
 ```
 
 Daily Calls by Affiliates
@@ -261,17 +261,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$year = 'year_example'; // string
 $month = 'month_example'; // string
+$year = 'year_example'; // string
 $verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
-$offerID = 56; // int
 $verticalGroupID = 56; // int
+$offerID = 56; // int
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesDailyReportdo($year, $month, $verticalID, $affiliateID, $campaignID, $offerID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesDailyReportdo($month, $year, $verticalID, $verticalGroupID, $offerID, $campaignID, $affiliateID, $affiliateAccountManagerID);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAffiliatesDailyReportdo: ', $e->getMessage(), PHP_EOL;
@@ -282,13 +282,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **year** | **string**|  | |
 | **month** | **string**|  | |
+| **year** | **string**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
-| **offerID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **offerID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
 
 ### Return type
@@ -311,7 +311,7 @@ try {
 ## `callTrackingReportsgetCallsByAffiliatesReportdo()`
 
 ```php
-callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Affiliates
@@ -335,14 +335,14 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -353,11 +353,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -379,7 +379,7 @@ try {
 ## `callTrackingReportsgetCallsByCampaignsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Campaigns
@@ -403,17 +403,17 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
+$verticalGroupID = 56; // int
 $offerID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
-$verticalGroupID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $toDate, $verticalID, $affiliateID, $offerID, $payoutModel, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByCampaignsReportdo($fromDate, $verticalID, $verticalGroupID, $offerID, $payoutModel, $affiliateID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByCampaignsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -424,14 +424,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
+| **verticalGroupID** | **int**|  | [optional] |
 | **offerID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
-| **verticalGroupID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -453,7 +453,7 @@ try {
 ## `callTrackingReportsgetCallsByContractsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Contracts
@@ -477,15 +477,15 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$advertiserID = 56; // int
 $verticalGroupID = 56; // int
+$advertiserID = 56; // int
 $advertiserAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByContractsReportdo($fromDate, $toDate, $verticalID, $advertiserID, $verticalGroupID, $advertiserAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsByContractsReportdo($fromDate, $verticalID, $verticalGroupID, $advertiserID, $advertiserAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByContractsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -496,12 +496,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **advertiserID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **advertiserID** | **int**|  | [optional] |
 | **advertiserAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -523,7 +523,7 @@ try {
 ## `callTrackingReportsgetCallsByOffersReportdo()`
 
 ```php
-callTrackingReportsgetCallsByOffersReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Offers
@@ -547,14 +547,14 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
 $verticalGroupID = 56; // int
 $payoutModel = 'payoutModel_example'; // string
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByOffersReportdo($fromDate, $toDate, $verticalID, $verticalGroupID, $payoutModel);
+    $result = $apiInstance->callTrackingReportsgetCallsByOffersReportdo($fromDate, $verticalID, $verticalGroupID, $payoutModel, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByOffersReportdo: ', $e->getMessage(), PHP_EOL;
@@ -565,11 +565,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
 | **payoutModel** | **string**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -591,7 +591,7 @@ try {
 ## `callTrackingReportsgetCallsBySubAffiliatesReportdo()`
 
 ```php
-callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Sub Affiliates
@@ -615,16 +615,16 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalID = 56; // int
-$affiliateID = 56; // int
-$campaignID = 56; // int
 $verticalGroupID = 56; // int
+$campaignID = 56; // int
+$affiliateID = 56; // int
 $affiliateAccountManagerID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $verticalGroupID, $affiliateAccountManagerID);
+    $result = $apiInstance->callTrackingReportsgetCallsBySubAffiliatesReportdo($fromDate, $verticalID, $verticalGroupID, $campaignID, $affiliateID, $affiliateAccountManagerID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsBySubAffiliatesReportdo: ', $e->getMessage(), PHP_EOL;
@@ -635,13 +635,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalID** | **int**|  | [optional] |
-| **affiliateID** | **int**|  | [optional] |
-| **campaignID** | **int**|  | [optional] |
 | **verticalGroupID** | **int**|  | [optional] |
+| **campaignID** | **int**|  | [optional] |
+| **affiliateID** | **int**|  | [optional] |
 | **affiliateAccountManagerID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 
@@ -663,7 +663,7 @@ try {
 ## `callTrackingReportsgetCallsByVerticalsReportdo()`
 
 ```php
-callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID): \Leadspedia\Model\InlineResponse2001
+callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate): \Leadspedia\Model\InlineResponse2001
 ```
 
 Calls by Verticals
@@ -687,12 +687,12 @@ $apiInstance = new Leadspedia\Api\CallTrackingReportsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fromDate = 'fromDate_example'; // string
-$toDate = 'toDate_example'; // string
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $verticalGroupID = 56; // int
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
-    $result = $apiInstance->callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $toDate, $verticalGroupID);
+    $result = $apiInstance->callTrackingReportsgetCallsByVerticalsReportdo($fromDate, $verticalGroupID, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CallTrackingReportsApi->callTrackingReportsgetCallsByVerticalsReportdo: ', $e->getMessage(), PHP_EOL;
@@ -703,9 +703,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fromDate** | **string**|  | |
-| **toDate** | **string**|  | [optional] |
+| **fromDate** | **\DateTime**|  | |
 | **verticalGroupID** | **int**|  | [optional] |
+| **toDate** | **\DateTime**|  | [optional] |
 
 ### Return type
 

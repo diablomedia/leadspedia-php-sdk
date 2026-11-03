@@ -40,12 +40,36 @@ $config = (new \Leadspedia\Configuration())
     ->setPassword($apiSecret);
 ```
 
-Across shared paths, 95 operations change parameter names, types, order, or
-required flags. Defaults and enums also follow the new source. Check the generated
-API documentation before upgrading; positional calls are particularly sensitive
-to ordering changes, and named arguments can change when fields are renamed or
-removed. No legacy endpoints or parameter definitions are silently merged into
-the official contract.
+Across shared paths, the initial migration changed parameter names, types, order,
+or required flags in 95 operations. The compatibility overlay described below
+now reduces those differences. Removed/renamed fields, changed required flags,
+defaults, enums, and other type changes still follow the official source. Check
+the generated API documentation before upgrading.
+
+## Compatibility overlay
+
+`compatibility.json` records parameter order from SDK commit
+`888154e` (before the official source migration), plus 33 explicit monetary type
+overrides. It is committed input to the converter, so regeneration preserves
+these choices without retrieving the old documentation or editing generated PHP.
+
+- Existing parameters retain their previous relative order for 228 shared
+  path/method pairs. New parameters follow existing ones within the required and
+  optional groups; the generator always puts required parameters first.
+- Known monetary fields previously typed as `number` remain decimal-capable even
+  when the official source calls them `integer`. IDs, phone numbers, distances,
+  and other integer fields are unaffected. An unexpected nonnumeric upstream
+  type fails conversion so the override can be reviewed.
+- `x-matching-pattern: YYYY-MM-DD` becomes `format: date`, unless upstream already
+  specifies a format. Generated date parameters accept `DateTimeInterface`
+  (including `Safe\DateTime` subclasses and immutable dates) or date strings.
+  Date objects serialize as `Y-m-d` in their own timezone without being mutated.
+
+This does not restore removed endpoints or parameters. Removed parameter slots,
+new required parameters, and changed required flags can still break positional
+calls. `/dnc/check.do` also changed from POST to GET upstream, so it does not use
+the old method's parameter-order entry. HTTP Basic authentication remains the
+official authentication mechanism.
 
 ## Added Core paths in this snapshot
 
@@ -137,7 +161,7 @@ the official contract.
 - `/validation/phone.do`
 - `/validation/validateZipCode.do`
 
-## Shared paths with changed parameter contracts
+## Shared paths that differed in the initial official snapshot
 
 - `/advertisers/adjustCredit.do`
 - `/advertisers/getAll.do`

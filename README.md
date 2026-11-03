@@ -62,16 +62,16 @@ $apiInstance = new Leadspedia\Api\AdvertisersApi(
 );
 $advertiserID = 56; // int
 $type = 'type_example'; // string
-$amount = 56; // int
+$amount = 3.4; // float
 $charge = 'No'; // string | If Yes, the default credit card of the advertiser will be charged
-$transactionFee = 'transactionFee_example'; // string
-$transactionFeeAmount = 56; // int
-$transactionFeePercentage = 56; // int
 $generateInvoice = 'No'; // string | If Yes and the type is Credit, an invoice will be generated
 $note = 'note_example'; // string
+$transactionFee = 'transactionFee_example'; // string
+$transactionFeePercentage = 3.4; // float
+$transactionFeeAmount = 3.4; // float
 
 try {
-    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note);
+    $result = $apiInstance->advertisersadjustCreditdo($advertiserID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdvertisersApi->advertisersadjustCreditdo: ', $e->getMessage(), PHP_EOL;

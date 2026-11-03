@@ -526,22 +526,22 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string $type type (required)
-     * @param  int $amount amount (required)
+     * @param  float $amount amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee transactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note note (optional)
+     * @param  string|null $transactionFee transactionFee (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
+    public function callRoutingContractsadjustCreditdo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
     {
-        [$response] = $this->callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        [$response] = $this->callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
         return $response;
     }
 
@@ -552,21 +552,21 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsadjustCreditdoAsync($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
+    public function callRoutingContractsadjustCreditdoAsync($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
     {
-        return $this->callRoutingContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType)
+        return $this->callRoutingContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -579,22 +579,22 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
+    public function callRoutingContractsadjustCreditdoAsyncWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request    = $this->callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -630,19 +630,19 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
+    public function callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -702,7 +702,7 @@ class CallRoutingContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $amount,
             'amount', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -712,33 +712,6 @@ class CallRoutingContractsApi
             $charge,
             'charge', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFee,
-            'transactionFee', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -757,6 +730,33 @@ class CallRoutingContractsApi
             $note,
             'note', // param base name
             'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFee,
+            'transactionFee', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -833,22 +833,22 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $type (required)
-     * @param  int $amount (required)
+     * @param  float $amount (required)
      * @param  string|null $charge If Yes, the default credit card of the advertiser will be charged (optional, default to 'No')
-     * @param  string|null $transactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
      * @param  string|null $generateInvoice If Yes and the type is Credit, an invoice will be generated (optional, default to 'No')
      * @param  string|null $note (optional)
+     * @param  string|null $transactionFee (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsadjustCreditdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge = 'No', $transactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = 'No', $note = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
+    public function callRoutingContractsadjustCreditdoWithHttpInfo($contractID, $type, $amount, $charge = 'No', $generateInvoice = 'No', $note = null, $transactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, string $contentType = self::contentTypes['callRoutingContractsadjustCreditdo'][0])
     {
-        $request = $this->callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $transactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $note, $contentType);
+        $request = $this->callRoutingContractsadjustCreditdoRequest($contractID, $type, $amount, $charge, $generateInvoice, $note, $transactionFee, $transactionFeePercentage, $transactionFeeAmount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1505,19 +1505,19 @@ class CallRoutingContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID advertiserID (required)
      * @param  int $verticalID verticalID (required)
+     * @param  int $advertiserID advertiserID (required)
      * @param  string $contractName contractName (required)
-     * @param  int $defaultPrice defaultPrice (required)
+     * @param  float $defaultPrice defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractscreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractscreatedo($advertiserID, $verticalID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
+    public function callRoutingContractscreatedo($verticalID, $advertiserID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
     {
-        [$response] = $this->callRoutingContractscreatedoWithHttpInfo($advertiserID, $verticalID, $contractName, $defaultPrice, $contentType);
+        [$response] = $this->callRoutingContractscreatedoWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice, $contentType);
         return $response;
     }
 
@@ -1526,18 +1526,18 @@ class CallRoutingContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
+     * @param  int $advertiserID (required)
      * @param  string $contractName (required)
-     * @param  int $defaultPrice (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractscreatedoAsync($advertiserID, $verticalID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
+    public function callRoutingContractscreatedoAsync($verticalID, $advertiserID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
     {
-        return $this->callRoutingContractscreatedoAsyncWithHttpInfo($advertiserID, $verticalID, $contractName, $defaultPrice, $contentType)
+        return $this->callRoutingContractscreatedoAsyncWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1548,19 +1548,19 @@ class CallRoutingContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
+     * @param  int $advertiserID (required)
      * @param  string $contractName (required)
-     * @param  int $defaultPrice (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractscreatedoAsyncWithHttpInfo($advertiserID, $verticalID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
+    public function callRoutingContractscreatedoAsyncWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->callRoutingContractscreatedoRequest($advertiserID, $verticalID, $contractName, $defaultPrice, $contentType);
+        $request    = $this->callRoutingContractscreatedoRequest($verticalID, $advertiserID, $contractName, $defaultPrice, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1594,29 +1594,29 @@ class CallRoutingContractsApi
     /**
      * Create request for operation 'callRoutingContractscreatedo'
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
+     * @param  int $advertiserID (required)
      * @param  string $contractName (required)
-     * @param  int $defaultPrice (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractscreatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callRoutingContractscreatedoRequest($advertiserID, $verticalID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
+    public function callRoutingContractscreatedoRequest($verticalID, $advertiserID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
     {
-
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling callRoutingContractscreatedo'
-            );
-        }
 
         // verify the required parameter 'verticalID' is set
         if ($verticalID === null || (is_array($verticalID) && count($verticalID) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $verticalID when calling callRoutingContractscreatedo'
+            );
+        }
+
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling callRoutingContractscreatedo'
             );
         }
 
@@ -1644,8 +1644,8 @@ class CallRoutingContractsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $verticalID,
+            'verticalID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -1653,8 +1653,8 @@ class CallRoutingContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -1673,7 +1673,7 @@ class CallRoutingContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $defaultPrice,
             'defaultPrice', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -1748,19 +1748,19 @@ class CallRoutingContractsApi
      *
      * Create
      *
-     * @param  int $advertiserID (required)
      * @param  int $verticalID (required)
+     * @param  int $advertiserID (required)
      * @param  string $contractName (required)
-     * @param  int $defaultPrice (required)
+     * @param  float $defaultPrice (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractscreatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callRoutingContractscreatedoWithHttpInfo($advertiserID, $verticalID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
+    public function callRoutingContractscreatedoWithHttpInfo($verticalID, $advertiserID, $contractName, $defaultPrice, string $contentType = self::contentTypes['callRoutingContractscreatedo'][0])
     {
-        $request = $this->callRoutingContractscreatedoRequest($advertiserID, $verticalID, $contractName, $defaultPrice, $contentType);
+        $request = $this->callRoutingContractscreatedoRequest($verticalID, $advertiserID, $contractName, $defaultPrice, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2665,8 +2665,8 @@ class CallRoutingContractsApi
      *
      * Get All
      *
-     * @param  int|null $contractID contractID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
+     * @param  int|null $contractID contractID (optional)
      * @param  int|null $verticalID verticalID (optional)
      * @param  string|null $status status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
@@ -2677,9 +2677,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function callRoutingContractsgetAlldo($contractID = null, $advertiserID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
+    public function callRoutingContractsgetAlldo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
     {
-        [$response] = $this->callRoutingContractsgetAlldoWithHttpInfo($contractID, $advertiserID, $verticalID, $status, $start, $limit, $contentType);
+        [$response] = $this->callRoutingContractsgetAlldoWithHttpInfo($advertiserID, $contractID, $verticalID, $status, $start, $limit, $contentType);
         return $response;
     }
 
@@ -2688,8 +2688,8 @@ class CallRoutingContractsApi
      *
      * Get All
      *
-     * @param  int|null $contractID (optional)
      * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
      * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
@@ -2699,9 +2699,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsgetAlldoAsync($contractID = null, $advertiserID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
+    public function callRoutingContractsgetAlldoAsync($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
     {
-        return $this->callRoutingContractsgetAlldoAsyncWithHttpInfo($contractID, $advertiserID, $verticalID, $status, $start, $limit, $contentType)
+        return $this->callRoutingContractsgetAlldoAsyncWithHttpInfo($advertiserID, $contractID, $verticalID, $status, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2712,8 +2712,8 @@ class CallRoutingContractsApi
      *
      * Get All
      *
-     * @param  int|null $contractID (optional)
      * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
      * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
@@ -2723,10 +2723,10 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsgetAlldoAsyncWithHttpInfo($contractID = null, $advertiserID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
+    public function callRoutingContractsgetAlldoAsyncWithHttpInfo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->callRoutingContractsgetAlldoRequest($contractID, $advertiserID, $verticalID, $status, $start, $limit, $contentType);
+        $request    = $this->callRoutingContractsgetAlldoRequest($advertiserID, $contractID, $verticalID, $status, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2760,8 +2760,8 @@ class CallRoutingContractsApi
     /**
      * Create request for operation 'callRoutingContractsgetAlldo'
      *
-     * @param  int|null $contractID (optional)
      * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
      * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
@@ -2771,7 +2771,7 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callRoutingContractsgetAlldoRequest($contractID = null, $advertiserID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
+    public function callRoutingContractsgetAlldoRequest($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
     {
 
 
@@ -2790,8 +2790,8 @@ class CallRoutingContractsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $contractID,
-            'contractID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2799,8 +2799,8 @@ class CallRoutingContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $contractID,
+            'contractID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2912,8 +2912,8 @@ class CallRoutingContractsApi
      *
      * Get All
      *
-     * @param  int|null $contractID (optional)
      * @param  int|null $advertiserID (optional)
+     * @param  int|null $contractID (optional)
      * @param  int|null $verticalID (optional)
      * @param  string|null $status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
@@ -2924,9 +2924,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callRoutingContractsgetAlldoWithHttpInfo($contractID = null, $advertiserID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
+    public function callRoutingContractsgetAlldoWithHttpInfo($advertiserID = null, $contractID = null, $verticalID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['callRoutingContractsgetAlldo'][0])
     {
-        $request = $this->callRoutingContractsgetAlldoRequest($contractID, $advertiserID, $verticalID, $status, $start, $limit, $contentType);
+        $request = $this->callRoutingContractsgetAlldoRequest($advertiserID, $contractID, $verticalID, $status, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3542,8 +3542,8 @@ class CallRoutingContractsApi
      * Get Credit History
      *
      * @param  int $contractID contractID (required)
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  string|null $disposition disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -3565,8 +3565,8 @@ class CallRoutingContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -3589,8 +3589,8 @@ class CallRoutingContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -3637,8 +3637,8 @@ class CallRoutingContractsApi
      * Create request for operation 'callRoutingContractsgetCreditHistorydo'
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -3686,6 +3686,9 @@ class CallRoutingContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -3695,6 +3698,9 @@ class CallRoutingContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $toDate,
             'toDate', // param base name
@@ -3801,8 +3807,8 @@ class CallRoutingContractsApi
      * Get Credit History
      *
      * @param  int $contractID (required)
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  string|null $disposition (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
@@ -7216,8 +7222,8 @@ class CallRoutingContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7236,8 +7242,8 @@ class CallRoutingContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7257,8 +7263,8 @@ class CallRoutingContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7302,8 +7308,8 @@ class CallRoutingContractsApi
      * Create request for operation 'callRoutingContractsschedulePausedo'
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7351,6 +7357,9 @@ class CallRoutingContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($pauseDate instanceof \DateTimeInterface) {
+            $pauseDate = $pauseDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $pauseDate,
             'pauseDate', // param base name
@@ -7360,6 +7369,9 @@ class CallRoutingContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($resumeDate instanceof \DateTimeInterface) {
+            $resumeDate = $resumeDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $resumeDate,
             'resumeDate', // param base name
@@ -7439,8 +7451,8 @@ class CallRoutingContractsApi
      * Create Schedule Pause
      *
      * @param  int $contractID (required)
-     * @param  string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
-     * @param  string $resumeDate (required)
+     * @param  \DateTimeInterface|string $pauseDate Pause date has to be later than today&#39;s date but before the resume date (required)
+     * @param  \DateTimeInterface|string $resumeDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsschedulePausedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7527,7 +7539,7 @@ class CallRoutingContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID contractID (required)
-     * @param  string $expirationDate expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7546,7 +7558,7 @@ class CallRoutingContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7566,7 +7578,7 @@ class CallRoutingContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7610,7 +7622,7 @@ class CallRoutingContractsApi
      * Create request for operation 'callRoutingContractssetExpirationDatedo'
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7651,6 +7663,9 @@ class CallRoutingContractsApi
             true // required
         ) ?? []);
         // query params
+        if ($expirationDate instanceof \DateTimeInterface) {
+            $expirationDate = $expirationDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expirationDate,
             'expirationDate', // param base name
@@ -7730,7 +7745,7 @@ class CallRoutingContractsApi
      * Set Expiration Date
      *
      * @param  int $contractID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7818,11 +7833,11 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string|null $enableAutoRecharge enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount transactionFeeAmount (optional)
      * @param  string|null $generateInvoice generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -7830,9 +7845,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
+    public function callRoutingContractsupdateAutoRechargeSettingsdo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
     {
-        [$response] = $this->callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        [$response] = $this->callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
         return $response;
     }
 
@@ -7843,20 +7858,20 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdoAsync($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
+    public function callRoutingContractsupdateAutoRechargeSettingsdoAsync($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
     {
-        return $this->callRoutingContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType)
+        return $this->callRoutingContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -7869,21 +7884,21 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
+    public function callRoutingContractsupdateAutoRechargeSettingsdoAsyncWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request    = $this->callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7919,18 +7934,18 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
+    public function callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -7975,18 +7990,18 @@ class CallRoutingContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeAmount,
-            'autoChargeAmount', // param base name
-            'integer', // openApiType
+            $autoChargeBalance,
+            'autoChargeBalance', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $autoChargeBalance,
-            'autoChargeBalance', // param base name
-            'integer', // openApiType
+            $autoChargeAmount,
+            'autoChargeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -8002,18 +8017,18 @@ class CallRoutingContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeeAmount,
-            'transactionFeeAmount', // param base name
-            'integer', // openApiType
+            $transactionFeePercentage,
+            'transactionFeePercentage', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transactionFeePercentage,
-            'transactionFeePercentage', // param base name
-            'integer', // openApiType
+            $transactionFeeAmount,
+            'transactionFeeAmount', // param base name
+            'number', // openApiType
             '', // style
             false, // explode
             false // required
@@ -8099,11 +8114,11 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $enableAutoRecharge (optional)
-     * @param  int|null $autoChargeAmount (optional)
-     * @param  int|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeBalance Credit will be auto charged when the balance falls below this amount (optional)
+     * @param  float|null $autoChargeAmount (optional)
      * @param  string|null $chargeTransactionFee (optional)
-     * @param  int|null $transactionFeeAmount (optional)
-     * @param  int|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeePercentage (optional)
+     * @param  float|null $transactionFeeAmount (optional)
      * @param  string|null $generateInvoice (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'] to see the possible values for this operation
      *
@@ -8111,9 +8126,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeAmount = null, $autoChargeBalance = null, $chargeTransactionFee = null, $transactionFeeAmount = null, $transactionFeePercentage = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
+    public function callRoutingContractsupdateAutoRechargeSettingsdoWithHttpInfo($contractID, $enableAutoRecharge = null, $autoChargeBalance = null, $autoChargeAmount = null, $chargeTransactionFee = null, $transactionFeePercentage = null, $transactionFeeAmount = null, $generateInvoice = null, string $contentType = self::contentTypes['callRoutingContractsupdateAutoRechargeSettingsdo'][0])
     {
-        $request = $this->callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeAmount, $autoChargeBalance, $chargeTransactionFee, $transactionFeeAmount, $transactionFeePercentage, $generateInvoice, $contentType);
+        $request = $this->callRoutingContractsupdateAutoRechargeSettingsdoRequest($contractID, $enableAutoRecharge, $autoChargeBalance, $autoChargeAmount, $chargeTransactionFee, $transactionFeePercentage, $transactionFeeAmount, $generateInvoice, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9155,12 +9170,12 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string|null $showStatus showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showSchedule showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps showCaps (optional)
      * @param  string|null $showReturnSettings showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $callRecordings Allow advertiser to listen to call recordings in the advertiser portal (optional)
      * @param  string|null $hideCallerID Hide caller ID when calls are transferred to advertiser (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdatePortalSettingsdo'] to see the possible values for this operation
@@ -9169,9 +9184,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus = null, $allowStatusPause = null, $allowManageCaps = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $showReturnSettings = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
+    public function callRoutingContractsupdatePortalSettingsdo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
     {
-        [$response] = $this->callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID, $contentType);
+        [$response] = $this->callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID, $contentType);
         return $response;
     }
 
@@ -9182,12 +9197,12 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $callRecordings Allow advertiser to listen to call recordings in the advertiser portal (optional)
      * @param  string|null $hideCallerID Hide caller ID when calls are transferred to advertiser (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdatePortalSettingsdo'] to see the possible values for this operation
@@ -9195,9 +9210,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsupdatePortalSettingsdoAsync($contractID, $showStatus = null, $allowStatusPause = null, $allowManageCaps = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $showReturnSettings = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
+    public function callRoutingContractsupdatePortalSettingsdoAsync($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
     {
-        return $this->callRoutingContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID, $contentType)
+        return $this->callRoutingContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -9210,12 +9225,12 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $callRecordings Allow advertiser to listen to call recordings in the advertiser portal (optional)
      * @param  string|null $hideCallerID Hide caller ID when calls are transferred to advertiser (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdatePortalSettingsdo'] to see the possible values for this operation
@@ -9223,10 +9238,10 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function callRoutingContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus = null, $allowStatusPause = null, $allowManageCaps = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $showReturnSettings = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
+    public function callRoutingContractsupdatePortalSettingsdoAsyncWithHttpInfo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID, $contentType);
+        $request    = $this->callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9262,12 +9277,12 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $callRecordings Allow advertiser to listen to call recordings in the advertiser portal (optional)
      * @param  string|null $hideCallerID Hide caller ID when calls are transferred to advertiser (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdatePortalSettingsdo'] to see the possible values for this operation
@@ -9275,7 +9290,7 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus = null, $allowStatusPause = null, $allowManageCaps = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $showReturnSettings = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
+    public function callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
     {
 
         // verify the required parameter 'contractID' is set
@@ -9322,35 +9337,8 @@ class CallRoutingContractsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowStatusPause,
-            'allowStatusPause', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowManageCaps,
-            'allowManageCaps', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $showSchedule,
             'showSchedule', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allowUpdateSchedule,
-            'allowUpdateSchedule', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -9369,6 +9357,33 @@ class CallRoutingContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $showReturnSettings,
             'showReturnSettings', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allowStatusPause,
+            'allowStatusPause', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allowUpdateSchedule,
+            'allowUpdateSchedule', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allowManageCaps,
+            'allowManageCaps', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -9464,12 +9479,12 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string|null $showStatus (optional)
-     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
-     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $showSchedule (optional)
-     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
      * @param  string|null $showCaps (optional)
      * @param  string|null $showReturnSettings (optional)
+     * @param  string|null $allowStatusPause Allow advertiser to pause contract (optional)
+     * @param  string|null $allowUpdateSchedule Allow advertiser to manage delivery schedule (optional)
+     * @param  string|null $allowManageCaps Allow advertiser to manage caps (optional)
      * @param  string|null $callRecordings Allow advertiser to listen to call recordings in the advertiser portal (optional)
      * @param  string|null $hideCallerID Hide caller ID when calls are transferred to advertiser (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdatePortalSettingsdo'] to see the possible values for this operation
@@ -9478,9 +9493,9 @@ class CallRoutingContractsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus = null, $allowStatusPause = null, $allowManageCaps = null, $showSchedule = null, $allowUpdateSchedule = null, $showCaps = null, $showReturnSettings = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
+    public function callRoutingContractsupdatePortalSettingsdoWithHttpInfo($contractID, $showStatus = null, $showSchedule = null, $showCaps = null, $showReturnSettings = null, $allowStatusPause = null, $allowUpdateSchedule = null, $allowManageCaps = null, $callRecordings = null, $hideCallerID = null, string $contentType = self::contentTypes['callRoutingContractsupdatePortalSettingsdo'][0])
     {
-        $request = $this->callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $allowStatusPause, $allowManageCaps, $showSchedule, $allowUpdateSchedule, $showCaps, $showReturnSettings, $callRecordings, $hideCallerID, $contentType);
+        $request = $this->callRoutingContractsupdatePortalSettingsdoRequest($contractID, $showStatus, $showSchedule, $showCaps, $showReturnSettings, $allowStatusPause, $allowUpdateSchedule, $allowManageCaps, $callRecordings, $hideCallerID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10890,7 +10905,7 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID contractID (required)
      * @param  string $revenueModel revenueModel (required)
-     * @param  int $price price (required)
+     * @param  float $price price (required)
      * @param  string|null $duration Required if revenueModel is Duration (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateRevenueModeldo'] to see the possible values for this operation
      *
@@ -10911,7 +10926,7 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $revenueModel (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string|null $duration Required if revenueModel is Duration (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateRevenueModeldo'] to see the possible values for this operation
      *
@@ -10933,7 +10948,7 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $revenueModel (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string|null $duration Required if revenueModel is Duration (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateRevenueModeldo'] to see the possible values for this operation
      *
@@ -10979,7 +10994,7 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $revenueModel (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string|null $duration Required if revenueModel is Duration (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateRevenueModeldo'] to see the possible values for this operation
      *
@@ -11041,7 +11056,7 @@ class CallRoutingContractsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $price,
             'price', // param base name
-            'integer', // openApiType
+            'number', // openApiType
             '', // style
             false, // explode
             true // required
@@ -11127,7 +11142,7 @@ class CallRoutingContractsApi
      *
      * @param  int $contractID (required)
      * @param  string $revenueModel (required)
-     * @param  int $price (required)
+     * @param  float $price (required)
      * @param  string|null $duration Required if revenueModel is Duration (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callRoutingContractsupdateRevenueModeldo'] to see the possible values for this operation
      *

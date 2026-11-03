@@ -25,13 +25,13 @@ final class ClicksReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ClicksReportsApi::class, 'clicksReportsgetClicksByCampaignsReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
+            'verticalGroupID'           => 'verticalGroupID',
             'offerID'                   => 'offerID',
             'payoutModel'               => 'payoutModel',
-            'verticalGroupID'           => 'verticalGroupID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 }

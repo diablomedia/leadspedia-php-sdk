@@ -117,7 +117,7 @@ class RequestsApi
      *
      * Get All
      *
-     * @param  string $date date (required)
+     * @param  \DateTimeInterface|string $date date (required)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $dispositionID dispositionID (optional)
@@ -138,7 +138,7 @@ class RequestsApi
      *
      * Get All
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $dispositionID (optional)
@@ -160,7 +160,7 @@ class RequestsApi
      *
      * Get All
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $dispositionID (optional)
@@ -206,7 +206,7 @@ class RequestsApi
     /**
      * Create request for operation 'requestsgetAlldo'
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $dispositionID (optional)
@@ -237,6 +237,9 @@ class RequestsApi
         $multipart    = false;
 
         // query params
+        if ($date instanceof \DateTimeInterface) {
+            $date = $date->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $date,
             'date', // param base name
@@ -342,7 +345,7 @@ class RequestsApi
      *
      * Get All
      *
-     * @param  string $date (required)
+     * @param  \DateTimeInterface|string $date (required)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $dispositionID (optional)

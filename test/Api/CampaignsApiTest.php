@@ -24,9 +24,9 @@ final class CampaignsApiTest extends ApiContractTestCase
     public function testCampaignsaddFilterdo(): void
     {
         $this->assertOperationContract(CampaignsApi::class, 'campaignsaddFilterdo', [
-            'campaignID' => 'campaignID',
             'fieldID'    => 'fieldID',
             'operator'   => 'operator',
+            'campaignID' => 'campaignID',
             'value'      => 'value',
             'date'       => 'date',
             'miles'      => 'miles',
@@ -94,12 +94,12 @@ final class CampaignsApiTest extends ApiContractTestCase
     public function testCampaignsgetAlldo(): void
     {
         $this->assertOperationContract(CampaignsApi::class, 'campaignsgetAlldo', [
-            'affiliateID' => 'affiliateID',
             'campaignID'  => 'campaignID',
-            'verticalID'  => 'verticalID',
+            'affiliateID' => 'affiliateID',
             'offerID'     => 'offerID',
-            'search'      => 'search',
+            'verticalID'  => 'verticalID',
             'status'      => 'status',
+            'search'      => 'search',
             'start'       => 'start',
             'limit'       => 'limit',
         ]);
@@ -151,8 +151,8 @@ final class CampaignsApiTest extends ApiContractTestCase
         $this->assertOperationContract(CampaignsApi::class, 'campaignsupdateBasicInfodo', [
             'campaignID'    => 'campaignID',
             'campaignName'  => 'campaignName',
-            'alternativeID' => 'alternativeID',
             'notes'         => 'notes',
+            'alternativeID' => 'alternativeID',
         ]);
     }
 

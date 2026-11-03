@@ -83,8 +83,8 @@ final class AdvertisersCreditCardsApiTest extends ApiContractTestCase
     public function testAdvertisersCreditCardsupdatedo(): void
     {
         $this->assertOperationContract(AdvertisersCreditCardsApi::class, 'advertisersCreditCardsupdatedo', [
-            'advertiserID' => 'advertiserID',
             'creditCardID' => 'creditCardID',
+            'advertiserID' => 'advertiserID',
             'nameOnCard'   => 'nameOnCard',
             'expMonth'     => 'expMonth',
             'expYear'      => 'expYear',
@@ -100,8 +100,8 @@ final class AdvertisersCreditCardsApiTest extends ApiContractTestCase
     public function testAdvertisersCreditCardsupdatePaymentProfileIDdo(): void
     {
         $this->assertOperationContract(AdvertisersCreditCardsApi::class, 'advertisersCreditCardsupdatePaymentProfileIDdo', [
-            'advertiserID'     => 'advertiserID',
             'creditCardID'     => 'creditCardID',
+            'advertiserID'     => 'advertiserID',
             'paymentProfileID' => 'paymentProfileID',
             'expMonth'         => 'expMonth',
             'expYear'          => 'expYear',

@@ -1015,10 +1015,10 @@ class OffersApi
      * Get All
      *
      * @param  int|null $verticalID verticalID (optional)
+     * @param  string|null $revenueModel revenueModel (optional)
+     * @param  string|null $payoutModel payoutModel (optional)
      * @param  int|null $advertiserID advertiserID (optional)
      * @param  string|null $status status (optional)
-     * @param  string|null $payoutModel payoutModel (optional)
-     * @param  string|null $revenueModel revenueModel (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersgetAlldo'] to see the possible values for this operation
@@ -1027,9 +1027,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function offersgetAlldo($verticalID = null, $advertiserID = null, $status = null, $payoutModel = null, $revenueModel = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
+    public function offersgetAlldo($verticalID = null, $revenueModel = null, $payoutModel = null, $advertiserID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
     {
-        [$response] = $this->offersgetAlldoWithHttpInfo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit, $contentType);
+        [$response] = $this->offersgetAlldoWithHttpInfo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit, $contentType);
         return $response;
     }
 
@@ -1039,10 +1039,10 @@ class OffersApi
      * Get All
      *
      * @param  int|null $verticalID (optional)
+     * @param  string|null $revenueModel (optional)
+     * @param  string|null $payoutModel (optional)
      * @param  int|null $advertiserID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $payoutModel (optional)
-     * @param  string|null $revenueModel (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersgetAlldo'] to see the possible values for this operation
@@ -1050,9 +1050,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersgetAlldoAsync($verticalID = null, $advertiserID = null, $status = null, $payoutModel = null, $revenueModel = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
+    public function offersgetAlldoAsync($verticalID = null, $revenueModel = null, $payoutModel = null, $advertiserID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
     {
-        return $this->offersgetAlldoAsyncWithHttpInfo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit, $contentType)
+        return $this->offersgetAlldoAsyncWithHttpInfo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1064,10 +1064,10 @@ class OffersApi
      * Get All
      *
      * @param  int|null $verticalID (optional)
+     * @param  string|null $revenueModel (optional)
+     * @param  string|null $payoutModel (optional)
      * @param  int|null $advertiserID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $payoutModel (optional)
-     * @param  string|null $revenueModel (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersgetAlldo'] to see the possible values for this operation
@@ -1075,10 +1075,10 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersgetAlldoAsyncWithHttpInfo($verticalID = null, $advertiserID = null, $status = null, $payoutModel = null, $revenueModel = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
+    public function offersgetAlldoAsyncWithHttpInfo($verticalID = null, $revenueModel = null, $payoutModel = null, $advertiserID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->offersgetAlldoRequest($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit, $contentType);
+        $request    = $this->offersgetAlldoRequest($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1113,10 +1113,10 @@ class OffersApi
      * Create request for operation 'offersgetAlldo'
      *
      * @param  int|null $verticalID (optional)
+     * @param  string|null $revenueModel (optional)
+     * @param  string|null $payoutModel (optional)
      * @param  int|null $advertiserID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $payoutModel (optional)
-     * @param  string|null $revenueModel (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersgetAlldo'] to see the possible values for this operation
@@ -1124,7 +1124,7 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offersgetAlldoRequest($verticalID = null, $advertiserID = null, $status = null, $payoutModel = null, $revenueModel = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
+    public function offersgetAlldoRequest($verticalID = null, $revenueModel = null, $payoutModel = null, $advertiserID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
     {
 
 
@@ -1153,17 +1153,8 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
-            'integer', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
+            $revenueModel,
+            'revenueModel', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -1180,8 +1171,17 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $revenueModel,
-            'revenueModel', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -1276,10 +1276,10 @@ class OffersApi
      * Get All
      *
      * @param  int|null $verticalID (optional)
+     * @param  string|null $revenueModel (optional)
+     * @param  string|null $payoutModel (optional)
      * @param  int|null $advertiserID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $payoutModel (optional)
-     * @param  string|null $revenueModel (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersgetAlldo'] to see the possible values for this operation
@@ -1288,9 +1288,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offersgetAlldoWithHttpInfo($verticalID = null, $advertiserID = null, $status = null, $payoutModel = null, $revenueModel = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
+    public function offersgetAlldoWithHttpInfo($verticalID = null, $revenueModel = null, $payoutModel = null, $advertiserID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['offersgetAlldo'][0])
     {
-        $request = $this->offersgetAlldoRequest($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit, $contentType);
+        $request = $this->offersgetAlldoRequest($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3619,7 +3619,7 @@ class OffersApi
      * Set Expiration Date
      *
      * @param  int $offerID offerID (required)
-     * @param  string $expirationDate expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3638,7 +3638,7 @@ class OffersApi
      * Set Expiration Date
      *
      * @param  int $offerID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3658,7 +3658,7 @@ class OffersApi
      * Set Expiration Date
      *
      * @param  int $offerID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3702,7 +3702,7 @@ class OffersApi
      * Create request for operation 'offerssetExpirationDatedo'
      *
      * @param  int $offerID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3743,6 +3743,9 @@ class OffersApi
             true // required
         ) ?? []);
         // query params
+        if ($expirationDate instanceof \DateTimeInterface) {
+            $expirationDate = $expirationDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expirationDate,
             'expirationDate', // param base name
@@ -3822,7 +3825,7 @@ class OffersApi
      * Set Expiration Date
      *
      * @param  int $offerID (required)
-     * @param  string $expirationDate (required)
+     * @param  \DateTimeInterface|string $expirationDate (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerssetExpirationDatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3910,8 +3913,8 @@ class OffersApi
      *
      * @param  int $offerID offerID (required)
      * @param  string|null $offerName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID alternativeID (optional)
      * @param  string|null $notes notes (optional)
+     * @param  string|null $alternativeID alternativeID (optional)
      * @param  string|null $previewURL previewURL (optional)
      * @param  string|null $offerDescription offerDescription (optional)
      * @param  string|null $testingInstructions testingInstructions (optional)
@@ -3922,9 +3925,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function offersupdateBasicInfodo($offerID, $offerName = null, $alternativeID = null, $notes = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
+    public function offersupdateBasicInfodo($offerID, $offerName = null, $notes = null, $alternativeID = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
     {
-        [$response] = $this->offersupdateBasicInfodoWithHttpInfo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
+        [$response] = $this->offersupdateBasicInfodoWithHttpInfo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
         return $response;
     }
 
@@ -3935,8 +3938,8 @@ class OffersApi
      *
      * @param  int $offerID (required)
      * @param  string|null $offerName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string|null $previewURL (optional)
      * @param  string|null $offerDescription (optional)
      * @param  string|null $testingInstructions (optional)
@@ -3946,9 +3949,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersupdateBasicInfodoAsync($offerID, $offerName = null, $alternativeID = null, $notes = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
+    public function offersupdateBasicInfodoAsync($offerID, $offerName = null, $notes = null, $alternativeID = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
     {
-        return $this->offersupdateBasicInfodoAsyncWithHttpInfo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType)
+        return $this->offersupdateBasicInfodoAsyncWithHttpInfo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -3961,8 +3964,8 @@ class OffersApi
      *
      * @param  int $offerID (required)
      * @param  string|null $offerName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string|null $previewURL (optional)
      * @param  string|null $offerDescription (optional)
      * @param  string|null $testingInstructions (optional)
@@ -3972,10 +3975,10 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersupdateBasicInfodoAsyncWithHttpInfo($offerID, $offerName = null, $alternativeID = null, $notes = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
+    public function offersupdateBasicInfodoAsyncWithHttpInfo($offerID, $offerName = null, $notes = null, $alternativeID = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->offersupdateBasicInfodoRequest($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
+        $request    = $this->offersupdateBasicInfodoRequest($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4011,8 +4014,8 @@ class OffersApi
      *
      * @param  int $offerID (required)
      * @param  string|null $offerName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string|null $previewURL (optional)
      * @param  string|null $offerDescription (optional)
      * @param  string|null $testingInstructions (optional)
@@ -4022,7 +4025,7 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offersupdateBasicInfodoRequest($offerID, $offerName = null, $alternativeID = null, $notes = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
+    public function offersupdateBasicInfodoRequest($offerID, $offerName = null, $notes = null, $alternativeID = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
     {
 
         // verify the required parameter 'offerID' is set
@@ -4067,8 +4070,8 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $alternativeID,
-            'alternativeID', // param base name
+            $notes,
+            'notes', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4076,8 +4079,8 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $notes,
-            'notes', // param base name
+            $alternativeID,
+            'alternativeID', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4191,8 +4194,8 @@ class OffersApi
      *
      * @param  int $offerID (required)
      * @param  string|null $offerName &gt;&#x3D; 1 characters (optional)
-     * @param  string|null $alternativeID (optional)
      * @param  string|null $notes (optional)
+     * @param  string|null $alternativeID (optional)
      * @param  string|null $previewURL (optional)
      * @param  string|null $offerDescription (optional)
      * @param  string|null $testingInstructions (optional)
@@ -4203,9 +4206,9 @@ class OffersApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offersupdateBasicInfodoWithHttpInfo($offerID, $offerName = null, $alternativeID = null, $notes = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
+    public function offersupdateBasicInfodoWithHttpInfo($offerID, $offerName = null, $notes = null, $alternativeID = null, $previewURL = null, $offerDescription = null, $testingInstructions = null, $offerRestrictions = null, string $contentType = self::contentTypes['offersupdateBasicInfodo'][0])
     {
-        $request = $this->offersupdateBasicInfodoRequest($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
+        $request = $this->offersupdateBasicInfodoRequest($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4612,17 +4615,17 @@ class OffersApi
      * Update Terms Settings
      *
      * @param  int $offerID offerID (required)
-     * @param  string|null $termsEnabled termsEnabled (optional)
      * @param  string|null $terms terms (optional)
+     * @param  string|null $termsEnabled termsEnabled (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersupdateTermsSettingsdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function offersupdateTermsSettingsdo($offerID, $termsEnabled = null, $terms = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
+    public function offersupdateTermsSettingsdo($offerID, $terms = null, $termsEnabled = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
     {
-        [$response] = $this->offersupdateTermsSettingsdoWithHttpInfo($offerID, $termsEnabled, $terms, $contentType);
+        [$response] = $this->offersupdateTermsSettingsdoWithHttpInfo($offerID, $terms, $termsEnabled, $contentType);
         return $response;
     }
 
@@ -4632,16 +4635,16 @@ class OffersApi
      * Update Terms Settings
      *
      * @param  int $offerID (required)
-     * @param  string|null $termsEnabled (optional)
      * @param  string|null $terms (optional)
+     * @param  string|null $termsEnabled (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersupdateTermsSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersupdateTermsSettingsdoAsync($offerID, $termsEnabled = null, $terms = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
+    public function offersupdateTermsSettingsdoAsync($offerID, $terms = null, $termsEnabled = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
     {
-        return $this->offersupdateTermsSettingsdoAsyncWithHttpInfo($offerID, $termsEnabled, $terms, $contentType)
+        return $this->offersupdateTermsSettingsdoAsyncWithHttpInfo($offerID, $terms, $termsEnabled, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -4653,17 +4656,17 @@ class OffersApi
      * Update Terms Settings
      *
      * @param  int $offerID (required)
-     * @param  string|null $termsEnabled (optional)
      * @param  string|null $terms (optional)
+     * @param  string|null $termsEnabled (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersupdateTermsSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offersupdateTermsSettingsdoAsyncWithHttpInfo($offerID, $termsEnabled = null, $terms = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
+    public function offersupdateTermsSettingsdoAsyncWithHttpInfo($offerID, $terms = null, $termsEnabled = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->offersupdateTermsSettingsdoRequest($offerID, $termsEnabled, $terms, $contentType);
+        $request    = $this->offersupdateTermsSettingsdoRequest($offerID, $terms, $termsEnabled, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4698,14 +4701,14 @@ class OffersApi
      * Create request for operation 'offersupdateTermsSettingsdo'
      *
      * @param  int $offerID (required)
-     * @param  string|null $termsEnabled (optional)
      * @param  string|null $terms (optional)
+     * @param  string|null $termsEnabled (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersupdateTermsSettingsdo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offersupdateTermsSettingsdoRequest($offerID, $termsEnabled = null, $terms = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
+    public function offersupdateTermsSettingsdoRequest($offerID, $terms = null, $termsEnabled = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
     {
 
         // verify the required parameter 'offerID' is set
@@ -4736,8 +4739,8 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $termsEnabled,
-            'termsEnabled', // param base name
+            $terms,
+            'terms', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4745,8 +4748,8 @@ class OffersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $terms,
-            'terms', // param base name
+            $termsEnabled,
+            'termsEnabled', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4823,17 +4826,17 @@ class OffersApi
      * Update Terms Settings
      *
      * @param  int $offerID (required)
-     * @param  string|null $termsEnabled (optional)
      * @param  string|null $terms (optional)
+     * @param  string|null $termsEnabled (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offersupdateTermsSettingsdo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offersupdateTermsSettingsdoWithHttpInfo($offerID, $termsEnabled = null, $terms = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
+    public function offersupdateTermsSettingsdoWithHttpInfo($offerID, $terms = null, $termsEnabled = null, string $contentType = self::contentTypes['offersupdateTermsSettingsdo'][0])
     {
-        $request = $this->offersupdateTermsSettingsdoRequest($offerID, $termsEnabled, $terms, $contentType);
+        $request = $this->offersupdateTermsSettingsdoRequest($offerID, $terms, $termsEnabled, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

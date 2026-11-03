@@ -36,7 +36,7 @@ $apiInstance = new Leadspedia\Api\RequestsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date = 'date_example'; // string
+$date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $affiliateID = 56; // int
 $campaignID = 56; // int
 $dispositionID = 56; // int
@@ -53,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date** | **string**|  | |
+| **date** | **\DateTime**|  | |
 | **affiliateID** | **int**|  | [optional] |
 | **campaignID** | **int**|  | [optional] |
 | **dispositionID** | **int**|  | [optional] |

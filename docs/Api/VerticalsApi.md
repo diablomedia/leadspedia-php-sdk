@@ -201,7 +201,7 @@ try {
 ## `verticalsgetAlldo()`
 
 ```php
-verticalsgetAlldo($status, $groupID, $start, $limit): \Leadspedia\Model\InlineResponse2001
+verticalsgetAlldo($groupID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -225,13 +225,13 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$status = 'status_example'; // string | Vertical Status
 $groupID = 56; // int | Vertical Group ID
+$status = 'status_example'; // string | Vertical Status
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->verticalsgetAlldo($status, $groupID, $start, $limit);
+    $result = $apiInstance->verticalsgetAlldo($groupID, $status, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -242,8 +242,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **status** | **string**| Vertical Status | [optional] |
 | **groupID** | **int**| Vertical Group ID | [optional] |
+| **status** | **string**| Vertical Status | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -327,7 +327,7 @@ try {
 ## `verticalsupdatedo()`
 
 ```php
-verticalsupdatedo($verticalID, $verticalName, $notes, $groupID): \Leadspedia\Model\InlineResponse200
+verticalsupdatedo($verticalID, $groupID, $verticalName, $notes): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -352,12 +352,12 @@ $apiInstance = new Leadspedia\Api\VerticalsApi(
     $config
 );
 $verticalID = 56; // int
+$groupID = 56; // int
 $verticalName = 'verticalName_example'; // string
 $notes = 'notes_example'; // string
-$groupID = 56; // int
 
 try {
-    $result = $apiInstance->verticalsupdatedo($verticalID, $verticalName, $notes, $groupID);
+    $result = $apiInstance->verticalsupdatedo($verticalID, $groupID, $verticalName, $notes);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VerticalsApi->verticalsupdatedo: ', $e->getMessage(), PHP_EOL;
@@ -369,9 +369,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | |
+| **groupID** | **int**|  | [optional] |
 | **verticalName** | **string**|  | [optional] |
 | **notes** | **string**|  | [optional] |
-| **groupID** | **int**|  | [optional] |
 
 ### Return type
 

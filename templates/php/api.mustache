@@ -156,7 +156,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{#isDate}}\DateTimeInterface|string{{/isDate}}{{^isDate}}{{{dataType}}}{{/isDate}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -215,7 +215,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{#isDate}}\DateTimeInterface|string{{/isDate}}{{^isDate}}{{{dataType}}}{{/isDate}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -375,7 +375,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{#isDate}}\DateTimeInterface|string{{/isDate}}{{^isDate}}{{{dataType}}}{{/isDate}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -437,7 +437,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{#isDate}}\DateTimeInterface|string{{/isDate}}{{^isDate}}{{{dataType}}}{{/isDate}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -522,7 +522,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{#isDate}}\DateTimeInterface|string{{/isDate}}{{^isDate}}{{{dataType}}}{{/isDate}}{{#notRequiredOrIsNullable}}|null{{/notRequiredOrIsNullable}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -605,6 +605,11 @@ use {{invokerPackage}}\ObjectSerializer;
 
         {{#queryParams}}
         // query params
+        {{#isDate}}
+        if (${{paramName}} instanceof \DateTimeInterface) {
+            ${{paramName}} = ${{paramName}}->format('Y-m-d');
+        }
+        {{/isDate}}
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             ${{paramName}},
             '{{baseName}}', // param base name

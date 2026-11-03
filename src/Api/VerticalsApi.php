@@ -991,8 +991,8 @@ class VerticalsApi
      *
      * Get All
      *
-     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $groupID Vertical Group ID (optional)
+     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsgetAlldo'] to see the possible values for this operation
@@ -1001,9 +1001,9 @@ class VerticalsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function verticalsgetAlldo($status = null, $groupID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
+    public function verticalsgetAlldo($groupID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
     {
-        [$response] = $this->verticalsgetAlldoWithHttpInfo($status, $groupID, $start, $limit, $contentType);
+        [$response] = $this->verticalsgetAlldoWithHttpInfo($groupID, $status, $start, $limit, $contentType);
         return $response;
     }
 
@@ -1012,8 +1012,8 @@ class VerticalsApi
      *
      * Get All
      *
-     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $groupID Vertical Group ID (optional)
+     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsgetAlldo'] to see the possible values for this operation
@@ -1021,9 +1021,9 @@ class VerticalsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function verticalsgetAlldoAsync($status = null, $groupID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
+    public function verticalsgetAlldoAsync($groupID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
     {
-        return $this->verticalsgetAlldoAsyncWithHttpInfo($status, $groupID, $start, $limit, $contentType)
+        return $this->verticalsgetAlldoAsyncWithHttpInfo($groupID, $status, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1034,8 +1034,8 @@ class VerticalsApi
      *
      * Get All
      *
-     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $groupID Vertical Group ID (optional)
+     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsgetAlldo'] to see the possible values for this operation
@@ -1043,10 +1043,10 @@ class VerticalsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function verticalsgetAlldoAsyncWithHttpInfo($status = null, $groupID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
+    public function verticalsgetAlldoAsyncWithHttpInfo($groupID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->verticalsgetAlldoRequest($status, $groupID, $start, $limit, $contentType);
+        $request    = $this->verticalsgetAlldoRequest($groupID, $status, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1080,8 +1080,8 @@ class VerticalsApi
     /**
      * Create request for operation 'verticalsgetAlldo'
      *
-     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $groupID Vertical Group ID (optional)
+     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsgetAlldo'] to see the possible values for this operation
@@ -1089,7 +1089,7 @@ class VerticalsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function verticalsgetAlldoRequest($status = null, $groupID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
+    public function verticalsgetAlldoRequest($groupID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
     {
 
 
@@ -1106,18 +1106,18 @@ class VerticalsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
-            'string', // openApiType
+            $groupID,
+            'groupID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $groupID,
-            'groupID', // param base name
-            'integer', // openApiType
+            $status,
+            'status', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1210,8 +1210,8 @@ class VerticalsApi
      *
      * Get All
      *
-     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $groupID Vertical Group ID (optional)
+     * @param  string|null $status Vertical Status (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsgetAlldo'] to see the possible values for this operation
@@ -1220,9 +1220,9 @@ class VerticalsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function verticalsgetAlldoWithHttpInfo($status = null, $groupID = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
+    public function verticalsgetAlldoWithHttpInfo($groupID = null, $status = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['verticalsgetAlldo'][0])
     {
-        $request = $this->verticalsgetAlldoRequest($status, $groupID, $start, $limit, $contentType);
+        $request = $this->verticalsgetAlldoRequest($groupID, $status, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1569,18 +1569,18 @@ class VerticalsApi
      * Update
      *
      * @param  int $verticalID verticalID (required)
+     * @param  int|null $groupID groupID (optional)
      * @param  string|null $verticalName verticalName (optional)
      * @param  string|null $notes notes (optional)
-     * @param  int|null $groupID groupID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsupdatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function verticalsupdatedo($verticalID, $verticalName = null, $notes = null, $groupID = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
+    public function verticalsupdatedo($verticalID, $groupID = null, $verticalName = null, $notes = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
     {
-        [$response] = $this->verticalsupdatedoWithHttpInfo($verticalID, $verticalName, $notes, $groupID, $contentType);
+        [$response] = $this->verticalsupdatedoWithHttpInfo($verticalID, $groupID, $verticalName, $notes, $contentType);
         return $response;
     }
 
@@ -1590,17 +1590,17 @@ class VerticalsApi
      * Update
      *
      * @param  int $verticalID (required)
+     * @param  int|null $groupID (optional)
      * @param  string|null $verticalName (optional)
      * @param  string|null $notes (optional)
-     * @param  int|null $groupID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function verticalsupdatedoAsync($verticalID, $verticalName = null, $notes = null, $groupID = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
+    public function verticalsupdatedoAsync($verticalID, $groupID = null, $verticalName = null, $notes = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
     {
-        return $this->verticalsupdatedoAsyncWithHttpInfo($verticalID, $verticalName, $notes, $groupID, $contentType)
+        return $this->verticalsupdatedoAsyncWithHttpInfo($verticalID, $groupID, $verticalName, $notes, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -1612,18 +1612,18 @@ class VerticalsApi
      * Update
      *
      * @param  int $verticalID (required)
+     * @param  int|null $groupID (optional)
      * @param  string|null $verticalName (optional)
      * @param  string|null $notes (optional)
-     * @param  int|null $groupID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function verticalsupdatedoAsyncWithHttpInfo($verticalID, $verticalName = null, $notes = null, $groupID = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
+    public function verticalsupdatedoAsyncWithHttpInfo($verticalID, $groupID = null, $verticalName = null, $notes = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->verticalsupdatedoRequest($verticalID, $verticalName, $notes, $groupID, $contentType);
+        $request    = $this->verticalsupdatedoRequest($verticalID, $groupID, $verticalName, $notes, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1658,15 +1658,15 @@ class VerticalsApi
      * Create request for operation 'verticalsupdatedo'
      *
      * @param  int $verticalID (required)
+     * @param  int|null $groupID (optional)
      * @param  string|null $verticalName (optional)
      * @param  string|null $notes (optional)
-     * @param  int|null $groupID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsupdatedo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function verticalsupdatedoRequest($verticalID, $verticalName = null, $notes = null, $groupID = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
+    public function verticalsupdatedoRequest($verticalID, $groupID = null, $verticalName = null, $notes = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
     {
 
         // verify the required parameter 'verticalID' is set
@@ -1698,6 +1698,15 @@ class VerticalsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $groupID,
+            'groupID', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $verticalName,
             'verticalName', // param base name
             'string', // openApiType
@@ -1710,15 +1719,6 @@ class VerticalsApi
             $notes,
             'notes', // param base name
             'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $groupID,
-            'groupID', // param base name
-            'integer', // openApiType
             '', // style
             false, // explode
             false // required
@@ -1794,18 +1794,18 @@ class VerticalsApi
      * Update
      *
      * @param  int $verticalID (required)
+     * @param  int|null $groupID (optional)
      * @param  string|null $verticalName (optional)
      * @param  string|null $notes (optional)
-     * @param  int|null $groupID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verticalsupdatedo'] to see the possible values for this operation
      *
      * @throws \Leadspedia\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function verticalsupdatedoWithHttpInfo($verticalID, $verticalName = null, $notes = null, $groupID = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
+    public function verticalsupdatedoWithHttpInfo($verticalID, $groupID = null, $verticalName = null, $notes = null, string $contentType = self::contentTypes['verticalsupdatedo'][0])
     {
-        $request = $this->verticalsupdatedoRequest($verticalID, $verticalName, $notes, $groupID, $contentType);
+        $request = $this->verticalsupdatedoRequest($verticalID, $groupID, $verticalName, $notes, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Leadspedia\Test\Support;
 
+use DateTimeInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -38,10 +39,10 @@ abstract class ApiContractTestCase extends TestCase
             self::assertSame('query', $parameter['in'], 'Extend the contract helper for new parameter locations.');
             $value                       = self::CREDENTIALS[$wireName] ?? ContractValues::forSchema($parameter);
             $arguments[$phpName]         = $value;
-            $expectedQuery[$wireName]    = (string) $value;
+            $expectedQuery[$wireName]    = $value instanceof DateTimeInterface ? $value->format('Y-m-d') : (string) $value;
             $requiredArguments[$phpName] = ($parameter['required'] ?? false) ? $value : null;
             if ($parameter['required'] ?? false) {
-                $requiredQuery[$wireName] = (string) $value;
+                $requiredQuery[$wireName] = $expectedQuery[$wireName];
             }
         }
 

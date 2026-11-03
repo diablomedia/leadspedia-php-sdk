@@ -37,11 +37,11 @@ final class CallRoutingContractsApiTest extends ApiContractTestCase
             'type'                     => 'type',
             'amount'                   => 'amount',
             'charge'                   => 'charge',
-            'transactionFee'           => 'transactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
-            'transactionFeePercentage' => 'transactionFeePercentage',
             'generateInvoice'          => 'generateInvoice',
             'note'                     => 'note',
+            'transactionFee'           => 'transactionFee',
+            'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
         ]);
     }
 
@@ -64,8 +64,8 @@ final class CallRoutingContractsApiTest extends ApiContractTestCase
     public function testCallRoutingContractscreatedo(): void
     {
         $this->assertOperationContract(CallRoutingContractsApi::class, 'callRoutingContractscreatedo', [
-            'advertiserID' => 'advertiserID',
             'verticalID'   => 'verticalID',
+            'advertiserID' => 'advertiserID',
             'contractName' => 'contractName',
             'defaultPrice' => 'defaultPrice',
         ]);
@@ -96,8 +96,8 @@ final class CallRoutingContractsApiTest extends ApiContractTestCase
     public function testCallRoutingContractsgetAlldo(): void
     {
         $this->assertOperationContract(CallRoutingContractsApi::class, 'callRoutingContractsgetAlldo', [
-            'contractID'   => 'contractID',
             'advertiserID' => 'advertiserID',
+            'contractID'   => 'contractID',
             'verticalID'   => 'verticalID',
             'status'       => 'status',
             'start'        => 'start',
@@ -243,11 +243,11 @@ final class CallRoutingContractsApiTest extends ApiContractTestCase
         $this->assertOperationContract(CallRoutingContractsApi::class, 'callRoutingContractsupdateAutoRechargeSettingsdo', [
             'contractID'               => 'contractID',
             'enableAutoRecharge'       => 'enableAutoRecharge',
-            'autoChargeAmount'         => 'autoChargeAmount',
             'autoChargeBalance'        => 'autoChargeBalance',
+            'autoChargeAmount'         => 'autoChargeAmount',
             'chargeTransactionFee'     => 'chargeTransactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
             'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
             'generateInvoice'          => 'generateInvoice',
         ]);
     }
@@ -288,12 +288,12 @@ final class CallRoutingContractsApiTest extends ApiContractTestCase
         $this->assertOperationContract(CallRoutingContractsApi::class, 'callRoutingContractsupdatePortalSettingsdo', [
             'contractID'          => 'contractID',
             'showStatus'          => 'showStatus',
-            'allowStatusPause'    => 'allowStatusPause',
-            'allowManageCaps'     => 'allowManageCaps',
             'showSchedule'        => 'showSchedule',
-            'allowUpdateSchedule' => 'allowUpdateSchedule',
             'showCaps'            => 'showCaps',
             'showReturnSettings'  => 'showReturnSettings',
+            'allowStatusPause'    => 'allowStatusPause',
+            'allowUpdateSchedule' => 'allowUpdateSchedule',
+            'allowManageCaps'     => 'allowManageCaps',
             'callRecordings'      => 'callRecordings',
             'hideCallerID'        => 'hideCallerID',
         ]);

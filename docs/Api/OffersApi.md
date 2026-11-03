@@ -212,7 +212,7 @@ try {
 ## `offersgetAlldo()`
 
 ```php
-offersgetAlldo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit): \Leadspedia\Model\InlineResponse2001
+offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit): \Leadspedia\Model\InlineResponse2001
 ```
 
 Get All
@@ -237,15 +237,15 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $verticalID = 56; // int
+$revenueModel = 'revenueModel_example'; // string
+$payoutModel = 'payoutModel_example'; // string
 $advertiserID = 56; // int
 $status = 'status_example'; // string
-$payoutModel = 'payoutModel_example'; // string
-$revenueModel = 'revenueModel_example'; // string
 $start = 0; // int | Offset of the first row to return.
 $limit = 100; // int | Maximum number of rows to return. Cannot be greater than 1000.
 
 try {
-    $result = $apiInstance->offersgetAlldo($verticalID, $advertiserID, $status, $payoutModel, $revenueModel, $start, $limit);
+    $result = $apiInstance->offersgetAlldo($verticalID, $revenueModel, $payoutModel, $advertiserID, $status, $start, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersgetAlldo: ', $e->getMessage(), PHP_EOL;
@@ -257,10 +257,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **verticalID** | **int**|  | [optional] |
+| **revenueModel** | **string**|  | [optional] |
+| **payoutModel** | **string**|  | [optional] |
 | **advertiserID** | **int**|  | [optional] |
 | **status** | **string**|  | [optional] |
-| **payoutModel** | **string**|  | [optional] |
-| **revenueModel** | **string**|  | [optional] |
 | **start** | **int**| Offset of the first row to return. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of rows to return. Cannot be greater than 1000. | [optional] [default to 100] |
 
@@ -803,7 +803,7 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $offerID = 56; // int
-$expirationDate = 'expirationDate_example'; // string
+$expirationDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
 try {
     $result = $apiInstance->offerssetExpirationDatedo($offerID, $expirationDate);
@@ -818,7 +818,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
-| **expirationDate** | **string**|  | |
+| **expirationDate** | **\DateTime**|  | |
 
 ### Return type
 
@@ -840,7 +840,7 @@ try {
 ## `offersupdateBasicInfodo()`
 
 ```php
-offersupdateBasicInfodo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions): \Leadspedia\Model\InlineResponse200
+offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions): \Leadspedia\Model\InlineResponse200
 ```
 
 Update
@@ -866,15 +866,15 @@ $apiInstance = new Leadspedia\Api\OffersApi(
 );
 $offerID = 56; // int
 $offerName = 'offerName_example'; // string | >= 1 characters
-$alternativeID = 'alternativeID_example'; // string
 $notes = 'notes_example'; // string
+$alternativeID = 'alternativeID_example'; // string
 $previewURL = 'previewURL_example'; // string
 $offerDescription = 'offerDescription_example'; // string
 $testingInstructions = 'testingInstructions_example'; // string
 $offerRestrictions = 'offerRestrictions_example'; // string
 
 try {
-    $result = $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $alternativeID, $notes, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
+    $result = $apiInstance->offersupdateBasicInfodo($offerID, $offerName, $notes, $alternativeID, $previewURL, $offerDescription, $testingInstructions, $offerRestrictions);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateBasicInfodo: ', $e->getMessage(), PHP_EOL;
@@ -887,8 +887,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
 | **offerName** | **string**| &gt;&#x3D; 1 characters | [optional] |
-| **alternativeID** | **string**|  | [optional] |
 | **notes** | **string**|  | [optional] |
+| **alternativeID** | **string**|  | [optional] |
 | **previewURL** | **string**|  | [optional] |
 | **offerDescription** | **string**|  | [optional] |
 | **testingInstructions** | **string**|  | [optional] |
@@ -982,7 +982,7 @@ try {
 ## `offersupdateTermsSettingsdo()`
 
 ```php
-offersupdateTermsSettingsdo($offerID, $termsEnabled, $terms): \Leadspedia\Model\InlineResponse200
+offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled): \Leadspedia\Model\InlineResponse200
 ```
 
 Update Terms Settings
@@ -1007,11 +1007,11 @@ $apiInstance = new Leadspedia\Api\OffersApi(
     $config
 );
 $offerID = 56; // int
-$termsEnabled = 'termsEnabled_example'; // string
 $terms = 'terms_example'; // string
+$termsEnabled = 'termsEnabled_example'; // string
 
 try {
-    $result = $apiInstance->offersupdateTermsSettingsdo($offerID, $termsEnabled, $terms);
+    $result = $apiInstance->offersupdateTermsSettingsdo($offerID, $terms, $termsEnabled);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OffersApi->offersupdateTermsSettingsdo: ', $e->getMessage(), PHP_EOL;
@@ -1023,8 +1023,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offerID** | **int**|  | |
-| **termsEnabled** | **string**|  | [optional] |
 | **terms** | **string**|  | [optional] |
+| **termsEnabled** | **string**|  | [optional] |
 
 ### Return type
 

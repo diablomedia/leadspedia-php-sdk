@@ -47,8 +47,8 @@ final class VerticalsApiTest extends ApiContractTestCase
     public function testVerticalsgetAlldo(): void
     {
         $this->assertOperationContract(VerticalsApi::class, 'verticalsgetAlldo', [
-            'status'  => 'status',
             'groupID' => 'groupID',
+            'status'  => 'status',
             'start'   => 'start',
             'limit'   => 'limit',
         ]);
@@ -65,9 +65,9 @@ final class VerticalsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(VerticalsApi::class, 'verticalsupdatedo', [
             'verticalID'   => 'verticalID',
+            'groupID'      => 'groupID',
             'verticalName' => 'verticalName',
             'notes'        => 'notes',
-            'groupID'      => 'groupID',
         ]);
     }
 }

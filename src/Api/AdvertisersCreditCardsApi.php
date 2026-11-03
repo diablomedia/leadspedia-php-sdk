@@ -409,15 +409,6 @@ class AdvertisersCreditCardsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $address2,
-            'address2', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $city,
             'city', // param base name
             'string', // openApiType
@@ -451,6 +442,15 @@ class AdvertisersCreditCardsApi
             '', // style
             false, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $address2,
+            'address2', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2067,8 +2067,8 @@ class AdvertisersCreditCardsApi
      *
      * Update
      *
-     * @param  int $advertiserID advertiserID (required)
      * @param  int $creditCardID creditCardID (required)
+     * @param  int $advertiserID advertiserID (required)
      * @param  string $nameOnCard First and last name (required)
      * @param  string $expMonth 2-digit expiration month (MM) (required)
      * @param  string $expYear 4-digit expiration year (YYYY) (required)
@@ -2084,9 +2084,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsupdatedo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
+    public function advertisersCreditCardsupdatedo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
     {
-        [$response] = $this->advertisersCreditCardsupdatedoWithHttpInfo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
+        [$response] = $this->advertisersCreditCardsupdatedoWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
         return $response;
     }
 
@@ -2095,8 +2095,8 @@ class AdvertisersCreditCardsApi
      *
      * Update
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string $nameOnCard First and last name (required)
      * @param  string $expMonth 2-digit expiration month (MM) (required)
      * @param  string $expYear 4-digit expiration year (YYYY) (required)
@@ -2111,9 +2111,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersCreditCardsupdatedoAsync($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
+    public function advertisersCreditCardsupdatedoAsync($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
     {
-        return $this->advertisersCreditCardsupdatedoAsyncWithHttpInfo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType)
+        return $this->advertisersCreditCardsupdatedoAsyncWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2124,8 +2124,8 @@ class AdvertisersCreditCardsApi
      *
      * Update
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string $nameOnCard First and last name (required)
      * @param  string $expMonth 2-digit expiration month (MM) (required)
      * @param  string $expYear 4-digit expiration year (YYYY) (required)
@@ -2140,10 +2140,10 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersCreditCardsupdatedoAsyncWithHttpInfo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
+    public function advertisersCreditCardsupdatedoAsyncWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->advertisersCreditCardsupdatedoRequest($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
+        $request    = $this->advertisersCreditCardsupdatedoRequest($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2177,8 +2177,8 @@ class AdvertisersCreditCardsApi
     /**
      * Create request for operation 'advertisersCreditCardsupdatedo'
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string $nameOnCard First and last name (required)
      * @param  string $expMonth 2-digit expiration month (MM) (required)
      * @param  string $expYear 4-digit expiration year (YYYY) (required)
@@ -2193,20 +2193,20 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersCreditCardsupdatedoRequest($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
+    public function advertisersCreditCardsupdatedoRequest($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
     {
-
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersCreditCardsupdatedo'
-            );
-        }
 
         // verify the required parameter 'creditCardID' is set
         if ($creditCardID === null || (is_array($creditCardID) && count($creditCardID) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $creditCardID when calling advertisersCreditCardsupdatedo'
+            );
+        }
+
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersCreditCardsupdatedo'
             );
         }
 
@@ -2277,8 +2277,8 @@ class AdvertisersCreditCardsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $creditCardID,
+            'creditCardID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2286,8 +2286,8 @@ class AdvertisersCreditCardsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $creditCardID,
-            'creditCardID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2331,15 +2331,6 @@ class AdvertisersCreditCardsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $address2,
-            'address2', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $city,
             'city', // param base name
             'string', // openApiType
@@ -2373,6 +2364,15 @@ class AdvertisersCreditCardsApi
             '', // style
             false, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $address2,
+            'address2', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
         ) ?? []);
 
 
@@ -2444,8 +2444,8 @@ class AdvertisersCreditCardsApi
      *
      * Update
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string $nameOnCard First and last name (required)
      * @param  string $expMonth 2-digit expiration month (MM) (required)
      * @param  string $expYear 4-digit expiration year (YYYY) (required)
@@ -2461,9 +2461,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersCreditCardsupdatedoWithHttpInfo($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
+    public function advertisersCreditCardsupdatedoWithHttpInfo($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2 = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatedo'][0])
     {
-        $request = $this->advertisersCreditCardsupdatedoRequest($advertiserID, $creditCardID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
+        $request = $this->advertisersCreditCardsupdatedoRequest($creditCardID, $advertiserID, $nameOnCard, $expMonth, $expYear, $address, $city, $state, $zipCode, $country, $address2, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2540,8 +2540,8 @@ class AdvertisersCreditCardsApi
      *
      * Update Payment Profile ID
      *
-     * @param  int $advertiserID advertiserID (required)
      * @param  int $creditCardID creditCardID (required)
+     * @param  int $advertiserID advertiserID (required)
      * @param  string|null $paymentProfileID paymentProfileID (optional)
      * @param  string|null $expMonth 2-digit expiration month (MM) (optional)
      * @param  string|null $expYear 4-digit expiration year (YYYY) (optional)
@@ -2557,9 +2557,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse200
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdo($advertiserID, $creditCardID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
+    public function advertisersCreditCardsupdatePaymentProfileIDdo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
     {
-        [$response] = $this->advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
+        [$response] = $this->advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
         return $response;
     }
 
@@ -2568,8 +2568,8 @@ class AdvertisersCreditCardsApi
      *
      * Update Payment Profile ID
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string|null $paymentProfileID (optional)
      * @param  string|null $expMonth 2-digit expiration month (MM) (optional)
      * @param  string|null $expYear 4-digit expiration year (YYYY) (optional)
@@ -2584,9 +2584,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdoAsync($advertiserID, $creditCardID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
+    public function advertisersCreditCardsupdatePaymentProfileIDdoAsync($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
     {
-        return $this->advertisersCreditCardsupdatePaymentProfileIDdoAsyncWithHttpInfo($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType)
+        return $this->advertisersCreditCardsupdatePaymentProfileIDdoAsyncWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -2597,8 +2597,8 @@ class AdvertisersCreditCardsApi
      *
      * Update Payment Profile ID
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string|null $paymentProfileID (optional)
      * @param  string|null $expMonth 2-digit expiration month (MM) (optional)
      * @param  string|null $expYear 4-digit expiration year (YYYY) (optional)
@@ -2613,10 +2613,10 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdoAsyncWithHttpInfo($advertiserID, $creditCardID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
+    public function advertisersCreditCardsupdatePaymentProfileIDdoAsyncWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse200::class;
-        $request    = $this->advertisersCreditCardsupdatePaymentProfileIDdoRequest($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
+        $request    = $this->advertisersCreditCardsupdatePaymentProfileIDdoRequest($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2650,8 +2650,8 @@ class AdvertisersCreditCardsApi
     /**
      * Create request for operation 'advertisersCreditCardsupdatePaymentProfileIDdo'
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string|null $paymentProfileID (optional)
      * @param  string|null $expMonth 2-digit expiration month (MM) (optional)
      * @param  string|null $expYear 4-digit expiration year (YYYY) (optional)
@@ -2666,20 +2666,20 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdoRequest($advertiserID, $creditCardID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
+    public function advertisersCreditCardsupdatePaymentProfileIDdoRequest($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
     {
-
-        // verify the required parameter 'advertiserID' is set
-        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $advertiserID when calling advertisersCreditCardsupdatePaymentProfileIDdo'
-            );
-        }
 
         // verify the required parameter 'creditCardID' is set
         if ($creditCardID === null || (is_array($creditCardID) && count($creditCardID) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $creditCardID when calling advertisersCreditCardsupdatePaymentProfileIDdo'
+            );
+        }
+
+        // verify the required parameter 'advertiserID' is set
+        if ($advertiserID === null || (is_array($advertiserID) && count($advertiserID) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiserID when calling advertisersCreditCardsupdatePaymentProfileIDdo'
             );
         }
 
@@ -2702,8 +2702,8 @@ class AdvertisersCreditCardsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $advertiserID,
-            'advertiserID', // param base name
+            $creditCardID,
+            'creditCardID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2711,8 +2711,8 @@ class AdvertisersCreditCardsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $creditCardID,
-            'creditCardID', // param base name
+            $advertiserID,
+            'advertiserID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -2869,8 +2869,8 @@ class AdvertisersCreditCardsApi
      *
      * Update Payment Profile ID
      *
-     * @param  int $advertiserID (required)
      * @param  int $creditCardID (required)
+     * @param  int $advertiserID (required)
      * @param  string|null $paymentProfileID (optional)
      * @param  string|null $expMonth 2-digit expiration month (MM) (optional)
      * @param  string|null $expYear 4-digit expiration year (YYYY) (optional)
@@ -2886,9 +2886,9 @@ class AdvertisersCreditCardsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
-    public function advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($advertiserID, $creditCardID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
+    public function advertisersCreditCardsupdatePaymentProfileIDdoWithHttpInfo($creditCardID, $advertiserID, $paymentProfileID = null, $expMonth = null, $expYear = null, $address = null, $address2 = null, $city = null, $state = null, $zipCode = null, $country = null, string $contentType = self::contentTypes['advertisersCreditCardsupdatePaymentProfileIDdo'][0])
     {
-        $request = $this->advertisersCreditCardsupdatePaymentProfileIDdoRequest($advertiserID, $creditCardID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
+        $request = $this->advertisersCreditCardsupdatePaymentProfileIDdoRequest($creditCardID, $advertiserID, $paymentProfileID, $expMonth, $expYear, $address, $address2, $city, $state, $zipCode, $country, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

@@ -25,25 +25,25 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallRoutingReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
             'verticalID'                 => 'verticalID',
-            'affiliateID'                => 'affiliateID',
-            'advertiserID'               => 'advertiserID',
             'verticalGroupID'            => 'verticalGroupID',
+            'affiliateID'                => 'affiliateID',
             'affiliateAccountManagerID'  => 'affiliateAccountManagerID',
+            'advertiserID'               => 'advertiserID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
     public function testCallTrackingReportsgetCallsByAdvertisersDailyReportdo(): void
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByAdvertisersDailyReportdo', [
-            'year'                       => 'year',
             'month'                      => 'month',
+            'year'                       => 'year',
             'verticalID'                 => 'verticalID',
-            'advertiserID'               => 'advertiserID',
-            'contractID'                 => 'contractID',
             'verticalGroupID'            => 'verticalGroupID',
+            'contractID'                 => 'contractID',
+            'advertiserID'               => 'advertiserID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
         ]);
     }
@@ -52,24 +52,24 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByAdvertisersReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
             'verticalID'                 => 'verticalID',
-            'offerID'                    => 'offerID',
             'verticalGroupID'            => 'verticalGroupID',
+            'offerID'                    => 'offerID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
     public function testCallTrackingReportsgetCallsByAffiliatesDailyReportdo(): void
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByAffiliatesDailyReportdo', [
-            'year'                      => 'year',
             'month'                     => 'month',
+            'year'                      => 'year',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
-            'campaignID'                => 'campaignID',
-            'offerID'                   => 'offerID',
             'verticalGroupID'           => 'verticalGroupID',
+            'offerID'                   => 'offerID',
+            'campaignID'                => 'campaignID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
         ]);
     }
@@ -78,10 +78,10 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByAffiliatesReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
             'verticalGroupID'           => 'verticalGroupID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -89,13 +89,13 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByCampaignsReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
+            'verticalGroupID'           => 'verticalGroupID',
             'offerID'                   => 'offerID',
             'payoutModel'               => 'payoutModel',
-            'verticalGroupID'           => 'verticalGroupID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -103,11 +103,11 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByContractsReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
             'verticalID'                 => 'verticalID',
-            'advertiserID'               => 'advertiserID',
             'verticalGroupID'            => 'verticalGroupID',
+            'advertiserID'               => 'advertiserID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
@@ -115,10 +115,10 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByOffersReportdo', [
             'fromDate'        => 'fromDate',
-            'toDate'          => 'toDate',
             'verticalID'      => 'verticalID',
             'verticalGroupID' => 'verticalGroupID',
             'payoutModel'     => 'payoutModel',
+            'toDate'          => 'toDate',
         ]);
     }
 
@@ -126,12 +126,12 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsBySubAffiliatesReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
-            'campaignID'                => 'campaignID',
             'verticalGroupID'           => 'verticalGroupID',
+            'campaignID'                => 'campaignID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -139,8 +139,8 @@ final class CallTrackingReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(CallTrackingReportsApi::class, 'callTrackingReportsgetCallsByVerticalsReportdo', [
             'fromDate'        => 'fromDate',
-            'toDate'          => 'toDate',
             'verticalGroupID' => 'verticalGroupID',
+            'toDate'          => 'toDate',
         ]);
     }
 }

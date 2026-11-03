@@ -25,11 +25,11 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsByAdvertisersReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
-            'offerID'                    => 'offerID',
             'verticalID'                 => 'verticalID',
             'verticalGroupID'            => 'verticalGroupID',
+            'offerID'                    => 'offerID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
@@ -37,10 +37,10 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsByAffiliatesReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
             'verticalGroupID'           => 'verticalGroupID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -48,13 +48,13 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsByCampaignsReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
+            'verticalGroupID'           => 'verticalGroupID',
             'offerID'                   => 'offerID',
             'payoutModel'               => 'payoutModel',
-            'verticalGroupID'           => 'verticalGroupID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -62,10 +62,10 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsByOffersReportdo', [
             'fromDate'        => 'fromDate',
-            'toDate'          => 'toDate',
             'verticalID'      => 'verticalID',
-            'payoutModel'     => 'payoutModel',
             'verticalGroupID' => 'verticalGroupID',
+            'payoutModel'     => 'payoutModel',
+            'toDate'          => 'toDate',
         ]);
     }
 
@@ -73,11 +73,11 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsBySourceReportdo', [
             'fromDate'                   => 'fromDate',
-            'toDate'                     => 'toDate',
-            'advertiserID'               => 'advertiserID',
             'verticalID'                 => 'verticalID',
             'verticalGroupID'            => 'verticalGroupID',
+            'advertiserID'               => 'advertiserID',
             'advertiserAccountManagerID' => 'advertiserAccountManagerID',
+            'toDate'                     => 'toDate',
         ]);
     }
 
@@ -85,10 +85,10 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsBySubAffiliatesReportdo', [
             'fromDate'                  => 'fromDate',
-            'toDate'                    => 'toDate',
-            'affiliateID'               => 'affiliateID',
             'campaignID'                => 'campaignID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
+            'toDate'                    => 'toDate',
         ]);
     }
 
@@ -96,21 +96,21 @@ final class ConversionsReportsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsByVerticalsReportdo', [
             'fromDate'        => 'fromDate',
-            'toDate'          => 'toDate',
             'verticalGroupID' => 'verticalGroupID',
+            'toDate'          => 'toDate',
         ]);
     }
 
     public function testConversionsReportsgetConversionsDailyReportdo(): void
     {
         $this->assertOperationContract(ConversionsReportsApi::class, 'conversionsReportsgetConversionsDailyReportdo', [
-            'year'                      => 'year',
             'month'                     => 'month',
+            'year'                      => 'year',
             'verticalID'                => 'verticalID',
-            'affiliateID'               => 'affiliateID',
-            'campaignID'                => 'campaignID',
-            'offerID'                   => 'offerID',
             'verticalGroupID'           => 'verticalGroupID',
+            'offerID'                   => 'offerID',
+            'campaignID'                => 'campaignID',
+            'affiliateID'               => 'affiliateID',
             'affiliateAccountManagerID' => 'affiliateAccountManagerID',
         ]);
     }

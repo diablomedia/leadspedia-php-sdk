@@ -49,11 +49,11 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
             'type'                     => 'type',
             'amount'                   => 'amount',
             'charge'                   => 'charge',
-            'transactionFee'           => 'transactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
-            'transactionFeePercentage' => 'transactionFeePercentage',
             'generateInvoice'          => 'generateInvoice',
             'note'                     => 'note',
+            'transactionFee'           => 'transactionFee',
+            'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
         ]);
     }
 
@@ -105,10 +105,10 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
     public function testLeadDistributionContractscreatedo(): void
     {
         $this->assertOperationContract(LeadDistributionContractsApi::class, 'leadDistributionContractscreatedo', [
-            'advertiserID' => 'advertiserID',
             'verticalID'   => 'verticalID',
-            'contractName' => 'contractName',
+            'advertiserID' => 'advertiserID',
             'revenueModel' => 'revenueModel',
+            'contractName' => 'contractName',
             'defaultPrice' => 'defaultPrice',
         ]);
     }
@@ -117,12 +117,12 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadDistributionContractsApi::class, 'leadDistributionContractscreateScheduledo', [
             'contractID' => 'contractID',
-            'type'       => 'type',
-            'price'      => 'price',
             'cap'        => 'cap',
             'revenueCap' => 'revenueCap',
+            'price'      => 'price',
             'startTime'  => 'startTime',
             'endTime'    => 'endTime',
+            'type'       => 'type',
             'monday'     => 'Monday',
             'tuesday'    => 'Tuesday',
             'wednesday'  => 'Wednesday',
@@ -361,11 +361,11 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
         $this->assertOperationContract(LeadDistributionContractsApi::class, 'leadDistributionContractsupdateAutoRechargeSettingsdo', [
             'contractID'               => 'contractID',
             'enableAutoRecharge'       => 'enableAutoRecharge',
-            'autoChargeAmount'         => 'autoChargeAmount',
             'autoChargeBalance'        => 'autoChargeBalance',
+            'autoChargeAmount'         => 'autoChargeAmount',
             'chargeTransactionFee'     => 'chargeTransactionFee',
-            'transactionFeeAmount'     => 'transactionFeeAmount',
             'transactionFeePercentage' => 'transactionFeePercentage',
+            'transactionFeeAmount'     => 'transactionFeeAmount',
             'generateInvoice'          => 'generateInvoice',
         ]);
     }
@@ -426,13 +426,13 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
         $this->assertOperationContract(LeadDistributionContractsApi::class, 'leadDistributionContractsupdatePortalSettingsdo', [
             'contractID'          => 'contractID',
             'showStatus'          => 'showStatus',
-            'allowStatusPause'    => 'allowStatusPause',
             'showLeadData'        => 'showLeadData',
             'showSchedule'        => 'showSchedule',
-            'allowUpdateSchedule' => 'allowUpdateSchedule',
             'showCaps'            => 'showCaps',
-            'allowManageCaps'     => 'allowManageCaps',
             'showReturnSettings'  => 'showReturnSettings',
+            'allowStatusPause'    => 'allowStatusPause',
+            'allowUpdateSchedule' => 'allowUpdateSchedule',
+            'allowManageCaps'     => 'allowManageCaps',
         ]);
     }
 
@@ -460,12 +460,12 @@ final class LeadDistributionContractsApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(LeadDistributionContractsApi::class, 'leadDistributionContractsupdateScheduledo', [
             'deliveryScheduleID' => 'deliveryScheduleID',
-            'type'               => 'type',
+            'cap'                => 'cap',
+            'revenueCap'         => 'revenueCap',
             'price'              => 'price',
             'startTime'          => 'startTime',
             'endTime'            => 'endTime',
-            'cap'                => 'cap',
-            'revenueCap'         => 'revenueCap',
+            'type'               => 'type',
         ]);
     }
 }

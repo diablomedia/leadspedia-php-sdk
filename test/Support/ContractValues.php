@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Leadspedia\Test\Support;
 
+use DateTimeImmutable;
 use InvalidArgumentException;
 
 final class ContractValues
@@ -15,7 +16,7 @@ final class ContractValues
         }
 
         return match ($schema['format'] ?? '') {
-            'date'      => '2026-01-02',
+            'date'      => new DateTimeImmutable('2026-01-02T15:30:00-07:00'),
             'date-time' => '2026-01-02T03:04:05+00:00',
             'time'      => '03:04:05',
             'email'     => 'contract@example.test',

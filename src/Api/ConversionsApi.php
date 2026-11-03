@@ -99,18 +99,18 @@ class ConversionsApi
      *
      * Get All Conversions
      *
-     * @param  string $fromDate fromDate (required)
-     * @param  string|null $toDate toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate fromDate (required)
      * @param  int|null $verticalID verticalID (optional)
+     * @param  int|null $offerID offerID (optional)
      * @param  int|null $affiliateID affiliateID (optional)
      * @param  int|null $campaignID campaignID (optional)
      * @param  int|null $advertiserID advertiserID (optional)
-     * @param  int|null $offerID offerID (optional)
      * @param  string|null $status status (optional)
-     * @param  string|null $showTest showTest (optional)
-     * @param  string|null $showNonTest showNonTest (optional)
      * @param  string|null $showThrottled showThrottled (optional)
      * @param  string|null $showNonThrottled showNonThrottled (optional)
+     * @param  string|null $showTest showTest (optional)
+     * @param  string|null $showNonTest showNonTest (optional)
+     * @param  \DateTimeInterface|string|null $toDate toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['conversionsgetAlldo'] to see the possible values for this operation
@@ -119,9 +119,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \Leadspedia\Model\InlineResponse2001
      */
-    public function conversionsgetAlldo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $offerID = null, $status = null, $showTest = null, $showNonTest = null, $showThrottled = null, $showNonThrottled = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
+    public function conversionsgetAlldo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
     {
-        [$response] = $this->conversionsgetAlldoWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit, $contentType);
+        [$response] = $this->conversionsgetAlldoWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit, $contentType);
         return $response;
     }
 
@@ -130,18 +130,18 @@ class ConversionsApi
      *
      * Get All Conversions
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $offerID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $showTest (optional)
-     * @param  string|null $showNonTest (optional)
      * @param  string|null $showThrottled (optional)
      * @param  string|null $showNonThrottled (optional)
+     * @param  string|null $showTest (optional)
+     * @param  string|null $showNonTest (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['conversionsgetAlldo'] to see the possible values for this operation
@@ -149,9 +149,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsgetAlldoAsync($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $offerID = null, $status = null, $showTest = null, $showNonTest = null, $showThrottled = null, $showNonThrottled = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
+    public function conversionsgetAlldoAsync($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
     {
-        return $this->conversionsgetAlldoAsyncWithHttpInfo($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit, $contentType)
+        return $this->conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit, $contentType)
             ->then(
                 fn ($response) => $response[0]
             );
@@ -162,18 +162,18 @@ class ConversionsApi
      *
      * Get All Conversions
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $offerID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $showTest (optional)
-     * @param  string|null $showNonTest (optional)
      * @param  string|null $showThrottled (optional)
      * @param  string|null $showNonThrottled (optional)
+     * @param  string|null $showTest (optional)
+     * @param  string|null $showNonTest (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['conversionsgetAlldo'] to see the possible values for this operation
@@ -181,10 +181,10 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function conversionsgetAlldoAsyncWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $offerID = null, $status = null, $showTest = null, $showNonTest = null, $showThrottled = null, $showNonThrottled = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
+    public function conversionsgetAlldoAsyncWithHttpInfo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
     {
         $returnType = \Leadspedia\Model\InlineResponse2001::class;
-        $request    = $this->conversionsgetAlldoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit, $contentType);
+        $request    = $this->conversionsgetAlldoRequest($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -218,18 +218,18 @@ class ConversionsApi
     /**
      * Create request for operation 'conversionsgetAlldo'
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $offerID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $showTest (optional)
-     * @param  string|null $showNonTest (optional)
      * @param  string|null $showThrottled (optional)
      * @param  string|null $showNonThrottled (optional)
+     * @param  string|null $showTest (optional)
+     * @param  string|null $showNonTest (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['conversionsgetAlldo'] to see the possible values for this operation
@@ -237,7 +237,7 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function conversionsgetAlldoRequest($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $offerID = null, $status = null, $showTest = null, $showNonTest = null, $showThrottled = null, $showNonThrottled = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
+    public function conversionsgetAlldoRequest($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
     {
 
         // verify the required parameter 'fromDate' is set
@@ -269,6 +269,9 @@ class ConversionsApi
         $multipart    = false;
 
         // query params
+        if ($fromDate instanceof \DateTimeInterface) {
+            $fromDate = $fromDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fromDate,
             'fromDate', // param base name
@@ -279,17 +282,17 @@ class ConversionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $toDate,
-            'toDate', // param base name
-            'string', // openApiType
+            $verticalID,
+            'verticalID', // param base name
+            'integer', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $verticalID,
-            'verticalID', // param base name
+            $offerID,
+            'offerID', // param base name
             'integer', // openApiType
             '', // style
             false, // explode
@@ -324,17 +327,26 @@ class ConversionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offerID,
-            'offerID', // param base name
-            'integer', // openApiType
+            $status,
+            'status', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
+            $showThrottled,
+            'showThrottled', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $showNonThrottled,
+            'showNonThrottled', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -359,18 +371,12 @@ class ConversionsApi
             false // required
         ) ?? []);
         // query params
+        if ($toDate instanceof \DateTimeInterface) {
+            $toDate = $toDate->format('Y-m-d');
+        }
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $showThrottled,
-            'showThrottled', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $showNonThrottled,
-            'showNonThrottled', // param base name
+            $toDate,
+            'toDate', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -464,18 +470,18 @@ class ConversionsApi
      *
      * Get All Conversions
      *
-     * @param  string $fromDate (required)
-     * @param  string|null $toDate (optional)
+     * @param  \DateTimeInterface|string $fromDate (required)
      * @param  int|null $verticalID (optional)
+     * @param  int|null $offerID (optional)
      * @param  int|null $affiliateID (optional)
      * @param  int|null $campaignID (optional)
      * @param  int|null $advertiserID (optional)
-     * @param  int|null $offerID (optional)
      * @param  string|null $status (optional)
-     * @param  string|null $showTest (optional)
-     * @param  string|null $showNonTest (optional)
      * @param  string|null $showThrottled (optional)
      * @param  string|null $showNonThrottled (optional)
+     * @param  string|null $showTest (optional)
+     * @param  string|null $showNonTest (optional)
+     * @param  \DateTimeInterface|string|null $toDate (optional)
      * @param  int|null $start Offset of the first row to return. (optional, default to 0)
      * @param  int|null $limit Maximum number of rows to return. Cannot be greater than 1000. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['conversionsgetAlldo'] to see the possible values for this operation
@@ -484,9 +490,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return array of \Leadspedia\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      */
-    public function conversionsgetAlldoWithHttpInfo($fromDate, $toDate = null, $verticalID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $offerID = null, $status = null, $showTest = null, $showNonTest = null, $showThrottled = null, $showNonThrottled = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
+    public function conversionsgetAlldoWithHttpInfo($fromDate, $verticalID = null, $offerID = null, $affiliateID = null, $campaignID = null, $advertiserID = null, $status = null, $showThrottled = null, $showNonThrottled = null, $showTest = null, $showNonTest = null, $toDate = null, $start = 0, $limit = 100, string $contentType = self::contentTypes['conversionsgetAlldo'][0])
     {
-        $request = $this->conversionsgetAlldoRequest($fromDate, $toDate, $verticalID, $affiliateID, $campaignID, $advertiserID, $offerID, $status, $showTest, $showNonTest, $showThrottled, $showNonThrottled, $start, $limit, $contentType);
+        $request = $this->conversionsgetAlldoRequest($fromDate, $verticalID, $offerID, $affiliateID, $campaignID, $advertiserID, $status, $showThrottled, $showNonThrottled, $showTest, $showNonTest, $toDate, $start, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();

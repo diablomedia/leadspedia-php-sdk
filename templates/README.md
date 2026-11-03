@@ -22,6 +22,8 @@ checks using the shared helpers in `test/Support/`.
 `php/api.mustache` routes async success responses through the same response handler
 as synchronous calls. Malformed or empty JSON rejects the promise with an
 `ApiException` containing the HTTP status, headers, and original response body.
+It also documents date parameters as `DateTimeInterface|string` and serializes
+date objects as `Y-m-d` before query encoding. Both changes survive regeneration.
 
 The Composer template preserves the SDK's Guzzle 7 requirement.
 
@@ -77,6 +79,12 @@ the official Basic authentication contract; configure `setUsername()` and
 `setPassword()` instead of query-string API keys. See `schema/README.md` for the
 source migration details and removed/new endpoints. The legacy API docs.io input
 format remains supported for existing fixtures and archived specifications.
+
+`schema/compatibility.json` preserves previous parameter ordering for shared
+operations, known monetary decimal types, and standard date formats. The converter
+applies this committed overlay to the official source before generation. Regression
+tests exercise legacy positional calls and date/amount serialization through all
+four synchronous/asynchronous method variants.
 
 Run just these tests with `vendor/bin/phpunit --filter ConvertorTest`. They are
 also included in the normal PHPUnit suite and the PHP 8.2–8.5 CI matrix. The

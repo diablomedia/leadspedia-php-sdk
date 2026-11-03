@@ -48,10 +48,10 @@ final class OffersApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(OffersApi::class, 'offersgetAlldo', [
             'verticalID'   => 'verticalID',
+            'revenueModel' => 'revenueModel',
+            'payoutModel'  => 'payoutModel',
             'advertiserID' => 'advertiserID',
             'status'       => 'status',
-            'payoutModel'  => 'payoutModel',
-            'revenueModel' => 'revenueModel',
             'start'        => 'start',
             'limit'        => 'limit',
         ]);
@@ -133,8 +133,8 @@ final class OffersApiTest extends ApiContractTestCase
         $this->assertOperationContract(OffersApi::class, 'offersupdateBasicInfodo', [
             'offerID'             => 'offerID',
             'offerName'           => 'offerName',
-            'alternativeID'       => 'alternativeID',
             'notes'               => 'notes',
+            'alternativeID'       => 'alternativeID',
             'previewURL'          => 'previewURL',
             'offerDescription'    => 'offerDescription',
             'testingInstructions' => 'testingInstructions',
@@ -157,8 +157,8 @@ final class OffersApiTest extends ApiContractTestCase
     {
         $this->assertOperationContract(OffersApi::class, 'offersupdateTermsSettingsdo', [
             'offerID'      => 'offerID',
-            'termsEnabled' => 'termsEnabled',
             'terms'        => 'terms',
+            'termsEnabled' => 'termsEnabled',
         ]);
     }
 

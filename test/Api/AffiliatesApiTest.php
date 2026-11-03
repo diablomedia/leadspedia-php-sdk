@@ -48,10 +48,10 @@ final class AffiliatesApiTest extends ApiContractTestCase
     public function testAffiliatesgetAlldo(): void
     {
         $this->assertOperationContract(AffiliatesApi::class, 'affiliatesgetAlldo', [
-            'status'           => 'status',
-            'search'           => 'search',
             'affiliateID'      => 'affiliateID',
             'accountManagerID' => 'accountManagerID',
+            'status'           => 'status',
+            'search'           => 'search',
             'start'            => 'start',
             'limit'            => 'limit',
         ]);
@@ -86,6 +86,7 @@ final class AffiliatesApiTest extends ApiContractTestCase
         $this->assertOperationContract(AffiliatesApi::class, 'affiliatesupdateInfodo', [
             'affiliateID'   => 'affiliateID',
             'affiliateName' => 'affiliateName',
+            'website'       => 'website',
             'alternateID'   => 'alternateID',
             'address'       => 'address',
             'address2'      => 'address2',
@@ -93,7 +94,6 @@ final class AffiliatesApiTest extends ApiContractTestCase
             'state'         => 'state',
             'zipCode'       => 'zipCode',
             'country'       => 'country',
-            'website'       => 'website',
         ]);
     }
 }
