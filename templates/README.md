@@ -32,11 +32,40 @@ Rector's PHP 8.2 upgrade rules and PHPUnit code quality rules from `rector.php`
 over `src/` and `test/`, then runs PHP CS Fixer. GitHub Actions checks both tools
 in dry-run mode.
 
+PHP CS Fixer detects the available CPU cores and processes one file per batch,
+with a ten-minute timeout per batch. This avoids the default two-minute timeout
+for batches of ten large generated API files on slower CI runners. The settings
+in `.php-cs-fixer.php` apply to both CI and `build.sh`.
+
 Constructor promotion preserves parameter names so named arguments keep working.
 `PreferPHPUnitThisCallRector` is skipped because the fixer configuration requires
 static PHPUnit calls.
 Rector adds `void` return types before the fixer cleans redundant return tags so
 the build produces output that passes both dry-run checks in one pass.
+
+## GitHub Actions security
+
+CI runs [zizmor](https://docs.zizmor.sh/) 1.32.0 on pull requests and pushes to
+`master` with pedantic audits enabled. Findings fail the `zizmor` job and appear
+as workflow annotations.
+The check uses only `contents: read` permission and does not require GitHub
+Advanced Security. Action references are pinned to commit SHAs, and checkouts
+disable credential persistence.
+
+With Python 3.11 or newer and [uv](https://docs.astral.sh/uv/) installed, run the
+same version locally from the repository root:
+
+```sh
+uvx zizmor==1.32.0 --pedantic .
+```
+
+Set `GH_TOKEN` to enable online audits locally, or pass `--offline` for an offline
+scan. CI enables online audits using its read-only GitHub token. When upgrading
+zizmor, update the workflow version and this command together.
+
+Dependabot checks Composer, npm, and GitHub Actions dependencies every Monday.
+Version updates have a seven-day cooldown. Minor and patch updates are grouped
+into one pull request per ecosystem; major updates remain separate.
 
 ## Contract tests
 
