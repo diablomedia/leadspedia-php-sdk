@@ -32,6 +32,11 @@ Rector's PHP 8.2 upgrade rules and PHPUnit code quality rules from `rector.php`
 over `src/` and `test/`, then runs PHP CS Fixer. GitHub Actions checks both tools
 in dry-run mode.
 
+PHP CS Fixer detects the available CPU cores and processes one file per batch,
+with a ten-minute timeout per batch. This avoids the default two-minute timeout
+for batches of ten large generated API files on slower CI runners. The settings
+in `.php-cs-fixer.php` apply to both CI and `build.sh`.
+
 Constructor promotion preserves parameter names so named arguments keep working.
 `PreferPHPUnitThisCallRector` is skipped because the fixer configuration requires
 static PHPUnit calls.
